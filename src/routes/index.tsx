@@ -13,8 +13,8 @@ function Index() {
       {/* Nav */}
       <nav className="py-8 sm:py-10">
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-          <a href="#" className="text-sm font-semibold tracking-tight uppercase">
-            Aukio<span className="text-accent">.</span>
+          <a href="#" className="text-base font-serif tracking-tight">
+            Hola<span className="text-accent">Digi.</span>
           </a>
           <div className="hidden sm:flex gap-8 text-sm text-foreground/70">
             <a href="#palvelut" className="hover:text-foreground transition-colors">Palvelut</a>
