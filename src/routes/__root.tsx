@@ -77,14 +77,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Aukio — Kotisivut ja graafinen suunnittelu" },
+      { name: "description", content: "Suomalainen muotoilustudio. Hakukoneoptimoidut, helposti päivitettävät verkkosivustot ja visuaaliset identiteetit integroiduilla hallintapaneeleilla." },
+      { property: "og:title", content: "Aukio — Kotisivut ja graafinen suunnittelu" },
+      { property: "og:description", content: "Hakukoneoptimoidut, helposti päivitettävät verkkosivustot ja huolella veistetyt visuaaliset identiteetit." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
