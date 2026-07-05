@@ -31,11 +31,11 @@ function Index() {
       {/* Hero */}
       <header className="pt-16 pb-24 sm:pt-24 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-8">
-            Helsinki — Muotoilustudio
+          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
+            ¡Hola! — Estudio digital
           </div>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-10 tracking-tight">
-            Kotisivut ja <span className="font-serif italic text-accent">graafinen</span> suunnittelu, huolella veistettynä.
+            Kotisivut ja <span className="font-serif italic text-accent">graafinen</span> suunnittelu, lämmöllä tehtynä.
           </h1>
           <div className="grid md:grid-cols-12 gap-8 items-end">
             <p className="md:col-span-6 text-base sm:text-lg text-pretty text-foreground/70 leading-relaxed">
