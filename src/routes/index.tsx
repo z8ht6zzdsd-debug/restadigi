@@ -13,8 +13,8 @@ function Index() {
       {/* Nav */}
       <nav className="py-8 sm:py-10">
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-          <a href="#" className="text-sm font-semibold tracking-tight uppercase">
-            Aukio<span className="text-accent">.</span>
+          <a href="#" className="text-base font-serif tracking-tight">
+            Hola<span className="text-accent">Digi.</span>
           </a>
           <div className="hidden sm:flex gap-8 text-sm text-foreground/70">
             <a href="#palvelut" className="hover:text-foreground transition-colors">Palvelut</a>
@@ -31,11 +31,11 @@ function Index() {
       {/* Hero */}
       <header className="pt-16 pb-24 sm:pt-24 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-8">
-            Helsinki — Muotoilustudio
+          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
+            ¡Hola! — Estudio digital
           </div>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-10 tracking-tight">
-            Kotisivut ja <span className="font-serif italic text-accent">graafinen</span> suunnittelu, huolella veistettynä.
+            Kotisivut ja <span className="font-serif italic text-accent">graafinen</span> suunnittelu, lämmöllä tehtynä.
           </h1>
           <div className="grid md:grid-cols-12 gap-8 items-end">
             <p className="md:col-span-6 text-base sm:text-lg text-pretty text-foreground/70 leading-relaxed">
@@ -222,10 +222,10 @@ function Index() {
               Onko sinulla <span className="font-serif italic">projekti</span> mielessä?
             </h2>
             <a
-              href="mailto:moi@aukio.fi"
+              href="mailto:hola@holadigi.fi"
               className="inline-flex items-center gap-3 bg-background text-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent hover:text-accent-foreground transition-colors"
             >
-              moi@aukio.fi
+              hola@holadigi.fi
               <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
               </svg>
@@ -238,7 +238,7 @@ function Index() {
       <footer className="py-12 border-t border-border">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Aukio Design — Helsinki
+            &copy; {new Date().getFullYear()} HolaDigi — Helsinki
           </div>
           <div className="flex gap-8 text-xs uppercase tracking-[0.15em] text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Instagram</a>
