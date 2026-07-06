@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YhteysRouteImport } from './routes/yhteys'
+import { Route as PalvelutRouteImport } from './routes/palvelut'
+import { Route as MeistaRouteImport } from './routes/meista'
 import { Route as IndexRouteImport } from './routes/index'
 
+const YhteysRoute = YhteysRouteImport.update({
+  id: '/yhteys',
+  path: '/yhteys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PalvelutRoute = PalvelutRouteImport.update({
+  id: '/palvelut',
+  path: '/palvelut',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeistaRoute = MeistaRouteImport.update({
+  id: '/meista',
+  path: '/meista',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/meista': typeof MeistaRoute
+  '/palvelut': typeof PalvelutRoute
+  '/yhteys': typeof YhteysRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/meista': typeof MeistaRoute
+  '/palvelut': typeof PalvelutRoute
+  '/yhteys': typeof YhteysRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/meista': typeof MeistaRoute
+  '/palvelut': typeof PalvelutRoute
+  '/yhteys': typeof YhteysRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/meista' | '/palvelut' | '/yhteys'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/meista' | '/palvelut' | '/yhteys'
+  id: '__root__' | '/' | '/meista' | '/palvelut' | '/yhteys'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MeistaRoute: typeof MeistaRoute
+  PalvelutRoute: typeof PalvelutRoute
+  YhteysRoute: typeof YhteysRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/yhteys': {
+      id: '/yhteys'
+      path: '/yhteys'
+      fullPath: '/yhteys'
+      preLoaderRoute: typeof YhteysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/palvelut': {
+      id: '/palvelut'
+      path: '/palvelut'
+      fullPath: '/palvelut'
+      preLoaderRoute: typeof PalvelutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meista': {
+      id: '/meista'
+      path: '/meista'
+      fullPath: '/meista'
+      preLoaderRoute: typeof MeistaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MeistaRoute: MeistaRoute,
+  PalvelutRoute: PalvelutRoute,
+  YhteysRoute: YhteysRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
