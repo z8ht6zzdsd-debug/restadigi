@@ -6,9 +6,9 @@ export const Route = createFileRoute("/palvelut")({
   head: () => ({
     meta: [
       { title: "Palvelut — HolaDigi" },
-      { name: "description", content: "Kolme verkkosivupakettia ja graafisen suunnittelun palvelut — kotisivuista brändi-ilmeisiin." },
+      { name: "description", content: "Verkkosivut yrityksille ja yhdistyksille: selkeät verkkosivupaketit, hosting ja graafiset lisäpalvelut." },
       { property: "og:title", content: "Palvelut — HolaDigi" },
-      { property: "og:description", content: "Verkkosivupaketit ja graafisen suunnittelun palvelut." },
+      { property: "og:description", content: "Verkkosivupaketit, hosting ja graafiset lisäpalvelut yrityksesi tarpeisiin." },
     ],
   }),
   component: PalvelutPage,
@@ -16,51 +16,71 @@ export const Route = createFileRoute("/palvelut")({
 
 const packages = [
   {
-    name: "Esittely",
-    tagline: "Kevyt yhden sivun verkkosivusto",
-    price: "890 €",
+    name: "Start",
+    tagline: "Yksinkertainen mutta vaikuttava sivusto pienyritykselle",
+    price: "399 € + alv",
     bullets: [
-      "1–3 sivua",
-      "Responsiivinen suunnittelu",
-      "Perus-SEO ja analytiikka",
-      "Yhteydenottolomake",
-      "Toimitus 1–2 viikossa",
+      "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – valmiina pienyrityksen tarpeisiin",
+      "Ammattimainen 1–3-sivuinen verkkosivusto yrityksesi tarpeisiin",
+      "Helppokäyttöinen hallintapaneeli, jolla voit päivittää sisältöjä itse",
+      "Responsiivinen toteutus, joka toimii erinomaisesti niin mobiilissa, tabletissa kuin tietokoneellakin",
+      "Integroitu yhteydenottolomake, jonka avulla asiakkaasi tavoittavat sinut helposti",
+      "Perus-SEO-optimointi, joka sisältää meta-tiedot, sivukartan ja sivuston suorituskyvyn optimoinnin",
+      "Nopea toimitus – verkkosivusto valmiina jopa 5 arkipäivässä",
+      "30 päivän asiakastuki julkaisun jälkeen mahdollisia kysymyksiä ja pieniä muutoksia varten",
     ],
   },
   {
-    name: "Yritys",
-    tagline: "Kattava sivusto kasvavalle brändille",
-    price: "1 890 €",
+    name: "Plus",
+    tagline: "Tyylikäs kokonaisuus, joka esittelee palvelusi selkeästi",
+    price: "549 € + alv",
     featured: true,
     bullets: [
-      "Jopa 8 sivua",
-      "Integroitu hallintapaneeli (CMS)",
-      "Laajempi SEO-optimointi",
-      "Blogi tai referenssit",
-      "Toimitus 2–4 viikossa",
-    ],
-  },
-  {
-    name: "Premium",
-    tagline: "Räätälöity ratkaisu vaativiin tarpeisiin",
-    price: "3 490 €",
-    bullets: [
-      "Räätälöity rakenne ja animaatiot",
-      "Kehittynyt CMS ja käyttäjäroolit",
-      "Kauppa- tai varausintegraatiot",
-      "Hakukoneoptimointi + suorituskyky",
-      "Toimitus sovitusti",
+      "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – valmiina pienyrityksen tarpeisiin",
+      "Ammattimainen jopa 8-sivuinen verkkosivusto yrityksesi tarpeisiin",
+      "Helppokäyttöinen hallintapaneeli, jolla voit päivittää sisältöjä itse",
+      "Responsiivinen toteutus, joka toimii erinomaisesti niin mobiilissa, tabletissa kuin tietokoneellakin",
+      "Integroitu yhteydenottolomake, jonka avulla asiakkaasi tavoittavat sinut helposti",
+      "Perus-SEO-optimointi, joka sisältää meta-tiedot, sivukartan ja sivuston suorituskyvyn optimoinnin",
+      "Nopea toimitus – verkkosivusto valmiina jopa 5 arkipäivässä",
+      "30 päivän asiakastuki julkaisun jälkeen mahdollisia kysymyksiä ja pieniä muutoksia varten",
     ],
   },
 ];
 
-const design = [
-  { name: "Logosuunnittelu", price: "alk. 490 €" },
-  { name: "Brändi-identiteetti", price: "alk. 1 200 €" },
-  { name: "Käyntikortit & painotuotteet", price: "alk. 190 €" },
-  { name: "Somemateriaalit / -pohjat", price: "alk. 290 €" },
-  { name: "Kuvitukset ja ikonit", price: "sopimuksen mukaan" },
-  { name: "Esitys- ja PDF-materiaalit", price: "alk. 390 €" },
+const hosting = [
+  {
+    name: "Basic",
+    price: "9,99 € / kk + alv",
+    bullets: [
+      "Hosting ja verkkotunnus sisältyvät hintaan",
+      "Nopea ja luotettava hosting Suomessa",
+      "SSL-sertifikaatti (HTTPS) sisältyy",
+      "Domain (.fi tai muu) sisältyy hintaan",
+    ],
+  },
+  {
+    name: "Pro Business",
+    price: "29,99 € / kk + alv",
+    featured: true,
+    bullets: [
+      "Hosting ja verkkotunnus sisältyvät hintaan",
+      "Nopea ja luotettava hosting Suomessa",
+      "SSL-sertifikaatti (HTTPS) sisältyy",
+      "Domain (.fi tai muu) sisältyy hintaan",
+      "Sähköpostiosoitteet sisältyvät",
+      "Jatkuva ylläpito ja päivitykset",
+      "Pienet sisältömuutokset sisältyvät",
+      "Tietoturvapäivitykset",
+      "Henkilökohtainen tuki puhelimitse",
+    ],
+  },
+];
+
+const extras = [
+  { name: "Logon suunnittelu", price: "149 €" },
+  { name: "Käyntikorttien suunnittelu", price: "89 €" },
+  { name: "GoodStart - somepaketti", price: "119 €" },
 ];
 
 function PalvelutPage() {
@@ -73,11 +93,11 @@ function PalvelutPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Palvelut</div>
           <h1 className="text-4xl sm:text-6xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-8 tracking-tight">
-            Selkeät paketit ja <span className="font-serif italic text-accent">graafisen</span> suunnittelun palvelut.
+            Verkkosivut <span className="font-serif italic text-accent">yrityksille</span> ja yhdistyksille.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Kolme verkkosivupakettia kattavat suurimman osan tarpeista. Räätälöimme sisällön ja
-            visuaalisen ilmeen aina projektikohtaisesti — ja lisäämme mukaan graafisia palveluita tarpeesi mukaan.
+            Hyvin suunnitellut verkkosivut ja verkkosisällöt ovat yrityksesi tärkeimmät digitaaliset työkalut.
+            Ne vahvistavat brändisi näkyvyyttä, helpottavat asiakkaiden yhteydenottoa ja jättävät vahvan ensivaikutelman.
           </p>
         </div>
       </header>
@@ -88,7 +108,7 @@ function PalvelutPage() {
           <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
             (01) Verkkosivupaketit
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {packages.map((p) => (
               <div
                 key={p.name}
@@ -114,7 +134,7 @@ function PalvelutPage() {
                 <ul className="space-y-3 text-sm mb-8 flex-1">
                   {p.bullets.map((b) => (
                     <li key={b} className="flex gap-3">
-                      <span className={"size-1 rounded-full mt-2 shrink-0 " + (p.featured ? "bg-accent" : "bg-accent")} />
+                      <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
                       <span className={p.featured ? "text-primary-foreground/85" : "text-foreground/75"}>{b}</span>
                     </li>
                   ))}
@@ -134,32 +154,86 @@ function PalvelutPage() {
             ))}
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
-            Hinnat alkaen, sis. suunnittelun ja toteutuksen. Domain ja palvelin laskutetaan erikseen.
+            Pakettihinnat ovat kiinteitä. Verkkotunnus ja hosting valitaan erikseen alla olevista vaihtoehdoista.
           </p>
         </div>
       </section>
 
-      {/* Graafinen suunnittelu */}
+      {/* Hosting */}
       <section className="py-24 sm:py-32 bg-secondary/60">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
+            (02) Hosting-palvelut
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {hosting.map((h) => (
+              <div
+                key={h.name}
+                className={
+                  "rounded-sm p-8 flex flex-col " +
+                  (h.featured
+                    ? "bg-primary text-primary-foreground"
+                    : "border border-border bg-card")
+                }
+              >
+                <div className="flex items-baseline justify-between mb-2">
+                  <h3 className="text-xl font-medium">{h.name}</h3>
+                  {h.featured && (
+                    <span className="text-[10px] uppercase tracking-[0.2em] bg-accent text-accent-foreground px-2 py-1 rounded-full">
+                      Suosittu
+                    </span>
+                  )}
+                </div>
+                <div className="text-4xl font-serif mb-8">{h.price}</div>
+                <ul className="space-y-3 text-sm mb-8 flex-1">
+                  {h.bullets.map((b) => (
+                    <li key={b} className="flex gap-3">
+                      <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
+                      <span className={h.featured ? "text-primary-foreground/85" : "text-foreground/75"}>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to="/yhteys"
+                  className={
+                    "inline-flex items-center justify-center gap-2 text-sm font-medium py-3 px-5 rounded-full transition-colors " +
+                    (h.featured
+                      ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
+                      : "bg-primary text-primary-foreground hover:bg-accent")
+                  }
+                >
+                  Pyydä tarjous
+                </Link>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-xs text-muted-foreground">
+            Hosting- ja ylläpitohinnat laskutetaan kuukausittain. Domain ja SSL-sertifikaatti sisältyvät hintaan.
+          </p>
+        </div>
+      </section>
+
+      {/* Lisäpalvelut */}
+      <section className="py-24 sm:py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-12">
             <div className="md:col-span-5">
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                (02) Graafinen suunnittelu
+                (03) Lisäpalvelut
               </div>
               <h2 className="text-3xl sm:text-4xl font-medium leading-[1.1] tracking-tight text-balance">
-                Lisäpalveluita <span className="font-serif italic">brändisi</span> ilmeen viimeistelyyn.
+                Lisäpalvelut <span className="font-serif italic">verkkosivupaketin</span> oston yhteydessä.
               </h2>
               <p className="mt-6 text-foreground/70 leading-relaxed">
-                Yhdistä helposti mihin tahansa verkkosivupakettiin — tai tilaa erikseen.
+                Täydennä sivustopaketti yritysilmeen osilla — tarjolla vain verkkosivupaketin oston yhteydessä.
               </p>
             </div>
             <div className="md:col-span-6 md:col-start-7">
               <ul>
-                {design.map((d) => (
-                  <li key={d.name} className="flex justify-between items-baseline py-5 border-t border-border last:border-b">
-                    <span className="text-base font-medium">{d.name}</span>
-                    <span className="text-sm text-foreground/60 tabular-nums">{d.price}</span>
+                {extras.map((e) => (
+                  <li key={e.name} className="flex justify-between items-baseline py-5 border-t border-border last:border-b">
+                    <span className="text-base font-medium">{e.name}</span>
+                    <span className="text-sm text-foreground/60 tabular-nums">{e.price}</span>
                   </li>
                 ))}
               </ul>
