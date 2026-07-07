@@ -8,10 +8,10 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "HolaDigi — Kotisivut ja graafinen suunnittelu" },
-      { name: "description", content: "Suomalais-espanjalaishenkinen studio. Rakennamme hakukoneoptimoituja, helposti päivitettäviä verkkosivustoja ja lämpimiä visuaalisia identiteettejä." },
-      { property: "og:title", content: "HolaDigi — Kotisivut ja graafinen suunnittelu" },
-      { property: "og:description", content: "Hakukoneoptimoidut kotisivut ja huolella veistetyt brändi-ilmeet." },
+      { title: "HolaDigi — Näyttävät ja tehokkaat verkkosivut yritykselle" },
+      { name: "description", content: "Rakennamme yrityksille näyttäviä, moderneja ja tehokkaita verkkosivuja sekä vahvaa verkkonäkyvyyttä. Uuden teknologian avulla sivut valmistuvat nopeasti ja niitä on helppo päivittää." },
+      { property: "og:title", content: "HolaDigi — Näyttävät ja tehokkaat verkkosivut yritykselle" },
+      { property: "og:description", content: "Modernit, responsiiviset verkkosivut ja laaja asiakastuki yrityksesi kasvun tueksi." },
     ],
   }),
   component: Index,
@@ -26,15 +26,19 @@ function Index() {
       <header className="pt-10 pb-24 sm:pt-16 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
-            ¡Hola! — Estudio digital
+            ¡Hola! — Digistudio
           </div>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-10 tracking-tight">
-            Kotisivut ja <span className="font-serif italic text-accent">graafinen</span> suunnittelu, lämmöllä tehtynä.
+            Näyttävät, modernit ja <span className="font-serif italic text-accent">tehokkaat</span> verkkosivut yrityksellesi.
           </h1>
           <div className="grid md:grid-cols-12 gap-8 items-end">
             <p className="md:col-span-6 text-base sm:text-lg text-pretty text-foreground/70 leading-relaxed">
-              Rakennamme hakukoneoptimoituja, helposti päivitettäviä ja hallinnoitavia verkkosivustoja
-              integroiduilla hallintapaneeleilla. Yhdistämme teknisen suorituskyvyn ja hiotun estetiikan.
+              Rakennamme yrityksille näyttäviä, moderneja ja tehokkaita verkkosivuja sekä vahvaa
+              verkkonäkyvyyttä hyödyntäen muun muassa Lovable-tekoälyä. Uuden teknologian avulla
+              sivut valmistuvat nopeasti, ovat responsiivisia ja niitä voidaan kehittää joustavasti
+              yrityksesi tarpeiden mukaan. Tavoitteeni on luoda verkkoratkaisuja, jotka eivät
+              ainoastaan näytä hyvältä, vaan myös tukevat yrityksesi kasvua, löydettävyyttä ja
+              asiakkaiden hankintaa.
             </p>
             <div className="md:col-span-6 md:col-start-8 flex items-center gap-4">
               <Link
@@ -67,17 +71,30 @@ function Index() {
         </div>
       </section>
 
-      {/* Nostot */}
+      {/* Miksi valita meidät */}
       <section className="py-24 sm:py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-16">
-            (01) Mitä teemme
+            (01) Miksi valita meidät?
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
             {[
-              { t: "Kotisivut", d: "Nopeat, saavutettavat ja hakukoneille rakennetut verkkosivustot." },
-              { t: "Graafinen suunnittelu", d: "Logot, brändi-ilmeet ja materiaalit joilla erotut edukseen." },
-              { t: "Ylläpito & CMS", d: "Selkeä paneeli sisällön päivittämiseen ilman koodausta." },
+              {
+                t: "Helppo ja nopea aloitus",
+                d: "Pääset liikkeelle vaivattomasti ilman monimutkaisia prosesseja.",
+              },
+              {
+                t: "Vaivaton sisällönhallinta",
+                d: "Verkkosivujesi sisältöä on helppo päivittää ja ylläpitää myös jatkossa.",
+              },
+              {
+                t: "Ammattimainen toteutus",
+                d: "Suunnittelemme, toteutamme ja julkaisemme modernit, responsiiviset verkkosivut yrityksesi tarpeisiin.",
+              },
+              {
+                t: "Laaja asiakastuki",
+                d: "Saat apua niin käyttöönotossa, ylläpidossa kuin sivuston kehittämisessäkin – et jää yksin projektin valmistumisen jälkeen.",
+              },
             ].map((item, i) => (
               <div key={item.t}>
                 <div className="text-xs font-mono text-accent tabular-nums mb-3">0{i + 1}</div>
@@ -88,7 +105,7 @@ function Index() {
           </div>
           <div className="mt-12">
             <Link to="/palvelut" className="text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground transition-colors">
-              Kaikki palvelut ja hinnat →
+              Katso palvelut ja hinnat →
             </Link>
           </div>
         </div>
