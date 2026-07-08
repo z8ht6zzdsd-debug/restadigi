@@ -3,7 +3,8 @@ import { useState } from "react";
 
 const nav = [
   { to: "/", label: "Etusivu" },
-  { to: "/palvelut", label: "Palvelut" },
+  { to: "/kotisivut-yrityksille", label: "Kotisivut yrityksille" },
+  { to: "/diginakyvyys", label: "Diginäkyvyys" },
   { to: "/meista", label: "Meistä" },
   { to: "/yhteys", label: "Ota yhteyttä" },
 ] as const;
