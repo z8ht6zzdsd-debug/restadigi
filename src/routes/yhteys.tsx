@@ -25,7 +25,7 @@ function YhteysPage() {
     const body = encodeURIComponent(
       `Nimi: ${data.get("name")}\nYritys: ${data.get("company")}\nSähköposti: ${data.get("email")}\nBudjetti: ${data.get("budget")}\n\nViesti:\n${data.get("message")}`,
     );
-    window.location.href = `mailto:hola@holadigi.fi?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@yritysdigi.fi?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -52,8 +52,8 @@ function YhteysPage() {
           <aside className="md:col-span-4 space-y-8">
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Sähköposti</div>
-              <a href="mailto:hola@holadigi.fi" className="text-lg font-serif hover:text-accent transition-colors">
-                hola@holadigi.fi
+              <a href="mailto:info@yritysdigi.fi" className="text-lg font-serif hover:text-accent transition-colors">
+                info@yritysdigi.fi
               </a>
             </div>
             <div>
