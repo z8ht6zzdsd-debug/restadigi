@@ -2,16 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-export const Route = createFileRoute("/palvelut")({
+export const Route = createFileRoute("/kotisivut-yrityksille")({
   head: () => ({
     meta: [
-      { title: "Palvelut — HolaDigi" },
-      { name: "description", content: "Verkkosivut yrityksille ja yhdistyksille: selkeät verkkosivupaketit, hosting ja graafiset lisäpalvelut." },
-      { property: "og:title", content: "Palvelut — HolaDigi" },
-      { property: "og:description", content: "Verkkosivupaketit, hosting ja graafiset lisäpalvelut yrityksesi tarpeisiin." },
+      { title: "Kotisivut yrityksille — YritysDIGI" },
+      { name: "description", content: "Selkeät ja vaikuttavat kotisivupaketit, hosting ja graafiset lisäpalvelut yrityksille ja yhdistyksille." },
+      { property: "og:title", content: "Kotisivut yrityksille — YritysDIGI" },
+      { property: "og:description", content: "Kotisivupaketit, hosting ja graafiset lisäpalvelut yrityksesi tarpeisiin." },
     ],
   }),
-  component: PalvelutPage,
+  component: KotisivutPage,
 });
 
 const packages = [
@@ -83,7 +83,7 @@ const extras = [
   { name: "GoodStart - somepaketti", price: "119 €" },
 ];
 
-function PalvelutPage() {
+function KotisivutPage() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       <SiteHeader />
@@ -91,9 +91,9 @@ function PalvelutPage() {
       {/* Intro */}
       <header className="pt-10 pb-16 sm:pt-16 sm:pb-24">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Palvelut</div>
+          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Kotisivut</div>
           <h1 className="text-4xl sm:text-6xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-8 tracking-tight">
-            Verkkosivut <span className="font-serif italic text-accent">yrityksille</span> ja yhdistyksille.
+            Kotisivut <span className="font-serif italic text-accent">yrityksille</span> ja yhdistyksille.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
             Hyvin suunnitellut verkkosivut ja verkkosisällöt ovat yrityksesi tärkeimmät digitaaliset työkalut.
@@ -222,10 +222,10 @@ function PalvelutPage() {
                 (03) Lisäpalvelut
               </div>
               <h2 className="text-3xl sm:text-4xl font-medium leading-[1.1] tracking-tight text-balance">
-                Lisäpalvelut <span className="font-serif italic">verkkosivupaketin</span> oston yhteydessä.
+                Lisäpalvelut <span className="font-serif italic">kotisivupaketin</span> oston yhteydessä.
               </h2>
               <p className="mt-6 text-foreground/70 leading-relaxed">
-                Täydennä sivustopaketti yritysilmeen osilla — tarjolla vain verkkosivupaketin oston yhteydessä.
+                Täydennä sivustopaketti yritysilmeen osilla — tarjolla vain kotisivupaketin oston yhteydessä.
               </p>
             </div>
             <div className="md:col-span-6 md:col-start-7">

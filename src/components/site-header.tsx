@@ -3,7 +3,8 @@ import { useState } from "react";
 
 const nav = [
   { to: "/", label: "Etusivu" },
-  { to: "/palvelut", label: "Palvelut" },
+  { to: "/kotisivut-yrityksille", label: "Kotisivut yrityksille" },
+  { to: "/diginakyvyys", label: "Diginäkyvyys" },
   { to: "/meista", label: "Meistä" },
   { to: "/yhteys", label: "Ota yhteyttä" },
 ] as const;
@@ -15,7 +16,7 @@ export function SiteHeader() {
     <nav className="py-8 sm:py-10 relative z-20">
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
         <Link to="/" className="text-base font-serif tracking-tight" onClick={() => setOpen(false)}>
-          Hola<span className="text-accent">Digi.</span>
+          Yritys<span className="text-accent">DIGI.</span>
         </Link>
 
         <div className="hidden md:flex gap-8 text-sm text-foreground/70">

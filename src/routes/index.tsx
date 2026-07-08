@@ -8,9 +8,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "HolaDigi — Näyttävät ja tehokkaat verkkosivut yritykselle" },
+      { title: "YritysDIGI — Näyttävät ja tehokkaat verkkosivut yritykselle" },
       { name: "description", content: "Rakennamme yrityksille näyttäviä, moderneja ja tehokkaita verkkosivuja sekä vahvaa verkkonäkyvyyttä. Uuden teknologian avulla sivut valmistuvat nopeasti ja niitä on helppo päivittää." },
-      { property: "og:title", content: "HolaDigi — Näyttävät ja tehokkaat verkkosivut yritykselle" },
+      { property: "og:title", content: "YritysDIGI — Näyttävät ja tehokkaat verkkosivut yritykselle" },
       { property: "og:description", content: "Modernit, responsiiviset verkkosivut ja laaja asiakastuki yrityksesi kasvun tueksi." },
     ],
   }),
@@ -50,8 +50,8 @@ function Index() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                 </svg>
               </Link>
-              <Link to="/palvelut" className="text-sm text-foreground/70 hover:text-foreground">
-                Katso palvelut →
+              <Link to="/kotisivut-yrityksille" className="text-sm text-foreground/70 hover:text-foreground">
+                Katso kotisivut →
               </Link>
             </div>
           </div>
@@ -104,8 +104,8 @@ function Index() {
             ))}
           </div>
           <div className="mt-12">
-            <Link to="/palvelut" className="text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground transition-colors">
-              Katso palvelut ja hinnat →
+            <Link to="/kotisivut-yrityksille" className="text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground transition-colors">
+              Katso kotisivut ja hinnat →
             </Link>
           </div>
         </div>
