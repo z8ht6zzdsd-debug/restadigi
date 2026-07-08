@@ -6,10 +6,10 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/meista")({
   head: () => ({
     meta: [
-      { title: "Meistä — HolaDigi" },
-      { name: "description", content: "HolaDigi on pieni studio, joka yhdistää pohjoismaisen selkeyden ja välimeren lämmön. Tutustu tapaamme tehdä työtä." },
-      { property: "og:title", content: "Meistä — HolaDigi" },
-      { property: "og:description", content: "Pieni studio, iso vastuu. Pohjoismaista selkeyttä ja välimeren lämpöä." },
+      { title: "Meistä — YritysDIGI" },
+      { name: "description", content: "YritysDIGI on pieni studio, joka rakentaa kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Tutustu tapaamme tehdä työtä." },
+      { property: "og:title", content: "Meistä — YritysDIGI" },
+      { property: "og:description", content: "Pieni studio, iso vastuu. Kotisivuja ja diginäkyvyyttä suomalaisille yrityksille." },
       { property: "og:image", content: heroStudio },
     ],
   }),
@@ -43,13 +43,13 @@ function MeistaPage() {
           </h1>
           <div className="grid md:grid-cols-12 gap-8">
             <p className="md:col-span-7 text-base sm:text-lg text-foreground/70 leading-relaxed">
-              HolaDigi on itsenäinen suunnittelustudio, joka rakentaa kotisivuja ja brändi-ilmeitä
-              suomalaisille ja pohjoismaisille yrityksille. Yhdistämme pohjoismaisen selkeyden
-              välimeren lämpöön — ja käsityöläisen otetta modernin webin nopeuteen.
+              YritysDIGI on itsenäinen digistudio, joka rakentaa kotisivuja ja vahvistaa pienten
+              ja keskisuurten yritysten diginäkyvyyttä. Käytämme uusinta teknologiaa, jotta sivut
+              valmistuvat nopeasti, toimivat kaikilla laitteilla ja ovat helposti päivitettävissä.
             </p>
             <p className="md:col-span-5 text-base text-foreground/60 leading-relaxed">
               Työskentelemme mielellämme pitkäjänteisesti: samat kädet, jotka suunnittelevat sivustosi,
-              myös ylläpitävät ja kehittävät sitä eteenpäin.
+              auttavat myös sen näkyvyyden ja kehittämisen kanssa eteenpäin.
             </p>
           </div>
         </div>

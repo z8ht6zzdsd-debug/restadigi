@@ -6,9 +6,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/yhteys")({
   head: () => ({
     meta: [
-      { title: "Ota yhteyttä — HolaDigi" },
-      { name: "description", content: "Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. hola@holadigi.fi" },
-      { property: "og:title", content: "Ota yhteyttä — HolaDigi" },
+      { title: "Ota yhteyttä — YritysDIGI" },
+      { name: "description", content: "Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. info@yritysdigi.fi" },
+      { property: "og:title", content: "Ota yhteyttä — YritysDIGI" },
       { property: "og:description", content: "Kerro projektistasi — palaamme asiaan yhden arkipäivän kuluessa." },
     ],
   }),
