@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as YhteysRouteImport } from './routes/yhteys'
 import { Route as PalvelutRouteImport } from './routes/palvelut'
 import { Route as MeistaRouteImport } from './routes/meista'
+import { Route as KotisivutYrityksilleRouteImport } from './routes/kotisivut-yrityksille'
+import { Route as DiginakyvyysRouteImport } from './routes/diginakyvyys'
 import { Route as IndexRouteImport } from './routes/index'
 
 const YhteysRoute = YhteysRouteImport.update({
@@ -29,6 +31,16 @@ const MeistaRoute = MeistaRouteImport.update({
   path: '/meista',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KotisivutYrityksilleRoute = KotisivutYrityksilleRouteImport.update({
+  id: '/kotisivut-yrityksille',
+  path: '/kotisivut-yrityksille',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiginakyvyysRoute = DiginakyvyysRouteImport.update({
+  id: '/diginakyvyys',
+  path: '/diginakyvyys',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +49,16 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/diginakyvyys': typeof DiginakyvyysRoute
+  '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
   '/meista': typeof MeistaRoute
   '/palvelut': typeof PalvelutRoute
   '/yhteys': typeof YhteysRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/diginakyvyys': typeof DiginakyvyysRoute
+  '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
   '/meista': typeof MeistaRoute
   '/palvelut': typeof PalvelutRoute
   '/yhteys': typeof YhteysRoute
@@ -50,20 +66,43 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/diginakyvyys': typeof DiginakyvyysRoute
+  '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
   '/meista': typeof MeistaRoute
   '/palvelut': typeof PalvelutRoute
   '/yhteys': typeof YhteysRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/meista' | '/palvelut' | '/yhteys'
+  fullPaths:
+    | '/'
+    | '/diginakyvyys'
+    | '/kotisivut-yrityksille'
+    | '/meista'
+    | '/palvelut'
+    | '/yhteys'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/meista' | '/palvelut' | '/yhteys'
-  id: '__root__' | '/' | '/meista' | '/palvelut' | '/yhteys'
+  to:
+    | '/'
+    | '/diginakyvyys'
+    | '/kotisivut-yrityksille'
+    | '/meista'
+    | '/palvelut'
+    | '/yhteys'
+  id:
+    | '__root__'
+    | '/'
+    | '/diginakyvyys'
+    | '/kotisivut-yrityksille'
+    | '/meista'
+    | '/palvelut'
+    | '/yhteys'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DiginakyvyysRoute: typeof DiginakyvyysRoute
+  KotisivutYrityksilleRoute: typeof KotisivutYrityksilleRoute
   MeistaRoute: typeof MeistaRoute
   PalvelutRoute: typeof PalvelutRoute
   YhteysRoute: typeof YhteysRoute
@@ -92,6 +131,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MeistaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kotisivut-yrityksille': {
+      id: '/kotisivut-yrityksille'
+      path: '/kotisivut-yrityksille'
+      fullPath: '/kotisivut-yrityksille'
+      preLoaderRoute: typeof KotisivutYrityksilleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diginakyvyys': {
+      id: '/diginakyvyys'
+      path: '/diginakyvyys'
+      fullPath: '/diginakyvyys'
+      preLoaderRoute: typeof DiginakyvyysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +157,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DiginakyvyysRoute: DiginakyvyysRoute,
+  KotisivutYrityksilleRoute: KotisivutYrityksilleRoute,
   MeistaRoute: MeistaRoute,
   PalvelutRoute: PalvelutRoute,
   YhteysRoute: YhteysRoute,
@@ -111,13 +166,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
