@@ -2,11 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 const nav = [
-  { to: "/", label: "Etusivu" },
-  { to: "/kotisivut-yrityksille", label: "Kotisivut yrityksille" },
-  { to: "/diginakyvyys", label: "Diginäkyvyys" },
-  { to: "/meista", label: "Meistä" },
-  { to: "/yhteys", label: "Ota yhteyttä" },
+  { to: "/", label: "ETUSIVU" },
+  { to: "/kotisivut-yrityksille", label: "KOTISIVUT YRITYKSELLE" },
+  { to: "/diginakyvyys", label: "DIGINÄKYVYYS" },
+  { to: "/chatbot", label: "CHATBOT" },
+  { to: "/meista", label: "MEISTÄ" },
+  { to: "/yhteys", label: "OTA YHTEYTTÄ" },
 ] as const;
 
 export function SiteHeader() {
@@ -19,7 +20,7 @@ export function SiteHeader() {
           Yritys<span className="text-accent">DIGI.</span>
         </Link>
 
-        <div className="hidden md:flex gap-8 text-sm text-foreground/70">
+        <div className="hidden lg:flex gap-6 text-sm text-foreground/70">
           {nav.map((item) => (
             <Link
               key={item.to}
@@ -35,7 +36,7 @@ export function SiteHeader() {
 
         <Link
           to="/yhteys"
-          className="hidden md:inline-block text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground transition-colors"
+          className="hidden lg:inline-block text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground transition-colors"
         >
           Aloita projekti
         </Link>
@@ -45,7 +46,7 @@ export function SiteHeader() {
           aria-label="Valikko"
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
-          className="md:hidden inline-flex items-center justify-center size-9 -mr-2"
+          className="lg:hidden inline-flex items-center justify-center size-9 -mr-2"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-6">
             {open ? (
@@ -58,7 +59,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="md:hidden absolute inset-x-0 top-full bg-background border-t border-border">
+        <div className="lg:hidden absolute inset-x-0 top-full bg-background border-t border-border">
           <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col gap-4">
             {nav.map((item) => (
               <Link
