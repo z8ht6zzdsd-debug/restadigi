@@ -6,9 +6,9 @@ export const Route = createFileRoute("/diginakyvyys")({
   head: () => ({
     meta: [
       { title: "Diginäkyvyys — YritysDIGI" },
-      { name: "description", content: "Diginäkyvyytesi kerralla kuntoon: SEO-perusoptimointi, Google Business, analytiikka ja somekanavien optimointi." },
+      { name: "description", content: "Diginäkyvyytesi kerralla kuntoon: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti." },
       { property: "og:title", content: "Diginäkyvyys — YritysDIGI" },
-      { property: "og:description", content: "Aloituspaketit diginäkyvyyden parantamiseen: SEO, Google Business, analytiikka ja somekanavat." },
+      { property: "og:description", content: "Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti." },
     ],
   }),
   component: DiginakyvyysPage,
