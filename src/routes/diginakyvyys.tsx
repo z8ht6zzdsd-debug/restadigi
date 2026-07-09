@@ -6,9 +6,9 @@ export const Route = createFileRoute("/diginakyvyys")({
   head: () => ({
     meta: [
       { title: "Diginäkyvyys — YritysDIGI" },
-      { name: "description", content: "Diginäkyvyytesi kerralla kuntoon: SEO-perusoptimointi, Google Business, analytiikka ja somekanavien optimointi." },
+      { name: "description", content: "Diginäkyvyytesi kerralla kuntoon: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti." },
       { property: "og:title", content: "Diginäkyvyys — YritysDIGI" },
-      { property: "og:description", content: "Aloituspaketit diginäkyvyyden parantamiseen: SEO, Google Business, analytiikka ja somekanavat." },
+      { property: "og:description", content: "Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti." },
     ],
   }),
   component: DiginakyvyysPage,
@@ -16,39 +16,73 @@ export const Route = createFileRoute("/diginakyvyys")({
 
 const packages = [
   {
-    name: "START",
-    tagline: "Perusasiat kuntoon",
-    description: "Sopii uudelle yritykselle tai yritykselle, joka haluaa parantaa näkyvyyttään.",
-    price: "199 €",
+    name: "AI-optimointi",
+    tagline: "Näkyväksi myös ChatGPT:n, Clauden, Geminin ja Copilotin hauissa",
+    description:
+      "Verkkohaku on muuttumassa. Yhä useampi etsii yrityksiä, tuotteita ja palveluita keskustelemalla tekoälyn kanssa. AI-optimointipalvelumme auttaa varmistamaan, että yrityksesi tiedot ovat ajan tasalla ja että verkkosivustosi sisältö tukee tekoälypalveluiden kykyä tunnistaa yrityksesi oikeassa yhteydessä.",
+    price: "100 € / vuosi",
     featured: false,
     bullets: [
-      "Verkkosivujen SEO-perusoptimointi",
-      "Google Business -profiilin optimointi",
-      "Google Analytics & Search Console",
-      "Sivuston tekninen tarkistus",
-      "Perustason metatiedot",
-      "Yksi pieni sisältöpäivitys",
+      "Yrityksen verkkosivujen perustason AI-näkyvyyden tarkistus",
+      "Tärkeimpien yritystietojen läpikäynti",
+      "Keskeisten sisältöjen ja metatietojen perusoptimoinnin suositukset",
+      "Rakenteellisten puutteiden tunnistaminen",
+      "Vuosittainen tarkistus ja päivitys",
     ],
-    result: "Paremmat lähtökohdat löytyä Googlesta.",
+    result: "Yrityksesi on mukana myös tulevaisuuden hauissa.",
   },
   {
-    name: "PLUS",
-    tagline: "Näkyvyyttä useassa kanavassa",
-    description: "Sisältää kaiken START-paketista sekä laajemmat toimenpiteet Googlen ja somekanavien näkyvyyteen.",
-    price: "299 €",
+    name: "Google-optimointi",
+    tagline: "Varmista, että asiakkaat löytävät yrityksesi",
+    description:
+      "Google on edelleen yksi tärkeimmistä kanavista, kun etsitään yrityksiä, tuotteita ja palveluita. Google-optimointipalvelumme on kevyt vuosittainen ylläpitopalvelu, jonka tavoitteena on varmistaa, että verkkosivustosi täyttää tärkeimmät hakukoneoptimoinnin perusvaatimukset ja tukee asiakkaiden löydettävyyttä.",
+    price: "100 € / vuosi",
+    featured: false,
+    bullets: [
+      "Verkkosivujen perustason SEO-tarkistus",
+      "Sivujen otsikoiden ja metakuvausten läpikäynti",
+      "Yrityksen tärkeimpien hakusanojen arviointi",
+      "Teknisten perusasioiden tarkistus",
+      "Kehitysehdotukset näkyvyyden parantamiseksi",
+      "Vuosittainen tarkistus ja päivitys",
+    ],
+    result: "Yrityksesi näkyvyys Googlessa pysyy ajan tasalla.",
+  },
+  {
+    name: "Somepaketti",
+    tagline: "Pidä yrityksesi näkyvillä sosiaalisessa mediassa",
+    description:
+      "Sosiaalinen media on monelle asiakkaalle ensimmäinen paikka tutustua yritykseen. Somepakettimme on kevyt vuosipalvelu, jolla ylläpidät ammattimaista näkyvyyttä Facebookissa ja Instagramissa ilman suurta työmäärää tai jatkuvaa markkinointisopimusta.",
+    price: "100 € / vuosi",
+    featured: false,
+    bullets: [
+      "Facebook- ja/tai Instagram-sivujen perustietojen tarkistus",
+      "Profiilien ilmeen ja yhteystietojen läpikäynti",
+      "Julkaisujen yleisen näkyvyyden arviointi",
+      "Kehitysehdotukset sisällön ja näkyvyyden parantamiseksi",
+      "Enintään neljä julkaisua vuodessa asiakkaan toimittamien tietojen pohjalta",
+      "Vuosittainen tarkistus ja päivitys",
+    ],
+    result: "Somekanavat antavat luotettavan ensivaikutelman ja tukevat näkyvyyttä.",
+  },
+  {
+    name: "Huippu-urheilun näkyvyyspaketti",
+    tagline: "Näkyvyyttä Suomen suosituimmissa urheilusarjoissa",
+    description:
+      "Huippu-urheilu tarjoaa yrityksille ainutlaatuisen mahdollisuuden tavoittaa asiakkaita, vahvistaa brändiään ja rakentaa luotettavaa yrityskuvaa. Tarjoamme edullisia mikrokumppanuuksia Liigan, Veikkausliigan ja Superpesiksen seurojen kanssa.",
+    price: "alk. 299 € / vuosi",
     featured: true,
     bullets: [
-      "Laajempi SEO-optimointi",
-      "Kahden palvelusivun optimointi",
-      "Kuvien optimointi",
-      "Yksi SEO-optimoitu teksti",
-      "Google Business -profiilin täydellinen optimointi",
-      "Facebook- ja Instagram-sivujen tarkistus ja optimointi",
-      "Profiilikuvien ja kansikuvien päivityssuositukset",
-      "Some-esittelytekstien optimointi",
-      "30 minuutin etäkonsultointi",
+      "Kentänlaita- ja LED-mainosnäkyvyyttä otteluissa",
+      "Näkyvyyttä areenoiden mediatauluilla",
+      "Yritysesittelyn tai logon seuran verkkosivuilla",
+      "Näkyvyyttä seuran digitaalisissa kanavissa",
+      "Kutsuja kumppanitapaamisiin ja verkostoitumistilaisuuksiin",
+      "Ottelulippuja asiakkaille tai henkilöstölle",
+      "VIP-palveluja ja ottelutapahtumaelämyksiä",
+      "Muita seurakohtaisia kumppanuusetuja",
     ],
-    result: "Yrityksesi näyttää ammattimaiselta sekä Googlessa että sosiaalisessa mediassa.",
+    result: "Ammattimainen kumppanuus, näkyvyyttä tuhansille katsojille ja positiivista urheiluimagoa.",
   },
 ];
 
@@ -65,8 +99,8 @@ function DiginakyvyysPage() {
             Diginäkyvyytesi <span className="font-serif italic text-accent">kerralla</span> kuntoon.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Aloituspaketit, joilla saat perustason SEO:n, Google Business -profiilin, analytiikan ja
-            somekanavat toimimaan yrityksesi puolesta.
+            Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, kevyt somepaketti sekä
+            mikrokumppanuudet Suomen suosituimmissa urheilusarjoissa.
           </p>
         </div>
       </header>
@@ -75,7 +109,7 @@ function DiginakyvyysPage() {
       <section className="pb-24 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            (01) Aloituspaketit
+            (01) Näkyvyyden paketit
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {packages.map((p) => (
@@ -102,7 +136,7 @@ function DiginakyvyysPage() {
                 <p className={"text-sm mb-6 " + (p.featured ? "text-primary-foreground/80" : "text-foreground/70")}>
                   {p.description}
                 </p>
-                <div className="text-4xl font-serif mb-8">{p.price} <span className="text-lg font-sans text-foreground/50">kertamaksu</span></div>
+                <div className="text-4xl font-serif mb-8">{p.price}</div>
                 <ul className="space-y-3 text-sm mb-8 flex-1">
                   {p.bullets.map((b) => (
                     <li key={b} className="flex gap-3">
@@ -129,7 +163,7 @@ function DiginakyvyysPage() {
             ))}
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
-            Hinnat ovat kertamaksuja. Maksat vain siitä, mitä tarvitset — ei piilokustannuksia.
+            Hinnat ovat vuosihintoja. Maksat vain siitä, mitä tarvitset — ei piilokustannuksia.
           </p>
         </div>
       </section>
@@ -151,7 +185,7 @@ function DiginakyvyysPage() {
                 to="/yhteys"
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
               >
-                Kysy aloituspaketista
+                Kysy näkyvyyspaketista
                 <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                 </svg>
