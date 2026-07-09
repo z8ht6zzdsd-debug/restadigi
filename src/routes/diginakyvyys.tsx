@@ -136,7 +136,7 @@ function DiginakyvyysPage() {
                 <p className={"text-sm mb-6 " + (p.featured ? "text-primary-foreground/80" : "text-foreground/70")}>
                   {p.description}
                 </p>
-                <div className="text-4xl font-serif mb-8">{p.price} <span className="text-lg font-sans text-foreground/50">kertamaksu</span></div>
+                <div className="text-4xl font-serif mb-8">{p.price}</div>
                 <ul className="space-y-3 text-sm mb-8 flex-1">
                   {p.bullets.map((b) => (
                     <li key={b} className="flex gap-3">
@@ -163,7 +163,7 @@ function DiginakyvyysPage() {
             ))}
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
-            Hinnat ovat kertamaksuja. Maksat vain siitä, mitä tarvitset — ei piilokustannuksia.
+            Hinnat ovat vuosihintoja. Maksat vain siitä, mitä tarvitset — ei piilokustannuksia.
           </p>
         </div>
       </section>
