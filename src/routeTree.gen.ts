@@ -13,6 +13,7 @@ import { Route as YhteysRouteImport } from './routes/yhteys'
 import { Route as MeistaRouteImport } from './routes/meista'
 import { Route as KotisivutYrityksilleRouteImport } from './routes/kotisivut-yrityksille'
 import { Route as DiginakyvyysRouteImport } from './routes/diginakyvyys'
+import { Route as ChatbotRouteImport } from './routes/chatbot'
 import { Route as IndexRouteImport } from './routes/index'
 
 const YhteysRoute = YhteysRouteImport.update({
@@ -35,6 +36,11 @@ const DiginakyvyysRoute = DiginakyvyysRouteImport.update({
   path: '/diginakyvyys',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChatbotRoute = ChatbotRouteImport.update({
+  id: '/chatbot',
+  path: '/chatbot',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chatbot': typeof ChatbotRoute
   '/diginakyvyys': typeof DiginakyvyysRoute
   '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
   '/meista': typeof MeistaRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chatbot': typeof ChatbotRoute
   '/diginakyvyys': typeof DiginakyvyysRoute
   '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
   '/meista': typeof MeistaRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chatbot': typeof ChatbotRoute
   '/diginakyvyys': typeof DiginakyvyysRoute
   '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
   '/meista': typeof MeistaRoute
@@ -67,15 +76,23 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/chatbot'
     | '/diginakyvyys'
     | '/kotisivut-yrityksille'
     | '/meista'
     | '/yhteys'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/diginakyvyys' | '/kotisivut-yrityksille' | '/meista' | '/yhteys'
+  to:
+    | '/'
+    | '/chatbot'
+    | '/diginakyvyys'
+    | '/kotisivut-yrityksille'
+    | '/meista'
+    | '/yhteys'
   id:
     | '__root__'
     | '/'
+    | '/chatbot'
     | '/diginakyvyys'
     | '/kotisivut-yrityksille'
     | '/meista'
@@ -84,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChatbotRoute: typeof ChatbotRoute
   DiginakyvyysRoute: typeof DiginakyvyysRoute
   KotisivutYrityksilleRoute: typeof KotisivutYrityksilleRoute
   MeistaRoute: typeof MeistaRoute
@@ -120,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DiginakyvyysRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chatbot': {
+      id: '/chatbot'
+      path: '/chatbot'
+      fullPath: '/chatbot'
+      preLoaderRoute: typeof ChatbotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -132,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChatbotRoute: ChatbotRoute,
   DiginakyvyysRoute: DiginakyvyysRoute,
   KotisivutYrityksilleRoute: KotisivutYrityksilleRoute,
   MeistaRoute: MeistaRoute,
