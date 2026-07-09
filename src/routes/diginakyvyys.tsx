@@ -99,8 +99,8 @@ function DiginakyvyysPage() {
             Diginäkyvyytesi <span className="font-serif italic text-accent">kerralla</span> kuntoon.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Aloituspaketit, joilla saat perustason SEO:n, Google Business -profiilin, analytiikan ja
-            somekanavat toimimaan yrityksesi puolesta.
+            Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, kevyt somepaketti sekä
+            mikrokumppanuudet Suomen suosituimmissa urheilusarjoissa.
           </p>
         </div>
       </header>
