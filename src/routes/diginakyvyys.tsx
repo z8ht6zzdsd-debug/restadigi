@@ -109,7 +109,7 @@ function DiginakyvyysPage() {
       <section className="pb-24 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            (01) Aloituspaketit
+            (01) Näkyvyyden paketit
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {packages.map((p) => (
