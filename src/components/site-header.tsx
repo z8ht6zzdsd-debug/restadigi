@@ -2,11 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 const nav = [
-  { to: "/", label: "Etusivu" },
-  { to: "/kotisivut-yrityksille", label: "Kotisivut yrityksille" },
-  { to: "/diginakyvyys", label: "Diginäkyvyys" },
-  { to: "/meista", label: "Meistä" },
-  { to: "/yhteys", label: "Ota yhteyttä" },
+  { to: "/", label: "ETUSIVU" },
+  { to: "/kotisivut-yrityksille", label: "KOTISIVUT YRITYKSELLE" },
+  { to: "/diginakyvyys", label: "DIGINÄKYVYYS" },
+  { to: "/chatbot", label: "CHATBOT" },
+  { to: "/meista", label: "MEISTÄ" },
+  { to: "/yhteys", label: "OTA YHTEYTTÄ" },
 ] as const;
 
 export function SiteHeader() {
