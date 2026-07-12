@@ -67,7 +67,8 @@ export const Route = createFileRoute("/api/dashboard/settings")({
 
         const parsed = settingsSchema.safeParse(body);
         if (!parsed.success) {
-          return Response.json({ error: "Virheelliset asetukset" }, { status: 400 });
+          const firstIssue = parsed.error.issues[0]?.message ?? "Virheelliset asetukset";
+          return Response.json({ error: firstIssue }, { status: 400 });
         }
 
         if (parsed.data.minPartySize > parsed.data.maxPartySize) {

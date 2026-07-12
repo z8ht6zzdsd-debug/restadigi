@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
 
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,12 +23,32 @@ export const Route = createFileRoute("/dashboard/settings")({
 
 type SettingsForm = Omit<RestaurantSettings, "id" | "updatedAt">;
 
+function normalizeForm(form: SettingsForm): SettingsForm {
+  return {
+    ...form,
+    restaurantAddress: form.restaurantAddress?.trim() || null,
+    restaurantPhone: form.restaurantPhone?.trim() || null,
+    restaurantEmail: form.restaurantEmail?.trim() || null,
+    cuisineType: form.cuisineType?.trim() || null,
+    restaurantDescription: form.restaurantDescription?.trim() || null,
+    chatbotInstructions: form.chatbotInstructions?.trim() || null,
+    minPartySize: Number(form.minPartySize) || 1,
+    maxPartySize: Number(form.maxPartySize) || 1,
+    slotMinutes: Number(form.slotMinutes) || 30,
+    maxCoversPerSlot: Number(form.maxCoversPerSlot) || 1,
+    maxCoversPerEvening: Number(form.maxCoversPerEvening) || 1,
+    advanceBookingDays: Number(form.advanceBookingDays) || 1,
+    minNoticeHours: Number(form.minNoticeHours) || 0,
+  };
+}
+
 function DashboardSettingsPage() {
   const [form, setForm] = useState<SettingsForm | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const feedbackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     void fetch("/api/dashboard/settings", { credentials: "include" })
@@ -41,6 +64,8 @@ function DashboardSettingsPage() {
 
   function updateField<K extends keyof SettingsForm>(key: K, value: SettingsForm[K]) {
     setForm((prev) => (prev ? { ...prev, [key]: value } : prev));
+    setMessage(null);
+    setError(null);
   }
 
   function toggleClosedDay(day: string) {
@@ -53,24 +78,54 @@ function DashboardSettingsPage() {
     updateField("closedWeekdays", formatClosedWeekdays(next));
   }
 
+  function showFeedback(type: "success" | "error", text: string) {
+    if (type === "success") {
+      setMessage(text);
+      setError(null);
+      toast.success("Tallennettu tietokantaan", { description: text, duration: 6000 });
+    } else {
+      setError(text);
+      setMessage(null);
+      toast.error("Tallennus epäonnistui", { description: text, duration: 8000 });
+    }
+
+    requestAnimationFrame(() => {
+      feedbackRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+
   async function save() {
     if (!form) return;
     setSaving(true);
     setMessage(null);
     setError(null);
 
+    const payload = normalizeForm(form);
+
     try {
       const res = await fetch("/api/dashboard/settings", {
         method: "PUT",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
-      const data = (await res.json()) as { error?: string };
+      const data = (await res.json()) as { settings?: RestaurantSettings; error?: string };
       if (!res.ok) throw new Error(data.error ?? "Tallennus epäonnistui");
-      setMessage("Asetukset tallennettu. Chatbot käyttää niitä heti seuraavissa keskusteluissa.");
+
+      if (data.settings) {
+        const { id: _id, updatedAt, ...rest } = data.settings;
+        setForm(rest);
+        const savedAt = new Date(updatedAt).toLocaleString("fi-FI");
+        showFeedback(
+          "success",
+          `Ravintolan asetukset on tallennettu tietokantaan. Päivitetty: ${savedAt}. Chatbot käyttää uusia tietoja heti.`,
+        );
+      } else {
+        showFeedback("success", "Asetukset tallennettu tietokantaan.");
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Tallennus epäonnistui");
+      const text = err instanceof Error ? err.message : "Tallennus epäonnistui";
+      showFeedback("error", text);
     } finally {
       setSaving(false);
     }
@@ -89,7 +144,7 @@ function DashboardSettingsPage() {
   const closedDays = parseClosedWeekdays(form.closedWeekdays);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pb-4">
       <div>
         <h2 className="text-2xl font-medium">Ravintolan asetukset</h2>
         <p className="text-sm text-muted-foreground">
@@ -97,9 +152,6 @@ function DashboardSettingsPage() {
           varauskeskusteluissa.
         </p>
       </div>
-
-      {message && <p className="text-sm text-accent">{message}</p>}
-      {error && <p className="text-sm text-destructive">{error}</p>}
 
       <section className="space-y-4 rounded-sm border border-border bg-card p-6">
         <h3 className="font-medium">Ravintolan identiteetti</h3>
@@ -405,9 +457,36 @@ function DashboardSettingsPage() {
         </div>
       </section>
 
-      <Button onClick={() => void save()} disabled={saving}>
-        {saving ? "Tallennetaan…" : "Tallenna asetukset"}
-      </Button>
+      <div
+        ref={feedbackRef}
+        className="sticky bottom-0 z-10 -mx-2 space-y-3 rounded-sm border border-border bg-background/95 p-4 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/90 sm:-mx-0"
+      >
+        {message && (
+          <Alert className="border-emerald-500/50 bg-emerald-500/10 text-emerald-900 dark:text-emerald-100">
+            <CheckCircle2 className="size-4 text-emerald-600" />
+            <AlertTitle>Tallennettu onnistuneesti</AlertTitle>
+            <AlertDescription>{message}</AlertDescription>
+          </Alert>
+        )}
+
+        {error && (
+          <Alert variant="destructive">
+            <AlertCircle className="size-4" />
+            <AlertTitle>Tallennus epäonnistui</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
+        <Button
+          type="button"
+          size="lg"
+          className="w-full sm:w-auto"
+          onClick={() => void save()}
+          disabled={saving}
+        >
+          {saving ? "Tallennetaan tietokantaan…" : "Tallenna asetukset"}
+        </Button>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { createFileRoute, Outlet, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import { DashboardShell } from "@/components/dashboard-shell";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/dashboard/_layout")({
   component: DashboardLayout,
@@ -34,6 +35,7 @@ function DashboardLayout() {
   return (
     <DashboardShell>
       <Outlet />
+      <Toaster position="top-center" richColors closeButton />
     </DashboardShell>
   );
 }
