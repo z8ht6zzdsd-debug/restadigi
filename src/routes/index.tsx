@@ -9,9 +9,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Restadigi — Verkkosivut, AI-asiakaspalvelu ja pöytävaraukset ravintoloille" },
-      { name: "description", content: "Rakennamme ravintoloille näyttäviä verkkosivuja, älykkään AI-asiakaspalvelun ja modernin pöytävarausjärjestelmän — kaikki yhdestä paikasta." },
+      {
+        name: "description",
+        content:
+          "Rakennamme ravintoloille näyttäviä verkkosivuja, älykkään AI-asiakaspalvelun ja modernin pöytävarausjärjestelmän — kaikki yhdestä paikasta.",
+      },
       { property: "og:title", content: "Restadigi — Digitaaliset ratkaisut ravintoloille" },
-      { property: "og:description", content: "Verkkosivut, AI-asiakaspalvelu ja pöytävaraukset ravintoloille." },
+      {
+        property: "og:description",
+        content: "Verkkosivut, AI-asiakaspalvelu ja pöytävaraukset ravintoloille.",
+      },
     ],
   }),
   component: Index,
@@ -29,14 +36,15 @@ function Index() {
             Digistudio ravintoloille
           </div>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-10 tracking-tight">
-            Näyttävät verkkosivut ja älykkäät palvelut <span className="font-serif italic text-accent">ravintolallesi</span>.
+            Näyttävät verkkosivut ja älykkäät palvelut{" "}
+            <span className="font-serif italic text-accent">ravintolallesi</span>.
           </h1>
           <div className="grid md:grid-cols-12 gap-8 items-end">
             <p className="md:col-span-6 text-base sm:text-lg text-pretty text-foreground/70 leading-relaxed">
-              Rakennamme ravintoloille moderneja, houkuttelevia verkkosivuja sekä
-              tarjoamme älykkään AI-asiakaspalvelun ja sujuvan pöytävarausjärjestelmän.
-              Tavoitteemme on luoda kokonaisuus, joka näyttää yhtä hyvältä kuin
-              ravintolasi ruoka — ja tuo lisää asiakkaita ovista sisään.
+              Rakennamme ravintoloille moderneja, houkuttelevia verkkosivuja sekä tarjoamme älykkään
+              AI-asiakaspalvelun ja sujuvan pöytävarausjärjestelmän. Tavoitteemme on luoda
+              kokonaisuus, joka näyttää yhtä hyvältä kuin ravintolasi ruoka — ja tuo lisää
+              asiakkaita ovista sisään.
             </p>
             <div className="md:col-span-6 md:col-start-8 flex items-center gap-4">
               <Link
@@ -44,11 +52,24 @@ function Index() {
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
               >
                 Aloita projekti
-                <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                <svg
+                  className="size-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                  />
                 </svg>
               </Link>
-              <Link to="/kotisivut-yrityksille" className="text-sm text-foreground/70 hover:text-foreground">
+              <Link
+                to="/kotisivut-yrityksille"
+                className="text-sm text-foreground/70 hover:text-foreground"
+              >
                 Katso palvelut →
               </Link>
             </div>
@@ -102,7 +123,10 @@ function Index() {
             ))}
           </div>
           <div className="mt-12">
-            <Link to="/kotisivut-yrityksille" className="text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground transition-colors">
+            <Link
+              to="/kotisivut-yrityksille"
+              className="text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground transition-colors"
+            >
               Katso palvelut ja hinnat →
             </Link>
           </div>
@@ -135,7 +159,10 @@ function Index() {
               </div>
               <div className="flex justify-between items-baseline">
                 <h3 className="text-lg font-medium">
-                  Foresta <span className="font-serif italic text-foreground/50">— verkkosivusto & pöytävaraus</span>
+                  Foresta{" "}
+                  <span className="font-serif italic text-foreground/50">
+                    — verkkosivusto & pöytävaraus
+                  </span>
                 </h3>
                 <span className="text-sm text-muted-foreground tabular-nums">2025</span>
               </div>
@@ -153,7 +180,8 @@ function Index() {
               </div>
               <div className="flex justify-between items-baseline">
                 <h3 className="text-lg font-medium">
-                  Lumière <span className="font-serif italic text-foreground/50">— brändi & menu</span>
+                  Lumière{" "}
+                  <span className="font-serif italic text-foreground/50">— brändi & menu</span>
                 </h3>
                 <span className="text-sm text-muted-foreground tabular-nums">2025</span>
               </div>
@@ -177,8 +205,18 @@ function Index() {
               className="inline-flex items-center gap-3 bg-background text-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent hover:text-accent-foreground transition-colors"
             >
               Ota yhteyttä
-              <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+              <svg
+                className="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                />
               </svg>
             </Link>
           </div>

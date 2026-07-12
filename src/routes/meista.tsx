@@ -7,9 +7,17 @@ export const Route = createFileRoute("/meista")({
   head: () => ({
     meta: [
       { title: "Meistä — Restadigi" },
-      { name: "description", content: "Restadigi on pieni studio, joka rakentaa kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Tutustu tapaamme tehdä työtä." },
+      {
+        name: "description",
+        content:
+          "Restadigi on pieni studio, joka rakentaa kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Tutustu tapaamme tehdä työtä.",
+      },
       { property: "og:title", content: "Meistä — Restadigi" },
-      { property: "og:description", content: "Pieni studio, iso vastuu. Kotisivuja ja diginäkyvyyttä suomalaisille yrityksille." },
+      {
+        property: "og:description",
+        content:
+          "Pieni studio, iso vastuu. Kotisivuja ja diginäkyvyyttä suomalaisille yrityksille.",
+      },
       { property: "og:image", content: heroStudio },
     ],
   }),
@@ -17,16 +25,29 @@ export const Route = createFileRoute("/meista")({
 });
 
 const values = [
-  { t: "Käsityönä tehty", d: "Ei mallipohjia. Jokainen projekti suunnitellaan alusta asti tavoitteidesi mukaan." },
-  { t: "Läpinäkyvä hinnoittelu", d: "Selkeät paketit ja lisäpalvelut — tiedät mistä maksat, alusta loppuun." },
-  { t: "Pitkäjänteinen kumppanuus", d: "Autamme myös julkaisun jälkeen — päivityksissä, kehityksessä ja ylläpidossa." },
+  {
+    t: "Käsityönä tehty",
+    d: "Ei mallipohjia. Jokainen projekti suunnitellaan alusta asti tavoitteidesi mukaan.",
+  },
+  {
+    t: "Läpinäkyvä hinnoittelu",
+    d: "Selkeät paketit ja lisäpalvelut — tiedät mistä maksat, alusta loppuun.",
+  },
+  {
+    t: "Pitkäjänteinen kumppanuus",
+    d: "Autamme myös julkaisun jälkeen — päivityksissä, kehityksessä ja ylläpidossa.",
+  },
 ];
 
 const process = [
   { n: "01", t: "Keskustelu", d: "Kartoitetaan tavoitteet, kohderyhmä ja aikataulu yhdessä." },
   { n: "02", t: "Suunnittelu", d: "Rakenne, visuaalinen ilme ja sisältö hiotaan iteratiivisesti." },
   { n: "03", t: "Toteutus", d: "Rakennamme sivuston hakukoneoptimoituna ja saavutettavana." },
-  { n: "04", t: "Julkaisu & tuki", d: "Julkaisu, koulutus hallintapaneelin käyttöön ja jatkotuki." },
+  {
+    n: "04",
+    t: "Julkaisu & tuki",
+    d: "Julkaisu, koulutus hallintapaneelin käyttöön ja jatkotuki.",
+  },
 ];
 
 function MeistaPage() {
@@ -43,13 +64,13 @@ function MeistaPage() {
           </h1>
           <div className="grid md:grid-cols-12 gap-8">
             <p className="md:col-span-7 text-base sm:text-lg text-foreground/70 leading-relaxed">
-              Restadigi on itsenäinen digistudio, joka rakentaa kotisivuja ja vahvistaa pienten
-              ja keskisuurten yritysten diginäkyvyyttä. Käytämme uusinta teknologiaa, jotta sivut
+              Restadigi on itsenäinen digistudio, joka rakentaa kotisivuja ja vahvistaa pienten ja
+              keskisuurten yritysten diginäkyvyyttä. Käytämme uusinta teknologiaa, jotta sivut
               valmistuvat nopeasti, toimivat kaikilla laitteilla ja ovat helposti päivitettävissä.
             </p>
             <p className="md:col-span-5 text-base text-foreground/60 leading-relaxed">
-              Työskentelemme mielellämme pitkäjänteisesti: samat kädet, jotka suunnittelevat sivustosi,
-              auttavat myös sen näkyvyyden ja kehittämisen kanssa eteenpäin.
+              Työskentelemme mielellämme pitkäjänteisesti: samat kädet, jotka suunnittelevat
+              sivustosi, auttavat myös sen näkyvyyden ja kehittämisen kanssa eteenpäin.
             </p>
           </div>
         </div>
@@ -126,8 +147,18 @@ function MeistaPage() {
             className="inline-flex items-center gap-3 mt-10 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
           >
             Ota yhteyttä
-            <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+            <svg
+              className="size-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+              />
             </svg>
           </Link>
         </div>

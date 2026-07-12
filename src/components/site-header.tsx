@@ -15,7 +15,11 @@ export function SiteHeader() {
   return (
     <nav className="py-8 sm:py-10 relative z-20">
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className="text-base font-serif tracking-tight uppercase" onClick={() => setOpen(false)}>
+        <Link
+          to="/"
+          className="text-base font-serif tracking-tight uppercase"
+          onClick={() => setOpen(false)}
+        >
           RESTA<span className="text-accent">DIGI.</span>
         </Link>
 
@@ -46,7 +50,13 @@ export function SiteHeader() {
           onClick={() => setOpen((o) => !o)}
           className="lg:hidden inline-flex items-center justify-center size-9 -mr-2"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-6">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            className="size-6"
+          >
             {open ? (
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M6 18L18 6" />
             ) : (

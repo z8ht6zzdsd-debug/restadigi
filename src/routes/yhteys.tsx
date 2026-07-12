@@ -7,9 +7,16 @@ export const Route = createFileRoute("/yhteys")({
   head: () => ({
     meta: [
       { title: "Ota yhteyttä — Restadigi" },
-      { name: "description", content: "Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. info@restadigi.fi" },
+      {
+        name: "description",
+        content:
+          "Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. info@restadigi.fi",
+      },
       { property: "og:title", content: "Ota yhteyttä — Restadigi" },
-      { property: "og:description", content: "Kerro projektistasi — palaamme asiaan yhden arkipäivän kuluessa." },
+      {
+        property: "og:description",
+        content: "Kerro projektistasi — palaamme asiaan yhden arkipäivän kuluessa.",
+      },
     ],
   }),
   component: YhteysPage,
@@ -51,30 +58,51 @@ function YhteysPage() {
           {/* Yhteystiedot */}
           <aside className="md:col-span-4 space-y-8">
             <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Sähköposti</div>
-              <a href="mailto:info@restadigi.fi" className="text-lg font-serif hover:text-accent transition-colors">
+              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                Sähköposti
+              </div>
+              <a
+                href="mailto:info@restadigi.fi"
+                className="text-lg font-serif hover:text-accent transition-colors"
+              >
                 info@restadigi.fi
               </a>
             </div>
             <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Puhelin</div>
-              <a href="tel:+358401234567" className="text-lg font-serif hover:text-accent transition-colors">
+              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                Puhelin
+              </div>
+              <a
+                href="tel:+358401234567"
+                className="text-lg font-serif hover:text-accent transition-colors"
+              >
                 +358 40 123 4567
               </a>
             </div>
             <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Studio</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                Studio
+              </div>
               <p className="text-base text-foreground/70">
-                Helsinki, Suomi<br />
+                Helsinki, Suomi
+                <br />
                 Etätyö koko Euroopassa
               </p>
             </div>
             <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Some</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                Some
+              </div>
               <div className="flex gap-6 text-sm text-foreground/70">
-                <a href="#" className="hover:text-foreground">Instagram</a>
-                <a href="#" className="hover:text-foreground">Behance</a>
-                <a href="#" className="hover:text-foreground">LinkedIn</a>
+                <a href="#" className="hover:text-foreground">
+                  Instagram
+                </a>
+                <a href="#" className="hover:text-foreground">
+                  Behance
+                </a>
+                <a href="#" className="hover:text-foreground">
+                  LinkedIn
+                </a>
               </div>
             </div>
           </aside>
@@ -90,7 +118,13 @@ function YhteysPage() {
               <SelectField
                 label="Budjetti"
                 name="budget"
-                options={["Alle 1 000 €", "1 000 – 2 500 €", "2 500 – 5 000 €", "Yli 5 000 €", "En osaa vielä sanoa"]}
+                options={[
+                  "Alle 1 000 €",
+                  "1 000 – 2 500 €",
+                  "2 500 – 5 000 €",
+                  "Yli 5 000 €",
+                  "En osaa vielä sanoa",
+                ]}
               />
             </div>
             <div>
@@ -111,8 +145,18 @@ function YhteysPage() {
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
               >
                 Lähetä viesti
-                <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                <svg
+                  className="size-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                  />
                 </svg>
               </button>
               {sent && (
@@ -165,9 +209,13 @@ function SelectField({ label, name, options }: { label: string; name: string; op
         defaultValue=""
         className="w-full bg-transparent border-b border-border focus:border-foreground outline-none py-3 text-base transition-colors"
       >
-        <option value="" disabled>Valitse…</option>
+        <option value="" disabled>
+          Valitse…
+        </option>
         {options.map((o) => (
-          <option key={o} value={o}>{o}</option>
+          <option key={o} value={o}>
+            {o}
+          </option>
         ))}
       </select>
     </div>

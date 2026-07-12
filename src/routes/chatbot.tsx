@@ -6,9 +6,16 @@ export const Route = createFileRoute("/chatbot")({
   head: () => ({
     meta: [
       { title: "Chatbot — Restadigi" },
-      { name: "description", content: "Älykäs chatbot verkkosivustollesi: palvelee asiakkaita 24/7, kerää liidejä ja kasvattaa konversiota. Kuukausimaksullinen avaimet käteen -palvelu." },
+      {
+        name: "description",
+        content:
+          "Älykäs chatbot verkkosivustollesi: palvelee asiakkaita 24/7, kerää liidejä ja kasvattaa konversiota. Kuukausimaksullinen avaimet käteen -palvelu.",
+      },
       { property: "og:title", content: "Chatbot — Restadigi" },
-      { property: "og:description", content: "Ympärivuorokautinen myyjä ja asiakaspalvelija yrityksesi verkkosivuille." },
+      {
+        property: "og:description",
+        content: "Ympärivuorokautinen myyjä ja asiakaspalvelija yrityksesi verkkosivuille.",
+      },
     ],
   }),
   component: ChatbotPage,
@@ -62,12 +69,14 @@ function ChatbotPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Chatbot</div>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-8 tracking-tight">
-            Älykäs <span className="font-serif italic text-accent">chatbot</span> — ympärivuorokautinen myyjä ja asiakaspalvelija.
+            Älykäs <span className="font-serif italic text-accent">chatbot</span> —
+            ympärivuorokautinen myyjä ja asiakaspalvelija.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
             Chatbot on verkkosivuille asennettava älykäs virtuaaliavustaja, joka palvelee asiakkaita
-            24/7 — vastaa yleisiin kysymyksiin, opastaa oikeiden palveluiden pariin ja kerää liidejä.
-            Se ei korvaa ihmistä, vaan toimii luotettavana apukätenä silloinkin, kun oma henkilökuntasi on vapaalla.
+            24/7 — vastaa yleisiin kysymyksiin, opastaa oikeiden palveluiden pariin ja kerää
+            liidejä. Se ei korvaa ihmistä, vaan toimii luotettavana apukätenä silloinkin, kun oma
+            henkilökuntasi on vapaalla.
           </p>
         </div>
       </header>
@@ -104,8 +113,8 @@ function ChatbotPage() {
             <div className="md:col-span-7">
               <p className="text-base text-foreground/70 leading-relaxed">
                 Jotta chatbot tuottaa tulosta vuodesta toiseen, se vaatii jatkuvaa huolenpitoa.
-                Kuukausimaksullinen palvelumalli varmistaa, että botti kehittyy ja toimii saumattomasti
-                yrityksen muuttuvan datan ja teknologian mukana.
+                Kuukausimaksullinen palvelumalli varmistaa, että botti kehittyy ja toimii
+                saumattomasti yrityksen muuttuvan datan ja teknologian mukana.
               </p>
             </div>
           </div>
@@ -129,7 +138,8 @@ function ChatbotPage() {
                 (03) Suunnitellaan yhdessä
               </div>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium tracking-tight text-balance mb-8">
-                Kerro, mihin <span className="font-serif italic">tarpeeseen</span> botti rakennetaan.
+                Kerro, mihin <span className="font-serif italic">tarpeeseen</span> botti
+                rakennetaan.
               </h2>
               <ul className="space-y-3 text-base text-foreground/75 max-w-2xl">
                 <li className="flex gap-3">
@@ -138,7 +148,8 @@ function ChatbotPage() {
                 </li>
                 <li className="flex gap-3">
                   <span className="size-1.5 rounded-full mt-2.5 shrink-0 bg-accent" />
-                  Haluatteko botin keskittyvän enemmän asiakaspalveluun vai myyntiin ja liidien keruuseen?
+                  Haluatteko botin keskittyvän enemmän asiakaspalveluun vai myyntiin ja liidien
+                  keruuseen?
                 </li>
               </ul>
             </div>
@@ -148,8 +159,18 @@ function ChatbotPage() {
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
               >
                 Kysy chatbotista
-                <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                <svg
+                  className="size-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                  />
                 </svg>
               </Link>
             </div>

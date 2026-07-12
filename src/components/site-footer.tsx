@@ -6,9 +6,15 @@ export function SiteFooter() {
           &copy; {new Date().getFullYear()} Restadigi — Helsinki
         </div>
         <div className="flex gap-8 text-xs uppercase tracking-[0.15em] text-muted-foreground">
-          <a href="#" className="hover:text-foreground transition-colors">Instagram</a>
-          <a href="#" className="hover:text-foreground transition-colors">Behance</a>
-          <a href="#" className="hover:text-foreground transition-colors">LinkedIn</a>
+          <a href="#" className="hover:text-foreground transition-colors">
+            Instagram
+          </a>
+          <a href="#" className="hover:text-foreground transition-colors">
+            Behance
+          </a>
+          <a href="#" className="hover:text-foreground transition-colors">
+            LinkedIn
+          </a>
         </div>
       </div>
     </footer>

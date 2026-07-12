@@ -6,9 +6,17 @@ export const Route = createFileRoute("/diginakyvyys")({
   head: () => ({
     meta: [
       { title: "Diginäkyvyys — Restadigi" },
-      { name: "description", content: "Diginäkyvyytesi kerralla kuntoon: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti." },
+      {
+        name: "description",
+        content:
+          "Diginäkyvyytesi kerralla kuntoon: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti.",
+      },
       { property: "og:title", content: "Diginäkyvyys — Restadigi" },
-      { property: "og:description", content: "Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti." },
+      {
+        property: "og:description",
+        content:
+          "Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti.",
+      },
     ],
   }),
   component: DiginakyvyysPage,
@@ -82,7 +90,8 @@ const packages = [
       "VIP-palveluja ja ottelutapahtumaelämyksiä",
       "Muita seurakohtaisia kumppanuusetuja",
     ],
-    result: "Ammattimainen kumppanuus, näkyvyyttä tuhansille katsojille ja positiivista urheiluimagoa.",
+    result:
+      "Ammattimainen kumppanuus, näkyvyyttä tuhansille katsojille ja positiivista urheiluimagoa.",
   },
 ];
 
@@ -99,8 +108,8 @@ function DiginakyvyysPage() {
             Diginäkyvyytesi <span className="font-serif italic text-accent">kerralla</span> kuntoon.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, kevyt somepaketti sekä
-            mikrokumppanuudet Suomen suosituimmissa urheilusarjoissa.
+            Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, kevyt somepaketti
+            sekä mikrokumppanuudet Suomen suosituimmissa urheilusarjoissa.
           </p>
         </div>
       </header>
@@ -130,10 +139,20 @@ function DiginakyvyysPage() {
                     </span>
                   )}
                 </div>
-                <p className={"text-sm mb-2 " + (p.featured ? "text-primary-foreground/70" : "text-foreground/60")}>
+                <p
+                  className={
+                    "text-sm mb-2 " +
+                    (p.featured ? "text-primary-foreground/70" : "text-foreground/60")
+                  }
+                >
                   {p.tagline}
                 </p>
-                <p className={"text-sm mb-6 " + (p.featured ? "text-primary-foreground/80" : "text-foreground/70")}>
+                <p
+                  className={
+                    "text-sm mb-6 " +
+                    (p.featured ? "text-primary-foreground/80" : "text-foreground/70")
+                  }
+                >
                   {p.description}
                 </p>
                 <div className="text-4xl font-serif mb-8">{p.price}</div>
@@ -141,11 +160,20 @@ function DiginakyvyysPage() {
                   {p.bullets.map((b) => (
                     <li key={b} className="flex gap-3">
                       <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
-                      <span className={p.featured ? "text-primary-foreground/85" : "text-foreground/75"}>{b}</span>
+                      <span
+                        className={p.featured ? "text-primary-foreground/85" : "text-foreground/75"}
+                      >
+                        {b}
+                      </span>
                     </li>
                   ))}
                 </ul>
-                <div className={"pt-6 border-t " + (p.featured ? "border-primary-foreground/20" : "border-border")}>
+                <div
+                  className={
+                    "pt-6 border-t " +
+                    (p.featured ? "border-primary-foreground/20" : "border-border")
+                  }
+                >
                   <p className="text-sm italic mb-8">Saat: {p.result}</p>
                   <Link
                     to="/yhteys"
@@ -186,8 +214,18 @@ function DiginakyvyysPage() {
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
               >
                 Kysy näkyvyyspaketista
-                <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                <svg
+                  className="size-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                  />
                 </svg>
               </Link>
             </div>
