@@ -91,7 +91,9 @@ export function ChatbotWidget() {
           >
             <div className="flex items-center justify-between border-b border-border bg-primary px-4 py-3 text-primary-foreground">
               <div>
-                <p className="text-xs uppercase tracking-[0.15em] text-primary-foreground/70">Chatbot</p>
+                <p className="text-xs uppercase tracking-[0.15em] text-primary-foreground/70">
+                  Chatbot
+                </p>
                 <p className="text-sm font-medium">Restadigi avustaja</p>
               </div>
               <button
