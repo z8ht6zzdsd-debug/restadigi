@@ -16,7 +16,22 @@ import { Route as KotisivutYrityksilleRouteImport } from './routes/kotisivut-yri
 import { Route as DiginakyvyysRouteImport } from './routes/diginakyvyys'
 import { Route as ChatbotRouteImport } from './routes/chatbot'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as DashboardVisitorsRouteImport } from './routes/dashboard/visitors'
+import { Route as DashboardReservationsRouteImport } from './routes/dashboard/reservations'
+import { Route as DashboardLoginRouteImport } from './routes/dashboard.login'
+import { Route as DashboardConversationsRouteImport } from './routes/dashboard/conversations'
+import { Route as DashboardLayoutRouteImport } from './routes/dashboard/_layout'
+import { Route as ApiTrackRouteImport } from './routes/api/track'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiDashboardVisitorsRouteImport } from './routes/api/dashboard/visitors'
+import { Route as ApiDashboardStatsRouteImport } from './routes/api/dashboard/stats'
+import { Route as ApiDashboardReservationsRouteImport } from './routes/api/dashboard/reservations'
+import { Route as ApiDashboardConversationsRouteImport } from './routes/api/dashboard/conversations'
+import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
+import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
+import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
+import { Route as ApiDashboardConversationsSessionIdRouteImport } from './routes/api/dashboard/conversations/$sessionId'
 
 const YhteysRoute = YhteysRouteImport.update({
   id: '/yhteys',
@@ -53,11 +68,89 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardVisitorsRoute = DashboardVisitorsRouteImport.update({
+  id: '/dashboard/visitors',
+  path: '/dashboard/visitors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardReservationsRoute = DashboardReservationsRouteImport.update({
+  id: '/dashboard/reservations',
+  path: '/dashboard/reservations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardLoginRoute = DashboardLoginRouteImport.update({
+  id: '/dashboard/login',
+  path: '/dashboard/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardConversationsRoute = DashboardConversationsRouteImport.update({
+  id: '/dashboard/conversations',
+  path: '/dashboard/conversations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardLayoutRoute = DashboardLayoutRouteImport.update({
+  id: '/dashboard/_layout',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTrackRoute = ApiTrackRouteImport.update({
+  id: '/api/track',
+  path: '/api/track',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiDashboardVisitorsRoute = ApiDashboardVisitorsRouteImport.update({
+  id: '/api/dashboard/visitors',
+  path: '/api/dashboard/visitors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDashboardStatsRoute = ApiDashboardStatsRouteImport.update({
+  id: '/api/dashboard/stats',
+  path: '/api/dashboard/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDashboardReservationsRoute =
+  ApiDashboardReservationsRouteImport.update({
+    id: '/api/dashboard/reservations',
+    path: '/api/dashboard/reservations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiDashboardConversationsRoute =
+  ApiDashboardConversationsRouteImport.update({
+    id: '/api/dashboard/conversations',
+    path: '/api/dashboard/conversations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiAuthMeRoute = ApiAuthMeRouteImport.update({
+  id: '/api/auth/me',
+  path: '/api/auth/me',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
+  id: '/api/auth/logout',
+  path: '/api/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
+  id: '/api/auth/login',
+  path: '/api/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDashboardConversationsSessionIdRoute =
+  ApiDashboardConversationsSessionIdRouteImport.update({
+    id: '/$sessionId',
+    path: '/$sessionId',
+    getParentRoute: () => ApiDashboardConversationsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +161,21 @@ export interface FileRoutesByFullPath {
   '/potyvarauspalvelu': typeof PotyvarauspalveluRoute
   '/yhteys': typeof YhteysRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/track': typeof ApiTrackRoute
+  '/dashboard': typeof DashboardLayoutRoute
+  '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/login': typeof DashboardLoginRoute
+  '/dashboard/reservations': typeof DashboardReservationsRoute
+  '/dashboard/visitors': typeof DashboardVisitorsRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/api/auth/login': typeof ApiAuthLoginRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
+  '/api/auth/me': typeof ApiAuthMeRoute
+  '/api/dashboard/conversations': typeof ApiDashboardConversationsRouteWithChildren
+  '/api/dashboard/reservations': typeof ApiDashboardReservationsRoute
+  '/api/dashboard/stats': typeof ApiDashboardStatsRoute
+  '/api/dashboard/visitors': typeof ApiDashboardVisitorsRoute
+  '/api/dashboard/conversations/$sessionId': typeof ApiDashboardConversationsSessionIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +186,20 @@ export interface FileRoutesByTo {
   '/potyvarauspalvelu': typeof PotyvarauspalveluRoute
   '/yhteys': typeof YhteysRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/track': typeof ApiTrackRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/login': typeof DashboardLoginRoute
+  '/dashboard/reservations': typeof DashboardReservationsRoute
+  '/dashboard/visitors': typeof DashboardVisitorsRoute
+  '/api/auth/login': typeof ApiAuthLoginRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
+  '/api/auth/me': typeof ApiAuthMeRoute
+  '/api/dashboard/conversations': typeof ApiDashboardConversationsRouteWithChildren
+  '/api/dashboard/reservations': typeof ApiDashboardReservationsRoute
+  '/api/dashboard/stats': typeof ApiDashboardStatsRoute
+  '/api/dashboard/visitors': typeof ApiDashboardVisitorsRoute
+  '/api/dashboard/conversations/$sessionId': typeof ApiDashboardConversationsSessionIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +211,21 @@ export interface FileRoutesById {
   '/potyvarauspalvelu': typeof PotyvarauspalveluRoute
   '/yhteys': typeof YhteysRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/track': typeof ApiTrackRoute
+  '/dashboard/_layout': typeof DashboardLayoutRoute
+  '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/login': typeof DashboardLoginRoute
+  '/dashboard/reservations': typeof DashboardReservationsRoute
+  '/dashboard/visitors': typeof DashboardVisitorsRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/api/auth/login': typeof ApiAuthLoginRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
+  '/api/auth/me': typeof ApiAuthMeRoute
+  '/api/dashboard/conversations': typeof ApiDashboardConversationsRouteWithChildren
+  '/api/dashboard/reservations': typeof ApiDashboardReservationsRoute
+  '/api/dashboard/stats': typeof ApiDashboardStatsRoute
+  '/api/dashboard/visitors': typeof ApiDashboardVisitorsRoute
+  '/api/dashboard/conversations/$sessionId': typeof ApiDashboardConversationsSessionIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +238,21 @@ export interface FileRouteTypes {
     | '/potyvarauspalvelu'
     | '/yhteys'
     | '/api/chat'
+    | '/api/track'
+    | '/dashboard'
+    | '/dashboard/conversations'
+    | '/dashboard/login'
+    | '/dashboard/reservations'
+    | '/dashboard/visitors'
+    | '/dashboard/'
+    | '/api/auth/login'
+    | '/api/auth/logout'
+    | '/api/auth/me'
+    | '/api/dashboard/conversations'
+    | '/api/dashboard/reservations'
+    | '/api/dashboard/stats'
+    | '/api/dashboard/visitors'
+    | '/api/dashboard/conversations/$sessionId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +263,20 @@ export interface FileRouteTypes {
     | '/potyvarauspalvelu'
     | '/yhteys'
     | '/api/chat'
+    | '/api/track'
+    | '/dashboard'
+    | '/dashboard/conversations'
+    | '/dashboard/login'
+    | '/dashboard/reservations'
+    | '/dashboard/visitors'
+    | '/api/auth/login'
+    | '/api/auth/logout'
+    | '/api/auth/me'
+    | '/api/dashboard/conversations'
+    | '/api/dashboard/reservations'
+    | '/api/dashboard/stats'
+    | '/api/dashboard/visitors'
+    | '/api/dashboard/conversations/$sessionId'
   id:
     | '__root__'
     | '/'
@@ -121,6 +287,21 @@ export interface FileRouteTypes {
     | '/potyvarauspalvelu'
     | '/yhteys'
     | '/api/chat'
+    | '/api/track'
+    | '/dashboard/_layout'
+    | '/dashboard/conversations'
+    | '/dashboard/login'
+    | '/dashboard/reservations'
+    | '/dashboard/visitors'
+    | '/dashboard/'
+    | '/api/auth/login'
+    | '/api/auth/logout'
+    | '/api/auth/me'
+    | '/api/dashboard/conversations'
+    | '/api/dashboard/reservations'
+    | '/api/dashboard/stats'
+    | '/api/dashboard/visitors'
+    | '/api/dashboard/conversations/$sessionId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +313,20 @@ export interface RootRouteChildren {
   PotyvarauspalveluRoute: typeof PotyvarauspalveluRoute
   YhteysRoute: typeof YhteysRoute
   ApiChatRoute: typeof ApiChatRoute
+  ApiTrackRoute: typeof ApiTrackRoute
+  DashboardLayoutRoute: typeof DashboardLayoutRoute
+  DashboardConversationsRoute: typeof DashboardConversationsRoute
+  DashboardLoginRoute: typeof DashboardLoginRoute
+  DashboardReservationsRoute: typeof DashboardReservationsRoute
+  DashboardVisitorsRoute: typeof DashboardVisitorsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  ApiAuthLoginRoute: typeof ApiAuthLoginRoute
+  ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
+  ApiAuthMeRoute: typeof ApiAuthMeRoute
+  ApiDashboardConversationsRoute: typeof ApiDashboardConversationsRouteWithChildren
+  ApiDashboardReservationsRoute: typeof ApiDashboardReservationsRoute
+  ApiDashboardStatsRoute: typeof ApiDashboardStatsRoute
+  ApiDashboardVisitorsRoute: typeof ApiDashboardVisitorsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -185,6 +380,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/visitors': {
+      id: '/dashboard/visitors'
+      path: '/dashboard/visitors'
+      fullPath: '/dashboard/visitors'
+      preLoaderRoute: typeof DashboardVisitorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/reservations': {
+      id: '/dashboard/reservations'
+      path: '/dashboard/reservations'
+      fullPath: '/dashboard/reservations'
+      preLoaderRoute: typeof DashboardReservationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/login': {
+      id: '/dashboard/login'
+      path: '/dashboard/login'
+      fullPath: '/dashboard/login'
+      preLoaderRoute: typeof DashboardLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/conversations': {
+      id: '/dashboard/conversations'
+      path: '/dashboard/conversations'
+      fullPath: '/dashboard/conversations'
+      preLoaderRoute: typeof DashboardConversationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/_layout': {
+      id: '/dashboard/_layout'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/track': {
+      id: '/api/track'
+      path: '/api/track'
+      fullPath: '/api/track'
+      preLoaderRoute: typeof ApiTrackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/chat': {
       id: '/api/chat'
       path: '/api/chat'
@@ -192,8 +436,79 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/dashboard/visitors': {
+      id: '/api/dashboard/visitors'
+      path: '/api/dashboard/visitors'
+      fullPath: '/api/dashboard/visitors'
+      preLoaderRoute: typeof ApiDashboardVisitorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/stats': {
+      id: '/api/dashboard/stats'
+      path: '/api/dashboard/stats'
+      fullPath: '/api/dashboard/stats'
+      preLoaderRoute: typeof ApiDashboardStatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/reservations': {
+      id: '/api/dashboard/reservations'
+      path: '/api/dashboard/reservations'
+      fullPath: '/api/dashboard/reservations'
+      preLoaderRoute: typeof ApiDashboardReservationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/conversations': {
+      id: '/api/dashboard/conversations'
+      path: '/api/dashboard/conversations'
+      fullPath: '/api/dashboard/conversations'
+      preLoaderRoute: typeof ApiDashboardConversationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/me': {
+      id: '/api/auth/me'
+      path: '/api/auth/me'
+      fullPath: '/api/auth/me'
+      preLoaderRoute: typeof ApiAuthMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/logout': {
+      id: '/api/auth/logout'
+      path: '/api/auth/logout'
+      fullPath: '/api/auth/logout'
+      preLoaderRoute: typeof ApiAuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/login': {
+      id: '/api/auth/login'
+      path: '/api/auth/login'
+      fullPath: '/api/auth/login'
+      preLoaderRoute: typeof ApiAuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/conversations/$sessionId': {
+      id: '/api/dashboard/conversations/$sessionId'
+      path: '/$sessionId'
+      fullPath: '/api/dashboard/conversations/$sessionId'
+      preLoaderRoute: typeof ApiDashboardConversationsSessionIdRouteImport
+      parentRoute: typeof ApiDashboardConversationsRoute
+    }
   }
 }
+
+interface ApiDashboardConversationsRouteChildren {
+  ApiDashboardConversationsSessionIdRoute: typeof ApiDashboardConversationsSessionIdRoute
+}
+
+const ApiDashboardConversationsRouteChildren: ApiDashboardConversationsRouteChildren =
+  {
+    ApiDashboardConversationsSessionIdRoute:
+      ApiDashboardConversationsSessionIdRoute,
+  }
+
+const ApiDashboardConversationsRouteWithChildren =
+  ApiDashboardConversationsRoute._addFileChildren(
+    ApiDashboardConversationsRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -204,6 +519,20 @@ const rootRouteChildren: RootRouteChildren = {
   PotyvarauspalveluRoute: PotyvarauspalveluRoute,
   YhteysRoute: YhteysRoute,
   ApiChatRoute: ApiChatRoute,
+  ApiTrackRoute: ApiTrackRoute,
+  DashboardLayoutRoute: DashboardLayoutRoute,
+  DashboardConversationsRoute: DashboardConversationsRoute,
+  DashboardLoginRoute: DashboardLoginRoute,
+  DashboardReservationsRoute: DashboardReservationsRoute,
+  DashboardVisitorsRoute: DashboardVisitorsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  ApiAuthLoginRoute: ApiAuthLoginRoute,
+  ApiAuthLogoutRoute: ApiAuthLogoutRoute,
+  ApiAuthMeRoute: ApiAuthMeRoute,
+  ApiDashboardConversationsRoute: ApiDashboardConversationsRouteWithChildren,
+  ApiDashboardReservationsRoute: ApiDashboardReservationsRoute,
+  ApiDashboardStatsRoute: ApiDashboardStatsRoute,
+  ApiDashboardVisitorsRoute: ApiDashboardVisitorsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,25 +1,35 @@
+import { useRouterState } from "@tanstack/react-router";
 import { MessageCircle, Send, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import type { ChatMessage } from "@/lib/chatbot-prompt";
+import {
+  getChatSessionId,
+  getOrCreateVisitorSessionId,
+  setChatSessionId,
+} from "@/lib/visitor-session";
 import { cn } from "@/lib/utils";
 
 const WELCOME: ChatMessage = {
   role: "assistant",
   content:
-    "Hei! Olen Restadigin chatbot. Kysy rohkeasti palveluistamme — verkkosivuista, chatbotista, pöytävarauksista tai diginäkyvyydestä.",
+    "Hei! Olen Restadigin chatbot. Voin kertoa palveluistamme tai auttaa tekemään demo-pöytävarauksen ravintolaan. Miten voin auttaa?",
 };
 
 export function ChatbotWidget() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([WELCOME]);
+  const [sessionId, setSessionId] = useState<string | null>(() => getChatSessionId());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  const hidden = pathname.startsWith("/dashboard");
 
   useEffect(() => {
     if (open) {
@@ -43,13 +53,26 @@ export function ChatbotWidget() {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: nextMessages.filter((m) => m !== WELCOME) }),
+        body: JSON.stringify({
+          sessionId: sessionId ?? undefined,
+          visitorSessionId: getOrCreateVisitorSessionId(),
+          messages: nextMessages.filter((m) => m !== WELCOME),
+        }),
       });
 
-      const data = (await response.json()) as { message?: ChatMessage; error?: string };
+      const data = (await response.json()) as {
+        message?: ChatMessage;
+        sessionId?: string;
+        error?: string;
+      };
 
       if (!response.ok) {
         throw new Error(data.error ?? "Viestin lähetys epäonnistui.");
+      }
+
+      if (data.sessionId) {
+        setSessionId(data.sessionId);
+        setChatSessionId(data.sessionId);
       }
 
       if (data.message) {
@@ -68,6 +91,8 @@ export function ChatbotWidget() {
       void sendMessage();
     }
   }
+
+  if (hidden) return null;
 
   return (
     <>

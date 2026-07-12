@@ -1,0 +1,54 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { count, desc, eq } from "drizzle-orm";
+
+import { getDb, schema } from "@/db";
+import { requireAdmin, unauthorizedResponse } from "@/lib/auth";
+
+export const Route = createFileRoute("/api/dashboard/conversations")({
+  server: {
+    handlers: {
+      GET: async ({ request }) => {
+        if (!requireAdmin(request)) return unauthorizedResponse();
+        if (!process.env.DATABASE_URL) {
+          return Response.json({ error: "Database not configured" }, { status: 503 });
+        }
+
+        const db = getDb();
+        const sessions = await db.query.chatSessions.findMany({
+          orderBy: [desc(schema.chatSessions.updatedAt)],
+          limit: 50,
+        });
+
+        const result = await Promise.all(
+          sessions.map(async (session) => {
+            const [msgCount] = await db
+              .select({ count: count() })
+              .from(schema.chatMessages)
+              .where(eq(schema.chatMessages.sessionId, session.id));
+
+            const lastMessage = await db.query.chatMessages.findFirst({
+              where: eq(schema.chatMessages.sessionId, session.id),
+              orderBy: [desc(schema.chatMessages.createdAt)],
+            });
+
+            const reservation = await db.query.reservations.findFirst({
+              where: eq(schema.reservations.chatSessionId, session.id),
+            });
+
+            return {
+              id: session.id,
+              visitorSessionId: session.visitorSessionId,
+              createdAt: session.createdAt,
+              updatedAt: session.updatedAt,
+              messageCount: msgCount.count,
+              lastMessage: lastMessage?.content ?? null,
+              hasReservation: Boolean(reservation),
+            };
+          }),
+        );
+
+        return Response.json({ sessions: result });
+      },
+    },
+  },
+});
