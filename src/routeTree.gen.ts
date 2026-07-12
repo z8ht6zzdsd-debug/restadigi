@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YhteysRouteImport } from './routes/yhteys'
+import { Route as PotyvarauspalveluRouteImport } from './routes/potyvarauspalvelu'
 import { Route as MeistaRouteImport } from './routes/meista'
 import { Route as KotisivutYrityksilleRouteImport } from './routes/kotisivut-yrityksille'
 import { Route as DiginakyvyysRouteImport } from './routes/diginakyvyys'
@@ -19,6 +20,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const YhteysRoute = YhteysRouteImport.update({
   id: '/yhteys',
   path: '/yhteys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PotyvarauspalveluRoute = PotyvarauspalveluRouteImport.update({
+  id: '/potyvarauspalvelu',
+  path: '/potyvarauspalvelu',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MeistaRoute = MeistaRouteImport.update({
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/diginakyvyys': typeof DiginakyvyysRoute
   '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
   '/meista': typeof MeistaRoute
+  '/potyvarauspalvelu': typeof PotyvarauspalveluRoute
   '/yhteys': typeof YhteysRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/diginakyvyys': typeof DiginakyvyysRoute
   '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
   '/meista': typeof MeistaRoute
+  '/potyvarauspalvelu': typeof PotyvarauspalveluRoute
   '/yhteys': typeof YhteysRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/diginakyvyys': typeof DiginakyvyysRoute
   '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
   '/meista': typeof MeistaRoute
+  '/potyvarauspalvelu': typeof PotyvarauspalveluRoute
   '/yhteys': typeof YhteysRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/diginakyvyys'
     | '/kotisivut-yrityksille'
     | '/meista'
+    | '/potyvarauspalvelu'
     | '/yhteys'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/diginakyvyys'
     | '/kotisivut-yrityksille'
     | '/meista'
+    | '/potyvarauspalvelu'
     | '/yhteys'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/diginakyvyys'
     | '/kotisivut-yrityksille'
     | '/meista'
+    | '/potyvarauspalvelu'
     | '/yhteys'
   fileRoutesById: FileRoutesById
 }
@@ -105,6 +117,7 @@ export interface RootRouteChildren {
   DiginakyvyysRoute: typeof DiginakyvyysRoute
   KotisivutYrityksilleRoute: typeof KotisivutYrityksilleRoute
   MeistaRoute: typeof MeistaRoute
+  PotyvarauspalveluRoute: typeof PotyvarauspalveluRoute
   YhteysRoute: typeof YhteysRoute
 }
 
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/yhteys'
       fullPath: '/yhteys'
       preLoaderRoute: typeof YhteysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/potyvarauspalvelu': {
+      id: '/potyvarauspalvelu'
+      path: '/potyvarauspalvelu'
+      fullPath: '/potyvarauspalvelu'
+      preLoaderRoute: typeof PotyvarauspalveluRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/meista': {
@@ -161,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   DiginakyvyysRoute: DiginakyvyysRoute,
   KotisivutYrityksilleRoute: KotisivutYrityksilleRoute,
   MeistaRoute: MeistaRoute,
+  PotyvarauspalveluRoute: PotyvarauspalveluRoute,
   YhteysRoute: YhteysRoute,
 }
 export const routeTree = rootRouteImport
