@@ -2,11 +2,10 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 const nav = [
-  { to: "/", label: "ETUSIVU" },
-  { to: "/kotisivut-yrityksille", label: "KOTISIVUT YRITYKSELLE" },
-  { to: "/diginakyvyys", label: "DIGINÄKYVYYS" },
-  { to: "/chatbot", label: "CHATBOT" },
-  { to: "/meista", label: "MEISTÄ" },
+  { to: "/kotisivut-yrityksille", label: "VERKKOSIVUT RAVINTOLALLE" },
+  { to: "/diginakyvyys", label: "NÄKYVYYS JA SUUNNITTELU" },
+  { to: "/chatbot", label: "AI-ASIAKASPALVELU" },
+  { to: "/potyvarauspalvelu", label: "PÖYTÄVARAUSPALVELU" },
   { to: "/yhteys", label: "OTA YHTEYTTÄ" },
 ] as const;
 
@@ -16,8 +15,8 @@ export function SiteHeader() {
   return (
     <nav className="py-8 sm:py-10 relative z-20">
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className="text-base font-serif tracking-tight" onClick={() => setOpen(false)}>
-          Resta<span className="text-accent">digi.</span>
+        <Link to="/" className="text-base font-serif tracking-tight uppercase" onClick={() => setOpen(false)}>
+          RESTA<span className="text-accent">DIGI.</span>
         </Link>
 
         <div className="hidden lg:flex gap-6 text-sm text-foreground/70">
@@ -27,7 +26,6 @@ export function SiteHeader() {
               to={item.to}
               className="hover:text-foreground transition-colors"
               activeProps={{ className: "text-foreground" }}
-              activeOptions={{ exact: item.to === "/" }}
             >
               {item.label}
             </Link>
@@ -68,7 +66,6 @@ export function SiteHeader() {
                 onClick={() => setOpen(false)}
                 className="text-lg text-foreground/80 hover:text-foreground"
                 activeProps={{ className: "text-accent" }}
-                activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
               </Link>
