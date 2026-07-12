@@ -8,10 +8,10 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Restadigi — Näyttävät ja tehokkaat verkkosivut yritykselle" },
-      { name: "description", content: "Rakennamme yrityksille näyttäviä, moderneja ja tehokkaita verkkosivuja sekä vahvaa verkkonäkyvyyttä. Uuden teknologian avulla sivut valmistuvat nopeasti ja niitä on helppo päivittää." },
-      { property: "og:title", content: "Restadigi — Näyttävät ja tehokkaat verkkosivut yritykselle" },
-      { property: "og:description", content: "Modernit, responsiiviset verkkosivut ja laaja asiakastuki yrityksesi kasvun tueksi." },
+      { title: "Restadigi — Verkkosivut, AI-asiakaspalvelu ja pöytävaraukset ravintoloille" },
+      { name: "description", content: "Rakennamme ravintoloille näyttäviä verkkosivuja, älykkään AI-asiakaspalvelun ja modernin pöytävarausjärjestelmän — kaikki yhdestä paikasta." },
+      { property: "og:title", content: "Restadigi — Digitaaliset ratkaisut ravintoloille" },
+      { property: "og:description", content: "Verkkosivut, AI-asiakaspalvelu ja pöytävaraukset ravintoloille." },
     ],
   }),
   component: Index,
@@ -26,19 +26,17 @@ function Index() {
       <header className="pt-10 pb-24 sm:pt-16 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
-            ¡Hola! — Digistudio
+            Digistudio ravintoloille
           </div>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-10 tracking-tight">
-            Näyttävät, modernit ja <span className="font-serif italic text-accent">tehokkaat</span> verkkosivut yrityksellesi.
+            Näyttävät verkkosivut ja älykkäät palvelut <span className="font-serif italic text-accent">ravintolallesi</span>.
           </h1>
           <div className="grid md:grid-cols-12 gap-8 items-end">
             <p className="md:col-span-6 text-base sm:text-lg text-pretty text-foreground/70 leading-relaxed">
-              Rakennamme yrityksille näyttäviä, moderneja ja tehokkaita verkkosivuja sekä vahvaa
-              verkkonäkyvyyttä hyödyntäen muun muassa Lovable-tekoälyä. Uuden teknologian avulla
-              sivut valmistuvat nopeasti, ovat responsiivisia ja niitä voidaan kehittää joustavasti
-              yrityksesi tarpeiden mukaan. Tavoitteeni on luoda verkkoratkaisuja, jotka eivät
-              ainoastaan näytä hyvältä, vaan myös tukevat yrityksesi kasvua, löydettävyyttä ja
-              asiakkaiden hankintaa.
+              Rakennamme ravintoloille moderneja, houkuttelevia verkkosivuja sekä
+              tarjoamme älykkään AI-asiakaspalvelun ja sujuvan pöytävarausjärjestelmän.
+              Tavoitteemme on luoda kokonaisuus, joka näyttää yhtä hyvältä kuin
+              ravintolasi ruoka — ja tuo lisää asiakkaita ovista sisään.
             </p>
             <div className="md:col-span-6 md:col-start-8 flex items-center gap-4">
               <Link
@@ -51,7 +49,7 @@ function Index() {
                 </svg>
               </Link>
               <Link to="/kotisivut-yrityksille" className="text-sm text-foreground/70 hover:text-foreground">
-                Katso kotisivut →
+                Katso palvelut →
               </Link>
             </div>
           </div>
@@ -63,9 +61,9 @@ function Index() {
         <div className="max-w-6xl mx-auto">
           <img
             src={heroStudio}
-            alt="Muotoilustudion työtila luonnonvalossa"
+            alt="Tunnelmallinen ravintolasali auringonlaskun aikaan"
             width={1600}
-            height={1200}
+            height={912}
             className="w-full aspect-[16/9] object-cover rounded-sm"
           />
         </div>
@@ -75,25 +73,25 @@ function Index() {
       <section className="py-24 sm:py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-16">
-            (01) Miksi valita meidät?
+            (01) Miksi ravintoloitsijat valitsevat meidät?
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
             {[
               {
-                t: "Helppo ja nopea aloitus",
-                d: "Pääset liikkeelle vaivattomasti ilman monimutkaisia prosesseja.",
+                t: "Ravintola-alan ymmärrys",
+                d: "Tunnemme ravintolan arjen — sivustot, varaukset ja asiakaspalvelu on suunniteltu juuri sinun toimialaasi varten.",
               },
               {
                 t: "Vaivaton sisällönhallinta",
-                d: "Verkkosivujesi sisältöä on helppo päivittää ja ylläpitää myös jatkossa.",
+                d: "Menun, aukioloaikojen ja kuvien päivittäminen sujuu itsenäisesti muutamalla klikkauksella.",
               },
               {
-                t: "Ammattimainen toteutus",
-                d: "Suunnittelemme, toteutamme ja julkaisemme modernit, responsiiviset verkkosivut yrityksesi tarpeisiin.",
+                t: "AI-asiakaspalvelu 24/7",
+                d: "Chatbot vastaa yleisiin kysymyksiin, ohjaa varauksiin ja palvelee asiakkaitasi silloinkin, kun keittiö on kiinni.",
               },
               {
-                t: "Laaja asiakastuki",
-                d: "Saat apua niin käyttöönotossa, ylläpidossa kuin sivuston kehittämisessäkin – et jää yksin projektin valmistumisen jälkeen.",
+                t: "Sujuvat pöytävaraukset",
+                d: "Integroitu pöytävarausjärjestelmä vähentää puheluita ja no-showta — ja tuo varaukset suoraan sivustoltasi.",
               },
             ].map((item, i) => (
               <div key={item.t}>
@@ -105,7 +103,7 @@ function Index() {
           </div>
           <div className="mt-12">
             <Link to="/kotisivut-yrityksille" className="text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground transition-colors">
-              Katso kotisivut ja hinnat →
+              Katso palvelut ja hinnat →
             </Link>
           </div>
         </div>
@@ -117,9 +115,9 @@ function Index() {
           <div className="flex justify-between items-end mb-16">
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
-                (02) Valikoidut projektit
+                (02) Valikoidut ravintolaprojektit
               </div>
-              <h2 className="text-2xl font-medium">Viimeaikaista työtä</h2>
+              <h2 className="text-2xl font-medium">Viimeaikaista työtä ravintoloille</h2>
             </div>
           </div>
 
@@ -128,36 +126,36 @@ function Index() {
               <div className="overflow-hidden rounded-sm mb-6">
                 <img
                   src={workWebsite}
-                  alt="Nordic Living — verkkosivusto"
+                  alt="Foresta — ravintolan verkkosivusto"
                   width={1200}
-                  height={900}
+                  height={912}
                   loading="lazy"
                   className="w-full aspect-[3/2] object-cover group-hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
               <div className="flex justify-between items-baseline">
                 <h3 className="text-lg font-medium">
-                  Nordic Living <span className="font-serif italic text-foreground/50">— verkkosivusto</span>
+                  Foresta <span className="font-serif italic text-foreground/50">— verkkosivusto & pöytävaraus</span>
                 </h3>
-                <span className="text-sm text-muted-foreground tabular-nums">2024</span>
+                <span className="text-sm text-muted-foreground tabular-nums">2025</span>
               </div>
             </div>
             <div className="md:col-span-4 md:mt-24 group">
               <div className="overflow-hidden rounded-sm mb-6">
                 <img
                   src={workBrand}
-                  alt="Kahiwa Roastery — brändi-identiteetti"
-                  width={1000}
-                  height={1250}
+                  alt="Lumière — ravintolan brändi ja menu"
+                  width={1008}
+                  height={1264}
                   loading="lazy"
                   className="w-full aspect-[4/5] object-cover group-hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
               <div className="flex justify-between items-baseline">
                 <h3 className="text-lg font-medium">
-                  Kahiwa <span className="font-serif italic text-foreground/50">— brändi</span>
+                  Lumière <span className="font-serif italic text-foreground/50">— brändi & menu</span>
                 </h3>
-                <span className="text-sm text-muted-foreground tabular-nums">2024</span>
+                <span className="text-sm text-muted-foreground tabular-nums">2025</span>
               </div>
             </div>
           </div>
@@ -172,7 +170,7 @@ function Index() {
               (03) Yhteys
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium mb-12 text-balance max-w-[18ch] tracking-tight">
-              Onko sinulla <span className="font-serif italic">projekti</span> mielessä?
+              Viedäänkö <span className="font-serif italic">ravintolasi</span> verkkoon?
             </h2>
             <Link
               to="/yhteys"
