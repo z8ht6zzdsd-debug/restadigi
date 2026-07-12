@@ -17,7 +17,7 @@ export function SiteHeader() {
     <nav className="py-8 sm:py-10 relative z-20">
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
         <Link to="/" className="text-base font-serif tracking-tight" onClick={() => setOpen(false)}>
-          Yritys<span className="text-accent">DIGI.</span>
+          Resta<span className="text-accent">digi.</span>
         </Link>
 
         <div className="hidden lg:flex gap-6 text-sm text-foreground/70">
