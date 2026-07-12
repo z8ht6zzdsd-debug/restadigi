@@ -137,10 +137,14 @@ export const Route = createFileRoute("/api/chat")({
               let toolContent = "Varaus tallennettu onnistuneesti.";
               try {
                 const args = parseReservationArgs(toolCall.function.arguments);
-                if (getDatabaseUrl() && sessionId) {
-                  await createReservation({ ...args, chatSessionId: sessionId }, settings);
-                  reservationCreated = true;
+                if (!getDatabaseUrl()) {
+                  throw new Error("Tietokantaa ei ole konfiguroitu");
                 }
+                if (!sessionId) {
+                  throw new Error("Chat-istunto puuttuu");
+                }
+                await createReservation({ ...args, chatSessionId: sessionId }, settings);
+                reservationCreated = true;
               } catch (error) {
                 console.error("Reservation error:", error);
                 toolContent =
