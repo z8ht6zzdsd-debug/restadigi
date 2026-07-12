@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { CalendarDays, LayoutDashboard, LogOut, MessageSquare, Users } from "lucide-react";
+import type { ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -11,7 +12,7 @@ const nav = [
   { to: "/dashboard/reservations", label: "Varaukset", icon: CalendarDays },
 ] as const;
 
-export function DashboardShell({ children }: { children: React.ReactNode }) {
+export function DashboardShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   async function logout() {
