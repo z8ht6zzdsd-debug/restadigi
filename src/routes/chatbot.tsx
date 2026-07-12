@@ -5,9 +5,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/chatbot")({
   head: () => ({
     meta: [
-      { title: "Chatbot — YritysDIGI" },
+      { title: "Chatbot — Restadigi" },
       { name: "description", content: "Älykäs chatbot verkkosivustollesi: palvelee asiakkaita 24/7, kerää liidejä ja kasvattaa konversiota. Kuukausimaksullinen avaimet käteen -palvelu." },
-      { property: "og:title", content: "Chatbot — YritysDIGI" },
+      { property: "og:title", content: "Chatbot — Restadigi" },
       { property: "og:description", content: "Ympärivuorokautinen myyjä ja asiakaspalvelija yrityksesi verkkosivuille." },
     ],
   }),

@@ -5,9 +5,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/diginakyvyys")({
   head: () => ({
     meta: [
-      { title: "Diginäkyvyys — YritysDIGI" },
+      { title: "Diginäkyvyys — Restadigi" },
       { name: "description", content: "Diginäkyvyytesi kerralla kuntoon: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti." },
-      { property: "og:title", content: "Diginäkyvyys — YritysDIGI" },
+      { property: "og:title", content: "Diginäkyvyys — Restadigi" },
       { property: "og:description", content: "Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, somepaketti ja huippu-urheilun näkyvyyspaketti." },
     ],
   }),

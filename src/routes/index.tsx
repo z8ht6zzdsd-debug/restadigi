@@ -8,9 +8,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "YritysDIGI — Näyttävät ja tehokkaat verkkosivut yritykselle" },
+      { title: "Restadigi — Näyttävät ja tehokkaat verkkosivut yritykselle" },
       { name: "description", content: "Rakennamme yrityksille näyttäviä, moderneja ja tehokkaita verkkosivuja sekä vahvaa verkkonäkyvyyttä. Uuden teknologian avulla sivut valmistuvat nopeasti ja niitä on helppo päivittää." },
-      { property: "og:title", content: "YritysDIGI — Näyttävät ja tehokkaat verkkosivut yritykselle" },
+      { property: "og:title", content: "Restadigi — Näyttävät ja tehokkaat verkkosivut yritykselle" },
       { property: "og:description", content: "Modernit, responsiiviset verkkosivut ja laaja asiakastuki yrityksesi kasvun tueksi." },
     ],
   }),

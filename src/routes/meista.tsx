@@ -6,9 +6,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/meista")({
   head: () => ({
     meta: [
-      { title: "Meistä — YritysDIGI" },
-      { name: "description", content: "YritysDIGI on pieni studio, joka rakentaa kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Tutustu tapaamme tehdä työtä." },
-      { property: "og:title", content: "Meistä — YritysDIGI" },
+      { title: "Meistä — Restadigi" },
+      { name: "description", content: "Restadigi on pieni studio, joka rakentaa kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Tutustu tapaamme tehdä työtä." },
+      { property: "og:title", content: "Meistä — Restadigi" },
       { property: "og:description", content: "Pieni studio, iso vastuu. Kotisivuja ja diginäkyvyyttä suomalaisille yrityksille." },
       { property: "og:image", content: heroStudio },
     ],
@@ -43,7 +43,7 @@ function MeistaPage() {
           </h1>
           <div className="grid md:grid-cols-12 gap-8">
             <p className="md:col-span-7 text-base sm:text-lg text-foreground/70 leading-relaxed">
-              YritysDIGI on itsenäinen digistudio, joka rakentaa kotisivuja ja vahvistaa pienten
+              Restadigi on itsenäinen digistudio, joka rakentaa kotisivuja ja vahvistaa pienten
               ja keskisuurten yritysten diginäkyvyyttä. Käytämme uusinta teknologiaa, jotta sivut
               valmistuvat nopeasti, toimivat kaikilla laitteilla ja ovat helposti päivitettävissä.
             </p>

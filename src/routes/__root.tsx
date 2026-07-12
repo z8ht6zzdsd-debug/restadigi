@@ -77,9 +77,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "YritysDIGI — Kotisivut ja diginäkyvyys yrityksille" },
-      { name: "description", content: "YritysDIGI rakentaa moderneja kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Uuden teknologian avulla sivut valmistuvat nopeasti ja niitä on helppo päivittää." },
-      { property: "og:title", content: "YritysDIGI — Kotisivut ja diginäkyvyys yrityksille" },
+      { title: "Restadigi — Kotisivut ja diginäkyvyys yrityksille" },
+      { name: "description", content: "Restadigi rakentaa moderneja kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Uuden teknologian avulla sivut valmistuvat nopeasti ja niitä on helppo päivittää." },
+      { property: "og:title", content: "Restadigi — Kotisivut ja diginäkyvyys yrityksille" },
       { property: "og:description", content: "Modernit kotisivut, SEO ja diginäkyvyyden palvelut yrityksesi kasvun tueksi." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
