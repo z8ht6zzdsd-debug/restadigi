@@ -5,9 +5,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/kotisivut-yrityksille")({
   head: () => ({
     meta: [
-      { title: "Kotisivut yrityksille — YritysDIGI" },
+      { title: "Kotisivut yrityksille — Restadigi" },
       { name: "description", content: "Selkeät ja vaikuttavat kotisivupaketit, hosting ja graafiset lisäpalvelut yrityksille ja yhdistyksille." },
-      { property: "og:title", content: "Kotisivut yrityksille — YritysDIGI" },
+      { property: "og:title", content: "Kotisivut yrityksille — Restadigi" },
       { property: "og:description", content: "Kotisivupaketit, hosting ja graafiset lisäpalvelut yrityksesi tarpeisiin." },
     ],
   }),

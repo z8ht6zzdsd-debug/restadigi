@@ -6,9 +6,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/yhteys")({
   head: () => ({
     meta: [
-      { title: "Ota yhteyttä — YritysDIGI" },
-      { name: "description", content: "Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. info@yritysdigi.fi" },
-      { property: "og:title", content: "Ota yhteyttä — YritysDIGI" },
+      { title: "Ota yhteyttä — Restadigi" },
+      { name: "description", content: "Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. info@restadigi.fi" },
+      { property: "og:title", content: "Ota yhteyttä — Restadigi" },
       { property: "og:description", content: "Kerro projektistasi — palaamme asiaan yhden arkipäivän kuluessa." },
     ],
   }),
@@ -25,7 +25,7 @@ function YhteysPage() {
     const body = encodeURIComponent(
       `Nimi: ${data.get("name")}\nYritys: ${data.get("company")}\nSähköposti: ${data.get("email")}\nBudjetti: ${data.get("budget")}\n\nViesti:\n${data.get("message")}`,
     );
-    window.location.href = `mailto:info@yritysdigi.fi?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@restadigi.fi?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -52,8 +52,8 @@ function YhteysPage() {
           <aside className="md:col-span-4 space-y-8">
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Sähköposti</div>
-              <a href="mailto:info@yritysdigi.fi" className="text-lg font-serif hover:text-accent transition-colors">
-                info@yritysdigi.fi
+              <a href="mailto:info@restadigi.fi" className="text-lg font-serif hover:text-accent transition-colors">
+                info@restadigi.fi
               </a>
             </div>
             <div>
