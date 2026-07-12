@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 
@@ -22,20 +23,47 @@ type Reservation = {
   createdAt: string;
 };
 
+const STATUS_LABELS: Record<string, string> = {
+  pending: "Odottaa",
+  confirmed: "Vahvistettu",
+  cancelled: "Peruttu",
+};
+
 function DashboardReservationsPage() {
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [error, setError] = useState<string | null>(null);
+  const [updatingId, setUpdatingId] = useState<string | null>(null);
+
+  async function loadReservations() {
+    const res = await fetch("/api/dashboard/reservations", { credentials: "include" });
+    if (!res.ok) throw new Error("Varausten lataus epäonnistui");
+    const data = (await res.json()) as { reservations: Reservation[] };
+    setReservations(data.reservations);
+  }
 
   useEffect(() => {
-    void fetch("/api/dashboard/reservations", { credentials: "include" })
-      .then(async (res) => {
-        if (!res.ok) throw new Error("Varausten lataus epäonnistui");
-        return res.json() as Promise<{ reservations: Reservation[] }>;
-      })
-      .then((data) => setReservations(data.reservations))
-      .catch((err: Error) => setError(err.message));
+    void loadReservations().catch((err: Error) => setError(err.message));
   }, []);
+
+  async function updateStatus(id: string, status: "pending" | "confirmed" | "cancelled") {
+    setUpdatingId(id);
+    try {
+      const res = await fetch(`/api/dashboard/reservations/${id}`, {
+        method: "PATCH",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status }),
+      });
+      if (!res.ok) throw new Error("Tilan päivitys epäonnistui");
+      const data = (await res.json()) as { reservation: Reservation };
+      setReservations((prev) => prev.map((r) => (r.id === id ? data.reservation : r)));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Päivitys epäonnistui");
+    } finally {
+      setUpdatingId(null);
+    }
+  }
 
   const datesWithReservations = useMemo(() => {
     const set = new Set(reservations.map((r) => r.reservationDate));
@@ -50,7 +78,7 @@ function DashboardReservationsPage() {
       <div>
         <h2 className="text-2xl font-medium">Pöytävaraukset</h2>
         <p className="text-sm text-muted-foreground">
-          Demo-varaukset chatbotista — kalenterinäkymä
+          Varaukset chatbotista — sähköposti ja tila näkyvät täällä
         </p>
       </div>
 
@@ -90,23 +118,58 @@ function DashboardReservationsPage() {
                       "rounded-full px-2 py-0.5 text-xs uppercase",
                       reservation.status === "confirmed"
                         ? "bg-accent/20 text-accent"
-                        : "bg-muted text-muted-foreground",
+                        : reservation.status === "cancelled"
+                          ? "bg-destructive/10 text-destructive"
+                          : "bg-muted text-muted-foreground",
                     )}
                   >
-                    {reservation.status}
+                    {STATUS_LABELS[reservation.status] ?? reservation.status}
                   </span>
                 </div>
                 <p className="mt-2 text-sm text-foreground/80">
                   {reservation.reservationTime} · {reservation.partySize} hlö
                 </p>
-                {(reservation.guestPhone || reservation.guestEmail) && (
+                {reservation.guestEmail && (
+                  <p className="mt-1 text-sm">
+                    <span className="text-muted-foreground">Sähköposti: </span>
+                    <a
+                      href={`mailto:${reservation.guestEmail}`}
+                      className="text-accent underline-offset-2 hover:underline"
+                    >
+                      {reservation.guestEmail}
+                    </a>
+                  </p>
+                )}
+                {reservation.guestPhone && (
                   <p className="mt-1 text-sm text-muted-foreground">
-                    {[reservation.guestPhone, reservation.guestEmail].filter(Boolean).join(" · ")}
+                    Puhelin: {reservation.guestPhone}
                   </p>
                 )}
                 {reservation.notes && (
                   <p className="mt-2 text-sm italic text-foreground/70">{reservation.notes}</p>
                 )}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {reservation.status !== "confirmed" && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      disabled={updatingId === reservation.id}
+                      onClick={() => void updateStatus(reservation.id, "confirmed")}
+                    >
+                      Vahvista
+                    </Button>
+                  )}
+                  {reservation.status !== "cancelled" && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      disabled={updatingId === reservation.id}
+                      onClick={() => void updateStatus(reservation.id, "cancelled")}
+                    >
+                      Peruuta
+                    </Button>
+                  )}
+                </div>
               </div>
             ))
           )}

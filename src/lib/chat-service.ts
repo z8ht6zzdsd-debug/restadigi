@@ -1,6 +1,8 @@
 import { eq, sql } from "drizzle-orm";
 
 import { getDb, schema } from "@/db";
+import type { RestaurantSettings } from "@/lib/restaurant-settings-types";
+import { validateReservationInput } from "@/lib/settings-service";
 
 type ReservationInput = {
   guestName: string;
@@ -40,7 +42,11 @@ export async function saveChatMessage(sessionId: string, role: string, content: 
     .where(eq(schema.chatSessions.id, sessionId));
 }
 
-export async function createReservation(input: ReservationInput) {
+export async function createReservation(input: ReservationInput, settings?: RestaurantSettings) {
+  if (settings) {
+    validateReservationInput(input, settings);
+  }
+
   const db = getDb();
   const [reservation] = await db
     .insert(schema.reservations)
@@ -54,7 +60,7 @@ export async function createReservation(input: ReservationInput) {
       reservationTime: input.time,
       notes: input.notes ?? null,
       source: "chatbot",
-      status: "confirmed",
+      status: "pending",
     })
     .returning();
 

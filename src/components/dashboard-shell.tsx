@@ -1,5 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { CalendarDays, LayoutDashboard, LogOut, MessageSquare, Users } from "lucide-react";
+import {
+  CalendarDays,
+  LayoutDashboard,
+  LogOut,
+  MessageSquare,
+  Settings,
+  Users,
+} from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -10,6 +17,7 @@ const nav = [
   { to: "/dashboard/visitors", label: "Kävijät", icon: Users },
   { to: "/dashboard/conversations", label: "Keskustelut", icon: MessageSquare },
   { to: "/dashboard/reservations", label: "Varaukset", icon: CalendarDays },
+  { to: "/dashboard/settings", label: "Asetukset", icon: Settings },
 ] as const;
 
 export function DashboardShell({ children }: { children: ReactNode }) {

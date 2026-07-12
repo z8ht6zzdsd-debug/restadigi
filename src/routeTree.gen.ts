@@ -18,19 +18,23 @@ import { Route as ChatbotRouteImport } from './routes/chatbot'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardVisitorsRouteImport } from './routes/dashboard/visitors'
+import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
 import { Route as DashboardReservationsRouteImport } from './routes/dashboard/reservations'
 import { Route as DashboardLoginRouteImport } from './routes/dashboard.login'
 import { Route as DashboardConversationsRouteImport } from './routes/dashboard/conversations'
 import { Route as DashboardLayoutRouteImport } from './routes/dashboard/_layout'
 import { Route as ApiTrackRouteImport } from './routes/api/track'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiRestaurantSettingsRouteImport } from './routes/api/restaurant/settings'
 import { Route as ApiDashboardVisitorsRouteImport } from './routes/api/dashboard/visitors'
 import { Route as ApiDashboardStatsRouteImport } from './routes/api/dashboard/stats'
+import { Route as ApiDashboardSettingsRouteImport } from './routes/api/dashboard/settings'
 import { Route as ApiDashboardReservationsRouteImport } from './routes/api/dashboard/reservations'
 import { Route as ApiDashboardConversationsRouteImport } from './routes/api/dashboard/conversations'
 import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
 import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
+import { Route as ApiDashboardReservationsIdRouteImport } from './routes/api/dashboard/reservations/$id'
 import { Route as ApiDashboardConversationsSessionIdRouteImport } from './routes/api/dashboard/conversations/$sessionId'
 
 const YhteysRoute = YhteysRouteImport.update({
@@ -78,6 +82,11 @@ const DashboardVisitorsRoute = DashboardVisitorsRouteImport.update({
   path: '/dashboard/visitors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
+  id: '/dashboard/settings',
+  path: '/dashboard/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardReservationsRoute = DashboardReservationsRouteImport.update({
   id: '/dashboard/reservations',
   path: '/dashboard/reservations',
@@ -108,6 +117,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiRestaurantSettingsRoute = ApiRestaurantSettingsRouteImport.update({
+  id: '/api/restaurant/settings',
+  path: '/api/restaurant/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiDashboardVisitorsRoute = ApiDashboardVisitorsRouteImport.update({
   id: '/api/dashboard/visitors',
   path: '/api/dashboard/visitors',
@@ -116,6 +130,11 @@ const ApiDashboardVisitorsRoute = ApiDashboardVisitorsRouteImport.update({
 const ApiDashboardStatsRoute = ApiDashboardStatsRouteImport.update({
   id: '/api/dashboard/stats',
   path: '/api/dashboard/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDashboardSettingsRoute = ApiDashboardSettingsRouteImport.update({
+  id: '/api/dashboard/settings',
+  path: '/api/dashboard/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiDashboardReservationsRoute =
@@ -145,6 +164,12 @@ const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
   path: '/api/auth/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiDashboardReservationsIdRoute =
+  ApiDashboardReservationsIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ApiDashboardReservationsRoute,
+  } as any)
 const ApiDashboardConversationsSessionIdRoute =
   ApiDashboardConversationsSessionIdRouteImport.update({
     id: '/$sessionId',
@@ -166,16 +191,20 @@ export interface FileRoutesByFullPath {
   '/dashboard/conversations': typeof DashboardConversationsRoute
   '/dashboard/login': typeof DashboardLoginRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/visitors': typeof DashboardVisitorsRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/dashboard/conversations': typeof ApiDashboardConversationsRouteWithChildren
-  '/api/dashboard/reservations': typeof ApiDashboardReservationsRoute
+  '/api/dashboard/reservations': typeof ApiDashboardReservationsRouteWithChildren
+  '/api/dashboard/settings': typeof ApiDashboardSettingsRoute
   '/api/dashboard/stats': typeof ApiDashboardStatsRoute
   '/api/dashboard/visitors': typeof ApiDashboardVisitorsRoute
+  '/api/restaurant/settings': typeof ApiRestaurantSettingsRoute
   '/api/dashboard/conversations/$sessionId': typeof ApiDashboardConversationsSessionIdRoute
+  '/api/dashboard/reservations/$id': typeof ApiDashboardReservationsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -191,15 +220,19 @@ export interface FileRoutesByTo {
   '/dashboard/conversations': typeof DashboardConversationsRoute
   '/dashboard/login': typeof DashboardLoginRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/visitors': typeof DashboardVisitorsRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/dashboard/conversations': typeof ApiDashboardConversationsRouteWithChildren
-  '/api/dashboard/reservations': typeof ApiDashboardReservationsRoute
+  '/api/dashboard/reservations': typeof ApiDashboardReservationsRouteWithChildren
+  '/api/dashboard/settings': typeof ApiDashboardSettingsRoute
   '/api/dashboard/stats': typeof ApiDashboardStatsRoute
   '/api/dashboard/visitors': typeof ApiDashboardVisitorsRoute
+  '/api/restaurant/settings': typeof ApiRestaurantSettingsRoute
   '/api/dashboard/conversations/$sessionId': typeof ApiDashboardConversationsSessionIdRoute
+  '/api/dashboard/reservations/$id': typeof ApiDashboardReservationsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -216,16 +249,20 @@ export interface FileRoutesById {
   '/dashboard/conversations': typeof DashboardConversationsRoute
   '/dashboard/login': typeof DashboardLoginRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/visitors': typeof DashboardVisitorsRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/dashboard/conversations': typeof ApiDashboardConversationsRouteWithChildren
-  '/api/dashboard/reservations': typeof ApiDashboardReservationsRoute
+  '/api/dashboard/reservations': typeof ApiDashboardReservationsRouteWithChildren
+  '/api/dashboard/settings': typeof ApiDashboardSettingsRoute
   '/api/dashboard/stats': typeof ApiDashboardStatsRoute
   '/api/dashboard/visitors': typeof ApiDashboardVisitorsRoute
+  '/api/restaurant/settings': typeof ApiRestaurantSettingsRoute
   '/api/dashboard/conversations/$sessionId': typeof ApiDashboardConversationsSessionIdRoute
+  '/api/dashboard/reservations/$id': typeof ApiDashboardReservationsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -243,6 +280,7 @@ export interface FileRouteTypes {
     | '/dashboard/conversations'
     | '/dashboard/login'
     | '/dashboard/reservations'
+    | '/dashboard/settings'
     | '/dashboard/visitors'
     | '/dashboard/'
     | '/api/auth/login'
@@ -250,9 +288,12 @@ export interface FileRouteTypes {
     | '/api/auth/me'
     | '/api/dashboard/conversations'
     | '/api/dashboard/reservations'
+    | '/api/dashboard/settings'
     | '/api/dashboard/stats'
     | '/api/dashboard/visitors'
+    | '/api/restaurant/settings'
     | '/api/dashboard/conversations/$sessionId'
+    | '/api/dashboard/reservations/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -268,15 +309,19 @@ export interface FileRouteTypes {
     | '/dashboard/conversations'
     | '/dashboard/login'
     | '/dashboard/reservations'
+    | '/dashboard/settings'
     | '/dashboard/visitors'
     | '/api/auth/login'
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/dashboard/conversations'
     | '/api/dashboard/reservations'
+    | '/api/dashboard/settings'
     | '/api/dashboard/stats'
     | '/api/dashboard/visitors'
+    | '/api/restaurant/settings'
     | '/api/dashboard/conversations/$sessionId'
+    | '/api/dashboard/reservations/$id'
   id:
     | '__root__'
     | '/'
@@ -292,6 +337,7 @@ export interface FileRouteTypes {
     | '/dashboard/conversations'
     | '/dashboard/login'
     | '/dashboard/reservations'
+    | '/dashboard/settings'
     | '/dashboard/visitors'
     | '/dashboard/'
     | '/api/auth/login'
@@ -299,9 +345,12 @@ export interface FileRouteTypes {
     | '/api/auth/me'
     | '/api/dashboard/conversations'
     | '/api/dashboard/reservations'
+    | '/api/dashboard/settings'
     | '/api/dashboard/stats'
     | '/api/dashboard/visitors'
+    | '/api/restaurant/settings'
     | '/api/dashboard/conversations/$sessionId'
+    | '/api/dashboard/reservations/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -318,15 +367,18 @@ export interface RootRouteChildren {
   DashboardConversationsRoute: typeof DashboardConversationsRoute
   DashboardLoginRoute: typeof DashboardLoginRoute
   DashboardReservationsRoute: typeof DashboardReservationsRoute
+  DashboardSettingsRoute: typeof DashboardSettingsRoute
   DashboardVisitorsRoute: typeof DashboardVisitorsRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
   ApiAuthLoginRoute: typeof ApiAuthLoginRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthMeRoute: typeof ApiAuthMeRoute
   ApiDashboardConversationsRoute: typeof ApiDashboardConversationsRouteWithChildren
-  ApiDashboardReservationsRoute: typeof ApiDashboardReservationsRoute
+  ApiDashboardReservationsRoute: typeof ApiDashboardReservationsRouteWithChildren
+  ApiDashboardSettingsRoute: typeof ApiDashboardSettingsRoute
   ApiDashboardStatsRoute: typeof ApiDashboardStatsRoute
   ApiDashboardVisitorsRoute: typeof ApiDashboardVisitorsRoute
+  ApiRestaurantSettingsRoute: typeof ApiRestaurantSettingsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -394,6 +446,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardVisitorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/settings': {
+      id: '/dashboard/settings'
+      path: '/dashboard/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard/reservations': {
       id: '/dashboard/reservations'
       path: '/dashboard/reservations'
@@ -436,6 +495,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/restaurant/settings': {
+      id: '/api/restaurant/settings'
+      path: '/api/restaurant/settings'
+      fullPath: '/api/restaurant/settings'
+      preLoaderRoute: typeof ApiRestaurantSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/dashboard/visitors': {
       id: '/api/dashboard/visitors'
       path: '/api/dashboard/visitors'
@@ -448,6 +514,13 @@ declare module '@tanstack/react-router' {
       path: '/api/dashboard/stats'
       fullPath: '/api/dashboard/stats'
       preLoaderRoute: typeof ApiDashboardStatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/settings': {
+      id: '/api/dashboard/settings'
+      path: '/api/dashboard/settings'
+      fullPath: '/api/dashboard/settings'
+      preLoaderRoute: typeof ApiDashboardSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/dashboard/reservations': {
@@ -485,6 +558,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/dashboard/reservations/$id': {
+      id: '/api/dashboard/reservations/$id'
+      path: '/$id'
+      fullPath: '/api/dashboard/reservations/$id'
+      preLoaderRoute: typeof ApiDashboardReservationsIdRouteImport
+      parentRoute: typeof ApiDashboardReservationsRoute
+    }
     '/api/dashboard/conversations/$sessionId': {
       id: '/api/dashboard/conversations/$sessionId'
       path: '/$sessionId'
@@ -510,6 +590,20 @@ const ApiDashboardConversationsRouteWithChildren =
     ApiDashboardConversationsRouteChildren,
   )
 
+interface ApiDashboardReservationsRouteChildren {
+  ApiDashboardReservationsIdRoute: typeof ApiDashboardReservationsIdRoute
+}
+
+const ApiDashboardReservationsRouteChildren: ApiDashboardReservationsRouteChildren =
+  {
+    ApiDashboardReservationsIdRoute: ApiDashboardReservationsIdRoute,
+  }
+
+const ApiDashboardReservationsRouteWithChildren =
+  ApiDashboardReservationsRoute._addFileChildren(
+    ApiDashboardReservationsRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChatbotRoute: ChatbotRoute,
@@ -524,15 +618,18 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardConversationsRoute: DashboardConversationsRoute,
   DashboardLoginRoute: DashboardLoginRoute,
   DashboardReservationsRoute: DashboardReservationsRoute,
+  DashboardSettingsRoute: DashboardSettingsRoute,
   DashboardVisitorsRoute: DashboardVisitorsRoute,
   DashboardIndexRoute: DashboardIndexRoute,
   ApiAuthLoginRoute: ApiAuthLoginRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthMeRoute: ApiAuthMeRoute,
   ApiDashboardConversationsRoute: ApiDashboardConversationsRouteWithChildren,
-  ApiDashboardReservationsRoute: ApiDashboardReservationsRoute,
+  ApiDashboardReservationsRoute: ApiDashboardReservationsRouteWithChildren,
+  ApiDashboardSettingsRoute: ApiDashboardSettingsRoute,
   ApiDashboardStatsRoute: ApiDashboardStatsRoute,
   ApiDashboardVisitorsRoute: ApiDashboardVisitorsRoute,
+  ApiRestaurantSettingsRoute: ApiRestaurantSettingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

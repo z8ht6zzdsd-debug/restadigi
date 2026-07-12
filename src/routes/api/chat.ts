@@ -7,8 +7,13 @@ import {
   parseReservationArgs,
   saveChatMessage,
 } from "@/lib/chat-service";
-import { CHATBOT_SYSTEM_PROMPT, RESERVATION_TOOL, type ChatMessage } from "@/lib/chatbot-prompt";
+import type { ChatMessage } from "@/lib/chatbot-prompt";
 import { getDatabaseUrl } from "@/lib/database-url";
+import {
+  buildChatbotSystemPrompt,
+  buildReservationTool,
+  getRestaurantSettings,
+} from "@/lib/settings-service";
 
 const chatRequestSchema = z.object({
   sessionId: z.string().uuid().optional(),
@@ -36,7 +41,12 @@ type OpenAiMessage = {
   name?: string;
 };
 
-async function callOpenAi(messages: OpenAiMessage[], apiKey: string, model: string) {
+async function callOpenAi(
+  messages: OpenAiMessage[],
+  apiKey: string,
+  model: string,
+  tools: ReturnType<typeof buildReservationTool>[],
+) {
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -46,7 +56,7 @@ async function callOpenAi(messages: OpenAiMessage[], apiKey: string, model: stri
     body: JSON.stringify({
       model,
       messages,
-      tools: [RESERVATION_TOOL],
+      tools,
       tool_choice: "auto",
       max_tokens: 600,
       temperature: 0.7,
@@ -91,6 +101,9 @@ export const Route = createFileRoute("/api/chat")({
         const model = process.env.OPENAI_MODEL ?? "gpt-4o-mini";
         const userMessages = parsed.data.messages;
         const lastUserMessage = userMessages[userMessages.length - 1];
+        const settings = await getRestaurantSettings();
+        const reservationTool = buildReservationTool(settings);
+        const tools = settings.reservationsEnabled ? [reservationTool] : [];
 
         let sessionId = parsed.data.sessionId;
         let reservationCreated = false;
@@ -107,12 +120,12 @@ export const Route = createFileRoute("/api/chat")({
         }
 
         const openAiMessages: OpenAiMessage[] = [
-          { role: "system", content: CHATBOT_SYSTEM_PROMPT },
+          { role: "system", content: buildChatbotSystemPrompt(settings) },
           ...userMessages.map((m) => ({ role: m.role, content: m.content })),
         ];
 
         try {
-          let data = await callOpenAi(openAiMessages, apiKey, model);
+          let data = await callOpenAi(openAiMessages, apiKey, model, tools);
           let assistantMsg = data.choices?.[0]?.message;
 
           if (assistantMsg?.tool_calls?.length) {
@@ -125,13 +138,15 @@ export const Route = createFileRoute("/api/chat")({
               try {
                 const args = parseReservationArgs(toolCall.function.arguments);
                 if (getDatabaseUrl() && sessionId) {
-                  await createReservation({ ...args, chatSessionId: sessionId });
+                  await createReservation({ ...args, chatSessionId: sessionId }, settings);
                   reservationCreated = true;
                 }
               } catch (error) {
                 console.error("Reservation error:", error);
                 toolContent =
-                  "Varauksen tallennus epäonnistui. Pyydä asiakasta tarkistamaan tiedot.";
+                  error instanceof Error
+                    ? `Varauksen tallennus epäonnistui: ${error.message}. Pyydä asiakasta tarkistamaan tiedot.`
+                    : "Varauksen tallennus epäonnistui. Pyydä asiakasta tarkistamaan tiedot.";
               }
 
               openAiMessages.push({
@@ -141,7 +156,7 @@ export const Route = createFileRoute("/api/chat")({
               });
             }
 
-            data = await callOpenAi(openAiMessages, apiKey, model);
+            data = await callOpenAi(openAiMessages, apiKey, model, tools);
             assistantMsg = data.choices?.[0]?.message;
           }
 

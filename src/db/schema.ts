@@ -1,5 +1,27 @@
 import { relations } from "drizzle-orm";
-import { integer, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
+
+export const restaurantSettings = pgTable("restaurant_settings", {
+  id: text("id").primaryKey().default("default"),
+  restaurantName: text("restaurant_name").notNull().default("Demo Ravintola"),
+  chatbotWelcomeMessage: text("chatbot_welcome_message")
+    .notNull()
+    .default(
+      "Hei! Olen ravintolan chatbot. Voin auttaa pöytävarauksessa — kerro nimesi, henkilömäärän, päivän, kellonajan ja sähköpostisi.",
+    ),
+  chatbotInstructions: text("chatbot_instructions"),
+  requireEmail: boolean("require_email").notNull().default(true),
+  requirePhone: boolean("require_phone").notNull().default(false),
+  minPartySize: integer("min_party_size").notNull().default(1),
+  maxPartySize: integer("max_party_size").notNull().default(12),
+  openTime: text("open_time").notNull().default("11:00"),
+  closeTime: text("close_time").notNull().default("22:00"),
+  slotMinutes: integer("slot_minutes").notNull().default(30),
+  maxCoversPerSlot: integer("max_covers_per_slot").notNull().default(20),
+  reservationsEnabled: boolean("reservations_enabled").notNull().default(true),
+  accentColor: text("accent_color").notNull().default("#c46a32"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
 
 export const pageViews = pgTable("page_views", {
   id: uuid("id").defaultRandom().primaryKey(),

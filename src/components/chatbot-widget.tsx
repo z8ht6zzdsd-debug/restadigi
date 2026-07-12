@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import type { ChatMessage } from "@/lib/chatbot-prompt";
+import type { PublicRestaurantSettings } from "@/lib/restaurant-settings-types";
 import {
   getChatSessionId,
   getOrCreateVisitorSessionId,
@@ -12,17 +13,15 @@ import {
 } from "@/lib/visitor-session";
 import { cn } from "@/lib/utils";
 
-const WELCOME: ChatMessage = {
-  role: "assistant",
-  content:
-    "Hei! Olen Restadigin chatbot. Voin kertoa palveluistamme tai auttaa tekemään demo-pöytävarauksen ravintolaan. Miten voin auttaa?",
-};
+const FALLBACK_WELCOME =
+  "Hei! Olen ravintolan chatbot. Voin auttaa pöytävarauksessa — kerro nimesi, henkilömäärän, päivän, kellonajan ja sähköpostisi.";
 
 export function ChatbotWidget() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<ChatMessage[]>([WELCOME]);
+  const [siteSettings, setSiteSettings] = useState<PublicRestaurantSettings | null>(null);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [sessionId, setSessionId] = useState<string | null>(() => getChatSessionId());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,6 +29,25 @@ export function ChatbotWidget() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const hidden = pathname.startsWith("/dashboard");
+  const accentColor = siteSettings?.accentColor ?? "#c46a32";
+  const welcomeText = siteSettings?.chatbotWelcomeMessage ?? FALLBACK_WELCOME;
+  const restaurantName = siteSettings?.restaurantName ?? "Ravintola";
+
+  useEffect(() => {
+    void fetch("/api/restaurant/settings")
+      .then(async (res) => {
+        if (!res.ok) return null;
+        return res.json() as Promise<{ settings: PublicRestaurantSettings }>;
+      })
+      .then((data) => {
+        if (data?.settings) setSiteSettings(data.settings);
+      })
+      .catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    setMessages([{ role: "assistant", content: welcomeText }]);
+  }, [welcomeText]);
 
   useEffect(() => {
     if (open) {
@@ -56,7 +74,7 @@ export function ChatbotWidget() {
         body: JSON.stringify({
           sessionId: sessionId ?? undefined,
           visitorSessionId: getOrCreateVisitorSessionId(),
-          messages: nextMessages.filter((m) => m !== WELCOME),
+          messages: nextMessages.filter((m) => m.role !== "assistant" || m.content !== welcomeText),
         }),
       });
 
@@ -112,19 +130,20 @@ export function ChatbotWidget() {
               "animate-in fade-in slide-in-from-bottom-4 duration-200",
             )}
             role="dialog"
-            aria-label="Restadigi chatbot"
+            aria-label="Ravintolan chatbot"
           >
-            <div className="flex items-center justify-between border-b border-border bg-primary px-4 py-3 text-primary-foreground">
+            <div
+              className="flex items-center justify-between border-b border-border px-4 py-3 text-white"
+              style={{ backgroundColor: accentColor }}
+            >
               <div>
-                <p className="text-xs uppercase tracking-[0.15em] text-primary-foreground/70">
-                  Chatbot
-                </p>
-                <p className="text-sm font-medium">Restadigi avustaja</p>
+                <p className="text-xs uppercase tracking-[0.15em] text-white/70">Chatbot</p>
+                <p className="text-sm font-medium">{restaurantName}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-full p-1.5 transition-colors hover:bg-primary-foreground/10"
+                className="rounded-full p-1.5 transition-colors hover:bg-white/10"
                 aria-label="Sulje chat"
               >
                 <X className="size-4" />
@@ -138,9 +157,10 @@ export function ChatbotWidget() {
                   className={cn(
                     "max-w-[85%] rounded-sm px-3 py-2 text-sm leading-relaxed",
                     msg.role === "user"
-                      ? "ml-auto bg-accent text-accent-foreground"
+                      ? "ml-auto text-white"
                       : "mr-auto border border-border bg-background text-foreground/85",
                   )}
+                  style={msg.role === "user" ? { backgroundColor: accentColor } : undefined}
                 >
                   {msg.content}
                 </div>
@@ -175,7 +195,8 @@ export function ChatbotWidget() {
                   size="icon"
                   onClick={() => void sendMessage()}
                   disabled={loading || !input.trim()}
-                  className="shrink-0 rounded-full bg-accent text-accent-foreground hover:bg-accent/90"
+                  className="shrink-0 rounded-full text-white hover:opacity-90"
+                  style={{ backgroundColor: accentColor }}
                   aria-label="Lähetä viesti"
                 >
                   <Send className="size-4" />
@@ -189,12 +210,13 @@ export function ChatbotWidget() {
           type="button"
           size="lg"
           onClick={() => setOpen((v) => !v)}
-          className="h-14 rounded-full bg-primary px-5 shadow-lg hover:bg-accent"
+          className="h-14 rounded-full px-5 text-white shadow-lg hover:opacity-90"
+          style={{ backgroundColor: accentColor }}
           aria-expanded={open}
           aria-label={open ? "Sulje chatbot" : "Avaa chatbot"}
         >
           <MessageCircle className="size-5" />
-          <span className="hidden sm:inline">{open ? "Sulje chat" : "Kokeile chatbotia"}</span>
+          <span className="hidden sm:inline">{open ? "Sulje chat" : "Varaa pöytä"}</span>
         </Button>
       </div>
     </>
