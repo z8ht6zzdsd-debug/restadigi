@@ -3,51 +3,57 @@ import { count, desc, eq } from "drizzle-orm";
 
 import { getDb, schema } from "@/db";
 import { requireAdmin, unauthorizedResponse } from "@/lib/auth";
+import { getDatabaseUrl } from "@/lib/database-url";
 
 export const Route = createFileRoute("/api/dashboard/conversations")({
   server: {
     handlers: {
       GET: async ({ request }) => {
         if (!requireAdmin(request)) return unauthorizedResponse();
-        if (!process.env.DATABASE_URL) {
+        if (!getDatabaseUrl()) {
           return Response.json({ error: "Database not configured" }, { status: 503 });
         }
 
-        const db = getDb();
-        const sessions = await db.query.chatSessions.findMany({
-          orderBy: [desc(schema.chatSessions.updatedAt)],
-          limit: 50,
-        });
+        try {
+          const db = getDb();
+          const sessions = await db.query.chatSessions.findMany({
+            orderBy: [desc(schema.chatSessions.updatedAt)],
+            limit: 50,
+          });
 
-        const result = await Promise.all(
-          sessions.map(async (session) => {
-            const [msgCount] = await db
-              .select({ count: count() })
-              .from(schema.chatMessages)
-              .where(eq(schema.chatMessages.sessionId, session.id));
+          const result = await Promise.all(
+            sessions.map(async (session) => {
+              const [msgCount] = await db
+                .select({ count: count() })
+                .from(schema.chatMessages)
+                .where(eq(schema.chatMessages.sessionId, session.id));
 
-            const lastMessage = await db.query.chatMessages.findFirst({
-              where: eq(schema.chatMessages.sessionId, session.id),
-              orderBy: [desc(schema.chatMessages.createdAt)],
-            });
+              const lastMessage = await db.query.chatMessages.findFirst({
+                where: eq(schema.chatMessages.sessionId, session.id),
+                orderBy: [desc(schema.chatMessages.createdAt)],
+              });
 
-            const reservation = await db.query.reservations.findFirst({
-              where: eq(schema.reservations.chatSessionId, session.id),
-            });
+              const reservation = await db.query.reservations.findFirst({
+                where: eq(schema.reservations.chatSessionId, session.id),
+              });
 
-            return {
-              id: session.id,
-              visitorSessionId: session.visitorSessionId,
-              createdAt: session.createdAt,
-              updatedAt: session.updatedAt,
-              messageCount: msgCount.count,
-              lastMessage: lastMessage?.content ?? null,
-              hasReservation: Boolean(reservation),
-            };
-          }),
-        );
+              return {
+                id: session.id,
+                visitorSessionId: session.visitorSessionId,
+                createdAt: session.createdAt,
+                updatedAt: session.updatedAt,
+                messageCount: msgCount?.count ?? 0,
+                lastMessage: lastMessage?.content ?? null,
+                hasReservation: Boolean(reservation),
+              };
+            }),
+          );
 
-        return Response.json({ sessions: result });
+          return Response.json({ sessions: result });
+        } catch (error) {
+          console.error("Dashboard conversations error:", error);
+          return Response.json({ error: "Conversations load failed" }, { status: 500 });
+        }
       },
     },
   },

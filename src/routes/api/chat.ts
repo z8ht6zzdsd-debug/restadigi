@@ -8,6 +8,7 @@ import {
   saveChatMessage,
 } from "@/lib/chat-service";
 import { CHATBOT_SYSTEM_PROMPT, RESERVATION_TOOL, type ChatMessage } from "@/lib/chatbot-prompt";
+import { getDatabaseUrl } from "@/lib/database-url";
 
 const chatRequestSchema = z.object({
   sessionId: z.string().uuid().optional(),
@@ -94,7 +95,7 @@ export const Route = createFileRoute("/api/chat")({
         let sessionId = parsed.data.sessionId;
         let reservationCreated = false;
 
-        if (process.env.DATABASE_URL) {
+        if (getDatabaseUrl()) {
           try {
             sessionId = await ensureChatSession(sessionId, parsed.data.visitorSessionId);
             if (lastUserMessage?.role === "user") {
@@ -123,7 +124,7 @@ export const Route = createFileRoute("/api/chat")({
               let toolContent = "Varaus tallennettu onnistuneesti.";
               try {
                 const args = parseReservationArgs(toolCall.function.arguments);
-                if (process.env.DATABASE_URL && sessionId) {
+                if (getDatabaseUrl() && sessionId) {
                   await createReservation({ ...args, chatSessionId: sessionId });
                   reservationCreated = true;
                 }
@@ -149,7 +150,7 @@ export const Route = createFileRoute("/api/chat")({
             return Response.json({ error: "Tyhjä vastaus chatbotilta." }, { status: 502 });
           }
 
-          if (process.env.DATABASE_URL && sessionId) {
+          if (getDatabaseUrl() && sessionId) {
             try {
               await saveChatMessage(sessionId, "assistant", reply);
             } catch (error) {

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { getDb, schema } from "@/db";
+import { getDatabaseUrl } from "@/lib/database-url";
 
 const trackSchema = z.object({
   visitorSessionId: z.string().uuid(),
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/api/track")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        if (!process.env.DATABASE_URL) {
+        if (!getDatabaseUrl()) {
           return Response.json({ ok: true, skipped: true });
         }
 

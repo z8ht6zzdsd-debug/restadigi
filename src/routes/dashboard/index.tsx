@@ -22,8 +22,9 @@ function DashboardHomePage() {
   useEffect(() => {
     void fetch("/api/dashboard/stats", { credentials: "include" })
       .then(async (res) => {
-        if (!res.ok) throw new Error("Tilastojen lataus epäonnistui");
-        return res.json() as Promise<Stats>;
+        const data = (await res.json()) as Stats & { error?: string };
+        if (!res.ok) throw new Error(data.error ?? "Tilastojen lataus epäonnistui");
+        return data;
       })
       .then(setStats)
       .catch((err: Error) => setError(err.message));
@@ -81,12 +82,16 @@ function DashboardHomePage() {
         <div className="rounded-sm border border-border bg-card p-5">
           <h3 className="mb-4 font-medium">Suosituimmat sivut</h3>
           <ul className="space-y-3">
-            {stats.topPages.map((page) => (
-              <li key={page.path} className="flex items-center justify-between text-sm">
-                <span className="truncate text-foreground/80">{page.path}</span>
-                <span className="ml-4 font-medium">{page.views}</span>
-              </li>
-            ))}
+            {stats.topPages.length === 0 ? (
+              <li className="text-sm text-muted-foreground">Ei vielä dataa.</li>
+            ) : (
+              stats.topPages.map((page) => (
+                <li key={page.path} className="flex items-center justify-between text-sm">
+                  <span className="truncate text-foreground/80">{page.path}</span>
+                  <span className="ml-4 font-medium">{page.views}</span>
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </div>
