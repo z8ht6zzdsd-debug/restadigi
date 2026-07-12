@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ChatbotWidget } from "@/components/chatbot-widget";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -179,6 +180,7 @@ function ChatbotPage() {
       </section>
 
       <SiteFooter />
+      <ChatbotWidget />
     </div>
   );
 }
