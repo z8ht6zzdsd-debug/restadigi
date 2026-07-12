@@ -44,7 +44,7 @@ export async function saveChatMessage(sessionId: string, role: string, content: 
 
 export async function createReservation(input: ReservationInput, settings?: RestaurantSettings) {
   if (settings) {
-    validateReservationInput(input, settings);
+    await validateReservationInput(input, settings);
   }
 
   const db = getDb();

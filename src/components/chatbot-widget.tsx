@@ -14,7 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const FALLBACK_WELCOME =
-  "Hei! Olen ravintolan chatbot. Voin auttaa pöytävarauksessa — kerro nimesi, henkilömäärän, päivän, kellonajan ja sähköpostisi.";
+  "Hei! Tervetuloa ravintolaan. Autan mielelläni pöytävarauksessa — kerro nimesi, henkilömäärän, päivän, kellonajan, sähköpostisi ja puhelinnumerosi.";
 
 export function ChatbotWidget() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });

@@ -5,18 +5,35 @@ import { requireAdmin, unauthorizedResponse } from "@/lib/auth";
 import { getDatabaseUrl } from "@/lib/database-url";
 import { getRestaurantSettings, upsertRestaurantSettings } from "@/lib/settings-service";
 
+const timeSchema = z.string().regex(/^\d{2}:\d{2}$/);
+
 const settingsSchema = z.object({
   restaurantName: z.string().min(1).max(120),
+  restaurantAddress: z.string().max(200).nullable().optional(),
+  restaurantPhone: z.string().max(40).nullable().optional(),
+  restaurantEmail: z.string().max(120).nullish(),
+  cuisineType: z.string().max(120).nullable().optional(),
+  restaurantDescription: z.string().max(1000).nullable().optional(),
   chatbotWelcomeMessage: z.string().min(1).max(500),
   chatbotInstructions: z.string().max(2000).nullable().optional(),
   requireEmail: z.boolean(),
   requirePhone: z.boolean(),
   minPartySize: z.number().int().min(1).max(50),
   maxPartySize: z.number().int().min(1).max(100),
-  openTime: z.string().regex(/^\d{2}:\d{2}$/),
-  closeTime: z.string().regex(/^\d{2}:\d{2}$/),
+  openTime: timeSchema,
+  closeTime: timeSchema,
+  lunchEnabled: z.boolean(),
+  lunchOpenTime: timeSchema,
+  lunchCloseTime: timeSchema,
+  dinnerEnabled: z.boolean(),
+  dinnerOpenTime: timeSchema,
+  dinnerCloseTime: timeSchema,
   slotMinutes: z.number().int().min(15).max(120),
   maxCoversPerSlot: z.number().int().min(1).max(200),
+  maxCoversPerEvening: z.number().int().min(1).max(500),
+  closedWeekdays: z.string().max(20),
+  advanceBookingDays: z.number().int().min(1).max(365),
+  minNoticeHours: z.number().int().min(0).max(168),
   reservationsEnabled: z.boolean(),
   accentColor: z.string().regex(/^#[0-9a-fA-F]{6}$/),
 });
@@ -60,9 +77,35 @@ export const Route = createFileRoute("/api/dashboard/settings")({
           );
         }
 
+        if (!parsed.data.lunchEnabled && !parsed.data.dinnerEnabled) {
+          return Response.json(
+            { error: "Vähintään yksi palvelu (lounas tai illallinen) on oltava käytössä" },
+            { status: 400 },
+          );
+        }
+
+        if (!parsed.data.requireEmail && !parsed.data.requirePhone) {
+          return Response.json(
+            { error: "Sähköposti tai puhelin on oltava pakollinen varauksessa" },
+            { status: 400 },
+          );
+        }
+
+        if (
+          parsed.data.restaurantEmail &&
+          !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(parsed.data.restaurantEmail)
+        ) {
+          return Response.json({ error: "Virheellinen ravintolan sähköposti" }, { status: 400 });
+        }
+
         try {
           const settings = await upsertRestaurantSettings({
             ...parsed.data,
+            restaurantAddress: parsed.data.restaurantAddress ?? null,
+            restaurantPhone: parsed.data.restaurantPhone ?? null,
+            restaurantEmail: parsed.data.restaurantEmail ?? null,
+            cuisineType: parsed.data.cuisineType ?? null,
+            restaurantDescription: parsed.data.restaurantDescription ?? null,
             chatbotInstructions: parsed.data.chatbotInstructions ?? null,
           });
           return Response.json({ settings });
