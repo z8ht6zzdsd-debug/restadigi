@@ -104,7 +104,9 @@ function ReservationCard({
 
 function DashboardReservationsPage() {
   const [reservations, setReservations] = useState<Reservation[]>([]);
-  const [selectedDate, setSelectedDate] = useState<Date>(() => parseLocalDateKey(formatLocalDateKey(new Date())));
+  const [selectedDate, setSelectedDate] = useState<Date>(() =>
+    parseLocalDateKey(formatLocalDateKey(new Date())),
+  );
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
@@ -240,7 +242,9 @@ function DashboardReservationsPage() {
                 selected={selectedDate}
                 onSelect={(date) => date && setSelectedDate(date)}
                 modifiers={{ booked: datesWithReservations }}
-                modifiersClassNames={{ booked: "bg-accent/30 font-semibold text-accent-foreground" }}
+                modifiersClassNames={{
+                  booked: "bg-accent/30 font-semibold text-accent-foreground",
+                }}
               />
             </div>
 
@@ -256,8 +260,8 @@ function DashboardReservationsPage() {
 
               {dayReservations.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
-                  Ei varauksia tälle päivälle. Valitse korostettu päivä kalenterista tai katso kaikki
-                  varaukset alta.
+                  Ei varauksia tälle päivälle. Valitse korostettu päivä kalenterista tai katso
+                  kaikki varaukset alta.
                 </p>
               ) : (
                 dayReservations.map((reservation) => (
@@ -287,7 +291,9 @@ function DashboardReservationsPage() {
                       variant="ghost"
                       size="sm"
                       className="h-auto px-0 text-xs text-muted-foreground hover:text-foreground"
-                      onClick={() => setSelectedDate(parseLocalDateKey(reservation.reservationDate))}
+                      onClick={() =>
+                        setSelectedDate(parseLocalDateKey(reservation.reservationDate))
+                      }
                     >
                       Näytä {reservation.reservationDate} kalenterissa →
                     </Button>
