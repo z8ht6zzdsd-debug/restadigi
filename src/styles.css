@@ -143,4 +143,14 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+
+  html.chatbot-open header h1 {
+    max-width: 14ch;
+  }
+
+  @media (min-width: 640px) {
+    html.chatbot-open header > .max-w-6xl {
+      padding-right: 27rem;
+    }
+  }
 }

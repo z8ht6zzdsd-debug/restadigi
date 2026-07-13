@@ -35,8 +35,8 @@ function Index() {
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
             Digistudio ravintoloille
           </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-10 tracking-tight">
-            Näyttävät verkkosivut ja älykkäät palvelut{" "}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-10 tracking-tight">
+            Verkkosivut ja älykkäät palvelut{" "}
             <span className="font-serif italic text-accent">ravintolallesi</span>.
           </h1>
           <div className="grid md:grid-cols-12 gap-8 items-end">

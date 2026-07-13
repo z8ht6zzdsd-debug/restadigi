@@ -108,10 +108,9 @@ function ChatbotPage() {
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
             AI-asiakaspalvelu
           </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-8 tracking-tight">
-            Älykäs asiakaspalvelu{" "}
-            <span className="font-serif italic text-accent">ravintolalle</span> — verkkosivulla ja
-            puhelimessa, 24/7.
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-8 tracking-tight">
+            Älykäs <span className="font-serif italic text-accent">asiakaspalvelu</span>{" "}
+            ravintolalle.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
             Restadigi tarjoaa kaksi täydentävää ratkaisua ravintolan asiakaspalveluun:

@@ -59,7 +59,7 @@ function MeistaPage() {
       <header className="pt-10 pb-16 sm:pt-16 sm:pb-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Meistä</div>
-          <h1 className="text-4xl sm:text-6xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-8 tracking-tight">
+          <h1 className="text-4xl sm:text-6xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-8 tracking-tight">
             Pieni studio, <span className="font-serif italic text-accent">iso</span> vastuu.
           </h1>
           <div className="grid md:grid-cols-12 gap-8">

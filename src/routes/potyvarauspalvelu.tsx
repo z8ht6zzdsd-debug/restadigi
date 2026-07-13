@@ -32,8 +32,8 @@ function PotyvarausPage() {
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
             Pöytävarauspalvelu
           </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-8 tracking-tight">
-            Sujuvat <span className="font-serif italic text-accent">pöytävaraukset</span> suoraan
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-8 tracking-tight">
+            <span className="font-serif italic text-accent">Pöytävaraukset</span> suoraan
             sivustolta.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">

@@ -105,8 +105,8 @@ function DiginakyvyysPage() {
       <header className="pt-10 pb-16 sm:pt-16 sm:pb-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Diginäkyvyys</div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[22ch] mb-8 tracking-tight">
-            Diginäkyvyytesi <span className="font-serif italic text-accent">kerralla</span> kuntoon.
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-8 tracking-tight">
+            Diginäkyvyys <span className="font-serif italic text-accent">kerralla</span> kuntoon.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
             Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, kevyt somepaketti

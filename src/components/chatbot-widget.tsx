@@ -34,6 +34,11 @@ export function ChatbotWidget() {
   const restaurantName = siteSettings?.restaurantName ?? "Ravintola";
 
   useEffect(() => {
+    document.documentElement.classList.toggle("chatbot-open", open);
+    return () => document.documentElement.classList.remove("chatbot-open");
+  }, [open]);
+
+  useEffect(() => {
     void fetch("/api/restaurant/settings")
       .then(async (res) => {
         if (!res.ok) return null;
