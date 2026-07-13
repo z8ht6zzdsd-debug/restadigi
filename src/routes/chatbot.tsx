@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import restaurantCafe from "@/assets/restaurant-cafe.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -120,6 +121,19 @@ function ChatbotPage() {
           </p>
         </div>
       </header>
+
+      <section className="px-6 pb-16 sm:pb-24">
+        <div className="max-w-6xl mx-auto">
+          <img
+            src={restaurantCafe}
+            alt="Kahvilan lämmin ja kutsuva tunnelma"
+            width={1600}
+            height={900}
+            loading="lazy"
+            className="w-full aspect-[16/9] object-cover rounded-sm"
+          />
+        </div>
+      </section>
 
       {/* Chatbot */}
       <section className="pb-24 sm:pb-32 border-t border-border pt-16 sm:pt-24">

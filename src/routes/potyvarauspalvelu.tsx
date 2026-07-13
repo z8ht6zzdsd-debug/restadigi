@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import restaurantTable from "@/assets/restaurant-table.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -42,6 +43,19 @@ function PotyvarausPage() {
           </p>
         </div>
       </header>
+
+      <section className="px-6 pb-16 sm:pb-24">
+        <div className="max-w-6xl mx-auto">
+          <img
+            src={restaurantTable}
+            alt="Kauniisti katettu pöytä ravintolassa"
+            width={1600}
+            height={900}
+            loading="lazy"
+            className="w-full aspect-[16/9] object-cover rounded-sm"
+          />
+        </div>
+      </section>
 
       <section className="pb-24 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">

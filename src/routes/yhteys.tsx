@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import restaurantTerrace from "@/assets/restaurant-terrace.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -52,6 +53,19 @@ function YhteysPage() {
           </p>
         </div>
       </header>
+
+      <section className="px-6 pb-12 sm:pb-16">
+        <div className="max-w-6xl mx-auto">
+          <img
+            src={restaurantTerrace}
+            alt="Ravintolan terassi auringonlaskun aikaan"
+            width={1600}
+            height={900}
+            loading="lazy"
+            className="w-full aspect-[16/9] object-cover rounded-sm"
+          />
+        </div>
+      </section>
 
       <section className="pb-24 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12">

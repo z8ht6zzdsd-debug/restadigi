@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroStudio from "@/assets/hero-studio.jpg";
+import restaurantKitchen from "@/assets/restaurant-kitchen.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/meista")({
         content:
           "Pieni studio, iso vastuu. Kotisivuja ja diginäkyvyyttä suomalaisille yrityksille.",
       },
-      { property: "og:image", content: heroStudio },
+      { property: "og:image", content: restaurantKitchen },
     ],
   }),
   component: MeistaPage,
@@ -80,8 +80,10 @@ function MeistaPage() {
       <section className="px-6">
         <div className="max-w-6xl mx-auto">
           <img
-            src={heroStudio}
-            alt="Studion työtila"
+            src={restaurantKitchen}
+            alt="Kokki valmistaa annosta ravintolan keittiössä"
+            width={1600}
+            height={900}
             className="w-full aspect-[16/9] object-cover rounded-sm"
           />
         </div>

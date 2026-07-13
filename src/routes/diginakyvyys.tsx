@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import restaurantDining from "@/assets/restaurant-dining.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -113,6 +114,19 @@ function DiginakyvyysPage() {
           </p>
         </div>
       </header>
+
+      <section className="px-6 pb-16 sm:pb-24">
+        <div className="max-w-6xl mx-auto">
+          <img
+            src={restaurantDining}
+            alt="Herkullinen annos ravintolapöydässä"
+            width={1600}
+            height={900}
+            loading="lazy"
+            className="w-full aspect-[16/9] object-cover rounded-sm"
+          />
+        </div>
+      </section>
 
       {/* Paketit */}
       <section className="pb-24 sm:pb-32">
