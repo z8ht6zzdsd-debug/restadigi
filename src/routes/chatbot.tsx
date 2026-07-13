@@ -113,10 +113,10 @@ function ChatbotPage() {
             puhelimessa, 24/7.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Restadigi tarjoaa kaksi täydentävää ratkaisua ravintolan asiakaspalveluun: verkkosivuille
-            asennettavan chatbotin ja tekoälypohjaisen AI Concierge -puhelinpalvelun. Molemmat
-            palvelevat asiakkaita ympäri vuorokauden, vastaavat yleisiin kysymyksiin ja vapauttavat
-            henkilökunnan keskittymään siihen tärkeimpään — asiakkaiden palvelemiseen.
+            Restadigi tarjoaa kaksi täydentävää ratkaisua ravintolan asiakaspalveluun:
+            verkkosivuille asennettavan chatbotin ja tekoälypohjaisen AI Concierge -puhelinpalvelun.
+            Molemmat palvelevat asiakkaita ympäri vuorokauden, vastaavat yleisiin kysymyksiin ja
+            vapauttavat henkilökunnan keskittymään siihen tärkeimpään — asiakkaiden palvelemiseen.
           </p>
         </div>
       </header>
