@@ -185,7 +185,7 @@
 
   .site-header__tagline {
     max-width: 72rem;
-    margin: 0 auto 0.375rem;
+    margin: 0 auto 0.1875rem;
     padding-inline: 1.5rem;
     text-align: center;
     font-family: var(--font-script);
@@ -199,7 +199,7 @@
 
   @media (min-width: 640px) {
     .site-header__tagline {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
     }
   }
 
