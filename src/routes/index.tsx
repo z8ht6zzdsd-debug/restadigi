@@ -29,66 +29,98 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-accent/20">
       <SiteHeader />
 
-      {/* Hero */}
-      <header className="pt-10 pb-24 sm:pt-16 sm:pb-32">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
-            Digistudio ravintoloille
-          </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-10 tracking-tight">
-            Verkkosivut ja älykkäät palvelut{" "}
-            <span className="font-serif italic text-accent">ravintolallesi</span>.
-          </h1>
-          <div className="grid md:grid-cols-12 gap-8 items-end">
-            <p className="md:col-span-6 text-base sm:text-lg text-pretty text-foreground/70 leading-relaxed">
-              Rakennamme ravintoloille moderneja, houkuttelevia verkkosivuja sekä tarjoamme älykkään
-              AI-asiakaspalvelun ja sujuvan pöytävarausjärjestelmän. Tavoitteemme on luoda
-              kokonaisuus, joka näyttää yhtä hyvältä kuin ravintolasi ruoka — ja tuo lisää
-              asiakkaita ovista sisään.
-            </p>
-            <div className="md:col-span-6 md:col-start-8 flex items-center gap-4">
-              <Link
-                to="/yhteys"
-                className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
-              >
-                Aloita projekti
-                <svg
-                  className="size-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
+      {/* Hero — teksti kuvan päällä */}
+      <header className="px-6 pb-8 sm:pb-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative isolate flex min-h-[min(88vh,44rem)] flex-col justify-end overflow-hidden rounded-sm sm:min-h-[min(82vh,40rem)]">
+            <img
+              src={heroStudio}
+              alt=""
+              aria-hidden
+              width={1600}
+              height={912}
+              className="absolute inset-0 size-full object-cover"
+            />
+
+            {/* Gradientit — tekstin luettavuus */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-foreground/92 via-foreground/65 to-foreground/15"
+              aria-hidden
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/25 to-transparent"
+              aria-hidden
+            />
+            <div
+              className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,oklch(0.6_0.17_40/0.18),transparent_55%)]"
+              aria-hidden
+            />
+
+            {/* Koristeelliset viivat */}
+            <div
+              className="pointer-events-none absolute inset-6 hidden rounded-sm border border-white/10 sm:block lg:inset-8"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute right-8 top-8 hidden h-24 w-px bg-gradient-to-b from-white/40 to-transparent lg:block"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute right-8 top-8 hidden h-px w-24 bg-gradient-to-r from-white/40 to-transparent lg:block"
+              aria-hidden
+            />
+
+            <div className="relative z-10 px-8 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 backdrop-blur-sm">
+                <span className="size-1.5 rounded-full bg-accent" aria-hidden />
+                <span className="text-xs uppercase tracking-[0.2em] text-white/80">
+                  Digistudio ravintoloille
+                </span>
+              </div>
+
+              <h1 className="mb-6 max-w-[16ch] text-4xl font-medium leading-[1.02] tracking-tight text-balance text-white sm:text-6xl lg:text-7xl">
+                Verkkosivut ja älykkäät palvelut{" "}
+                <span className="font-serif italic text-accent">ravintolallesi</span>.
+              </h1>
+
+              <p className="mb-10 max-w-xl text-base leading-relaxed text-pretty text-white/75 sm:text-lg">
+                Rakennamme ravintoloille moderneja, houkuttelevia verkkosivuja sekä tarjoamme
+                älykkään AI-asiakaspalvelun ja sujuvan pöytävarausjärjestelmän. Tavoitteemme on
+                luoda kokonaisuus, joka näyttää yhtä hyvältä kuin ravintolasi ruoka — ja tuo lisää
+                asiakkaita ovista sisään.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  to="/yhteys"
+                  className="inline-flex items-center gap-3 rounded-full bg-white py-3 pr-4 pl-5 text-sm font-medium text-primary transition-colors hover:bg-accent hover:text-white"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                  />
-                </svg>
-              </Link>
-              <Link
-                to="/kotisivut-yrityksille"
-                className="text-sm text-foreground/70 hover:text-foreground"
-              >
-                Katso palvelut →
-              </Link>
+                  Aloita projekti
+                  <svg
+                    className="size-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                    />
+                  </svg>
+                </Link>
+                <Link
+                  to="/kotisivut-yrityksille"
+                  className="border-b border-white/35 pb-0.5 text-sm text-white/80 transition-colors hover:border-white hover:text-white"
+                >
+                  Katso palvelut →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </header>
-
-      {/* Hero image */}
-      <section className="px-6">
-        <div className="max-w-6xl mx-auto">
-          <img
-            src={heroStudio}
-            alt="Tunnelmallinen ravintolasali auringonlaskun aikaan"
-            width={1600}
-            height={912}
-            className="w-full aspect-[16/9] object-cover rounded-sm"
-          />
-        </div>
-      </section>
 
       {/* Miksi valita meidät */}
       <section className="py-24 sm:py-32">
