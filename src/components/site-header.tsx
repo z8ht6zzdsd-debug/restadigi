@@ -10,25 +10,37 @@ const nav = [
   { to: "/yhteys", label: "YHTEYS" },
 ] as const;
 
+const SITE_TAGLINE_LINES = [
+  "- Digitaalisen kasvun kumppani",
+  "matkailu- ja ravintola-alan yrityksille -",
+] as const;
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="relative z-20 pt-4 pb-0 sm:pt-6">
+    <nav className="relative z-20 pt-4 pb-3 sm:pt-6 sm:pb-4">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 pl-2 pr-6 sm:pl-3 lg:pl-1">
         <Link
           to="/"
-          className="inline-flex shrink-0 items-center"
+          className="site-header__brand shrink-0"
           onClick={() => setOpen(false)}
-          aria-label="Restadigi — etusivu"
+          aria-label="Restadigi — digitaalisen kasvun kumppani matkailu- ja ravintola-alan yrityksille"
         >
           <img
             src={restadigiLogo}
-            alt="Restadigi — AI ja web"
+            alt=""
             width={640}
             height={172}
-            className="h-32 w-auto sm:h-36 lg:h-40"
+            className="site-header__logo"
           />
+          <p className="site-header__tagline">
+            {SITE_TAGLINE_LINES.map((line) => (
+              <span key={line} className="site-header__tagline-line">
+                {line}
+              </span>
+            ))}
+          </p>
         </Link>
 
         <div className="hidden items-center gap-5 text-xs tracking-[0.12em] text-foreground/70 lg:flex xl:gap-6 xl:text-sm">
