@@ -63,7 +63,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
-  --font-script: "Dancing Script", "Segoe Script", cursive;
+  --font-script: "Caveat", "Segoe Script", cursive;
 }
 
 :root {
@@ -195,12 +195,13 @@
     padding-inline: 1.5rem;
     text-align: center;
     font-family: var(--font-script);
-    font-size: clamp(0.8125rem, 1.85vw, 1.0625rem);
+    font-size: clamp(0.9375rem, 2vw, 1.125rem);
     font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: 0.015em;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
     white-space: nowrap;
-    color: color-mix(in oklch, var(--muted-foreground) 88%, transparent);
+    color: var(--muted-foreground);
+    opacity: 0.72;
   }
 
   .site-header__bar {
