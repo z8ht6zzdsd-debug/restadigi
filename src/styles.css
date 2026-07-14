@@ -168,8 +168,21 @@
     }
   }
 
+  .page-hero__tagline-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 0.625rem;
+  }
+
+  @media (min-width: 640px) {
+    .page-hero__tagline-wrap {
+      padding-block: 0.75rem;
+    }
+  }
+
   .page-hero__tagline {
-    margin-bottom: 1rem;
+    margin: 0;
     text-align: center;
     font-size: 0.6875rem;
     font-weight: 500;
@@ -181,7 +194,6 @@
 
   @media (min-width: 640px) {
     .page-hero__tagline {
-      margin-bottom: 1.25rem;
       font-size: 0.75rem;
       letter-spacing: 0.16em;
     }
@@ -189,7 +201,6 @@
 
   @media (min-width: 1024px) {
     .page-hero__tagline {
-      margin-bottom: 1.5rem;
       font-size: 0.8125rem;
     }
   }

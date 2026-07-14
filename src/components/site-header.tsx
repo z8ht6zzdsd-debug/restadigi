@@ -14,7 +14,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="relative z-20 py-4 sm:py-6">
+    <nav className="relative z-20 pt-4 pb-0 sm:pt-6">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 pl-2 pr-6 sm:pl-3 lg:pl-1">
         <Link
           to="/"
