@@ -42,27 +42,13 @@ function Index() {
               className="absolute inset-0 size-full object-cover"
             />
 
-            {/* Gradientit — tekstin luettavuus */}
+            {/* Gradientit — vain tekstin takana, ei reunakehystä */}
             <div
-              className="absolute inset-0 bg-gradient-to-r from-foreground/92 via-foreground/65 to-foreground/15"
+              className="absolute inset-y-0 left-0 w-full max-w-4xl bg-gradient-to-r from-foreground/90 via-foreground/55 to-transparent"
               aria-hidden
             />
             <div
-              className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/25 to-transparent"
-              aria-hidden
-            />
-            <div
-              className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,oklch(0.6_0.17_40/0.18),transparent_55%)]"
-              aria-hidden
-            />
-
-            {/* Koristeelliset viivat */}
-            <div
-              className="pointer-events-none absolute right-8 top-8 hidden h-24 w-px bg-gradient-to-b from-white/40 to-transparent lg:block"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute right-8 top-8 hidden h-px w-24 bg-gradient-to-r from-white/40 to-transparent lg:block"
+              className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-foreground/75 via-foreground/20 to-transparent"
               aria-hidden
             />
 
