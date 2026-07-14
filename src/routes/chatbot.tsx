@@ -105,7 +105,6 @@ function ChatbotPage() {
 
       <PageHero
         image={restaurantCafe}
-        label="AI-asiakaspalvelu"
         title={
           <>
             Älykäs <span className="font-serif italic text-accent">asiakaspalvelu</span>{" "}

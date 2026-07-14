@@ -30,7 +30,6 @@ function PotyvarausPage() {
 
       <PageHero
         image={restaurantTable}
-        label="Pöytävarauspalvelu"
         title={
           <>
             <span className="font-serif italic text-accent">Pöytävaraukset</span> suoraan sivustolta.

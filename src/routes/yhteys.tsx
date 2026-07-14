@@ -44,7 +44,6 @@ function YhteysPage() {
 
       <PageHero
         image={restaurantTerrace}
-        label="Ota yhteyttä"
         title={
           <>
             Kerro <span className="font-serif italic text-accent">projektistasi</span>.

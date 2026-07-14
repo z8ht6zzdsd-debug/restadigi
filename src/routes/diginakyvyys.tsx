@@ -104,7 +104,6 @@ function DiginakyvyysPage() {
 
       <PageHero
         image={restaurantDining}
-        label="Näkyvyys ja suunnittelu"
         title={
           <>
             Diginäkyvyys <span className="font-serif italic text-accent">kerralla</span> kuntoon.

@@ -99,7 +99,6 @@ function KotisivutPage() {
 
       <PageHero
         image={restaurantInterior}
-        label="Verkkosivut ravintolalle"
         title={
           <>
             Kotisivut <span className="font-serif italic text-accent">ravintolalle</span>.

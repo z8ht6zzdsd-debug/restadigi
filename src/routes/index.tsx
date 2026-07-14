@@ -4,6 +4,7 @@ import workWebsite from "@/assets/work-website.jpg";
 import workBrand from "@/assets/work-brand.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PageHero } from "@/components/page-hero";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,80 +30,36 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-accent/20">
       <SiteHeader />
 
-      {/* Hero — teksti kuvan päällä */}
-      <header className="px-6 pb-8 sm:pb-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="relative isolate flex min-h-[min(88vh,44rem)] flex-col justify-end overflow-hidden rounded-sm sm:min-h-[min(82vh,40rem)]">
-            <img
-              src={heroStudio}
-              alt=""
-              aria-hidden
-              width={1600}
-              height={912}
-              className="absolute inset-0 size-full object-cover"
-            />
-
-            {/* Gradientit — vain tekstin takana, ei reunakehystä */}
-            <div
-              className="absolute inset-y-0 left-0 w-full max-w-4xl bg-gradient-to-r from-foreground/90 via-foreground/55 to-transparent"
-              aria-hidden
-            />
-            <div
-              className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-foreground/75 via-foreground/20 to-transparent"
-              aria-hidden
-            />
-
-            <div className="relative z-10 px-8 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 backdrop-blur-sm">
-                <span className="size-1.5 rounded-full bg-accent" aria-hidden />
-                <span className="text-xs uppercase tracking-[0.2em] text-white/80">
-                  Digistudio ravintoloille
-                </span>
-              </div>
-
-              <h1 className="mb-6 max-w-[16ch] text-4xl font-medium leading-[1.02] tracking-tight text-balance text-white sm:text-6xl lg:text-7xl">
-                Verkkosivut ja älykkäät palvelut{" "}
-                <span className="font-serif italic text-accent">ravintolallesi</span>.
-              </h1>
-
-              <p className="mb-10 max-w-xl text-base leading-relaxed text-pretty text-white/75 sm:text-lg">
-                Rakennamme ravintoloille moderneja, houkuttelevia verkkosivuja sekä tarjoamme
-                älykkään AI-asiakaspalvelun ja sujuvan pöytävarausjärjestelmän. Tavoitteemme on
-                luoda kokonaisuus, joka näyttää yhtä hyvältä kuin ravintolasi ruoka — ja tuo lisää
-                asiakkaita ovista sisään.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  to="/yhteys"
-                  className="inline-flex items-center gap-3 rounded-full bg-white py-3 pr-4 pl-5 text-sm font-medium text-primary transition-colors hover:bg-accent hover:text-white"
-                >
-                  Aloita projekti
-                  <svg
-                    className="size-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                    />
-                  </svg>
-                </Link>
-                <Link
-                  to="/kotisivut-yrityksille"
-                  className="border-b border-white/35 pb-0.5 text-sm text-white/80 transition-colors hover:border-white hover:text-white"
-                >
-                  Katso palvelut →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <PageHero
+        tall
+        image={heroStudio}
+        title={
+          <>
+            Verkkosivut ja älykkäät palvelut{" "}
+            <span className="font-serif italic text-accent">ravintolallesi</span>.
+          </>
+        }
+        description="Rakennamme ravintoloille moderneja, houkuttelevia verkkosivuja sekä tarjoamme älykkään AI-asiakaspalvelun ja sujuvan pöytävarausjärjestelmän. Tavoitteemme on luoda kokonaisuus, joka näyttää yhtä hyvältä kuin ravintolasi ruoka — ja tuo lisää asiakkaita ovista sisään."
+        actions={
+          <>
+            <Link
+              to="/yhteys"
+              className="inline-flex items-center gap-3 rounded-full bg-white py-3 pr-4 pl-5 text-sm font-medium text-primary transition-colors hover:bg-accent hover:text-white"
+            >
+              Aloita projekti
+              <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+              </svg>
+            </Link>
+            <Link
+              to="/kotisivut-yrityksille"
+              className="border-b border-white/50 pb-0.5 text-sm text-white transition-colors hover:border-white"
+            >
+              Katso palvelut →
+            </Link>
+          </>
+        }
+      />
 
       {/* Miksi valita meidät */}
       <section className="py-24 sm:py-32">
