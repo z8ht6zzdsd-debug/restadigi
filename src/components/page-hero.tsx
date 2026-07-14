@@ -8,10 +8,15 @@ type PageHeroProps = {
   tall?: boolean;
 };
 
+const SITE_TAGLINE =
+  "DIGITAALISEN KASVUN KUMPPANI MATKAILU- JA RAVINTOLA-ALAN YRITYKSILLE";
+
 export function PageHero({ image, title, description, actions, tall }: PageHeroProps) {
   return (
     <header className="page-hero">
       <div className="max-w-6xl mx-auto">
+        <p className="page-hero__tagline">{SITE_TAGLINE}</p>
+
         <div className={tall ? "page-hero__frame page-hero__frame--home" : "page-hero__frame"}>
           <img
             src={image}

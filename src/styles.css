@@ -168,6 +168,32 @@
     }
   }
 
+  .page-hero__tagline {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: color-mix(in oklch, var(--foreground) 72%, transparent);
+  }
+
+  @media (min-width: 640px) {
+    .page-hero__tagline {
+      margin-bottom: 1.25rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .page-hero__tagline {
+      margin-bottom: 1.5rem;
+      font-size: 0.8125rem;
+    }
+  }
+
   .page-hero__frame {
     position: relative;
     isolation: isolate;
