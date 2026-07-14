@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import restadigiLogo from "@/assets/restadigi-logo.png";
 
 const nav = [
   { to: "/kotisivut-yrityksille", label: "VERKKOSIVUT RAVINTOLALLE" },
@@ -17,10 +18,17 @@ export function SiteHeader() {
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
         <Link
           to="/"
-          className="text-base font-serif tracking-tight uppercase"
+          className="inline-flex shrink-0 items-center"
           onClick={() => setOpen(false)}
+          aria-label="Restadigi — etusivu"
         >
-          RESTA<span className="text-accent">DIGI.</span>
+          <img
+            src={restadigiLogo}
+            alt="Restadigi — AI ja web"
+            width={180}
+            height={48}
+            className="h-10 w-auto sm:h-11"
+          />
         </Link>
 
         <div className="hidden lg:flex gap-6 text-sm text-foreground/70">
