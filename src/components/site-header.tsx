@@ -14,7 +14,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="relative z-20 py-6 sm:py-8">
+    <nav className="relative z-20 py-4 sm:py-6">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6">
         <Link
           to="/"
@@ -25,9 +25,9 @@ export function SiteHeader() {
           <img
             src={restadigiLogo}
             alt="Restadigi — AI ja web"
-            width={320}
-            height={86}
-            className="h-16 w-auto sm:h-[4.5rem] lg:h-20"
+            width={640}
+            height={172}
+            className="h-32 w-auto sm:h-36 lg:h-40"
           />
         </Link>
 
