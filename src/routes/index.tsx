@@ -58,10 +58,6 @@ function Index() {
 
             {/* Koristeelliset viivat */}
             <div
-              className="pointer-events-none absolute inset-6 hidden rounded-sm border border-white/10 sm:block lg:inset-8"
-              aria-hidden
-            />
-            <div
               className="pointer-events-none absolute right-8 top-8 hidden h-24 w-px bg-gradient-to-b from-white/40 to-transparent lg:block"
               aria-hidden
             />
