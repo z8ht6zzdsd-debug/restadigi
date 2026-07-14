@@ -7,7 +7,7 @@ const nav = [
   { to: "/diginakyvyys", label: "NÄKYVYYS JA SUUNNITTELU" },
   { to: "/chatbot", label: "AI-ASIAKASPALVELU" },
   { to: "/potyvarauspalvelu", label: "PÖYTÄVARAUSPALVELU" },
-  { to: "/yhteys", label: "OTA YHTEYTTÄ" },
+  { to: "/yhteys", label: "YHTEYS" },
 ] as const;
 
 export function SiteHeader() {
@@ -15,7 +15,7 @@ export function SiteHeader() {
 
   return (
     <nav className="relative z-20 py-4 sm:py-6">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 pl-2 pr-6 sm:pl-3 lg:pl-1">
         <Link
           to="/"
           className="inline-flex shrink-0 items-center"
@@ -69,7 +69,7 @@ export function SiteHeader() {
 
       {open && (
         <div className="lg:hidden absolute inset-x-0 top-full bg-background border-t border-border">
-          <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col gap-4">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 py-6 pl-2 pr-6 sm:pl-3 lg:pl-1">
             {nav.map((item) => (
               <Link
                 key={item.to}
