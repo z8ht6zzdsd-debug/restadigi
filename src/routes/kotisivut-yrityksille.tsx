@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import restaurantInterior from "@/assets/restaurant-interior.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PageHero } from "@/components/page-hero";
 
 export const Route = createFileRoute("/kotisivut-yrityksille")({
   head: () => ({
@@ -96,33 +97,16 @@ function KotisivutPage() {
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       <SiteHeader />
 
-      {/* Intro */}
-      <header className="pt-10 pb-16 sm:pt-16 sm:pb-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Kotisivut</div>
-          <h1 className="text-4xl sm:text-6xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-8 tracking-tight">
+      <PageHero
+        image={restaurantInterior}
+        label="Verkkosivut ravintolalle"
+        title={
+          <>
             Kotisivut <span className="font-serif italic text-accent">ravintolalle</span>.
-          </h1>
-          <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Hyvin suunnitellut verkkosivut ja verkkosisällöt ovat yrityksesi tärkeimmät digitaaliset
-            työkalut. Ne vahvistavat brändisi näkyvyyttä, helpottavat asiakkaiden yhteydenottoa ja
-            jättävät vahvan ensivaikutelman.
-          </p>
-        </div>
-      </header>
-
-      <section className="px-6 pb-16 sm:pb-24">
-        <div className="max-w-6xl mx-auto">
-          <img
-            src={restaurantInterior}
-            alt="Tunnelmallinen ravintolasali illan valossa"
-            width={1600}
-            height={900}
-            loading="lazy"
-            className="w-full aspect-[16/9] object-cover rounded-sm"
-          />
-        </div>
-      </section>
+          </>
+        }
+        description="Hyvin suunnitellut verkkosivut ja verkkosisällöt ovat yrityksesi tärkeimmät digitaaliset työkalut. Ne vahvistavat brändisi näkyvyyttä, helpottavat asiakkaiden yhteydenottoa ja jättävät vahvan ensivaikutelman."
+      />
 
       {/* Paketit */}
       <section className="pb-24 sm:pb-32">

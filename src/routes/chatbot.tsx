@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import restaurantCafe from "@/assets/restaurant-cafe.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PageHero } from "@/components/page-hero";
 
 export const Route = createFileRoute("/chatbot")({
   head: () => ({
@@ -102,37 +103,17 @@ function ChatbotPage() {
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       <SiteHeader />
 
-      {/* Page hero */}
-      <header className="pt-10 pb-16 sm:pt-16 sm:pb-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
-            AI-asiakaspalvelu
-          </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-8 tracking-tight">
+      <PageHero
+        image={restaurantCafe}
+        label="AI-asiakaspalvelu"
+        title={
+          <>
             Älykäs <span className="font-serif italic text-accent">asiakaspalvelu</span>{" "}
             ravintolalle.
-          </h1>
-          <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Restadigi tarjoaa kaksi täydentävää ratkaisua ravintolan asiakaspalveluun:
-            verkkosivuille asennettavan chatbotin ja tekoälypohjaisen AI Concierge -puhelinpalvelun.
-            Molemmat palvelevat asiakkaita ympäri vuorokauden, vastaavat yleisiin kysymyksiin ja
-            vapauttavat henkilökunnan keskittymään siihen tärkeimpään — asiakkaiden palvelemiseen.
-          </p>
-        </div>
-      </header>
-
-      <section className="px-6 pb-16 sm:pb-24">
-        <div className="max-w-6xl mx-auto">
-          <img
-            src={restaurantCafe}
-            alt="Kahvilan lämmin ja kutsuva tunnelma"
-            width={1600}
-            height={900}
-            loading="lazy"
-            className="w-full aspect-[16/9] object-cover rounded-sm"
-          />
-        </div>
-      </section>
+          </>
+        }
+        description="Restadigi tarjoaa kaksi täydentävää ratkaisua ravintolan asiakaspalveluun: verkkosivuille asennettavan chatbotin ja tekoälypohjaisen AI Concierge -puhelinpalvelun. Molemmat palvelevat asiakkaita ympäri vuorokauden."
+      />
 
       {/* Chatbot */}
       <section className="pb-24 sm:pb-32 border-t border-border pt-16 sm:pt-24">

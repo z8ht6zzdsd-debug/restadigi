@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import restaurantDining from "@/assets/restaurant-dining.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PageHero } from "@/components/page-hero";
 
 export const Route = createFileRoute("/diginakyvyys")({
   head: () => ({
@@ -101,32 +102,16 @@ function DiginakyvyysPage() {
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       <SiteHeader />
 
-      {/* Hero */}
-      <header className="pt-10 pb-16 sm:pt-16 sm:pb-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Diginäkyvyys</div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-8 tracking-tight">
+      <PageHero
+        image={restaurantDining}
+        label="Näkyvyys ja suunnittelu"
+        title={
+          <>
             Diginäkyvyys <span className="font-serif italic text-accent">kerralla</span> kuntoon.
-          </h1>
-          <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, kevyt somepaketti
-            sekä mikrokumppanuudet Suomen suosituimmissa urheilusarjoissa.
-          </p>
-        </div>
-      </header>
-
-      <section className="px-6 pb-16 sm:pb-24">
-        <div className="max-w-6xl mx-auto">
-          <img
-            src={restaurantDining}
-            alt="Herkullinen annos ravintolapöydässä"
-            width={1600}
-            height={900}
-            loading="lazy"
-            className="w-full aspect-[16/9] object-cover rounded-sm"
-          />
-        </div>
-      </section>
+          </>
+        }
+        description="Neljä tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi, kevyt somepaketti sekä mikrokumppanuudet Suomen suosituimmissa urheilusarjoissa."
+      />
 
       {/* Paketit */}
       <section className="pb-24 sm:pb-32">
