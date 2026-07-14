@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @source "../src/components/page-hero.tsx";
+@source "../src/components/site-header.tsx";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -158,6 +159,11 @@
 }
 
 @layer components {
+  .site-header {
+    display: flex;
+    flex-direction: column;
+  }
+
   .site-header__brand {
     display: inline-flex;
     max-width: 100%;
@@ -185,21 +191,25 @@
 
   .site-header__tagline {
     max-width: 72rem;
-    margin: 0 auto 0.1875rem;
+    margin: 0 auto;
     padding-inline: 1.5rem;
     text-align: center;
     font-family: var(--font-script);
     font-size: clamp(0.875rem, 2.4vw, 1.375rem);
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1;
     letter-spacing: 0.02em;
     white-space: nowrap;
     color: color-mix(in oklch, var(--foreground) 82%, transparent);
   }
 
+  .site-header__bar {
+    margin-top: -0.875rem;
+  }
+
   @media (min-width: 640px) {
-    .site-header__tagline {
-      margin-bottom: 0.25rem;
+    .site-header__bar {
+      margin-top: -1rem;
     }
   }
 

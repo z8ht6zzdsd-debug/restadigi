@@ -17,10 +17,10 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="relative z-20 pt-3 pb-3 sm:pt-4 sm:pb-4">
+    <nav className="site-header relative z-20 pt-3 pb-3 sm:pt-4 sm:pb-4">
       <p className="site-header__tagline">{SITE_TAGLINE}</p>
 
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 pl-2 pr-6 sm:pl-3 lg:pl-1">
+      <div className="site-header__bar mx-auto flex max-w-6xl items-center justify-between gap-4 pl-2 pr-6 sm:pl-3 lg:pl-1">
         <Link
           to="/"
           className="site-header__brand shrink-0"
