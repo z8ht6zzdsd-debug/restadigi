@@ -11,7 +11,7 @@ const nav = [
 ] as const;
 
 const SITE_TAGLINE =
-  "- Digitaalisen kasvun kumppani matkailu- ja ravintola-alan yrityksille -";
+  "Digitaalisen kasvun kumppani matkailu- ja ravintola-alan yrityksille";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
