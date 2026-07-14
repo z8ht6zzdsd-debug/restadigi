@@ -63,6 +63,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
+  --font-script: "Dancing Script", "Segoe Script", cursive;
 }
 
 :root {
@@ -193,23 +194,22 @@
     margin: 0 auto;
     padding-inline: 1.5rem;
     text-align: center;
-    font-family: var(--font-serif);
-    font-size: clamp(0.9375rem, 2.2vw, 1.25rem);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.2;
-    letter-spacing: 0.01em;
+    font-family: var(--font-script);
+    font-size: clamp(0.8125rem, 1.85vw, 1.0625rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: 0.015em;
     white-space: nowrap;
-    color: color-mix(in oklch, var(--foreground) 85%, transparent);
+    color: color-mix(in oklch, var(--muted-foreground) 88%, transparent);
   }
 
   .site-header__bar {
-    margin-top: -0.5rem;
+    margin-top: -0.625rem;
   }
 
   @media (min-width: 640px) {
     .site-header__bar {
-      margin-top: -0.625rem;
+      margin-top: -0.75rem;
     }
   }
 
