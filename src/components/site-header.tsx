@@ -3,7 +3,7 @@ import { useState } from "react";
 import restadigiLogo from "@/assets/restadigi-logo.png";
 
 const nav = [
-  { to: "/kotisivut-yrityksille", label: "VERKKOSIVUT RAVINTOLALLE" },
+  { to: "/kotisivut-yrityksille", label: "VERKKOSIVUT" },
   { to: "/diginakyvyys", label: "NÄKYVYYS JA SUUNNITTELU" },
   { to: "/chatbot", label: "AI-ASIAKASPALVELU" },
   { to: "/potyvarauspalvelu", label: "PÖYTÄVARAUSPALVELU" },
@@ -14,8 +14,8 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="py-8 sm:py-10 relative z-20">
-      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+    <nav className="relative z-20 py-6 sm:py-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6">
         <Link
           to="/"
           className="inline-flex shrink-0 items-center"
@@ -25,31 +25,24 @@ export function SiteHeader() {
           <img
             src={restadigiLogo}
             alt="Restadigi — AI ja web"
-            width={180}
-            height={48}
-            className="h-10 w-auto sm:h-11"
+            width={320}
+            height={86}
+            className="h-16 w-auto sm:h-[4.5rem] lg:h-20"
           />
         </Link>
 
-        <div className="hidden lg:flex gap-6 text-sm text-foreground/70">
+        <div className="hidden items-center gap-5 text-xs tracking-[0.12em] text-foreground/70 lg:flex xl:gap-6 xl:text-sm">
           {nav.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="hover:text-foreground transition-colors"
+              className="whitespace-nowrap hover:text-foreground transition-colors"
               activeProps={{ className: "text-foreground" }}
             >
               {item.label}
             </Link>
           ))}
         </div>
-
-        <Link
-          to="/yhteys"
-          className="hidden lg:inline-block text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground transition-colors"
-        >
-          Aloita projekti
-        </Link>
 
         <button
           type="button"
