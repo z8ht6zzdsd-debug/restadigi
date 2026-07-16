@@ -131,7 +131,7 @@ function Index() {
 
       {/* Tutustuminen */}
       <section className="py-16 sm:py-20 bg-background">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-6 text-center">
           <h2 className="text-2xl sm:text-[1.85rem] lg:text-[2rem] font-medium tracking-tight leading-[1.3] mb-5">
             <span className="block md:whitespace-nowrap">
               Toimialakohtaiset ratkaisut palvelualan sisälle ja{" "}
@@ -139,13 +139,13 @@ function Index() {
             </span>
             <span className="block">Ota yhteyttä, jutellaan lisää.</span>
           </h2>
-          <p className="text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-8 max-w-5xl">
+          <p className="mx-auto text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-8 max-w-5xl">
             Haluamme tutustua yrityksesi toimintaan mahdollisimman tarkasti ymmärtääksemme miten
             voimme palvella teitä parhaiten. Aloitamme kaikki projektit vähintään 30 minuutin
             pituisella tutustumispuhelulla. Varaa alta aika puhelulle tai soittele meille vaikka
             ihan suoraan itse, niin katsotaan teille optimaalinen palveluratkaisu yhdessä.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <a
               href={`tel:${PHONE_TEL}`}
               className="inline-flex items-center gap-3 rounded-full bg-primary py-3 pr-4 pl-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
@@ -204,7 +204,7 @@ function Index() {
       {/* Referenssit */}
       <section className="pt-24 sm:pt-32 pb-10 sm:pb-12 bg-background">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="mb-16">
+          <div className="mb-16 text-center">
             <h2 className="text-2xl sm:text-3xl font-medium tracking-tight">
               Valikoidut <span className="font-serif italic text-accent">projektit</span>
             </h2>
@@ -313,11 +313,11 @@ function Index() {
 
       {/* CTA */}
       <section className="bg-background text-foreground">
-        <div className="max-w-6xl mx-auto px-6 pt-8 sm:pt-10 pb-24 sm:pb-32 flex flex-col items-start">
+        <div className="max-w-6xl mx-auto px-6 pt-8 sm:pt-10 pb-24 sm:pb-32 flex flex-col items-center text-center">
           <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium mb-12 text-balance max-w-[20ch] tracking-tight">
             Valmis ottamaan <span className="font-serif italic text-accent">seuraavan askeleen</span>?
           </h2>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               to="/yhteys"
               className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent hover:text-accent-foreground transition-colors"
