@@ -18,7 +18,6 @@ const whyUs = [
     d: "Pitkä yrittäjätaustamme majoitus-, matkailu- ja ravintola-alalla auttaa meitä ymmärtämään yrityksesi liiketoimintaa kokonaisvaltaisesti. Haluamme kasvattaa myyntiäsi heti ja jatkaa kasvamista kanssanne digiliiketoimintakumppanina.",
     href: "/yhteys" as const,
     linkLabel: "Varaa tutustumispuhelu",
-    tone: "bg-[#2e2a24] text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
         <path
@@ -34,7 +33,6 @@ const whyUs = [
     d: "Kulut ovat suuret palvelualalla, ja uusien asiakkaiden löytäminen voi olla haastavaa. Tekoälyn ansiosta tuotamme palveluita järkevään hintaan laadusta tinkimättä — markkinoiden parhaalla hinta–laatusuhteella.",
     href: "/kotisivut-yrityksille" as const,
     linkLabel: "Katso paketit",
-    tone: "bg-[#2e2a24] text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
         <path
@@ -50,7 +48,6 @@ const whyUs = [
     d: "AI-asiakaspalvelubotti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään kuukausihintaan alk. 29 € / kk.",
     href: "/chatbot" as const,
     linkLabel: "Tutustu AI-palveluun",
-    tone: "bg-[#2e2a24] text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
         <path
@@ -66,7 +63,6 @@ const whyUs = [
     d: "Päivitä menu, hinnasto, aukioloajat ja kuvat omasta hallintapaneelistasi. Sisältöjen ylläpito sujuu itsenäisesti muutamalla klikkauksella — ilman teknistä osaamista.",
     href: "/kotisivut-yrityksille" as const,
     linkLabel: "Lue lisää",
-    tone: "bg-[#2e2a24] text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
         <path
@@ -133,14 +129,14 @@ function Index() {
         }
       />
 
-      {/* Toimialakohtaiset ratkaisut — tiivis, leveä tekstikaista */}
-      <section className="py-14 sm:py-16">
+      {/* Tutustuminen */}
+      <section className="py-16 sm:py-20 bg-background">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-2xl sm:text-3xl lg:text-[2.15rem] font-medium tracking-tight leading-[1.15] text-balance mb-5">
             Toimialakohtaiset ratkaisut palvelualan sisälle ja{" "}
             <span className="font-serif italic text-accent">boksin ulkopuolelle</span>.
           </h2>
-          <p className="text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-8 max-w-none">
+          <p className="text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-8">
             Haluamme tutustua yrityksesi toimintaan mahdollisimman tarkasti ymmärtääksemme miten
             voimme palvella teitä parhaiten. Aloitamme kaikki projektit vähintään 30 minuutin
             pituisella tutustumispuhelulla. Varaa alta aika puhelulle tai soittele meille vaikka
@@ -166,22 +162,22 @@ function Index() {
         </div>
       </section>
 
-      {/* Miksi valita meidät */}
-      <section className="relative overflow-hidden py-20 sm:py-28 bg-[#f6d56b] text-[#1c1814]">
+      {/* Miksi valita meidät — lämmin kulta + vaaleat kortit */}
+      <section className="relative overflow-hidden py-20 sm:py-28 bg-secondary text-foreground">
         <div
-          className="pointer-events-none absolute inset-0 opacity-40"
+          className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.45), transparent 70%)",
+              "linear-gradient(165deg, color-mix(in oklch, var(--accent) 22%, var(--secondary)) 0%, var(--secondary) 48%, color-mix(in oklch, var(--accent) 12%, var(--secondary)) 100%)",
           }}
           aria-hidden
         />
         <div className="relative max-w-6xl mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium tracking-tight mb-5 text-balance">
-              Miksi valita <span className="font-serif italic text-[#7a4a12]">meidät</span>?
+              Miksi valita <span className="font-serif italic text-accent">meidät</span>?
             </h2>
-            <p className="text-base sm:text-lg text-[#1c1814]/65 leading-relaxed">
+            <p className="text-base sm:text-lg text-foreground/60 leading-relaxed">
               Asiakkaamme arvostavat toimialaymmärrystä, järkevää hinnoittelua ja digiratkaisuja,
               jotka kasvavat liiketoiminnan mukana.
             </p>
@@ -191,16 +187,16 @@ function Index() {
             {whyUs.map((item) => (
               <div
                 key={item.t}
-                className={`${item.tone} rounded-lg border border-white/15 shadow-[0_12px_40px_-16px_rgba(28,24,20,0.45)] p-7 sm:p-8 flex flex-col gap-4 min-h-[16rem] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_-14px_rgba(28,24,20,0.5)]`}
+                className="rounded-lg border border-border/70 bg-[#f7f5f1] text-foreground p-7 sm:p-8 flex flex-col gap-4 min-h-[16rem] shadow-[0_10px_36px_-20px_rgba(50,30,20,0.35)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_-18px_rgba(50,30,20,0.4)]"
               >
-                <div className="text-[#f6d56b]" aria-hidden>
+                <div className="text-accent" aria-hidden>
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-medium tracking-tight">{item.t}</h3>
-                <p className="text-sm leading-relaxed flex-1 text-white/70">{item.d}</p>
+                <p className="text-sm leading-relaxed flex-1 text-foreground/60">{item.d}</p>
                 <Link
                   to={item.href}
-                  className="text-sm border-b border-[#f6d56b]/50 pb-0.5 w-fit text-[#f6d56b] transition-colors hover:border-[#f6d56b] hover:text-white"
+                  className="text-sm border-b border-foreground/25 pb-0.5 w-fit text-foreground/80 transition-colors hover:border-accent hover:text-accent"
                 >
                   {item.linkLabel} →
                 </Link>
@@ -211,7 +207,7 @@ function Index() {
       </section>
 
       {/* Referenssit */}
-      <section className="py-24 sm:py-32">
+      <section className="py-24 sm:py-32 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-16">
             <h2 className="text-2xl sm:text-3xl font-medium tracking-tight">
@@ -220,9 +216,8 @@ function Index() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Delfin Check-In */}
             <article className="group">
-              <div className="relative overflow-hidden rounded-sm bg-[#5fbaca]/15 mb-6 p-8 sm:p-10 flex items-end justify-center gap-4 min-h-[22rem] sm:min-h-[26rem]">
+              <div className="relative overflow-hidden rounded-sm bg-secondary/80 mb-6 p-8 sm:p-10 flex items-end justify-center gap-4 min-h-[22rem] sm:min-h-[26rem]">
                 <img
                   src={delfinIcon}
                   alt="Delfin Check-In -sovelluksen logo"
@@ -265,13 +260,12 @@ function Index() {
                 href="https://apps.apple.com/au/app/delfin-check-in/id6755120600"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm border-b border-foreground/30 pb-0.5 transition-colors hover:border-foreground"
+                className="text-sm border-b border-foreground/30 pb-0.5 transition-colors hover:border-accent hover:text-accent"
               >
                 Katso App Storessa →
               </a>
             </article>
 
-            {/* Rafa Romera */}
             <article className="group lg:mt-16">
               <div className="relative overflow-hidden rounded-sm mb-6 min-h-[22rem] sm:min-h-[26rem]">
                 <img
@@ -313,7 +307,7 @@ function Index() {
                 href="https://rafaromera.info/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm border-b border-foreground/30 pb-0.5 transition-colors hover:border-foreground"
+                className="text-sm border-b border-foreground/30 pb-0.5 transition-colors hover:border-accent hover:text-accent"
               >
                 Avaa sivusto →
               </a>
@@ -322,11 +316,11 @@ function Index() {
         </div>
       </section>
 
-      {/* CTA + footer — primary jatkuu sivun loppuun */}
+      {/* CTA */}
       <section className="bg-primary text-primary-foreground">
         <div className="max-w-6xl mx-auto px-6 py-24 sm:py-32 flex flex-col items-start">
           <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium mb-12 text-balance max-w-[20ch] tracking-tight">
-            Valmis ottamaan <span className="font-serif italic">seuraavan askeleen</span>?
+            Valmis ottamaan <span className="font-serif italic text-accent">seuraavan askeleen</span>?
           </h2>
           <div className="flex flex-wrap items-center gap-4">
             <Link
