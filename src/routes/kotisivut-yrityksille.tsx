@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import restaurantInterior from "@/assets/restaurant-interior.jpg";
+import heroHotelWeb from "@/assets/hero-hotel-web.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -98,7 +98,7 @@ function KotisivutPage() {
       <SiteHeader />
 
       <PageHero
-        image={restaurantInterior}
+        image={heroHotelWeb}
         title={
           <>
             Kotisivut <span className="font-serif italic text-accent">ravintolalle</span>.

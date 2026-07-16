@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import restaurantCafe from "@/assets/restaurant-cafe.jpg";
+import heroAiHospitality from "@/assets/hero-ai-hospitality.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -104,7 +104,7 @@ function ChatbotPage() {
       <SiteHeader />
 
       <PageHero
-        image={restaurantCafe}
+        image={heroAiHospitality}
         title={
           <>
             Älykäs <span className="font-serif italic text-accent">asiakaspalvelu</span>{" "}
