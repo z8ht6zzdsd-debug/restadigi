@@ -73,10 +73,11 @@
   --card-foreground: oklch(0.22 0.04 30);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.04 30);
-  --primary: oklch(0.32 0.09 30);
+  /* Freddos hero -taustan ruskea (#432f24) — CTA-boksit ym. */
+  --primary: #432f24;
   --primary-foreground: oklch(0.965 0.018 75);
   --secondary: oklch(0.92 0.03 70);
-  --secondary-foreground: oklch(0.32 0.09 30);
+  --secondary-foreground: #432f24;
   --muted: oklch(0.92 0.03 70);
   --muted-foreground: oklch(0.48 0.03 40);
   --accent: oklch(0.6 0.17 40);
