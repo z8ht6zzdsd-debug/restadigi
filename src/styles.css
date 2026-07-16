@@ -233,6 +233,47 @@
     margin-inline: auto;
     max-width: 72rem;
     padding-inline: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .page-hero--bleed .page-hero__content {
+    text-align: center;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page-hero--bleed .page-hero__title {
+    margin-inline: auto;
+    max-width: 18ch;
+  }
+
+  .page-hero--bleed .page-hero__frame--home .page-hero__title {
+    max-width: 20ch;
+  }
+
+  .page-hero--bleed .page-hero__description {
+    margin-inline: auto;
+  }
+
+  .page-hero--bleed .page-hero__actions {
+    justify-content: center;
+  }
+
+  .page-hero--bleed .page-hero__gradient-side {
+    left: 50%;
+    right: auto;
+    width: 100%;
+    max-width: none;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      ellipse 70% 80% at 50% 70%,
+      color-mix(in oklch, var(--foreground) 75%, transparent),
+      color-mix(in oklch, var(--foreground) 35%, transparent),
+      transparent 70%
+    );
   }
 
   @media (min-width: 640px) {

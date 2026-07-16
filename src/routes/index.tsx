@@ -133,10 +133,7 @@ function Index() {
       <section className="py-16 sm:py-20 bg-background">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <h2 className="text-2xl sm:text-[1.85rem] lg:text-[2rem] font-medium tracking-tight leading-[1.3] mb-5">
-            <span className="block md:whitespace-nowrap">
-              Toimialakohtaiset ratkaisut palvelualan sisälle ja{" "}
-              <span className="font-serif italic text-accent">boksin ulkopuolelle</span>.
-            </span>
+            <span className="block">Toimialakohtaiset ratkaisut.</span>
             <span className="block">Ota yhteyttä, jutellaan lisää.</span>
           </h2>
           <p className="mx-auto text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-8 max-w-5xl">
