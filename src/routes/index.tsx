@@ -131,14 +131,15 @@ function Index() {
 
       {/* Tutustuminen */}
       <section className="py-16 sm:py-20 bg-background">
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl sm:text-3xl lg:text-[2.15rem] font-medium tracking-tight leading-[1.25] mb-5">
-            Toimialakohtaiset ratkaisut palvelualan sisälle ja{" "}
-            <span className="font-serif italic text-accent">boksin ulkopuolelle</span>.
-            <br />
-            Ota yhteyttä niin jutellaan lisää.
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="text-2xl sm:text-[1.85rem] lg:text-[2rem] font-medium tracking-tight leading-[1.3] mb-5">
+            <span className="block md:whitespace-nowrap">
+              Toimialakohtaiset ratkaisut palvelualan sisälle ja{" "}
+              <span className="font-serif italic text-accent">boksin ulkopuolelle</span>.
+            </span>
+            <span className="block">Ota yhteyttä, jutellaan lisää.</span>
           </h2>
-          <p className="text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-8">
+          <p className="text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-8 max-w-5xl">
             Haluamme tutustua yrityksesi toimintaan mahdollisimman tarkasti ymmärtääksemme miten
             voimme palvella teitä parhaiten. Aloitamme kaikki projektit vähintään 30 minuutin
             pituisella tutustumispuhelulla. Varaa alta aika puhelulle tai soittele meille vaikka
