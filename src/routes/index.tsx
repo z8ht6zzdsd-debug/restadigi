@@ -322,45 +322,43 @@ function Index() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 sm:py-32 bg-secondary/40">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-primary text-primary-foreground rounded-sm p-12 sm:p-20 lg:p-28 flex flex-col items-start">
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium mb-12 text-balance max-w-[20ch] tracking-tight">
-              Valmis ottamaan <span className="font-serif italic">seuraavan askeleen</span>?
-            </h2>
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                to="/yhteys"
-                className="inline-flex items-center gap-3 bg-background text-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent hover:text-accent-foreground transition-colors"
+      {/* CTA + footer — primary jatkuu sivun loppuun */}
+      <section className="bg-primary text-primary-foreground">
+        <div className="max-w-6xl mx-auto px-6 py-24 sm:py-32 flex flex-col items-start">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium mb-12 text-balance max-w-[20ch] tracking-tight">
+            Valmis ottamaan <span className="font-serif italic">seuraavan askeleen</span>?
+          </h2>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link
+              to="/yhteys"
+              className="inline-flex items-center gap-3 bg-background text-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
+              Pyydä tarjous
+              <svg
+                className="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
               >
-                Pyydä tarjous
-                <svg
-                  className="size-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                  />
-                </svg>
-              </Link>
-              <a
-                href={`tel:${PHONE_TEL}`}
-                className="text-sm border-b border-primary-foreground/40 pb-0.5 text-primary-foreground/90 transition-colors hover:border-primary-foreground"
-              >
-                Soita meille →
-              </a>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                />
+              </svg>
+            </Link>
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="text-sm border-b border-primary-foreground/40 pb-0.5 text-primary-foreground/90 transition-colors hover:border-primary-foreground"
+            >
+              Soita meille →
+            </a>
           </div>
         </div>
-      </section>
 
-      <SiteFooter />
+        <SiteFooter tone="primary" />
+      </section>
     </div>
   );
 }
