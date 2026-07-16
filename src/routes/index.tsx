@@ -207,7 +207,7 @@ function Index() {
       </section>
 
       {/* Referenssit */}
-      <section className="py-24 sm:py-32 bg-background">
+      <section className="pt-24 sm:pt-32 pb-10 sm:pb-12 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-16">
             <h2 className="text-2xl sm:text-3xl font-medium tracking-tight">
@@ -317,15 +317,15 @@ function Index() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary text-primary-foreground">
-        <div className="max-w-6xl mx-auto px-6 py-24 sm:py-32 flex flex-col items-start">
+      <section className="bg-background text-foreground">
+        <div className="max-w-6xl mx-auto px-6 pt-8 sm:pt-10 pb-24 sm:pb-32 flex flex-col items-start">
           <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium mb-12 text-balance max-w-[20ch] tracking-tight">
             Valmis ottamaan <span className="font-serif italic text-accent">seuraavan askeleen</span>?
           </h2>
           <div className="flex flex-wrap items-center gap-4">
             <Link
               to="/yhteys"
-              className="inline-flex items-center gap-3 bg-background text-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent hover:text-accent-foreground transition-colors"
+              className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent hover:text-accent-foreground transition-colors"
             >
               Pyydä tarjous
               <svg
@@ -344,14 +344,14 @@ function Index() {
             </Link>
             <a
               href={`tel:${PHONE_TEL}`}
-              className="text-sm border-b border-primary-foreground/40 pb-0.5 text-primary-foreground/90 transition-colors hover:border-primary-foreground"
+              className="text-sm border-b border-foreground/30 pb-0.5 text-foreground/80 transition-colors hover:border-foreground hover:text-foreground"
             >
               Soita meille →
             </a>
           </div>
         </div>
 
-        <SiteFooter tone="primary" />
+        <SiteFooter />
       </section>
     </div>
   );
