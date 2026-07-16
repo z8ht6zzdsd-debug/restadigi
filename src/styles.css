@@ -221,6 +221,13 @@
   .page-hero__frame--bleed {
     border-radius: 0;
     width: 100%;
+    padding-bottom: 2.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .page-hero__frame--bleed {
+      padding-bottom: 3.5rem;
+    }
   }
 
   .page-hero__content-wrap {
@@ -245,6 +252,20 @@
     align-items: center;
   }
 
+  /* Pehmeä feidaus vain otsikon ja kuvauksen takana */
+  .page-hero--bleed .page-hero__copy::before {
+    inset: -0.85rem -1.35rem;
+    border-radius: 1.25rem;
+    background: radial-gradient(
+      ellipse 78% 70% at 50% 45%,
+      color-mix(in oklch, var(--foreground) 58%, transparent) 0%,
+      color-mix(in oklch, var(--foreground) 28%, transparent) 55%,
+      transparent 78%
+    );
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .page-hero--bleed .page-hero__title {
     margin-inline: auto;
     max-width: 18ch;
@@ -263,16 +284,16 @@
   }
 
   .page-hero--bleed .page-hero__gradient-side {
-    left: 50%;
-    right: auto;
-    width: 100%;
-    max-width: none;
-    transform: translateX(-50%);
-    background: radial-gradient(
-      ellipse 70% 80% at 50% 70%,
-      color-mix(in oklch, var(--foreground) 75%, transparent),
-      color-mix(in oklch, var(--foreground) 35%, transparent),
-      transparent 70%
+    display: none;
+  }
+
+  .page-hero--bleed .page-hero__gradient-bottom {
+    height: 72%;
+    background: linear-gradient(
+      to top,
+      color-mix(in oklch, var(--foreground) 55%, transparent) 0%,
+      color-mix(in oklch, var(--foreground) 28%, transparent) 40%,
+      transparent 100%
     );
   }
 
@@ -331,7 +352,15 @@
     max-width: 44rem;
   }
 
+  .page-hero__copy {
+    position: relative;
+  }
+
   .page-hero__content::before {
+    content: none;
+  }
+
+  .page-hero__copy::before {
     content: "";
     position: absolute;
     inset: -0.75rem -1rem;

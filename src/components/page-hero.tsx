@@ -34,8 +34,10 @@ export function PageHero({ image, title, description, actions, tall }: PageHeroP
 
         <div className="page-hero__content-wrap">
           <div className="page-hero__content">
-            <h1 className="page-hero__title">{title}</h1>
-            <p className="page-hero__description">{description}</p>
+            <div className="page-hero__copy">
+              <h1 className="page-hero__title">{title}</h1>
+              <p className="page-hero__description">{description}</p>
+            </div>
             {actions && <div className="page-hero__actions">{actions}</div>}
           </div>
         </div>
