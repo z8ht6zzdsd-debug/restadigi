@@ -112,7 +112,7 @@ function Index() {
         title={
           <>
             Älykäs verkkosivusto, joka{" "}
-            <span className="font-serif italic text-accent">palvelee asiakkaitasi</span>.
+            <span className="font-serif italic text-accent">palvelee asiakkaitasi 24/7</span>.
           </>
         }
         description="Rakennamme verkkosivuja, mobiiliapplikaatioita ja muita älykkäitä digitaalisia ratkaisuja palvelualan yrityksille nopeasti ja kustannustehokkaasti. Kokonaisuus sisältäen verkkosivut, varausjärjestelmät, asiakaspalvelun ja myynnin."
