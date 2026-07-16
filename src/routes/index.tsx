@@ -234,7 +234,7 @@ function Index() {
                   className="relative z-[2] w-[48%] max-w-[12.5rem] rounded-2xl shadow-xl -mb-4 group-hover:-translate-y-2 transition-transform duration-700"
                 />
               </div>
-              <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
+              <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 mb-3 text-center">
                 <h3 className="text-lg font-medium">
                   Delfin Check-In{" "}
                   <span className="font-serif italic text-foreground/50">
@@ -243,7 +243,7 @@ function Index() {
                 </h3>
                 <span className="text-sm text-muted-foreground">App Store & Google Play</span>
               </div>
-              <p className="text-sm text-foreground/60 leading-relaxed mb-4 max-w-prose">
+              <p className="text-sm text-foreground/60 leading-relaxed mb-4 mx-auto max-w-prose text-center">
                 Majoituspalveluiden check-in- ja matkustajarekisteröintisovellus vuokranantajille ja
                 majoitusyrityksille. Sovellus synkronoi varaukset, hallinnoi vieraita ja hoitaa
                 viranomaisraportoinnin — saatavilla Applen ja Googlen sovelluskaupoissa.
@@ -252,7 +252,7 @@ function Index() {
                 href="https://apps.apple.com/au/app/delfin-check-in/id6755120600"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm border-b border-foreground/30 pb-0.5 transition-colors hover:border-accent hover:text-accent"
+                className="block w-fit mx-auto text-sm border-b border-foreground/30 pb-0.5 transition-colors hover:border-accent hover:text-accent"
               >
                 Katso App Storessa →
               </a>
@@ -281,7 +281,7 @@ function Index() {
                   className="absolute bottom-6 left-6 w-44 sm:w-56 h-auto drop-shadow-lg"
                 />
               </div>
-              <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
+              <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 mb-3 text-center">
                 <h3 className="text-lg font-medium">
                   Rafa Romera{" "}
                   <span className="font-serif italic text-foreground/50">
@@ -290,7 +290,7 @@ function Index() {
                 </h3>
                 <span className="text-sm text-muted-foreground">Artistisivusto</span>
               </div>
-              <p className="text-sm text-foreground/60 leading-relaxed mb-4 max-w-prose">
+              <p className="text-sm text-foreground/60 leading-relaxed mb-4 mx-auto max-w-prose text-center">
                 Andalusialaisen muusikon Rafa Romeran verkkosivusto Spotify-integraatiolla —
                 biografia, discografia, galleria ja tulevat konsertit yhdessä kokonaisuudessa, joka
                 ohjaa kuulijat suoraan kuuntelemaan.
@@ -299,7 +299,7 @@ function Index() {
                 href="https://rafaromera.info/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm border-b border-foreground/30 pb-0.5 transition-colors hover:border-accent hover:text-accent"
+                className="block w-fit mx-auto text-sm border-b border-foreground/30 pb-0.5 transition-colors hover:border-accent hover:text-accent"
               >
                 Avaa sivusto →
               </a>
