@@ -298,6 +298,18 @@
     text-shadow: 0 2px 20px color-mix(in oklch, var(--foreground) 55%, transparent);
   }
 
+  .page-hero__frame--home .page-hero__title {
+    max-width: 18ch;
+  }
+
+  .page-hero__frame--home .page-hero__description {
+    max-width: 40rem;
+  }
+
+  .page-hero__frame--home .page-hero__content {
+    max-width: 48rem;
+  }
+
   .page-hero__title .text-accent {
     color: oklch(0.84 0.16 42);
     text-shadow: 0 2px 16px color-mix(in oklch, var(--foreground) 40%, transparent);
