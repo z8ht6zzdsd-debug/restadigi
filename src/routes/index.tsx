@@ -132,9 +132,11 @@ function Index() {
       {/* Tutustuminen */}
       <section className="py-16 sm:py-20 bg-background">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl sm:text-3xl lg:text-[2.15rem] font-medium tracking-tight leading-[1.15] text-balance mb-5">
+          <h2 className="text-2xl sm:text-3xl lg:text-[2.15rem] font-medium tracking-tight leading-[1.25] mb-5">
             Toimialakohtaiset ratkaisut palvelualan sisälle ja{" "}
             <span className="font-serif italic text-accent">boksin ulkopuolelle</span>.
+            <br />
+            Ota yhteyttä niin jutellaan lisää.
           </h2>
           <p className="text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-8">
             Haluamme tutustua yrityksesi toimintaan mahdollisimman tarkasti ymmärtääksemme miten
