@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroDiginakyvyys from "@/assets/hero-diginakyvyys.jpg";
+import heroAiHospitality from "@/assets/hero-ai-hospitality.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -103,7 +103,7 @@ function DiginakyvyysPage() {
       <SiteHeader />
 
       <PageHero
-        image={heroDiginakyvyys}
+        image={heroAiHospitality}
         title={
           <>
             Diginäkyvyys <span className="font-serif italic text-accent">kerralla</span> kuntoon.

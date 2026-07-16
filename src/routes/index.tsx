@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroAiHospitality from "@/assets/hero-ai-hospitality.jpg";
+import heroHome from "@/assets/hero-home.jpg";
 import delfinIcon from "@/assets/delfin-checkin-icon.jpg";
 import delfinScreen from "@/assets/delfin-checkin-screen.jpg";
 import delfinScreen2 from "@/assets/delfin-checkin-screen-2.jpg";
@@ -108,7 +108,7 @@ function Index() {
 
       <PageHero
         tall
-        image={heroAiHospitality}
+        image={heroHome}
         title={
           <>
             Älykäs verkkosivusto, joka{" "}
