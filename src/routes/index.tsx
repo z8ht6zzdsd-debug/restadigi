@@ -162,16 +162,8 @@ function Index() {
         </div>
       </section>
 
-      {/* Miksi valita meidät — lämmin kulta + vaaleat kortit */}
-      <section className="relative overflow-hidden py-20 sm:py-28 bg-secondary text-foreground">
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(165deg, color-mix(in oklch, var(--accent) 22%, var(--secondary)) 0%, var(--secondary) 48%, color-mix(in oklch, var(--accent) 12%, var(--secondary)) 100%)",
-          }}
-          aria-hidden
-        />
+      {/* Miksi valita meidät */}
+      <section className="relative overflow-hidden py-20 sm:py-28 bg-[#ebe8e2] text-foreground">
         <div className="relative max-w-6xl mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium tracking-tight mb-5 text-balance">
@@ -187,7 +179,7 @@ function Index() {
             {whyUs.map((item) => (
               <div
                 key={item.t}
-                className="rounded-lg border border-border/70 bg-[#f7f5f1] text-foreground p-7 sm:p-8 flex flex-col gap-4 min-h-[16rem] shadow-[0_10px_36px_-20px_rgba(50,30,20,0.35)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_-18px_rgba(50,30,20,0.4)]"
+                className="rounded-lg border border-border/70 bg-background text-foreground p-7 sm:p-8 flex flex-col gap-4 min-h-[16rem] shadow-[0_10px_36px_-20px_rgba(50,30,20,0.28)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_-18px_rgba(50,30,20,0.35)]"
               >
                 <div className="text-accent" aria-hidden>
                   {item.icon}
@@ -217,7 +209,7 @@ function Index() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <article className="group">
-              <div className="relative overflow-hidden rounded-sm bg-[#1f4a5c]/35 mb-6 p-8 sm:p-10 flex items-end justify-center gap-4 min-h-[22rem] sm:min-h-[26rem]">
+              <div className="relative overflow-hidden rounded-sm bg-accent mb-6 p-8 sm:p-10 flex items-end justify-center gap-4 min-h-[22rem] sm:min-h-[26rem]">
                 <img
                   src={delfinIcon}
                   alt="Delfin Check-In -sovelluksen logo"
