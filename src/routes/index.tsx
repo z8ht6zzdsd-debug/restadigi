@@ -14,20 +14,76 @@ const PHONE_DISPLAY = "+358 40 123 4567";
 
 const whyUs = [
   {
-    t: "Liiketoiminta ymmärrys",
-    d: "Pitkä yrittäjätaustamme majoitus-, matkailu- ja ravintola-alalla auttaa meitä ymmärtämään yrityksesi liiketoimintaa kokonaisvaltaisesti. Haluamme kasvattaa myyntiäsi heti ja jatkaa kasvamista kanssanne pitkäaikaisena digiliiketoiminta partnerina.",
+    t: "Liiketoimintaymmärrys",
+    d: "Pitkä yrittäjätaustamme majoitus-, matkailu- ja ravintola-alalla auttaa meitä ymmärtämään yrityksesi liiketoimintaa kokonaisvaltaisesti. Haluamme kasvattaa myyntiäsi heti ja jatkaa kasvamista kanssanne digiliiketoimintakumppanina.",
+    href: "/yhteys" as const,
+    linkLabel: "Varaa tutustumispuhelu",
+    tone: "bg-primary text-primary-foreground",
+    muted: "text-primary-foreground/70",
+    linkClass: "text-primary-foreground/90 hover:text-primary-foreground border-primary-foreground/35 hover:border-primary-foreground",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+        />
+      </svg>
+    ),
   },
   {
     t: "Edullisuus",
-    d: "Kulut ovat suuret kaikilla palveluliiketoiminnan aloilla tällä hetkellä ja uusien asiakkaiden löytäminen tai hintojen nostaminen voi olla haastavaa. Pystymme tekoälyn ansioista tuottamaan palveluita järkevään hintaan laadusta ja tehokkuudesta tinkimättä. Tavoitteemme on tarjota palveluitamme markkinoiden parhaalla hinta-laatu suhteella.",
+    d: "Kulut ovat suuret palvelualalla, ja uusien asiakkaiden löytäminen voi olla haastavaa. Tekoälyn ansiosta tuotamme palveluita järkevään hintaan laadusta tinkimättä — markkinoiden parhaalla hinta–laatusuhteella.",
+    href: "/kotisivut-yrityksille" as const,
+    linkLabel: "Katso paketit",
+    tone: "bg-[#c45c2a] text-white",
+    muted: "text-white/75",
+    linkClass: "text-white/90 hover:text-white border-white/40 hover:border-white",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A59.377 59.377 0 0115.75 6.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm8.25 2.25a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0z"
+        />
+      </svg>
+    ),
   },
   {
     t: "Automatisoitua liiketoimintaa",
     d: "AI-asiakaspalvelubotti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään kuukausihintaan alk. 29 € / kk.",
+    href: "/chatbot" as const,
+    linkLabel: "Tutustu AI-palveluun",
+    tone: "bg-[#1f4a5c] text-white",
+    muted: "text-white/75",
+    linkClass: "text-white/90 hover:text-white border-white/40 hover:border-white",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
+        />
+      </svg>
+    ),
   },
   {
     t: "Vaivatonta sisällönhallintaa",
-    d: "Pääset päivittämään sisältöjä helposti omasta hallintapaneelistasi. Esimerkiksi menun, hinnaston tai muiden tekstisisältöjen, aukioloaikojen ja kuvien päivittäminen sujuu itsenäisesti muutamalla klikkauksella.",
+    d: "Päivitä menu, hinnasto, aukioloajat ja kuvat omasta hallintapaneelistasi. Sisältöjen ylläpito sujuu itsenäisesti muutamalla klikkauksella — ilman teknistä osaamista.",
+    href: "/kotisivut-yrityksille" as const,
+    linkLabel: "Lue lisää",
+    tone: "bg-[#8a6a2f] text-white",
+    muted: "text-white/75",
+    linkClass: "text-white/90 hover:text-white border-white/40 hover:border-white",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+        />
+      </svg>
+    ),
   },
 ];
 
@@ -85,62 +141,69 @@ function Index() {
         }
       />
 
-      {/* Toimialakohtaiset ratkaisut */}
-      <section className="py-24 sm:py-32">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-              (01) Tutustuminen
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.1] text-balance mb-8">
-              Toimialakohtaiset ratkaisut palvelualan sisälle ja{" "}
-              <span className="font-serif italic text-accent">boksin ulkopuolelle</span>.
-            </h2>
-            <p className="text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-10 max-w-2xl">
-              Haluamme tutustua yrityksesi toimintaan mahdollisimman tarkasti ymmärtääksemme miten
-              voimme palvella teitä parhaiten. Aloitamme kaikki projektit vähintään 30 minuutin
-              pituisella tutustumispuhelulla. Varaa alta aika puhelulle tai soittele meille vaikka
-              ihan suoraan itse, niin katsotaan teille optimaalinen palveluratkaisu yhdessä.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href={`tel:${PHONE_TEL}`}
-                className="inline-flex items-center gap-3 rounded-full bg-primary py-3 pr-4 pl-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
-              >
-                Soita meille
-                <span className="text-primary-foreground/70 tabular-nums text-xs hidden sm:inline">
-                  {PHONE_DISPLAY}
-                </span>
-              </a>
-              <Link
-                to="/yhteys"
-                className="inline-flex items-center gap-2 border-b border-foreground/30 pb-0.5 text-sm transition-colors hover:border-foreground"
-              >
-                Varaa aika →
-              </Link>
-            </div>
+      {/* Toimialakohtaiset ratkaisut — tiivis, leveä tekstikaista */}
+      <section className="py-14 sm:py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-[2.15rem] font-medium tracking-tight leading-[1.15] text-balance mb-5">
+            Toimialakohtaiset ratkaisut palvelualan sisälle ja{" "}
+            <span className="font-serif italic text-accent">boksin ulkopuolelle</span>.
+          </h2>
+          <p className="text-base sm:text-lg text-foreground/65 leading-relaxed text-pretty mb-8 max-w-none">
+            Haluamme tutustua yrityksesi toimintaan mahdollisimman tarkasti ymmärtääksemme miten
+            voimme palvella teitä parhaiten. Aloitamme kaikki projektit vähintään 30 minuutin
+            pituisella tutustumispuhelulla. Varaa alta aika puhelulle tai soittele meille vaikka
+            ihan suoraan itse, niin katsotaan teille optimaalinen palveluratkaisu yhdessä.
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="inline-flex items-center gap-3 rounded-full bg-primary py-3 pr-4 pl-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+            >
+              Soita meille
+              <span className="text-primary-foreground/70 tabular-nums text-xs hidden sm:inline">
+                {PHONE_DISPLAY}
+              </span>
+            </a>
+            <Link
+              to="/yhteys"
+              className="inline-flex items-center gap-2 border-b border-foreground/30 pb-0.5 text-sm transition-colors hover:border-foreground"
+            >
+              Varaa aika →
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Miksi valita meidät */}
-      <section className="py-24 sm:py-32 bg-secondary/60">
+      {/* Miksi valita meidät — Restolution-inspiroitu värikortisto */}
+      <section className="py-20 sm:py-28 bg-[#f3efe8]">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-            (02) Vahvuudet
+          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-14">
+            <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">
+              Miksi valita <span className="font-serif italic text-accent">meidät</span>?
+            </h2>
+            <p className="text-base text-foreground/60 leading-relaxed">
+              Asiakkaamme arvostavat toimialaymmärrystä, järkevää hinnoittelua ja digiratkaisuja,
+              jotka kasvavat liiketoiminnan mukana.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-14">
-            Miksi valita <span className="font-serif italic text-accent">meidät</span>?
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
-            {whyUs.map((item, i) => (
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
+            {whyUs.map((item) => (
               <div
                 key={item.t}
-                className="rounded-sm border border-border/80 bg-background p-7 sm:p-8 flex flex-col gap-3"
+                className={`${item.tone} rounded-md p-7 sm:p-8 flex flex-col gap-4 min-h-[16rem] transition-transform duration-300 hover:-translate-y-0.5`}
               >
-                <div className="text-xs font-mono text-accent tabular-nums">0{i + 1}</div>
-                <h3 className="text-xl font-medium">{item.t}</h3>
-                <p className="text-sm text-foreground/60 leading-relaxed">{item.d}</p>
+                <div className="opacity-90" aria-hidden>
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-medium tracking-tight">{item.t}</h3>
+                <p className={`text-sm leading-relaxed flex-1 ${item.muted}`}>{item.d}</p>
+                <Link
+                  to={item.href}
+                  className={`text-sm border-b pb-0.5 w-fit transition-colors ${item.linkClass}`}
+                >
+                  {item.linkLabel} →
+                </Link>
               </div>
             ))}
           </div>
@@ -151,9 +214,6 @@ function Index() {
       <section className="py-24 sm:py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-16">
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
-              (03) Referenssit
-            </div>
             <h2 className="text-2xl sm:text-3xl font-medium tracking-tight">
               Valikoidut <span className="font-serif italic text-accent">projektit</span>
             </h2>
@@ -266,9 +326,6 @@ function Index() {
       <section className="py-24 sm:py-32 bg-secondary/40">
         <div className="max-w-6xl mx-auto px-6">
           <div className="bg-primary text-primary-foreground rounded-sm p-12 sm:p-20 lg:p-28 flex flex-col items-start">
-            <div className="text-xs uppercase tracking-[0.2em] text-primary-foreground/50 mb-8">
-              (04) Yhteys
-            </div>
             <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium mb-12 text-balance max-w-[20ch] tracking-tight">
               Valmis ottamaan <span className="font-serif italic">seuraavan askeleen</span>?
             </h2>
