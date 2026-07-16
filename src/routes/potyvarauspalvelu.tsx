@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroFineDining from "@/assets/hero-fine-dining.jpg";
+import heroStudio from "@/assets/hero-studio.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -29,7 +29,7 @@ function PotyvarausPage() {
       <SiteHeader />
 
       <PageHero
-        image={heroFineDining}
+        image={heroStudio}
         title={
           <>
             <span className="font-serif italic text-accent">Pöytävaraukset</span> suoraan sivustolta.
