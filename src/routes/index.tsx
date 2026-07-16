@@ -209,7 +209,7 @@ function Index() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <article className="group">
-              <div className="relative overflow-hidden rounded-sm bg-accent mb-6 p-8 sm:p-10 flex items-end justify-center gap-4 min-h-[22rem] sm:min-h-[26rem]">
+              <div className="relative overflow-hidden rounded-sm bg-primary mb-6 p-8 sm:p-10 flex items-end justify-center gap-4 min-h-[22rem] sm:min-h-[26rem]">
                 <img
                   src={delfinIcon}
                   alt="Delfin Check-In -sovelluksen logo"
