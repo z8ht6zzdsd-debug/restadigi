@@ -179,7 +179,7 @@ function Index() {
             {whyUs.map((item) => (
               <div
                 key={item.t}
-                className="rounded-lg border border-border/70 bg-background text-foreground p-7 sm:p-8 flex flex-col gap-4 min-h-[16rem] shadow-[0_10px_36px_-20px_rgba(50,30,20,0.28)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_-18px_rgba(50,30,20,0.35)]"
+                className="rounded-lg border border-border/70 bg-background text-foreground p-7 sm:p-8 flex flex-col items-center text-center gap-4 min-h-[16rem] shadow-[0_10px_36px_-20px_rgba(50,30,20,0.28)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_-18px_rgba(50,30,20,0.35)]"
               >
                 <div className="text-accent" aria-hidden>
                   {item.icon}
