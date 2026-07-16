@@ -18,9 +18,7 @@ const whyUs = [
     d: "Pitkä yrittäjätaustamme majoitus-, matkailu- ja ravintola-alalla auttaa meitä ymmärtämään yrityksesi liiketoimintaa kokonaisvaltaisesti. Haluamme kasvattaa myyntiäsi heti ja jatkaa kasvamista kanssanne digiliiketoimintakumppanina.",
     href: "/yhteys" as const,
     linkLabel: "Varaa tutustumispuhelu",
-    tone: "bg-primary text-primary-foreground",
-    muted: "text-primary-foreground/70",
-    linkClass: "text-primary-foreground/90 hover:text-primary-foreground border-primary-foreground/35 hover:border-primary-foreground",
+    tone: "bg-[#2e2a24] text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
         <path
@@ -36,9 +34,7 @@ const whyUs = [
     d: "Kulut ovat suuret palvelualalla, ja uusien asiakkaiden löytäminen voi olla haastavaa. Tekoälyn ansiosta tuotamme palveluita järkevään hintaan laadusta tinkimättä — markkinoiden parhaalla hinta–laatusuhteella.",
     href: "/kotisivut-yrityksille" as const,
     linkLabel: "Katso paketit",
-    tone: "bg-[#c45c2a] text-white",
-    muted: "text-white/75",
-    linkClass: "text-white/90 hover:text-white border-white/40 hover:border-white",
+    tone: "bg-[#2e2a24] text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
         <path
@@ -54,9 +50,7 @@ const whyUs = [
     d: "AI-asiakaspalvelubotti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään kuukausihintaan alk. 29 € / kk.",
     href: "/chatbot" as const,
     linkLabel: "Tutustu AI-palveluun",
-    tone: "bg-[#1f4a5c] text-white",
-    muted: "text-white/75",
-    linkClass: "text-white/90 hover:text-white border-white/40 hover:border-white",
+    tone: "bg-[#2e2a24] text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
         <path
@@ -72,9 +66,7 @@ const whyUs = [
     d: "Päivitä menu, hinnasto, aukioloajat ja kuvat omasta hallintapaneelistasi. Sisältöjen ylläpito sujuu itsenäisesti muutamalla klikkauksella — ilman teknistä osaamista.",
     href: "/kotisivut-yrityksille" as const,
     linkLabel: "Lue lisää",
-    tone: "bg-[#8a6a2f] text-white",
-    muted: "text-white/75",
-    linkClass: "text-white/90 hover:text-white border-white/40 hover:border-white",
+    tone: "bg-[#2e2a24] text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-7">
         <path
@@ -174,14 +166,22 @@ function Index() {
         </div>
       </section>
 
-      {/* Miksi valita meidät — Restolution-inspiroitu värikortisto */}
-      <section className="py-20 sm:py-28 bg-[#f3efe8]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-14">
-            <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">
-              Miksi valita <span className="font-serif italic text-accent">meidät</span>?
+      {/* Miksi valita meidät */}
+      <section className="relative overflow-hidden py-20 sm:py-28 bg-[#f6d56b] text-[#1c1814]">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.45), transparent 70%)",
+          }}
+          aria-hidden
+        />
+        <div className="relative max-w-6xl mx-auto px-6">
+          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium tracking-tight mb-5 text-balance">
+              Miksi valita <span className="font-serif italic text-[#7a4a12]">meidät</span>?
             </h2>
-            <p className="text-base text-foreground/60 leading-relaxed">
+            <p className="text-base sm:text-lg text-[#1c1814]/65 leading-relaxed">
               Asiakkaamme arvostavat toimialaymmärrystä, järkevää hinnoittelua ja digiratkaisuja,
               jotka kasvavat liiketoiminnan mukana.
             </p>
@@ -191,16 +191,16 @@ function Index() {
             {whyUs.map((item) => (
               <div
                 key={item.t}
-                className={`${item.tone} rounded-md p-7 sm:p-8 flex flex-col gap-4 min-h-[16rem] transition-transform duration-300 hover:-translate-y-0.5`}
+                className={`${item.tone} rounded-lg border border-white/15 shadow-[0_12px_40px_-16px_rgba(28,24,20,0.45)] p-7 sm:p-8 flex flex-col gap-4 min-h-[16rem] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_-14px_rgba(28,24,20,0.5)]`}
               >
-                <div className="opacity-90" aria-hidden>
+                <div className="text-[#f6d56b]" aria-hidden>
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-medium tracking-tight">{item.t}</h3>
-                <p className={`text-sm leading-relaxed flex-1 ${item.muted}`}>{item.d}</p>
+                <p className="text-sm leading-relaxed flex-1 text-white/70">{item.d}</p>
                 <Link
                   to={item.href}
-                  className={`text-sm border-b pb-0.5 w-fit transition-colors ${item.linkClass}`}
+                  className="text-sm border-b border-[#f6d56b]/50 pb-0.5 w-fit text-[#f6d56b] transition-colors hover:border-[#f6d56b] hover:text-white"
                 >
                   {item.linkLabel} →
                 </Link>
