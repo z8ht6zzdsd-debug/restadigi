@@ -188,9 +188,18 @@
     padding-bottom: 2rem;
   }
 
+  .page-hero--bleed {
+    padding-inline: 0;
+    padding-bottom: 0;
+  }
+
   @media (min-width: 640px) {
     .page-hero {
       padding-bottom: 3rem;
+    }
+
+    .page-hero--bleed {
+      padding-bottom: 0;
     }
   }
 
@@ -207,6 +216,23 @@
 
   .page-hero__frame--home {
     min-height: min(88vh, 44rem);
+  }
+
+  .page-hero__frame--bleed {
+    border-radius: 0;
+    width: 100%;
+  }
+
+  .page-hero__content-wrap {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+
+  .page-hero--bleed .page-hero__content-wrap {
+    margin-inline: auto;
+    max-width: 72rem;
+    padding-inline: 1.5rem;
   }
 
   @media (min-width: 640px) {
