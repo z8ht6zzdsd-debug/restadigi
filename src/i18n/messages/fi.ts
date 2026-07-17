@@ -555,7 +555,7 @@ export const fi: Messages = {
       titleBefore: "Sali ",
       titleAccent: "kartalla",
       titleAfter: " — mobiilista isoon näyttöön.",
-      body: "Kustomoitu pöytäkartta asiakaspaikkojen mukaan (2–8 hlö). Sama näkymä toimii puhelimella, tabletilla ja ravintolan isolla näytöllä.",
+      body: "Kustomoitu pöytäkartta ravintolan asiakaspaikkojen mukaan. Sama näkymä toimii puhelimella, tabletilla ja ravintolan isolla näytöllä.",
     },
     features: [
       {

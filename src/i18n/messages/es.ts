@@ -558,7 +558,7 @@ export const es: Messages = {
       titleBefore: "El salón ",
       titleAccent: "en el mapa",
       titleAfter: " — del móvil a la gran pantalla.",
-      body: "Plano personalizado según aforo (2–8 personas). La misma vista funciona en móvil, tablet y la pantalla grande del restaurante.",
+      body: "Plano personalizado según el aforo de tu restaurante. La misma vista funciona en móvil, tablet y la pantalla grande del restaurante.",
     },
     features: [
       {

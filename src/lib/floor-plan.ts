@@ -33,42 +33,33 @@ export function countBySeats(tables: FloorTable[]): Record<TableSeats, number> {
 }
 
 /**
- * Demo floor plan for ~80 covers.
- * Mix: 4×2, 8×4, 4×6, 2×8 = 80 seats (18 tables).
- * Restadigi customizes layout & mix per restaurant.
+ * Demo floor plan for 50 covers — clearer spacing for marketing & admin preview.
+ * Mix: 3×2 + 6×4 + 2×6 + 1×8 = 50 seats (12 tables).
  */
 export const DEMO_FLOOR_PLAN: FloorPlan = {
-  id: "demo-80",
-  name: "Demo Ravintola — 80 paikkaa",
-  capacity: 80,
+  id: "demo-50",
+  name: "Demo Ravintola — 50 paikkaa",
+  capacity: 50,
   tables: [
-    // Ikkunarivi
-    { id: "t1", label: "1", seats: 2, x: 8, y: 12, shape: "round", zone: "ikkuna" },
-    { id: "t2", label: "2", seats: 2, x: 20, y: 12, shape: "round", zone: "ikkuna" },
-    { id: "t3", label: "3", seats: 4, x: 36, y: 14, shape: "rect", zone: "ikkuna" },
-    { id: "t4", label: "4", seats: 4, x: 54, y: 14, shape: "rect", zone: "ikkuna" },
-    { id: "t5", label: "5", seats: 4, x: 72, y: 14, shape: "rect", zone: "ikkuna" },
-    { id: "t6", label: "6", seats: 2, x: 88, y: 12, shape: "round", zone: "ikkuna" },
+    // Ikkunarivi — ilmava
+    { id: "t1", label: "1", seats: 2, x: 14, y: 16, shape: "round", zone: "ikkuna" },
+    { id: "t2", label: "2", seats: 4, x: 36, y: 18, shape: "rect", zone: "ikkuna" },
+    { id: "t3", label: "3", seats: 4, x: 58, y: 18, shape: "rect", zone: "ikkuna" },
+    { id: "t4", label: "4", seats: 2, x: 80, y: 16, shape: "round", zone: "ikkuna" },
 
     // Keskisali
-    { id: "t7", label: "7", seats: 4, x: 22, y: 38, shape: "rect", zone: "sali" },
-    { id: "t8", label: "8", seats: 6, x: 42, y: 40, shape: "rect", zone: "sali" },
-    { id: "t9", label: "9", seats: 6, x: 62, y: 40, shape: "rect", zone: "sali" },
-    { id: "t10", label: "10", seats: 4, x: 82, y: 38, shape: "rect", zone: "sali" },
+    { id: "t5", label: "5", seats: 4, x: 22, y: 42, shape: "rect", zone: "sali" },
+    { id: "t6", label: "6", seats: 6, x: 48, y: 44, shape: "rect", zone: "sali" },
+    { id: "t7", label: "7", seats: 4, x: 74, y: 42, shape: "rect", zone: "sali" },
 
     // Takasali
-    { id: "t11", label: "11", seats: 4, x: 18, y: 62, shape: "rect", zone: "sali" },
-    { id: "t12", label: "12", seats: 4, x: 38, y: 62, shape: "rect", zone: "sali" },
-    { id: "t13", label: "13", seats: 6, x: 60, y: 64, shape: "rect", zone: "sali" },
-    { id: "t14", label: "14", seats: 2, x: 82, y: 60, shape: "round", zone: "sali" },
+    { id: "t8", label: "8", seats: 4, x: 28, y: 68, shape: "rect", zone: "sali" },
+    { id: "t9", label: "9", seats: 6, x: 54, y: 70, shape: "rect", zone: "sali" },
+    { id: "t10", label: "10", seats: 2, x: 78, y: 66, shape: "round", zone: "sali" },
 
-    // Terassi / sivusiipi
-    { id: "t15", label: "15", seats: 4, x: 12, y: 84, shape: "rect", zone: "terassi" },
-    { id: "t16", label: "16", seats: 6, x: 32, y: 86, shape: "rect", zone: "terassi" },
-
-    // Kabinetti (isot seurueet)
-    { id: "t17", label: "17", seats: 8, x: 58, y: 86, shape: "rect", zone: "kabinetti" },
-    { id: "t18", label: "18", seats: 8, x: 82, y: 86, shape: "rect", zone: "kabinetti" },
+    // Terassi + kabinetti
+    { id: "t11", label: "11", seats: 4, x: 24, y: 88, shape: "rect", zone: "terassi" },
+    { id: "t12", label: "12", seats: 8, x: 62, y: 88, shape: "rect", zone: "kabinetti" },
   ],
 };
 
@@ -83,10 +74,10 @@ export const ZONE_LABELS: Record<FloorTable["zone"], string> = {
 export function suggestTableMix(capacity: number): Record<TableSeats, number> {
   const target = Math.max(20, Math.min(200, capacity));
   // Rough split: 15% @2, 45% @4, 25% @6, 15% @8
-  let seats2 = Math.round(target * 0.15);
-  let seats4 = Math.round(target * 0.45);
-  let seats6 = Math.round(target * 0.25);
-  let seats8 = target - seats2 - seats4 - seats6;
+  const seats2 = Math.round(target * 0.15);
+  const seats4 = Math.round(target * 0.45);
+  const seats6 = Math.round(target * 0.25);
+  const seats8 = target - seats2 - seats4 - seats6;
 
   // Snap to table sizes
   const n2 = Math.max(1, Math.round(seats2 / 2));

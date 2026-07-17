@@ -552,7 +552,7 @@ export const en: Messages = {
       titleBefore: "The room ",
       titleAccent: "on a map",
       titleAfter: " — phone to big screen.",
-      body: "A customized floor plan by seat count (2–8 guests). The same view works on phone, tablet and the restaurant’s large display.",
+      body: "A customized floor plan for your restaurant’s seating. The same view works on phone, tablet and the restaurant’s large display.",
     },
     features: [
       {

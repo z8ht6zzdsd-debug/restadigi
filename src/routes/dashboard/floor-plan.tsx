@@ -135,7 +135,7 @@ function DashboardFloorPlanPage() {
       setPlan(data.plan);
       setStats(data.stats);
       setSelectedId(null);
-      setMessage("Demokartta (80 paikkaa) palautettu.");
+      setMessage("Demokartta (50 paikkaa) palautettu.");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Tallennus epäonnistui");
     } finally {
