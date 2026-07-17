@@ -1,6 +1,7 @@
 import { eq, sql } from "drizzle-orm";
 
 import { getDb, schema } from "@/db";
+import { normalizeReservationDate, normalizeReservationTime } from "@/lib/date-utils";
 import type { RestaurantSettings } from "@/lib/restaurant-settings-types";
 import { validateReservationInput } from "@/lib/settings-service";
 
@@ -122,8 +123,8 @@ export function parseReservationArgs(args: string) {
   return {
     guestName: parsed.guest_name,
     partySize: parsed.party_size,
-    date: parsed.date,
-    time: parsed.time,
+    date: normalizeReservationDate(parsed.date),
+    time: normalizeReservationTime(parsed.time),
     guestPhone: parsed.guest_phone,
     guestEmail: parsed.guest_email,
     notes: parsed.notes,

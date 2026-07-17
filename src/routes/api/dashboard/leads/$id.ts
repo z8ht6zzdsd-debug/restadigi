@@ -5,6 +5,7 @@ import { z } from "zod";
 import { getDb, schema } from "@/db";
 import { requireAdmin, unauthorizedResponse } from "@/lib/auth";
 import { getDatabaseUrl } from "@/lib/database-url";
+import { enforceRateLimit } from "@/lib/rate-limit";
 
 const patchSchema = z.object({
   status: z.enum(["new", "contacted", "qualified", "won", "lost"]).optional(),
@@ -15,6 +16,8 @@ export const Route = createFileRoute("/api/dashboard/leads/$id")({
   server: {
     handlers: {
       PATCH: async ({ request, params }) => {
+        const limited = enforceRateLimit(request, "dashboard", ":write");
+        if (limited) return limited;
         if (!requireAdmin(request)) return unauthorizedResponse();
         if (!getDatabaseUrl()) {
           return Response.json({ error: "Database not configured" }, { status: 503 });

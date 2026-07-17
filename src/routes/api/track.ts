@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { getDb, schema } from "@/db";
 import { getDatabaseUrl } from "@/lib/database-url";
+import { enforceRateLimit } from "@/lib/rate-limit";
 
 const trackSchema = z.object({
   visitorSessionId: z.string().uuid(),
@@ -14,6 +15,9 @@ export const Route = createFileRoute("/api/track")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        const limited = enforceRateLimit(request, "track");
+        if (limited) return limited;
+
         if (!getDatabaseUrl()) {
           return Response.json({ ok: true, skipped: true });
         }

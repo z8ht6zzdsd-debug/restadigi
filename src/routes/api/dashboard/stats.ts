@@ -5,11 +5,14 @@ import { getDb, schema } from "@/db";
 import { requireAdmin, unauthorizedResponse } from "@/lib/auth";
 import { ensureSalesLeadsTable } from "@/lib/chat-service";
 import { getDatabaseUrl } from "@/lib/database-url";
+import { enforceRateLimit } from "@/lib/rate-limit";
 
 export const Route = createFileRoute("/api/dashboard/stats")({
   server: {
     handlers: {
       GET: async ({ request }) => {
+        const limited = enforceRateLimit(request, "dashboard");
+        if (limited) return limited;
         if (!requireAdmin(request)) return unauthorizedResponse();
         if (!getDatabaseUrl()) {
           return Response.json({ error: "Database not configured" }, { status: 503 });

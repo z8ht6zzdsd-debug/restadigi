@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { createSessionToken, sessionCookieHeader, verifyAdminCredentials } from "@/lib/auth";
+import { enforceRateLimit } from "@/lib/rate-limit";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -12,6 +13,9 @@ export const Route = createFileRoute("/api/auth/login")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        const limited = enforceRateLimit(request, "login");
+        if (limited) return limited;
+
         let body: unknown;
         try {
           body = await request.json();

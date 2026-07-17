@@ -21,6 +21,7 @@ import {
   buildReservationTool,
   getRestaurantSettings,
 } from "@/lib/settings-service";
+import { enforceRateLimit } from "@/lib/rate-limit";
 
 const chatRequestSchema = z.object({
   sessionId: z.string().uuid().optional(),
@@ -89,6 +90,9 @@ export const Route = createFileRoute("/api/chat")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        const limited = enforceRateLimit(request, "chat");
+        if (limited) return limited;
+
         const apiKey = process.env.OPENAI_API_KEY;
         if (!apiKey) {
           return Response.json(

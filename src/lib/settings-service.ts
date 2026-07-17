@@ -1,7 +1,13 @@
 import { and, eq, ne } from "drizzle-orm";
 
 import { getDb, schema } from "@/db";
-import { formatHelsinkiNowForPrompt } from "@/lib/date-utils";
+import {
+  formatHelsinkiNowForPrompt,
+  minutesUntilHelsinki,
+  normalizeReservationDate,
+  normalizeReservationTime,
+  weekdayFromDateKey,
+} from "@/lib/date-utils";
 import {
   DEFAULT_SETTINGS,
   parseClosedWeekdays,
@@ -105,46 +111,6 @@ export async function upsertRestaurantSettings(
 function timeToMinutes(value: string) {
   const [hours, minutes] = value.split(":").map(Number);
   return hours * 60 + minutes;
-}
-
-/** Interpret YYYY-MM-DD + HH:MM as Europe/Helsinki wall time → UTC Date. */
-function parseHelsinkiDateTime(date: string, time: string): Date {
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
-  const timeMatch = /^(\d{1,2}):(\d{2})$/.exec(time);
-  if (!match || !timeMatch) return new Date(NaN);
-
-  const year = Number(match[1]);
-  const month = Number(match[2]);
-  const day = Number(match[3]);
-  const hour = Number(timeMatch[1]);
-  const minute = Number(timeMatch[2]);
-  if (![year, month, day, hour, minute].every(Number.isFinite)) return new Date(NaN);
-
-  // Iterate once: guess UTC, read Helsinki offset at that instant, adjust.
-  let utc = Date.UTC(year, month - 1, day, hour, minute, 0);
-  for (let i = 0; i < 2; i++) {
-    const parts = new Intl.DateTimeFormat("en-US", {
-      timeZone: "Europe/Helsinki",
-      timeZoneName: "longOffset",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    }).formatToParts(new Date(utc));
-
-    const get = (type: string) => parts.find((p) => p.type === type)?.value;
-    const tzName = get("timeZoneName") ?? "GMT+0";
-    const offsetMatch = /GMT([+-])(\d{1,2})(?::?(\d{2}))?/.exec(tzName);
-    const sign = offsetMatch?.[1] === "-" ? -1 : 1;
-    const offH = Number(offsetMatch?.[2] ?? 0);
-    const offM = Number(offsetMatch?.[3] ?? 0);
-    const offsetMs = sign * (offH * 60 + offM) * 60_000;
-    utc = Date.UTC(year, month - 1, day, hour, minute, 0) - offsetMs;
-  }
-  return new Date(utc);
 }
 
 function normalizeToSlot(time: string, slotMinutes: number) {
@@ -396,48 +362,57 @@ export async function validateReservationInput(
     throw new Error("Keston tulee olla 2 tai 3 tuntia");
   }
 
-  const reservationDate = new Date(`${input.date}T12:00:00`);
-  if (Number.isNaN(reservationDate.getTime())) {
+  const date = normalizeReservationDate(input.date);
+  const time = normalizeReservationTime(input.time);
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
     throw new Error("Virheellinen päivämäärä");
   }
+  if (!/^\d{2}:\d{2}$/.test(time)) {
+    throw new Error("Virheellinen kellonaika");
+  }
 
-  const weekday = reservationDate.getDay();
+  // Keep normalized values for downstream capacity checks
+  input.date = date;
+  input.time = time;
+
+  const weekday = weekdayFromDateKey(date);
   if (parseClosedWeekdays(settings.closedWeekdays).includes(weekday)) {
     throw new Error("Ravintola on suljettu valittuna päivänä");
   }
 
-  const reservationDateTime = parseHelsinkiDateTime(input.date, input.time);
-  if (Number.isNaN(reservationDateTime.getTime())) {
-    throw new Error("Virheellinen kellonaika");
+  const minutesUntil = minutesUntilHelsinki(date, time);
+  if (Number.isNaN(minutesUntil)) {
+    throw new Error("Virheellinen päivämäärä tai kellonaika");
   }
 
-  const now = new Date();
-  const hoursUntil = (reservationDateTime.getTime() - now.getTime()) / (1000 * 60 * 60);
-  // Reject clearly past times (15 min grace for clock skew); skip when minNotice is 0
-  if (hoursUntil < -0.25) {
-    throw new Error("Varausaika on jo mennyt — ehdota myöhempää aikaa");
+  // 30 min grace — only reject when Helsinki wall time is clearly in the past
+  if (minutesUntil < -30) {
+    const clock = formatHelsinkiNowForPrompt();
+    throw new Error(
+      `Varausaika ${date} klo ${time} on jo mennyt (nyt ${clock.today} klo ${clock.time}). Ehdota myöhempää aikaa.`,
+    );
   }
-  if (settings.minNoticeHours > 0 && hoursUntil < settings.minNoticeHours) {
+  if (settings.minNoticeHours > 0 && minutesUntil < settings.minNoticeHours * 60) {
     throw new Error(`Varaus vaatii vähintään ${settings.minNoticeHours} tuntia ennakkoilmoitusta`);
   }
 
-  const maxDate = new Date();
-  maxDate.setDate(maxDate.getDate() + settings.advanceBookingDays);
-  if (reservationDateTime > maxDate) {
+  const maxMinutes = settings.advanceBookingDays * 24 * 60;
+  if (minutesUntil > maxMinutes) {
     throw new Error(
       `Varaus voidaan tehdä enintään ${settings.advanceBookingDays} päivää etukäteen`,
     );
   }
 
-  if (!isInServiceHours(input.time, settings)) {
+  if (!isInServiceHours(time, settings)) {
     throw new Error(
-      `Aika ${input.time} on palveluaikojen ulkopuolella (${formatServiceWindows(settings)})`,
+      `Aika ${time} on palveluaikojen ulkopuolella (${formatServiceWindows(settings)})`,
     );
   }
 
   // Last seating: start time should leave room for at least 2h before close
   const closeMinutes = timeToMinutes(settings.closeTime);
-  const startMinutes = timeToMinutes(input.time);
+  const startMinutes = timeToMinutes(time);
   const duration = input.durationHours === 3 ? 3 : 2;
   if (startMinutes + duration * 60 > closeMinutes + 30) {
     // Soft warning only if way past close — allow seating until close
@@ -451,12 +426,12 @@ export async function validateReservationInput(
   const db = getDb();
   const existing = await db.query.reservations.findMany({
     where: and(
-      eq(schema.reservations.reservationDate, input.date),
+      eq(schema.reservations.reservationDate, date),
       ne(schema.reservations.status, "cancelled"),
     ),
   });
 
-  const slot = normalizeToSlot(input.time, settings.slotMinutes);
+  const slot = normalizeToSlot(time, settings.slotMinutes);
   const slotCovers = existing
     .filter((row) => normalizeToSlot(row.reservationTime, settings.slotMinutes) === slot)
     .reduce((sum, row) => sum + row.partySize, 0);

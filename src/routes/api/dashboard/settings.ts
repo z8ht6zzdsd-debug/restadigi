@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { requireAdmin, unauthorizedResponse } from "@/lib/auth";
 import { getDatabaseUrl } from "@/lib/database-url";
+import { enforceRateLimit } from "@/lib/rate-limit";
 import { getRestaurantSettings, upsertRestaurantSettings } from "@/lib/settings-service";
 
 const timeSchema = z.string().regex(/^\d{2}:\d{2}$/);
@@ -42,6 +43,8 @@ export const Route = createFileRoute("/api/dashboard/settings")({
   server: {
     handlers: {
       GET: async ({ request }) => {
+        const limited = enforceRateLimit(request, "dashboard");
+        if (limited) return limited;
         if (!requireAdmin(request)) return unauthorizedResponse();
 
         try {
@@ -53,6 +56,8 @@ export const Route = createFileRoute("/api/dashboard/settings")({
         }
       },
       PUT: async ({ request }) => {
+        const limited = enforceRateLimit(request, "dashboard", ":write");
+        if (limited) return limited;
         if (!requireAdmin(request)) return unauthorizedResponse();
         if (!getDatabaseUrl()) {
           return Response.json({ error: "Tietokantaa ei ole konfiguroitu" }, { status: 503 });
