@@ -1,11 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroDiginakyvyys from "@/assets/hero-diginakyvyys.jpg";
+import sportFootball from "@/assets/sport-football.jpg";
+import sportHockey from "@/assets/sport-hockey.jpg";
+import sportPesapallo from "@/assets/sport-pesapallo.jpg";
 import { PackageBrandLogos, packageLogoKind } from "@/components/package-brand-logos";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
+
+const sportsPackageImages = [
+  { src: sportFootball, alt: "Jalkapallo" },
+  { src: sportHockey, alt: "Jääkiekko" },
+  { src: sportPesapallo, alt: "Pesäpallo" },
+] as const;
+
+function isSportsPackage(name: string) {
+  return (
+    name === "Huippu-urheilun näkyvyyspaketti" ||
+    name === "Elite sports visibility package"
+  );
+}
 
 export const Route = createFileRoute("/diginakyvyys")({
   head: () => ({
@@ -60,6 +76,7 @@ function DiginakyvyysPage() {
             const dark = Boolean(p.featured);
             const alt = !dark && i % 2 === 1;
             const logoKind = packageLogoKind(p.name);
+            const sports = isSportsPackage(p.name);
             return (
               <div
                 key={p.name}
@@ -112,6 +129,18 @@ function DiginakyvyysPage() {
                       >
                         {v.resultPrefix} {p.result}
                       </p>
+                      {sports && (
+                        <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+                          {sportsPackageImages.map((img) => (
+                            <img
+                              key={img.alt}
+                              src={img.src}
+                              alt={img.alt}
+                              className="aspect-[4/3] w-full object-cover"
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
                     <div className="flex flex-col gap-5">
                       <ul className="space-y-2 text-sm">
