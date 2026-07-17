@@ -112,8 +112,8 @@ export const fi: Messages = {
       titleLine2: "Ota yhteyttä, jutellaan lisää.",
       body: "Haluamme tutustua yrityksesi toimintaan mahdollisimman tarkasti ymmärtääksemme miten voimme palvella teitä parhaiten. Aloitamme kaikki projektit vähintään 30 minuutin pituisella tutustumispuhelulla. Varaa alta aika puhelulle tai soittele meille vaikka ihan suoraan itse, niin katsotaan teille optimaalinen palveluratkaisu yhdessä.",
       callCta: "Soita meille",
-      phoneDisplay: "+358 40 123 4567",
-      phoneTel: "+358401234567",
+      phoneDisplay: "+358 403 738 332",
+      phoneTel: "+358403738332",
       bookCta: "Varaa aika →",
     },
     whyUs: {
@@ -202,8 +202,8 @@ export const fi: Messages = {
       social: "Some",
     },
     email: "info@restadigi.fi",
-    phoneDisplay: "+358 40 123 4567",
-    phoneTel: "+358401234567",
+    phoneDisplay: "+358 403 738 332",
+    phoneTel: "+358403738332",
     studioLine1: "Helsinki, Suomi",
     studioLine2: "Etätyö koko Euroopassa",
     form: {

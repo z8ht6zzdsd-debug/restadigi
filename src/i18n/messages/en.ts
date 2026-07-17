@@ -111,8 +111,8 @@ export const en: Messages = {
       titleLine2: "Get in touch — let's talk.",
       body: "We want to understand how your business works in detail so we can serve you as well as possible. Every project starts with at least a 30-minute discovery call. Book a time below or call us directly — together we'll find the right solution for you.",
       callCta: "Call us",
-      phoneDisplay: "+358 40 123 4567",
-      phoneTel: "+358401234567",
+      phoneDisplay: "+358 403 738 332",
+      phoneTel: "+358403738332",
       bookCta: "Book a time →",
     },
     whyUs: {
@@ -201,8 +201,8 @@ export const en: Messages = {
       social: "Social",
     },
     email: "info@restadigi.fi",
-    phoneDisplay: "+358 40 123 4567",
-    phoneTel: "+358401234567",
+    phoneDisplay: "+358 403 738 332",
+    phoneTel: "+358403738332",
     studioLine1: "Helsinki, Finland",
     studioLine2: "Remote across Europe",
     form: {

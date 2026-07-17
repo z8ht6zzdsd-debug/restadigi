@@ -113,8 +113,8 @@ export const es: Messages = {
       titleLine2: "Contacta con nosotros, hablemos.",
       body: "Queremos conocer a fondo cómo funciona tu empresa para servirte lo mejor posible. Todos los proyectos empiezan con una llamada de presentación de al menos 30 minutos. Reserva una hora abajo o llámanos directamente — juntos encontraremos la solución óptima.",
       callCta: "Llámanos",
-      phoneDisplay: "+358 40 123 4567",
-      phoneTel: "+358401234567",
+      phoneDisplay: "+358 403 738 332",
+      phoneTel: "+358403738332",
       bookCta: "Reservar hora →",
     },
     whyUs: {
@@ -202,8 +202,8 @@ export const es: Messages = {
       social: "Redes",
     },
     email: "info@restadigi.fi",
-    phoneDisplay: "+358 40 123 4567",
-    phoneTel: "+358401234567",
+    phoneDisplay: "+358 403 738 332",
+    phoneTel: "+358403738332",
     studioLine1: "Helsinki, Finlandia",
     studioLine2: "Trabajo remoto en toda Europa",
     form: {
