@@ -432,16 +432,66 @@ export const en: Messages = {
     ],
     footnote: "Prices are annual. You only pay for what you need — no hidden costs.",
     branding: {
-      titleBefore: "Brand identity and ",
+      titleBefore: "Graphic ",
       titleAccent: "design",
       titleAfter: ".",
       description:
-        "Complete your visibility with a professional brand look — logo and business cards.",
-      customQuote: "Ask for a custom quote",
-      extras: [
-        { name: "Logo design", price: "149 €" },
-        { name: "Business card design", price: "89 €" },
+        "Brand identity, marketing materials and individual design work — clear pricing, professional results.",
+      products: [
+        {
+          name: "Brand identity design",
+          description: "A complete brand look, including logo and business card design.",
+          price: "from 199 €",
+        },
+        {
+          name: "Ad and marketing materials",
+          price: "from 149 €",
+        },
+        {
+          name: "Logo design",
+          price: "from 149 €",
+        },
+        {
+          name: "Business card design",
+          price: "from 99 €",
+        },
       ],
+      billing: {
+        title: "About invoicing",
+        intro:
+          "We use an advance payment practice: part of the work is invoiced before the project starts, once the quote has been accepted in writing. This commits both the client and the supplier to the project.",
+        groundsTitle: "Why",
+        grounds: [
+          {
+            title: "Reserving the designer’s time",
+            body: "When a project starts, we reserve calendar time for that work. If a client cancels mid-project or disappears, we may lose the chance to take other work for the same period. The advance payment acts as a booking fee that confirms the client is committed.",
+          },
+          {
+            title: "Risk of unpaid work",
+            body: "In creative work, results are often produced before anything concrete is handed over (for example a logo or visual identity only emerges during the process). Without an advance payment we could end up in a situation where:",
+            bullets: [
+              "the client does not pay the invoice",
+              "the client disappears",
+              "the project is interrupted",
+            ],
+          },
+          {
+            title: "Cash flow",
+            body: "If every project were invoiced only at the end, we could work for weeks or months without cash flow. An advance payment reduces that risk and ensures we receive at least part of the fee for work already done.",
+          },
+        ],
+      },
+      form: {
+        title: "Request a quote for graphic design or a website",
+        name: "Name",
+        email: "Email",
+        phone: "Phone number",
+        submit: "Send request",
+        sending: "Opening email…",
+        mailSubject: "Quote request: graphic design / website — {name}",
+        mailBody:
+          "Name: {name}\nEmail: {email}\nPhone: {phone}\n\nI would like a quote for graphic design work or a website.",
+      },
     },
     cta: {
       titleBefore: "Want better ",

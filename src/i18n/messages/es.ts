@@ -438,16 +438,66 @@ export const es: Messages = {
     ],
     footnote: "Los precios son anuales. Solo pagas por lo que necesitas — sin costes ocultos.",
     branding: {
-      titleBefore: "Identidad de marca y ",
-      titleAccent: "diseño",
+      titleBefore: "Diseño ",
+      titleAccent: "gráfico",
       titleAfter: ".",
       description:
-        "Completa tu visibilidad con una imagen corporativa profesional — logo y tarjetas de visita.",
-      customQuote: "Pedir presupuesto a medida",
-      extras: [
-        { name: "Diseño de logo", price: "149 €" },
-        { name: "Diseño de tarjetas de visita", price: "89 €" },
+        "Identidad de marca, materiales de marketing y trabajos de diseño individuales — precios claros y resultado profesional.",
+      products: [
+        {
+          name: "Diseño de identidad corporativa",
+          description: "Imagen de marca completa, incluye diseño de logo y tarjetas de visita.",
+          price: "desde 199 €",
+        },
+        {
+          name: "Materiales publicitarios y de marketing",
+          price: "desde 149 €",
+        },
+        {
+          name: "Diseño de logo",
+          price: "desde 149 €",
+        },
+        {
+          name: "Diseño de tarjetas de visita",
+          price: "desde 99 €",
+        },
       ],
+      billing: {
+        title: "Sobre la facturación",
+        intro:
+          "Aplicamos un anticipo: parte del trabajo se factura antes de empezar el proyecto, una vez aceptado el presupuesto por escrito. Así se comprometen tanto el cliente como el proveedor.",
+        groundsTitle: "Motivos",
+        grounds: [
+          {
+            title: "Reserva del tiempo del diseñador",
+            body: "Cuando empieza un proyecto, reservamos tiempo en el calendario. Si el cliente cancela a mitad o desaparece, podemos perder la oportunidad de aceptar otros trabajos en ese periodo. El anticipo actúa como reserva y confirma el compromiso del cliente.",
+          },
+          {
+            title: "Riesgo de trabajo sin cobrar",
+            body: "En el trabajo creativo el resultado suele crearse antes de entregar algo concreto (por ejemplo el logo o la identidad visual nace durante el proceso). Sin anticipo podríamos acabar en una situación en la que:",
+            bullets: [
+              "el cliente no paga la factura",
+              "el cliente desaparece",
+              "el proyecto se interrumpe",
+            ],
+          },
+          {
+            title: "Flujo de caja",
+            body: "Si todos los proyectos se facturaran solo al final, podríamos trabajar semanas o meses sin flujo de caja. El anticipo reduce ese riesgo y garantiza al menos parte de la retribución por el trabajo ya realizado.",
+          },
+        ],
+      },
+      form: {
+        title: "Solicita presupuesto de diseño gráfico o de web",
+        name: "Nombre",
+        email: "Correo electrónico",
+        phone: "Teléfono",
+        submit: "Enviar solicitud",
+        sending: "Abriendo el correo…",
+        mailSubject: "Solicitud de presupuesto: diseño gráfico / web — {name}",
+        mailBody:
+          "Nombre: {name}\nCorreo: {email}\nTeléfono: {phone}\n\nSolicito presupuesto de diseño gráfico o de una web.",
+      },
     },
     cta: {
       titleBefore: "¿Quieres mejor ",

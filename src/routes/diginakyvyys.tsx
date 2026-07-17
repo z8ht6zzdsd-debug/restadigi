@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import heroDiginakyvyys from "@/assets/hero-diginakyvyys.jpg";
 import sportFootball from "@/assets/sport-football.jpg";
 import sportHockey from "@/assets/sport-hockey.jpg";
@@ -46,6 +47,25 @@ export const Route = createFileRoute("/diginakyvyys")({
 function DiginakyvyysPage() {
   const t = useMessages();
   const v = t.visibility;
+  const b = v.branding;
+  const [quoteSent, setQuoteSent] = useState(false);
+
+  const onQuoteSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const name = String(data.get("name") ?? "");
+    const email = String(data.get("email") ?? "");
+    const phone = String(data.get("phone") ?? "");
+    const subject = encodeURIComponent(b.form.mailSubject.replace("{name}", name));
+    const body = encodeURIComponent(
+      b.form.mailBody
+        .replace("{name}", name)
+        .replace("{email}", email)
+        .replace("{phone}", phone),
+    );
+    window.location.href = `mailto:${t.contact.email}?subject=${subject}&body=${body}`;
+    setQuoteSent(true);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
@@ -187,49 +207,106 @@ function DiginakyvyysPage() {
         </div>
       </section>
 
-      {/* Yritysilme */}
-      <section className="w-full px-6 py-16 sm:py-24 bg-secondary/50">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
-          <div className="md:w-80 shrink-0 mb-8 md:mb-0">
-            <h2 className="text-3xl sm:text-4xl font-medium leading-[1.1] tracking-tight text-balance">
-              {v.branding.titleBefore}
-              <span className="font-serif italic">{v.branding.titleAccent}</span>
-              {v.branding.titleAfter}
+      {/* Graafinen suunnittelu */}
+      <section className="w-full bg-background px-6 py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-medium leading-[1.1] tracking-tight text-balance sm:text-4xl">
+              {b.titleBefore}
+              <span className="font-serif italic">{b.titleAccent}</span>
+              {b.titleAfter}
             </h2>
-            <p className="mt-6 text-foreground/70 leading-relaxed">{v.branding.description}</p>
-            <Link
-              to="/yhteys"
-              className="inline-flex items-center gap-3 mt-8 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
-            >
-              {v.branding.customQuote}
-              <svg
-                className="size-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                />
-              </svg>
-            </Link>
+            <p className="mt-5 text-foreground/70 leading-relaxed">{b.description}</p>
           </div>
-          <ul className="flex-1 space-y-6">
-            {v.branding.extras.map((e) => (
-              <li key={e.name} className="flex justify-between items-baseline gap-6">
-                <span className="text-base font-medium">{e.name}</span>
-                <span className="text-sm text-foreground/60 tabular-nums shrink-0">{e.price}</span>
+
+          <ul className="mt-12 space-y-8 border-t border-border pt-10">
+            {b.products.map((product) => (
+              <li
+                key={product.name}
+                className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10"
+              >
+                <div className="min-w-0">
+                  <div className="text-base font-medium sm:text-lg">{product.name}</div>
+                  {product.description && (
+                    <p className="mt-1 max-w-xl text-sm leading-snug text-foreground/65">
+                      {product.description}
+                    </p>
+                  )}
+                </div>
+                <div className="shrink-0 font-serif text-2xl sm:text-3xl tabular-nums">
+                  {product.price}
+                </div>
               </li>
             ))}
           </ul>
+
+          <div className="mt-16 border-t border-border pt-12 sm:mt-20 sm:pt-16">
+            <h3 className="text-2xl font-medium tracking-tight sm:text-3xl">{b.billing.title}</h3>
+            <p className="mt-5 max-w-3xl text-sm leading-relaxed text-foreground/75 sm:text-base">
+              {b.billing.intro}
+            </p>
+            <p className="mt-8 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              {b.billing.groundsTitle}
+            </p>
+            <div className="mt-6 space-y-8 max-w-3xl">
+              {b.billing.grounds.map((ground) => (
+                <div key={ground.title}>
+                  <h4 className="text-base font-medium">{ground.title}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/70">{ground.body}</p>
+                  {ground.bullets && ground.bullets.length > 0 && (
+                    <ul className="mt-3 space-y-1.5 text-sm text-foreground/70">
+                      {ground.bullets.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <span className="mt-1.5 size-1 shrink-0 rounded-full bg-accent" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-16 border-t border-border pt-12 sm:mt-20 sm:pt-16">
+            <h3 className="max-w-2xl text-2xl font-medium tracking-tight text-balance sm:text-3xl">
+              {b.form.title}
+            </h3>
+            <form onSubmit={onQuoteSubmit} className="mt-8 max-w-xl space-y-6">
+              <QuoteField label={b.form.name} name="name" required />
+              <QuoteField label={b.form.email} name="email" type="email" required />
+              <QuoteField label={b.form.phone} name="phone" type="tel" required />
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-3 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+                >
+                  {b.form.submit}
+                  <svg
+                    className="size-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                    />
+                  </svg>
+                </button>
+                {quoteSent && (
+                  <span className="text-sm text-foreground/60">{b.form.sending}</span>
+                )}
+              </div>
+            </form>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 sm:py-32">
+      <section className="bg-secondary/50 py-24 sm:py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-8">
@@ -265,6 +342,32 @@ function DiginakyvyysPage() {
       </section>
 
       <SiteFooter />
+    </div>
+  );
+}
+
+function QuoteField({
+  label,
+  name,
+  type = "text",
+  required,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label className="mb-3 block text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        {label} {required && <span className="text-accent">*</span>}
+      </label>
+      <input
+        type={type}
+        name={name}
+        required={required}
+        className="w-full border-b border-border bg-transparent py-3 text-base outline-none transition-colors focus:border-foreground"
+      />
     </div>
   );
 }

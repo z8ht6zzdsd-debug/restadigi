@@ -228,8 +228,23 @@ export type Messages = {
       titleAccent: string;
       titleAfter: string;
       description: string;
-      customQuote: string;
-      extras: Array<{ name: string; price: string }>;
+      products: Array<{ name: string; description?: string; price: string }>;
+      billing: {
+        title: string;
+        intro: string;
+        groundsTitle: string;
+        grounds: Array<{ title: string; body: string; bullets?: string[] }>;
+      };
+      form: {
+        title: string;
+        name: string;
+        email: string;
+        phone: string;
+        submit: string;
+        sending: string;
+        mailSubject: string;
+        mailBody: string;
+      };
     };
     cta: {
       titleBefore: string;

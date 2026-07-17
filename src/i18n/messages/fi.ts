@@ -436,15 +436,67 @@ export const fi: Messages = {
     ],
     footnote: "Hinnat ovat vuosihintoja. Maksat vain siitä, mitä tarvitset — ei piilokustannuksia.",
     branding: {
-      titleBefore: "Yritysilme ja ",
+      titleBefore: "Graafinen ",
       titleAccent: "suunnittelu",
       titleAfter: ".",
-      description: "Täydennä näkyvyyttäsi ammattimaisella yritysilmeellä — logo ja käyntikortit.",
-      customQuote: "Kysy räätälöity tarjous",
-      extras: [
-        { name: "Logon suunnittelu", price: "149 €" },
-        { name: "Käyntikorttien suunnittelu", price: "89 €" },
+      description:
+        "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin — selkeät hinnat, ammattimainen jälki.",
+      products: [
+        {
+          name: "Yritysilmeen suunnittelu",
+          description:
+            "Kokonaisvaltainen yritysilme, sisältää logon ja käyntikorttien suunnittelun.",
+          price: "alk. 199 €",
+        },
+        {
+          name: "Mainos- ja markkinointimateriaalit",
+          price: "alk. 149 €",
+        },
+        {
+          name: "Logon suunnittelu",
+          price: "alk. 149 €",
+        },
+        {
+          name: "Käyntikorttien suunnittelu",
+          price: "alk. 99 €",
+        },
       ],
+      billing: {
+        title: "Laskutuksesta",
+        intro:
+          "Noudatamme töissämme ennakkomaksukäytäntöä, jossa osa työstä veloitetaan jo ennen projektin alkua, kun tarjous on kirjallisesti hyväksytty. Tällä sitoutetaan sekä tilaaja että toimittaja projektiin.",
+        groundsTitle: "Perusteet",
+        grounds: [
+          {
+            title: "Suunnittelijan työn ja ajan varaaminen",
+            body: "Kun projekti alkaa, varaamme kalenteristamme aikaa kyseiselle työlle. Jos asiakas peruu projektin kesken tai katoaa, voimme menettää mahdollisuuden ottaa muita töitä samalle ajalle. Siksi ennakkomaksu toimii varausmaksuna, joka varmistaa, että asiakas on sitoutunut projektiin.",
+          },
+          {
+            title: "Riski maksamatta jäävästä työstä",
+            body: "Luovilla aloilla työ tehdään usein ennen kuin asiakkaalle luovutetaan mitään konkreettista tuotetta (esim. logo tai visuaalinen ilme syntyy vasta työn aikana). Jos työ tehtäisiin kokonaan ilman ennakkomaksua, voisimme päätyä tilanteeseen, jossa:",
+            bullets: [
+              "asiakas ei maksa laskua",
+              "asiakas katoaa",
+              "projekti keskeytyy",
+            ],
+          },
+          {
+            title: "Kassavirran hallinta",
+            body: "Jos kaikki projektit laskutettaisiin vasta lopuksi, voisimme tehdä töitä viikkoja tai kuukausia ilman kassavirtaa. Ennakkomaksu vähentää maksamattoman työn riskiä ja varmistaa, että saamme ainakin osan korvauksesta jo tehdystä työstä.",
+          },
+        ],
+      },
+      form: {
+        title: "Pyydä tarjous graafisen suunnittelun työstä tai kotisivuista",
+        name: "Nimi",
+        email: "Sähköposti",
+        phone: "Puhelinnumero",
+        submit: "Lähetä tarjouspyyntö",
+        sending: "Avataan sähköposti…",
+        mailSubject: "Tarjouspyyntö: graafinen suunnittelu / kotisivut — {name}",
+        mailBody:
+          "Nimi: {name}\nSähköposti: {email}\nPuhelin: {phone}\n\nPyydän tarjousta graafisen suunnittelun työstä tai kotisivuista.",
+      },
     },
     cta: {
       titleBefore: "Haluatko paremman ",
