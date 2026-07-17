@@ -267,6 +267,19 @@
     -webkit-backdrop-filter: none;
   }
 
+  /* Etusivu: verkkosivut-heron Freddos-ruskea tekstipohja */
+  .page-hero--bleed .page-hero__frame--home .page-hero__copy::before {
+    inset: -1rem -1.5rem;
+    border-radius: 1.25rem;
+    background: radial-gradient(
+      ellipse 82% 75% at 50% 45%,
+      color-mix(in srgb, #432f24 92%, transparent) 0%,
+      color-mix(in srgb, #432f24 72%, transparent) 48%,
+      color-mix(in srgb, #432f24 28%, transparent) 72%,
+      transparent 86%
+    );
+  }
+
   .page-hero--bleed .page-hero__title {
     margin-inline: auto;
     max-width: 18ch;
