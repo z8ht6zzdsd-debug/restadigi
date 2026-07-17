@@ -58,8 +58,8 @@ function ChatbotPage() {
       {/* Chatbot */}
       <section className="border-t border-border bg-background pt-16 sm:pt-24 pb-8 sm:pb-12">
         <div className="mx-auto max-w-7xl px-6 mb-12 sm:mb-16">
-          <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-            <div className="w-full max-w-md text-center lg:text-left lg:shrink-0">
+          <div className="mx-auto flex w-fit max-w-full flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-12">
+            <div className="w-full max-w-md text-center lg:text-left">
               <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
                 {bot.eyebrow}
               </div>
@@ -72,7 +72,7 @@ function ChatbotPage() {
                 {bot.intro}
               </p>
             </div>
-            <div className="w-full max-w-md lg:shrink-0">
+            <div className="w-full max-w-md shrink-0">
               <DashboardMonitorPreview />
             </div>
           </div>
