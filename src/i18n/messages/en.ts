@@ -137,7 +137,7 @@ export const en: Messages = {
         },
         {
           title: "Automated operations",
-          body: "An AI customer-service bot handles support, bookings via chat, phone and email 24/7 — for a fixed monthly fee from 29 € / month.",
+          body: "An AI customer-service bot handles support, bookings via chat, phone and email 24/7 — for a fixed monthly fee from 19 € / month.",
           href: "/chatbot",
           linkLabel: "Explore AI service",
         },
@@ -523,6 +523,8 @@ export const en: Messages = {
         "Should the bot focus more on customer service or on sales and lead capture?",
         "Which languages should the bot use with visitors?",
       ],
+      price: "from 19 €",
+      priceNote: "/ mo",
       button: "Request a free demo",
     },
   },

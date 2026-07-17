@@ -139,7 +139,7 @@ export const es: Messages = {
         },
         {
           title: "Operaciones automatizadas",
-          body: "Un bot de atención con IA gestiona por ti el servicio al cliente y la recepción de reservas por chat, teléfono y correo 24/7. Precio mensual fijo desde 29 € / mes.",
+          body: "Un bot de atención con IA gestiona por ti el servicio al cliente y la recepción de reservas por chat, teléfono y correo 24/7. Precio mensual fijo desde 19 € / mes.",
           href: "/chatbot",
           linkLabel: "Conocer el servicio de IA",
         },
@@ -529,6 +529,8 @@ export const es: Messages = {
         "¿Queréis que el bot se centre más en la atención o en las ventas y la captura de leads?",
         "¿En qué idiomas queréis que el bot atienda a los visitantes?",
       ],
+      price: "desde 19 €",
+      priceNote: "/ mes",
       button: "Solicitar demo gratuita",
     },
   },

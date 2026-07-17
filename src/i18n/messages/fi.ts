@@ -138,7 +138,7 @@ export const fi: Messages = {
         },
         {
           title: "Automatisoitua liiketoimintaa",
-          body: "AI-asiakaspalvelubotti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään kuukausihintaan alk. 29 € / kk.",
+          body: "AI-asiakaspalvelubotti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään kuukausihintaan alk. 19 € / kk.",
           href: "/chatbot",
           linkLabel: "Tutustu AI-palveluun",
         },
@@ -526,6 +526,8 @@ export const fi: Messages = {
         "Haluatteko botin keskittyvän enemmän asiakaspalveluun vai myyntiin ja liidien keruuseen?",
         "Millä kielillä haluatte botin palvelevan kävijöitä?",
       ],
+      price: "alk. 19 €",
+      priceNote: "/ kk",
       button: "Pyydä maksuton esittely",
     },
   },

@@ -269,6 +269,8 @@ export type Messages = {
       titleAccent: string;
       body: string;
       questions: string[];
+      price: string;
+      priceNote: string;
       button: string;
     };
   };

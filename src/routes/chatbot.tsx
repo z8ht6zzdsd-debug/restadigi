@@ -170,6 +170,12 @@ function ChatbotPage() {
               </ul>
             </div>
             <div className="md:col-span-4">
+              <p className="mb-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span className="font-serif text-4xl italic tracking-tight text-accent sm:text-5xl">
+                  {cb.cta.price}
+                </span>
+                <span className="text-base text-foreground/55">{cb.cta.priceNote}</span>
+              </p>
               <Link
                 to="/yhteys"
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
