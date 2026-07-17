@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YllapitoRouteImport } from './routes/yllapito'
 import { Route as YhteysRouteImport } from './routes/yhteys'
 import { Route as PotyvarauspalveluRouteImport } from './routes/potyvarauspalvelu'
 import { Route as MeistaRouteImport } from './routes/meista'
@@ -37,6 +38,11 @@ import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
 import { Route as ApiDashboardReservationsIdRouteImport } from './routes/api/dashboard/reservations/$id'
 import { Route as ApiDashboardConversationsSessionIdRouteImport } from './routes/api/dashboard/conversations/$sessionId'
 
+const YllapitoRoute = YllapitoRouteImport.update({
+  id: '/yllapito',
+  path: '/yllapito',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YhteysRoute = YhteysRouteImport.update({
   id: '/yhteys',
   path: '/yhteys',
@@ -185,6 +191,7 @@ export interface FileRoutesByFullPath {
   '/meista': typeof MeistaRoute
   '/potyvarauspalvelu': typeof PotyvarauspalveluRoute
   '/yhteys': typeof YhteysRoute
+  '/yllapito': typeof YllapitoRoute
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
   '/dashboard': typeof DashboardLayoutRoute
@@ -214,6 +221,7 @@ export interface FileRoutesByTo {
   '/meista': typeof MeistaRoute
   '/potyvarauspalvelu': typeof PotyvarauspalveluRoute
   '/yhteys': typeof YhteysRoute
+  '/yllapito': typeof YllapitoRoute
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
   '/dashboard': typeof DashboardIndexRoute
@@ -243,6 +251,7 @@ export interface FileRoutesById {
   '/meista': typeof MeistaRoute
   '/potyvarauspalvelu': typeof PotyvarauspalveluRoute
   '/yhteys': typeof YhteysRoute
+  '/yllapito': typeof YllapitoRoute
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
   '/dashboard/_layout': typeof DashboardLayoutRoute
@@ -274,6 +283,7 @@ export interface FileRouteTypes {
     | '/meista'
     | '/potyvarauspalvelu'
     | '/yhteys'
+    | '/yllapito'
     | '/api/chat'
     | '/api/track'
     | '/dashboard'
@@ -303,6 +313,7 @@ export interface FileRouteTypes {
     | '/meista'
     | '/potyvarauspalvelu'
     | '/yhteys'
+    | '/yllapito'
     | '/api/chat'
     | '/api/track'
     | '/dashboard'
@@ -331,6 +342,7 @@ export interface FileRouteTypes {
     | '/meista'
     | '/potyvarauspalvelu'
     | '/yhteys'
+    | '/yllapito'
     | '/api/chat'
     | '/api/track'
     | '/dashboard/_layout'
@@ -361,6 +373,7 @@ export interface RootRouteChildren {
   MeistaRoute: typeof MeistaRoute
   PotyvarauspalveluRoute: typeof PotyvarauspalveluRoute
   YhteysRoute: typeof YhteysRoute
+  YllapitoRoute: typeof YllapitoRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiTrackRoute: typeof ApiTrackRoute
   DashboardLayoutRoute: typeof DashboardLayoutRoute
@@ -383,6 +396,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/yllapito': {
+      id: '/yllapito'
+      path: '/yllapito'
+      fullPath: '/yllapito'
+      preLoaderRoute: typeof YllapitoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/yhteys': {
       id: '/yhteys'
       path: '/yhteys'
@@ -612,6 +632,7 @@ const rootRouteChildren: RootRouteChildren = {
   MeistaRoute: MeistaRoute,
   PotyvarauspalveluRoute: PotyvarauspalveluRoute,
   YhteysRoute: YhteysRoute,
+  YllapitoRoute: YllapitoRoute,
   ApiChatRoute: ApiChatRoute,
   ApiTrackRoute: ApiTrackRoute,
   DashboardLayoutRoute: DashboardLayoutRoute,

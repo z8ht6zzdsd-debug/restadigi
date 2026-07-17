@@ -4,6 +4,7 @@ import restadigiLogo from "@/assets/restadigi-logo.png";
 
 const palvelut = [
   { to: "/kotisivut-yrityksille", label: "Verkkosivut" },
+  { to: "/yllapito", label: "Ylläpito" },
   { to: "/diginakyvyys", label: "Näkyvyys ja suunnittelu" },
   { to: "/chatbot", label: "AI-asiakaspalvelu" },
   { to: "/potyvarauspalvelu", label: "Pöytävarauspalvelu" },
@@ -11,32 +12,32 @@ const palvelut = [
 
 const toimialat = [
   {
-    title: "Areenat, Tapahtumat ja Esiintyjät",
-    body: "verkkosivut ja näkyvyys, varaus- ja myyntiratkaisut",
+    title: "Areenat, tapahtumat ja esiintyjät",
+    body: "Verkkosivut, diginäkyvyys sekä lippu- ja myyntiratkaisut, jotka tuovat fanit, liput ja esiintyjät yhteen — selkeästi ja brändin mukaisesti.",
   },
   {
-    title: "Hotellit ja Hostellit",
-    body: "korkeatasoiset varaustenhallinta- ja myyntiratkaisut, digitaalinen check-in ja viranomaistiedotus, AI-asiakaspalvelu",
+    title: "Hotellit ja hostellit",
+    body: "Varausten hallinta ja myynti, digitaalinen check-in sekä matkustajarekisteröinti, AI-asiakaspalvelu 24/7 — majoitustoiminnan digitaalinen selkäranka.",
   },
   {
     title: "Matkailu ja aktiviteetit",
-    body: "varaustenhallinta, näkyvyys- ja myyntiratkaisut, AI-asiakaspalvelu",
+    body: "Varausjärjestelmät, näkyvyys- ja myyntiratkaisut sekä AI-asiakaspalvelu, joilla aktiviteetit ja elämykset löytyvät ja varataan helposti.",
   },
   {
     title: "Ravintolat",
-    body: "fine diningista fast foodiin — verkkosivut, mobiiliapplikaatiot, pöytävarauspalvelu, AI-asiakaspalvelu",
+    body: "Fine diningista fast foodiin: verkkosivut, mobiiliapplikaatiot, pöytävaraukset ja AI-asiakaspalvelu — myynti ja palvelu ympäri vuorokauden.",
   },
   {
-    title: "Kahvilat ja Kioskit",
-    body: "verkkosivut, mobiiliapplikaatio kanta-asiakasohjelmalla",
+    title: "Kahvilat ja kioskit",
+    body: "Tyylikkäät verkkosivut ja mobiiliapplikaatio kanta-asiakasohjelmalla — brändi, toistot ja asiakassuhde samassa kokonaisuudessa.",
   },
   {
-    title: "Kuntosalit ja Personal trainerit",
-    body: "treeniaikataulujen hallintapaneeli kustomoituna sinulle",
+    title: "Kuntosalit ja personal trainerit",
+    body: "Kustomoitu treeniaikataulujen hallintapaneeli — varaukset, aikataulut ja asiakasviestintä yhdessä selkeässä näkymässä.",
   },
   {
-    title: "Parturit, Kampaamot ja Hoitolapalvelut",
-    body: "modernit verkkosivut ja ajanvaraus",
+    title: "Parturit, kampaamot ja hoitolapalvelut",
+    body: "Modernit verkkosivut ja ajanvaraus, joilla palvelusi näkyvät, varataan ja myydään ilman turhaa puhelinkierrosta.",
   },
 ] as const;
 
@@ -157,14 +158,20 @@ export function SiteHeader() {
             {desktopMenu === "toimialat" && (
               <div
                 id={`${baseId}-toimialat`}
-                className="absolute right-0 top-full z-40 mt-3 w-[min(36rem,calc(100vw-3rem))] rounded-xl border border-border bg-background p-6 shadow-lg xl:w-[40rem]"
+                className="absolute right-0 top-full z-40 mt-3 w-[min(38rem,calc(100vw-3rem))] rounded-xl border border-border bg-background p-6 shadow-lg xl:w-[42rem]"
               >
-                <div className="mb-4 text-xs uppercase tracking-[0.2em] text-accent">Toimialat</div>
-                <ul className="space-y-4">
+                <div className="mb-1 text-xs uppercase tracking-[0.2em] text-accent">Toimialat</div>
+                <p className="mb-5 text-sm leading-relaxed text-foreground/55">
+                  Toimialakohtaiset digiratkaisut — verkkosivut, varaukset, näkyvyys ja
+                  AI-asiakaspalvelu palvelualan yrityksille.
+                </p>
+                <ul className="space-y-0 divide-y divide-border/80">
                   {toimialat.map((item) => (
-                    <li key={item.title} className="border-b border-border/70 pb-4 last:border-0 last:pb-0">
-                      <div className="text-sm font-medium text-foreground">{item.title}</div>
-                      <p className="mt-1 text-sm leading-relaxed text-foreground/60">{item.body}</p>
+                    <li key={item.title} className="py-3.5 first:pt-0 last:pb-0">
+                      <div className="text-sm font-medium tracking-tight text-foreground">
+                        {item.title}
+                      </div>
+                      <p className="mt-1.5 text-sm leading-relaxed text-foreground/60">{item.body}</p>
                     </li>
                   ))}
                 </ul>
@@ -269,12 +276,16 @@ export function SiteHeader() {
               onToggle={() => toggleMobileSection("toimialat")}
             >
               <div className="rounded-xl border border-border bg-muted/40 p-4">
-                <div className="mb-3 text-[10px] uppercase tracking-[0.2em] text-accent">Toimialat</div>
-                <ul className="space-y-3">
+                <div className="mb-1 text-[10px] uppercase tracking-[0.2em] text-accent">Toimialat</div>
+                <p className="mb-4 text-sm leading-relaxed text-foreground/55">
+                  Toimialakohtaiset digiratkaisut — verkkosivut, varaukset, näkyvyys ja
+                  AI-asiakaspalvelu palvelualan yrityksille.
+                </p>
+                <ul className="space-y-0 divide-y divide-border/70">
                   {toimialat.map((item) => (
-                    <li key={item.title}>
+                    <li key={item.title} className="py-3 first:pt-0 last:pb-0">
                       <div className="text-sm font-medium text-foreground">{item.title}</div>
-                      <p className="mt-0.5 text-sm leading-relaxed text-foreground/60">{item.body}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-foreground/60">{item.body}</p>
                     </li>
                   ))}
                 </ul>
