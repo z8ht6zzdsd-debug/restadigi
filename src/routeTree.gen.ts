@@ -24,6 +24,7 @@ import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settin
 import { Route as DashboardReservationsRouteImport } from './routes/dashboard/reservations'
 import { Route as DashboardLoginRouteImport } from './routes/dashboard.login'
 import { Route as DashboardLeadsRouteImport } from './routes/dashboard/leads'
+import { Route as DashboardFloorPlanRouteImport } from './routes/dashboard/floor-plan'
 import { Route as DashboardConversationsRouteImport } from './routes/dashboard/conversations'
 import { Route as ApiTrackRouteImport } from './routes/api/track'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -33,6 +34,7 @@ import { Route as ApiDashboardStatsRouteImport } from './routes/api/dashboard/st
 import { Route as ApiDashboardSettingsRouteImport } from './routes/api/dashboard/settings'
 import { Route as ApiDashboardReservationsRouteImport } from './routes/api/dashboard/reservations'
 import { Route as ApiDashboardLeadsRouteImport } from './routes/api/dashboard/leads'
+import { Route as ApiDashboardFloorPlanRouteImport } from './routes/api/dashboard/floor-plan'
 import { Route as ApiDashboardConversationsRouteImport } from './routes/api/dashboard/conversations'
 import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
@@ -116,6 +118,11 @@ const DashboardLeadsRoute = DashboardLeadsRouteImport.update({
   path: '/leads',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
+const DashboardFloorPlanRoute = DashboardFloorPlanRouteImport.update({
+  id: '/floor-plan',
+  path: '/floor-plan',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
 const DashboardConversationsRoute = DashboardConversationsRouteImport.update({
   id: '/conversations',
   path: '/conversations',
@@ -160,6 +167,11 @@ const ApiDashboardReservationsRoute =
 const ApiDashboardLeadsRoute = ApiDashboardLeadsRouteImport.update({
   id: '/api/dashboard/leads',
   path: '/api/dashboard/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDashboardFloorPlanRoute = ApiDashboardFloorPlanRouteImport.update({
+  id: '/api/dashboard/floor-plan',
+  path: '/api/dashboard/floor-plan',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiDashboardConversationsRoute =
@@ -214,6 +226,7 @@ export interface FileRoutesByFullPath {
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/floor-plan': typeof DashboardFloorPlanRoute
   '/dashboard/leads': typeof DashboardLeadsRoute
   '/dashboard/login': typeof DashboardLoginRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
@@ -224,6 +237,7 @@ export interface FileRoutesByFullPath {
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/dashboard/conversations': typeof ApiDashboardConversationsRouteWithChildren
+  '/api/dashboard/floor-plan': typeof ApiDashboardFloorPlanRoute
   '/api/dashboard/leads': typeof ApiDashboardLeadsRouteWithChildren
   '/api/dashboard/reservations': typeof ApiDashboardReservationsRouteWithChildren
   '/api/dashboard/settings': typeof ApiDashboardSettingsRoute
@@ -246,6 +260,7 @@ export interface FileRoutesByTo {
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/floor-plan': typeof DashboardFloorPlanRoute
   '/dashboard/leads': typeof DashboardLeadsRoute
   '/dashboard/login': typeof DashboardLoginRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
@@ -256,6 +271,7 @@ export interface FileRoutesByTo {
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/dashboard/conversations': typeof ApiDashboardConversationsRouteWithChildren
+  '/api/dashboard/floor-plan': typeof ApiDashboardFloorPlanRoute
   '/api/dashboard/leads': typeof ApiDashboardLeadsRouteWithChildren
   '/api/dashboard/reservations': typeof ApiDashboardReservationsRouteWithChildren
   '/api/dashboard/settings': typeof ApiDashboardSettingsRoute
@@ -280,6 +296,7 @@ export interface FileRoutesById {
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/floor-plan': typeof DashboardFloorPlanRoute
   '/dashboard/leads': typeof DashboardLeadsRoute
   '/dashboard/login': typeof DashboardLoginRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
@@ -290,6 +307,7 @@ export interface FileRoutesById {
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/dashboard/conversations': typeof ApiDashboardConversationsRouteWithChildren
+  '/api/dashboard/floor-plan': typeof ApiDashboardFloorPlanRoute
   '/api/dashboard/leads': typeof ApiDashboardLeadsRouteWithChildren
   '/api/dashboard/reservations': typeof ApiDashboardReservationsRouteWithChildren
   '/api/dashboard/settings': typeof ApiDashboardSettingsRoute
@@ -315,6 +333,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/api/track'
     | '/dashboard/conversations'
+    | '/dashboard/floor-plan'
     | '/dashboard/leads'
     | '/dashboard/login'
     | '/dashboard/reservations'
@@ -325,6 +344,7 @@ export interface FileRouteTypes {
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/dashboard/conversations'
+    | '/api/dashboard/floor-plan'
     | '/api/dashboard/leads'
     | '/api/dashboard/reservations'
     | '/api/dashboard/settings'
@@ -347,6 +367,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/api/track'
     | '/dashboard/conversations'
+    | '/dashboard/floor-plan'
     | '/dashboard/leads'
     | '/dashboard/login'
     | '/dashboard/reservations'
@@ -357,6 +378,7 @@ export interface FileRouteTypes {
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/dashboard/conversations'
+    | '/api/dashboard/floor-plan'
     | '/api/dashboard/leads'
     | '/api/dashboard/reservations'
     | '/api/dashboard/settings'
@@ -380,6 +402,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/api/track'
     | '/dashboard/conversations'
+    | '/dashboard/floor-plan'
     | '/dashboard/leads'
     | '/dashboard/login'
     | '/dashboard/reservations'
@@ -390,6 +413,7 @@ export interface FileRouteTypes {
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/dashboard/conversations'
+    | '/api/dashboard/floor-plan'
     | '/api/dashboard/leads'
     | '/api/dashboard/reservations'
     | '/api/dashboard/settings'
@@ -417,6 +441,7 @@ export interface RootRouteChildren {
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthMeRoute: typeof ApiAuthMeRoute
   ApiDashboardConversationsRoute: typeof ApiDashboardConversationsRouteWithChildren
+  ApiDashboardFloorPlanRoute: typeof ApiDashboardFloorPlanRoute
   ApiDashboardLeadsRoute: typeof ApiDashboardLeadsRouteWithChildren
   ApiDashboardReservationsRoute: typeof ApiDashboardReservationsRouteWithChildren
   ApiDashboardSettingsRoute: typeof ApiDashboardSettingsRoute
@@ -532,6 +557,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardLeadsRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
+    '/dashboard/floor-plan': {
+      id: '/dashboard/floor-plan'
+      path: '/floor-plan'
+      fullPath: '/dashboard/floor-plan'
+      preLoaderRoute: typeof DashboardFloorPlanRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
     '/dashboard/conversations': {
       id: '/dashboard/conversations'
       path: '/conversations'
@@ -595,6 +627,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiDashboardLeadsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/dashboard/floor-plan': {
+      id: '/api/dashboard/floor-plan'
+      path: '/api/dashboard/floor-plan'
+      fullPath: '/api/dashboard/floor-plan'
+      preLoaderRoute: typeof ApiDashboardFloorPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/dashboard/conversations': {
       id: '/api/dashboard/conversations'
       path: '/api/dashboard/conversations'
@@ -649,6 +688,7 @@ declare module '@tanstack/react-router' {
 
 interface DashboardRouteRouteChildren {
   DashboardConversationsRoute: typeof DashboardConversationsRoute
+  DashboardFloorPlanRoute: typeof DashboardFloorPlanRoute
   DashboardLeadsRoute: typeof DashboardLeadsRoute
   DashboardLoginRoute: typeof DashboardLoginRoute
   DashboardReservationsRoute: typeof DashboardReservationsRoute
@@ -659,6 +699,7 @@ interface DashboardRouteRouteChildren {
 
 const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardConversationsRoute: DashboardConversationsRoute,
+  DashboardFloorPlanRoute: DashboardFloorPlanRoute,
   DashboardLeadsRoute: DashboardLeadsRoute,
   DashboardLoginRoute: DashboardLoginRoute,
   DashboardReservationsRoute: DashboardReservationsRoute,
@@ -727,6 +768,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthMeRoute: ApiAuthMeRoute,
   ApiDashboardConversationsRoute: ApiDashboardConversationsRouteWithChildren,
+  ApiDashboardFloorPlanRoute: ApiDashboardFloorPlanRoute,
   ApiDashboardLeadsRoute: ApiDashboardLeadsRouteWithChildren,
   ApiDashboardReservationsRoute: ApiDashboardReservationsRouteWithChildren,
   ApiDashboardSettingsRoute: ApiDashboardSettingsRoute,
@@ -737,13 +779,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

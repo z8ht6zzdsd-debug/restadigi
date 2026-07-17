@@ -4,6 +4,7 @@ import {
   ContactRound,
   LayoutDashboard,
   LogOut,
+  Map,
   MessageSquare,
   Settings,
   Users,
@@ -19,6 +20,7 @@ const nav = [
   { to: "/dashboard/visitors", label: "Kävijät", icon: Users },
   { to: "/dashboard/conversations", label: "Keskustelut", icon: MessageSquare },
   { to: "/dashboard/reservations", label: "Varaukset", icon: CalendarDays },
+  { to: "/dashboard/floor-plan", label: "Pöytäkartta", icon: Map },
   { to: "/dashboard/settings", label: "Asetukset", icon: Settings },
 ] as const;
 

@@ -98,3 +98,11 @@ CREATE TABLE IF NOT EXISTS sales_leads (
 CREATE INDEX IF NOT EXISTS idx_sales_leads_created_at ON sales_leads(created_at);
 CREATE INDEX IF NOT EXISTS idx_sales_leads_status ON sales_leads(status);
 CREATE INDEX IF NOT EXISTS idx_sales_leads_email ON sales_leads(email);
+
+CREATE TABLE IF NOT EXISTS restaurant_floor_plans (
+  id TEXT PRIMARY KEY DEFAULT 'default',
+  name TEXT NOT NULL,
+  capacity INTEGER NOT NULL,
+  tables_json TEXT NOT NULL,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
