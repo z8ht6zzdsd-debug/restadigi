@@ -576,6 +576,8 @@ export const en: Messages = {
       titleBefore: "Take control of ",
       titleAccent: "table reservations",
       titleAfter: ".",
+      price: "from 19.90 €",
+      priceNote: "/ mo",
       button: "Ask for more",
     },
   },

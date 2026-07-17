@@ -579,6 +579,8 @@ export const fi: Messages = {
       titleBefore: "Ota ",
       titleAccent: "pöytävaraukset",
       titleAfter: " haltuun.",
+      price: "alk. 19,90 €",
+      priceNote: "/ kk",
       button: "Kysy lisää",
     },
   },

@@ -582,6 +582,8 @@ export const es: Messages = {
       titleBefore: "Toma el control de las ",
       titleAccent: "reservas de mesa",
       titleAfter: ".",
+      price: "desde 19,90 €",
+      priceNote: "/ mes",
       button: "Preguntar más",
     },
   },

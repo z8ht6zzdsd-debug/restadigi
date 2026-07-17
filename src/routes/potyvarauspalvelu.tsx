@@ -132,11 +132,17 @@ function PotyvarausPage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid items-end gap-12 md:grid-cols-12">
             <div className="md:col-span-8">
-              <h2 className="mb-8 text-balance text-3xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+              <h2 className="mb-6 text-balance text-3xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
                 {b.cta.titleBefore}
                 <span className="font-serif italic">{b.cta.titleAccent}</span>
                 {b.cta.titleAfter}
               </h2>
+              <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span className="font-serif text-4xl italic tracking-tight text-accent sm:text-5xl">
+                  {b.cta.price}
+                </span>
+                <span className="text-base text-foreground/55">{b.cta.priceNote}</span>
+              </p>
             </div>
             <div className="md:col-span-4">
               <Link
