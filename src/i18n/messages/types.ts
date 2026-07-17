@@ -264,25 +264,6 @@ export type Messages = {
       safeBody: string;
       monthly: Array<{ title: string; body: string }>;
     };
-    concierge: {
-      eyebrow: string;
-      titleBefore: string;
-      titleAccent: string;
-      titleAfter: string;
-      intro: string;
-      features: string[];
-      benefits: string[];
-      audienceTitleBefore: string;
-      audienceTitleAccent: string;
-      audienceTitleAfter: string;
-      audienceBody: string;
-      audience: string[];
-      price: string;
-      priceBody: string;
-      priceIncludesLabel: string;
-      pricingIncludes: string[];
-      pricingNote: string;
-    };
     cta: {
       titleBefore: string;
       titleAccent: string;

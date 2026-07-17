@@ -14,13 +14,13 @@ export const Route = createFileRoute("/chatbot")({
       {
         name: "description",
         content:
-          "Älykäs chatbot verkkosivustollesi ja AI Concierge puhelinpalvelu ravintolalle — palvelee asiakkaita 24/7, vastaanottaa varauksia ja vapauttaa henkilökunnan.",
+          "Älykäs chatbot verkkosivustollesi — palvelee asiakkaita 24/7, vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
       },
       { property: "og:title", content: "AI-asiakaspalvelu — Restadigi" },
       {
         property: "og:description",
         content:
-          "Chatbot verkkosivuille ja tekoälypohjainen puhelinpalvelu — ympärivuorokautinen asiakaspalvelu ravintolalle.",
+          "Chatbot verkkosivuille — ympärivuorokautinen myynti ja asiakaspalvelu.",
       },
     ],
   }),
@@ -31,7 +31,6 @@ function ChatbotPage() {
   const t = useMessages();
   const cb = t.chatbot;
   const bot = cb.chatbot;
-  const concierge = cb.concierge;
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
@@ -123,99 +122,6 @@ function ChatbotPage() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* AI Concierge */}
-      <section className="pb-8 sm:pb-12 bg-secondary/50 pt-16 sm:pt-24">
-        <div className="max-w-6xl mx-auto px-6 mb-12 sm:mb-16">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
-            {concierge.eyebrow}
-          </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium text-balance max-w-[24ch] mb-8 tracking-tight">
-            {concierge.titleBefore}
-            <span className="font-serif italic text-accent">{concierge.titleAccent}</span>
-            {concierge.titleAfter}
-          </h2>
-          <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            {concierge.intro}
-          </p>
-        </div>
-
-        <div>
-          {concierge.features.map((feature, i) => (
-            <div
-              key={feature}
-              className={
-                "w-full px-6 py-6 sm:py-8 " + (i % 2 === 0 ? "bg-background" : "bg-secondary/50")
-              }
-            >
-              <div className="max-w-6xl mx-auto flex gap-3 text-sm text-foreground/75 leading-relaxed">
-                <span className="size-1.5 rounded-full mt-2 shrink-0 bg-accent" />
-                {feature}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="max-w-6xl mx-auto px-6 py-16 sm:py-24">
-          <ul className="space-y-4 max-w-3xl">
-            {concierge.benefits.map((benefit) => (
-              <li key={benefit} className="flex gap-3 text-base text-foreground/75 leading-relaxed">
-                <span className="text-accent shrink-0">✔</span>
-                {benefit}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="w-full px-6 py-16 sm:py-24 bg-background">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
-            <div className="md:w-80 shrink-0 mb-8 md:mb-0">
-              <h3 className="text-3xl sm:text-4xl leading-[1.1] font-medium tracking-tight text-balance mb-6">
-                {concierge.audienceTitleBefore}
-                <span className="font-serif italic">{concierge.audienceTitleAccent}</span>
-                {concierge.audienceTitleAfter}
-              </h3>
-              <p className="text-base text-foreground/70 leading-relaxed">
-                {concierge.audienceBody}
-              </p>
-            </div>
-            <ul className="flex-1 space-y-4">
-              {concierge.audience.map((item) => (
-                <li key={item} className="text-sm text-foreground/75">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="w-full px-6 py-16 sm:py-24 bg-primary text-primary-foreground">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
-            <div className="md:w-80 shrink-0 mb-8 md:mb-0">
-              <p className="text-3xl font-serif mb-4">{concierge.price}</p>
-              <p className="text-sm text-primary-foreground/70 leading-relaxed">
-                {concierge.priceBody}
-              </p>
-            </div>
-            <div className="flex-1">
-              <p className="text-sm text-primary-foreground/70 mb-4">
-                {concierge.priceIncludesLabel}
-              </p>
-              <ul className="space-y-3">
-                {concierge.pricingIncludes.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm text-primary-foreground/85">
-                    <span className="size-1.5 rounded-full mt-2 shrink-0 bg-accent" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-sm text-primary-foreground/60 mt-6 leading-relaxed">
-                {concierge.pricingNote}
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 

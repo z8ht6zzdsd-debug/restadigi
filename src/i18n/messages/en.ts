@@ -454,17 +454,16 @@ export const en: Messages = {
     meta: {
       title: "AI customer service — Restadigi",
       description:
-        "A smart chatbot for your website and AI Concierge phone service for restaurants — serves customers 24/7, takes bookings and frees up staff.",
+        "A smart chatbot for your website — serves customers 24/7, answers questions, captures leads and frees up your team.",
       ogTitle: "AI customer service — Restadigi",
-      ogDescription:
-        "Website chatbot and AI phone service — round-the-clock customer service for restaurants.",
+      ogDescription: "Website chatbot — round-the-clock sales and customer service.",
     },
     hero: {
       titleBefore: "Smart ",
       titleAccent: "customer service",
-      titleAfter: " for restaurants.",
+      titleAfter: " for your business.",
       description:
-        "Restadigi offers two complementary solutions for restaurant customer service: a website chatbot and the AI Concierge phone service. Both serve customers around the clock.",
+        "Restadigi’s chatbot is installed on your website and serves customers around the clock — answers questions, guides people to the right services and captures leads.",
     },
     chatbot: {
       eyebrow: "Chatbot",
@@ -515,65 +514,14 @@ export const en: Messages = {
         },
       ],
     },
-    concierge: {
-      eyebrow: "Restadigi AI Concierge",
-      titleBefore: "Smart ",
-      titleAccent: "phone service",
-      titleAfter: " — answers every call, 24/7.",
-      intro:
-        "Restadigi AI Concierge is an AI phone service that handles your restaurant’s customer calls around the clock. It answers questions, takes table reservations and frees your staff to focus on what matters most — serving guests.",
-      features: [
-        "Answers calls 24/7",
-        "Takes and manages table reservations",
-        "Answers common customer questions (opening hours, menu, location, parking, etc.)",
-        "Notes special requests and allergies",
-        "Transfers calls to staff when needed",
-        "Serves in multiple languages",
-        "Works without queues or missed calls",
-      ],
-      benefits: [
-        "No customer call goes unanswered.",
-        "More bookings and fewer missed sales opportunities.",
-        "Frees staff time for guest service.",
-        "Consistent quality every day of the year.",
-        "Scales from cafés and pizzerias to fine dining and restaurant chains.",
-      ],
-      audienceTitleBefore: "Built for ",
-      audienceTitleAccent: "every kind of",
-      audienceTitleAfter: " restaurant.",
-      audienceBody:
-        "Restadigi AI Concierge suits à la carte restaurants, lunch spots, pizzerias, cafés, hotel restaurants, fine dining and restaurant chains.",
-      audience: [
-        "À la carte restaurants",
-        "Lunch restaurants",
-        "Pizzerias",
-        "Cafés",
-        "Hotel restaurants",
-        "Fine dining restaurants",
-        "Restaurant chains",
-      ],
-      price: "From 499 € / year",
-      priceBody:
-        "Setup is fast and easy. We tailor the AI assistant to your restaurant’s details, services and ways of working. The service can go live in a few business days.",
-      priceIncludesLabel: "The price includes:",
-      pricingIncludes: [
-        "AI phone service setup",
-        "Defining your restaurant’s core information",
-        "Basic configuration",
-        "Ongoing software updates",
-        "Technical maintenance",
-      ],
-      pricingNote:
-        "Broader integrations, customisations and add-ons are priced according to your restaurant’s needs.",
-    },
     cta: {
-      titleBefore: "Answer every call. Serve better. ",
+      titleBefore: "Serve better. Capture leads. ",
       titleAccent: "Grow more efficiently.",
-      body: "Restadigi builds digital solutions for the restaurant industry. Chatbot and AI Concierge help restaurants improve the guest experience, streamline operations and grow sales with easy-to-adopt AI tools.",
+      body: "Restadigi builds digital solutions for service businesses. Our chatbot helps you improve the customer experience, streamline operations and grow sales with an easy-to-adopt AI tool.",
       questions: [
         "What are the most common questions your customers ask?",
         "Should the bot focus more on customer service or on sales and lead capture?",
-        "Do you need help with missed calls during peak hours?",
+        "Which languages should the bot use with visitors?",
       ],
       button: "Request a free demo",
     },

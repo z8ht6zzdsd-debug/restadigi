@@ -460,17 +460,16 @@ export const es: Messages = {
     meta: {
       title: "Atención al cliente con IA — Restadigi",
       description:
-        "Chatbot inteligente para tu web y servicio telefónico AI Concierge para restaurantes — atiende clientes 24/7, recibe reservas y libera al personal.",
+        "Chatbot inteligente para tu web — atiende clientes 24/7, responde preguntas, captura leads y libera a tu equipo.",
       ogTitle: "Atención al cliente con IA — Restadigi",
-      ogDescription:
-        "Chatbot para la web y servicio telefónico con IA — atención al cliente las 24 horas para restaurantes.",
+      ogDescription: "Chatbot para la web — ventas y atención al cliente las 24 horas.",
     },
     hero: {
       titleBefore: "Atención ",
       titleAccent: "inteligente",
-      titleAfter: " para restaurantes.",
+      titleAfter: " para tu empresa.",
       description:
-        "Restadigi ofrece dos soluciones complementarias para la atención en restaurantes: un chatbot instalado en la web y el servicio telefónico AI Concierge. Ambos atienden a los clientes las 24 horas.",
+        "El chatbot de Restadigi se instala en tu web y atiende a los clientes las 24 horas — responde preguntas, guía hacia los servicios adecuados y captura leads.",
     },
     chatbot: {
       eyebrow: "Chatbot",
@@ -521,65 +520,14 @@ export const es: Messages = {
         },
       ],
     },
-    concierge: {
-      eyebrow: "Restadigi AI Concierge",
-      titleBefore: "Servicio telefónico ",
-      titleAccent: "inteligente",
-      titleAfter: " — responde a cada llamada, 24/7.",
-      intro:
-        "Restadigi AI Concierge es un servicio telefónico con IA que gestiona las llamadas de clientes de tu restaurante las 24 horas. Responde preguntas, recibe reservas de mesa y libera al personal para centrarse en lo más importante: atender a los comensales.",
-      features: [
-        "Responde a llamadas 24/7",
-        "Recibe y gestiona reservas de mesa",
-        "Responde a preguntas frecuentes (horarios, menú, ubicación, aparcamiento, etc.)",
-        "Registra peticiones especiales y alergias",
-        "Transfiere llamadas al personal cuando hace falta",
-        "Atiende en varios idiomas",
-        "Funciona sin colas ni llamadas perdidas",
-      ],
-      benefits: [
-        "Ninguna llamada de cliente se queda sin respuesta.",
-        "Más reservas y menos oportunidades de venta perdidas.",
-        "Libera tiempo del personal para la atención en sala.",
-        "Servicio de calidad constante todos los días del año.",
-        "Escala desde cafeterías y pizzerías hasta fine dining y cadenas.",
-      ],
-      audienceTitleBefore: "Ideal para ",
-      audienceTitleAccent: "todo tipo de",
-      audienceTitleAfter: " restaurantes.",
-      audienceBody:
-        "Restadigi AI Concierge encaja, por ejemplo, en restaurantes à la carte, locales de menú del día, pizzerías, cafeterías, restaurantes de hotel, fine dining y cadenas.",
-      audience: [
-        "Restaurantes à la carte",
-        "Restaurantes de menú del día",
-        "Pizzerías",
-        "Cafeterías",
-        "Restaurantes de hotel",
-        "Restaurantes fine dining",
-        "Cadenas de restaurantes",
-      ],
-      price: "Desde 499 € / año",
-      priceBody:
-        "La puesta en marcha es rápida y sencilla. Adaptamos el asistente de IA a los datos, servicios y formas de trabajar de tu restaurante. El servicio puede activarse en pocos días laborables.",
-      priceIncludesLabel: "El precio incluye:",
-      pricingIncludes: [
-        "Puesta en marcha del servicio telefónico con IA",
-        "Definición de la información básica del restaurante",
-        "Configuración básica",
-        "Actualizaciones continuas del software",
-        "Mantenimiento técnico",
-      ],
-      pricingNote:
-        "Integraciones más amplias, personalizaciones y funciones extra se presupuestan según las necesidades del restaurante.",
-    },
     cta: {
-      titleBefore: "Responde a cada llamada. Atiende mejor. ",
+      titleBefore: "Atiende mejor. Captura leads. ",
       titleAccent: "Crece con más eficiencia.",
-      body: "Restadigi desarrolla soluciones digitales para la restauración. Chatbot y AI Concierge ayudan a los restaurantes a mejorar la experiencia del cliente, agilizar la operación y aumentar las ventas con herramientas de IA fáciles de adoptar.",
+      body: "Restadigi desarrolla soluciones digitales para empresas de servicios. Nuestro chatbot ayuda a mejorar la experiencia del cliente, agilizar la operación y aumentar las ventas con una herramienta de IA fácil de adoptar.",
       questions: [
         "¿Cuáles son las preguntas más frecuentes de vuestros clientes?",
         "¿Queréis que el bot se centre más en la atención o en las ventas y la captura de leads?",
-        "¿Necesitáis ayuda con llamadas perdidas en horas punta?",
+        "¿En qué idiomas queréis que el bot atienda a los visitantes?",
       ],
       button: "Solicitar demo gratuita",
     },

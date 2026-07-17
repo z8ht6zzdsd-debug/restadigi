@@ -457,17 +457,17 @@ export const fi: Messages = {
     meta: {
       title: "AI-asiakaspalvelu — Restadigi",
       description:
-        "Älykäs chatbot verkkosivustollesi ja AI Concierge puhelinpalvelu ravintolalle — palvelee asiakkaita 24/7, vastaanottaa varauksia ja vapauttaa henkilökunnan.",
+        "Älykäs chatbot verkkosivustollesi — palvelee asiakkaita 24/7, vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
       ogTitle: "AI-asiakaspalvelu — Restadigi",
       ogDescription:
-        "Chatbot verkkosivuille ja tekoälypohjainen puhelinpalvelu — ympärivuorokautinen asiakaspalvelu ravintolalle.",
+        "Chatbot verkkosivuille — ympärivuorokautinen myynti ja asiakaspalvelu.",
     },
     hero: {
       titleBefore: "Älykäs ",
       titleAccent: "asiakaspalvelu",
-      titleAfter: " ravintolalle.",
+      titleAfter: " yrityksellesi.",
       description:
-        "Restadigi tarjoaa kaksi täydentävää ratkaisua ravintolan asiakaspalveluun: verkkosivuille asennettavan chatbotin ja tekoälypohjaisen AI Concierge -puhelinpalvelun. Molemmat palvelevat asiakkaita ympäri vuorokauden.",
+        "Restadigin chatbot asennetaan verkkosivuillesi ja palvelee asiakkaita ympäri vuorokauden — vastaa kysymyksiin, ohjaa oikeiden palveluiden pariin ja kerää liidejä.",
     },
     chatbot: {
       eyebrow: "Chatbot",
@@ -518,65 +518,14 @@ export const fi: Messages = {
         },
       ],
     },
-    concierge: {
-      eyebrow: "Restadigi AI Concierge",
-      titleBefore: "Älykäs ",
-      titleAccent: "puhelinpalvelu",
-      titleAfter: " — vastaa jokaiseen puheluun, 24/7.",
-      intro:
-        "Restadigi AI Concierge on tekoälypohjainen puhelinpalvelu, joka huolehtii ravintolasi asiakaspuheluista vuorokauden ympäri. Se vastaa asiakkaiden kysymyksiin, ottaa vastaan pöytävarauksia ja vapauttaa henkilökunnan keskittymään siihen tärkeimpään — asiakkaiden palvelemiseen.",
-      features: [
-        "Vastaa puheluihin 24/7",
-        "Vastaanottaa ja hallitsee pöytävarauksia",
-        "Vastaa yleisimpiin asiakaskysymyksiin (aukioloajat, menu, sijainti, pysäköinti jne.)",
-        "Kirjaa erityistoiveet ja allergiat",
-        "Ohjaa puhelut tarvittaessa henkilökunnalle",
-        "Palvelee useilla kielillä",
-        "Toimii ilman jonotusta tai vastaamattomia puheluita",
-      ],
-      benefits: [
-        "Yksikään asiakaspuhelu ei jää vastaamatta.",
-        "Lisää varauksia ja vähentää menetettyjä myyntimahdollisuuksia.",
-        "Vapauttaa henkilökunnan aikaa asiakaspalveluun.",
-        "Tasalaatuinen palvelu vuoden jokaisena päivänä.",
-        "Skaalautuu kahviloista ja pizzerioista aina fine dining -ravintoloihin ja ravintolaketjuihin.",
-      ],
-      audienceTitleBefore: "Sopii ",
-      audienceTitleAccent: "kaikenlaisille",
-      audienceTitleAfter: " ravintoloille.",
-      audienceBody:
-        "Restadigi AI Concierge sopii esimerkiksi à la carte -ravintoloille, lounaspaikoille, pizzerioille, kahviloille, hotelliravintoloille, fine dining -ravintoloille ja ravintolaketjuille.",
-      audience: [
-        "À la carte -ravintoloille",
-        "Lounasravintoloille",
-        "Pizzerioille",
-        "Kahviloille",
-        "Hotelliravintoloille",
-        "Fine Dining -ravintoloille",
-        "Ravintolaketjuille",
-      ],
-      price: "Alkaen 499 € / vuosi",
-      priceBody:
-        "Käyttöönotto on nopea ja helppo. Räätälöimme tekoälyavustajan ravintolasi tietojen, palveluiden ja toimintatapojen mukaisesti. Palvelu voidaan ottaa käyttöön muutamassa arkipäivässä.",
-      priceIncludesLabel: "Hinta sisältää:",
-      pricingIncludes: [
-        "AI-puhelinpalvelun käyttöönoton",
-        "Ravintolan perustietojen määrittelyn",
-        "Peruskonfiguroinnin",
-        "Jatkuvat ohjelmistopäivitykset",
-        "Teknisen ylläpidon",
-      ],
-      pricingNote:
-        "Laajemmat integraatiot, räätälöinnit ja lisäominaisuudet hinnoitellaan ravintolan tarpeiden mukaan.",
-    },
     cta: {
-      titleBefore: "Vastaa jokaiseen puheluun. Palvele paremmin. ",
+      titleBefore: "Palvele paremmin. Kerää liidejä. ",
       titleAccent: "Kasva tehokkaammin.",
-      body: "Restadigi kehittää digitaalisia ratkaisuja ravintola-alalle. Chatbot ja AI Concierge auttavat ravintoloita parantamaan asiakaskokemusta, tehostamaan toimintaa ja kasvattamaan myyntiä helposti käyttöönotettavilla tekoälyratkaisuilla.",
+      body: "Restadigi kehittää digitaalisia ratkaisuja palvelualan yrityksille. Chatbot auttaa parantamaan asiakaskokemusta, tehostamaan toimintaa ja kasvattamaan myyntiä helposti käyttöönotettavalla tekoälyratkaisulla.",
       questions: [
         "Mitkä ovat yleisimmät kysymykset, joita asiakkaanne esittävät?",
         "Haluatteko botin keskittyvän enemmän asiakaspalveluun vai myyntiin ja liidien keruuseen?",
-        "Tarvitsetteko apua vastaamattomiin puheluihin ruuhka-aikoina?",
+        "Millä kielillä haluatte botin palvelevan kävijöitä?",
       ],
       button: "Pyydä maksuton esittely",
     },
