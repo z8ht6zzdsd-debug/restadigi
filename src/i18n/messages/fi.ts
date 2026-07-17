@@ -459,8 +459,7 @@ export const fi: Messages = {
       description:
         "Älykäs chatbot verkkosivustollesi — palvelee asiakkaita 24/7, vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
       ogTitle: "AI-asiakaspalvelu — Restadigi",
-      ogDescription:
-        "Chatbot verkkosivuille — ympärivuorokautinen myynti ja asiakaspalvelu.",
+      ogDescription: "Chatbot verkkosivuille — ympärivuorokautinen myynti ja asiakaspalvelu.",
     },
     hero: {
       titleBefore: "Älykäs ",
