@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   CalendarDays,
+  ContactRound,
   LayoutDashboard,
   LogOut,
   MessageSquare,
@@ -13,7 +14,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const nav = [
-  { to: "/dashboard", label: "Yhteenveto", icon: LayoutDashboard, exact: true },
+  { to: "/dashboard", label: "Yhteenveto", icon: LayoutDashboard, exact: true as const },
+  { to: "/dashboard/leads", label: "Myyntiliidit", icon: ContactRound },
   { to: "/dashboard/visitors", label: "Kävijät", icon: Users },
   { to: "/dashboard/conversations", label: "Keskustelut", icon: MessageSquare },
   { to: "/dashboard/reservations", label: "Varaukset", icon: CalendarDays },
@@ -46,7 +48,8 @@ export function DashboardShell({ children }: { children: ReactNode }) {
       <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 lg:grid-cols-[220px_1fr]">
         <nav className="flex flex-row gap-2 overflow-x-auto lg:flex-col lg:gap-1">
           {nav.map((item) => {
-            const active = item.exact ? pathname === item.to : pathname.startsWith(item.to);
+            const active =
+              "exact" in item && item.exact ? pathname === item.to : pathname.startsWith(item.to);
             const Icon = item.icon;
             return (
               <Link

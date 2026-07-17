@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import {
   createReservation,
+  createSalesLead,
   ensureChatSession,
   parseReservationArgs,
   saveChatMessage,
@@ -186,6 +187,7 @@ export const Route = createFileRoute("/api/chat")({
                     throw new Error("Chat-istunto puuttuu");
                   }
                   await saveChatMessage(sessionId, "system", formatSalesLeadMessage(lead));
+                  await createSalesLead({ ...lead, chatSessionId: sessionId });
                   leadCaptured = true;
                 } catch (error) {
                   console.error("Sales lead error:", error);

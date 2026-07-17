@@ -81,8 +81,27 @@ export const reservations = pgTable("reservations", {
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
 });
 
+export const salesLeads = pgTable("sales_leads", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  chatSessionId: uuid("chat_session_id").references(() => chatSessions.id, {
+    onDelete: "set null",
+  }),
+  name: text("name"),
+  company: text("company"),
+  phone: text("phone").notNull(),
+  email: text("email").notNull(),
+  interest: text("interest"),
+  notes: text("notes"),
+  adminNotes: text("admin_notes"),
+  status: text("status").notNull().default("new"),
+  source: text("source").notNull().default("sales_chat"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
 export const chatSessionsRelations = relations(chatSessions, ({ many }) => ({
   messages: many(chatMessages),
+  salesLeads: many(salesLeads),
 }));
 
 export const chatMessagesRelations = relations(chatMessages, ({ one }) => ({
@@ -95,6 +114,13 @@ export const chatMessagesRelations = relations(chatMessages, ({ one }) => ({
 export const reservationsRelations = relations(reservations, ({ one }) => ({
   chatSession: one(chatSessions, {
     fields: [reservations.chatSessionId],
+    references: [chatSessions.id],
+  }),
+}));
+
+export const salesLeadsRelations = relations(salesLeads, ({ one }) => ({
+  chatSession: one(chatSessions, {
+    fields: [salesLeads.chatSessionId],
     references: [chatSessions.id],
   }),
 }));

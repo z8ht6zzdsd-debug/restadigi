@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
@@ -11,6 +11,7 @@ type Stats = {
   uniqueVisitors: number;
   chatSessions: number;
   reservations: number;
+  salesLeads: number;
   viewsByDay: Array<{ day: string; views: number }>;
   topPages: Array<{ path: string; views: number }>;
 };
@@ -41,6 +42,11 @@ function DashboardHomePage() {
   const cards = [
     { label: "Sivulataukset (30 pv)", value: stats.pageViews },
     { label: "Uniikit kävijät", value: stats.uniqueVisitors },
+    {
+      label: "Myyntiliidit",
+      value: stats.salesLeads,
+      to: "/dashboard/leads" as const,
+    },
     { label: "Chat-keskustelut", value: stats.chatSessions },
     { label: "Varaukset", value: stats.reservations },
   ];
@@ -52,15 +58,33 @@ function DashboardHomePage() {
         <p className="text-sm text-muted-foreground">Viimeiset 30 päivää</p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {cards.map((card) => (
-          <div key={card.label} className="rounded-sm border border-border bg-card p-5">
-            <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-              {card.label}
-            </p>
-            <p className="mt-2 text-3xl font-medium">{card.value}</p>
-          </div>
-        ))}
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+        {cards.map((card) => {
+          const inner = (
+            <>
+              <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                {card.label}
+              </p>
+              <p className="mt-2 text-3xl font-medium">{card.value}</p>
+            </>
+          );
+          if ("to" in card && card.to) {
+            return (
+              <Link
+                key={card.label}
+                to={card.to}
+                className="rounded-sm border border-border bg-card p-5 transition-colors hover:border-accent/50 hover:bg-accent/5"
+              >
+                {inner}
+              </Link>
+            );
+          }
+          return (
+            <div key={card.label} className="rounded-sm border border-border bg-card p-5">
+              {inner}
+            </div>
+          );
+        })}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">

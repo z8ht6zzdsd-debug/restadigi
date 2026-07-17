@@ -4,6 +4,27 @@ import { getDb, schema } from "@/db";
 import type { RestaurantSettings } from "@/lib/restaurant-settings-types";
 import { validateReservationInput } from "@/lib/settings-service";
 
+export async function ensureSalesLeadsTable() {
+  const db = getDb();
+  await db.execute(sql`
+    CREATE TABLE IF NOT EXISTS sales_leads (
+      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+      chat_session_id UUID REFERENCES chat_sessions(id) ON DELETE SET NULL,
+      name TEXT,
+      company TEXT,
+      phone TEXT NOT NULL,
+      email TEXT NOT NULL,
+      interest TEXT,
+      notes TEXT,
+      admin_notes TEXT,
+      status TEXT NOT NULL DEFAULT 'new',
+      source TEXT NOT NULL DEFAULT 'sales_chat',
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    )
+  `);
+}
+
 type ReservationInput = {
   guestName: string;
   partySize: number;
@@ -91,4 +112,35 @@ export function parseReservationArgs(args: string) {
     guestEmail: parsed.guest_email,
     notes: parsed.notes,
   };
+}
+
+type SalesLeadInput = {
+  name?: string;
+  company?: string;
+  phone: string;
+  email: string;
+  interest?: string;
+  notes?: string;
+  chatSessionId?: string;
+};
+
+export async function createSalesLead(input: SalesLeadInput) {
+  await ensureSalesLeadsTable();
+  const db = getDb();
+  const [lead] = await db
+    .insert(schema.salesLeads)
+    .values({
+      chatSessionId: input.chatSessionId ?? null,
+      name: input.name ?? null,
+      company: input.company ?? null,
+      phone: input.phone,
+      email: input.email,
+      interest: input.interest ?? null,
+      notes: input.notes ?? null,
+      status: "new",
+      source: "sales_chat",
+    })
+    .returning();
+
+  return lead;
 }

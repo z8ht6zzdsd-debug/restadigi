@@ -3,6 +3,7 @@ import { count, desc, gte, sql } from "drizzle-orm";
 
 import { getDb, schema } from "@/db";
 import { requireAdmin, unauthorizedResponse } from "@/lib/auth";
+import { ensureSalesLeadsTable } from "@/lib/chat-service";
 import { getDatabaseUrl } from "@/lib/database-url";
 
 export const Route = createFileRoute("/api/dashboard/stats")({
@@ -38,6 +39,18 @@ export const Route = createFileRoute("/api/dashboard/stats")({
             .from(schema.reservations)
             .where(gte(schema.reservations.createdAt, since));
 
+          let salesLeads = 0;
+          try {
+            await ensureSalesLeadsTable();
+            const [leadCount] = await db
+              .select({ count: count() })
+              .from(schema.salesLeads)
+              .where(gte(schema.salesLeads.createdAt, since));
+            salesLeads = leadCount?.count ?? 0;
+          } catch {
+            salesLeads = 0;
+          }
+
           const viewsByDayResult = await db.execute<{ day: string; views: number }>(
             sql`SELECT to_char(created_at, 'YYYY-MM-DD') AS day, COUNT(*)::int AS views
                 FROM page_views
@@ -62,6 +75,7 @@ export const Route = createFileRoute("/api/dashboard/stats")({
             uniqueVisitors: uniqueRow?.count ?? 0,
             chatSessions: chatCount?.count ?? 0,
             reservations: reservationCount?.count ?? 0,
+            salesLeads,
             viewsByDay: viewsByDayResult.rows,
             topPages: topPagesResult.rows,
           });
