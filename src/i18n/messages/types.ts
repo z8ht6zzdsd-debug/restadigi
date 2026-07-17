@@ -291,6 +291,13 @@ export type Messages = {
       titleAfter: string;
       body: string;
     };
+    floorPlan: {
+      eyebrow: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+    };
     features: Array<{ title: string; body: string }>;
     cta: {
       titleBefore: string;

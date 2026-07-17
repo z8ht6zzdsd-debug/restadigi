@@ -550,6 +550,13 @@ export const fi: Messages = {
       titleAfter: " ja listalla.",
       body: "Henkilökunta näkee päivän pöytävaraukset tabletilla tai näytöllä — vahvista, peruuta ja seuraa saatavuutta yhdellä silmäyksellä.",
     },
+    floorPlan: {
+      eyebrow: "Pöytäkartta",
+      titleBefore: "Sali ",
+      titleAccent: "kartalla",
+      titleAfter: " — mobiilista isoon näyttöön.",
+      body: "Kustomoitu pöytäkartta asiakaspaikkojen mukaan (2–8 hlö). Sama näkymä toimii puhelimella, tabletilla ja ravintolan isolla näytöllä.",
+    },
     features: [
       {
         title: "Varaukset 24/7",

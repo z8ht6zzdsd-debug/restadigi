@@ -547,6 +547,13 @@ export const en: Messages = {
       titleAfter: " and list.",
       body: "Staff see the day’s table reservations on tablet or desktop — confirm, cancel and track availability at a glance.",
     },
+    floorPlan: {
+      eyebrow: "Floor plan",
+      titleBefore: "The room ",
+      titleAccent: "on a map",
+      titleAfter: " — phone to big screen.",
+      body: "A customized floor plan by seat count (2–8 guests). The same view works on phone, tablet and the restaurant’s large display.",
+    },
     features: [
       {
         title: "Bookings 24/7",

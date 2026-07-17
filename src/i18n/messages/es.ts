@@ -553,6 +553,13 @@ export const es: Messages = {
       titleAfter: " y lista.",
       body: "El equipo ve las reservas del día en tablet o pantalla — confirma, cancela y sigue la disponibilidad de un vistazo.",
     },
+    floorPlan: {
+      eyebrow: "Plano de mesas",
+      titleBefore: "El salón ",
+      titleAccent: "en el mapa",
+      titleAfter: " — del móvil a la gran pantalla.",
+      body: "Plano personalizado según aforo (2–8 personas). La misma vista funciona en móvil, tablet y la pantalla grande del restaurante.",
+    },
     features: [
       {
         title: "Reservas 24/7",
