@@ -642,7 +642,7 @@ export const fi: Messages = {
       eyebrow: "Pöytävaraus",
       title: "Varaa pöytä",
       welcome:
-        "Hei! Tervetuloa. Autan mielelläni pöytävarauksessa — kerro nimesi, henkilömäärän, päivän, kellonajan, sähköpostisi ja puhelinnumerosi.",
+        "Hei! Autan pöytävarauksessa. Kerro nimesi, henkilömäärä, päivä, kellonaika (12–22), sähköposti ja puhelin. Normaali pöytäaika on 2 tuntia — 3 tuntia onnistuu pyynnöstä.",
       placeholder: "Kirjoita viestisi…",
       sendAria: "Lähetä viesti",
       typing: "Kirjoittaa…",

@@ -1,0 +1,21 @@
+-- Loosen demo restaurant booking: every day 12:00–22:00, no Monday closure
+
+UPDATE restaurant_settings
+SET
+  open_time = '12:00',
+  close_time = '22:00',
+  lunch_enabled = true,
+  lunch_open_time = '12:00',
+  lunch_close_time = '22:00',
+  dinner_enabled = false,
+  closed_weekdays = '',
+  min_notice_hours = 0,
+  advance_booking_days = 90,
+  max_covers_per_slot = 40,
+  max_covers_per_evening = 200,
+  max_party_size = 12,
+  reservations_enabled = true,
+  chatbot_welcome_message = 'Hei! Autan pöytävarauksessa — kerro nimesi, henkilömäärä, päivä, kellonaika (12–22), sähköposti ja puhelin. Normaali pöytäaika on 2 tuntia; 3 tuntia onnistuu pyynnöstä.',
+  chatbot_instructions = 'Varaukset joka päivä klo 12:00–22:00. Normaali kesto 2 tuntia; 3 tuntia pyynnöstä. Älä torju varauksia turhaan — ole joustava.',
+  updated_at = NOW()
+WHERE id = 'default';

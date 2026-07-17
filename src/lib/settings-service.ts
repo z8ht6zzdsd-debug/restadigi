@@ -9,6 +9,28 @@ import {
 } from "@/lib/restaurant-settings-types";
 import { getDatabaseUrl } from "@/lib/database-url";
 
+/** Flexible demo booking rules: every day 12–22, 2h default / 3h on request. */
+const FLEXIBLE_BOOKING_PATCH: Partial<Omit<RestaurantSettings, "id" | "updatedAt">> = {
+  openTime: "12:00",
+  closeTime: "22:00",
+  lunchEnabled: true,
+  lunchOpenTime: "12:00",
+  lunchCloseTime: "22:00",
+  dinnerEnabled: false,
+  closedWeekdays: "",
+  minNoticeHours: 0,
+  advanceBookingDays: 90,
+  maxCoversPerSlot: 40,
+  maxCoversPerEvening: 200,
+  maxPartySize: 12,
+  slotMinutes: 30,
+  reservationsEnabled: true,
+  chatbotWelcomeMessage: DEFAULT_SETTINGS.chatbotWelcomeMessage,
+  chatbotInstructions: DEFAULT_SETTINGS.chatbotInstructions,
+};
+
+let flexibleBookingEnsured = false;
+
 export async function getRestaurantSettings(): Promise<RestaurantSettings> {
   if (!getDatabaseUrl()) {
     return { ...DEFAULT_SETTINGS, updatedAt: new Date() };
@@ -16,10 +38,40 @@ export async function getRestaurantSettings(): Promise<RestaurantSettings> {
 
   try {
     const db = getDb();
-    const row = await db.query.restaurantSettings.findFirst({
+    let row = await db.query.restaurantSettings.findFirst({
       where: eq(schema.restaurantSettings.id, "default"),
     });
-    if (row) return row;
+
+    if (!row) {
+      return { ...DEFAULT_SETTINGS, updatedAt: new Date() };
+    }
+
+    // One-time loosen old restrictive defaults (Mon closed / lunch–dinner gap).
+    if (!flexibleBookingEnsured) {
+      flexibleBookingEnsured = true;
+      const needsFlex =
+        row.closedWeekdays === "1" ||
+        row.lunchCloseTime === "14:30" ||
+        row.minNoticeHours >= 2 ||
+        (row.lunchEnabled &&
+          row.dinnerEnabled &&
+          timeToMinutes(row.lunchCloseTime) < timeToMinutes(row.dinnerOpenTime));
+
+      if (needsFlex) {
+        try {
+          const [updated] = await db
+            .update(schema.restaurantSettings)
+            .set({ ...FLEXIBLE_BOOKING_PATCH, updatedAt: new Date() })
+            .where(eq(schema.restaurantSettings.id, "default"))
+            .returning();
+          if (updated) row = updated;
+        } catch (error) {
+          console.error("ensure flexible booking settings error:", error);
+        }
+      }
+    }
+
+    return row;
   } catch (error) {
     console.error("getRestaurantSettings error:", error);
   }
@@ -74,7 +126,21 @@ export function isInDinnerService(time: string, settings: RestaurantSettings) {
   );
 }
 
+/** Continuous open window (preferred) or lunch/dinner windows. */
+export function isInServiceHours(time: string, settings: RestaurantSettings) {
+  const minutes = timeToMinutes(time);
+  const open = timeToMinutes(settings.openTime);
+  const close = timeToMinutes(settings.closeTime);
+  if (Number.isFinite(open) && Number.isFinite(close) && close > open) {
+    if (minutes >= open && minutes <= close) return true;
+  }
+  return isInLunchService(time, settings) || isInDinnerService(time, settings);
+}
+
 function formatServiceWindows(settings: RestaurantSettings) {
+  if (settings.openTime && settings.closeTime) {
+    return `Joka päivä ${settings.openTime}–${settings.closeTime}`;
+  }
   const parts: string[] = [];
   if (settings.lunchEnabled) {
     parts.push(`Lounas ${settings.lunchOpenTime}–${settings.lunchCloseTime}`);
@@ -87,7 +153,7 @@ function formatServiceWindows(settings: RestaurantSettings) {
 
 function formatClosedDays(settings: RestaurantSettings) {
   const closed = parseClosedWeekdays(settings.closedWeekdays);
-  if (closed.length === 0) return "Ei kiinni olevia viikkopäiviä";
+  if (closed.length === 0) return "Auki joka päivä";
   const labels = closed
     .map((day) => WEEKDAY_OPTIONS.find((option) => Number(option.value) === day)?.label)
     .filter(Boolean);
@@ -128,14 +194,15 @@ export function buildChatbotSystemPrompt(
 
   const confirmRule =
     locale === "en"
-      ? "Confirm the reservation warmly in English and repeat the key details."
+      ? "Confirm the reservation warmly in English and repeat the key details including duration."
       : locale === "es"
-        ? "Confirma la reserva con calidez en español y repite los datos principales."
-        : "Vahvista varaus lämpimästi suomeksi ja toista keskeiset tiedot.";
+        ? "Confirma la reserva con calidez en español y repite los datos principales, incluida la duración."
+        : "Vahvista varaus lämpimästi suomeksi ja toista keskeiset tiedot, myös kesto.";
 
   const reservationBlock = settings.reservationsEnabled
     ? `
 Olet ${settings.restaurantName} -ravintolan varausavustaja. Toimit kuin ravintolan henkilökunta — älä mainitse, että olet demo tai ulkopuolinen palvelu.
+Ole joustava ja avulias. Älä keksi turhia estoja. Kun tiedot on kerätty, kutsu create_restaurant_reservation heti.
 
 RAVINTOLA:
 ${identityLines}
@@ -144,22 +211,24 @@ PALVELUAJAT:
 - ${formatServiceWindows(settings)}
 - Suljettu: ${formatClosedDays(settings)}
 
-VARAUSSÄÄNNÖT:
+VARAUSSÄÄNNÖT (noudata näitä, älä tiukenna):
+- Varauksia otetaan vastaan joka päivä klo ${settings.openTime}–${settings.closeTime}
+- Normaali pöytäaika on 2 tuntia
+- 3 tunnin varaus onnistuu pyynnöstä — hyväksy jos asiakas pyytää
 - Pöytävaraus ${settings.minPartySize}–${settings.maxPartySize} hengelle
-- Enintään ${settings.maxCoversPerSlot} hlö per ${settings.slotMinutes} min aika
-- Illan palveluun yhteensä enintään ${settings.maxCoversPerEvening} hlö
 - Varaus enintään ${settings.advanceBookingDays} päivää etukäteen
-- Vähintään ${settings.minNoticeHours} tuntia ennen varattua aikaa
+- Ei erillistä ennakkoilmoituspakkoa (minNotice = ${settings.minNoticeHours} h)
 
-Kerää varaukselle:
+Kerää varaukselle (voit kysyä 2–3 asiaa kerralla, älä venytä keskustelua):
 1. Nimi
 2. Henkilömäärä
 3. Päivämäärä (YYYY-MM-DD)
-4. Kellonaika (HH:MM, vain palveluaikojen sisällä)
-5. ${contactRules}
-6. Erityistoiveet (valinnainen)
+4. Kellonaika (HH:MM, ${settings.openTime}–${settings.closeTime})
+5. Kesto: 2 tai 3 tuntia (oletus 2 jos asiakas ei sano)
+6. ${contactRules}
+7. Erityistoiveet (valinnainen)
 
-Kysy puuttuvat tiedot yksi kerrallaan. Kun kaikki on kunnossa, kutsu create_restaurant_reservation -työkalua.
+Kun kaikki on kunnossa, kutsu create_restaurant_reservation -työkalua. Laita kestotieto notes-kenttään muodossa "Kesto: 2 h" tai "Kesto: 3 h".
 ${confirmRule}`
     : `
 Pöytävaraukset eivät ole tällä hetkellä käytössä. Ohjaa asiakas soittamaan ravintolaan${
@@ -188,7 +257,7 @@ export function buildReservationTool(settings: RestaurantSettings) {
     type: "function" as const,
     function: {
       name: "create_restaurant_reservation",
-      description: `Luo pöytävaraus ravintolaan ${settings.restaurantName}.`,
+      description: `Luo pöytävaraus ravintolaan ${settings.restaurantName}. Normaali kesto 2 h, 3 h pyynnöstä.`,
       parameters: {
         type: "object",
         properties: {
@@ -200,11 +269,15 @@ export function buildReservationTool(settings: RestaurantSettings) {
           date: { type: "string", description: "Päivämäärä YYYY-MM-DD" },
           time: {
             type: "string",
-            description: `Kellonaika HH:MM. Palveluajat: ${serviceHint}`,
+            description: `Aloitusaika HH:MM. Palveluajat: ${serviceHint}`,
+          },
+          duration_hours: {
+            type: "number",
+            description: "Varauksen kesto tunteina: 2 (normaali) tai 3 (pyynnöstä)",
           },
           guest_email: { type: "string", description: "Sähköposti" },
           guest_phone: { type: "string", description: "Puhelinnumero" },
-          notes: { type: "string", description: "Erityistoiveet" },
+          notes: { type: "string", description: "Erityistoiveet ja kesto (esim. Kesto: 2 h)" },
         },
         required,
       },
@@ -220,6 +293,8 @@ export async function validateReservationInput(
     time: string;
     guestEmail?: string;
     guestPhone?: string;
+    notes?: string;
+    durationHours?: number;
   },
   settings: RestaurantSettings,
 ) {
@@ -252,17 +327,32 @@ export async function validateReservationInput(
     throw new Error("Virheellinen puhelinnumero");
   }
 
+  if (input.durationHours != null && input.durationHours !== 2 && input.durationHours !== 3) {
+    throw new Error("Keston tulee olla 2 tai 3 tuntia");
+  }
+
   const reservationDate = new Date(`${input.date}T12:00:00`);
+  if (Number.isNaN(reservationDate.getTime())) {
+    throw new Error("Virheellinen päivämäärä");
+  }
+
   const weekday = reservationDate.getDay();
   if (parseClosedWeekdays(settings.closedWeekdays).includes(weekday)) {
     throw new Error("Ravintola on suljettu valittuna päivänä");
   }
 
   const reservationDateTime = new Date(`${input.date}T${input.time}:00`);
+  if (Number.isNaN(reservationDateTime.getTime())) {
+    throw new Error("Virheellinen kellonaika");
+  }
+
   const now = new Date();
   const hoursUntil = (reservationDateTime.getTime() - now.getTime()) / (1000 * 60 * 60);
   if (hoursUntil < settings.minNoticeHours) {
     throw new Error(`Varaus vaatii vähintään ${settings.minNoticeHours} tuntia ennakkoilmoitusta`);
+  }
+  if (hoursUntil < -1) {
+    throw new Error("Varausaika on jo mennyt");
   }
 
   const maxDate = new Date();
@@ -273,10 +363,21 @@ export async function validateReservationInput(
     );
   }
 
-  if (!isInLunchService(input.time, settings) && !isInDinnerService(input.time, settings)) {
+  if (!isInServiceHours(input.time, settings)) {
     throw new Error(
       `Aika ${input.time} on palveluaikojen ulkopuolella (${formatServiceWindows(settings)})`,
     );
+  }
+
+  // Last seating: start time should leave room for at least 2h before close
+  const closeMinutes = timeToMinutes(settings.closeTime);
+  const startMinutes = timeToMinutes(input.time);
+  const duration = input.durationHours === 3 ? 3 : 2;
+  if (startMinutes + duration * 60 > closeMinutes + 30) {
+    // Soft warning only if way past close — allow seating until close
+    if (startMinutes > closeMinutes) {
+      throw new Error(`Viimeinen aloitusaika on klo ${settings.closeTime}`);
+    }
   }
 
   if (!getDatabaseUrl()) return;
@@ -295,18 +396,8 @@ export async function validateReservationInput(
     .reduce((sum, row) => sum + row.partySize, 0);
 
   if (slotCovers + input.partySize > settings.maxCoversPerSlot) {
-    throw new Error(`Kello ${slot} ei ole enää tilaa (${settings.maxCoversPerSlot} hlö max)`);
-  }
-
-  if (isInDinnerService(input.time, settings)) {
-    const eveningCovers = existing
-      .filter((row) => isInDinnerService(row.reservationTime, settings))
-      .reduce((sum, row) => sum + row.partySize, 0);
-
-    if (eveningCovers + input.partySize > settings.maxCoversPerEvening) {
-      throw new Error(
-        `Illan palvelu on täynnä (max ${settings.maxCoversPerEvening} hlö). Kokeile lounasaikaa tai toista päivää.`,
-      );
-    }
+    throw new Error(
+      `Kello ${slot} on ruuhkainen — ehdota toista aikaa (±30–60 min) samalle päivälle`,
+    );
   }
 }

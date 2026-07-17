@@ -33,6 +33,7 @@ type ReservationInput = {
   guestPhone?: string;
   guestEmail?: string;
   notes?: string;
+  durationHours?: number;
   chatSessionId?: string;
 };
 
@@ -68,6 +69,14 @@ export async function createReservation(input: ReservationInput, settings?: Rest
     await validateReservationInput(input, settings);
   }
 
+  const hasDurationInNotes = /kesto:\s*[23]\s*h/i.test(input.notes ?? "");
+  const durationLabel =
+    !hasDurationInNotes && (input.durationHours === 2 || input.durationHours === 3)
+      ? `Kesto: ${input.durationHours} h`
+      : null;
+  const notesParts = [durationLabel, input.notes?.trim()].filter(Boolean);
+  const notes = notesParts.length > 0 ? notesParts.join(" · ") : null;
+
   const db = getDb();
   const [reservation] = await db
     .insert(schema.reservations)
@@ -79,7 +88,7 @@ export async function createReservation(input: ReservationInput, settings?: Rest
       partySize: input.partySize,
       reservationDate: input.date,
       reservationTime: input.time,
-      notes: input.notes ?? null,
+      notes,
       source: "chatbot",
       status: "pending",
     })
@@ -97,10 +106,17 @@ export function parseReservationArgs(args: string) {
     guest_phone?: string;
     guest_email?: string;
     notes?: string;
+    duration_hours?: number;
   };
 
   if (!parsed.guest_name || !parsed.party_size || !parsed.date || !parsed.time) {
     throw new Error("Missing reservation fields");
+  }
+
+  let durationHours = parsed.duration_hours;
+  if (durationHours !== 2 && durationHours !== 3) {
+    const fromNotes = parsed.notes?.match(/kesto:\s*([23])\s*h/i);
+    durationHours = fromNotes ? Number(fromNotes[1]) : 2;
   }
 
   return {
@@ -111,6 +127,7 @@ export function parseReservationArgs(args: string) {
     guestPhone: parsed.guest_phone,
     guestEmail: parsed.guest_email,
     notes: parsed.notes,
+    durationHours,
   };
 }
 
