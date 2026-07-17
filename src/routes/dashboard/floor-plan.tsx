@@ -150,7 +150,7 @@ function DashboardFloorPlanPage() {
           <h2 className="text-2xl font-medium">Pöytäkartta</h2>
           <p className="mt-1 max-w-xl text-sm text-muted-foreground">
             Mallikartta ravintolan asiakaspaikkojen mukaan. Restadigi kustomoi pöytien määrän, koot
-            (2–8 hlö) ja sijoittelun ravintolakohtaisesti.
+            ja sijoittelun ravintolakohtaisesti.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
