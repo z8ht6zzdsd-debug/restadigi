@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroDiginakyvyys from "@/assets/hero-diginakyvyys.jpg";
+import { PackageBrandLogos, packageLogoKind } from "@/components/package-brand-logos";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -70,19 +71,19 @@ function DiginakyvyysPage() {
                       : "bg-background")
                 }
               >
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
-                  <div className="md:w-80 shrink-0 mb-8 md:mb-0">
-                    <div className="flex items-baseline gap-3 mb-2">
+                <div className="mx-auto flex max-w-6xl flex-col md:flex-row md:items-start md:gap-12 lg:gap-16">
+                  <div className="mb-8 shrink-0 md:mb-0 md:w-72 lg:w-80">
+                    <div className="mb-2 flex items-baseline gap-3">
                       <h3 className="text-2xl font-medium">{p.name}</h3>
                       {p.featured && (
-                        <span className="text-[10px] uppercase tracking-[0.2em] bg-accent text-accent-foreground px-2 py-1 rounded-full">
+                        <span className="rounded-full bg-accent px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
                           {v.popular}
                         </span>
                       )}
                     </div>
                     <p
                       className={
-                        "text-sm mb-2 " +
+                        "mb-2 text-sm " +
                         (dark ? "text-primary-foreground/70" : "text-foreground/60")
                       }
                     >
@@ -90,16 +91,16 @@ function DiginakyvyysPage() {
                     </p>
                     <p
                       className={
-                        "text-sm mb-4 " +
+                        "mb-4 text-sm " +
                         (dark ? "text-primary-foreground/80" : "text-foreground/70")
                       }
                     >
                       {p.description}
                     </p>
-                    <div className="text-4xl font-serif mb-4">{p.price}</div>
+                    <div className="mb-4 font-serif text-4xl">{p.price}</div>
                     <p
                       className={
-                        "text-sm italic mb-6 " +
+                        "mb-6 text-sm italic " +
                         (dark ? "text-primary-foreground/75" : "text-foreground/65")
                       }
                     >
@@ -108,7 +109,7 @@ function DiginakyvyysPage() {
                     <Link
                       to="/yhteys"
                       className={
-                        "inline-flex items-center justify-center gap-2 text-sm font-medium py-3 px-5 rounded-full transition-colors " +
+                        "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors " +
                         (dark
                           ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
                           : "bg-primary text-primary-foreground hover:bg-accent")
@@ -117,10 +118,10 @@ function DiginakyvyysPage() {
                       {v.contactCta}
                     </Link>
                   </div>
-                  <ul className="space-y-3 text-sm flex-1">
+                  <ul className="mb-8 flex-1 space-y-3 text-sm md:mb-0">
                     {p.bullets.map((b) => (
                       <li key={b} className="flex gap-3">
-                        <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
+                        <span className="mt-2 size-1 shrink-0 rounded-full bg-accent" />
                         <span
                           className={dark ? "text-primary-foreground/85" : "text-foreground/75"}
                         >
@@ -129,6 +130,9 @@ function DiginakyvyysPage() {
                       </li>
                     ))}
                   </ul>
+                  {packageLogoKind(p.name) && (
+                    <PackageBrandLogos kind={packageLogoKind(p.name)!} dark={dark} />
+                  )}
                 </div>
               </div>
             );
