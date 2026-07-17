@@ -43,7 +43,7 @@ export const es: Messages = {
       "Soluciones digitales por sector — sitios web, reservas, visibilidad y atención al cliente con IA para empresas de servicios.",
     industriesList: [
       {
-        title: "Arenas, eventos y artistas",
+        title: "Estadios, eventos y artistas",
         body: "Sitios web, visibilidad digital y soluciones de entradas y ventas que unen a fans, entradas y artistas — con claridad y fidelidad a la marca.",
       },
       {
@@ -421,7 +421,7 @@ export const es: Messages = {
         featured: true,
         bullets: [
           "Visibilidad publicitaria en vallas y LED en los partidos",
-          "Visibilidad en pantallas mediáticas de las arenas",
+          "Visibilidad en pantallas mediáticas de los estadios",
           "Presentación de la empresa o logo en la web del club",
           "Visibilidad en los canales digitales del club",
           "Invitaciones a reuniones de partners y networking",
