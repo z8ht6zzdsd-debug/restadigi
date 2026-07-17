@@ -16,6 +16,7 @@ import { Route as MeistaRouteImport } from './routes/meista'
 import { Route as KotisivutYrityksilleRouteImport } from './routes/kotisivut-yrityksille'
 import { Route as DiginakyvyysRouteImport } from './routes/diginakyvyys'
 import { Route as ChatbotRouteImport } from './routes/chatbot'
+import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardVisitorsRouteImport } from './routes/dashboard/visitors'
@@ -24,7 +25,6 @@ import { Route as DashboardReservationsRouteImport } from './routes/dashboard/re
 import { Route as DashboardLoginRouteImport } from './routes/dashboard.login'
 import { Route as DashboardLeadsRouteImport } from './routes/dashboard/leads'
 import { Route as DashboardConversationsRouteImport } from './routes/dashboard/conversations'
-import { Route as DashboardLayoutRouteImport } from './routes/dashboard/_layout'
 import { Route as ApiTrackRouteImport } from './routes/api/track'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiRestaurantSettingsRouteImport } from './routes/api/restaurant/settings'
@@ -76,50 +76,50 @@ const ChatbotRoute = ChatbotRouteImport.update({
   path: '/chatbot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRouteRoute = DashboardRouteRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
-  id: '/dashboard/',
-  path: '/dashboard/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardVisitorsRoute = DashboardVisitorsRouteImport.update({
-  id: '/dashboard/visitors',
-  path: '/dashboard/visitors',
-  getParentRoute: () => rootRouteImport,
+  id: '/visitors',
+  path: '/visitors',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
-  id: '/dashboard/settings',
-  path: '/dashboard/settings',
-  getParentRoute: () => rootRouteImport,
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardReservationsRoute = DashboardReservationsRouteImport.update({
-  id: '/dashboard/reservations',
-  path: '/dashboard/reservations',
-  getParentRoute: () => rootRouteImport,
+  id: '/reservations',
+  path: '/reservations',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardLoginRoute = DashboardLoginRouteImport.update({
-  id: '/dashboard/login',
-  path: '/dashboard/login',
-  getParentRoute: () => rootRouteImport,
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardLeadsRoute = DashboardLeadsRouteImport.update({
-  id: '/dashboard/leads',
-  path: '/dashboard/leads',
-  getParentRoute: () => rootRouteImport,
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardConversationsRoute = DashboardConversationsRouteImport.update({
-  id: '/dashboard/conversations',
-  path: '/dashboard/conversations',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardLayoutRoute = DashboardLayoutRouteImport.update({
-  id: '/dashboard/_layout',
-  path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
+  id: '/conversations',
+  path: '/conversations',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const ApiTrackRoute = ApiTrackRouteImport.update({
   id: '/api/track',
@@ -203,6 +203,7 @@ const ApiDashboardConversationsSessionIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/chatbot': typeof ChatbotRoute
   '/diginakyvyys': typeof DiginakyvyysRoute
   '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
@@ -212,7 +213,6 @@ export interface FileRoutesByFullPath {
   '/yllapito': typeof YllapitoRoute
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
-  '/dashboard': typeof DashboardLayoutRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
   '/dashboard/leads': typeof DashboardLeadsRoute
   '/dashboard/login': typeof DashboardLoginRoute
@@ -245,13 +245,13 @@ export interface FileRoutesByTo {
   '/yllapito': typeof YllapitoRoute
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
-  '/dashboard': typeof DashboardIndexRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
   '/dashboard/leads': typeof DashboardLeadsRoute
   '/dashboard/login': typeof DashboardLoginRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/visitors': typeof DashboardVisitorsRoute
+  '/dashboard': typeof DashboardIndexRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
@@ -269,6 +269,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/chatbot': typeof ChatbotRoute
   '/diginakyvyys': typeof DiginakyvyysRoute
   '/kotisivut-yrityksille': typeof KotisivutYrityksilleRoute
@@ -278,7 +279,6 @@ export interface FileRoutesById {
   '/yllapito': typeof YllapitoRoute
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
-  '/dashboard/_layout': typeof DashboardLayoutRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
   '/dashboard/leads': typeof DashboardLeadsRoute
   '/dashboard/login': typeof DashboardLoginRoute
@@ -304,6 +304,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/dashboard'
     | '/chatbot'
     | '/diginakyvyys'
     | '/kotisivut-yrityksille'
@@ -313,7 +314,6 @@ export interface FileRouteTypes {
     | '/yllapito'
     | '/api/chat'
     | '/api/track'
-    | '/dashboard'
     | '/dashboard/conversations'
     | '/dashboard/leads'
     | '/dashboard/login'
@@ -346,13 +346,13 @@ export interface FileRouteTypes {
     | '/yllapito'
     | '/api/chat'
     | '/api/track'
-    | '/dashboard'
     | '/dashboard/conversations'
     | '/dashboard/leads'
     | '/dashboard/login'
     | '/dashboard/reservations'
     | '/dashboard/settings'
     | '/dashboard/visitors'
+    | '/dashboard'
     | '/api/auth/login'
     | '/api/auth/logout'
     | '/api/auth/me'
@@ -369,6 +369,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/dashboard'
     | '/chatbot'
     | '/diginakyvyys'
     | '/kotisivut-yrityksille'
@@ -378,7 +379,6 @@ export interface FileRouteTypes {
     | '/yllapito'
     | '/api/chat'
     | '/api/track'
-    | '/dashboard/_layout'
     | '/dashboard/conversations'
     | '/dashboard/leads'
     | '/dashboard/login'
@@ -403,6 +403,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   ChatbotRoute: typeof ChatbotRoute
   DiginakyvyysRoute: typeof DiginakyvyysRoute
   KotisivutYrityksilleRoute: typeof KotisivutYrityksilleRoute
@@ -412,14 +413,6 @@ export interface RootRouteChildren {
   YllapitoRoute: typeof YllapitoRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiTrackRoute: typeof ApiTrackRoute
-  DashboardLayoutRoute: typeof DashboardLayoutRoute
-  DashboardConversationsRoute: typeof DashboardConversationsRoute
-  DashboardLeadsRoute: typeof DashboardLeadsRoute
-  DashboardLoginRoute: typeof DashboardLoginRoute
-  DashboardReservationsRoute: typeof DashboardReservationsRoute
-  DashboardSettingsRoute: typeof DashboardSettingsRoute
-  DashboardVisitorsRoute: typeof DashboardVisitorsRoute
-  DashboardIndexRoute: typeof DashboardIndexRoute
   ApiAuthLoginRoute: typeof ApiAuthLoginRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthMeRoute: typeof ApiAuthMeRoute
@@ -483,6 +476,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChatbotRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -492,59 +492,52 @@ declare module '@tanstack/react-router' {
     }
     '/dashboard/': {
       id: '/dashboard/'
-      path: '/dashboard'
+      path: '/'
       fullPath: '/dashboard/'
       preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/visitors': {
       id: '/dashboard/visitors'
-      path: '/dashboard/visitors'
+      path: '/visitors'
       fullPath: '/dashboard/visitors'
       preLoaderRoute: typeof DashboardVisitorsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/settings': {
       id: '/dashboard/settings'
-      path: '/dashboard/settings'
+      path: '/settings'
       fullPath: '/dashboard/settings'
       preLoaderRoute: typeof DashboardSettingsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/reservations': {
       id: '/dashboard/reservations'
-      path: '/dashboard/reservations'
+      path: '/reservations'
       fullPath: '/dashboard/reservations'
       preLoaderRoute: typeof DashboardReservationsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/login': {
       id: '/dashboard/login'
-      path: '/dashboard/login'
+      path: '/login'
       fullPath: '/dashboard/login'
       preLoaderRoute: typeof DashboardLoginRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/leads': {
       id: '/dashboard/leads'
-      path: '/dashboard/leads'
+      path: '/leads'
       fullPath: '/dashboard/leads'
       preLoaderRoute: typeof DashboardLeadsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/conversations': {
       id: '/dashboard/conversations'
-      path: '/dashboard/conversations'
+      path: '/conversations'
       fullPath: '/dashboard/conversations'
       preLoaderRoute: typeof DashboardConversationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard/_layout': {
-      id: '/dashboard/_layout'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardLayoutRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/api/track': {
       id: '/api/track'
@@ -654,6 +647,30 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface DashboardRouteRouteChildren {
+  DashboardConversationsRoute: typeof DashboardConversationsRoute
+  DashboardLeadsRoute: typeof DashboardLeadsRoute
+  DashboardLoginRoute: typeof DashboardLoginRoute
+  DashboardReservationsRoute: typeof DashboardReservationsRoute
+  DashboardSettingsRoute: typeof DashboardSettingsRoute
+  DashboardVisitorsRoute: typeof DashboardVisitorsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
+  DashboardConversationsRoute: DashboardConversationsRoute,
+  DashboardLeadsRoute: DashboardLeadsRoute,
+  DashboardLoginRoute: DashboardLoginRoute,
+  DashboardReservationsRoute: DashboardReservationsRoute,
+  DashboardSettingsRoute: DashboardSettingsRoute,
+  DashboardVisitorsRoute: DashboardVisitorsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
+  DashboardRouteRouteChildren,
+)
+
 interface ApiDashboardConversationsRouteChildren {
   ApiDashboardConversationsSessionIdRoute: typeof ApiDashboardConversationsSessionIdRoute
 }
@@ -696,6 +713,7 @@ const ApiDashboardReservationsRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRouteRoute: DashboardRouteRouteWithChildren,
   ChatbotRoute: ChatbotRoute,
   DiginakyvyysRoute: DiginakyvyysRoute,
   KotisivutYrityksilleRoute: KotisivutYrityksilleRoute,
@@ -705,14 +723,6 @@ const rootRouteChildren: RootRouteChildren = {
   YllapitoRoute: YllapitoRoute,
   ApiChatRoute: ApiChatRoute,
   ApiTrackRoute: ApiTrackRoute,
-  DashboardLayoutRoute: DashboardLayoutRoute,
-  DashboardConversationsRoute: DashboardConversationsRoute,
-  DashboardLeadsRoute: DashboardLeadsRoute,
-  DashboardLoginRoute: DashboardLoginRoute,
-  DashboardReservationsRoute: DashboardReservationsRoute,
-  DashboardSettingsRoute: DashboardSettingsRoute,
-  DashboardVisitorsRoute: DashboardVisitorsRoute,
-  DashboardIndexRoute: DashboardIndexRoute,
   ApiAuthLoginRoute: ApiAuthLoginRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthMeRoute: ApiAuthMeRoute,

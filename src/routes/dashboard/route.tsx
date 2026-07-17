@@ -1,18 +1,26 @@
-import { createFileRoute, Outlet, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import { DashboardShell } from "@/components/dashboard-shell";
 import { Toaster } from "@/components/ui/sonner";
 
-export const Route = createFileRoute("/dashboard/_layout")({
+export const Route = createFileRoute("/dashboard")({
   component: DashboardLayout,
 });
 
 function DashboardLayout() {
   const navigate = useNavigate();
-  const [ready, setReady] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isLogin = pathname === "/dashboard/login";
+  const [ready, setReady] = useState(isLogin);
 
   useEffect(() => {
+    if (isLogin) {
+      setReady(true);
+      return;
+    }
+
+    setReady(false);
     void fetch("/api/auth/me", { credentials: "include" })
       .then((res) => {
         if (!res.ok) {
@@ -22,7 +30,11 @@ function DashboardLayout() {
         setReady(true);
       })
       .catch(() => void navigate({ to: "/dashboard/login" }));
-  }, [navigate]);
+  }, [navigate, isLogin]);
+
+  if (isLogin) {
+    return <Outlet />;
+  }
 
   if (!ready) {
     return (
