@@ -1,4 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  Clock,
+  Database,
+  KeyRound,
+  LineChart,
+  RefreshCw,
+  Sparkles,
+  TrendingUp,
+  Users,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import heroAiService from "@/assets/hero-ai-service.jpg";
 import { DashboardMonitorPreview } from "@/components/dashboard-monitor-preview";
 import { SiteHeader } from "@/components/site-header";
@@ -19,18 +30,29 @@ export const Route = createFileRoute("/chatbot")({
       { property: "og:title", content: "AI-asiakaspalvelu — Restadigi" },
       {
         property: "og:description",
-        content:
-          "Chatbot verkkosivuille — ympärivuorokautinen myynti ja asiakaspalvelu.",
+        content: "Chatbot verkkosivuille — ympärivuorokautinen myynti ja asiakaspalvelu.",
       },
     ],
   }),
   component: ChatbotPage,
 });
 
+const FEATURE_ICONS: LucideIcon[] = [
+  Clock,
+  Users,
+  TrendingUp,
+  Sparkles,
+  RefreshCw,
+  Database,
+  LineChart,
+  KeyRound,
+];
+
 function ChatbotPage() {
   const t = useMessages();
   const cb = t.chatbot;
   const bot = cb.chatbot;
+  const featureBoxes = [...bot.benefits, ...bot.monthly];
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
@@ -56,7 +78,7 @@ function ChatbotPage() {
 
       {/* Chatbot */}
       <section className="border-t border-border bg-background pt-16 sm:pt-24 pb-8 sm:pb-12">
-        <div className="mx-auto max-w-7xl px-6 mb-12 sm:mb-16">
+        <div className="mx-auto max-w-7xl px-6 mb-14 sm:mb-20">
           <div className="mx-auto flex w-fit max-w-full flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-12">
             <div className="w-full max-w-md text-center lg:text-left">
               <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
@@ -77,20 +99,37 @@ function ChatbotPage() {
           </div>
         </div>
 
-        <div>
-          {bot.benefits.map((b, i) => (
-            <div
-              key={b.title}
-              className={
-                "w-full px-6 py-10 sm:py-12 " + (i % 2 === 1 ? "bg-secondary/50" : "bg-background")
-              }
-            >
-              <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
-                <h3 className="text-2xl font-medium md:w-72 shrink-0 mb-3 md:mb-0">{b.title}</h3>
-                <p className="text-sm text-foreground/75 leading-relaxed flex-1">{b.body}</p>
-              </div>
-            </div>
-          ))}
+        <div className="mx-auto max-w-7xl px-6 pb-8 sm:pb-12">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {featureBoxes.map((item, i) => {
+              const Icon = FEATURE_ICONS[i] ?? Sparkles;
+              return (
+                <article
+                  key={item.title}
+                  className="group relative overflow-hidden rounded-sm border border-border/80 bg-[#f7f5f2] p-6 transition-colors hover:border-accent/40"
+                >
+                  <div
+                    className="pointer-events-none absolute -right-6 -top-6 size-24 rounded-full bg-accent/10 transition-transform group-hover:scale-110"
+                    aria-hidden
+                  />
+                  <div className="relative">
+                    <div className="mb-4 flex items-center justify-between gap-3">
+                      <span className="inline-flex size-10 items-center justify-center rounded-sm bg-primary text-primary-foreground">
+                        <Icon className="size-4" strokeWidth={1.75} />
+                      </span>
+                      <span className="font-serif text-2xl italic text-accent/50 tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="mb-2 text-lg font-medium tracking-tight text-balance">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-foreground/65">{item.body}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto px-6 py-16 sm:py-24">
@@ -107,26 +146,10 @@ function ChatbotPage() {
             </div>
           </div>
         </div>
-
-        <div>
-          {bot.monthly.map((m, i) => (
-            <div
-              key={m.title}
-              className={
-                "w-full px-6 py-10 sm:py-12 " + (i % 2 === 1 ? "bg-secondary/50" : "bg-background")
-              }
-            >
-              <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
-                <h3 className="text-2xl font-medium md:w-72 shrink-0 mb-3 md:mb-0">{m.title}</h3>
-                <p className="text-sm text-foreground/75 leading-relaxed flex-1">{m.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 sm:py-32">
+      <section className="py-24 sm:py-32 bg-secondary/40">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-8">
