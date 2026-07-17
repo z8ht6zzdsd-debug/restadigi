@@ -9,7 +9,7 @@ const outFile = path.join(outDir, "hero-web-devices.jpg");
 
 const URL = "https://freddos.es/";
 
-async function capture(page, width, height, name) {
+async function capture(page, width, height, name, scrollY = 0) {
   await page.setViewport({ width, height, deviceScaleFactor: 2 });
   await page.goto(URL, { waitUntil: "networkidle2", timeout: 90000 });
   await page.evaluate(() => {
@@ -20,6 +20,10 @@ async function capture(page, width, height, name) {
     accept?.click();
   });
   await new Promise((r) => setTimeout(r, 1200));
+  if (scrollY > 0) {
+    await page.evaluate((y) => window.scrollTo(0, y), scrollY);
+    await new Promise((r) => setTimeout(r, 600));
+  }
   const file = path.join(outDir, `_freddo-${name}.png`);
   await page.screenshot({ path: file, type: "png" });
   return file;
@@ -31,11 +35,19 @@ function roundedRectSvg(w, h, r, fill = "#111") {
   );
 }
 
-async function framedScreen(shotPath, screenW, screenH, bezel, radius, extraBottom = 0) {
+async function framedScreen(
+  shotPath,
+  screenW,
+  screenH,
+  bezel,
+  radius,
+  extraBottom = 0,
+  position = "top",
+) {
   const frameW = screenW + bezel * 2;
   const frameH = screenH + bezel * 2 + extraBottom;
   const screen = await sharp(shotPath)
-    .resize(screenW, screenH, { fit: "cover", position: "top" })
+    .resize(screenW, screenH, { fit: "cover", position })
     .png()
     .toBuffer();
 
@@ -77,53 +89,38 @@ async function main() {
   });
   const page = await browser.newPage();
 
-  const desktopPath = await capture(page, 1440, 900, "desktop");
-  const tabletPath = await capture(page, 834, 1112, "tablet");
-  const mobilePath = await capture(page, 390, 844, "mobile");
+  // Desktop: hero + juomat näkyviin
+  const desktopPath = await capture(page, 1440, 900, "desktop", 180);
+  // Tablet & phone: scrollataan niin että juomakuvat ovat ruudulla
+  const tabletPath = await capture(page, 834, 1112, "tablet", 420);
+  const mobilePath = await capture(page, 390, 844, "mobile", 520);
   await browser.close();
 
-  // Device sizes for composition (hero ~2000x1200)
   const canvasW = 2000;
-  const canvasH = 1200;
+  const canvasH = 780;
 
-  const laptop = await framedScreen(desktopPath, 980, 620, 18, 18, 36);
-  const tablet = await framedScreen(tabletPath, 340, 455, 14, 22, 0);
-  const phone = await framedScreen(mobilePath, 190, 410, 10, 28, 0);
+  const laptop = await framedScreen(desktopPath, 1040, 640, 18, 18, 36, "top");
+  const tablet = await framedScreen(tabletPath, 380, 520, 14, 22, 0, "centre");
+  const phone = await framedScreen(mobilePath, 210, 460, 10, 28, 0, "centre");
 
-  // Soft warm coffee-toned background matching Freddos vibe
   const bg = await sharp({
     create: {
       width: canvasW,
       height: canvasH,
       channels: 3,
-      background: { r: 58, g: 42, b: 34 },
+      background: { r: 67, g: 47, b: 36 },
     },
   })
-    .composite([
-      {
-        input: await sharp({
-          create: {
-            width: canvasW,
-            height: canvasH,
-            channels: 4,
-            background: { r: 90, g: 60, b: 45, alpha: 0.35 },
-          },
-        })
-          .blur(80)
-          .png()
-          .toBuffer(),
-        blend: "over",
-      },
-    ])
     .png()
     .toBuffer();
 
-  const laptopX = Math.round((canvasW - laptop.w) / 2) - 40;
-  const laptopY = 150;
-  const tabletX = laptopX + laptop.w - 80;
-  const tabletY = 280;
-  const phoneX = laptopX - 70;
-  const phoneY = 320;
+  // Laitteet alempana, heti tekstikaistan yläpuolelle
+  const laptopX = Math.round((canvasW - laptop.w) / 2) - 20;
+  const laptopY = 48;
+  const tabletX = laptopX + laptop.w - 95;
+  const tabletY = 68;
+  const phoneX = laptopX - 75;
+  const phoneY = 90;
 
   await sharp(bg)
     .composite([
@@ -131,7 +128,7 @@ async function main() {
       { input: tablet.buf, left: tabletX, top: tabletY },
       { input: phone.buf, left: phoneX, top: phoneY },
     ])
-    .jpeg({ quality: 88, mozjpeg: true })
+    .jpeg({ quality: 90, mozjpeg: true })
     .toFile(outFile);
 
   console.log("Wrote", outFile);

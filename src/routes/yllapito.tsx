@@ -68,54 +68,60 @@ function YllapitoPage() {
       />
 
       <section className="pb-24 sm:pb-32">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {hosting.map((h) => (
+        <div>
+          {hosting.map((h, i) => {
+            const dark = Boolean(h.featured);
+            const alt = !dark && i % 2 === 1;
+            return (
               <div
                 key={h.name}
                 className={
-                  "rounded-sm p-8 flex flex-col " +
-                  (h.featured
+                  "w-full px-6 py-12 sm:py-16 " +
+                  (dark
                     ? "bg-primary text-primary-foreground"
-                    : "border border-border bg-card")
+                    : alt
+                      ? "bg-secondary/50"
+                      : "bg-background")
                 }
               >
-                <div className="flex items-baseline justify-between mb-2">
-                  <h3 className="text-xl font-medium">{h.name}</h3>
-                  {h.featured && (
-                    <span className="text-[10px] uppercase tracking-[0.2em] bg-accent text-accent-foreground px-2 py-1 rounded-full">
-                      Suosittu
-                    </span>
-                  )}
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
+                  <div className="md:w-72 shrink-0 mb-8 md:mb-0">
+                    <div className="flex items-baseline gap-3 mb-2">
+                      <h3 className="text-2xl font-medium">{h.name}</h3>
+                      {h.featured && (
+                        <span className="text-[10px] uppercase tracking-[0.2em] bg-accent text-accent-foreground px-2 py-1 rounded-full">
+                          Suosittu
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-4xl font-serif mb-6">{h.price}</div>
+                    <Link
+                      to="/yhteys"
+                      className={
+                        "inline-flex items-center justify-center gap-2 text-sm font-medium py-3 px-5 rounded-full transition-colors " +
+                        (dark
+                          ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
+                          : "bg-primary text-primary-foreground hover:bg-accent")
+                      }
+                    >
+                      Pyydä tarjous
+                    </Link>
+                  </div>
+                  <ul className="space-y-3 text-sm flex-1">
+                    {h.bullets.map((b) => (
+                      <li key={b} className="flex gap-3">
+                        <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
+                        <span className={dark ? "text-primary-foreground/85" : "text-foreground/75"}>
+                          {b}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="text-4xl font-serif mb-8">{h.price}</div>
-                <ul className="space-y-3 text-sm mb-8 flex-1">
-                  {h.bullets.map((b) => (
-                    <li key={b} className="flex gap-3">
-                      <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
-                      <span
-                        className={h.featured ? "text-primary-foreground/85" : "text-foreground/75"}
-                      >
-                        {b}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/yhteys"
-                  className={
-                    "inline-flex items-center justify-center gap-2 text-sm font-medium py-3 px-5 rounded-full transition-colors " +
-                    (h.featured
-                      ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
-                      : "bg-primary text-primary-foreground hover:bg-accent")
-                  }
-                >
-                  Pyydä tarjous
-                </Link>
               </div>
-            ))}
-          </div>
-          <p className="mt-6 text-xs text-muted-foreground">
+            );
+          })}
+          <p className="mt-8 text-xs text-muted-foreground max-w-6xl mx-auto px-6">
             Hosting- ja ylläpitohinnat laskutetaan kuukausittain. Domain ja SSL-sertifikaatti
             sisältyvät hintaan.
           </p>
