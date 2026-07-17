@@ -109,8 +109,8 @@ function DiginakyvyysPage() {
                       : "bg-background")
                 }
               >
-                <div className="mx-auto max-w-5xl">
-                  <div className="mb-8 flex flex-wrap items-baseline justify-center gap-3 text-center">
+                <div className="mx-auto max-w-6xl">
+                  <div className="mb-5 flex items-baseline gap-3">
                     <h3 className="text-xl font-medium sm:text-2xl">{p.name}</h3>
                     {p.featured && (
                       <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
@@ -118,8 +118,13 @@ function DiginakyvyysPage() {
                       </span>
                     )}
                   </div>
-                  <div className="grid gap-8 md:grid-cols-3 md:items-start md:gap-10">
-                    <div className="text-center md:text-left">
+                  <div
+                    className={
+                      "grid gap-8 md:items-start md:gap-10 " +
+                      (logoKind ? "md:grid-cols-3" : "md:grid-cols-2")
+                    }
+                  >
+                    <div>
                       <p
                         className={
                           "mb-1.5 text-sm " +
@@ -144,11 +149,23 @@ function DiginakyvyysPage() {
                       >
                         {v.resultPrefix} {p.result}
                       </p>
+                      {sports && (
+                        <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+                          {sportsPackageImages.map((img) => (
+                            <img
+                              key={img.alt}
+                              src={img.src}
+                              alt={img.alt}
+                              className="aspect-[4/3] w-full object-cover"
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    <div className="flex flex-col gap-5 text-center md:text-left">
-                      <ul className="mx-auto space-y-2 text-sm md:mx-0">
-                        {p.bullets.map((bullet) => (
-                          <li key={bullet} className="flex gap-3 text-left">
+                    <div className="flex flex-col gap-5">
+                      <ul className="space-y-2 text-sm">
+                        {p.bullets.map((b) => (
+                          <li key={b} className="flex gap-3">
                             <span className="mt-1.5 size-1 shrink-0 rounded-full bg-accent" />
                             <span
                               className={
@@ -156,12 +173,12 @@ function DiginakyvyysPage() {
                                 (dark ? "text-primary-foreground/85" : "text-foreground/75")
                               }
                             >
-                              {bullet}
+                              {b}
                             </span>
                           </li>
                         ))}
                       </ul>
-                      <div className="flex flex-col items-center md:items-start">
+                      <div>
                         <div className="mb-3 font-serif text-3xl sm:text-4xl">{p.price}</div>
                         <Link
                           to="/yhteys"
@@ -176,22 +193,11 @@ function DiginakyvyysPage() {
                         </Link>
                       </div>
                     </div>
-                    <div className="md:flex md:justify-center">
-                      {logoKind ? (
+                    {logoKind && (
+                      <div className="md:flex md:justify-center">
                         <PackageBrandLogos kind={logoKind} dark={dark} />
-                      ) : sports ? (
-                        <div className="grid w-full max-w-xs grid-cols-1 gap-2 sm:max-w-none sm:grid-cols-3 md:grid-cols-1 md:gap-3">
-                          {sportsPackageImages.map((img) => (
-                            <img
-                              key={img.alt}
-                              src={img.src}
-                              alt={img.alt}
-                              className="aspect-[4/3] w-full object-cover"
-                            />
-                          ))}
-                        </div>
-                      ) : null}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -202,7 +208,7 @@ function DiginakyvyysPage() {
 
       {/* Graafinen suunnittelu */}
       <section className="w-full bg-background px-6 py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-medium leading-[1.1] tracking-tight text-balance sm:text-4xl">
               {b.titleBefore}
@@ -212,7 +218,7 @@ function DiginakyvyysPage() {
             <p className="mt-5 text-foreground/70 leading-relaxed">{b.description}</p>
           </div>
 
-          <ul className="mx-auto mt-12 max-w-2xl space-y-8 border-t border-border pt-10 text-center">
+          <ul className="mx-auto mt-12 max-w-3xl space-y-8 border-t border-border pt-10 text-center">
             {b.products.map((product) => (
               <li key={product.name} className="flex flex-col items-center gap-2">
                 <div className="text-base font-medium sm:text-lg">{product.name}</div>
@@ -226,7 +232,7 @@ function DiginakyvyysPage() {
             ))}
           </ul>
 
-          <div className="mx-auto mt-16 max-w-2xl border-t border-border pt-12 text-center sm:mt-20 sm:pt-16">
+          <div className="mx-auto mt-16 max-w-3xl border-t border-border pt-12 text-center sm:mt-20 sm:pt-16">
             <h3 className="text-2xl font-medium tracking-tight sm:text-3xl">{b.billing.title}</h3>
             <p className="mt-5 text-sm leading-relaxed text-foreground/75 sm:text-base">
               {b.billing.intro}
