@@ -7,7 +7,14 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { detectLocale, localeDomainUrl, shouldNavigateToLocaleDomain, storeLocale } from "./detect";
+import {
+  clearStoredLocale,
+  detectLocale,
+  localeDomainUrl,
+  localeFromHostname,
+  shouldJumpToLocaleDomain,
+  storeLocale,
+} from "./detect";
 import { getMessages, type Messages } from "./messages";
 import { LOCALE_META, type Locale } from "./types";
 
@@ -23,7 +30,12 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(() => detectLocale());
 
   useEffect(() => {
-    setLocaleState(detectLocale());
+    const next = detectLocale();
+    setLocaleState(next);
+    // On .fi / .com / .es the domain owns the language — drop stale preview choice
+    if (typeof window !== "undefined" && localeFromHostname(window.location.hostname)) {
+      clearStoredLocale();
+    }
   }, []);
 
   useEffect(() => {
@@ -32,12 +44,24 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {
-    if (typeof window !== "undefined") {
-      const host = window.location.hostname;
-      if (shouldNavigateToLocaleDomain(host) && next !== detectLocale(host)) {
-        window.location.assign(localeDomainUrl(next, window.location.pathname));
-        return;
-      }
+    if (typeof window === "undefined") {
+      setLocaleState(next);
+      return;
+    }
+
+    const host = window.location.hostname;
+    const current = detectLocale(host, window.location.search);
+
+    if (shouldJumpToLocaleDomain(host) && next !== current) {
+      const url = localeDomainUrl(next, window.location.pathname, window.location.search);
+      window.location.assign(url);
+      return;
+    }
+
+    // Same production domain already showing that language, or localhost preview
+    if (localeFromHostname(host)) {
+      clearStoredLocale();
+    } else {
       storeLocale(next);
     }
     setLocaleState(next);

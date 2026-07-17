@@ -2,15 +2,21 @@ import { DEFAULT_LOCALE, isLocale, LOCALE_DOMAINS, type Locale } from "./types";
 
 const STORAGE_KEY = "restadigi-locale";
 
-/** Map hostname TLD / host to locale for .fi / .com / .es. */
+/** Canonical hosts for each language (with or without www). */
+const HOST_TO_LOCALE: Record<string, Locale> = {
+  "restadigi.fi": "fi",
+  "restadigi.com": "en",
+  "restadigi.es": "es",
+};
+
+/** Map hostname to locale for .fi / .com / .es. */
 export function localeFromHostname(hostname: string): Locale | null {
-  const host = hostname.toLowerCase().replace(/^www\./, "");
-
-  if (host.endsWith(".fi") || host === "restadigi.fi") return "fi";
-  if (host.endsWith(".es") || host === "restadigi.es") return "es";
-  if (host.endsWith(".com") || host === "restadigi.com") return "en";
-
-  return null;
+  const host =
+    hostname
+      .toLowerCase()
+      .replace(/^www\./, "")
+      .split(":")[0] ?? "";
+  return HOST_TO_LOCALE[host] ?? null;
 }
 
 export function readStoredLocale(): Locale | null {
@@ -32,16 +38,46 @@ export function storeLocale(locale: Locale) {
   }
 }
 
+export function clearStoredLocale() {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
+/** Optional ?lang=fi|en|es for preview hosts (Lovable / vercel.app). */
+export function localeFromSearch(search: string): Locale | null {
+  try {
+    const params = new URLSearchParams(search.startsWith("?") ? search : `?${search}`);
+    const lang = params.get("lang");
+    return isLocale(lang) ? lang : null;
+  } catch {
+    return null;
+  }
+}
+
+function isLocalDevHost(hostname: string): boolean {
+  const host = hostname.toLowerCase().split(":")[0] ?? "";
+  return host === "localhost" || host === "127.0.0.1" || host.endsWith(".local");
+}
+
 /**
  * Resolve active locale:
- * 1) Domain (.fi / .es / .com) when on a production host
- * 2) Manual choice in localStorage (preview / single-host)
- * 3) Default Finnish
+ * 1) Domain restadigi.fi / .com / .es (wins over everything)
+ * 2) ?lang= on preview
+ * 3) localStorage on preview
+ * 4) Default Finnish
  */
-export function detectLocale(hostname?: string): Locale {
+export function detectLocale(hostname?: string, search?: string): Locale {
   const host = hostname ?? (typeof window !== "undefined" ? window.location.hostname : "");
   const fromHost = host ? localeFromHostname(host) : null;
   if (fromHost) return fromHost;
+
+  const query = search ?? (typeof window !== "undefined" ? window.location.search : "");
+  const fromQuery = query ? localeFromSearch(query) : null;
+  if (fromQuery) return fromQuery;
 
   const stored = readStoredLocale();
   if (stored) return stored;
@@ -49,13 +85,34 @@ export function detectLocale(hostname?: string): Locale {
   return DEFAULT_LOCALE;
 }
 
-/** True when language switch should navigate to another domain. */
+/** True when we are on a language production domain. */
 export function shouldNavigateToLocaleDomain(hostname: string): boolean {
   return localeFromHostname(hostname) !== null;
 }
 
-export function localeDomainUrl(locale: Locale, pathname: string): string {
+/**
+ * On production domains + most online hosts, language switch jumps to the
+ * matching domain (.fi / .com / .es). Localhost keeps in-page switching.
+ */
+export function shouldJumpToLocaleDomain(hostname: string): boolean {
+  if (isLocalDevHost(hostname)) return false;
+  return true;
+}
+
+export function localeDomainUrl(locale: Locale, pathname: string, search = ""): string {
   const base = LOCALE_DOMAINS[locale].replace(/\/$/, "");
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
-  return `${base}${path}`;
+  const qs = search && search !== "?" ? (search.startsWith("?") ? search : `?${search}`) : "";
+  // Drop ?lang= when jumping to a real language domain (domain owns the locale)
+  if (localeFromHostname(new URL(base).hostname)) {
+    try {
+      const params = new URLSearchParams(qs.startsWith("?") ? qs.slice(1) : qs);
+      params.delete("lang");
+      const cleaned = params.toString();
+      return `${base}${path}${cleaned ? `?${cleaned}` : ""}`;
+    } catch {
+      return `${base}${path}`;
+    }
+  }
+  return `${base}${path}${qs}`;
 }
