@@ -209,7 +209,7 @@ function DiginakyvyysPage() {
       {/* Graafinen suunnittelu */}
       <section className="w-full bg-background px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="max-w-2xl">
+          <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-medium leading-[1.1] tracking-tight text-balance sm:text-4xl">
               {b.titleBefore}
               <span className="font-serif italic">{b.titleAccent}</span>
@@ -218,23 +218,16 @@ function DiginakyvyysPage() {
             <p className="mt-5 text-foreground/70 leading-relaxed">{b.description}</p>
           </div>
 
-          <ul className="mt-12 space-y-8 border-t border-border pt-10">
+          <ul className="mx-auto mt-12 max-w-3xl space-y-8 border-t border-border pt-10 text-center">
             {b.products.map((product) => (
-              <li
-                key={product.name}
-                className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10"
-              >
-                <div className="min-w-0">
-                  <div className="text-base font-medium sm:text-lg">{product.name}</div>
-                  {product.description && (
-                    <p className="mt-1 max-w-xl text-sm leading-snug text-foreground/65">
-                      {product.description}
-                    </p>
-                  )}
-                </div>
-                <div className="shrink-0 font-serif text-2xl sm:text-3xl tabular-nums">
-                  {product.price}
-                </div>
+              <li key={product.name} className="flex flex-col items-center gap-2">
+                <div className="text-base font-medium sm:text-lg">{product.name}</div>
+                {product.description && (
+                  <p className="max-w-xl text-sm leading-snug text-foreground/65">
+                    {product.description}
+                  </p>
+                )}
+                <div className="font-serif text-2xl tabular-nums sm:text-3xl">{product.price}</div>
               </li>
             ))}
           </ul>
