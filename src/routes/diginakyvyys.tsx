@@ -78,7 +78,7 @@ function DiginakyvyysPage() {
                     (logoKind ? "md:grid-cols-3" : "md:grid-cols-2")
                   }
                 >
-                  <div>
+                  <div className="md:pt-[2cm]">
                     <div className="mb-1.5 flex items-baseline gap-3">
                       <h3 className="text-xl font-medium sm:text-2xl">{p.name}</h3>
                       {p.featured && (
