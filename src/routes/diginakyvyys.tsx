@@ -59,6 +59,7 @@ function DiginakyvyysPage() {
           {v.packages.map((p, i) => {
             const dark = Boolean(p.featured);
             const alt = !dark && i % 2 === 1;
+            const logoKind = packageLogoKind(p.name);
             return (
               <div
                 key={p.name}
@@ -71,8 +72,13 @@ function DiginakyvyysPage() {
                       : "bg-background")
                 }
               >
-                <div className="mx-auto flex max-w-6xl flex-col md:flex-row md:items-start md:gap-10 lg:gap-12">
-                  <div className="mb-6 shrink-0 md:mb-0 md:w-72 lg:w-80">
+                <div
+                  className={
+                    "mx-auto grid max-w-6xl gap-8 md:items-start md:gap-10 " +
+                    (logoKind ? "md:grid-cols-3" : "md:grid-cols-2")
+                  }
+                >
+                  <div>
                     <div className="mb-1.5 flex items-baseline gap-3">
                       <h3 className="text-xl font-medium sm:text-2xl">{p.name}</h3>
                       {p.featured && (
@@ -106,7 +112,7 @@ function DiginakyvyysPage() {
                       {v.resultPrefix} {p.result}
                     </p>
                   </div>
-                  <div className="mb-6 flex flex-1 flex-col gap-5 md:mb-0 md:pt-[2cm]">
+                  <div className="flex flex-col gap-5 md:pt-[2cm]">
                     <ul className="space-y-2 text-sm">
                       {p.bullets.map((b) => (
                         <li key={b} className="flex gap-3">
@@ -137,9 +143,9 @@ function DiginakyvyysPage() {
                       </Link>
                     </div>
                   </div>
-                  {packageLogoKind(p.name) && (
-                    <div className="md:pt-[2cm]">
-                      <PackageBrandLogos kind={packageLogoKind(p.name)!} dark={dark} />
+                  {logoKind && (
+                    <div className="md:flex md:justify-center md:pt-[2cm]">
+                      <PackageBrandLogos kind={logoKind} dark={dark} />
                     </div>
                   )}
                 </div>

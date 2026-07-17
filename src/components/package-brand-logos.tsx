@@ -147,7 +147,7 @@ export function PackageBrandLogos({
   const logos = kind === "ai" ? AI_LOGOS : GOOGLE_LOGOS;
 
   return (
-    <div className="flex w-full shrink-0 justify-start md:w-auto md:justify-end" aria-hidden>
+    <div className="flex justify-start md:justify-center" aria-hidden>
       <div className="grid grid-cols-2 gap-x-5 gap-y-5 sm:gap-x-6 sm:gap-y-6">
         {logos.map(({ name, Mark, tone }) => (
           <div key={name} className="flex flex-col items-center gap-1.5">
