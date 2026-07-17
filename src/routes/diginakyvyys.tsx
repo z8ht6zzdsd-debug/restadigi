@@ -239,21 +239,21 @@ function DiginakyvyysPage() {
             ))}
           </ul>
 
-          <div className="mt-16 border-t border-border pt-12 sm:mt-20 sm:pt-16">
+          <div className="mx-auto mt-16 max-w-3xl border-t border-border pt-12 text-center sm:mt-20 sm:pt-16">
             <h3 className="text-2xl font-medium tracking-tight sm:text-3xl">{b.billing.title}</h3>
-            <p className="mt-5 max-w-3xl text-sm leading-relaxed text-foreground/75 sm:text-base">
+            <p className="mt-5 text-sm leading-relaxed text-foreground/75 sm:text-base">
               {b.billing.intro}
             </p>
             <p className="mt-8 text-xs uppercase tracking-[0.2em] text-muted-foreground">
               {b.billing.groundsTitle}
             </p>
-            <div className="mt-6 space-y-8 max-w-3xl">
+            <div className="mt-6 space-y-8">
               {b.billing.grounds.map((ground) => (
                 <div key={ground.title}>
                   <h4 className="text-base font-medium">{ground.title}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-foreground/70">{ground.body}</p>
                   {ground.bullets && ground.bullets.length > 0 && (
-                    <ul className="mt-3 space-y-1.5 text-sm text-foreground/70">
+                    <ul className="mt-3 inline-flex flex-col items-start space-y-1.5 text-left text-sm text-foreground/70">
                       {ground.bullets.map((item) => (
                         <li key={item} className="flex gap-3">
                           <span className="mt-1.5 size-1 shrink-0 rounded-full bg-accent" />
@@ -267,15 +267,15 @@ function DiginakyvyysPage() {
             </div>
           </div>
 
-          <div className="mt-16 border-t border-border pt-12 sm:mt-20 sm:pt-16">
-            <h3 className="max-w-2xl text-2xl font-medium tracking-tight text-balance sm:text-3xl">
+          <div className="mx-auto mt-16 max-w-xl border-t border-border pt-12 text-center sm:mt-20 sm:pt-16">
+            <h3 className="text-2xl font-medium tracking-tight text-balance sm:text-3xl">
               {b.form.title}
             </h3>
-            <form onSubmit={onQuoteSubmit} className="mt-8 max-w-xl space-y-6">
+            <form onSubmit={onQuoteSubmit} className="mt-8 space-y-6 text-left">
               <QuoteField label={b.form.name} name="name" required />
               <QuoteField label={b.form.email} name="email" type="email" required />
               <QuoteField label={b.form.phone} name="phone" type="tel" required />
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
                 <button
                   type="submit"
                   className="inline-flex items-center gap-3 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
