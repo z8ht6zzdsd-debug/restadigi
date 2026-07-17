@@ -58,23 +58,21 @@ function ChatbotPage() {
       {/* Chatbot */}
       <section className="border-t border-border bg-background pt-16 sm:pt-24 pb-8 sm:pb-12">
         <div className="mx-auto max-w-7xl px-6 mb-12 sm:mb-16">
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="max-w-md text-center lg:text-left lg:pr-2">
-                <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
-                  {bot.eyebrow}
-                </div>
-                <h2 className="text-3xl sm:text-5xl lg:text-[2.85rem] xl:text-5xl leading-[1.05] font-medium text-balance mb-6 tracking-tight">
-                  {bot.titleBefore}
-                  <span className="font-serif italic text-accent">{bot.titleAccent}</span>
-                  {bot.titleAfter}
-                </h2>
-                <p className="text-base sm:text-lg text-foreground/70 leading-relaxed text-pretty">
-                  {bot.intro}
-                </p>
+          <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+            <div className="w-full max-w-md text-center lg:text-left lg:shrink-0">
+              <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
+                {bot.eyebrow}
               </div>
+              <h2 className="text-3xl sm:text-5xl lg:text-[2.85rem] xl:text-5xl leading-[1.05] font-medium text-balance mb-6 tracking-tight">
+                {bot.titleBefore}
+                <span className="font-serif italic text-accent">{bot.titleAccent}</span>
+                {bot.titleAfter}
+              </h2>
+              <p className="text-base sm:text-lg text-foreground/70 leading-relaxed text-pretty">
+                {bot.intro}
+              </p>
             </div>
-            <div className="lg:col-span-7 flex justify-center">
+            <div className="w-full max-w-md lg:shrink-0">
               <DashboardMonitorPreview />
             </div>
           </div>
