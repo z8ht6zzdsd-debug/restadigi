@@ -305,42 +305,6 @@ function DiginakyvyysPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-secondary/50 py-24 sm:py-32">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-12 gap-12 items-end">
-            <div className="md:col-span-8">
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium tracking-tight text-balance">
-                {v.cta.titleBefore}
-                <span className="font-serif italic">{v.cta.titleAccent}</span>
-                {v.cta.titleAfter}
-              </h2>
-            </div>
-            <div className="md:col-span-4">
-              <Link
-                to="/yhteys"
-                className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
-              >
-                {v.cta.button}
-                <svg
-                  className="size-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                  />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <SiteFooter />
     </div>
   );
