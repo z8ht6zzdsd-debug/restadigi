@@ -90,7 +90,7 @@ function DiginakyvyysPage() {
       />
 
       {/* Paketit */}
-      <section className="pb-16 sm:pb-20">
+      <section>
         <div>
           {v.packages.map((p, i) => {
             const dark = Boolean(p.featured);
@@ -203,12 +203,11 @@ function DiginakyvyysPage() {
               </div>
             );
           })}
-          <p className="mx-auto mt-6 max-w-6xl px-6 text-xs text-muted-foreground">{v.footnote}</p>
         </div>
       </section>
 
       {/* Graafinen suunnittelu */}
-      <section className="w-full bg-background px-6 py-16 sm:py-24">
+      <section className="w-full bg-background px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-medium leading-[1.1] tracking-tight text-balance sm:text-4xl">
