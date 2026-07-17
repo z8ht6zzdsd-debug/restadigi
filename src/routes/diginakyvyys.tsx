@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroAiHospitality from "@/assets/hero-ai-hospitality.jpg";
+import heroDiginakyvyys from "@/assets/hero-diginakyvyys.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -103,7 +103,7 @@ function DiginakyvyysPage() {
       <SiteHeader />
 
       <PageHero
-        image={heroAiHospitality}
+        image={heroDiginakyvyys}
         title={
           <>
             Diginäkyvyys <span className="font-serif italic text-accent">kerralla</span> kuntoon.
@@ -115,9 +115,6 @@ function DiginakyvyysPage() {
       {/* Paketit */}
       <section className="pb-24 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            (01) Näkyvyyden paketit
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {packages.map((p) => (
               <div
@@ -199,9 +196,6 @@ function DiginakyvyysPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-8">
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                (02) Yhteys
-              </div>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium tracking-tight text-balance">
                 Haluatko paremman <span className="font-serif italic">näkyvyyden</span>?
               </h2>

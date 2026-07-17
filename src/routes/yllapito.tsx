@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroHotelWeb from "@/assets/hero-hotel-web.jpg";
+import heroYllapito from "@/assets/hero-yllapito.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -58,7 +58,7 @@ function YllapitoPage() {
       <SiteHeader />
 
       <PageHero
-        image={heroHotelWeb}
+        image={heroYllapito}
         title={
           <>
             Hosting ja <span className="font-serif italic text-accent">ylläpito</span>.
@@ -69,9 +69,6 @@ function YllapitoPage() {
 
       <section className="pb-24 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            Hosting-palvelut
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {hosting.map((h) => (
               <div

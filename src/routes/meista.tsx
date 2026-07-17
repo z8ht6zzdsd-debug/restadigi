@@ -92,9 +92,6 @@ function MeistaPage() {
       {/* Arvot */}
       <section className="py-24 sm:py-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-16">
-            (01) Miten työskentelemme
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {values.map((v) => (
               <div key={v.t}>
@@ -114,9 +111,6 @@ function MeistaPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-12 items-start">
             <div className="md:col-span-4">
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                (02) Prosessi
-              </div>
               <h2 className="text-3xl sm:text-4xl font-medium leading-[1.1] tracking-tight text-balance">
                 Neljä <span className="font-serif italic">askelta</span> valmiiseen sivustoon.
               </h2>

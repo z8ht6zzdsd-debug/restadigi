@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import restaurantTerrace from "@/assets/restaurant-terrace.jpg";
+import heroYhteys from "@/assets/hero-yhteys.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -43,7 +43,7 @@ function YhteysPage() {
       <SiteHeader />
 
       <PageHero
-        image={restaurantTerrace}
+        image={heroYhteys}
         title={
           <>
             Kerro <span className="font-serif italic text-accent">projektistasi</span>.

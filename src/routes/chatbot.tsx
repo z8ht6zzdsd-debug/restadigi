@@ -128,10 +128,6 @@ function ChatbotPage() {
             liidejä. Se ei korvaa ihmistä, vaan toimii luotettavana apukätenä silloinkin, kun oma
             henkilökuntasi on vapaalla.
           </p>
-
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            (01) Chatbotin keskeiset hyödyt
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
             {chatbotBenefits.map((b) => (
               <div key={b.title} className="border border-border bg-card rounded-sm p-8">
@@ -139,10 +135,6 @@ function ChatbotPage() {
                 <p className="text-sm text-foreground/70 leading-relaxed">{b.body}</p>
               </div>
             ))}
-          </div>
-
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            (02) Miksi kuukausimaksulla?
           </div>
           <div className="grid md:grid-cols-12 gap-12 mb-16">
             <div className="md:col-span-5">
@@ -185,10 +177,6 @@ function ChatbotPage() {
             pöytävarauksia ja vapauttaa henkilökunnan keskittymään siihen tärkeimpään — asiakkaiden
             palvelemiseen.
           </p>
-
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            (03) Mitä palvelu tekee?
-          </div>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-24">
             {conciergeFeatures.map((feature) => (
               <li
@@ -200,10 +188,6 @@ function ChatbotPage() {
               </li>
             ))}
           </ul>
-
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            (04) Hyödyt ravintolalle
-          </div>
           <ul className="space-y-4 mb-24 max-w-3xl">
             {conciergeBenefits.map((benefit) => (
               <li key={benefit} className="flex gap-3 text-base text-foreground/75 leading-relaxed">
@@ -215,9 +199,6 @@ function ChatbotPage() {
 
           <div className="grid md:grid-cols-12 gap-12 mb-24">
             <div className="md:col-span-5">
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                (05) Kenelle?
-              </div>
               <h3 className="text-3xl sm:text-4xl leading-[1.1] font-medium tracking-tight text-balance mb-6">
                 Sopii <span className="font-serif italic">kaikenlaisille</span> ravintoloille.
               </h3>
@@ -243,9 +224,6 @@ function ChatbotPage() {
 
           <div className="grid md:grid-cols-12 gap-12 mb-24">
             <div className="md:col-span-6">
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                (06) Käyttöönotto
-              </div>
               <p className="text-base text-foreground/70 leading-relaxed">
                 Käyttöönotto on nopea ja helppo. Räätälöimme tekoälyavustajan ravintolasi tietojen,
                 palveluiden ja toimintatapojen mukaisesti. Palvelu voidaan ottaa käyttöön muutamassa
@@ -253,9 +231,6 @@ function ChatbotPage() {
               </p>
             </div>
             <div className="md:col-span-6">
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                (07) Hinta
-              </div>
               <p className="text-3xl font-medium mb-4">Alkaen 499 € / vuosi</p>
               <p className="text-sm text-foreground/70 mb-4">Hinta sisältää:</p>
               <ul className="space-y-2">
@@ -280,9 +255,6 @@ function ChatbotPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-8">
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                (08) Miksi Restadigi?
-              </div>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium tracking-tight text-balance mb-8">
                 Vastaa jokaiseen puheluun. Palvele paremmin.{" "}
                 <span className="font-serif italic">Kasva tehokkaammin.</span>

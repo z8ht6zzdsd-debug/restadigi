@@ -72,7 +72,7 @@ function KotisivutPage() {
         image={heroWebDevices}
         title={
           <>
-            Kotisivut <span className="font-serif italic text-accent">ravintolalle</span>.
+            Verkkosivut <span className="font-serif italic text-accent">yritykselle</span>.
           </>
         }
         description="Hyvin suunnitellut verkkosivut ja verkkosisällöt ovat yrityksesi tärkeimmät digitaaliset työkalut. Ne vahvistavat brändisi näkyvyyttä, helpottavat asiakkaiden yhteydenottoa ja jättävät vahvan ensivaikutelman."
@@ -81,9 +81,6 @@ function KotisivutPage() {
       {/* Paketit */}
       <section className="pb-24 sm:pb-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            (01) Verkkosivupaketit
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {packages.map((p) => (
               <div
@@ -153,9 +150,6 @@ function KotisivutPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-12">
             <div className="md:col-span-5">
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                (02) Lisäpalvelut
-              </div>
               <h2 className="text-3xl sm:text-4xl font-medium leading-[1.1] tracking-tight text-balance">
                 Lisäpalvelut <span className="font-serif italic">kotisivupaketin</span> oston
                 yhteydessä.

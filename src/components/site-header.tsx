@@ -4,10 +4,10 @@ import restadigiLogo from "@/assets/restadigi-logo.png";
 
 const palvelut = [
   { to: "/kotisivut-yrityksille", label: "Verkkosivut" },
-  { to: "/yllapito", label: "Ylläpito" },
   { to: "/diginakyvyys", label: "Näkyvyys ja suunnittelu" },
   { to: "/chatbot", label: "AI-asiakaspalvelu" },
   { to: "/potyvarauspalvelu", label: "Pöytävarauspalvelu" },
+  { to: "/yllapito", label: "Ylläpito" },
 ] as const;
 
 const toimialat = [
