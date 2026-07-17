@@ -72,82 +72,84 @@ function DiginakyvyysPage() {
                       : "bg-background")
                 }
               >
-                <div
-                  className={
-                    "mx-auto grid max-w-6xl gap-8 md:items-start md:gap-10 " +
-                    (logoKind ? "md:grid-cols-3" : "md:grid-cols-2")
-                  }
-                >
-                  <div className="md:pt-[2cm]">
-                    <div className="mb-1.5 flex items-baseline gap-3">
-                      <h3 className="text-xl font-medium sm:text-2xl">{p.name}</h3>
-                      {p.featured && (
-                        <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
-                          {v.popular}
-                        </span>
-                      )}
-                    </div>
-                    <p
-                      className={
-                        "mb-1.5 text-sm " +
-                        (dark ? "text-primary-foreground/70" : "text-foreground/60")
-                      }
-                    >
-                      {p.tagline}
-                    </p>
-                    <p
-                      className={
-                        "mb-3 text-sm leading-snug " +
-                        (dark ? "text-primary-foreground/80" : "text-foreground/70")
-                      }
-                    >
-                      {p.description}
-                    </p>
-                    <p
-                      className={
-                        "text-sm italic " +
-                        (dark ? "text-primary-foreground/75" : "text-foreground/65")
-                      }
-                    >
-                      {v.resultPrefix} {p.result}
-                    </p>
+                <div className="mx-auto max-w-6xl">
+                  <div className="mb-5 flex items-baseline gap-3">
+                    <h3 className="text-xl font-medium sm:text-2xl">{p.name}</h3>
+                    {p.featured && (
+                      <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
+                        {v.popular}
+                      </span>
+                    )}
                   </div>
-                  <div className="flex flex-col gap-5 md:pt-[2cm]">
-                    <ul className="space-y-2 text-sm">
-                      {p.bullets.map((b) => (
-                        <li key={b} className="flex gap-3">
-                          <span className="mt-1.5 size-1 shrink-0 rounded-full bg-accent" />
-                          <span
-                            className={
-                              "leading-snug " +
-                              (dark ? "text-primary-foreground/85" : "text-foreground/75")
-                            }
-                          >
-                            {b}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div
+                    className={
+                      "grid gap-8 md:items-start md:gap-10 " +
+                      (logoKind ? "md:grid-cols-3" : "md:grid-cols-2")
+                    }
+                  >
                     <div>
-                      <div className="mb-3 font-serif text-3xl sm:text-4xl">{p.price}</div>
-                      <Link
-                        to="/yhteys"
+                      <p
                         className={
-                          "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors " +
-                          (dark
-                            ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
-                            : "bg-primary text-primary-foreground hover:bg-accent")
+                          "mb-1.5 text-sm " +
+                          (dark ? "text-primary-foreground/70" : "text-foreground/60")
                         }
                       >
-                        {v.contactCta}
-                      </Link>
+                        {p.tagline}
+                      </p>
+                      <p
+                        className={
+                          "mb-3 text-sm leading-snug " +
+                          (dark ? "text-primary-foreground/80" : "text-foreground/70")
+                        }
+                      >
+                        {p.description}
+                      </p>
+                      <p
+                        className={
+                          "text-sm italic " +
+                          (dark ? "text-primary-foreground/75" : "text-foreground/65")
+                        }
+                      >
+                        {v.resultPrefix} {p.result}
+                      </p>
                     </div>
+                    <div className="flex flex-col gap-5">
+                      <ul className="space-y-2 text-sm">
+                        {p.bullets.map((b) => (
+                          <li key={b} className="flex gap-3">
+                            <span className="mt-1.5 size-1 shrink-0 rounded-full bg-accent" />
+                            <span
+                              className={
+                                "leading-snug " +
+                                (dark ? "text-primary-foreground/85" : "text-foreground/75")
+                              }
+                            >
+                              {b}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <div>
+                        <div className="mb-3 font-serif text-3xl sm:text-4xl">{p.price}</div>
+                        <Link
+                          to="/yhteys"
+                          className={
+                            "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors " +
+                            (dark
+                              ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
+                              : "bg-primary text-primary-foreground hover:bg-accent")
+                          }
+                        >
+                          {v.contactCta}
+                        </Link>
+                      </div>
+                    </div>
+                    {logoKind && (
+                      <div className="md:flex md:justify-center">
+                        <PackageBrandLogos kind={logoKind} dark={dark} />
+                      </div>
+                    )}
                   </div>
-                  {logoKind && (
-                    <div className="md:flex md:justify-center md:pt-[2cm]">
-                      <PackageBrandLogos kind={logoKind} dark={dark} />
-                    </div>
-                  )}
                 </div>
               </div>
             );
