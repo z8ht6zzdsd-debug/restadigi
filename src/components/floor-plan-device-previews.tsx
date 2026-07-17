@@ -12,22 +12,22 @@ const FREE_COUNT = TABLE_COUNT - OCCUPIED_COUNT;
 function tableSize(seats: FloorTable["seats"], scale: "sm" | "md" | "lg") {
   const map = {
     sm: {
-      2: "size-5 text-[5px]",
-      4: "size-6 text-[5px]",
-      6: "h-6 w-8 text-[5px]",
-      8: "h-7 w-10 text-[5px]",
+      2: "size-[1.15rem] text-[5px]",
+      4: "size-[1.35rem] text-[5px]",
+      6: "h-[1.35rem] w-[1.85rem] text-[5px]",
+      8: "h-[1.5rem] w-[2.15rem] text-[5px]",
     },
     md: {
       2: "size-6 text-[6px]",
       4: "size-7 text-[6px]",
       6: "h-7 w-10 text-[6px]",
-      8: "h-8 w-12 text-[6px]",
+      8: "h-8 w-11 text-[6px]",
     },
     lg: {
-      2: "size-8 text-[8px]",
-      4: "size-10 text-[8px]",
-      6: "h-10 w-[3.25rem] text-[8px]",
-      8: "h-11 w-16 text-[8px]",
+      2: "size-7 text-[7px]",
+      4: "size-8 text-[7px]",
+      6: "h-8 w-11 text-[7px]",
+      8: "h-9 w-[3.25rem] text-[7px]",
     },
   } as const;
   return map[scale][seats];
@@ -36,19 +36,12 @@ function tableSize(seats: FloorTable["seats"], scale: "sm" | "md" | "lg") {
 function MiniFloorMap({
   scale,
   showZones = true,
-  wide = false,
 }: {
   scale: "sm" | "md" | "lg";
   showZones?: boolean;
-  wide?: boolean;
 }) {
   return (
-    <div
-      className={
-        "relative w-full overflow-hidden rounded-[0.35rem] border border-[#e5e0d8] bg-[#f3efe8] " +
-        (wide ? "aspect-[16/10]" : "aspect-[4/3]")
-      }
-    >
+    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[0.35rem] border border-[#e5e0d8] bg-[#f3efe8]">
       {showZones && (
         <>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[24%] border-b border-dashed border-[#c46a32]/25 bg-[#c46a32]/5" />
@@ -109,12 +102,12 @@ function ScreenChrome({
 function PhonePreview() {
   const table = DEMO_FLOOR_PLAN.tables.find((t) => t.id === HIGHLIGHT)!;
   return (
-    <div className="w-[7.25rem] shrink-0 sm:w-32">
+    <div className="w-[8.5rem] shrink-0 sm:w-[9.25rem]">
       <div className="rounded-[1.35rem] border border-[#2a221c] bg-[#1a1512] p-[0.35rem] shadow-[0_16px_36px_-12px_rgba(26,18,12,0.45)]">
         <div className="mb-1 flex justify-center">
           <div className="h-1 w-10 rounded-full bg-[#3d322a]" />
         </div>
-        <ScreenChrome title="Pöytäkartta" dense>
+        <ScreenChrome title={`Pöytäkartta · ${TOTAL_SEATS}`} dense>
           <div className="space-y-1.5 p-1.5">
             <div className="grid grid-cols-2 gap-1">
               <div className="rounded-[2px] border border-[#e5e0d8] bg-white px-1 py-1">
@@ -126,7 +119,7 @@ function PhonePreview() {
                 <p className="text-[9px] font-medium tabular-nums text-[#1a1512]">{FREE_COUNT}</p>
               </div>
             </div>
-            <MiniFloorMap scale="sm" showZones={false} />
+            <MiniFloorMap scale="sm" />
             <div className="rounded-[2px] border border-[#e5e0d8] bg-white px-1.5 py-1">
               <p className="text-[7px] font-medium text-[#1a1512]">Pöytä {table.label}</p>
               <p className="text-[6px] text-[#8a8178]">
@@ -147,20 +140,21 @@ function PhonePreview() {
 function TabletPreview() {
   const table = DEMO_FLOOR_PLAN.tables.find((t) => t.id === HIGHLIGHT)!;
   return (
-    <div className="w-[11.5rem] shrink-0 sm:w-[13.5rem]">
+    <div className="w-[13rem] shrink-0 sm:w-[14.5rem]">
       <div className="rounded-[1.1rem] border border-[#2a221c] bg-[#1a1512] p-[0.4rem] shadow-[0_18px_40px_-14px_rgba(26,18,12,0.45)]">
         <div className="mb-1 flex justify-center">
           <div className="h-1 w-8 rounded-full bg-[#3d322a]" />
         </div>
         <ScreenChrome title={`Pöytäkartta · ${TOTAL_SEATS} paikkaa`}>
-          <div className="grid grid-cols-[1fr_4.25rem] gap-1.5 p-2">
+          <div className="space-y-1.5 p-2">
             <MiniFloorMap scale="md" />
-            <div className="space-y-1.5">
+            <div className="grid grid-cols-3 gap-1">
               <div className="rounded-[2px] border border-[#e5e0d8] bg-white p-1.5">
                 <p className="text-[5px] uppercase tracking-wide text-[#8a8178]">Valittu</p>
                 <p className="text-[8px] font-medium text-[#1a1512]">Pöytä {table.label}</p>
-                <p className="text-[6px] text-[#6b635c]">{table.seats} hlö</p>
-                <p className="text-[6px] text-[#8a8178]">{ZONE_LABELS[table.zone]}</p>
+                <p className="text-[6px] text-[#8a8178]">
+                  {table.seats} hlö · {ZONE_LABELS[table.zone]}
+                </p>
               </div>
               <div className="rounded-[2px] border border-[#e5e0d8] bg-white p-1.5">
                 <p className="text-[5px] uppercase tracking-wide text-[#8a8178]">Tila</p>
@@ -170,6 +164,7 @@ function TabletPreview() {
               <div className="rounded-[2px] border border-[#e5e0d8] bg-white p-1.5">
                 <p className="text-[5px] uppercase tracking-wide text-[#8a8178]">Pöytiä</p>
                 <p className="text-[8px] font-medium tabular-nums text-[#1a1512]">{TABLE_COUNT}</p>
+                <p className="text-[6px] text-[#8a8178]">{FREE_COUNT} vapaana</p>
               </div>
             </div>
           </div>
@@ -184,16 +179,16 @@ function TabletPreview() {
 
 function MonitorPreview() {
   return (
-    <div className="w-full min-w-0 max-w-3xl flex-[1.85] basis-[min(100%,28rem)]">
-      <div className="rounded-[0.95rem] border border-[#2a221c] bg-[#1a1512] p-[0.45rem] shadow-[0_18px_44px_-12px_rgba(26,18,12,0.4)]">
-        <ScreenChrome title={`Pöytäkartta — Demo Ravintola · ${TOTAL_SEATS} paikkaa`}>
-          <div className="flex min-h-[12rem] sm:min-h-[14.5rem]">
-            <nav className="hidden w-[4.25rem] shrink-0 border-r border-[#e5e0d8] bg-[#faf8f5] p-1.5 sm:block">
+    <div className="w-[16.5rem] shrink-0 sm:w-[18.5rem]">
+      <div className="rounded-[0.95rem] border border-[#2a221c] bg-[#1a1512] p-[0.4rem] shadow-[0_18px_44px_-12px_rgba(26,18,12,0.4)]">
+        <ScreenChrome title={`Pöytäkartta · ${TOTAL_SEATS} paikkaa`}>
+          <div className="flex">
+            <nav className="hidden w-[3.75rem] shrink-0 border-r border-[#e5e0d8] bg-[#faf8f5] p-1.5 sm:block">
               {["Yhteenveto", "Varaukset", "Pöytäkartta", "Asetukset"].map((label, i) => (
                 <div
                   key={label}
                   className={
-                    "mb-1 rounded-sm px-1.5 py-1.5 text-[7px] leading-tight " +
+                    "mb-1 rounded-sm px-1 py-1.5 text-[6px] leading-tight " +
                     (i === 2 ? "bg-[#432f24] text-white" : "text-[#6b635c]")
                   }
                 >
@@ -201,8 +196,8 @@ function MonitorPreview() {
                 </div>
               ))}
             </nav>
-            <div className="flex-1 space-y-2 p-2 sm:p-2.5">
-              <div className="grid grid-cols-4 gap-1.5">
+            <div className="min-w-0 flex-1 space-y-1.5 p-2">
+              <div className="grid grid-cols-4 gap-1">
                 {[
                   { label: "Paikat", value: String(TOTAL_SEATS) },
                   { label: "Pöytiä", value: String(TABLE_COUNT) },
@@ -211,18 +206,18 @@ function MonitorPreview() {
                 ].map((card) => (
                   <div
                     key={card.label}
-                    className="rounded-[2px] border border-[#e5e0d8] bg-white px-1.5 py-1"
+                    className="rounded-[2px] border border-[#e5e0d8] bg-white px-1 py-1"
                   >
                     <p className="text-[5px] uppercase tracking-wide text-[#8a8178]">
                       {card.label}
                     </p>
-                    <p className="text-[10px] font-medium tabular-nums text-[#1a1512]">
+                    <p className="text-[9px] font-medium tabular-nums text-[#1a1512]">
                       {card.value}
                     </p>
                   </div>
                 ))}
               </div>
-              <MiniFloorMap scale="lg" wide />
+              <MiniFloorMap scale="lg" />
               <div className="flex flex-wrap gap-2 text-[6px] text-[#6b635c]">
                 <span className="inline-flex items-center gap-1">
                   <span className="size-1.5 rounded-full border border-[#d4cdc3] bg-white" /> Vapaa
@@ -238,7 +233,7 @@ function MonitorPreview() {
           </div>
         </ScreenChrome>
       </div>
-      <div className="mx-auto mt-0 flex w-[22%] flex-col items-center">
+      <div className="mx-auto mt-0 flex w-[28%] flex-col items-center">
         <div className="h-2.5 w-[18%] bg-[#2a221c]" />
         <div className="h-1.5 w-full rounded-b-sm bg-[#1a1512]" />
       </div>
@@ -253,8 +248,7 @@ export function FloorPlanDevicePreviews({ className = "" }: { className?: string
   return (
     <div
       className={
-        "flex w-full flex-wrap items-end justify-center gap-5 sm:gap-6 lg:flex-nowrap lg:justify-between lg:gap-8 " +
-        className
+        "flex w-full flex-wrap items-end justify-center gap-6 sm:gap-8 lg:gap-10 " + className
       }
       aria-hidden
     >
@@ -264,7 +258,7 @@ export function FloorPlanDevicePreviews({ className = "" }: { className?: string
       <div className="origin-bottom transition-transform duration-700 hover:-translate-y-1.5">
         <TabletPreview />
       </div>
-      <div className="origin-bottom w-full transition-transform duration-700 hover:-translate-y-1 lg:w-auto lg:flex-1">
+      <div className="origin-bottom transition-transform duration-700 hover:-translate-y-1">
         <MonitorPreview />
       </div>
     </div>
