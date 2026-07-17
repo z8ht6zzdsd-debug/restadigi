@@ -18,6 +18,7 @@ import {
 const chatRequestSchema = z.object({
   sessionId: z.string().uuid().optional(),
   visitorSessionId: z.string().uuid().optional(),
+  locale: z.enum(["fi", "en", "es"]).optional(),
   messages: z
     .array(
       z.object({
@@ -101,6 +102,7 @@ export const Route = createFileRoute("/api/chat")({
         const model = process.env.OPENAI_MODEL ?? "gpt-4o-mini";
         const userMessages = parsed.data.messages;
         const lastUserMessage = userMessages[userMessages.length - 1];
+        const locale = parsed.data.locale ?? "fi";
         const settings = await getRestaurantSettings();
         const reservationTool = buildReservationTool(settings);
         const tools = settings.reservationsEnabled ? [reservationTool] : [];
@@ -120,7 +122,7 @@ export const Route = createFileRoute("/api/chat")({
         }
 
         const openAiMessages: OpenAiMessage[] = [
-          { role: "system", content: buildChatbotSystemPrompt(settings) },
+          { role: "system", content: buildChatbotSystemPrompt(settings, locale) },
           ...userMessages.map((m) => ({ role: m.role, content: m.content })),
         ];
 

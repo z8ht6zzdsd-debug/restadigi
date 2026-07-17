@@ -94,7 +94,10 @@ function formatClosedDays(settings: RestaurantSettings) {
   return labels.join(", ");
 }
 
-export function buildChatbotSystemPrompt(settings: RestaurantSettings) {
+export function buildChatbotSystemPrompt(
+  settings: RestaurantSettings,
+  locale: "fi" | "en" | "es" = "fi",
+) {
   const contactRules = [
     settings.requireEmail ? "sähköposti (pakollinen)" : null,
     settings.requirePhone ? "puhelinnumero (pakollinen)" : null,
@@ -115,6 +118,20 @@ export function buildChatbotSystemPrompt(settings: RestaurantSettings) {
   ]
     .filter(Boolean)
     .join("\n");
+
+  const languageRule =
+    locale === "en"
+      ? "Always reply in English, professionally and concisely (2–4 sentences)."
+      : locale === "es"
+        ? "Responde siempre en español, de forma profesional y concisa (2–4 frases)."
+        : "Vastaa aina suomeksi, ammattimaisesti ja tiiviisti (2–4 lausetta).";
+
+  const confirmRule =
+    locale === "en"
+      ? "Confirm the reservation warmly in English and repeat the key details."
+      : locale === "es"
+        ? "Confirma la reserva con calidez en español y repite los datos principales."
+        : "Vahvista varaus lämpimästi suomeksi ja toista keskeiset tiedot.";
 
   const reservationBlock = settings.reservationsEnabled
     ? `
@@ -143,7 +160,7 @@ Kerää varaukselle:
 6. Erityistoiveet (valinnainen)
 
 Kysy puuttuvat tiedot yksi kerrallaan. Kun kaikki on kunnossa, kutsu create_restaurant_reservation -työkalua.
-Vahvista varaus lämpimästi suomeksi ja toista keskeiset tiedot.`
+${confirmRule}`
     : `
 Pöytävaraukset eivät ole tällä hetkellä käytössä. Ohjaa asiakas soittamaan ravintolaan${
         settings.restaurantPhone ? ` (${settings.restaurantPhone})` : ""
@@ -157,7 +174,7 @@ Pöytävaraukset eivät ole tällä hetkellä käytössä. Ohjaa asiakas soittam
 
   return `${reservationBlock}
 
-Vastaa aina suomeksi, ammattimaisesti ja tiiviisti (2–4 lausetta).${extra}`;
+${languageRule}${extra}`;
 }
 
 export function buildReservationTool(settings: RestaurantSettings) {

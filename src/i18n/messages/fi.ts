@@ -665,4 +665,19 @@ export const fi: Messages = {
     footnote:
       "Hosting- ja ylläpitohinnat laskutetaan kuukausittain. Domain ja SSL-sertifikaatti sisältyvät hintaan.",
   },
+  widget: {
+    openLabel: "Varaa pöytä",
+    closeLabel: "Sulje chat",
+    openAria: "Avaa chatbot",
+    closeAria: "Sulje chatbot",
+    dialogAria: "Ravintolan chatbot",
+    eyebrow: "Chatbot",
+    welcome:
+      "Hei! Tervetuloa. Autan mielelläni pöytävarauksessa — kerro nimesi, henkilömäärän, päivän, kellonajan, sähköpostisi ja puhelinnumerosi.",
+    placeholder: "Kirjoita viestisi…",
+    sendAria: "Lähetä viesti",
+    typing: "Kirjoittaa…",
+    sendFailed: "Viestin lähetys epäonnistui.",
+    genericError: "Tapahtui virhe.",
+  },
 };

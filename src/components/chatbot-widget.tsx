@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useLocale, useMessages } from "@/i18n";
 import type { ChatMessage } from "@/lib/chatbot-prompt";
 import type { PublicRestaurantSettings } from "@/lib/restaurant-settings-types";
 import {
@@ -13,10 +14,9 @@ import {
 } from "@/lib/visitor-session";
 import { cn } from "@/lib/utils";
 
-const FALLBACK_WELCOME =
-  "Hei! Tervetuloa ravintolaan. Autan mielelläni pöytävarauksessa — kerro nimesi, henkilömäärän, päivän, kellonajan, sähköpostisi ja puhelinnumerosi.";
-
 export function ChatbotWidget() {
+  const t = useMessages();
+  const { locale } = useLocale();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -30,8 +30,11 @@ export function ChatbotWidget() {
 
   const hidden = pathname.startsWith("/dashboard");
   const accentColor = siteSettings?.accentColor ?? "#c46a32";
-  const welcomeText = siteSettings?.chatbotWelcomeMessage ?? FALLBACK_WELCOME;
-  const restaurantName = siteSettings?.restaurantName ?? "Ravintola";
+  const welcomeText =
+    locale === "fi" && siteSettings?.chatbotWelcomeMessage
+      ? siteSettings.chatbotWelcomeMessage
+      : t.widget.welcome;
+  const restaurantName = siteSettings?.restaurantName ?? "Restadigi";
 
   useEffect(() => {
     document.documentElement.classList.toggle("chatbot-open", open);
@@ -52,7 +55,8 @@ export function ChatbotWidget() {
 
   useEffect(() => {
     setMessages([{ role: "assistant", content: welcomeText }]);
-  }, [welcomeText]);
+    setError(null);
+  }, [welcomeText, locale]);
 
   useEffect(() => {
     if (open) {
@@ -79,6 +83,7 @@ export function ChatbotWidget() {
         body: JSON.stringify({
           sessionId: sessionId ?? undefined,
           visitorSessionId: getOrCreateVisitorSessionId(),
+          locale,
           messages: nextMessages.filter((m) => m.role !== "assistant" || m.content !== welcomeText),
         }),
       });
@@ -90,7 +95,7 @@ export function ChatbotWidget() {
       };
 
       if (!response.ok) {
-        throw new Error(data.error ?? "Viestin lähetys epäonnistui.");
+        throw new Error(data.error ?? t.widget.sendFailed);
       }
 
       if (data.sessionId) {
@@ -102,7 +107,7 @@ export function ChatbotWidget() {
         setMessages((prev) => [...prev, data.message!]);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Tapahtui virhe.");
+      setError(err instanceof Error ? err.message : t.widget.genericError);
     } finally {
       setLoading(false);
     }
@@ -135,21 +140,23 @@ export function ChatbotWidget() {
               "animate-in fade-in slide-in-from-bottom-4 duration-200",
             )}
             role="dialog"
-            aria-label="Ravintolan chatbot"
+            aria-label={t.widget.dialogAria}
           >
             <div
               className="flex items-center justify-between border-b border-border px-4 py-3 text-white"
               style={{ backgroundColor: accentColor }}
             >
               <div>
-                <p className="text-xs uppercase tracking-[0.15em] text-white/70">Chatbot</p>
+                <p className="text-xs uppercase tracking-[0.15em] text-white/70">
+                  {t.widget.eyebrow}
+                </p>
                 <p className="text-sm font-medium">{restaurantName}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 className="rounded-full p-1.5 transition-colors hover:bg-white/10"
-                aria-label="Sulje chat"
+                aria-label={t.widget.closeLabel}
               >
                 <X className="size-4" />
               </button>
@@ -172,7 +179,7 @@ export function ChatbotWidget() {
               ))}
               {loading && (
                 <div className="mr-auto rounded-sm border border-border bg-background px-3 py-2 text-sm text-muted-foreground">
-                  Kirjoittaa…
+                  {t.widget.typing}
                 </div>
               )}
             </div>
@@ -190,7 +197,7 @@ export function ChatbotWidget() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Kirjoita viestisi…"
+                  placeholder={t.widget.placeholder}
                   rows={2}
                   disabled={loading}
                   className="min-h-[44px] resize-none border-border bg-background"
@@ -202,7 +209,7 @@ export function ChatbotWidget() {
                   disabled={loading || !input.trim()}
                   className="shrink-0 rounded-full text-white hover:opacity-90"
                   style={{ backgroundColor: accentColor }}
-                  aria-label="Lähetä viesti"
+                  aria-label={t.widget.sendAria}
                 >
                   <Send className="size-4" />
                 </Button>
@@ -218,10 +225,12 @@ export function ChatbotWidget() {
           className="h-14 rounded-full px-5 text-white shadow-lg hover:opacity-90"
           style={{ backgroundColor: accentColor }}
           aria-expanded={open}
-          aria-label={open ? "Sulje chatbot" : "Avaa chatbot"}
+          aria-label={open ? t.widget.closeAria : t.widget.openAria}
         >
           <MessageCircle className="size-5" />
-          <span className="hidden sm:inline">{open ? "Sulje chat" : "Varaa pöytä"}</span>
+          <span className="hidden sm:inline">
+            {open ? t.widget.closeLabel : t.widget.openLabel}
+          </span>
         </Button>
       </div>
     </>

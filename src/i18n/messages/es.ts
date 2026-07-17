@@ -668,4 +668,19 @@ export const es: Messages = {
     footnote:
       "Los precios de hosting y mantenimiento se facturan mensualmente. Dominio y certificado SSL incluidos.",
   },
+  widget: {
+    openLabel: "Reservar mesa",
+    closeLabel: "Cerrar chat",
+    openAria: "Abrir chatbot",
+    closeAria: "Cerrar chatbot",
+    dialogAria: "Chatbot del restaurante",
+    eyebrow: "Chatbot",
+    welcome:
+      "¡Hola! Bienvenido/a. Puedo ayudarte a reservar mesa — indícame tu nombre, número de personas, fecha, hora, correo y teléfono.",
+    placeholder: "Escribe tu mensaje…",
+    sendAria: "Enviar mensaje",
+    typing: "Escribiendo…",
+    sendFailed: "No se pudo enviar el mensaje.",
+    genericError: "Se produjo un error.",
+  },
 };

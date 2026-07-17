@@ -662,4 +662,19 @@ export const en: Messages = {
     footnote:
       "Hosting and maintenance fees are billed monthly. Domain and SSL certificate are included.",
   },
+  widget: {
+    openLabel: "Book a table",
+    closeLabel: "Close chat",
+    openAria: "Open chatbot",
+    closeAria: "Close chatbot",
+    dialogAria: "Restaurant chatbot",
+    eyebrow: "Chatbot",
+    welcome:
+      "Hi! Welcome. I can help you book a table — please share your name, party size, date, time, email and phone number.",
+    placeholder: "Type your message…",
+    sendAria: "Send message",
+    typing: "Typing…",
+    sendFailed: "Failed to send message.",
+    genericError: "Something went wrong.",
+  },
 };

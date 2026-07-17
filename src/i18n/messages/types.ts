@@ -331,4 +331,18 @@ export type Messages = {
     }>;
     footnote: string;
   };
+  widget: {
+    openLabel: string;
+    closeLabel: string;
+    openAria: string;
+    closeAria: string;
+    dialogAria: string;
+    eyebrow: string;
+    welcome: string;
+    placeholder: string;
+    sendAria: string;
+    typing: string;
+    sendFailed: string;
+    genericError: string;
+  };
 };
