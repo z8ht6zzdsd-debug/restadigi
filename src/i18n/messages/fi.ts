@@ -543,6 +543,13 @@ export const fi: Messages = {
       description:
         "Integroimme ravintolasi verkkosivuille modernin pöytävarauspalvelun, joka toimii ympäri vuorokauden. Asiakas valitsee ajan ja seurueen koon, saa vahvistuksen sähköpostiin ja henkilökuntasi näkee varaukset selkeästä hallintapaneelista.",
     },
+    dashboard: {
+      eyebrow: "Hallintapaneeli",
+      titleBefore: "Varaukset ",
+      titleAccent: "kalenterissa",
+      titleAfter: " ja listalla.",
+      body: "Henkilökunta näkee päivän pöytävaraukset tabletilla tai näytöllä — vahvista, peruuta ja seuraa saatavuutta yhdellä silmäyksellä.",
+    },
     features: [
       {
         title: "Varaukset 24/7",

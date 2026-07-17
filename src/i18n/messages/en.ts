@@ -540,6 +540,13 @@ export const en: Messages = {
       description:
         "We integrate a modern table reservation service into your restaurant website that works around the clock. Guests pick a time and party size, get email confirmation, and your staff see bookings in a clear admin panel.",
     },
+    dashboard: {
+      eyebrow: "Admin panel",
+      titleBefore: "Bookings in a ",
+      titleAccent: "calendar",
+      titleAfter: " and list.",
+      body: "Staff see the day’s table reservations on tablet or desktop — confirm, cancel and track availability at a glance.",
+    },
     features: [
       {
         title: "Bookings 24/7",

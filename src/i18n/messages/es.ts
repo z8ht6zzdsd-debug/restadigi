@@ -546,6 +546,13 @@ export const es: Messages = {
       description:
         "Integramos en la web de tu restaurante un servicio moderno de reservas de mesa que funciona las 24 horas. El cliente elige hora y tamaño del grupo, recibe confirmación por correo y tu equipo ve las reservas en un panel claro.",
     },
+    dashboard: {
+      eyebrow: "Panel de administración",
+      titleBefore: "Reservas en ",
+      titleAccent: "calendario",
+      titleAfter: " y lista.",
+      body: "El equipo ve las reservas del día en tablet o pantalla — confirma, cancela y sigue la disponibilidad de un vistazo.",
+    },
     features: [
       {
         title: "Reservas 24/7",
