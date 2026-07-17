@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroStudio from "@/assets/hero-studio.jpg";
+import { BookingChatbotButton } from "@/components/chatbot-widget";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -48,6 +49,7 @@ function PotyvarausPage() {
           </>
         }
         description={b.hero.description}
+        actions={<BookingChatbotButton />}
       />
 
       <section className="pb-24 sm:pb-32">

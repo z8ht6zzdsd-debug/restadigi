@@ -10,6 +10,12 @@ import {
 import type { ChatMessage } from "@/lib/chatbot-prompt";
 import { getDatabaseUrl } from "@/lib/database-url";
 import {
+  buildSalesChatbotSystemPrompt,
+  formatSalesLeadMessage,
+  parseSalesLeadArgs,
+  SALES_LEAD_TOOL,
+} from "@/lib/sales-chatbot-prompt";
+import {
   buildChatbotSystemPrompt,
   buildReservationTool,
   getRestaurantSettings,
@@ -19,6 +25,7 @@ const chatRequestSchema = z.object({
   sessionId: z.string().uuid().optional(),
   visitorSessionId: z.string().uuid().optional(),
   locale: z.enum(["fi", "en", "es"]).optional(),
+  mode: z.enum(["sales", "reservation"]).optional(),
   messages: z
     .array(
       z.object({
@@ -29,6 +36,8 @@ const chatRequestSchema = z.object({
     .min(1)
     .max(20),
 });
+
+type OpenAiTool = ReturnType<typeof buildReservationTool> | typeof SALES_LEAD_TOOL;
 
 type OpenAiMessage = {
   role: "system" | "user" | "assistant" | "tool";
@@ -46,7 +55,7 @@ async function callOpenAi(
   messages: OpenAiMessage[],
   apiKey: string,
   model: string,
-  tools: ReturnType<typeof buildReservationTool>[],
+  tools: OpenAiTool[],
 ) {
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
@@ -57,8 +66,7 @@ async function callOpenAi(
     body: JSON.stringify({
       model,
       messages,
-      tools,
-      tool_choice: "auto",
+      ...(tools.length > 0 ? { tools, tool_choice: "auto" as const } : {}),
       max_tokens: 600,
       temperature: 0.7,
     }),
@@ -103,12 +111,24 @@ export const Route = createFileRoute("/api/chat")({
         const userMessages = parsed.data.messages;
         const lastUserMessage = userMessages[userMessages.length - 1];
         const locale = parsed.data.locale ?? "fi";
+        const mode = parsed.data.mode ?? "sales";
         const settings = await getRestaurantSettings();
-        const reservationTool = buildReservationTool(settings);
-        const tools = settings.reservationsEnabled ? [reservationTool] : [];
+
+        const tools: OpenAiTool[] =
+          mode === "reservation"
+            ? settings.reservationsEnabled
+              ? [buildReservationTool(settings)]
+              : []
+            : [SALES_LEAD_TOOL];
+
+        const systemPrompt =
+          mode === "reservation"
+            ? buildChatbotSystemPrompt(settings, locale)
+            : buildSalesChatbotSystemPrompt(locale);
 
         let sessionId = parsed.data.sessionId;
         let reservationCreated = false;
+        let leadCaptured = false;
 
         if (getDatabaseUrl()) {
           try {
@@ -122,7 +142,7 @@ export const Route = createFileRoute("/api/chat")({
         }
 
         const openAiMessages: OpenAiMessage[] = [
-          { role: "system", content: buildChatbotSystemPrompt(settings, locale) },
+          { role: "system", content: systemPrompt },
           ...userMessages.map((m) => ({ role: m.role, content: m.content })),
         ];
 
@@ -134,25 +154,46 @@ export const Route = createFileRoute("/api/chat")({
             openAiMessages.push(assistantMsg);
 
             for (const toolCall of assistantMsg.tool_calls) {
-              if (toolCall.function.name !== "create_restaurant_reservation") continue;
+              let toolContent = "OK";
 
-              let toolContent = "Varaus tallennettu onnistuneesti.";
-              try {
-                const args = parseReservationArgs(toolCall.function.arguments);
-                if (!getDatabaseUrl()) {
-                  throw new Error("Tietokantaa ei ole konfiguroitu");
+              if (toolCall.function.name === "create_restaurant_reservation") {
+                toolContent = "Varaus tallennettu onnistuneesti.";
+                try {
+                  const args = parseReservationArgs(toolCall.function.arguments);
+                  if (!getDatabaseUrl()) {
+                    throw new Error("Tietokantaa ei ole konfiguroitu");
+                  }
+                  if (!sessionId) {
+                    throw new Error("Chat-istunto puuttuu");
+                  }
+                  await createReservation({ ...args, chatSessionId: sessionId }, settings);
+                  reservationCreated = true;
+                } catch (error) {
+                  console.error("Reservation error:", error);
+                  toolContent =
+                    error instanceof Error
+                      ? `Varauksen tallennus epäonnistui: ${error.message}. Pyydä asiakasta tarkistamaan tiedot.`
+                      : "Varauksen tallennus epäonnistui. Pyydä asiakasta tarkistamaan tiedot.";
                 }
-                if (!sessionId) {
-                  throw new Error("Chat-istunto puuttuu");
+              } else if (toolCall.function.name === "capture_sales_lead") {
+                toolContent = "Yhteystiedot tallennettu. Restadigi ottaa yhteyttä.";
+                try {
+                  const lead = parseSalesLeadArgs(toolCall.function.arguments);
+                  if (!getDatabaseUrl()) {
+                    throw new Error("Tietokantaa ei ole konfiguroitu");
+                  }
+                  if (!sessionId) {
+                    throw new Error("Chat-istunto puuttuu");
+                  }
+                  await saveChatMessage(sessionId, "system", formatSalesLeadMessage(lead));
+                  leadCaptured = true;
+                } catch (error) {
+                  console.error("Sales lead error:", error);
+                  toolContent =
+                    error instanceof Error
+                      ? `Yhteystietojen tallennus epäonnistui: ${error.message}. Pyydä puhelin ja sähköposti uudelleen.`
+                      : "Yhteystietojen tallennus epäonnistui. Pyydä puhelin ja sähköposti uudelleen.";
                 }
-                await createReservation({ ...args, chatSessionId: sessionId }, settings);
-                reservationCreated = true;
-              } catch (error) {
-                console.error("Reservation error:", error);
-                toolContent =
-                  error instanceof Error
-                    ? `Varauksen tallennus epäonnistui: ${error.message}. Pyydä asiakasta tarkistamaan tiedot.`
-                    : "Varauksen tallennus epäonnistui. Pyydä asiakasta tarkistamaan tiedot.";
               }
 
               openAiMessages.push({
@@ -184,6 +225,7 @@ export const Route = createFileRoute("/api/chat")({
             message: assistantMessage,
             sessionId,
             reservationCreated,
+            leadCaptured,
           });
         } catch (error) {
           console.error("Chat API error:", error);

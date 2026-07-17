@@ -332,17 +332,35 @@ export type Messages = {
     footnote: string;
   };
   widget: {
-    openLabel: string;
-    closeLabel: string;
-    openAria: string;
-    closeAria: string;
-    dialogAria: string;
-    eyebrow: string;
-    welcome: string;
-    placeholder: string;
-    sendAria: string;
-    typing: string;
-    sendFailed: string;
-    genericError: string;
+    sales: {
+      openLabel: string;
+      closeLabel: string;
+      openAria: string;
+      closeAria: string;
+      dialogAria: string;
+      eyebrow: string;
+      title: string;
+      welcome: string;
+      placeholder: string;
+      sendAria: string;
+      typing: string;
+      sendFailed: string;
+      genericError: string;
+    };
+    booking: {
+      openLabel: string;
+      closeLabel: string;
+      openAria: string;
+      closeAria: string;
+      dialogAria: string;
+      eyebrow: string;
+      title: string;
+      welcome: string;
+      placeholder: string;
+      sendAria: string;
+      typing: string;
+      sendFailed: string;
+      genericError: string;
+    };
   };
 };

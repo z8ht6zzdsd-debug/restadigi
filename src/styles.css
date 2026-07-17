@@ -513,10 +513,13 @@
   }
 
   .page-hero__actions {
-    margin-top: 2.5rem;
+    position: relative;
+    z-index: 12;
+    margin-top: 1.75rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
   }
 }

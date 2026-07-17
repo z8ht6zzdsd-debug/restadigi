@@ -78,6 +78,11 @@ function DashboardConversationsPage() {
                     Varaus
                   </span>
                 )}
+                {session.lastMessage?.includes("MYYNTILIIDI") && (
+                  <span className="rounded-full bg-primary/15 px-2 py-0.5 text-[10px] uppercase tracking-wide text-primary">
+                    Liidi
+                  </span>
+                )}
               </div>
               <p className="mt-2 line-clamp-2 text-sm">{session.lastMessage ?? "—"}</p>
               <p className="mt-2 text-xs text-muted-foreground">{session.messageCount} viestiä</p>
@@ -97,11 +102,13 @@ function DashboardConversationsPage() {
                     "rounded-sm px-3 py-2 text-sm",
                     msg.role === "user"
                       ? "ml-8 bg-accent/15"
-                      : "mr-8 border border-border bg-background",
+                      : msg.role === "system"
+                        ? "mr-8 border border-primary/30 bg-primary/5 whitespace-pre-wrap"
+                        : "mr-8 border border-border bg-background",
                   )}
                 >
                   <p className="mb-1 text-[10px] uppercase tracking-wide text-muted-foreground">
-                    {msg.role}
+                    {msg.role === "system" ? "Myyntiliidi" : msg.role}
                   </p>
                   {msg.content}
                 </div>
