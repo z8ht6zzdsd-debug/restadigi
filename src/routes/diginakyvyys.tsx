@@ -54,7 +54,7 @@ function DiginakyvyysPage() {
       />
 
       {/* Paketit */}
-      <section className="pb-24 sm:pb-32">
+      <section className="pb-16 sm:pb-20">
         <div>
           {v.packages.map((p, i) => {
             const dark = Boolean(p.featured);
@@ -63,7 +63,7 @@ function DiginakyvyysPage() {
               <div
                 key={p.name}
                 className={
-                  "w-full px-6 py-12 sm:py-16 " +
+                  "w-full px-6 py-8 sm:py-10 " +
                   (dark
                     ? "bg-primary text-primary-foreground"
                     : alt
@@ -71,19 +71,19 @@ function DiginakyvyysPage() {
                       : "bg-background")
                 }
               >
-                <div className="mx-auto flex max-w-6xl flex-col md:flex-row md:items-start md:gap-12 lg:gap-16">
-                  <div className="mb-8 shrink-0 md:mb-0 md:w-72 lg:w-80">
-                    <div className="mb-2 flex items-baseline gap-3">
-                      <h3 className="text-2xl font-medium">{p.name}</h3>
+                <div className="mx-auto flex max-w-6xl flex-col md:flex-row md:items-start md:gap-10 lg:gap-12">
+                  <div className="mb-6 shrink-0 md:mb-0 md:w-72 lg:w-80">
+                    <div className="mb-1.5 flex items-baseline gap-3">
+                      <h3 className="text-xl font-medium sm:text-2xl">{p.name}</h3>
                       {p.featured && (
-                        <span className="rounded-full bg-accent px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
+                        <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
                           {v.popular}
                         </span>
                       )}
                     </div>
                     <p
                       className={
-                        "mb-2 text-sm " +
+                        "mb-1.5 text-sm " +
                         (dark ? "text-primary-foreground/70" : "text-foreground/60")
                       }
                     >
@@ -91,16 +91,16 @@ function DiginakyvyysPage() {
                     </p>
                     <p
                       className={
-                        "mb-4 text-sm " +
+                        "mb-3 text-sm leading-snug " +
                         (dark ? "text-primary-foreground/80" : "text-foreground/70")
                       }
                     >
                       {p.description}
                     </p>
-                    <div className="mb-4 font-serif text-4xl">{p.price}</div>
+                    <div className="mb-2 font-serif text-3xl sm:text-4xl">{p.price}</div>
                     <p
                       className={
-                        "mb-6 text-sm italic " +
+                        "mb-4 text-sm italic " +
                         (dark ? "text-primary-foreground/75" : "text-foreground/65")
                       }
                     >
@@ -109,7 +109,7 @@ function DiginakyvyysPage() {
                     <Link
                       to="/yhteys"
                       className={
-                        "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors " +
+                        "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors " +
                         (dark
                           ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
                           : "bg-primary text-primary-foreground hover:bg-accent")
@@ -118,12 +118,15 @@ function DiginakyvyysPage() {
                       {v.contactCta}
                     </Link>
                   </div>
-                  <ul className="mb-8 flex-1 space-y-3 text-sm md:mb-0">
+                  <ul className="mb-6 flex-1 space-y-2 text-sm md:mb-0">
                     {p.bullets.map((b) => (
                       <li key={b} className="flex gap-3">
-                        <span className="mt-2 size-1 shrink-0 rounded-full bg-accent" />
+                        <span className="mt-1.5 size-1 shrink-0 rounded-full bg-accent" />
                         <span
-                          className={dark ? "text-primary-foreground/85" : "text-foreground/75"}
+                          className={
+                            "leading-snug " +
+                            (dark ? "text-primary-foreground/85" : "text-foreground/75")
+                          }
                         >
                           {b}
                         </span>
@@ -137,7 +140,7 @@ function DiginakyvyysPage() {
               </div>
             );
           })}
-          <p className="mt-8 text-xs text-muted-foreground max-w-6xl mx-auto px-6">{v.footnote}</p>
+          <p className="mx-auto mt-6 max-w-6xl px-6 text-xs text-muted-foreground">{v.footnote}</p>
         </div>
       </section>
 

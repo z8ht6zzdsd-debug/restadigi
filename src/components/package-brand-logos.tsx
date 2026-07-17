@@ -147,13 +147,13 @@ export function PackageBrandLogos({
   const logos = kind === "ai" ? AI_LOGOS : GOOGLE_LOGOS;
 
   return (
-    <div className="md:w-44 lg:w-52 shrink-0" aria-hidden>
-      <div className="grid grid-cols-2 gap-3">
+    <div className="w-40 shrink-0 md:w-44" aria-hidden>
+      <div className="grid grid-cols-2 gap-2">
         {logos.map(({ name, Mark, tone }) => (
           <div
             key={name}
             className={
-              "flex flex-col items-center justify-center gap-2 rounded-sm border px-3 py-4 " +
+              "flex flex-col items-center justify-center gap-1.5 rounded-sm border px-2 py-2.5 " +
               (dark
                 ? "border-primary-foreground/15 bg-primary-foreground/5"
                 : "border-border/80 bg-[#f7f5f2]")
@@ -162,12 +162,12 @@ export function PackageBrandLogos({
             <Mark
               title={name}
               className={
-                "size-8 " + (dark ? "text-primary-foreground" : (tone ?? "text-foreground"))
+                "size-6 " + (dark ? "text-primary-foreground" : (tone ?? "text-foreground"))
               }
             />
             <span
               className={
-                "text-center text-[10px] leading-tight " +
+                "text-center text-[9px] leading-tight " +
                 (dark ? "text-primary-foreground/70" : "text-foreground/55")
               }
             >
