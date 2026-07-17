@@ -114,6 +114,7 @@ export const fi: Messages = {
       callCta: "Soita meille",
       phoneDisplay: "+358 403 738 332",
       phoneTel: "+358403738332",
+      whatsappCta: "WhatsApp-puhelu",
       bookCta: "Varaa aika →",
     },
     whyUs: {
@@ -178,6 +179,7 @@ export const fi: Messages = {
       titleAfter: "?",
       quoteCta: "Pyydä tarjous",
       callCta: "Soita meille →",
+      whatsappCta: "WhatsApp →",
     },
   },
   contact: {
@@ -198,6 +200,7 @@ export const fi: Messages = {
     labels: {
       email: "Sähköposti",
       phone: "Puhelin",
+      whatsapp: "WhatsApp",
       studio: "Studio",
       social: "Some",
     },

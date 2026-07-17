@@ -115,6 +115,7 @@ export const es: Messages = {
       callCta: "Llámanos",
       phoneDisplay: "+358 403 738 332",
       phoneTel: "+358403738332",
+      whatsappCta: "Llamada WhatsApp",
       bookCta: "Reservar hora →",
     },
     whyUs: {
@@ -179,6 +180,7 @@ export const es: Messages = {
       titleAfter: "?",
       quoteCta: "Solicitar presupuesto",
       callCta: "Llámanos →",
+      whatsappCta: "WhatsApp →",
     },
   },
   contact: {
@@ -198,6 +200,7 @@ export const es: Messages = {
     labels: {
       email: "Correo",
       phone: "Teléfono",
+      whatsapp: "WhatsApp",
       studio: "Estudio",
       social: "Redes",
     },

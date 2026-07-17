@@ -56,6 +56,7 @@ export type Messages = {
       callCta: string;
       phoneDisplay: string;
       phoneTel: string;
+      whatsappCta: string;
       bookCta: string;
     };
     whyUs: {
@@ -99,6 +100,7 @@ export type Messages = {
       titleAfter: string;
       quoteCta: string;
       callCta: string;
+      whatsappCta: string;
     };
   };
   contact: {
@@ -117,6 +119,7 @@ export type Messages = {
     labels: {
       email: string;
       phone: string;
+      whatsapp: string;
       studio: string;
       social: string;
     };

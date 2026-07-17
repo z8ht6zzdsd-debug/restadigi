@@ -176,6 +176,17 @@ function Index() {
                 {h.intro.phoneDisplay}
               </span>
             </a>
+            <a
+              href={`https://wa.me/${h.intro.phoneTel.replace(/\D/g, "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-full border border-foreground/20 bg-background py-3 pr-4 pl-5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              {h.intro.whatsappCta}
+              <span className="text-foreground/55 tabular-nums text-xs hidden sm:inline">
+                {h.intro.phoneDisplay}
+              </span>
+            </a>
             <Link
               to="/yhteys"
               className="inline-flex items-center gap-2 border-b border-foreground/30 pb-0.5 text-sm transition-colors hover:border-foreground"
@@ -365,6 +376,14 @@ function Index() {
               className="text-sm border-b border-foreground/30 pb-0.5 text-foreground/80 transition-colors hover:border-foreground hover:text-foreground"
             >
               {h.cta.callCta}
+            </a>
+            <a
+              href={`https://wa.me/${h.intro.phoneTel.replace(/\D/g, "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm border-b border-foreground/30 pb-0.5 text-foreground/80 transition-colors hover:border-foreground hover:text-foreground"
+            >
+              {h.cta.whatsappCta}
             </a>
           </div>
         </div>

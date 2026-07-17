@@ -102,6 +102,19 @@ function YhteysPage() {
             </div>
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                {c.labels.whatsapp}
+              </div>
+              <a
+                href={`https://wa.me/${c.phoneTel.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lg font-serif hover:text-accent transition-colors"
+              >
+                {c.phoneDisplay}
+              </a>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
                 {c.labels.studio}
               </div>
               <p className="text-base text-foreground/70">
