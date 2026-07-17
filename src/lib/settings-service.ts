@@ -20,9 +20,10 @@ const FLEXIBLE_BOOKING_PATCH: Partial<Omit<RestaurantSettings, "id" | "updatedAt
   closedWeekdays: "",
   minNoticeHours: 0,
   advanceBookingDays: 90,
-  maxCoversPerSlot: 40,
+  maxCoversPerSlot: 80,
   maxCoversPerEvening: 200,
-  maxPartySize: 12,
+  maxPartySize: 80,
+  minPartySize: 1,
   slotMinutes: 30,
   reservationsEnabled: true,
   chatbotWelcomeMessage: DEFAULT_SETTINGS.chatbotWelcomeMessage,
@@ -53,6 +54,8 @@ export async function getRestaurantSettings(): Promise<RestaurantSettings> {
         row.closedWeekdays === "1" ||
         row.lunchCloseTime === "14:30" ||
         row.minNoticeHours >= 2 ||
+        row.maxPartySize < 80 ||
+        row.maxCoversPerSlot < 80 ||
         (row.lunchEnabled &&
           row.dinnerEnabled &&
           timeToMinutes(row.lunchCloseTime) < timeToMinutes(row.dinnerOpenTime));
@@ -215,7 +218,8 @@ VARAUSSÄÄNNÖT (noudata näitä, älä tiukenna):
 - Varauksia otetaan vastaan joka päivä klo ${settings.openTime}–${settings.closeTime}
 - Normaali pöytäaika on 2 tuntia
 - 3 tunnin varaus onnistuu pyynnöstä — hyväksy jos asiakas pyytää
-- Pöytävaraus ${settings.minPartySize}–${settings.maxPartySize} hengelle
+- Pöytävaraus ${settings.minPartySize}–${settings.maxPartySize} hengelle (isot seurueet OK)
+- Älä torju varauksia henkilömäärän takia, jos määrä on ${settings.maxPartySize} tai alle
 - Varaus enintään ${settings.advanceBookingDays} päivää etukäteen
 - Ei erillistä ennakkoilmoituspakkoa (minNotice = ${settings.minNoticeHours} h)
 
@@ -395,7 +399,9 @@ export async function validateReservationInput(
     .filter((row) => normalizeToSlot(row.reservationTime, settings.slotMinutes) === slot)
     .reduce((sum, row) => sum + row.partySize, 0);
 
-  if (slotCovers + input.partySize > settings.maxCoversPerSlot) {
+  // Allow any single party up to maxPartySize; only block if total slot load would exceed cover cap.
+  const coverCap = Math.max(settings.maxCoversPerSlot, settings.maxPartySize);
+  if (slotCovers + input.partySize > coverCap) {
     throw new Error(
       `Kello ${slot} on ruuhkainen — ehdota toista aikaa (±30–60 min) samalle päivälle`,
     );
