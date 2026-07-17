@@ -28,8 +28,7 @@ export const es: Messages = {
   },
   error: {
     title: "Esta página no se cargó",
-    description:
-      "Algo salió mal de nuestra parte. Puedes intentar de nuevo o volver al inicio.",
+    description: "Algo salió mal de nuestra parte. Puedes intentar de nuevo o volver al inicio.",
     tryAgain: "Intentar de nuevo",
     goHome: "Ir al inicio",
   },
@@ -185,8 +184,7 @@ export const es: Messages = {
   contact: {
     meta: {
       title: "Contacto — Restadigi",
-      description:
-        "Cuéntanos tu proyecto; te responderemos en un día laborable. info@restadigi.fi",
+      description: "Cuéntanos tu proyecto; te responderemos en un día laborable. info@restadigi.fi",
       ogTitle: "Contacto — Restadigi",
       ogDescription: "Cuéntanos tu proyecto — te responderemos en un día laborable.",
     },
@@ -304,7 +302,8 @@ export const es: Messages = {
       description:
         "Paquetes de sitios web claros e impactantes y extras gráficos para empresas y asociaciones.",
       ogTitle: "Sitios web para empresas — Restadigi",
-      ogDescription: "Paquetes de sitios web y extras gráficos según las necesidades de tu empresa.",
+      ogDescription:
+        "Paquetes de sitios web y extras gráficos según las necesidades de tu empresa.",
     },
     hero: {
       titleBefore: "Sitios web para ",
@@ -434,8 +433,7 @@ export const es: Messages = {
           "Una colaboración profesional, visibilidad ante miles de espectadores e imagen deportiva positiva.",
       },
     ],
-    footnote:
-      "Los precios son anuales. Solo pagas por lo que necesitas — sin costes ocultos.",
+    footnote: "Los precios son anuales. Solo pagas por lo que necesitas — sin costes ocultos.",
     branding: {
       titleBefore: "Identidad de marca y ",
       titleAccent: "diseño",

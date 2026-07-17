@@ -14,9 +14,7 @@ async function capture(page, width, height, name, scrollY = 0) {
   await page.goto(URL, { waitUntil: "networkidle2", timeout: 90000 });
   await page.evaluate(() => {
     const buttons = [...document.querySelectorAll("button")];
-    const accept = buttons.find((b) =>
-      /aceptar|accept|allow|hyväksy/i.test(b.textContent || ""),
-    );
+    const accept = buttons.find((b) => /aceptar|accept|allow|hyväksy/i.test(b.textContent || ""));
     accept?.click();
   });
   await new Promise((r) => setTimeout(r, 1200));

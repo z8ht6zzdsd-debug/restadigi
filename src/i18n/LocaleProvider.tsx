@@ -7,12 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import {
-  detectLocale,
-  localeDomainUrl,
-  shouldNavigateToLocaleDomain,
-  storeLocale,
-} from "./detect";
+import { detectLocale, localeDomainUrl, shouldNavigateToLocaleDomain, storeLocale } from "./detect";
 import { getMessages, type Messages } from "./messages";
 import { LOCALE_META, type Locale } from "./types";
 

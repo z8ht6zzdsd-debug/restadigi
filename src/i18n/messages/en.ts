@@ -96,8 +96,7 @@ export const en: Messages = {
       description:
         "We build websites, mobile apps and other smart digital solutions for service businesses — including booking systems, customer service and sales.",
       ogTitle: "Restadigi — A smart website that serves your customers",
-      ogDescription:
-        "Websites, mobile apps and smart digital solutions for service businesses.",
+      ogDescription: "Websites, mobile apps and smart digital solutions for service businesses.",
     },
     hero: {
       titleBefore: "A smart website that ",
@@ -234,7 +233,8 @@ export const en: Messages = {
       description:
         "Restadigi is a small studio that builds websites and strengthens companies’ digital visibility. Learn how we work.",
       ogTitle: "About us — Restadigi",
-      ogDescription: "A small studio, big responsibility. Websites and digital visibility for businesses.",
+      ogDescription:
+        "A small studio, big responsibility. Websites and digital visibility for businesses.",
     },
     eyebrow: "About us",
     titleBefore: "A small studio, ",
@@ -338,10 +338,7 @@ export const en: Messages = {
         name: "Gold",
         tagline: "Plus package plus a smart chatbot for customer service",
         price: "759 € + VAT",
-        bullets: [
-          ...plusBullets,
-          "Website chatbot — answers customers 24/7 and captures leads",
-        ],
+        bullets: [...plusBullets, "Website chatbot — answers customers 24/7 and captures leads"],
       },
       {
         name: "Diamond",
@@ -435,7 +432,8 @@ export const en: Messages = {
       titleBefore: "Brand identity and ",
       titleAccent: "design",
       titleAfter: ".",
-      description: "Complete your visibility with a professional brand look — logo and business cards.",
+      description:
+        "Complete your visibility with a professional brand look — logo and business cards.",
       customQuote: "Ask for a custom quote",
       extras: [
         { name: "Logo design", price: "149 €" },

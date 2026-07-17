@@ -94,9 +94,7 @@ function ChatbotPage() {
               </h3>
             </div>
             <div className="md:col-span-7">
-              <p className="text-base text-foreground/70 leading-relaxed">
-                {bot.safeBody}
-              </p>
+              <p className="text-base text-foreground/70 leading-relaxed">{bot.safeBody}</p>
             </div>
           </div>
         </div>
@@ -192,7 +190,9 @@ function ChatbotPage() {
               </p>
             </div>
             <div className="flex-1">
-              <p className="text-sm text-primary-foreground/70 mb-4">{concierge.priceIncludesLabel}</p>
+              <p className="text-sm text-primary-foreground/70 mb-4">
+                {concierge.priceIncludesLabel}
+              </p>
               <ul className="space-y-3">
                 {concierge.pricingIncludes.map((item) => (
                   <li key={item} className="flex gap-3 text-sm text-primary-foreground/85">

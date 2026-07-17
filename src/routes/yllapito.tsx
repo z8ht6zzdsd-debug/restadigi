@@ -95,7 +95,9 @@ function YllapitoPage() {
                     {pkg.bullets.map((bullet) => (
                       <li key={bullet} className="flex gap-3">
                         <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
-                        <span className={dark ? "text-primary-foreground/85" : "text-foreground/75"}>
+                        <span
+                          className={dark ? "text-primary-foreground/85" : "text-foreground/75"}
+                        >
                           {bullet}
                         </span>
                       </li>
@@ -105,9 +107,7 @@ function YllapitoPage() {
               </div>
             );
           })}
-          <p className="mt-8 text-xs text-muted-foreground max-w-6xl mx-auto px-6">
-            {h.footnote}
-          </p>
+          <p className="mt-8 text-xs text-muted-foreground max-w-6xl mx-auto px-6">{h.footnote}</p>
         </div>
       </section>
 

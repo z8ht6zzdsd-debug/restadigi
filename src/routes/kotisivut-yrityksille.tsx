@@ -82,7 +82,8 @@ function KotisivutPage() {
                     </div>
                     <p
                       className={
-                        "text-sm mb-4 " + (dark ? "text-primary-foreground/70" : "text-foreground/60")
+                        "text-sm mb-4 " +
+                        (dark ? "text-primary-foreground/70" : "text-foreground/60")
                       }
                     >
                       {p.tagline}
@@ -104,7 +105,9 @@ function KotisivutPage() {
                     {p.bullets.map((b) => (
                       <li key={b} className="flex gap-3">
                         <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
-                        <span className={dark ? "text-primary-foreground/85" : "text-foreground/75"}>
+                        <span
+                          className={dark ? "text-primary-foreground/85" : "text-foreground/75"}
+                        >
                           {b}
                         </span>
                       </li>

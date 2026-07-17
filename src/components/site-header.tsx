@@ -149,7 +149,9 @@ export function SiteHeader() {
                       <div className="text-sm font-medium tracking-tight text-foreground">
                         {item.title}
                       </div>
-                      <p className="mt-1.5 text-sm leading-relaxed text-foreground/60">{item.body}</p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-foreground/60">
+                        {item.body}
+                      </p>
                     </li>
                   ))}
                 </ul>
@@ -186,7 +188,10 @@ export function SiteHeader() {
                         : "flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-sm text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
                     }
                   >
-                    <LocaleFlag locale={item.code} className="size-5 rounded-[2px] ring-1 ring-border/50" />
+                    <LocaleFlag
+                      locale={item.code}
+                      className="size-5 rounded-[2px] ring-1 ring-border/50"
+                    />
                     <span>{item.label}</span>
                   </button>
                 ))}
@@ -286,7 +291,10 @@ export function SiteHeader() {
                       : "flex w-full items-center gap-2.5 py-2 text-left text-base text-foreground/80 hover:text-foreground"
                   }
                 >
-                  <LocaleFlag locale={item.code} className="size-5 rounded-[2px] ring-1 ring-border/50" />
+                  <LocaleFlag
+                    locale={item.code}
+                    className="size-5 rounded-[2px] ring-1 ring-border/50"
+                  />
                   <span>{item.label}</span>
                 </button>
               ))}

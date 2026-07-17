@@ -14,17 +14,13 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
   return (
     <footer
       className={
-        onPrimary
-          ? "py-12 border-t border-primary-foreground/15"
-          : "py-12 border-t border-border"
+        onPrimary ? "py-12 border-t border-primary-foreground/15" : "py-12 border-t border-border"
       }
     >
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div
           className={
-            onPrimary
-              ? "text-sm text-primary-foreground/55"
-              : "text-sm text-muted-foreground"
+            onPrimary ? "text-sm text-primary-foreground/55" : "text-sm text-muted-foreground"
           }
         >
           {copyright}

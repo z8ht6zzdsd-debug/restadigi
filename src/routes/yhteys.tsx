@@ -39,9 +39,7 @@ function YhteysPage() {
     const email = String(data.get("email") ?? "");
     const budget = String(data.get("budget") ?? "");
     const message = String(data.get("message") ?? "");
-    const subject = encodeURIComponent(
-      c.form.mailSubject.replace("{name}", name),
-    );
+    const subject = encodeURIComponent(c.form.mailSubject.replace("{name}", name));
     const body = encodeURIComponent(
       c.form.mailBody
         .replace("{name}", name)
@@ -177,9 +175,7 @@ function YhteysPage() {
                   />
                 </svg>
               </button>
-              {sent && (
-                <span className="text-sm text-foreground/60">{c.form.sending}</span>
-              )}
+              {sent && <span className="text-sm text-foreground/60">{c.form.sending}</span>}
             </div>
           </form>
         </div>

@@ -82,20 +82,27 @@ function DiginakyvyysPage() {
                     </div>
                     <p
                       className={
-                        "text-sm mb-2 " + (dark ? "text-primary-foreground/70" : "text-foreground/60")
+                        "text-sm mb-2 " +
+                        (dark ? "text-primary-foreground/70" : "text-foreground/60")
                       }
                     >
                       {p.tagline}
                     </p>
                     <p
                       className={
-                        "text-sm mb-4 " + (dark ? "text-primary-foreground/80" : "text-foreground/70")
+                        "text-sm mb-4 " +
+                        (dark ? "text-primary-foreground/80" : "text-foreground/70")
                       }
                     >
                       {p.description}
                     </p>
                     <div className="text-4xl font-serif mb-4">{p.price}</div>
-                    <p className={"text-sm italic mb-6 " + (dark ? "text-primary-foreground/75" : "text-foreground/65")}>
+                    <p
+                      className={
+                        "text-sm italic mb-6 " +
+                        (dark ? "text-primary-foreground/75" : "text-foreground/65")
+                      }
+                    >
                       {v.resultPrefix} {p.result}
                     </p>
                     <Link
@@ -114,7 +121,9 @@ function DiginakyvyysPage() {
                     {p.bullets.map((b) => (
                       <li key={b} className="flex gap-3">
                         <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
-                        <span className={dark ? "text-primary-foreground/85" : "text-foreground/75"}>
+                        <span
+                          className={dark ? "text-primary-foreground/85" : "text-foreground/75"}
+                        >
                           {b}
                         </span>
                       </li>
@@ -124,9 +133,7 @@ function DiginakyvyysPage() {
               </div>
             );
           })}
-          <p className="mt-8 text-xs text-muted-foreground max-w-6xl mx-auto px-6">
-            {v.footnote}
-          </p>
+          <p className="mt-8 text-xs text-muted-foreground max-w-6xl mx-auto px-6">{v.footnote}</p>
         </div>
       </section>
 
@@ -139,9 +146,7 @@ function DiginakyvyysPage() {
               <span className="font-serif italic">{v.branding.titleAccent}</span>
               {v.branding.titleAfter}
             </h2>
-            <p className="mt-6 text-foreground/70 leading-relaxed">
-              {v.branding.description}
-            </p>
+            <p className="mt-6 text-foreground/70 leading-relaxed">{v.branding.description}</p>
             <Link
               to="/yhteys"
               className="inline-flex items-center gap-3 mt-8 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"

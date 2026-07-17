@@ -1,9 +1,4 @@
-import {
-  DEFAULT_LOCALE,
-  isLocale,
-  LOCALE_DOMAINS,
-  type Locale,
-} from "./types";
+import { DEFAULT_LOCALE, isLocale, LOCALE_DOMAINS, type Locale } from "./types";
 
 const STORAGE_KEY = "restadigi-locale";
 
@@ -44,8 +39,7 @@ export function storeLocale(locale: Locale) {
  * 3) Default Finnish
  */
 export function detectLocale(hostname?: string): Locale {
-  const host =
-    hostname ?? (typeof window !== "undefined" ? window.location.hostname : "");
+  const host = hostname ?? (typeof window !== "undefined" ? window.location.hostname : "");
   const fromHost = host ? localeFromHostname(host) : null;
   if (fromHost) return fromHost;
 

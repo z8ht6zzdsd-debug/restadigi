@@ -27,7 +27,8 @@ export const fi: Messages = {
   },
   error: {
     title: "Sivu ei latautunut",
-    description: "Jokin meni pieleen meidän päässämme. Voit yrittää uudelleen tai palata etusivulle.",
+    description:
+      "Jokin meni pieleen meidän päässämme. Voit yrittää uudelleen tai palata etusivulle.",
     tryAgain: "Yritä uudelleen",
     goHome: "Etusivulle",
   },
@@ -91,8 +92,7 @@ export const fi: Messages = {
   },
   home: {
     meta: {
-      title:
-        "Restadigi — Älykkäät verkkosivut ja digitaaliset ratkaisut palvelualan yrityksille",
+      title: "Restadigi — Älykkäät verkkosivut ja digitaaliset ratkaisut palvelualan yrityksille",
       description:
         "Rakennamme verkkosivuja, mobiiliapplikaatioita ja muita älykkäitä digitaalisia ratkaisuja palvelualan yrityksille — sisältäen varausjärjestelmät, asiakaspalvelun ja myynnin.",
       ogTitle: "Restadigi — Älykäs verkkosivusto, joka palvelee asiakkaitasi",
@@ -234,7 +234,8 @@ export const fi: Messages = {
       description:
         "Restadigi on pieni studio, joka rakentaa kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Tutustu tapaamme tehdä työtä.",
       ogTitle: "Meistä — Restadigi",
-      ogDescription: "Pieni studio, iso vastuu. Kotisivuja ja diginäkyvyyttä suomalaisille yrityksille.",
+      ogDescription:
+        "Pieni studio, iso vastuu. Kotisivuja ja diginäkyvyyttä suomalaisille yrityksille.",
     },
     eyebrow: "Meistä",
     titleBefore: "Pieni studio, ",
