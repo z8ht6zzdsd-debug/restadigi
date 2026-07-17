@@ -25,6 +25,8 @@ const FLEXIBLE_BOOKING_PATCH: Partial<Omit<RestaurantSettings, "id" | "updatedAt
   maxPartySize: 80,
   minPartySize: 1,
   slotMinutes: 30,
+  requireEmail: false,
+  requirePhone: true,
   reservationsEnabled: true,
   chatbotWelcomeMessage: DEFAULT_SETTINGS.chatbotWelcomeMessage,
   chatbotInstructions: DEFAULT_SETTINGS.chatbotInstructions,
@@ -56,6 +58,7 @@ export async function getRestaurantSettings(): Promise<RestaurantSettings> {
         row.minNoticeHours >= 2 ||
         row.maxPartySize < 80 ||
         row.maxCoversPerSlot < 80 ||
+        row.requireEmail === true ||
         (row.lunchEnabled &&
           row.dinnerEnabled &&
           timeToMinutes(row.lunchCloseTime) < timeToMinutes(row.dinnerOpenTime));
@@ -101,6 +104,46 @@ export async function upsertRestaurantSettings(
 function timeToMinutes(value: string) {
   const [hours, minutes] = value.split(":").map(Number);
   return hours * 60 + minutes;
+}
+
+/** Interpret YYYY-MM-DD + HH:MM as Europe/Helsinki wall time → UTC Date. */
+function parseHelsinkiDateTime(date: string, time: string): Date {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  const timeMatch = /^(\d{1,2}):(\d{2})$/.exec(time);
+  if (!match || !timeMatch) return new Date(NaN);
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const hour = Number(timeMatch[1]);
+  const minute = Number(timeMatch[2]);
+  if (![year, month, day, hour, minute].every(Number.isFinite)) return new Date(NaN);
+
+  // Iterate once: guess UTC, read Helsinki offset at that instant, adjust.
+  let utc = Date.UTC(year, month - 1, day, hour, minute, 0);
+  for (let i = 0; i < 2; i++) {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Europe/Helsinki",
+      timeZoneName: "longOffset",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).formatToParts(new Date(utc));
+
+    const get = (type: string) => parts.find((p) => p.type === type)?.value;
+    const tzName = get("timeZoneName") ?? "GMT+0";
+    const offsetMatch = /GMT([+-])(\d{1,2})(?::?(\d{2}))?/.exec(tzName);
+    const sign = offsetMatch?.[1] === "-" ? -1 : 1;
+    const offH = Number(offsetMatch?.[2] ?? 0);
+    const offM = Number(offsetMatch?.[3] ?? 0);
+    const offsetMs = sign * (offH * 60 + offM) * 60_000;
+    utc = Date.UTC(year, month - 1, day, hour, minute, 0) - offsetMs;
+  }
+  return new Date(utc);
 }
 
 function normalizeToSlot(time: string, slotMinutes: number) {
@@ -279,8 +322,8 @@ export function buildReservationTool(settings: RestaurantSettings) {
             type: "number",
             description: "Varauksen kesto tunteina: 2 (normaali) tai 3 (pyynnöstä)",
           },
-          guest_email: { type: "string", description: "Sähköposti" },
-          guest_phone: { type: "string", description: "Puhelinnumero" },
+          guest_email: { type: "string", description: "Sähköposti (vapaaehtoinen)" },
+          guest_phone: { type: "string", description: "Puhelinnumero (pakollinen)" },
           notes: { type: "string", description: "Erityistoiveet ja kesto (esim. Kesto: 2 h)" },
         },
         required,
@@ -345,18 +388,19 @@ export async function validateReservationInput(
     throw new Error("Ravintola on suljettu valittuna päivänä");
   }
 
-  const reservationDateTime = new Date(`${input.date}T${input.time}:00`);
+  const reservationDateTime = parseHelsinkiDateTime(input.date, input.time);
   if (Number.isNaN(reservationDateTime.getTime())) {
     throw new Error("Virheellinen kellonaika");
   }
 
   const now = new Date();
   const hoursUntil = (reservationDateTime.getTime() - now.getTime()) / (1000 * 60 * 60);
-  if (hoursUntil < settings.minNoticeHours) {
-    throw new Error(`Varaus vaatii vähintään ${settings.minNoticeHours} tuntia ennakkoilmoitusta`);
+  // Reject clearly past times (15 min grace for clock skew); skip when minNotice is 0
+  if (hoursUntil < -0.25) {
+    throw new Error("Varausaika on jo mennyt — ehdota myöhempää aikaa");
   }
-  if (hoursUntil < -1) {
-    throw new Error("Varausaika on jo mennyt");
+  if (settings.minNoticeHours > 0 && hoursUntil < settings.minNoticeHours) {
+    throw new Error(`Varaus vaatii vähintään ${settings.minNoticeHours} tuntia ennakkoilmoitusta`);
   }
 
   const maxDate = new Date();

@@ -22,10 +22,10 @@ export const DEFAULT_SETTINGS: Omit<RestaurantSettings, "updatedAt"> = {
   restaurantDescription:
     "Viihtyisä naapuristoravintola, joka tarjoaa tuoreita sesongin makuja ja lämpimän palvelun.",
   chatbotWelcomeMessage:
-    "Hei! Tervetuloa. Autan pöytävarauksessa — kerro nimesi, henkilömäärä, päivä, kellonaika (12–22), sähköposti ja puhelin. Normaali pöytäaika on 2 tuntia; 3 tuntia onnistuu pyynnöstä.",
+    "Hei! Tervetuloa. Autan pöytävarauksessa — kerro nimesi, henkilömäärä, päivä, kellonaika (12–22) ja puhelinnumero. Sähköposti on vapaaehtoinen. Normaali pöytäaika on 2 tuntia; 3 tuntia onnistuu pyynnöstä.",
   chatbotInstructions:
-    "Varaukset joka päivä klo 12:00–22:00. Normaali kesto 2 tuntia; 3 tuntia pyynnöstä. Älä torju varauksia turhaan — ole joustava.",
-  requireEmail: true,
+    "Varaukset joka päivä klo 12:00–22:00. Normaali kesto 2 tuntia; 3 tuntia pyynnöstä. Sähköposti ei ole pakollinen — puhelin riittää. Älä torju varauksia turhaan — ole joustava.",
+  requireEmail: false,
   requirePhone: true,
   minPartySize: 1,
   maxPartySize: 80,

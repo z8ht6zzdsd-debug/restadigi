@@ -639,7 +639,7 @@ export const en: Messages = {
       eyebrow: "Reservations",
       title: "Book a table",
       welcome:
-        "Hi! I can help you book a table. Share your name, party size, date, time (12:00–22:00), email and phone. Standard seating is 2 hours — 3 hours is available on request.",
+        "Hi! I can help you book a table. Share your name, party size, date, time (12:00–22:00) and phone number. Email is optional. Standard seating is 2 hours — 3 hours is available on request.",
       placeholder: "Type your message…",
       sendAria: "Send message",
       typing: "Typing…",

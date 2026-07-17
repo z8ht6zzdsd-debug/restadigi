@@ -645,7 +645,7 @@ export const es: Messages = {
       eyebrow: "Reservas",
       title: "Reservar mesa",
       welcome:
-        "¡Hola! Puedo ayudarte a reservar mesa. Indica nombre, personas, fecha, hora (12:00–22:00), correo y teléfono. La duración normal es 2 horas — 3 horas bajo petición.",
+        "¡Hola! Puedo ayudarte a reservar mesa. Indica nombre, personas, fecha, hora (12:00–22:00) y teléfono. El correo es opcional. La duración normal es 2 horas — 3 horas bajo petición.",
       placeholder: "Escribe tu mensaje…",
       sendAria: "Enviar mensaje",
       typing: "Escribiendo…",
