@@ -1,6 +1,7 @@
 import { and, eq, ne } from "drizzle-orm";
 
 import { getDb, schema } from "@/db";
+import { formatHelsinkiNowForPrompt } from "@/lib/date-utils";
 import {
   DEFAULT_SETTINGS,
   parseClosedWeekdays,
@@ -245,10 +246,23 @@ export function buildChatbotSystemPrompt(
         ? "Confirma la reserva con calidez en español y repite los datos principales, incluida la duración."
         : "Vahvista varaus lämpimästi suomeksi ja toista keskeiset tiedot, myös kesto.";
 
+  const clock = formatHelsinkiNowForPrompt();
+
   const reservationBlock = settings.reservationsEnabled
     ? `
 Olet ${settings.restaurantName} -ravintolan varausavustaja. Toimit kuin ravintolan henkilökunta — älä mainitse, että olet demo tai ulkopuolinen palvelu.
 Ole joustava ja avulias. Älä keksi turhia estoja. Kun tiedot on kerätty, kutsu create_restaurant_reservation heti.
+
+NYKYHETKI (Europe/Helsinki — ainoa totuus päivästä ja ajasta):
+- Nyt: ${clock.nowLabel}
+- Tänään: ${clock.today}
+- Huomenna: ${clock.tomorrow}
+- Kun asiakas sanoo "tänään", käytä päivämäärää ${clock.today}
+- Kun asiakas sanoo "huomenna", käytä päivämäärää ${clock.tomorrow}
+- Muunna viikonpäivät (esim. lauantai) oikeaan YYYY-MM-DD-päivään Helsingin kalenterin mukaan
+- ÄLÄ KOSKAAN väitä, että huominen tai muu tulevaisuuden päivä/aika on jo mennyt
+- Mennyt on vain jos varausaika on ennen nykyhetkeä (${clock.today} klo ${clock.time})
+- Älä arvaa vuotta tai kuukautta — käytä yllä olevia päivämääriä
 
 RAVINTOLA:
 ${identityLines}
@@ -269,7 +283,7 @@ VARAUSSÄÄNNÖT (noudata näitä, älä tiukenna):
 Kerää varaukselle (voit kysyä 2–3 asiaa kerralla, älä venytä keskustelua):
 1. Nimi
 2. Henkilömäärä
-3. Päivämäärä (YYYY-MM-DD)
+3. Päivämäärä (YYYY-MM-DD; tänään=${clock.today}, huomenna=${clock.tomorrow})
 4. Kellonaika (HH:MM, ${settings.openTime}–${settings.closeTime})
 5. Kesto: 2 tai 3 tuntia (oletus 2 jos asiakas ei sano)
 6. ${contactRules}
@@ -299,12 +313,13 @@ export function buildReservationTool(settings: RestaurantSettings) {
   if (settings.requirePhone) required.push("guest_phone");
 
   const serviceHint = formatServiceWindows(settings);
+  const clock = formatHelsinkiNowForPrompt();
 
   return {
     type: "function" as const,
     function: {
       name: "create_restaurant_reservation",
-      description: `Luo pöytävaraus ravintolaan ${settings.restaurantName}. Normaali kesto 2 h, 3 h pyynnöstä.`,
+      description: `Luo pöytävaraus ravintolaan ${settings.restaurantName}. Normaali kesto 2 h, 3 h pyynnöstä. Ajat Europe/Helsinki (nyt ${clock.nowLabel}).`,
       parameters: {
         type: "object",
         properties: {
@@ -313,10 +328,13 @@ export function buildReservationTool(settings: RestaurantSettings) {
             type: "number",
             description: `Henkilömäärä (${settings.minPartySize}-${settings.maxPartySize})`,
           },
-          date: { type: "string", description: "Päivämäärä YYYY-MM-DD" },
+          date: {
+            type: "string",
+            description: `Päivämäärä YYYY-MM-DD (Europe/Helsinki). Tänään=${clock.today}, huomenna=${clock.tomorrow}`,
+          },
           time: {
             type: "string",
-            description: `Aloitusaika HH:MM. Palveluajat: ${serviceHint}`,
+            description: `Aloitusaika HH:MM Europe/Helsinki-ajassa. Palveluajat: ${serviceHint}`,
           },
           duration_hours: {
             type: "number",

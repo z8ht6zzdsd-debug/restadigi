@@ -57,6 +57,7 @@ async function callOpenAi(
   apiKey: string,
   model: string,
   tools: OpenAiTool[],
+  temperature = 0.7,
 ) {
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
@@ -69,7 +70,7 @@ async function callOpenAi(
       messages,
       ...(tools.length > 0 ? { tools, tool_choice: "auto" as const } : {}),
       max_tokens: 600,
-      temperature: 0.7,
+      temperature,
     }),
   });
 
@@ -148,7 +149,8 @@ export const Route = createFileRoute("/api/chat")({
         ];
 
         try {
-          let data = await callOpenAi(openAiMessages, apiKey, model, tools);
+          const temperature = mode === "reservation" ? 0.3 : 0.7;
+          let data = await callOpenAi(openAiMessages, apiKey, model, tools, temperature);
           let assistantMsg = data.choices?.[0]?.message;
 
           if (assistantMsg?.tool_calls?.length) {
@@ -205,7 +207,7 @@ export const Route = createFileRoute("/api/chat")({
               });
             }
 
-            data = await callOpenAi(openAiMessages, apiKey, model, tools);
+            data = await callOpenAi(openAiMessages, apiKey, model, tools, temperature);
             assistantMsg = data.choices?.[0]?.message;
           }
 
