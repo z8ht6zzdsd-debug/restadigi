@@ -6,7 +6,7 @@ export function DashboardMonitorPreview({ className = "" }: { className?: string
   return (
     <div className={className} aria-hidden>
       {/* Monitor chassis */}
-      <div className="mx-auto w-full max-w-md lg:ml-auto lg:mr-0">
+      <div className="mx-auto w-full max-w-md">
         <div className="rounded-[0.95rem] border border-[#2a221c] bg-[#1a1512] p-[0.45rem] shadow-[0_18px_44px_-12px_rgba(26,18,12,0.4)]">
           <div className="overflow-hidden rounded-[0.55rem] border border-[#3d322a] bg-[#f7f5f2]">
             {/* Dashboard chrome */}

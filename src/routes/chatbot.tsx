@@ -59,7 +59,7 @@ function ChatbotPage() {
       <section className="border-t border-border bg-background pt-16 sm:pt-24 pb-8 sm:pb-12">
         <div className="mx-auto max-w-7xl px-6 mb-12 sm:mb-16">
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 mx-auto max-w-xl text-center">
               <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
                 {bot.eyebrow}
               </div>
@@ -72,7 +72,7 @@ function ChatbotPage() {
                 {bot.intro}
               </p>
             </div>
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 flex justify-center">
               <DashboardMonitorPreview />
             </div>
           </div>
