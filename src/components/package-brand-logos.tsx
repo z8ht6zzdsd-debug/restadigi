@@ -150,14 +150,23 @@ export function PackageBrandLogos({
     <div className="flex w-full shrink-0 justify-start md:w-auto md:justify-end" aria-hidden>
       <div className="grid grid-cols-2 gap-x-5 gap-y-5 sm:gap-x-6 sm:gap-y-6">
         {logos.map(({ name, Mark, tone }) => (
-          <Mark
-            key={name}
-            title={name}
-            className={
-              "size-11 sm:size-12 " +
-              (dark ? "text-primary-foreground" : (tone ?? "text-foreground"))
-            }
-          />
+          <div key={name} className="flex flex-col items-center gap-1.5">
+            <Mark
+              title={name}
+              className={
+                "size-11 sm:size-12 " +
+                (dark ? "text-primary-foreground" : (tone ?? "text-foreground"))
+              }
+            />
+            <span
+              className={
+                "text-center text-[10px] leading-tight " +
+                (dark ? "text-primary-foreground/70" : "text-foreground/55")
+              }
+            >
+              {name}
+            </span>
+          </div>
         ))}
       </div>
     </div>
