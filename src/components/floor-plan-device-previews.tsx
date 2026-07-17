@@ -130,9 +130,6 @@ function PhonePreview() {
         </ScreenChrome>
         <div className="mx-auto mt-1.5 h-1 w-8 rounded-full bg-[#3d322a]" />
       </div>
-      <p className="mt-3 text-center text-[10px] uppercase tracking-[0.14em] text-[#8a8178]">
-        Mobiili
-      </p>
     </div>
   );
 }
@@ -170,9 +167,6 @@ function TabletPreview() {
           </div>
         </ScreenChrome>
       </div>
-      <p className="mt-3 text-center text-[10px] uppercase tracking-[0.14em] text-[#8a8178]">
-        Tabletti
-      </p>
     </div>
   );
 }
@@ -237,9 +231,6 @@ function MonitorPreview() {
         <div className="h-2.5 w-[18%] bg-[#2a221c]" />
         <div className="h-1.5 w-full rounded-b-sm bg-[#1a1512]" />
       </div>
-      <p className="mt-3 text-center text-[10px] uppercase tracking-[0.14em] text-[#8a8178]">
-        Iso näyttö
-      </p>
     </div>
   );
 }
