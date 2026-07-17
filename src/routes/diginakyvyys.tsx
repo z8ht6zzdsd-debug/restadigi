@@ -106,7 +106,7 @@ function DiginakyvyysPage() {
                       {v.resultPrefix} {p.result}
                     </p>
                   </div>
-                  <div className="mb-6 flex flex-1 flex-col gap-5 md:mb-0 md:pt-8">
+                  <div className="mb-6 flex flex-1 flex-col gap-5 md:mb-0 md:pt-[2cm]">
                     <ul className="space-y-2 text-sm">
                       {p.bullets.map((b) => (
                         <li key={b} className="flex gap-3">
@@ -138,7 +138,7 @@ function DiginakyvyysPage() {
                     </div>
                   </div>
                   {packageLogoKind(p.name) && (
-                    <div className="md:pt-8">
+                    <div className="md:pt-[2cm]">
                       <PackageBrandLogos kind={packageLogoKind(p.name)!} dark={dark} />
                     </div>
                   )}
