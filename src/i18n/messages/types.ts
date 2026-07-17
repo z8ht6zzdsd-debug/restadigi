@@ -303,6 +303,8 @@ export type Messages = {
       titleBefore: string;
       titleAccent: string;
       titleAfter: string;
+      price: string;
+      priceNote: string;
       button: string;
     };
   };
