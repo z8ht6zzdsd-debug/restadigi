@@ -97,42 +97,46 @@ function DiginakyvyysPage() {
                     >
                       {p.description}
                     </p>
-                    <div className="mb-2 font-serif text-3xl sm:text-4xl">{p.price}</div>
                     <p
                       className={
-                        "mb-4 text-sm italic " +
+                        "text-sm italic " +
                         (dark ? "text-primary-foreground/75" : "text-foreground/65")
                       }
                     >
                       {v.resultPrefix} {p.result}
                     </p>
-                    <Link
-                      to="/yhteys"
-                      className={
-                        "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors " +
-                        (dark
-                          ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
-                          : "bg-primary text-primary-foreground hover:bg-accent")
-                      }
-                    >
-                      {v.contactCta}
-                    </Link>
                   </div>
-                  <ul className="mb-6 flex-1 space-y-2 text-sm md:mb-0">
-                    {p.bullets.map((b) => (
-                      <li key={b} className="flex gap-3">
-                        <span className="mt-1.5 size-1 shrink-0 rounded-full bg-accent" />
-                        <span
-                          className={
-                            "leading-snug " +
-                            (dark ? "text-primary-foreground/85" : "text-foreground/75")
-                          }
-                        >
-                          {b}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mb-6 flex flex-1 flex-col gap-5 md:mb-0">
+                    <ul className="space-y-2 text-sm">
+                      {p.bullets.map((b) => (
+                        <li key={b} className="flex gap-3">
+                          <span className="mt-1.5 size-1 shrink-0 rounded-full bg-accent" />
+                          <span
+                            className={
+                              "leading-snug " +
+                              (dark ? "text-primary-foreground/85" : "text-foreground/75")
+                            }
+                          >
+                            {b}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div>
+                      <div className="mb-3 font-serif text-3xl sm:text-4xl">{p.price}</div>
+                      <Link
+                        to="/yhteys"
+                        className={
+                          "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors " +
+                          (dark
+                            ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
+                            : "bg-primary text-primary-foreground hover:bg-accent")
+                        }
+                      >
+                        {v.contactCta}
+                      </Link>
+                    </div>
+                  </div>
                   {packageLogoKind(p.name) && (
                     <PackageBrandLogos kind={packageLogoKind(p.name)!} dark={dark} />
                   )}
