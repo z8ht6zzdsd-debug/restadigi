@@ -3,6 +3,8 @@ import heroYllapito from "@/assets/hero-yllapito.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
+import { PageMeta } from "@/components/page-meta";
+import { useMessages } from "@/i18n";
 
 export const Route = createFileRoute("/yllapito")({
   head: () => ({
@@ -23,58 +25,40 @@ export const Route = createFileRoute("/yllapito")({
   component: YllapitoPage,
 });
 
-const hosting = [
-  {
-    name: "Basic",
-    price: "9,99 € / kk + alv",
-    bullets: [
-      "Hosting ja verkkotunnus sisältyvät hintaan",
-      "Nopea ja luotettava hosting Suomessa",
-      "SSL-sertifikaatti (HTTPS) sisältyy",
-      "Domain (.fi tai muu) sisältyy hintaan",
-    ],
-  },
-  {
-    name: "Pro Business",
-    price: "29,99 € / kk + alv",
-    featured: true,
-    bullets: [
-      "Hosting ja verkkotunnus sisältyvät hintaan",
-      "Nopea ja luotettava hosting Suomessa",
-      "SSL-sertifikaatti (HTTPS) sisältyy",
-      "Domain (.fi tai muu) sisältyy hintaan",
-      "Sähköpostiosoitteet sisältyvät",
-      "Jatkuva ylläpito ja päivitykset",
-      "Pienet sisältömuutokset sisältyvät",
-      "Tietoturvapäivitykset",
-      "Henkilökohtainen tuki puhelimitse",
-    ],
-  },
-];
-
 function YllapitoPage() {
+  const t = useMessages();
+  const h = t.hosting;
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
+      <PageMeta
+        title={h.meta.title}
+        description={h.meta.description}
+        ogTitle={h.meta.ogTitle}
+        ogDescription={h.meta.ogDescription}
+      />
       <SiteHeader />
 
       <PageHero
         image={heroYllapito}
         title={
           <>
-            Hosting ja <span className="font-serif italic text-accent">ylläpito</span>.
+            {h.hero.titleBefore}
+            <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
+            {h.hero.titleAfter}
           </>
         }
-        description="Pidämme sivustosi nopeana, turvallisena ja ajan tasalla. Valitse sopiva hosting- ja ylläpitopaketti — domain ja SSL sisältyvät hintaan."
+        description={h.hero.description}
       />
 
       <section className="pb-24 sm:pb-32">
         <div>
-          {hosting.map((h, i) => {
-            const dark = Boolean(h.featured);
+          {h.packages.map((pkg, i) => {
+            const dark = Boolean(pkg.featured);
             const alt = !dark && i % 2 === 1;
             return (
               <div
-                key={h.name}
+                key={pkg.name}
                 className={
                   "w-full px-6 py-12 sm:py-16 " +
                   (dark
@@ -87,14 +71,14 @@ function YllapitoPage() {
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
                   <div className="md:w-72 shrink-0 mb-8 md:mb-0">
                     <div className="flex items-baseline gap-3 mb-2">
-                      <h3 className="text-2xl font-medium">{h.name}</h3>
-                      {h.featured && (
+                      <h3 className="text-2xl font-medium">{pkg.name}</h3>
+                      {pkg.featured && (
                         <span className="text-[10px] uppercase tracking-[0.2em] bg-accent text-accent-foreground px-2 py-1 rounded-full">
-                          Suosittu
+                          {h.popular}
                         </span>
                       )}
                     </div>
-                    <div className="text-4xl font-serif mb-6">{h.price}</div>
+                    <div className="text-4xl font-serif mb-6">{pkg.price}</div>
                     <Link
                       to="/yhteys"
                       className={
@@ -104,15 +88,15 @@ function YllapitoPage() {
                           : "bg-primary text-primary-foreground hover:bg-accent")
                       }
                     >
-                      Pyydä tarjous
+                      {h.requestQuote}
                     </Link>
                   </div>
                   <ul className="space-y-3 text-sm flex-1">
-                    {h.bullets.map((b) => (
-                      <li key={b} className="flex gap-3">
+                    {pkg.bullets.map((bullet) => (
+                      <li key={bullet} className="flex gap-3">
                         <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
                         <span className={dark ? "text-primary-foreground/85" : "text-foreground/75"}>
-                          {b}
+                          {bullet}
                         </span>
                       </li>
                     ))}
@@ -122,8 +106,7 @@ function YllapitoPage() {
             );
           })}
           <p className="mt-8 text-xs text-muted-foreground max-w-6xl mx-auto px-6">
-            Hosting- ja ylläpitohinnat laskutetaan kuukausittain. Domain ja SSL-sertifikaatti
-            sisältyvät hintaan.
+            {h.footnote}
           </p>
         </div>
       </section>

@@ -1,10 +1,15 @@
+import { useMessages } from "@/i18n";
+
 type SiteFooterProps = {
   /** When set to primary, footer blends into a primary-colored page end. */
   tone?: "default" | "primary";
 };
 
 export function SiteFooter({ tone = "default" }: SiteFooterProps) {
+  const t = useMessages();
   const onPrimary = tone === "primary";
+  const year = new Date().getFullYear();
+  const copyright = t.footer.copyright.replace("{year}", String(year));
 
   return (
     <footer
@@ -22,7 +27,7 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
               : "text-sm text-muted-foreground"
           }
         >
-          &copy; {new Date().getFullYear()} Restadigi — Helsinki
+          {copyright}
         </div>
         <div
           className={
@@ -39,7 +44,7 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
                 : "hover:text-foreground transition-colors"
             }
           >
-            Instagram
+            {t.footer.instagram}
           </a>
           <a
             href="#"
@@ -49,7 +54,7 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
                 : "hover:text-foreground transition-colors"
             }
           >
-            Behance
+            {t.footer.behance}
           </a>
           <a
             href="#"
@@ -59,7 +64,7 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
                 : "hover:text-foreground transition-colors"
             }
           >
-            LinkedIn
+            {t.footer.linkedin}
           </a>
         </div>
       </div>

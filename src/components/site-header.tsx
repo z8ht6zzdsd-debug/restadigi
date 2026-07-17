@@ -1,59 +1,30 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import restadigiLogo from "@/assets/restadigi-logo.png";
-
-const palvelut = [
-  { to: "/kotisivut-yrityksille", label: "Verkkosivut" },
-  { to: "/diginakyvyys", label: "Näkyvyys ja suunnittelu" },
-  { to: "/chatbot", label: "AI-asiakaspalvelu" },
-  { to: "/potyvarauspalvelu", label: "Pöytävarauspalvelu" },
-  { to: "/yllapito", label: "Ylläpito" },
-] as const;
-
-const toimialat = [
-  {
-    title: "Areenat, tapahtumat ja esiintyjät",
-    body: "Verkkosivut, diginäkyvyys sekä lippu- ja myyntiratkaisut, jotka tuovat fanit, liput ja esiintyjät yhteen — selkeästi ja brändin mukaisesti.",
-  },
-  {
-    title: "Hotellit ja hostellit",
-    body: "Varausten hallinta ja myynti, digitaalinen check-in sekä matkustajarekisteröinti, AI-asiakaspalvelu 24/7 — majoitustoiminnan digitaalinen selkäranka.",
-  },
-  {
-    title: "Matkailu ja aktiviteetit",
-    body: "Varausjärjestelmät, näkyvyys- ja myyntiratkaisut sekä AI-asiakaspalvelu, joilla aktiviteetit ja elämykset löytyvät ja varataan helposti.",
-  },
-  {
-    title: "Ravintolat",
-    body: "Fine diningista fast foodiin: verkkosivut, mobiiliapplikaatiot, pöytävaraukset ja AI-asiakaspalvelu — myynti ja palvelu ympäri vuorokauden.",
-  },
-  {
-    title: "Kahvilat ja kioskit",
-    body: "Tyylikkäät verkkosivut ja mobiiliapplikaatio kanta-asiakasohjelmalla — brändi, toistot ja asiakassuhde samassa kokonaisuudessa.",
-  },
-  {
-    title: "Kuntosalit ja personal trainerit",
-    body: "Kustomoitu treeniaikataulujen hallintapaneeli — varaukset, aikataulut ja asiakasviestintä yhdessä selkeässä näkymässä.",
-  },
-  {
-    title: "Parturit, kampaamot ja hoitolapalvelut",
-    body: "Modernit verkkosivut ja ajanvaraus, joilla palvelusi näkyvät, varataan ja myydään ilman turhaa puhelinkierrosta.",
-  },
-] as const;
-
-const kielet = [
-  { code: "fi", label: "Suomi" },
-  { code: "en", label: "Englanti" },
-  { code: "es", label: "Espanja" },
-] as const;
+import { LocaleFlag, useLocale, useMessages, type Locale } from "@/i18n";
 
 type MenuKey = "palvelut" | "toimialat" | "kielet" | null;
 
+const SERVICE_PATHS = [
+  "/kotisivut-yrityksille",
+  "/diginakyvyys",
+  "/chatbot",
+  "/potyvarauspalvelu",
+  "/yllapito",
+] as const;
+
+type ServicePath = (typeof SERVICE_PATHS)[number];
+
+function isServicePath(to: string): to is ServicePath {
+  return (SERVICE_PATHS as readonly string[]).includes(to);
+}
+
 export function SiteHeader() {
+  const t = useMessages();
+  const { locale, setLocale } = useLocale();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [desktopMenu, setDesktopMenu] = useState<MenuKey>(null);
   const [mobileSection, setMobileSection] = useState<MenuKey>(null);
-  const [language, setLanguage] = useState<(typeof kielet)[number]["code"]>("fi");
   const navRef = useRef<HTMLElement>(null);
   const baseId = useId();
 
@@ -85,6 +56,13 @@ export function SiteHeader() {
     setMobileSection((cur) => (cur === key ? null : key));
   }
 
+  function pickLanguage(code: Locale) {
+    setLocale(code);
+    setDesktopMenu(null);
+    setMobileOpen(false);
+    setMobileSection(null);
+  }
+
   const triggerClass =
     "inline-flex items-center gap-1.5 whitespace-nowrap text-xs tracking-[0.12em] uppercase text-foreground/70 transition-colors hover:text-foreground xl:text-sm";
 
@@ -98,20 +76,18 @@ export function SiteHeader() {
             setMobileOpen(false);
             setDesktopMenu(null);
           }}
-          aria-label="Restadigi — etusivu"
+          aria-label={t.header.homeAria}
         >
           <img
             src={restadigiLogo}
-            alt="Restadigi — AI ja web"
+            alt={t.header.logoAlt}
             width={640}
             height={172}
             className="site-header__logo"
           />
         </Link>
 
-        {/* Desktop */}
         <div className="hidden items-center gap-5 lg:flex xl:gap-7">
-          {/* Palvelut */}
           <div className="relative">
             <button
               type="button"
@@ -120,7 +96,7 @@ export function SiteHeader() {
               aria-controls={`${baseId}-palvelut`}
               onClick={() => toggleDesktop("palvelut")}
             >
-              Palvelut
+              {t.header.services}
               <Chevron open={desktopMenu === "palvelut"} />
             </button>
             {desktopMenu === "palvelut" && (
@@ -128,22 +104,23 @@ export function SiteHeader() {
                 id={`${baseId}-palvelut`}
                 className="absolute left-0 top-full z-40 mt-3 min-w-[16rem] rounded-xl border border-border bg-background p-2 shadow-lg"
               >
-                {palvelut.map((item) => (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setDesktopMenu(null)}
-                    className="block rounded-lg px-3 py-2.5 text-sm text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
-                    activeProps={{ className: "bg-muted text-foreground" }}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {t.header.servicesList.map((item) =>
+                  isServicePath(item.to) ? (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setDesktopMenu(null)}
+                      className="block rounded-lg px-3 py-2.5 text-sm text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+                      activeProps={{ className: "bg-muted text-foreground" }}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : null,
+                )}
               </div>
             )}
           </div>
 
-          {/* Toimialat */}
           <div className="relative">
             <button
               type="button"
@@ -152,7 +129,7 @@ export function SiteHeader() {
               aria-controls={`${baseId}-toimialat`}
               onClick={() => toggleDesktop("toimialat")}
             >
-              Toimialat
+              {t.header.industries}
               <Chevron open={desktopMenu === "toimialat"} />
             </button>
             {desktopMenu === "toimialat" && (
@@ -160,13 +137,14 @@ export function SiteHeader() {
                 id={`${baseId}-toimialat`}
                 className="absolute right-0 top-full z-40 mt-3 w-[min(38rem,calc(100vw-3rem))] rounded-xl border border-border bg-background p-6 shadow-lg xl:w-[42rem]"
               >
-                <div className="mb-1 text-xs uppercase tracking-[0.2em] text-accent">Toimialat</div>
+                <div className="mb-1 text-xs uppercase tracking-[0.2em] text-accent">
+                  {t.header.industries}
+                </div>
                 <p className="mb-5 text-sm leading-relaxed text-foreground/55">
-                  Toimialakohtaiset digiratkaisut — verkkosivut, varaukset, näkyvyys ja
-                  AI-asiakaspalvelu palvelualan yrityksille.
+                  {t.header.industriesIntro}
                 </p>
                 <ul className="space-y-0 divide-y divide-border/80">
-                  {toimialat.map((item) => (
+                  {t.header.industriesList.map((item) => (
                     <li key={item.title} className="py-3.5 first:pt-0 last:pb-0">
                       <div className="text-sm font-medium tracking-tight text-foreground">
                         {item.title}
@@ -179,38 +157,37 @@ export function SiteHeader() {
             )}
           </div>
 
-          {/* Kielet */}
           <div className="relative">
             <button
               type="button"
-              className={triggerClass}
+              className={`${triggerClass} gap-2`}
               aria-expanded={desktopMenu === "kielet"}
               aria-controls={`${baseId}-kielet`}
               onClick={() => toggleDesktop("kielet")}
+              aria-label={t.header.languages}
             >
-              Kielet
+              <LocaleFlag locale={locale} className="size-4 rounded-[2px] ring-1 ring-border/60" />
+              <span className="uppercase tracking-[0.12em]">{locale}</span>
               <Chevron open={desktopMenu === "kielet"} />
             </button>
             {desktopMenu === "kielet" && (
               <div
                 id={`${baseId}-kielet`}
-                className="absolute right-0 top-full z-40 mt-3 min-w-[10rem] rounded-xl border border-border bg-background p-2 shadow-lg"
+                className="absolute right-0 top-full z-40 mt-3 min-w-[11rem] rounded-xl border border-border bg-background p-2 shadow-lg"
               >
-                {kielet.map((item) => (
+                {t.header.languagesList.map((item) => (
                   <button
                     key={item.code}
                     type="button"
-                    onClick={() => {
-                      setLanguage(item.code);
-                      setDesktopMenu(null);
-                    }}
+                    onClick={() => pickLanguage(item.code)}
                     className={
-                      language === item.code
-                        ? "block w-full rounded-lg bg-muted px-3 py-2.5 text-left text-sm text-foreground"
-                        : "block w-full rounded-lg px-3 py-2.5 text-left text-sm text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+                      locale === item.code
+                        ? "flex w-full items-center gap-2.5 rounded-lg bg-muted px-3 py-2.5 text-left text-sm text-foreground"
+                        : "flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-sm text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
                     }
                   >
-                    {item.label}
+                    <LocaleFlag locale={item.code} className="size-5 rounded-[2px] ring-1 ring-border/50" />
+                    <span>{item.label}</span>
                   </button>
                 ))}
               </div>
@@ -218,10 +195,9 @@ export function SiteHeader() {
           </div>
         </div>
 
-        {/* Mobile toggle */}
         <button
           type="button"
-          aria-label="Valikko"
+          aria-label={t.header.menu}
           aria-expanded={mobileOpen}
           onClick={() => {
             setMobileOpen((o) => !o);
@@ -245,44 +221,46 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {/* Mobile panel */}
       {mobileOpen && (
         <div className="lg:hidden absolute inset-x-0 top-full z-40 border-t border-border bg-background shadow-md">
           <div className="mx-auto flex max-w-6xl flex-col gap-1 py-4 pl-2 pr-6 sm:pl-3">
             <MobileSection
-              label="Palvelut"
+              label={t.header.services}
               open={mobileSection === "palvelut"}
               onToggle={() => toggleMobileSection("palvelut")}
             >
-              {palvelut.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  onClick={() => {
-                    setMobileOpen(false);
-                    setMobileSection(null);
-                  }}
-                  className="block py-2 text-base text-foreground/80 hover:text-foreground"
-                  activeProps={{ className: "text-accent" }}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {t.header.servicesList.map((item) =>
+                isServicePath(item.to) ? (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setMobileSection(null);
+                    }}
+                    className="block py-2 text-base text-foreground/80 hover:text-foreground"
+                    activeProps={{ className: "text-accent" }}
+                  >
+                    {item.label}
+                  </Link>
+                ) : null,
+              )}
             </MobileSection>
 
             <MobileSection
-              label="Toimialat"
+              label={t.header.industries}
               open={mobileSection === "toimialat"}
               onToggle={() => toggleMobileSection("toimialat")}
             >
               <div className="rounded-xl border border-border bg-muted/40 p-4">
-                <div className="mb-1 text-[10px] uppercase tracking-[0.2em] text-accent">Toimialat</div>
+                <div className="mb-1 text-[10px] uppercase tracking-[0.2em] text-accent">
+                  {t.header.industries}
+                </div>
                 <p className="mb-4 text-sm leading-relaxed text-foreground/55">
-                  Toimialakohtaiset digiratkaisut — verkkosivut, varaukset, näkyvyys ja
-                  AI-asiakaspalvelu palvelualan yrityksille.
+                  {t.header.industriesIntro}
                 </p>
                 <ul className="space-y-0 divide-y divide-border/70">
-                  {toimialat.map((item) => (
+                  {t.header.industriesList.map((item) => (
                     <li key={item.title} className="py-3 first:pt-0 last:pb-0">
                       <div className="text-sm font-medium text-foreground">{item.title}</div>
                       <p className="mt-1 text-sm leading-relaxed text-foreground/60">{item.body}</p>
@@ -293,22 +271,23 @@ export function SiteHeader() {
             </MobileSection>
 
             <MobileSection
-              label="Kielet"
+              label={t.header.languages}
               open={mobileSection === "kielet"}
               onToggle={() => toggleMobileSection("kielet")}
             >
-              {kielet.map((item) => (
+              {t.header.languagesList.map((item) => (
                 <button
                   key={item.code}
                   type="button"
-                  onClick={() => setLanguage(item.code)}
+                  onClick={() => pickLanguage(item.code)}
                   className={
-                    language === item.code
-                      ? "block w-full py-2 text-left text-base text-accent"
-                      : "block w-full py-2 text-left text-base text-foreground/80 hover:text-foreground"
+                    locale === item.code
+                      ? "flex w-full items-center gap-2.5 py-2 text-left text-base text-accent"
+                      : "flex w-full items-center gap-2.5 py-2 text-left text-base text-foreground/80 hover:text-foreground"
                   }
                 >
-                  {item.label}
+                  <LocaleFlag locale={item.code} className="size-5 rounded-[2px] ring-1 ring-border/50" />
+                  <span>{item.label}</span>
                 </button>
               ))}
             </MobileSection>

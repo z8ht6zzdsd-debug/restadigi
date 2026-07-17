@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import restaurantKitchen from "@/assets/restaurant-kitchen.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PageMeta } from "@/components/page-meta";
+import { useMessages } from "@/i18n";
 
 export const Route = createFileRoute("/meista")({
   head: () => ({
@@ -24,53 +26,35 @@ export const Route = createFileRoute("/meista")({
   component: MeistaPage,
 });
 
-const values = [
-  {
-    t: "Käsityönä tehty",
-    d: "Ei mallipohjia. Jokainen projekti suunnitellaan alusta asti tavoitteidesi mukaan.",
-  },
-  {
-    t: "Läpinäkyvä hinnoittelu",
-    d: "Selkeät paketit ja lisäpalvelut — tiedät mistä maksat, alusta loppuun.",
-  },
-  {
-    t: "Pitkäjänteinen kumppanuus",
-    d: "Autamme myös julkaisun jälkeen — päivityksissä, kehityksessä ja ylläpidossa.",
-  },
-];
-
-const process = [
-  { n: "01", t: "Keskustelu", d: "Kartoitetaan tavoitteet, kohderyhmä ja aikataulu yhdessä." },
-  { n: "02", t: "Suunnittelu", d: "Rakenne, visuaalinen ilme ja sisältö hiotaan iteratiivisesti." },
-  { n: "03", t: "Toteutus", d: "Rakennamme sivuston hakukoneoptimoituna ja saavutettavana." },
-  {
-    n: "04",
-    t: "Julkaisu & tuki",
-    d: "Julkaisu, koulutus hallintapaneelin käyttöön ja jatkotuki.",
-  },
-];
-
 function MeistaPage() {
+  const t = useMessages();
+  const a = t.about;
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
+      <PageMeta
+        title={a.meta.title}
+        description={a.meta.description}
+        ogTitle={a.meta.ogTitle}
+        ogDescription={a.meta.ogDescription}
+      />
       <SiteHeader />
 
       {/* Intro */}
       <header className="pt-10 pb-16 sm:pt-16 sm:pb-24">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Meistä</div>
+          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">{a.eyebrow}</div>
           <h1 className="text-4xl sm:text-6xl leading-[1.02] font-medium text-balance max-w-[16ch] mb-8 tracking-tight">
-            Pieni studio, <span className="font-serif italic text-accent">iso</span> vastuu.
+            {a.titleBefore}
+            <span className="font-serif italic text-accent">{a.titleAccent}</span>
+            {a.titleAfter}
           </h1>
           <div className="grid md:grid-cols-12 gap-8">
             <p className="md:col-span-7 text-base sm:text-lg text-foreground/70 leading-relaxed">
-              Restadigi on itsenäinen digistudio, joka rakentaa kotisivuja ja vahvistaa pienten ja
-              keskisuurten yritysten diginäkyvyyttä. Käytämme uusinta teknologiaa, jotta sivut
-              valmistuvat nopeasti, toimivat kaikilla laitteilla ja ovat helposti päivitettävissä.
+              {a.lead}
             </p>
             <p className="md:col-span-5 text-base text-foreground/60 leading-relaxed">
-              Työskentelemme mielellämme pitkäjänteisesti: samat kädet, jotka suunnittelevat
-              sivustosi, auttavat myös sen näkyvyyden ja kehittämisen kanssa eteenpäin.
+              {a.secondary}
             </p>
           </div>
         </div>
@@ -81,7 +65,7 @@ function MeistaPage() {
         <div className="max-w-6xl mx-auto">
           <img
             src={restaurantKitchen}
-            alt="Kokki valmistaa annosta ravintolan keittiössä"
+            alt={a.imageAlt}
             width={1600}
             height={900}
             className="w-full aspect-[16/9] object-cover rounded-sm"
@@ -93,13 +77,13 @@ function MeistaPage() {
       <section className="py-24 sm:py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {values.map((v) => (
-              <div key={v.t}>
+            {a.values.map((v) => (
+              <div key={v.titleAccent + v.titleRest}>
                 <h3 className="text-xl font-medium mb-3">
-                  <span className="font-serif italic text-accent">{v.t.split(" ")[0]}</span>{" "}
-                  {v.t.split(" ").slice(1).join(" ")}
+                  <span className="font-serif italic text-accent">{v.titleAccent}</span>{" "}
+                  {v.titleRest}
                 </h3>
-                <p className="text-sm text-foreground/60 leading-relaxed">{v.d}</p>
+                <p className="text-sm text-foreground/60 leading-relaxed">{v.body}</p>
               </div>
             ))}
           </div>
@@ -112,17 +96,19 @@ function MeistaPage() {
           <div className="grid md:grid-cols-12 gap-12 items-start">
             <div className="md:col-span-4">
               <h2 className="text-3xl sm:text-4xl font-medium leading-[1.1] tracking-tight text-balance">
-                Neljä <span className="font-serif italic">askelta</span> valmiiseen sivustoon.
+                {a.process.titleBefore}
+                <span className="font-serif italic">{a.process.titleAccent}</span>
+                {a.process.titleAfter}
               </h2>
             </div>
             <div className="md:col-span-7 md:col-start-6">
               <div className="space-y-6">
-                {process.map((s) => (
+                {a.process.steps.map((s) => (
                   <div key={s.n} className="flex gap-5 border-t border-border pt-6">
                     <span className="text-xs font-mono text-accent tabular-nums pt-1">{s.n}</span>
                     <div>
-                      <h3 className="text-lg font-medium mb-1.5">{s.t}</h3>
-                      <p className="text-sm text-foreground/60 leading-relaxed">{s.d}</p>
+                      <h3 className="text-lg font-medium mb-1.5">{s.title}</h3>
+                      <p className="text-sm text-foreground/60 leading-relaxed">{s.body}</p>
                     </div>
                   </div>
                 ))}
@@ -136,13 +122,15 @@ function MeistaPage() {
       <section className="py-24 sm:py-32">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-5xl font-medium leading-[1.05] tracking-tight text-balance max-w-[20ch] mx-auto">
-            Kuulostaako <span className="font-serif italic text-accent">yhteistyö</span> hyvältä?
+            {a.cta.titleBefore}
+            <span className="font-serif italic text-accent">{a.cta.titleAccent}</span>
+            {a.cta.titleAfter}
           </h2>
           <Link
             to="/yhteys"
             className="inline-flex items-center gap-3 mt-10 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
           >
-            Ota yhteyttä
+            {a.cta.button}
             <svg
               className="size-4"
               fill="none"

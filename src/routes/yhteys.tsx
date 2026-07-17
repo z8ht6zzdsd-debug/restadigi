@@ -4,6 +4,8 @@ import heroYhteys from "@/assets/hero-yhteys.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
+import { PageMeta } from "@/components/page-meta";
+import { useMessages } from "@/i18n";
 
 export const Route = createFileRoute("/yhteys")({
   head: () => ({
@@ -25,31 +27,53 @@ export const Route = createFileRoute("/yhteys")({
 });
 
 function YhteysPage() {
+  const t = useMessages();
+  const c = t.contact;
   const [sent, setSent] = useState(false);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const subject = encodeURIComponent(`Projektikysely — ${data.get("name") ?? ""}`);
-    const body = encodeURIComponent(
-      `Nimi: ${data.get("name")}\nYritys: ${data.get("company")}\nSähköposti: ${data.get("email")}\nBudjetti: ${data.get("budget")}\n\nViesti:\n${data.get("message")}`,
+    const name = String(data.get("name") ?? "");
+    const company = String(data.get("company") ?? "");
+    const email = String(data.get("email") ?? "");
+    const budget = String(data.get("budget") ?? "");
+    const message = String(data.get("message") ?? "");
+    const subject = encodeURIComponent(
+      c.form.mailSubject.replace("{name}", name),
     );
-    window.location.href = `mailto:info@restadigi.fi?subject=${subject}&body=${body}`;
+    const body = encodeURIComponent(
+      c.form.mailBody
+        .replace("{name}", name)
+        .replace("{company}", company)
+        .replace("{email}", email)
+        .replace("{budget}", budget)
+        .replace("{message}", message),
+    );
+    window.location.href = `mailto:${c.email}?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
+      <PageMeta
+        title={c.meta.title}
+        description={c.meta.description}
+        ogTitle={c.meta.ogTitle}
+        ogDescription={c.meta.ogDescription}
+      />
       <SiteHeader />
 
       <PageHero
         image={heroYhteys}
         title={
           <>
-            Kerro <span className="font-serif italic text-accent">projektistasi</span>.
+            {c.hero.titleBefore}
+            <span className="font-serif italic text-accent">{c.hero.titleAccent}</span>
+            {c.hero.titleAfter}
           </>
         }
-        description="Vastaamme yleensä yhden arkipäivän sisällä. Voit myös laittaa suoraan sähköpostia tai varata lyhyen puhelun."
+        description={c.hero.description}
       />
 
       <section className="pb-24 sm:pb-32">
@@ -58,49 +82,49 @@ function YhteysPage() {
           <aside className="md:col-span-4 space-y-8">
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Sähköposti
+                {c.labels.email}
               </div>
               <a
-                href="mailto:info@restadigi.fi"
+                href={`mailto:${c.email}`}
                 className="text-lg font-serif hover:text-accent transition-colors"
               >
-                info@restadigi.fi
+                {c.email}
               </a>
             </div>
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Puhelin
+                {c.labels.phone}
               </div>
               <a
-                href="tel:+358401234567"
+                href={`tel:${c.phoneTel}`}
                 className="text-lg font-serif hover:text-accent transition-colors"
               >
-                +358 40 123 4567
+                {c.phoneDisplay}
               </a>
             </div>
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Studio
+                {c.labels.studio}
               </div>
               <p className="text-base text-foreground/70">
-                Helsinki, Suomi
+                {c.studioLine1}
                 <br />
-                Etätyö koko Euroopassa
+                {c.studioLine2}
               </p>
             </div>
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Some
+                {c.labels.social}
               </div>
               <div className="flex gap-6 text-sm text-foreground/70">
                 <a href="#" className="hover:text-foreground">
-                  Instagram
+                  {t.footer.instagram}
                 </a>
                 <a href="#" className="hover:text-foreground">
-                  Behance
+                  {t.footer.behance}
                 </a>
                 <a href="#" className="hover:text-foreground">
-                  LinkedIn
+                  {t.footer.linkedin}
                 </a>
               </div>
             </div>
@@ -109,32 +133,27 @@ function YhteysPage() {
           {/* Lomake */}
           <form onSubmit={onSubmit} className="md:col-span-7 md:col-start-6 space-y-6">
             <div className="grid sm:grid-cols-2 gap-6">
-              <Field label="Nimi" name="name" required />
-              <Field label="Yritys" name="company" />
+              <Field label={c.form.name} name="name" required />
+              <Field label={c.form.company} name="company" />
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
-              <Field label="Sähköposti" name="email" type="email" required />
+              <Field label={c.form.email} name="email" type="email" required />
               <SelectField
-                label="Budjetti"
+                label={c.form.budget}
                 name="budget"
-                options={[
-                  "Alle 1 000 €",
-                  "1 000 – 2 500 €",
-                  "2 500 – 5 000 €",
-                  "Yli 5 000 €",
-                  "En osaa vielä sanoa",
-                ]}
+                placeholder={c.form.selectPlaceholder}
+                options={c.form.budgetOptions}
               />
             </div>
             <div>
               <label className="block text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Viesti
+                {c.form.message}
               </label>
               <textarea
                 name="message"
                 required
                 rows={6}
-                placeholder="Kerro projektista, aikataulusta ja tavoitteista…"
+                placeholder={c.form.messagePlaceholder}
                 className="w-full bg-transparent border-b border-border focus:border-foreground outline-none py-3 text-base resize-none transition-colors"
               />
             </div>
@@ -143,7 +162,7 @@ function YhteysPage() {
                 type="submit"
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground text-sm font-medium py-3 pr-4 pl-5 rounded-full hover:bg-accent transition-colors"
               >
-                Lähetä viesti
+                {c.form.submit}
                 <svg
                   className="size-4"
                   fill="none"
@@ -159,7 +178,7 @@ function YhteysPage() {
                 </svg>
               </button>
               {sent && (
-                <span className="text-sm text-foreground/60">Avataan sähköpostiohjelmaa…</span>
+                <span className="text-sm text-foreground/60">{c.form.sending}</span>
               )}
             </div>
           </form>
@@ -197,7 +216,17 @@ function Field({
   );
 }
 
-function SelectField({ label, name, options }: { label: string; name: string; options: string[] }) {
+function SelectField({
+  label,
+  name,
+  options,
+  placeholder,
+}: {
+  label: string;
+  name: string;
+  options: string[];
+  placeholder: string;
+}) {
   return (
     <div>
       <label className="block text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
@@ -209,7 +238,7 @@ function SelectField({ label, name, options }: { label: string; name: string; op
         className="w-full bg-transparent border-b border-border focus:border-foreground outline-none py-3 text-base transition-colors"
       >
         <option value="" disabled>
-          Valitse…
+          {placeholder}
         </option>
         {options.map((o) => (
           <option key={o} value={o}>
