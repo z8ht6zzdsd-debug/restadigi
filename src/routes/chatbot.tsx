@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroAiService from "@/assets/hero-ai-service.jpg";
+import { DashboardMonitorPreview } from "@/components/dashboard-monitor-preview";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -55,17 +56,26 @@ function ChatbotPage() {
       />
 
       {/* Chatbot */}
-      <section className="pb-8 sm:pb-12 border-t border-border pt-16 sm:pt-24">
-        <div className="max-w-6xl mx-auto px-6 mb-12 sm:mb-16">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">{bot.eyebrow}</div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium text-balance max-w-[22ch] mb-8 tracking-tight">
-            {bot.titleBefore}
-            <span className="font-serif italic text-accent">{bot.titleAccent}</span>
-            {bot.titleAfter}
-          </h2>
-          <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
-            {bot.intro}
-          </p>
+      <section className="border-t border-border bg-background pt-16 sm:pt-24 pb-8 sm:pb-12">
+        <div className="mx-auto max-w-7xl px-6 mb-12 sm:mb-16">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-5">
+              <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
+                {bot.eyebrow}
+              </div>
+              <h2 className="text-3xl sm:text-5xl lg:text-[2.85rem] xl:text-5xl leading-[1.05] font-medium text-balance mb-6 tracking-tight">
+                {bot.titleBefore}
+                <span className="font-serif italic text-accent">{bot.titleAccent}</span>
+                {bot.titleAfter}
+              </h2>
+              <p className="text-base sm:text-lg text-foreground/70 leading-relaxed text-pretty">
+                {bot.intro}
+              </p>
+            </div>
+            <div className="lg:col-span-7">
+              <DashboardMonitorPreview />
+            </div>
+          </div>
         </div>
 
         <div>
