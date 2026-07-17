@@ -115,28 +115,39 @@ function ChatbotPage() {
       />
 
       {/* Chatbot */}
-      <section className="pb-24 sm:pb-32 border-t border-border pt-16 sm:pt-24">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="pb-8 sm:pb-12 border-t border-border pt-16 sm:pt-24">
+        <div className="max-w-6xl mx-auto px-6 mb-12 sm:mb-16">
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">Chatbot</div>
           <h2 className="text-3xl sm:text-5xl lg:text-6xl leading-[1.05] font-medium text-balance max-w-[22ch] mb-8 tracking-tight">
             Älykäs <span className="font-serif italic text-accent">chatbot</span> —
             ympärivuorokautinen myyjä ja asiakaspalvelija.
           </h2>
-          <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed mb-16">
+          <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
             Chatbot on verkkosivuille asennettava älykäs virtuaaliavustaja, joka palvelee asiakkaita
             24/7 — vastaa yleisiin kysymyksiin, opastaa oikeiden palveluiden pariin ja kerää
             liidejä. Se ei korvaa ihmistä, vaan toimii luotettavana apukätenä silloinkin, kun oma
             henkilökuntasi on vapaalla.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
-            {chatbotBenefits.map((b) => (
-              <div key={b.title} className="border border-border bg-card rounded-sm p-8">
-                <h3 className="text-xl font-medium mb-3">{b.title}</h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">{b.body}</p>
+        </div>
+
+        <div>
+          {chatbotBenefits.map((b, i) => (
+            <div
+              key={b.title}
+              className={
+                "w-full px-6 py-10 sm:py-12 " + (i % 2 === 1 ? "bg-secondary/50" : "bg-background")
+              }
+            >
+              <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
+                <h3 className="text-2xl font-medium md:w-72 shrink-0 mb-3 md:mb-0">{b.title}</h3>
+                <p className="text-sm text-foreground/75 leading-relaxed flex-1">{b.body}</p>
               </div>
-            ))}
-          </div>
-          <div className="grid md:grid-cols-12 gap-12 mb-16">
+            </div>
+          ))}
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 py-16 sm:py-24">
+          <div className="grid md:grid-cols-12 gap-12">
             <div className="md:col-span-5">
               <h3 className="text-3xl sm:text-4xl leading-[1.1] font-medium tracking-tight text-balance">
                 Turvallinen ja <span className="font-serif italic">vaivaton</span> ratkaisu.
@@ -150,20 +161,28 @@ function ChatbotPage() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {chatbotMonthly.map((m) => (
-              <div key={m.title} className="border border-border bg-card rounded-sm p-8">
-                <h3 className="text-xl font-medium mb-3">{m.title}</h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">{m.body}</p>
+        </div>
+
+        <div>
+          {chatbotMonthly.map((m, i) => (
+            <div
+              key={m.title}
+              className={
+                "w-full px-6 py-10 sm:py-12 " + (i % 2 === 1 ? "bg-secondary/50" : "bg-background")
+              }
+            >
+              <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
+                <h3 className="text-2xl font-medium md:w-72 shrink-0 mb-3 md:mb-0">{m.title}</h3>
+                <p className="text-sm text-foreground/75 leading-relaxed flex-1">{m.body}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* AI Concierge */}
-      <section className="pb-24 sm:pb-32 bg-secondary/60 pt-16 sm:pt-24">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="pb-8 sm:pb-12 bg-secondary/50 pt-16 sm:pt-24">
+        <div className="max-w-6xl mx-auto px-6 mb-12 sm:mb-16">
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-8">
             Restadigi AI Concierge
           </div>
@@ -171,24 +190,32 @@ function ChatbotPage() {
             Älykäs <span className="font-serif italic text-accent">puhelinpalvelu</span> — vastaa
             jokaiseen puheluun, 24/7.
           </h2>
-          <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed mb-16">
+          <p className="max-w-2xl text-base sm:text-lg text-foreground/70 leading-relaxed">
             Restadigi AI Concierge on tekoälypohjainen puhelinpalvelu, joka huolehtii ravintolasi
             asiakaspuheluista vuorokauden ympäri. Se vastaa asiakkaiden kysymyksiin, ottaa vastaan
             pöytävarauksia ja vapauttaa henkilökunnan keskittymään siihen tärkeimpään — asiakkaiden
             palvelemiseen.
           </p>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-24">
-            {conciergeFeatures.map((feature) => (
-              <li
-                key={feature}
-                className="flex gap-3 text-sm text-foreground/75 leading-relaxed border border-border bg-card rounded-sm p-6"
-              >
+        </div>
+
+        <div>
+          {conciergeFeatures.map((feature, i) => (
+            <div
+              key={feature}
+              className={
+                "w-full px-6 py-6 sm:py-8 " + (i % 2 === 0 ? "bg-background" : "bg-secondary/50")
+              }
+            >
+              <div className="max-w-6xl mx-auto flex gap-3 text-sm text-foreground/75 leading-relaxed">
                 <span className="size-1.5 rounded-full mt-2 shrink-0 bg-accent" />
                 {feature}
-              </li>
-            ))}
-          </ul>
-          <ul className="space-y-4 mb-24 max-w-3xl">
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 py-16 sm:py-24">
+          <ul className="space-y-4 max-w-3xl">
             {conciergeBenefits.map((benefit) => (
               <li key={benefit} className="flex gap-3 text-base text-foreground/75 leading-relaxed">
                 <span className="text-accent shrink-0">✔</span>
@@ -196,9 +223,11 @@ function ChatbotPage() {
               </li>
             ))}
           </ul>
+        </div>
 
-          <div className="grid md:grid-cols-12 gap-12 mb-24">
-            <div className="md:col-span-5">
+        <div className="w-full px-6 py-16 sm:py-24 bg-background">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
+            <div className="md:w-80 shrink-0 mb-8 md:mb-0">
               <h3 className="text-3xl sm:text-4xl leading-[1.1] font-medium tracking-tight text-balance mb-6">
                 Sopii <span className="font-serif italic">kaikenlaisille</span> ravintoloille.
               </h3>
@@ -208,40 +237,37 @@ function ChatbotPage() {
                 ravintolaketjuille.
               </p>
             </div>
-            <div className="md:col-span-7">
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {conciergeAudience.map((item) => (
-                  <li
-                    key={item}
-                    className="text-sm text-foreground/75 border border-border bg-background rounded-sm px-5 py-4"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="flex-1 space-y-4">
+              {conciergeAudience.map((item) => (
+                <li key={item} className="text-sm text-foreground/75">
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-12 gap-12 mb-24">
-            <div className="md:col-span-6">
-              <p className="text-base text-foreground/70 leading-relaxed">
+        <div className="w-full px-6 py-16 sm:py-24 bg-primary text-primary-foreground">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
+            <div className="md:w-80 shrink-0 mb-8 md:mb-0">
+              <p className="text-3xl font-serif mb-4">Alkaen 499 € / vuosi</p>
+              <p className="text-sm text-primary-foreground/70 leading-relaxed">
                 Käyttöönotto on nopea ja helppo. Räätälöimme tekoälyavustajan ravintolasi tietojen,
                 palveluiden ja toimintatapojen mukaisesti. Palvelu voidaan ottaa käyttöön muutamassa
                 arkipäivässä.
               </p>
             </div>
-            <div className="md:col-span-6">
-              <p className="text-3xl font-medium mb-4">Alkaen 499 € / vuosi</p>
-              <p className="text-sm text-foreground/70 mb-4">Hinta sisältää:</p>
-              <ul className="space-y-2">
+            <div className="flex-1">
+              <p className="text-sm text-primary-foreground/70 mb-4">Hinta sisältää:</p>
+              <ul className="space-y-3">
                 {conciergePricingIncludes.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm text-foreground/75">
+                  <li key={item} className="flex gap-3 text-sm text-primary-foreground/85">
                     <span className="size-1.5 rounded-full mt-2 shrink-0 bg-accent" />
                     {item}
                   </li>
                 ))}
               </ul>
-              <p className="text-sm text-foreground/60 mt-6 leading-relaxed">
+              <p className="text-sm text-primary-foreground/60 mt-6 leading-relaxed">
                 Laajemmat integraatiot, räätälöinnit ja lisäominaisuudet hinnoitellaan ravintolan
                 tarpeiden mukaan.
               </p>
