@@ -183,15 +183,19 @@ export function PackageBrandLogos({
   if (logosOnly) {
     return (
       <div
-        className="grid grid-cols-2 place-items-center gap-x-5 gap-y-4 sm:gap-x-6 sm:gap-y-5"
+        className="grid grid-cols-2 place-items-center gap-x-4 gap-y-3 sm:gap-x-5 sm:gap-y-4"
         aria-hidden
       >
         {logos.map(({ name, Mark, tone }) => (
-          <Mark
-            key={name}
-            title={name}
-            className={"size-9 sm:size-10 " + (tone ?? "text-foreground")}
-          />
+          <div key={name} className="flex flex-col items-center gap-1">
+            <Mark
+              title={name}
+              className={"size-8 sm:size-9 " + (tone ?? "text-foreground")}
+            />
+            <span className="max-w-[6.5rem] text-center text-[10px] leading-tight text-foreground/60">
+              {name}
+            </span>
+          </div>
         ))}
       </div>
     );
