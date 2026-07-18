@@ -421,7 +421,7 @@ export const es: Messages = {
         tagline: "Visible también en búsquedas de ChatGPT, Claude, Gemini y Copilot",
         description:
           "La búsqueda en la web está cambiando. Cada vez más personas encuentran empresas, productos y servicios conversando con la IA. Nuestro servicio de optimización IA ayuda a mantener al día los datos de tu empresa y a que el contenido de tu sitio respalde la capacidad de los servicios de IA para reconocer tu negocio en el contexto correcto.",
-        price: "100 € / año",
+        price: "99 € / año",
         bullets: [
           "Revisión básica de visibilidad IA del sitio web",
           "Revisión de la información empresarial clave",
@@ -436,7 +436,7 @@ export const es: Messages = {
         tagline: "Asegura que los clientes encuentren tu empresa",
         description:
           "Google sigue siendo uno de los canales más importantes para encontrar empresas, productos y servicios. Nuestra optimización Google es un servicio ligero de mantenimiento anual cuyo objetivo es garantizar que tu sitio cumpla los requisitos básicos de SEO y apoye la descubribilidad.",
-        price: "100 € / año",
+        price: "99 € / año",
         bullets: [
           "Revisión SEO básica del sitio web",
           "Revisión de títulos y meta descripciones",

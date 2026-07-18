@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Bot, Palette, Search, Trophy } from "lucide-react";
 import { useState } from "react";
 import { ProductPackageCards } from "@/components/product-package-cards";
-import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
 import {
   MarketingBand,
   MarketingBox,
@@ -114,8 +113,6 @@ function DiginakyvyysPage() {
               </button>
             </div>
           </form>
-
-          <VisibilityBrandLogoStrip className="mt-10" onDark />
         </div>
       </section>
 

@@ -419,7 +419,7 @@ export const fi: Messages = {
         tagline: "Näkyväksi myös ChatGPT:n, Clauden, Geminin ja Copilotin hauissa",
         description:
           "Verkkohaku on muuttumassa. Yhä useampi etsii yrityksiä, tuotteita ja palveluita keskustelemalla tekoälyn kanssa. AI-optimointipalvelumme auttaa varmistamaan, että yrityksesi tiedot ovat ajan tasalla ja että verkkosivustosi sisältö tukee tekoälypalveluiden kykyä tunnistaa yrityksesi oikeassa yhteydessä.",
-        price: "100 € / vuosi",
+        price: "99 € / vuosi",
         bullets: [
           "Yrityksen verkkosivujen perustason AI-näkyvyyden tarkistus",
           "Tärkeimpien yritystietojen läpikäynti",
@@ -434,7 +434,7 @@ export const fi: Messages = {
         tagline: "Varmista, että asiakkaat löytävät yrityksesi",
         description:
           "Google on edelleen yksi tärkeimmistä kanavista, kun etsitään yrityksiä, tuotteita ja palveluita. Google-optimointipalvelumme on kevyt vuosittainen ylläpitopalvelu, jonka tavoitteena on varmistaa, että verkkosivustosi täyttää tärkeimmät hakukoneoptimoinnin perusvaatimukset ja tukee asiakkaiden löydettävyyttä.",
-        price: "100 € / vuosi",
+        price: "99 € / vuosi",
         bullets: [
           "Verkkosivujen perustason SEO-tarkistus",
           "Sivujen otsikoiden ja metakuvausten läpikäynti",
