@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroYllapito from "@/assets/hero-yllapito.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
@@ -39,17 +37,57 @@ function YllapitoPage() {
       />
       <SiteHeader />
 
-      <PageHero
-        image={heroYllapito}
-        title={
-          <>
-            {h.hero.titleBefore}
-            <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
-            {h.hero.titleAfter}
-          </>
-        }
-        description={h.hero.description}
-      />
+      <section className="w-full bg-background px-6 py-12 sm:py-16 lg:py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-5">
+            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              {h.hero.titleBefore}
+              <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
+              {h.hero.titleAfter}
+            </h1>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-foreground/75 sm:text-lg">
+              {h.hero.description}
+            </p>
+            <Link
+              to="/yhteys"
+              className="mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+            >
+              {h.requestQuote}
+              <svg
+                className="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                />
+              </svg>
+            </Link>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-[#432f24] sm:rounded-[2.5rem]">
+              <div
+                className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
+                aria-hidden
+              >
+                <span className="font-script w-[110%] select-none whitespace-nowrap text-center text-[clamp(4.5rem,14vw,9rem)] leading-none tracking-wide text-[#4a3528]/55">
+                  Restadigi
+                </span>
+              </div>
+              <div className="relative flex h-full min-h-[14rem] items-center justify-center px-6 sm:min-h-0">
+                <p className="font-script text-5xl leading-none text-[#c9a882] sm:text-6xl lg:text-7xl">
+                  Restadigi
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="pb-24 sm:pb-32">
         <div>
