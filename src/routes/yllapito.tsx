@@ -40,20 +40,20 @@ function YllapitoPage() {
       />
       <SiteHeader />
 
-      <section className="w-full bg-background px-6 py-12 sm:py-16 lg:py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-12 lg:gap-14">
+      <section className="w-full bg-background px-6 py-8 sm:py-10">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
-            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="text-3xl font-bold leading-[1.05] tracking-tight text-balance sm:text-4xl lg:text-5xl">
               {h.hero.titleBefore}
               <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
               {h.hero.titleAfter}
             </h1>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-foreground/75 sm:text-lg">
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-foreground/75 sm:text-base">
               {h.hero.description}
             </p>
             <Link
               to="/yhteys"
-              className="mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+              className="mt-6 inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
             >
               {h.requestQuote}
               <svg
@@ -73,25 +73,25 @@ function YllapitoPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <RestadigiBrownPanel className="aspect-[16/10] min-h-[14rem]" />
+            <RestadigiBrownPanel className="aspect-[2/1] max-h-56 sm:max-h-64" />
           </div>
         </div>
       </section>
 
-      <section className="bg-[#f3f1ed] py-20 sm:py-28">
+      <section id="hosting-paketit" className="bg-[#f3f1ed] py-14 sm:py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:mb-16 sm:text-5xl">
+          <h2 className="mb-8 text-center text-3xl font-bold tracking-tight sm:mb-12 sm:text-4xl">
             {h.packagesTitle}
           </h2>
 
-          <div className="grid gap-8 sm:grid-cols-2 sm:gap-10">
+          <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
             {h.packages.map((pkg) => (
               <article
                 key={pkg.name}
                 className="overflow-hidden rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.4)] ring-1 ring-black/5"
               >
-                <RestadigiBrownPanel className="aspect-[16/10] rounded-none" compact />
-                <div className="flex flex-col items-center gap-6 px-6 py-8 text-center sm:px-10 sm:py-10">
+                <RestadigiBrownPanel className="aspect-[2/1] max-h-40 rounded-none sm:max-h-48" compact />
+                <div className="flex flex-col items-center gap-5 px-6 py-7 text-center sm:px-8 sm:py-8">
                   <div>
                     <div className="mb-2 flex items-center justify-center gap-2">
                       <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">{pkg.name}</h3>
@@ -115,7 +115,7 @@ function YllapitoPage() {
             ))}
           </div>
 
-          <p className="mt-12 text-center text-xs text-muted-foreground">{h.footnote}</p>
+          <p className="mt-10 text-center text-xs text-muted-foreground">{h.footnote}</p>
         </div>
       </section>
 
