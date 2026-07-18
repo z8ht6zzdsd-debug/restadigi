@@ -1,15 +1,19 @@
 import erikoismenut from "@/assets/mock-erikoismenut.jpg";
 import tapahtumat from "@/assets/mock-tapahtumat.jpg";
 import ryhmille from "@/assets/mock-ryhmille.jpg";
-
-const TILES = [
-  { label: "Erikoismenut", image: erikoismenut, position: "center 45%" },
-  { label: "Tapahtumat", image: tapahtumat, position: "center 40%" },
-  { label: "Ryhmille", image: ryhmille, position: "center 45%" },
-] as const;
+import { useMessages } from "@/i18n";
 
 /** Mini-mock: ravintolan verkkosivun etusivu laitteen näytöllä */
 export function RestaurantHomepagePreview({ image }: { image: string }) {
+  const { home } = useMessages();
+  const p = home.sitePreview;
+
+  const tiles = [
+    { label: p.tileSpecialMenus, image: erikoismenut, position: "center 45%" },
+    { label: p.tileEvents, image: tapahtumat, position: "center 40%" },
+    { label: p.tileGroups, image: ryhmille, position: "center 45%" },
+  ] as const;
+
   return (
     <div className="flex size-full flex-col bg-[#f7f3ee]" aria-hidden>
       {/* Sivuston yläpalkki */}
@@ -18,9 +22,9 @@ export function RestaurantHomepagePreview({ image }: { image: string }) {
           Atelier
         </span>
         <div className="flex items-center gap-2 text-[0.45rem] font-semibold uppercase tracking-[0.14em] text-[#432f24]/55 sm:gap-2.5 sm:text-[0.5rem]">
-          <span>Menu</span>
-          <span>Aukiolo</span>
-          <span>Yhteys</span>
+          <span>{p.navMenu}</span>
+          <span>{p.navHours}</span>
+          <span>{p.navContact}</span>
         </div>
       </div>
 
@@ -40,14 +44,14 @@ export function RestaurantHomepagePreview({ image }: { image: string }) {
             Atelier
           </p>
           <p className="mt-1.5 text-[0.5rem] uppercase tracking-[0.22em] text-white/75 sm:text-[0.55rem]">
-            Helsinki · Illallinen
+            {p.tagline}
           </p>
           <div className="mt-3 flex flex-wrap items-center justify-center gap-1.5 sm:mt-3.5 sm:gap-2">
             <span className="inline-flex rounded-full bg-[#c9a882] px-3 py-1.5 text-[0.5rem] font-bold uppercase tracking-[0.12em] text-[#2a1f18] sm:text-[0.55rem]">
-              Varaa pöytä
+              {p.bookTable}
             </span>
             <span className="inline-flex rounded-full bg-white/95 px-3 py-1.5 text-[0.5rem] font-bold uppercase tracking-[0.12em] text-[#2a1f18] sm:text-[0.55rem]">
-              Asiakaspalvelu
+              {p.customerService}
             </span>
           </div>
         </div>
@@ -55,7 +59,7 @@ export function RestaurantHomepagePreview({ image }: { image: string }) {
 
       {/* Etusivun alarivi: kolme sisältöpalikkaa omilla kuvilla */}
       <div className="grid shrink-0 grid-cols-3 gap-1 bg-white p-1.5 sm:gap-1.5 sm:p-2">
-        {TILES.map((tile) => (
+        {tiles.map((tile) => (
           <div
             key={tile.label}
             className="flex aspect-[5/4] flex-col justify-end overflow-hidden rounded-md bg-[#ebe8e2]"

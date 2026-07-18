@@ -57,6 +57,17 @@ export type Messages = {
       description: string;
       cta: string;
     };
+    sitePreview: {
+      navMenu: string;
+      navHours: string;
+      navContact: string;
+      tagline: string;
+      bookTable: string;
+      customerService: string;
+      tileSpecialMenus: string;
+      tileEvents: string;
+      tileGroups: string;
+    };
     intro: {
       titleLine1: string;
       titleLine2: string;

@@ -114,6 +114,17 @@ export const en: Messages = {
         "We build websites, mobile apps and other smart digital solutions for service businesses — quickly and cost-effectively. The full package includes websites, booking systems, customer service and sales.",
       cta: "Request a quote",
     },
+    sitePreview: {
+      navMenu: "Menu",
+      navHours: "Hours",
+      navContact: "Contact",
+      tagline: "Helsinki · Dinner",
+      bookTable: "Book a table",
+      customerService: "Customer service",
+      tileSpecialMenus: "Special menus",
+      tileEvents: "Events",
+      tileGroups: "Groups",
+    },
     intro: {
       titleLine1: "Industry-specific solutions.",
       titleLine2: "Get in touch — let's talk.",

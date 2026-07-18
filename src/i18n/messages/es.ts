@@ -116,6 +116,17 @@ export const es: Messages = {
         "Creamos sitios web, apps móviles y otras soluciones digitales inteligentes para empresas de servicios de forma rápida y rentable. El conjunto incluye sitios web, sistemas de reserva, atención al cliente y ventas.",
       cta: "Solicitar presupuesto",
     },
+    sitePreview: {
+      navMenu: "Menú",
+      navHours: "Horario",
+      navContact: "Contacto",
+      tagline: "Helsinki · Cena",
+      bookTable: "Reservar mesa",
+      customerService: "Atención al cliente",
+      tileSpecialMenus: "Menús especiales",
+      tileEvents: "Eventos",
+      tileGroups: "Grupos",
+    },
     intro: {
       titleLine1: "Soluciones por sector.",
       titleLine2: "Contacta con nosotros, hablemos.",

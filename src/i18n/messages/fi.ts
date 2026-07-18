@@ -115,6 +115,17 @@ export const fi: Messages = {
         "Rakennamme verkkosivuja, mobiiliapplikaatioita ja muita älykkäitä digitaalisia ratkaisuja palvelualan yrityksille nopeasti ja kustannustehokkaasti. Kokonaisuus sisältäen verkkosivut, varausjärjestelmät, asiakaspalvelun ja myynnin.",
       cta: "Pyydä tarjous",
     },
+    sitePreview: {
+      navMenu: "Menu",
+      navHours: "Aukiolo",
+      navContact: "Yhteys",
+      tagline: "Helsinki · Illallinen",
+      bookTable: "Varaa pöytä",
+      customerService: "Asiakaspalvelu",
+      tileSpecialMenus: "Erikoismenut",
+      tileEvents: "Tapahtumat",
+      tileGroups: "Ryhmille",
+    },
     intro: {
       titleLine1: "Toimialakohtaiset ratkaisut.",
       titleLine2: "Ota yhteyttä, jutellaan lisää.",
