@@ -601,6 +601,9 @@ export const en: Messages = {
       titleAfter: " straight from your site.",
       description:
         "We integrate a modern table reservation service into your restaurant website that works around the clock. Guests pick a time and party size, get email confirmation, and your staff see bookings in a clear admin panel.",
+      headlineLine1: "Guests book a table",
+      headlineLine2: "themselves — 24/7.",
+      subtitle: "Explore Restadigi’s table reservation service and try the booking bot.",
     },
     dashboard: {
       eyebrow: "Admin panel",

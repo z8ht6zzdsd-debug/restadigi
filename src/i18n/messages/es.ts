@@ -607,6 +607,9 @@ export const es: Messages = {
       titleAfter: " directamente desde tu web.",
       description:
         "Integramos en la web de tu restaurante un servicio moderno de reservas de mesa que funciona las 24 horas. El cliente elige hora y tamaño del grupo, recibe confirmación por correo y tu equipo ve las reservas en un panel claro.",
+      headlineLine1: "Los clientes reservan mesa",
+      headlineLine2: "ellos mismos — 24/7.",
+      subtitle: "Conoce el servicio de reservas de Restadigi y prueba el bot de reservas.",
     },
     dashboard: {
       eyebrow: "Panel de administración",

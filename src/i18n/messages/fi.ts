@@ -606,6 +606,9 @@ export const fi: Messages = {
       titleAfter: " suoraan sivustolta.",
       description:
         "Integroimme ravintolasi verkkosivuille modernin pöytävarauspalvelun, joka toimii ympäri vuorokauden. Asiakas valitsee ajan ja seurueen koon, saa vahvistuksen sähköpostiin ja henkilökuntasi näkee varaukset selkeästä hallintapaneelista.",
+      headlineLine1: "Asiakkaat varaavat pöydän",
+      headlineLine2: "itse — 24/7.",
+      subtitle: "Tutustu Restadigin pöytävarauspalveluun ja kokeile varausbottia.",
     },
     dashboard: {
       eyebrow: "Hallintapaneeli",
