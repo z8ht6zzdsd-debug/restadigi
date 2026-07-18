@@ -82,10 +82,23 @@ function Index() {
       <SiteHeader />
 
       {/* Hero: valkoinen pohja, ravintolan etusivu tablettikehyksessä vasemmalla */}
-      <section className="bg-background">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-14 lg:py-20">
-          <div className="flex justify-center lg:col-span-5 lg:justify-start">
-            <div className="w-full max-w-[19rem] -rotate-2 sm:max-w-[21rem] lg:max-w-none">
+      <section className="relative overflow-hidden bg-background">
+        {/* Taustagrafiikka — pehmeät renkaat + piste */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <span className="absolute -left-16 top-8 size-56 rounded-full border border-[#432f24]/8 sm:size-72" />
+          <span className="absolute -left-6 top-20 size-40 rounded-full border border-[#c9a882]/25 sm:size-52" />
+          <span className="absolute bottom-10 right-[38%] hidden size-3 rounded-full bg-[#c9a882]/40 lg:block" />
+          <span className="absolute right-10 top-1/3 hidden h-24 w-px bg-gradient-to-b from-transparent via-[#432f24]/15 to-transparent lg:block" />
+        </div>
+
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-14 lg:py-20">
+          <div className="relative flex justify-center lg:col-span-5 lg:justify-start">
+            {/* Kultainen aksenttirengas tabletin takana */}
+            <span
+              className="pointer-events-none absolute left-1/2 top-1/2 -z-0 hidden size-[118%] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-[#c9a882]/30 lg:block"
+              aria-hidden
+            />
+            <div className="relative z-[1] w-full max-w-[19rem] -rotate-2 sm:max-w-[21rem] lg:max-w-none">
               <div className="rounded-[1.5rem] border-[11px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_28px_60px_-20px_rgba(26,18,14,0.4)] sm:rounded-[1.75rem] sm:border-[13px]">
                 <div className="relative aspect-[3/4] overflow-hidden rounded-[0.7rem] bg-[#f7f3ee] sm:rounded-[0.9rem]">
                   <RestaurantHomepagePreview image={heroHome} />
@@ -94,7 +107,13 @@ function Index() {
             </div>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="relative lg:col-span-7">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#c9a882] sm:w-10" aria-hidden />
+              <span className="font-script text-2xl leading-none text-[#432f24]/35 sm:text-3xl">
+                Restadigi
+              </span>
+            </div>
             <h1 className="max-w-[16ch] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
               {h.hero.titleBefore}
               <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
