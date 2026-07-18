@@ -19,6 +19,8 @@ type ProductPackageCardsProps = {
   packages: ProductPackage[];
   footnote?: ReactNode;
   sectionId?: string;
+  /** Kun true, ei omaa taustakaistaa — käytetään MarketingBandin sisällä */
+  embedded?: boolean;
 };
 
 export function RestadigiBrownPanel({
@@ -68,57 +70,80 @@ export function ProductPackageCards({
   packages,
   footnote,
   sectionId,
+  embedded = false,
 }: ProductPackageCardsProps) {
   const [openPackage, setOpenPackage] = useState<string | null>(null);
   const selected = packages.find((pkg) => pkg.name === openPackage) ?? null;
 
+  const grid = (
+    <>
+      <h2
+        className={
+          embedded
+            ? "mb-8 max-w-[16ch] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight sm:mb-10 sm:text-5xl lg:text-[3.75rem]"
+            : "mb-8 text-center text-3xl font-bold tracking-tight sm:mb-12 sm:text-4xl"
+        }
+      >
+        {title}
+      </h2>
+
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+        {packages.map((pkg) => (
+          <article
+            key={pkg.name}
+            className="overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)] ring-1 ring-black/5"
+          >
+            <RestadigiBrownPanel
+              className="aspect-[2/1] max-h-36 rounded-none sm:max-h-44"
+              compact
+            />
+            <div className="flex flex-col items-center gap-5 px-6 py-7 text-center sm:px-8 sm:py-8">
+              <div>
+                <div className="mb-2 flex items-center justify-center gap-2">
+                  <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">{pkg.name}</h3>
+                  {pkg.featured && (
+                    <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
+                      {popular}
+                    </span>
+                  )}
+                </div>
+                <p className="font-serif text-3xl text-foreground sm:text-4xl">{pkg.price}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setOpenPackage(pkg.name)}
+                className="inline-flex min-w-[10rem] items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
+              >
+                {explore}
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {footnote && (
+        <div
+          className={
+            embedded
+              ? "mt-8 text-center text-xs text-foreground/55"
+              : "mt-10 text-center text-xs text-muted-foreground"
+          }
+        >
+          {footnote}
+        </div>
+      )}
+    </>
+  );
+
   return (
     <>
-      <section id={sectionId} className="bg-[#f3f1ed] py-14 sm:py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="mb-8 text-center text-3xl font-bold tracking-tight sm:mb-12 sm:text-4xl">
-            {title}
-          </h2>
-
-          <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
-            {packages.map((pkg) => (
-              <article
-                key={pkg.name}
-                className="overflow-hidden rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.4)] ring-1 ring-black/5"
-              >
-                <RestadigiBrownPanel
-                  className="aspect-[2/1] max-h-40 rounded-none sm:max-h-48"
-                  compact
-                />
-                <div className="flex flex-col items-center gap-5 px-6 py-7 text-center sm:px-8 sm:py-8">
-                  <div>
-                    <div className="mb-2 flex items-center justify-center gap-2">
-                      <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">{pkg.name}</h3>
-                      {pkg.featured && (
-                        <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
-                          {popular}
-                        </span>
-                      )}
-                    </div>
-                    <p className="font-serif text-3xl text-foreground sm:text-4xl">{pkg.price}</p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setOpenPackage(pkg.name)}
-                    className="inline-flex min-w-[10rem] items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
-                  >
-                    {explore}
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {footnote && (
-            <div className="mt-10 text-center text-xs text-muted-foreground">{footnote}</div>
-          )}
-        </div>
-      </section>
+      {embedded ? (
+        <div id={sectionId}>{grid}</div>
+      ) : (
+        <section id={sectionId} className="bg-[#ebe8e2] py-14 sm:py-20">
+          <div className="mx-auto max-w-6xl px-6">{grid}</div>
+        </section>
+      )}
 
       {selected && (
         <div

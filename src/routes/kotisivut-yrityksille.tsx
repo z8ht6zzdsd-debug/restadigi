@@ -2,6 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
 import freddosCoffee from "@/assets/freddos-coffee.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
+import {
+  MarketingBand,
+  MarketingBox,
+} from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -42,62 +46,71 @@ function KotisivutPage() {
       <SiteHeader />
 
       <PageHero
-        devices
+        lifestyle
         image={heroWebDevices}
         title={
           <>
             {w.hero.titleBefore}
-            <span className="font-serif italic text-accent">{w.hero.titleAccent}</span>
+            {w.hero.titleAccent}
             {w.hero.titleAfter}
           </>
         }
         description={w.hero.description}
-      />
-
-      <section className="w-full bg-[#f7f3ee] px-6 py-10 sm:py-12">
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <img
-            src={freddosCoffee}
-            alt={w.midBanner.imageAlt}
-            width={160}
-            height={160}
-            className="mb-5 size-28 sm:size-32 object-cover object-center rounded-full ring-1 ring-black/5 shadow-sm"
-          />
-          <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-balance leading-[1.15] text-foreground">
-            {w.midBanner.title}
-          </h2>
-          <p className="mt-3 max-w-xl text-sm sm:text-base text-foreground/70 leading-relaxed text-balance">
-            {w.midBanner.description}
-          </p>
-        </div>
-      </section>
-
-      <ProductPackageCards
-        sectionId="verkkosivu-paketit"
-        title={w.packagesTitle}
-        explore={w.explore}
-        popular={w.popular}
-        requestQuote={w.requestQuote}
-        closeLabel={t.widget.sales.closeLabel}
-        packages={w.packages.map((pkg) => ({
-          name: pkg.name,
-          price: pkg.price,
-          featured: pkg.featured,
-          description: pkg.tagline,
-          bullets: pkg.bullets,
-        }))}
-        footnote={
-          <>
-            {w.footnoteBefore}
-            <Link to="/yllapito" className="underline underline-offset-2 hover:text-foreground">
-              {w.footnoteLink}
-            </Link>
-            {w.footnoteAfter}
-          </>
+        actions={
+          <a
+            href="#verkkosivu-paketit"
+            className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
+          >
+            {w.explore}
+          </a>
         }
       />
 
-      <SiteFooter />
+      <MarketingBand>
+        <MarketingBox
+          tone="photo"
+          image={freddosCoffee}
+          justify="end"
+          className="mb-5 min-h-[20rem] sm:min-h-[22rem]"
+        >
+          <h2 className="max-w-[18ch] text-3xl font-bold tracking-tight sm:text-4xl">
+            {w.midBanner.title}
+          </h2>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/88 sm:text-base">
+            {w.midBanner.description}
+          </p>
+        </MarketingBox>
+
+        <ProductPackageCards
+          embedded
+          sectionId="verkkosivu-paketit"
+          title={w.packagesTitle}
+          explore={w.explore}
+          popular={w.popular}
+          requestQuote={w.requestQuote}
+          closeLabel={t.widget.sales.closeLabel}
+          packages={w.packages.map((pkg) => ({
+            name: pkg.name,
+            price: pkg.price,
+            featured: pkg.featured,
+            description: pkg.tagline,
+            bullets: pkg.bullets,
+          }))}
+          footnote={
+            <>
+              {w.footnoteBefore}
+              <Link to="/yllapito" className="underline underline-offset-2 hover:text-foreground">
+                {w.footnoteLink}
+              </Link>
+              {w.footnoteAfter}
+            </>
+          }
+        />
+      </MarketingBand>
+
+      <section className="bg-background">
+        <SiteFooter />
+      </section>
     </div>
   );
 }
