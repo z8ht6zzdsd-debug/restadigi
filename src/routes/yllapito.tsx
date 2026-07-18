@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroHostingServers from "@/assets/hero-hosting-servers.png";
+import heroHostingRacks from "@/assets/hero-hosting-racks.png";
+import heroHostingDevices from "@/assets/hero-hosting-devices.png";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import { MarketingBand } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
@@ -81,29 +83,29 @@ function YllapitoPage() {
 
           <div className="relative mx-auto flex w-full max-w-[22rem] items-center justify-center sm:max-w-[26rem] lg:max-w-none lg:justify-center">
             <div className="relative aspect-square w-full max-w-[22rem] sm:max-w-[24rem]">
-              {/* Three smaller overlapping circles */}
+              {/* Three smaller overlapping circles — each with own graphic */}
               <div className="hosting-ball hosting-ball--main">
                 <img
                   src={heroHostingServers}
                   alt=""
                   aria-hidden
-                  className="size-full object-cover object-[58%_42%]"
+                  className="size-full object-cover object-center"
                 />
               </div>
               <div className="hosting-ball hosting-ball--top">
                 <img
-                  src={heroHostingServers}
+                  src={heroHostingRacks}
                   alt=""
                   aria-hidden
-                  className="size-full object-cover object-[28%_22%]"
+                  className="size-full object-cover object-center"
                 />
               </div>
               <div className="hosting-ball hosting-ball--bottom">
                 <img
-                  src={heroHostingServers}
+                  src={heroHostingDevices}
                   alt=""
                   aria-hidden
-                  className="size-full object-cover object-[72%_78%]"
+                  className="size-full object-cover object-center"
                 />
               </div>
               <span className="hosting-ai-float hosting-ai-float--a" aria-hidden />
