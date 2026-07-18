@@ -526,6 +526,10 @@ export const es: Messages = {
       titleAfter: " para tu empresa.",
       description:
         "El chatbot de Restadigi se instala en tu web y atiende a los clientes las 24 horas — responde preguntas, guía hacia los servicios adecuados y captura leads.",
+      headlineLine1: "El empleado más barato de tu empresa",
+      headlineLine2: "está aquí.",
+      subtitle: "Conoce el chatbot personalizable de Restadigi.",
+      cta: "Conocer el chatbot",
     },
     chatbot: {
       eyebrow: "Chatbot",

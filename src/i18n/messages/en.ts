@@ -520,6 +520,10 @@ export const en: Messages = {
       titleAfter: " for your business.",
       description:
         "Restadigi’s chatbot is installed on your website and serves customers around the clock — answers questions, guides people to the right services and captures leads.",
+      headlineLine1: "Your company’s cheapest employee",
+      headlineLine2: "is right here.",
+      subtitle: "Discover Restadigi’s personalisable chatbot.",
+      cta: "Explore the chatbot",
     },
     chatbot: {
       eyebrow: "Chatbot",

@@ -525,6 +525,10 @@ export const fi: Messages = {
       titleAfter: " yrityksellesi.",
       description:
         "Restadigin chatbot asennetaan verkkosivuillesi ja palvelee asiakkaita ympäri vuorokauden — vastaa kysymyksiin, ohjaa oikeiden palveluiden pariin ja kerää liidejä.",
+      headlineLine1: "Yrityksesi halvin työntekijä",
+      headlineLine2: "on tässä.",
+      subtitle: "Tutustu Restadigin personoitavaan chatbottiin.",
+      cta: "Tutustu chatbottiin",
     },
     chatbot: {
       eyebrow: "Chatbot",

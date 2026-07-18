@@ -271,6 +271,10 @@ export type Messages = {
       titleAccent: string;
       titleAfter: string;
       description: string;
+      headlineLine1: string;
+      headlineLine2: string;
+      subtitle: string;
+      cta: string;
     };
     chatbot: {
       eyebrow: string;
