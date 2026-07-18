@@ -168,6 +168,11 @@ export const es: Messages = {
         },
       ],
     },
+    bookingPromo: {
+      title: "Reservas de mesa para restaurantes",
+      body: "A precio mensual fijo — desde 29 € / mes.",
+      linkLabel: "Leer más",
+    },
     projects: {
       titleBefore: "Proyectos ",
       titleAccent: "seleccionados",

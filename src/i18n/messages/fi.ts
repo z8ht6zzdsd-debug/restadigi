@@ -167,6 +167,11 @@ export const fi: Messages = {
         },
       ],
     },
+    bookingPromo: {
+      title: "Pöytävarauspalvelu ravintoloille",
+      body: "Kiinteän kuukausihintaan — alk. 29 € / kk.",
+      linkLabel: "Lue lisää",
+    },
     projects: {
       titleBefore: "Valikoidut ",
       titleAccent: "projektit",

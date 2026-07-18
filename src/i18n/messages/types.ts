@@ -80,6 +80,11 @@ export type Messages = {
         linkLabel: string;
       }>;
     };
+    bookingPromo: {
+      title: string;
+      body: string;
+      linkLabel: string;
+    };
     projects: {
       titleBefore: string;
       titleAccent: string;

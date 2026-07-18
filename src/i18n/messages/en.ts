@@ -166,6 +166,11 @@ export const en: Messages = {
         },
       ],
     },
+    bookingPromo: {
+      title: "Table booking for restaurants",
+      body: "At a fixed monthly price — from 29 € / month.",
+      linkLabel: "Read more",
+    },
     projects: {
       titleBefore: "Selected ",
       titleAccent: "projects",

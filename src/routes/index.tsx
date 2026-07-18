@@ -191,7 +191,7 @@ function Index() {
               </div>
             </article>
 
-            {/* Oikea korkea boksi: dining-kuva otsikon yllä, sänky ruskeassa osassa */}
+            {/* Oikea korkea boksi: dining → varauspromo → sänky+intro */}
             <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] lg:min-h-0 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col bg-white text-foreground order-first lg:order-none">
               <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden sm:aspect-[5/3]">
                 <img
@@ -201,17 +201,31 @@ function Index() {
                   className="absolute inset-0 size-full object-cover object-center"
                 />
               </div>
-              <div className="relative flex flex-1 flex-col justify-end gap-5 overflow-hidden p-6 text-white sm:p-8 lg:p-10">
+
+              {/* ~5 cm kaista seinän tilalle: pöytävarauspromo */}
+              <Link
+                to="/potyvarauspalvelu"
+                className="relative z-[2] flex min-h-[5rem] shrink-0 items-center justify-between gap-4 bg-[#432f24] px-5 py-4 text-white transition-colors hover:bg-[#3a291f] sm:min-h-[5.25rem] sm:px-7 sm:py-5"
+              >
+                <div className="min-w-0">
+                  <p className="text-base font-bold tracking-tight sm:text-lg">
+                    {h.bookingPromo.title}
+                  </p>
+                  <p className="mt-0.5 text-sm text-white/75">{h.bookingPromo.body}</p>
+                </div>
+                <span className="inline-flex shrink-0 items-center rounded-full bg-accent px-4 py-2 text-xs font-bold uppercase tracking-[0.06em] text-accent-foreground sm:px-5 sm:text-sm">
+                  {h.bookingPromo.linkLabel}
+                </span>
+              </Link>
+
+              <div className="relative flex flex-1 flex-col justify-end gap-5 overflow-hidden p-6 pt-5 text-white sm:p-8 sm:pt-6 lg:p-10 lg:pt-7">
                 <img
                   src={introHotel}
                   alt=""
                   aria-hidden
-                  className="absolute inset-0 size-full object-cover object-center"
+                  className="absolute inset-0 size-full object-cover object-[center_70%]"
                 />
-                <div
-                  className="absolute inset-0 bg-[#432f24]/88"
-                  aria-hidden
-                />
+                <div className="absolute inset-0 bg-[#432f24]/88" aria-hidden />
                 <h3 className="relative z-[1] max-w-xl text-3xl font-bold tracking-tight leading-[1.05] sm:text-4xl lg:text-[2.75rem]">
                   <span className="block">{h.intro.titleLine1}</span>
                   <span className="block">{h.intro.titleLine2}</span>
