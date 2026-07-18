@@ -223,6 +223,13 @@ export function SiteHeader() {
                 </p>
                 <div className="mt-4 space-y-2 border-t border-border/70 pt-4">
                   <a
+                    href={`mailto:${t.header.contactPanel.email}`}
+                    className="block text-sm text-foreground/80 transition-colors hover:text-foreground"
+                  >
+                    <span className="text-foreground/45">{t.header.contactPanel.emailLabel}: </span>
+                    {t.header.contactPanel.email}
+                  </a>
+                  <a
                     href={`tel:${t.header.contactPanel.phoneTel}`}
                     className="block text-sm text-foreground/80 transition-colors hover:text-foreground"
                   >
@@ -359,6 +366,13 @@ export function SiteHeader() {
                   {t.header.contactPanel.address}
                 </p>
                 <div className="mt-4 space-y-2 border-t border-border/70 pt-4">
+                  <a
+                    href={`mailto:${t.header.contactPanel.email}`}
+                    className="block text-sm text-foreground/80 hover:text-foreground"
+                  >
+                    <span className="text-foreground/45">{t.header.contactPanel.emailLabel}: </span>
+                    {t.header.contactPanel.email}
+                  </a>
                   <a
                     href={`tel:${t.header.contactPanel.phoneTel}`}
                     className="block text-sm text-foreground/80 hover:text-foreground"

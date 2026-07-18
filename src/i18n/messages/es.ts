@@ -87,6 +87,8 @@ export const es: Messages = {
     contactPanel: {
       company: "Restadigi Finland",
       address: "Errkiläntie, 04740 Mäntsälä",
+      emailLabel: "Correo",
+      email: "info@restadigi.fi",
       phoneLabel: "Teléfono",
       whatsappLabel: "WhatsApp",
       phoneDisplay: "+358 403 738 332",

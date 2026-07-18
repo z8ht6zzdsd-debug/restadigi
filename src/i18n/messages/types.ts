@@ -32,6 +32,8 @@ export type Messages = {
     contactPanel: {
       company: string;
       address: string;
+      emailLabel: string;
+      email: string;
       phoneLabel: string;
       whatsappLabel: string;
       phoneDisplay: string;
