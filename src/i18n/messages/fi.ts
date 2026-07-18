@@ -476,7 +476,7 @@ export const fi: Messages = {
         name: "Graafinen suunnittelu",
         tagline: "Yritysilme, logo ja markkinointimateriaalit",
         description:
-          "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin — selkeät hinnat, ammattimainen jälki.",
+          "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin.",
         price: "alk. 99 €",
         bullets: [
           "Yritysilmeen suunnittelu — alk. 199 € (sis. logo ja käyntikortit)",
@@ -493,7 +493,7 @@ export const fi: Messages = {
       titleAccent: "suunnittelu",
       titleAfter: ".",
       description:
-        "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin — selkeät hinnat, ammattimainen jälki.",
+        "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin.",
       products: [
         {
           name: "Yritysilmeen suunnittelu",
