@@ -1,6 +1,12 @@
 /** Compact brand marks for diginäkyvyys package panels (decorative). */
 
 import type { ReactElement } from "react";
+import sportHockey from "@/assets/sport-hockey.jpg";
+import sportFootball from "@/assets/sport-football.jpg";
+import delfinLogo from "@/assets/delfin-checkin-icon.jpg";
+import rafaLogo from "@/assets/rafa-romera-logo.png";
+import restadigiLogo from "@/assets/restadigi-logo.png";
+import restadigiIcon from "@/assets/restadigi-logo-icon.png";
 
 type MarkProps = { className?: string; title: string };
 
@@ -242,4 +248,79 @@ export function packageLogoKind(packageName: string): "ai" | "google" | null {
   }
   if (n.includes("google")) return "google";
   return null;
+}
+
+export function packageHeaderKind(
+  packageName: string,
+): "ai" | "google" | "sports" | null {
+  const logoKind = packageLogoKind(packageName);
+  if (logoKind) return logoKind;
+  const n = packageName.toLowerCase();
+  if (
+    n.includes("urheil") ||
+    n.includes("sport") ||
+    n.includes("deport") ||
+    n.includes("élite") ||
+    n.includes("elite")
+  ) {
+    return "sports";
+  }
+  return null;
+}
+
+/** Hockey + football photos for elite sports package header */
+export function PackageSportsPhotos({ className = "" }: { className?: string }) {
+  return (
+    <div
+      className={
+        "grid h-full min-h-[7.25rem] grid-cols-2 gap-0.5 bg-[#432f24] sm:min-h-[8.5rem] " +
+        className
+      }
+      aria-hidden
+    >
+      <img
+        src={sportHockey}
+        alt=""
+        className="size-full object-cover object-center"
+      />
+      <img
+        src={sportFootball}
+        alt=""
+        className="size-full object-cover object-[center_30%]"
+      />
+    </div>
+  );
+}
+
+/** Client / brand logos for graphic design showcase in package headers */
+export function PackageBrandWorkLogos({ className = "" }: { className?: string }) {
+  const logos = [
+    { src: delfinLogo, alt: "Delfín Check-In", fit: "object-contain p-2" },
+    { src: rafaLogo, alt: "Rafa Romera", fit: "object-contain p-2.5" },
+    { src: restadigiLogo, alt: "Restadigi", fit: "object-contain p-2" },
+    { src: restadigiIcon, alt: "Restadigi icon", fit: "object-contain p-3" },
+  ] as const;
+
+  return (
+    <div
+      className={
+        "grid h-full min-h-[7.25rem] grid-cols-2 gap-1.5 bg-[#432f24] p-2.5 sm:min-h-[8.5rem] sm:gap-2 sm:p-3 " +
+        className
+      }
+      aria-hidden
+    >
+      {logos.map((logo) => (
+        <div
+          key={logo.alt}
+          className="flex items-center justify-center overflow-hidden rounded-lg bg-white/95"
+        >
+          <img
+            src={logo.src}
+            alt=""
+            className={"max-h-full max-w-full " + logo.fit}
+          />
+        </div>
+      ))}
+    </div>
+  );
 }
