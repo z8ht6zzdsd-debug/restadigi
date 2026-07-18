@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Crown, Gem, Plus, Sparkles, type LucideIcon } from "lucide-react";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
 import freddosCoffee from "@/assets/freddos-coffee.jpg";
 import { SiteHeader } from "@/components/site-header";
@@ -6,6 +7,17 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
+
+const packageIcons: Record<string, LucideIcon> = {
+  Start: Sparkles,
+  Plus: Plus,
+  Kulta: Crown,
+  Gold: Crown,
+  Oro: Crown,
+  Timantti: Gem,
+  Diamond: Gem,
+  Diamante: Gem,
+};
 
 export const Route = createFileRoute("/kotisivut-yrityksille")({
   head: () => ({
@@ -78,6 +90,7 @@ function KotisivutPage() {
           {w.packages.map((p, i) => {
             const dark = Boolean(p.featured);
             const alt = !dark && i % 2 === 1;
+            const Icon = packageIcons[p.name];
             return (
               <div
                 key={p.name}
@@ -92,10 +105,20 @@ function KotisivutPage() {
               >
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
                   <div className="md:w-72 shrink-0 mb-8 md:mb-0">
-                    <div className="flex items-baseline gap-3 mb-2">
+                    <div className="mb-2 flex items-center gap-3">
+                      {Icon && (
+                        <Icon
+                          className={
+                            "size-6 shrink-0 sm:size-7 " +
+                            (dark ? "text-accent" : "text-foreground/80")
+                          }
+                          aria-hidden
+                          strokeWidth={1.75}
+                        />
+                      )}
                       <h3 className="text-2xl font-medium">{p.name}</h3>
                       {p.featured && (
-                        <span className="text-[10px] uppercase tracking-[0.2em] bg-accent text-accent-foreground px-2 py-1 rounded-full">
+                        <span className="rounded-full bg-accent px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
                           {w.popular}
                         </span>
                       )}
