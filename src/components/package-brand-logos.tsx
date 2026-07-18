@@ -171,11 +171,31 @@ export function VisibilityBrandLogoStrip({
 export function PackageBrandLogos({
   kind,
   dark = false,
+  logosOnly = false,
 }: {
   kind: "ai" | "google";
   dark?: boolean;
+  /** Only the 4 marks — no labels, no panel background */
+  logosOnly?: boolean;
 }) {
   const logos = kind === "ai" ? AI_LOGOS : GOOGLE_LOGOS;
+
+  if (logosOnly) {
+    return (
+      <div
+        className="grid grid-cols-2 place-items-center gap-x-5 gap-y-4 sm:gap-x-6 sm:gap-y-5"
+        aria-hidden
+      >
+        {logos.map(({ name, Mark, tone }) => (
+          <Mark
+            key={name}
+            title={name}
+            className={"size-9 sm:size-10 " + (tone ?? "text-foreground")}
+          />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-start md:justify-center" aria-hidden>

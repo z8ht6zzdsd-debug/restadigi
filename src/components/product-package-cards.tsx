@@ -2,6 +2,10 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { Package } from "lucide-react";
+import {
+  PackageBrandLogos,
+  packageLogoKind,
+} from "@/components/package-brand-logos";
 
 export type ProductPackage = {
   name: string;
@@ -94,16 +98,23 @@ export function ProductPackageCards({
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
         {packages.map((pkg) => {
           const Icon = pkg.icon ?? Package;
+          const logoKind = packageLogoKind(pkg.name);
           return (
             <article
               key={pkg.name}
               className="overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)] ring-1 ring-black/5"
             >
               <div className="grid grid-cols-[1.15fr_0.85fr] items-stretch">
-                <RestadigiBrownPanel
-                  className="min-h-[7.25rem] rounded-none sm:min-h-[8.5rem]"
-                  compact
-                />
+                {logoKind ? (
+                  <div className="flex min-h-[7.25rem] items-center justify-center px-3 sm:min-h-[8.5rem] sm:px-4">
+                    <PackageBrandLogos kind={logoKind} logosOnly />
+                  </div>
+                ) : (
+                  <RestadigiBrownPanel
+                    className="min-h-[7.25rem] rounded-none sm:min-h-[8.5rem]"
+                    compact
+                  />
+                )}
                 <div
                   className="flex items-center justify-center bg-[#f3eee8] text-[#432f24]"
                   aria-hidden
