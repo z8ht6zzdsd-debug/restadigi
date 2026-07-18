@@ -36,6 +36,7 @@ export const fi: Messages = {
     services: "Palvelut",
     industries: "Toimialat",
     languages: "Kielet",
+    contact: "Ota yhteyttä",
     menu: "Valikko",
     homeAria: "Restadigi — etusivu",
     logoAlt: "Restadigi — AI ja web",
@@ -83,6 +84,14 @@ export const fi: Messages = {
       { code: "en", label: "English" },
       { code: "es", label: "Español" },
     ],
+    contactPanel: {
+      company: "Restadigi Finland",
+      address: "Errkiläntie, 04740 Mäntsälä",
+      phoneLabel: "Puhelin",
+      whatsappLabel: "WhatsApp",
+      phoneDisplay: "+358 403 738 332",
+      phoneTel: "+358403738332",
+    },
   },
   footer: {
     copyright: "© {year} Restadigi — Helsinki",

@@ -21,6 +21,7 @@ export type Messages = {
     services: string;
     industries: string;
     languages: string;
+    contact: string;
     menu: string;
     homeAria: string;
     logoAlt: string;
@@ -28,6 +29,14 @@ export type Messages = {
     industriesList: Array<{ title: string; body: string }>;
     servicesList: Array<{ to: string; label: string }>;
     languagesList: Array<{ code: "fi" | "en" | "es"; label: string }>;
+    contactPanel: {
+      company: string;
+      address: string;
+      phoneLabel: string;
+      whatsappLabel: string;
+      phoneDisplay: string;
+      phoneTel: string;
+    };
   };
   footer: {
     copyright: string;

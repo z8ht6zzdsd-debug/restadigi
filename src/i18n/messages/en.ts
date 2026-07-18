@@ -36,6 +36,7 @@ export const en: Messages = {
     services: "Services",
     industries: "Industries",
     languages: "Languages",
+    contact: "Contact",
     menu: "Menu",
     homeAria: "Restadigi — home",
     logoAlt: "Restadigi — AI and web",
@@ -83,6 +84,14 @@ export const en: Messages = {
       { code: "en", label: "English" },
       { code: "es", label: "Español" },
     ],
+    contactPanel: {
+      company: "Restadigi Finland",
+      address: "Errkiläntie, 04740 Mäntsälä",
+      phoneLabel: "Phone",
+      whatsappLabel: "WhatsApp",
+      phoneDisplay: "+358 403 738 332",
+      phoneTel: "+358403738332",
+    },
   },
   footer: {
     copyright: "© {year} Restadigi — Helsinki",

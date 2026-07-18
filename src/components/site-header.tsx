@@ -3,7 +3,7 @@ import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import restadigiLogo from "@/assets/restadigi-logo.png";
 import { LocaleFlag, useLocale, useMessages, type Locale } from "@/i18n";
 
-type MenuKey = "palvelut" | "toimialat" | "kielet" | null;
+type MenuKey = "palvelut" | "toimialat" | "kielet" | "yhteys" | null;
 
 const SERVICE_PATHS = [
   "/kotisivut-yrityksille",
@@ -198,6 +198,52 @@ export function SiteHeader() {
               </div>
             )}
           </div>
+
+          <div className="relative">
+            <button
+              type="button"
+              className={triggerClass}
+              aria-expanded={desktopMenu === "yhteys"}
+              aria-controls={`${baseId}-yhteys`}
+              onClick={() => toggleDesktop("yhteys")}
+            >
+              {t.header.contact}
+              <Chevron open={desktopMenu === "yhteys"} />
+            </button>
+            {desktopMenu === "yhteys" && (
+              <div
+                id={`${baseId}-yhteys`}
+                className="absolute right-0 top-full z-40 mt-3 w-[min(20rem,calc(100vw-3rem))] rounded-xl border border-border bg-background p-5 shadow-lg"
+              >
+                <div className="text-sm font-semibold tracking-tight text-foreground">
+                  {t.header.contactPanel.company}
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                  {t.header.contactPanel.address}
+                </p>
+                <div className="mt-4 space-y-2 border-t border-border/70 pt-4">
+                  <a
+                    href={`tel:${t.header.contactPanel.phoneTel}`}
+                    className="block text-sm text-foreground/80 transition-colors hover:text-foreground"
+                  >
+                    <span className="text-foreground/45">{t.header.contactPanel.phoneLabel}: </span>
+                    {t.header.contactPanel.phoneDisplay}
+                  </a>
+                  <a
+                    href={`https://wa.me/${t.header.contactPanel.phoneTel.replace(/\D/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-foreground/80 transition-colors hover:text-foreground"
+                  >
+                    <span className="text-foreground/45">
+                      {t.header.contactPanel.whatsappLabel}:{" "}
+                    </span>
+                    {t.header.contactPanel.phoneDisplay}
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <button
@@ -298,6 +344,41 @@ export function SiteHeader() {
                   <span>{item.label}</span>
                 </button>
               ))}
+            </MobileSection>
+
+            <MobileSection
+              label={t.header.contact}
+              open={mobileSection === "yhteys"}
+              onToggle={() => toggleMobileSection("yhteys")}
+            >
+              <div className="rounded-xl border border-border bg-muted/40 p-4">
+                <div className="text-sm font-semibold text-foreground">
+                  {t.header.contactPanel.company}
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                  {t.header.contactPanel.address}
+                </p>
+                <div className="mt-4 space-y-2 border-t border-border/70 pt-4">
+                  <a
+                    href={`tel:${t.header.contactPanel.phoneTel}`}
+                    className="block text-sm text-foreground/80 hover:text-foreground"
+                  >
+                    <span className="text-foreground/45">{t.header.contactPanel.phoneLabel}: </span>
+                    {t.header.contactPanel.phoneDisplay}
+                  </a>
+                  <a
+                    href={`https://wa.me/${t.header.contactPanel.phoneTel.replace(/\D/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-foreground/80 hover:text-foreground"
+                  >
+                    <span className="text-foreground/45">
+                      {t.header.contactPanel.whatsappLabel}:{" "}
+                    </span>
+                    {t.header.contactPanel.phoneDisplay}
+                  </a>
+                </div>
+              </div>
             </MobileSection>
           </div>
         </div>
