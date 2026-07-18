@@ -85,7 +85,7 @@ function DiginakyvyysPage() {
           className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
           aria-hidden
         >
-          <span className="font-script select-none text-[clamp(5.5rem,22vw,14rem)] leading-none text-[#5c4335]">
+          <span className="font-script w-[96vw] select-none whitespace-nowrap text-center text-[clamp(6rem,28vw,22rem)] leading-none tracking-wide text-[#4a3528]/55">
             {v.hero.brand}
           </span>
         </div>
