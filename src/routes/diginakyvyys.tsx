@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Search } from "lucide-react";
+import { Bot, Search, Trophy } from "lucide-react";
 import { useState } from "react";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
@@ -12,6 +12,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
+
+const VISIBILITY_ICONS = [Bot, Search, Trophy] as const;
 
 export const Route = createFileRoute("/diginakyvyys")({
   head: () => ({
@@ -126,12 +128,13 @@ function DiginakyvyysPage() {
           popular={v.popular}
           requestQuote={v.contactCta}
           closeLabel={t.widget.sales.closeLabel}
-          packages={v.packages.map((pkg) => ({
+          packages={v.packages.map((pkg, i) => ({
             name: pkg.name,
             price: pkg.price,
             featured: pkg.featured,
             description: `${pkg.tagline}. ${pkg.description}`,
             bullets: [...pkg.bullets, `${v.resultPrefix} ${pkg.result}`],
+            icon: VISIBILITY_ICONS[i],
           }))}
           footnote={v.footnote}
         />

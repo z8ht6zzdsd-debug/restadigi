@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
+import { Package } from "lucide-react";
 
 export type ProductPackage = {
   name: string;
@@ -8,6 +10,8 @@ export type ProductPackage = {
   bullets: string[];
   /** Optional intro text shown above bullets in the detail box */
   description?: string;
+  /** Symbol shown top-right next to the brown Restadigi panel */
+  icon?: LucideIcon;
 };
 
 type ProductPackageCardsProps = {
@@ -88,37 +92,48 @@ export function ProductPackageCards({
       </h2>
 
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
-        {packages.map((pkg) => (
-          <article
-            key={pkg.name}
-            className="overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)] ring-1 ring-black/5"
-          >
-            <RestadigiBrownPanel
-              className="aspect-[2/1] max-h-36 rounded-none sm:max-h-44"
-              compact
-            />
-            <div className="flex flex-col items-center gap-5 px-6 py-7 text-center sm:px-8 sm:py-8">
-              <div>
-                <div className="mb-2 flex items-center justify-center gap-2">
-                  <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">{pkg.name}</h3>
-                  {pkg.featured && (
-                    <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
-                      {popular}
-                    </span>
-                  )}
+        {packages.map((pkg) => {
+          const Icon = pkg.icon ?? Package;
+          return (
+            <article
+              key={pkg.name}
+              className="overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)] ring-1 ring-black/5"
+            >
+              <div className="grid grid-cols-[1.15fr_0.85fr] items-stretch">
+                <RestadigiBrownPanel
+                  className="min-h-[7.25rem] rounded-none sm:min-h-[8.5rem]"
+                  compact
+                />
+                <div
+                  className="flex items-center justify-center bg-[#f3eee8] text-[#432f24]"
+                  aria-hidden
+                >
+                  <Icon className="size-12 sm:size-14" strokeWidth={1.5} />
                 </div>
-                <p className="font-serif text-3xl text-foreground sm:text-4xl">{pkg.price}</p>
               </div>
-              <button
-                type="button"
-                onClick={() => setOpenPackage(pkg.name)}
-                className="inline-flex min-w-[10rem] items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
-              >
-                {explore}
-              </button>
-            </div>
-          </article>
-        ))}
+              <div className="flex flex-col items-center gap-5 px-6 py-7 text-center sm:px-8 sm:py-8">
+                <div>
+                  <div className="mb-2 flex items-center justify-center gap-2">
+                    <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">{pkg.name}</h3>
+                    {pkg.featured && (
+                      <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
+                        {popular}
+                      </span>
+                    )}
+                  </div>
+                  <p className="font-serif text-3xl text-foreground sm:text-4xl">{pkg.price}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setOpenPackage(pkg.name)}
+                  className="inline-flex min-w-[10rem] items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
+                >
+                  {explore}
+                </button>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
       {footnote && (

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Gem, LayoutTemplate, Sparkles, Trophy } from "lucide-react";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
 import freddosCoffee from "@/assets/freddos-coffee.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
@@ -11,6 +12,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
+
+const WEBSITE_ICONS = [LayoutTemplate, Sparkles, Trophy, Gem] as const;
 
 export const Route = createFileRoute("/kotisivut-yrityksille")({
   head: () => ({
@@ -81,12 +84,13 @@ function KotisivutPage() {
           popular={w.popular}
           requestQuote={w.requestQuote}
           closeLabel={t.widget.sales.closeLabel}
-          packages={w.packages.map((pkg) => ({
+          packages={w.packages.map((pkg, i) => ({
             name: pkg.name,
             price: pkg.price,
             featured: pkg.featured,
             description: pkg.tagline,
             bullets: pkg.bullets,
+            icon: WEBSITE_ICONS[i],
           }))}
           footnote={
             <>

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Server, ShieldCheck } from "lucide-react";
 import heroHostingServers from "@/assets/hero-hosting-servers.png";
 import heroHostingRacks from "@/assets/hero-hosting-racks.png";
 import heroHostingDevices from "@/assets/hero-hosting-devices.png";
@@ -8,6 +9,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
+
+const HOSTING_ICONS = [Server, ShieldCheck] as const;
 
 export const Route = createFileRoute("/yllapito")({
   head: () => ({
@@ -125,7 +128,10 @@ function YllapitoPage() {
           popular={h.popular}
           requestQuote={h.requestQuote}
           closeLabel={t.widget.sales.closeLabel}
-          packages={h.packages}
+          packages={h.packages.map((pkg, i) => ({
+            ...pkg,
+            icon: HOSTING_ICONS[i],
+          }))}
           footnote={h.footnote}
         />
       </MarketingBand>
