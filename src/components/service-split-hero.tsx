@@ -15,7 +15,7 @@ type ServiceSplitHeroProps = {
 
 /**
  * Desktop: kuva + overlay-kortti + sivuteksti.
- * Mobiili: otsikko kuvan päällä ruskealla feidauksella + headline CTA alla.
+ * Mobiili: otsikko ennen kuvaa, pienempi kuva, headline + CTA alla.
  */
 export function ServiceSplitHero({
   image,
@@ -30,9 +30,27 @@ export function ServiceSplitHero({
 }: ServiceSplitHeroProps) {
   return (
     <section className="w-full bg-background px-6 py-8 sm:py-14 lg:py-16">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-12 lg:gap-12">
+      <div className="mx-auto grid max-w-7xl items-center gap-6 sm:gap-8 lg:grid-cols-12 lg:gap-12">
+        {/* Mobiili: otsikko ennen kuvaa */}
+        <div className="lg:hidden">
+          <div className="flex items-start gap-3">
+            <span
+              className="mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-[#432f24] text-accent ring-1 ring-accent/35"
+              aria-hidden
+            >
+              <Icon className="size-4" strokeWidth={1.75} />
+            </span>
+            <h2 className="text-2xl font-medium leading-[1.12] tracking-tight text-foreground sm:text-3xl">
+              {overlayTitle}
+            </h2>
+          </div>
+          <p className="mt-3 text-sm leading-relaxed text-foreground/70 sm:text-base">
+            {overlayDescription}
+          </p>
+        </div>
+
         <div className="lg:col-span-7">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] sm:aspect-[16/11] sm:rounded-[2.5rem] lg:aspect-[5/3]">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] sm:aspect-[16/11] sm:rounded-[2.5rem] lg:aspect-[5/3]">
             <img
               src={image}
               alt=""
@@ -42,27 +60,6 @@ export function ServiceSplitHero({
                 (imageClassName ? ` ${imageClassName}` : "")
               }
             />
-
-            {/* Mobiili / tabletti: teksti kuvan päällä, ruskea feidaus */}
-            <div className="absolute inset-0 z-10 flex flex-col justify-end lg:hidden">
-              <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#432f24] via-[#432f24]/75 to-transparent"
-                aria-hidden
-              />
-              <div className="relative px-5 pb-5 pt-10 sm:px-7 sm:pb-7">
-                <div className="flex items-start gap-3">
-                  <span
-                    className="mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent ring-1 ring-accent/35"
-                    aria-hidden
-                  >
-                    <Icon className="size-4" strokeWidth={1.75} />
-                  </span>
-                  <h2 className="text-left text-[1.65rem] font-medium leading-[1.12] tracking-tight text-[#f7f3ee] sm:text-3xl">
-                    {overlayTitle}
-                  </h2>
-                </div>
-              </div>
-            </div>
 
             {/* Desktop: kortti kuvan keskellä */}
             <div
