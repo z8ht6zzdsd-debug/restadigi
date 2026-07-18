@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  Bot,
   Clock,
   Database,
   KeyRound,
@@ -76,11 +77,19 @@ function ChatbotPage() {
               <div className="absolute inset-0 bg-[#432f24]/25" aria-hidden />
               <div className="absolute inset-0 flex items-center justify-center p-5 sm:p-8">
                 <div className="w-[92%] max-w-2xl rounded-3xl bg-[#432f24]/92 px-6 py-8 text-center shadow-lg sm:px-10 sm:py-10">
-                  <h2 className="text-2xl font-medium leading-[1.1] tracking-tight text-[#f7f3ee] sm:text-4xl lg:text-[2.75rem]">
-                    {cb.hero.titleBefore}
-                    <span className="font-serif italic text-accent">{cb.hero.titleAccent}</span>
-                    {cb.hero.titleAfter}
-                  </h2>
+                  <div className="flex items-center justify-center gap-3 sm:gap-4">
+                    <span
+                      className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent ring-1 ring-accent/35 sm:size-12"
+                      aria-hidden
+                    >
+                      <Bot className="size-5 sm:size-6" strokeWidth={1.75} />
+                    </span>
+                    <h2 className="text-left text-2xl font-medium leading-[1.1] tracking-tight text-[#f7f3ee] sm:text-4xl lg:text-[2.75rem]">
+                      {cb.hero.titleBefore}
+                      <span className="font-serif italic text-accent">{cb.hero.titleAccent}</span>
+                      {cb.hero.titleAfter}
+                    </h2>
+                  </div>
                   <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[#f7f3ee]/85 sm:text-base">
                     {cb.hero.description}
                   </p>
