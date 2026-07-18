@@ -68,24 +68,15 @@ function YhteysPage() {
       <SiteHeader />
 
       <PageHero
-        lifestyle
         image={heroYhteys}
         title={
           <>
             {c.hero.titleBefore}
-            {c.hero.titleAccent}
+            <span className="font-serif italic text-accent">{c.hero.titleAccent}</span>
             {c.hero.titleAfter}
           </>
         }
         description={c.hero.description}
-        actions={
-          <a
-            href="#yhteys-lomake"
-            className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
-          >
-            {c.form.submit}
-          </a>
-        }
       />
 
       <MarketingBand>

@@ -46,24 +46,16 @@ function KotisivutPage() {
       <SiteHeader />
 
       <PageHero
-        lifestyle
+        devices
         image={heroWebDevices}
         title={
           <>
             {w.hero.titleBefore}
-            {w.hero.titleAccent}
+            <span className="font-serif italic text-accent">{w.hero.titleAccent}</span>
             {w.hero.titleAfter}
           </>
         }
         description={w.hero.description}
-        actions={
-          <a
-            href="#verkkosivu-paketit"
-            className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
-          >
-            {w.explore}
-          </a>
-        }
       />
 
       <MarketingBand>

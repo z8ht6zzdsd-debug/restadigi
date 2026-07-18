@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Search } from "lucide-react";
 import { useState } from "react";
-import heroDiginakyvyys from "@/assets/hero-diginakyvyys.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
 import {
@@ -10,7 +10,6 @@ import {
 } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
@@ -67,30 +66,58 @@ function DiginakyvyysPage() {
       />
       <SiteHeader />
 
-      <PageHero
-        lifestyle
-        image={heroDiginakyvyys}
-        title={
-          <>
-            {v.hero.headlineLine1} {v.hero.headlineLine2}
-          </>
-        }
-        description={v.meta.description}
-        actions={
-          <a
-            href="#nakyvyys-paketit"
-            className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
-          >
-            {v.explore}
-          </a>
-        }
-      />
-
-      <MarketingBand>
-        <div className="mb-8 sm:mb-10">
-          <VisibilityBrandLogoStrip />
+      <section className="relative w-full overflow-hidden bg-[#432f24] px-6 py-16 sm:py-24">
+        <div
+          className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
+          aria-hidden
+        >
+          <span className="font-script w-[96vw] select-none whitespace-nowrap text-center text-[clamp(6rem,28vw,22rem)] leading-none tracking-wide text-[#4a3528]/55">
+            {v.hero.brand}
+          </span>
         </div>
 
+        <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+          <h1 className="max-w-2xl text-3xl font-bold leading-[1.1] tracking-tight text-[#f7f3ee] sm:text-5xl lg:text-6xl">
+            <span className="block">{v.hero.headlineLine1}</span>
+            <span className="block">{v.hero.headlineLine2}</span>
+          </h1>
+
+          <form
+            className="mt-8 w-full max-w-xl"
+            onSubmit={(e) => {
+              e.preventDefault();
+              document.getElementById("nakyvyys-paketit")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}
+          >
+            <label className="sr-only" htmlFor="nakyvyys-haku">
+              {v.hero.searchAriaLabel}
+            </label>
+            <div className="flex items-center rounded-full bg-white px-5 py-3.5 shadow-sm ring-1 ring-black/10">
+              <input
+                id="nakyvyys-haku"
+                type="search"
+                name="q"
+                placeholder={v.hero.searchPlaceholder}
+                className="min-w-0 flex-1 bg-transparent text-base text-[#432f24] outline-none placeholder:text-[#432f24]/40"
+              />
+              <button
+                type="submit"
+                className="ml-3 shrink-0 text-[#432f24]/45 transition-colors hover:text-[#432f24]/75"
+                aria-label={v.hero.searchAriaLabel}
+              >
+                <Search className="size-5" strokeWidth={1.75} />
+              </button>
+            </div>
+          </form>
+
+          <VisibilityBrandLogoStrip className="mt-10" onDark />
+        </div>
+      </section>
+
+      <MarketingBand>
         <ProductPackageCards
           embedded
           sectionId="nakyvyys-paketit"
@@ -139,11 +166,7 @@ function DiginakyvyysPage() {
           ))}
         </div>
 
-        <MarketingBox
-          tone="dark"
-          justify="start"
-          className="mt-4 sm:mt-5 min-h-[22rem]"
-        >
+        <MarketingBox tone="dark" justify="start" className="mt-4 sm:mt-5 min-h-[22rem]">
           <h3 className="text-2xl font-bold tracking-tight text-balance sm:text-3xl">
             {b.form.title}
           </h3>

@@ -8,7 +8,6 @@ import {
 } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
@@ -47,35 +46,38 @@ function MeistaPage() {
       />
       <SiteHeader />
 
-      <PageHero
-        lifestyle
-        image={restaurantKitchen}
-        title={
-          <>
+      <header className="pt-10 pb-16 sm:pt-16 sm:pb-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-8 text-xs uppercase tracking-[0.2em] text-accent">{a.eyebrow}</div>
+          <h1 className="mb-8 max-w-[16ch] text-balance text-4xl font-medium leading-[1.02] tracking-tight sm:text-6xl">
             {a.titleBefore}
-            {a.titleAccent}
+            <span className="font-serif italic text-accent">{a.titleAccent}</span>
             {a.titleAfter}
-          </>
-        }
-        description={a.lead}
-        actions={
-          <Link
-            to="/yhteys"
-            className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
-          >
-            {a.cta.button}
-          </Link>
-        }
-      />
+          </h1>
+          <div className="grid gap-8 md:grid-cols-12">
+            <p className="text-base leading-relaxed text-foreground/70 sm:text-lg md:col-span-7">
+              {a.lead}
+            </p>
+            <p className="text-base leading-relaxed text-foreground/60 md:col-span-5">
+              {a.secondary}
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <section className="px-6 pb-10 sm:pb-14">
+        <div className="mx-auto max-w-6xl">
+          <img
+            src={restaurantKitchen}
+            alt={a.imageAlt}
+            width={1600}
+            height={900}
+            className="aspect-[16/9] w-full rounded-sm object-cover"
+          />
+        </div>
+      </section>
 
       <MarketingBand>
-        <MarketingBox tone="dark" justify="start" className="mb-4 sm:mb-5 min-h-[14rem]">
-          <p className="mb-3 text-xs uppercase tracking-[0.2em] text-accent">{a.eyebrow}</p>
-          <p className="max-w-3xl text-sm leading-relaxed text-white/85 sm:text-base">
-            {a.secondary}
-          </p>
-        </MarketingBox>
-
         <MarketingHeading>
           {a.process.titleBefore}
           {a.process.titleAccent}
