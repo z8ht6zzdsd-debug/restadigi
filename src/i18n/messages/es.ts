@@ -151,6 +151,23 @@ export const es: Messages = {
         },
       ],
     },
+    serviceTeasers: {
+      title: "Servicios inteligentes",
+      items: [
+        {
+          title: "Atención al cliente con IA",
+          body: "Un chatbot atiende a tus clientes 24/7 — responde preguntas, captura leads y libera a tu equipo.",
+          href: "/chatbot",
+          linkLabel: "Conocer el chatbot",
+        },
+        {
+          title: "Reservas de mesa",
+          body: "Los clientes reservan mesa en tu web a cualquier hora — gestiona las reservas en tablet y móvil.",
+          href: "/potyvarauspalvelu",
+          linkLabel: "Conocer el servicio",
+        },
+      ],
+    },
     projects: {
       titleBefore: "Proyectos ",
       titleAccent: "seleccionados",

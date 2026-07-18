@@ -150,6 +150,23 @@ export const fi: Messages = {
         },
       ],
     },
+    serviceTeasers: {
+      title: "Älykkäät palvelut",
+      items: [
+        {
+          title: "AI-asiakaspalvelu",
+          body: "Chatbot palvelee asiakkaitasi 24/7 — vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
+          href: "/chatbot",
+          linkLabel: "Tutustu chatbottiin",
+        },
+        {
+          title: "Pöytävarauspalvelu",
+          body: "Asiakkaat varaavat pöydän suoraan sivustoltasi ympäri vuorokauden — hallinta tabletilla ja mobiilissa.",
+          href: "/potyvarauspalvelu",
+          linkLabel: "Tutustu varauspalveluun",
+        },
+      ],
+    },
     projects: {
       titleBefore: "Valikoidut ",
       titleAccent: "projektit",

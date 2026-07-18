@@ -71,6 +71,15 @@ export type Messages = {
         linkLabel: string;
       }>;
     };
+    serviceTeasers: {
+      title: string;
+      items: Array<{
+        title: string;
+        body: string;
+        href: string;
+        linkLabel: string;
+      }>;
+    };
     projects: {
       titleBefore: string;
       titleAccent: string;

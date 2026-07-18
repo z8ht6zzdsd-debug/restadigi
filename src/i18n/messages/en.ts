@@ -149,6 +149,23 @@ export const en: Messages = {
         },
       ],
     },
+    serviceTeasers: {
+      title: "Smart services",
+      items: [
+        {
+          title: "AI customer service",
+          body: "A chatbot serves your customers 24/7 — answers questions, captures leads and frees up your team.",
+          href: "/chatbot",
+          linkLabel: "Explore the chatbot",
+        },
+        {
+          title: "Table booking",
+          body: "Customers book a table on your site around the clock — manage bookings on tablet and mobile.",
+          href: "/potyvarauspalvelu",
+          linkLabel: "Explore booking",
+        },
+      ],
+    },
     projects: {
       titleBefore: "Selected ",
       titleAccent: "projects",

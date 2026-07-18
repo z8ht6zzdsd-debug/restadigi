@@ -14,7 +14,12 @@ import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-const WHY_US_PATHS = ["/yhteys", "/kotisivut-yrityksille", "/chatbot"] as const;
+const WHY_US_PATHS = [
+  "/yhteys",
+  "/kotisivut-yrityksille",
+  "/chatbot",
+  "/potyvarauspalvelu",
+] as const;
 type WhyUsPath = (typeof WHY_US_PATHS)[number];
 
 function isWhyUsPath(to: string): to is WhyUsPath {
@@ -49,11 +54,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   const t = useMessages();
   const h = t.home;
-
-  const whyUsPairs = [
-    { image: whyUsDining, items: h.whyUs.items.slice(0, 2) },
-    { image: whyUsKitchen, items: h.whyUs.items.slice(2, 4) },
-  ] as const;
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-accent/20">
@@ -97,48 +97,41 @@ function Index() {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-4 sm:gap-5">
-            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[24rem] flex flex-col justify-end p-6 sm:p-8 text-white lg:col-start-1 lg:row-start-1">
+            {/* Vasemman yläreunan boksi: kaikki 4 syytä */}
+            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] sm:min-h-[28rem] flex flex-col justify-end p-6 sm:p-8 text-white lg:col-start-1 lg:row-start-1">
               <img
-                src={whyUsPairs[0].image}
+                src={whyUsDining}
                 alt=""
                 aria-hidden
                 className="absolute inset-0 size-full object-cover"
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/20"
+                className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/25"
                 aria-hidden
               />
-              <div className="relative z-[1] flex flex-col gap-6">
-                {whyUsPairs[0].items.map((item) => (
-                  <div key={item.title} className="max-w-md">
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight leading-tight mb-2">
+              <div className="relative z-[1] grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                {h.whyUs.items.map((item) => (
+                  <div key={item.title} className="min-w-0">
+                    <h3 className="text-lg sm:text-xl font-bold tracking-tight leading-tight mb-1.5">
                       {item.title}
                     </h3>
-                    <p className="text-sm sm:text-[0.95rem] leading-relaxed text-white/88">
+                    <p className="text-xs sm:text-sm leading-relaxed text-white/85 line-clamp-4">
                       {item.body}
                     </p>
+                    {isWhyUsPath(item.href) ? (
+                      <Link
+                        to={item.href}
+                        className="mt-2.5 inline-flex text-xs font-bold uppercase tracking-[0.06em] text-accent underline-offset-2 hover:underline"
+                      >
+                        {item.linkLabel} →
+                      </Link>
+                    ) : null}
                   </div>
                 ))}
-                <div className="flex flex-wrap gap-2.5 pt-1">
-                  {whyUsPairs[0].items.map((item, i) =>
-                    isWhyUsPath(item.href) ? (
-                      <Link
-                        key={item.title}
-                        to={item.href}
-                        className={
-                          i === 0
-                            ? "inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
-                            : "inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-black transition-opacity hover:opacity-90"
-                        }
-                      >
-                        {item.linkLabel}
-                      </Link>
-                    ) : null,
-                  )}
-                </div>
               </div>
             </article>
 
+            {/* Oikea korkea boksi: toimialaratkaisut */}
             <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] lg:min-h-0 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col justify-end p-6 sm:p-8 lg:p-10 text-white order-first lg:order-none">
               <img
                 src={introHotel}
@@ -183,45 +176,43 @@ function Index() {
               </div>
             </article>
 
+            {/* Vasen alaboksi: AI + pöytävaraus */}
             <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[24rem] flex flex-col justify-end p-6 sm:p-8 text-white lg:col-start-1 lg:row-start-2">
               <img
-                src={whyUsPairs[1].image}
+                src={whyUsKitchen}
                 alt=""
                 aria-hidden
                 className="absolute inset-0 size-full object-cover"
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/20"
+                className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/25"
                 aria-hidden
               />
               <div className="relative z-[1] flex flex-col gap-6">
-                {whyUsPairs[1].items.map((item) => (
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
+                  {h.serviceTeasers.title}
+                </h3>
+                {h.serviceTeasers.items.map((item, i) => (
                   <div key={item.title} className="max-w-md">
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight leading-tight mb-2">
+                    <h4 className="text-lg sm:text-xl font-bold tracking-tight leading-tight mb-1.5">
                       {item.title}
-                    </h3>
-                    <p className="text-sm sm:text-[0.95rem] leading-relaxed text-white/88">
-                      {item.body}
-                    </p>
-                  </div>
-                ))}
-                <div className="flex flex-wrap gap-2.5 pt-1">
-                  {whyUsPairs[1].items.map((item, i) =>
-                    isWhyUsPath(item.href) ? (
+                    </h4>
+                    <p className="text-sm leading-relaxed text-white/88">{item.body}</p>
+                    {isWhyUsPath(item.href) ? (
                       <Link
-                        key={item.title}
                         to={item.href}
                         className={
-                          i === 0
-                            ? "inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
-                            : "inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-black transition-opacity hover:opacity-90"
+                          "mt-3 inline-flex items-center rounded-full px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] transition-opacity hover:opacity-90 " +
+                          (i === 0
+                            ? "bg-accent text-accent-foreground"
+                            : "bg-white text-black")
                         }
                       >
                         {item.linkLabel}
                       </Link>
-                    ) : null,
-                  )}
-                </div>
+                    ) : null}
+                  </div>
+                ))}
               </div>
             </article>
           </div>
