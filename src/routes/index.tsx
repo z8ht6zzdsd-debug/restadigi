@@ -89,15 +89,15 @@ function Index() {
         }}
       >
         <div className="relative mx-auto grid max-w-6xl items-end gap-10 px-6 pb-12 pt-12 sm:pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-12 lg:pb-20 lg:pt-20">
-          {/* Vasen: kuvaus + CTA */}
-          <div className="relative z-[1] flex flex-col lg:col-span-5">
-            <p className="max-w-md text-base leading-relaxed text-white/90 sm:text-lg">
-              {h.hero.description}
-            </p>
-            <div className="mt-10 sm:mt-14 lg:mt-16">
+          {/* Vasen: valkoinen pystyboksi ruskean/valkoisen rajalla */}
+          <div className="relative z-[2] flex justify-start lg:col-span-5 lg:items-end">
+            <div className="flex w-full max-w-[19.5rem] flex-col justify-between gap-8 rounded-[1.35rem] bg-white px-6 py-8 text-foreground shadow-[0_20px_50px_-18px_rgba(26,18,14,0.35)] sm:max-w-[21rem] sm:gap-10 sm:rounded-[1.5rem] sm:px-7 sm:py-9 lg:min-h-[26rem] lg:translate-y-[-12%] xl:min-h-[28rem]">
+              <p className="text-[0.95rem] leading-relaxed text-foreground/85 sm:text-base">
+                {h.hero.description}
+              </p>
               <Link
                 to="/yhteys"
-                className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground shadow-sm transition-opacity hover:opacity-90"
+                className="inline-flex w-full items-center justify-center rounded-full bg-accent px-6 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground shadow-sm transition-opacity hover:opacity-90 sm:w-auto"
               >
                 {h.hero.cta}
               </Link>
