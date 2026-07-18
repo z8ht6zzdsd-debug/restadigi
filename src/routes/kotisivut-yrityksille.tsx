@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Crown, Gem, LayoutTemplate, Sparkles } from "lucide-react";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
-import freddosEspresso from "@/assets/freddos-espresso.jpg";
-import freddosIceLatte from "@/assets/freddos-ice-latte.jpg";
-import freddosCappuccino from "@/assets/freddos-cappuccino-lid.jpg";
+import freddosEspresso from "@/assets/freddos-v2-espresso.jpg";
+import freddosLatte from "@/assets/freddos-v2-latte.jpg";
+import freddosBerry from "@/assets/freddos-v2-berry.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import { MarketingBand } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
@@ -16,8 +16,8 @@ const WEBSITE_ICONS = [LayoutTemplate, Sparkles, Crown, Gem] as const;
 
 const FREDDOS_COFFEES = [
   { src: freddosEspresso, alt: "Freddo Espresso" },
-  { src: freddosIceLatte, alt: "Ice Latte" },
-  { src: freddosCappuccino, alt: "Freddo Cappuccino" },
+  { src: freddosLatte, alt: "Ice Latte" },
+  { src: freddosBerry, alt: "Berry Latte" },
 ] as const;
 
 export const Route = createFileRoute("/kotisivut-yrityksille")({
