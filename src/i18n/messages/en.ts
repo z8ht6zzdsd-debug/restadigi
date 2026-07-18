@@ -375,7 +375,8 @@ export const en: Messages = {
     },
     hero: {
       brand: "Restadigi",
-      headline: "Shall we get your visibility sorted in one go?",
+      headlineLine1: "Shall we get your visibility",
+      headlineLine2: "sorted in one go?",
       searchPlaceholder: "Search",
       searchAriaLabel: "Search digital visibility",
     },

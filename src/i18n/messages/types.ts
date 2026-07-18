@@ -211,7 +211,8 @@ export type Messages = {
     };
     hero: {
       brand: string;
-      headline: string;
+      headlineLine1: string;
+      headlineLine2: string;
       searchPlaceholder: string;
       searchAriaLabel: string;
     };

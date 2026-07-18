@@ -379,7 +379,8 @@ export const fi: Messages = {
     },
     hero: {
       brand: "Restadigi",
-      headline: "Laitetaanko näkyvyydet kerralla kuntoon?",
+      headlineLine1: "Laitetaanko näkyvyydet",
+      headlineLine2: "kerralla kuntoon?",
       searchPlaceholder: "Haku",
       searchAriaLabel: "Hae diginäkyvyydestä",
     },

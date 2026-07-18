@@ -91,12 +91,10 @@ function DiginakyvyysPage() {
         </div>
 
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-          <h1 className="font-script text-5xl leading-none text-[#c9a882] sm:text-6xl lg:text-7xl">
-            {v.hero.brand}
+          <h1 className="max-w-2xl text-3xl font-bold leading-[1.1] tracking-tight text-[#f7f3ee] sm:text-5xl lg:text-6xl">
+            <span className="block">{v.hero.headlineLine1}</span>
+            <span className="block">{v.hero.headlineLine2}</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg font-bold leading-snug tracking-tight text-[#f7f3ee] sm:text-2xl">
-            {v.hero.headline}
-          </p>
 
           <form
             className="mt-8 w-full max-w-xl"

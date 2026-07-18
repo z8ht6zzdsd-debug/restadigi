@@ -381,7 +381,8 @@ export const es: Messages = {
     },
     hero: {
       brand: "Restadigi",
-      headline: "¿Ponemos tu visibilidad en orden de una vez?",
+      headlineLine1: "¿Ponemos tu visibilidad",
+      headlineLine2: "en orden de una vez?",
       searchPlaceholder: "Buscar",
       searchAriaLabel: "Buscar en visibilidad digital",
     },
