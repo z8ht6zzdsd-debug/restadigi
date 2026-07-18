@@ -15,7 +15,7 @@ type ServiceSplitHeroProps = {
 
 /**
  * Desktop: kuva + overlay-kortti + sivuteksti.
- * Mobiili: puhdas kuva (ei peittävää korttia) + otsikko alla.
+ * Mobiili: otsikko kuvan päällä ruskealla feidauksella + headline CTA alla.
  */
 export function ServiceSplitHero({
   image,
@@ -42,24 +42,47 @@ export function ServiceSplitHero({
                 (imageClassName ? ` ${imageClassName}` : "")
               }
             />
+
+            {/* Mobiili / tabletti: teksti kuvan päällä, ruskea feidaus */}
+            <div className="absolute inset-0 z-10 flex flex-col justify-end lg:hidden">
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#432f24] via-[#432f24]/75 to-transparent"
+                aria-hidden
+              />
+              <div className="relative px-5 pb-5 pt-10 sm:px-7 sm:pb-7">
+                <div className="flex items-start gap-3">
+                  <span
+                    className="mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent ring-1 ring-accent/35"
+                    aria-hidden
+                  >
+                    <Icon className="size-4" strokeWidth={1.75} />
+                  </span>
+                  <h2 className="text-left text-[1.65rem] font-medium leading-[1.12] tracking-tight text-[#f7f3ee] sm:text-3xl">
+                    {overlayTitle}
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop: kortti kuvan keskellä */}
             <div
               className="absolute inset-0 hidden bg-[#432f24]/25 lg:block"
               aria-hidden
             />
-            <div className="absolute inset-0 hidden items-center justify-center p-5 lg:flex sm:p-8">
-              <div className="w-[92%] max-w-2xl rounded-3xl bg-[#432f24]/92 px-6 py-8 text-center shadow-lg sm:px-10 sm:py-10">
-                <div className="flex items-center justify-center gap-3 sm:gap-4">
+            <div className="absolute inset-0 hidden items-center justify-center p-8 lg:flex">
+              <div className="w-[92%] max-w-2xl rounded-3xl bg-[#432f24]/92 px-10 py-10 text-center shadow-lg">
+                <div className="flex items-center justify-center gap-4">
                   <span
-                    className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent ring-1 ring-accent/35 sm:size-12"
+                    className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent ring-1 ring-accent/35"
                     aria-hidden
                   >
-                    <Icon className="size-5 sm:size-6" strokeWidth={1.75} />
+                    <Icon className="size-6" strokeWidth={1.75} />
                   </span>
-                  <h2 className="text-left text-2xl font-medium leading-[1.1] tracking-tight text-[#f7f3ee] sm:text-4xl lg:text-[2.75rem]">
+                  <h2 className="text-left text-4xl font-medium leading-[1.1] tracking-tight text-[#f7f3ee] lg:text-[2.75rem]">
                     {overlayTitle}
                   </h2>
                 </div>
-                <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[#f7f3ee]/85 sm:text-base">
+                <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[#f7f3ee]/85">
                   {overlayDescription}
                 </p>
               </div>
