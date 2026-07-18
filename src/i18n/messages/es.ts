@@ -95,9 +95,6 @@ export const es: Messages = {
   },
   footer: {
     copyright: "© {year} Restadigi — Helsinki",
-    instagram: "Instagram",
-    behance: "Behance",
-    linkedin: "LinkedIn",
   },
   home: {
     meta: {

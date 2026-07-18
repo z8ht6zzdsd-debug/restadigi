@@ -40,9 +40,6 @@ export type Messages = {
   };
   footer: {
     copyright: string;
-    instagram: string;
-    behance: string;
-    linkedin: string;
   };
   home: {
     meta: {
