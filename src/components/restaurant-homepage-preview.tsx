@@ -32,15 +32,20 @@ export function RestaurantHomepagePreview({ image }: { image: string }) {
           <p className="mt-1.5 text-[0.5rem] uppercase tracking-[0.22em] text-white/75 sm:text-[0.55rem]">
             Helsinki · Illallinen
           </p>
-          <span className="mt-3 inline-flex rounded-full bg-[#c9a882] px-3.5 py-1.5 text-[0.5rem] font-bold uppercase tracking-[0.12em] text-[#2a1f18] sm:mt-3.5 sm:text-[0.55rem]">
-            Varaa pöytä
-          </span>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-1.5 sm:mt-3.5 sm:gap-2">
+            <span className="inline-flex rounded-full bg-[#c9a882] px-3 py-1.5 text-[0.5rem] font-bold uppercase tracking-[0.12em] text-[#2a1f18] sm:text-[0.55rem]">
+              Varaa pöytä
+            </span>
+            <span className="inline-flex rounded-full bg-white/95 px-3 py-1.5 text-[0.5rem] font-bold uppercase tracking-[0.12em] text-[#2a1f18] sm:text-[0.55rem]">
+              Asiakaspalvelu
+            </span>
+          </div>
         </div>
       </div>
 
       {/* Etusivun alarivi: kolme sisältöpalikkaa */}
       <div className="grid shrink-0 grid-cols-3 gap-1 bg-white p-1.5 sm:gap-1.5 sm:p-2">
-        {["Menu", "Tunnelma", "Varaus"].map((label) => (
+        {["Menu", "Tunnelma", "Ryhmille"].map((label) => (
           <div
             key={label}
             className="flex aspect-[5/4] flex-col justify-end overflow-hidden rounded-md bg-[#ebe8e2]"
