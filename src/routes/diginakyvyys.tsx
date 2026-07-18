@@ -5,6 +5,7 @@ import pkgVisAi from "@/assets/pkg-vis-ai.jpg";
 import pkgVisGoogle from "@/assets/pkg-vis-google.jpg";
 import pkgVisSports from "@/assets/pkg-vis-sports.jpg";
 import pkgVisGraphic from "@/assets/pkg-vis-graphic.jpg";
+import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import {
   MarketingBand,
@@ -122,6 +123,8 @@ function DiginakyvyysPage() {
               </button>
             </div>
           </form>
+
+          <VisibilityBrandLogoStrip onDark className="mt-10 sm:mt-12" />
         </div>
       </section>
 
