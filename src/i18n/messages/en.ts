@@ -433,7 +433,7 @@ export const en: Messages = {
         tagline: "Visible in ChatGPT, Claude, Gemini and Copilot searches too",
         description:
           "Web search is changing. More people find companies, products and services by talking to AI. Our AI optimisation service helps keep your business data up to date and ensures your website content supports AI tools in recognising your company in the right context.",
-        price: "99 € / year",
+        price: "from 99 € / year",
         bullets: [
           "Baseline AI visibility review of your website",
           "Review of key business information",
@@ -448,7 +448,7 @@ export const en: Messages = {
         tagline: "Make sure customers can find your business",
         description:
           "Google is still one of the most important channels for finding companies, products and services. Our Google optimisation is a light annual maintenance service that ensures your site meets key SEO basics and supports discoverability.",
-        price: "99 € / year",
+        price: "from 99 € / year",
         bullets: [
           "Baseline SEO review of your website",
           "Review of page titles and meta descriptions",
