@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Crown, Gem, LayoutTemplate, Sparkles } from "lucide-react";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
 import successBusyTerrace from "@/assets/success-busy-terrace.jpg";
 import successTouristGroup from "@/assets/success-tourist-group.jpg";
@@ -16,7 +15,6 @@ import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-const WEBSITE_ICONS = [LayoutTemplate, Sparkles, Crown, Gem] as const;
 const WEBSITE_HEADER_IMAGES = [
   pkgWebStart,
   pkgWebPlus,
@@ -120,8 +118,8 @@ function KotisivutPage() {
             featured: pkg.featured,
             description: pkg.tagline,
             bullets: pkg.bullets,
-            icon: WEBSITE_ICONS[i],
             headerImage: WEBSITE_HEADER_IMAGES[i],
+            deviceLayout: true,
           }))}
           footnote={
             <>

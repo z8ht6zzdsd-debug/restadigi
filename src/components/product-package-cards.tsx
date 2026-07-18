@@ -22,6 +22,8 @@ export type ProductPackage = {
   headerVisual?: "brandLogos";
   /** Topic photo for the brown header panel (websites / hosting) */
   headerImage?: string;
+  /** Full-bleed device-layout header (website packages) — no icon column */
+  deviceLayout?: boolean;
 };
 
 type ProductPackageCardsProps = {
@@ -48,16 +50,12 @@ export function RestadigiBrownPanel({
 }) {
   if (image) {
     return (
-      <div className={"relative overflow-hidden bg-[#432f24] " + className}>
+      <div className={"relative overflow-hidden bg-[#ebe8e2] " + className}>
         <img
           src={image}
           alt=""
           aria-hidden
           className="absolute inset-0 size-full object-cover object-center"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-[#432f24]/55 via-[#432f24]/25 to-[#432f24]/40"
-          aria-hidden
         />
       </div>
     );
@@ -130,9 +128,12 @@ export function ProductPackageCards({
           const headerH =
             headerKind === "sports" || headerKind === "brandLogos"
               ? "h-36 sm:h-40"
-              : pkg.headerImage
-                ? "h-28 sm:h-32"
-                : "h-[5.75rem] sm:h-[6.5rem]";
+              : pkg.deviceLayout
+                ? "h-40 sm:h-48"
+                : pkg.headerImage
+                  ? "h-28 sm:h-32"
+                  : "h-[5.75rem] sm:h-[6.5rem]";
+          const deviceLayout = Boolean(pkg.deviceLayout && pkg.headerImage);
           return (
             <article
               key={pkg.name}
@@ -159,6 +160,15 @@ export function ProductPackageCards({
                 <PackageSportsPhotos className={"shrink-0 " + headerH} />
               ) : headerKind === "brandLogos" ? (
                 <PackageBrandWorkLogos className={"shrink-0 " + headerH} />
+              ) : deviceLayout ? (
+                <div className={"relative shrink-0 overflow-hidden bg-[#ebe8e2] " + headerH}>
+                  <img
+                    src={pkg.headerImage}
+                    alt=""
+                    aria-hidden
+                    className="absolute inset-0 size-full object-cover object-center"
+                  />
+                </div>
               ) : (
                 <div
                   className={
@@ -179,10 +189,22 @@ export function ProductPackageCards({
                   </div>
                 </div>
               )}
-              <div className="flex flex-1 flex-col items-center justify-center gap-4 px-5 py-6 text-center sm:gap-5 sm:px-8 sm:py-8">
+              <div
+                className={
+                  deviceLayout
+                    ? "flex flex-1 flex-col items-center justify-center gap-3 px-5 py-5 text-center sm:gap-3.5 sm:px-6 sm:py-6"
+                    : "flex flex-1 flex-col items-center justify-center gap-4 px-5 py-6 text-center sm:gap-5 sm:px-8 sm:py-8"
+                }
+              >
                 <div className="w-full">
-                  <div className="mb-2 flex flex-wrap items-center justify-center gap-2">
-                    <h3 className="max-w-[16ch] text-xl font-bold leading-tight tracking-tight sm:max-w-none sm:text-2xl lg:text-3xl">
+                  <div className="mb-1.5 flex flex-wrap items-center justify-center gap-2">
+                    <h3
+                      className={
+                        deviceLayout
+                          ? "text-lg font-bold leading-tight tracking-tight sm:text-xl"
+                          : "max-w-[16ch] text-xl font-bold leading-tight tracking-tight sm:max-w-none sm:text-2xl lg:text-3xl"
+                      }
+                    >
                       {pkg.name}
                     </h3>
                     {pkg.featured && (
@@ -191,14 +213,24 @@ export function ProductPackageCards({
                       </span>
                     )}
                   </div>
-                  <p className="font-serif text-2xl text-foreground sm:text-3xl lg:text-4xl">
+                  <p
+                    className={
+                      deviceLayout
+                        ? "font-serif text-xl text-foreground sm:text-2xl"
+                        : "font-serif text-2xl text-foreground sm:text-3xl lg:text-4xl"
+                    }
+                  >
                     {pkg.price}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setOpenPackage(pkg.name)}
-                  className="inline-flex min-w-[10rem] items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
+                  className={
+                    deviceLayout
+                      ? "inline-flex min-w-[9rem] items-center justify-center rounded-full bg-accent px-6 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
+                      : "inline-flex min-w-[10rem] items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
+                  }
                 >
                   {explore}
                 </button>
