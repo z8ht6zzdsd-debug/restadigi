@@ -1,11 +1,11 @@
-import fineDining from "@/assets/hero-fine-dining.jpg";
-import restaurantInterior from "@/assets/restaurant-interior.jpg";
-import busyTerrace from "@/assets/success-busy-terrace.jpg";
+import erikoismenut from "@/assets/mock-erikoismenut.jpg";
+import tapahtumat from "@/assets/mock-tapahtumat.jpg";
+import ryhmille from "@/assets/mock-ryhmille.jpg";
 
 const TILES = [
-  { label: "Erikoismenut", image: fineDining, position: "center 45%" },
-  { label: "Tunnelma", image: restaurantInterior, position: "center 40%" },
-  { label: "Ryhmille", image: busyTerrace, position: "center 50%" },
+  { label: "Erikoismenut", image: erikoismenut, position: "center 45%" },
+  { label: "Tapahtumat", image: tapahtumat, position: "center 40%" },
+  { label: "Ryhmille", image: ryhmille, position: "center 45%" },
 ] as const;
 
 /** Mini-mock: ravintolan verkkosivun etusivu laitteen näytöllä */
@@ -67,7 +67,7 @@ export function RestaurantHomepagePreview({ image }: { image: string }) {
                 className="absolute inset-0 size-full object-cover"
                 style={{ objectPosition: tile.position }}
               />
-              <div className="absolute inset-0 bg-[#432f24]/30" />
+              <div className="absolute inset-0 bg-[#432f24]/25" />
             </div>
             <p className="bg-white px-0.5 py-1 text-center text-[0.35rem] font-semibold uppercase leading-tight tracking-[0.08em] text-[#432f24]/75 sm:text-[0.4rem]">
               {tile.label}
