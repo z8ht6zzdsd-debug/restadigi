@@ -138,7 +138,13 @@ const GOOGLE_LOGOS: LogoItem[] = [
 ];
 
 /** AI + Google package marks in one row — icons only. */
-export function VisibilityBrandLogoStrip({ className = "" }: { className?: string }) {
+export function VisibilityBrandLogoStrip({
+  className = "",
+  onDark = false,
+}: {
+  className?: string;
+  onDark?: boolean;
+}) {
   const logos = [...AI_LOGOS, ...GOOGLE_LOGOS];
 
   return (
@@ -152,7 +158,10 @@ export function VisibilityBrandLogoStrip({ className = "" }: { className?: strin
         <Mark
           key={name}
           title={name}
-          className={"size-8 sm:size-9 " + (tone ?? "text-foreground")}
+          className={
+            "size-8 sm:size-9 " +
+            (onDark ? "text-[#e8dccf]" : (tone ?? "text-foreground"))
+          }
         />
       ))}
     </div>

@@ -80,12 +80,21 @@ function DiginakyvyysPage() {
       />
       <SiteHeader />
 
-      <section className="w-full bg-[#f7f3ee] px-6 py-16 sm:py-24">
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-black sm:text-5xl lg:text-6xl">
+      <section className="relative w-full overflow-hidden bg-[#432f24] px-6 py-16 sm:py-24">
+        <div
+          className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
+          aria-hidden
+        >
+          <span className="font-script select-none text-[clamp(5.5rem,22vw,14rem)] leading-none text-[#5c4335]">
+            {v.hero.brand}
+          </span>
+        </div>
+
+        <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+          <h1 className="font-script text-5xl leading-none text-[#c9a882] sm:text-6xl lg:text-7xl">
             {v.hero.brand}
           </h1>
-          <p className="mt-5 max-w-xl text-base font-medium leading-snug text-black/80 sm:text-lg">
+          <p className="mt-6 max-w-xl text-lg font-bold leading-snug tracking-tight text-[#f7f3ee] sm:text-2xl">
             {v.hero.headline}
           </p>
 
@@ -102,17 +111,17 @@ function DiginakyvyysPage() {
             <label className="sr-only" htmlFor="nakyvyys-haku">
               {v.hero.searchAriaLabel}
             </label>
-            <div className="flex items-center rounded-full bg-white px-5 py-3.5 shadow-sm ring-1 ring-black/5">
+            <div className="flex items-center rounded-full bg-white px-5 py-3.5 shadow-sm ring-1 ring-black/10">
               <input
                 id="nakyvyys-haku"
                 type="search"
                 name="q"
                 placeholder={v.hero.searchPlaceholder}
-                className="min-w-0 flex-1 bg-transparent text-base text-black outline-none placeholder:text-black/40"
+                className="min-w-0 flex-1 bg-transparent text-base text-[#432f24] outline-none placeholder:text-[#432f24]/40"
               />
               <button
                 type="submit"
-                className="ml-3 shrink-0 text-black/45 transition-colors hover:text-black/70"
+                className="ml-3 shrink-0 text-[#432f24]/45 transition-colors hover:text-[#432f24]/75"
                 aria-label={v.hero.searchAriaLabel}
               >
                 <Search className="size-5" strokeWidth={1.75} />
@@ -120,7 +129,7 @@ function DiginakyvyysPage() {
             </div>
           </form>
 
-          <VisibilityBrandLogoStrip className="mt-10" />
+          <VisibilityBrandLogoStrip className="mt-10" onDark />
         </div>
       </section>
 

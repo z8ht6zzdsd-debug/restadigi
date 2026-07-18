@@ -63,6 +63,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
+  --font-script: "Great Vibes", cursive;
 }
 
 :root {
