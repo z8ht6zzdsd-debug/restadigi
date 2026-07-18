@@ -273,6 +273,13 @@ function ChatbotPanel({ mode, placement, className }: ChatbotPanelProps) {
     return () => document.documentElement.classList.remove("chatbot-open");
   }, [open, placement]);
 
+  useEffect(() => {
+    if (mode !== "sales" || placement !== "floating") return;
+    const onOpen = () => setOpen(true);
+    window.addEventListener(OPEN_SALES_CHAT_EVENT, onOpen);
+    return () => window.removeEventListener(OPEN_SALES_CHAT_EVENT, onOpen);
+  }, [mode, placement, setOpen]);
+
   if (placement === "inline") {
     return (
       <div className={cn("relative flex flex-col items-center", className)}>
@@ -335,6 +342,13 @@ function ChatbotPanel({ mode, placement, className }: ChatbotPanelProps) {
 }
 
 /** Restadigi sales / customer-service bot — every page, bottom right */
+export const OPEN_SALES_CHAT_EVENT = "restadigi:open-sales-chat";
+
+export function openSalesChatbot() {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new Event(OPEN_SALES_CHAT_EVENT));
+}
+
 export function ChatbotWidget() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   if (pathname.startsWith("/dashboard")) return null;

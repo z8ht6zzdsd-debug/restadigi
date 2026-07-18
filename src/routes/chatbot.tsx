@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import heroAiService from "@/assets/hero-ai-service.jpg";
+import { openSalesChatbot } from "@/components/chatbot-widget";
 import { DashboardMonitorPreview } from "@/components/dashboard-monitor-preview";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -106,8 +107,9 @@ function ChatbotPage() {
             <p className="mt-5 text-base leading-relaxed text-foreground/75 sm:text-lg">
               {cb.hero.subtitle}
             </p>
-            <Link
-              to="/yhteys"
+            <button
+              type="button"
+              onClick={() => openSalesChatbot()}
               className="mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
             >
               {cb.hero.cta}
@@ -124,7 +126,7 @@ function ChatbotPage() {
                   d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
                 />
               </svg>
-            </Link>
+            </button>
           </div>
         </div>
       </section>
