@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Gem, LayoutTemplate, Sparkles, Trophy } from "lucide-react";
+import { Crown, Gem, LayoutTemplate, Sparkles } from "lucide-react";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
 import freddosCoffee from "@/assets/freddos-coffee.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
@@ -13,7 +13,7 @@ import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-const WEBSITE_ICONS = [LayoutTemplate, Sparkles, Trophy, Gem] as const;
+const WEBSITE_ICONS = [LayoutTemplate, Sparkles, Crown, Gem] as const;
 
 export const Route = createFileRoute("/kotisivut-yrityksille")({
   head: () => ({
