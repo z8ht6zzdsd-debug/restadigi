@@ -20,6 +20,8 @@ export type ProductPackage = {
   icon?: LucideIcon;
   /** Replace brown Restadigi panel with portfolio logos (graphic design) */
   headerVisual?: "brandLogos";
+  /** Topic photo for the brown header panel (websites / hosting) */
+  headerImage?: string;
 };
 
 type ProductPackageCardsProps = {
@@ -38,10 +40,29 @@ type ProductPackageCardsProps = {
 export function RestadigiBrownPanel({
   className = "",
   compact = false,
+  image,
 }: {
   className?: string;
   compact?: boolean;
+  image?: string;
 }) {
+  if (image) {
+    return (
+      <div className={"relative overflow-hidden bg-[#432f24] " + className}>
+        <img
+          src={image}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 size-full object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[#432f24]/55 via-[#432f24]/25 to-[#432f24]/40"
+          aria-hidden
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={"relative overflow-hidden rounded-[1.75rem] bg-[#432f24] " + className}>
       <div
@@ -109,7 +130,9 @@ export function ProductPackageCards({
           const headerH =
             headerKind === "sports" || headerKind === "brandLogos"
               ? "h-36 sm:h-40"
-              : "h-[5.75rem] sm:h-[6.5rem]";
+              : pkg.headerImage
+                ? "h-28 sm:h-32"
+                : "h-[5.75rem] sm:h-[6.5rem]";
           return (
             <article
               key={pkg.name}
@@ -143,7 +166,11 @@ export function ProductPackageCards({
                     headerH
                   }
                 >
-                  <RestadigiBrownPanel className="h-full rounded-none" compact />
+                  <RestadigiBrownPanel
+                    className="h-full rounded-none"
+                    compact
+                    image={pkg.headerImage}
+                  />
                   <div
                     className="flex items-center justify-center bg-[#f3eee8] text-[#432f24]"
                     aria-hidden

@@ -4,6 +4,10 @@ import heroWebDevices from "@/assets/hero-web-devices.jpg";
 import successBusyTerrace from "@/assets/success-busy-terrace.jpg";
 import successTouristGroup from "@/assets/success-tourist-group.jpg";
 import successGuestsArriving from "@/assets/success-guests-arriving.jpg";
+import pkgWebStart from "@/assets/pkg-web-start.jpg";
+import pkgWebPlus from "@/assets/pkg-web-plus.jpg";
+import pkgWebKulta from "@/assets/pkg-web-kulta.jpg";
+import pkgWebTimantti from "@/assets/pkg-web-timantti.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import { MarketingBand } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
@@ -13,6 +17,12 @@ import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
 const WEBSITE_ICONS = [LayoutTemplate, Sparkles, Crown, Gem] as const;
+const WEBSITE_HEADER_IMAGES = [
+  pkgWebStart,
+  pkgWebPlus,
+  pkgWebKulta,
+  pkgWebTimantti,
+] as const;
 
 /** Näkyvyys → kävijät → varaukset */
 const SUCCESS_SCENES = [
@@ -111,6 +121,7 @@ function KotisivutPage() {
             description: pkg.tagline,
             bullets: pkg.bullets,
             icon: WEBSITE_ICONS[i],
+            headerImage: WEBSITE_HEADER_IMAGES[i],
           }))}
           footnote={
             <>

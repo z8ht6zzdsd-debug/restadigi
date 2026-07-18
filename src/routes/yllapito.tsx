@@ -3,6 +3,8 @@ import { Server, ShieldCheck } from "lucide-react";
 import heroHostingServers from "@/assets/hero-hosting-servers.png";
 import heroHostingRacks from "@/assets/hero-hosting-racks.png";
 import heroHostingDevices from "@/assets/hero-hosting-devices.png";
+import pkgHostBasic from "@/assets/pkg-host-basic.jpg";
+import pkgHostPro from "@/assets/pkg-host-pro.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import { MarketingBand } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
@@ -11,6 +13,7 @@ import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
 const HOSTING_ICONS = [Server, ShieldCheck] as const;
+const HOSTING_HEADER_IMAGES = [pkgHostBasic, pkgHostPro] as const;
 
 export const Route = createFileRoute("/yllapito")({
   head: () => ({
@@ -131,6 +134,7 @@ function YllapitoPage() {
           packages={h.packages.map((pkg, i) => ({
             ...pkg,
             icon: HOSTING_ICONS[i],
+            headerImage: HOSTING_HEADER_IMAGES[i],
           }))}
           footnote={h.footnote}
         />
