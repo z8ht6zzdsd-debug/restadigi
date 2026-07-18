@@ -108,12 +108,6 @@ function Index() {
           </div>
 
           <div className="relative lg:col-span-7">
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-px w-8 bg-[#c9a882] sm:w-10" aria-hidden />
-              <span className="font-script text-2xl leading-none text-[#432f24]/35 sm:text-3xl">
-                Restadigi
-              </span>
-            </div>
             <h1 className="max-w-[16ch] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
               {h.hero.titleBefore}
               <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
