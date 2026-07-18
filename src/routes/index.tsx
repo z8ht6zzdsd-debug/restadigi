@@ -88,7 +88,7 @@ function Index() {
       />
 
       {/* McD-tyylinen keltainen kaista: miksi meidät + toimialaratkaisut */}
-      <section className="bg-[#ffc72c] text-black pt-10 sm:pt-14 pb-12 sm:pb-16">
+      <section className="bg-[#ebe8e2] text-foreground pt-10 sm:pt-14 pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="max-w-[14ch] text-[2.35rem] sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[0.98] tracking-tight mb-8 sm:mb-10">
             {h.whyUs.titleBefore}
@@ -127,7 +127,7 @@ function Index() {
                         to={item.href}
                         className={
                           i === 0
-                            ? "inline-flex items-center rounded-full bg-[#ffc72c] px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-black transition-opacity hover:opacity-90"
+                            ? "inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
                             : "inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-black transition-opacity hover:opacity-90"
                         }
                       >
@@ -161,7 +161,7 @@ function Index() {
                 <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 pt-2">
                   <a
                     href={`tel:${h.intro.phoneTel}`}
-                    className="inline-flex items-center justify-center rounded-full bg-[#ffc72c] px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-black transition-opacity hover:opacity-90"
+                    className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
                   >
                     {h.intro.callCta}
                   </a>
@@ -213,7 +213,7 @@ function Index() {
                         to={item.href}
                         className={
                           i === 0
-                            ? "inline-flex items-center rounded-full bg-[#ffc72c] px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-black transition-opacity hover:opacity-90"
+                            ? "inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
                             : "inline-flex items-center rounded-full bg-white px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-black transition-opacity hover:opacity-90"
                         }
                       >
