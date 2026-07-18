@@ -135,7 +135,7 @@ export function RestaurantHomepagePreview({ image }: { image: string }) {
         {/* Kelluva badge */}
         <div className="absolute right-2 top-2 rotate-[8deg] rounded-full border border-[#c9a882]/60 bg-[#432f24]/85 px-2 py-1 shadow-sm backdrop-blur-[2px] sm:right-2.5 sm:top-2.5">
           <p className="text-[0.38rem] font-bold uppercase tracking-[0.18em] text-[#c9a882] sm:text-[0.42rem]">
-            Open · 17–24
+            {p.openBadge}
           </p>
         </div>
 

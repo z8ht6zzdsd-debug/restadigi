@@ -62,6 +62,7 @@ export type Messages = {
       navHours: string;
       navContact: string;
       tagline: string;
+      openBadge: string;
       bookTable: string;
       customerService: string;
       tileSpecialMenus: string;

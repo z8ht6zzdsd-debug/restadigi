@@ -119,6 +119,7 @@ export const en: Messages = {
       navHours: "Hours",
       navContact: "Contact",
       tagline: "Helsinki · Dinner",
+      openBadge: "Open today 17–24",
       bookTable: "Book a table",
       customerService: "Customer service",
       tileSpecialMenus: "Special menus",

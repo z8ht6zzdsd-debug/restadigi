@@ -120,6 +120,7 @@ export const fi: Messages = {
       navHours: "Aukiolo",
       navContact: "Yhteys",
       tagline: "Helsinki · Illallinen",
+      openBadge: "Auki tänään 17–24",
       bookTable: "Varaa pöytä",
       customerService: "Asiakaspalvelu",
       tileSpecialMenus: "Erikoismenut",
