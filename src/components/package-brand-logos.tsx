@@ -280,18 +280,18 @@ export function packageHeaderKind(
 export function PackageSportsPhotos({ className = "" }: { className?: string }) {
   return (
     <div
-      className={"grid h-full grid-cols-2 gap-0.5 bg-[#432f24] " + className}
+      className={"grid h-full grid-cols-2 gap-px bg-[#432f24] " + className}
       aria-hidden
     >
       <img
         src={sportHockey}
         alt=""
-        className="size-full min-h-0 object-cover object-center"
+        className="size-full min-h-0 object-cover object-[center_35%]"
       />
       <img
         src={sportFootball}
         alt=""
-        className="size-full min-h-0 object-cover object-[center_30%]"
+        className="size-full min-h-0 object-cover object-[center_25%]"
       />
     </div>
   );
@@ -300,15 +300,15 @@ export function PackageSportsPhotos({ className = "" }: { className?: string }) 
 /** Client / brand logos for graphic design showcase in package headers */
 export function PackageBrandWorkLogos({ className = "" }: { className?: string }) {
   const logos = [
-    { src: delfinLogo, name: "Delfín" },
-    { src: rafaLogo, name: "Rafa Romera" },
-    { src: restadigiLogo, name: "Restadigi" },
+    { src: delfinLogo, name: "Delfín", tile: "bg-white" },
+    { src: rafaLogo, name: "Rafa Romera", tile: "bg-black" },
+    { src: restadigiLogo, name: "Restadigi", tile: "bg-white" },
   ] as const;
 
   return (
     <div
       className={
-        "flex h-full w-full items-end justify-between gap-2 bg-white px-3 py-3 sm:gap-3 sm:px-4 sm:py-3.5 " +
+        "flex h-full w-full items-center justify-between gap-2 bg-[#f3eee8] px-2.5 py-2.5 sm:gap-3 sm:px-4 sm:py-3 " +
         className
       }
       aria-hidden
@@ -318,14 +318,19 @@ export function PackageBrandWorkLogos({ className = "" }: { className?: string }
           key={logo.name}
           className="flex min-w-0 flex-1 flex-col items-center gap-1"
         >
-          <div className="flex h-9 w-full items-center justify-center sm:h-10">
+          <div
+            className={
+              "flex h-12 w-full items-center justify-center overflow-hidden rounded-lg px-1.5 sm:h-14 " +
+              logo.tile
+            }
+          >
             <img
               src={logo.src}
               alt=""
               className="max-h-full max-w-full object-contain"
             />
           </div>
-          <span className="w-full truncate text-center text-[9px] leading-tight text-foreground/60 sm:text-[10px]">
+          <span className="w-full truncate text-center text-[9px] leading-tight text-foreground/65 sm:text-[10px]">
             {logo.name}
           </span>
         </div>

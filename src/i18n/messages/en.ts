@@ -343,10 +343,10 @@ export const en: Messages = {
         "Well-designed websites and web content are your most important digital tools. They strengthen your brand visibility, make it easy for customers to reach you and leave a strong first impression.",
     },
     midBanner: {
-      title: "Your journey to success starts here!",
+      title: "Your journey to digital success starts here!",
       description:
         "Explore the packages below to take your company’s online visibility to the next level.",
-      imageAlt: "Freddo’s coffee",
+      imageAlt: "More visitors and bookings",
     },
     popular: "Popular",
     requestQuote: "Request a quote",

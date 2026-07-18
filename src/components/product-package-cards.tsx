@@ -106,7 +106,10 @@ export function ProductPackageCards({
             pkg.headerVisual === "brandLogos"
               ? "brandLogos"
               : packageHeaderKind(pkg.name);
-          const headerH = "h-[5.75rem] sm:h-[6.5rem]";
+          const headerH =
+            headerKind === "sports" || headerKind === "brandLogos"
+              ? "h-36 sm:h-40"
+              : "h-[5.75rem] sm:h-[6.5rem]";
           return (
             <article
               key={pkg.name}
@@ -149,17 +152,21 @@ export function ProductPackageCards({
                   </div>
                 </div>
               )}
-              <div className="flex flex-1 flex-col items-center justify-center gap-5 px-6 py-7 text-center sm:px-8 sm:py-8">
-                <div>
+              <div className="flex flex-1 flex-col items-center justify-center gap-4 px-5 py-6 text-center sm:gap-5 sm:px-8 sm:py-8">
+                <div className="w-full">
                   <div className="mb-2 flex flex-wrap items-center justify-center gap-2">
-                    <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">{pkg.name}</h3>
+                    <h3 className="max-w-[16ch] text-xl font-bold leading-tight tracking-tight sm:max-w-none sm:text-2xl lg:text-3xl">
+                      {pkg.name}
+                    </h3>
                     {pkg.featured && (
                       <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
                         {popular}
                       </span>
                     )}
                   </div>
-                  <p className="font-serif text-3xl text-foreground sm:text-4xl">{pkg.price}</p>
+                  <p className="font-serif text-2xl text-foreground sm:text-3xl lg:text-4xl">
+                    {pkg.price}
+                  </p>
                 </div>
                 <button
                   type="button"

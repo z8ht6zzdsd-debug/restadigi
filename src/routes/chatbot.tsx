@@ -11,7 +11,7 @@ import {
   Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import heroAiService from "@/assets/hero-ai-service.jpg";
+import heroAiChat from "@/assets/hero-ai-chat-service.jpg";
 import { openSalesChatbot } from "@/components/chatbot-widget";
 import { DashboardMonitorPreview } from "@/components/dashboard-monitor-preview";
 import {
@@ -20,6 +20,7 @@ import {
   MarketingCtaBox,
   MarketingHeading,
 } from "@/components/marketing-band";
+import { ServiceSplitHero } from "@/components/service-split-hero";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -71,71 +72,44 @@ function ChatbotPage() {
       />
       <SiteHeader />
 
-      <section className="w-full bg-background px-6 py-10 sm:py-14 lg:py-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-7">
-            <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] sm:aspect-[5/3]">
-              <img
-                src={heroAiService}
-                alt=""
-                aria-hidden
-                className="absolute inset-0 size-full object-cover"
-              />
-              <div className="absolute inset-0 bg-[#432f24]/25" aria-hidden />
-              <div className="absolute inset-0 flex items-center justify-center p-5 sm:p-8">
-                <div className="w-[92%] max-w-2xl rounded-3xl bg-[#432f24]/92 px-6 py-8 text-center shadow-lg sm:px-10 sm:py-10">
-                  <div className="flex items-center justify-center gap-3 sm:gap-4">
-                    <span
-                      className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent ring-1 ring-accent/35 sm:size-12"
-                      aria-hidden
-                    >
-                      <Bot className="size-5 sm:size-6" strokeWidth={1.75} />
-                    </span>
-                    <h2 className="text-left text-2xl font-medium leading-[1.1] tracking-tight text-[#f7f3ee] sm:text-4xl lg:text-[2.75rem]">
-                      {cb.hero.titleBefore}
-                      <span className="font-serif italic text-accent">{cb.hero.titleAccent}</span>
-                      {cb.hero.titleAfter}
-                    </h2>
-                  </div>
-                  <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[#f7f3ee]/85 sm:text-base">
-                    {cb.hero.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 lg:pl-2">
-            <h1 className="text-3xl font-bold leading-[1.08] tracking-tight text-balance sm:text-4xl lg:text-5xl">
-              <span className="block">{cb.hero.headlineLine1}</span>
-              <span className="block">{cb.hero.headlineLine2}</span>
-            </h1>
-            <p className="mt-5 text-base leading-relaxed text-foreground/75 sm:text-lg">
-              {cb.hero.subtitle}
-            </p>
-            <button
-              type="button"
-              onClick={() => openSalesChatbot()}
-              className="mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+      <ServiceSplitHero
+        image={heroAiChat}
+        imageClassName="object-[center_28%] sm:object-[center_35%]"
+        icon={Bot}
+        overlayTitle={
+          <>
+            {cb.hero.titleBefore}
+            <span className="font-serif italic text-accent">{cb.hero.titleAccent}</span>
+            {cb.hero.titleAfter}
+          </>
+        }
+        overlayDescription={cb.hero.description}
+        headlineLine1={cb.hero.headlineLine1}
+        headlineLine2={cb.hero.headlineLine2}
+        subtitle={cb.hero.subtitle}
+        actions={
+          <button
+            type="button"
+            onClick={() => openSalesChatbot()}
+            className="inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+          >
+            {cb.hero.cta}
+            <svg
+              className="size-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
             >
-              {cb.hero.cta}
-              <svg
-                className="size-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </section>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+              />
+            </svg>
+          </button>
+        }
+      />
 
       <MarketingBand>
         <div className="grid gap-4 sm:gap-5 lg:grid-cols-2">

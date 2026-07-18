@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Crown, Gem, LayoutTemplate, Sparkles } from "lucide-react";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
-import freddosEspresso from "@/assets/freddos-v2-espresso.jpg";
-import freddosLatte from "@/assets/freddos-v2-latte.jpg";
-import freddosBerry from "@/assets/freddos-v2-berry.jpg";
+import successBusyTerrace from "@/assets/success-busy-terrace.jpg";
+import successTouristGroup from "@/assets/success-tourist-group.jpg";
+import successGuestsArriving from "@/assets/success-guests-arriving.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import { MarketingBand } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
@@ -14,10 +14,11 @@ import { useMessages } from "@/i18n";
 
 const WEBSITE_ICONS = [LayoutTemplate, Sparkles, Crown, Gem] as const;
 
-const FREDDOS_COFFEES = [
-  { src: freddosEspresso, alt: "Freddo Espresso" },
-  { src: freddosLatte, alt: "Ice Latte" },
-  { src: freddosBerry, alt: "Berry Latte" },
+/** Näkyvyys → kävijät → varaukset */
+const SUCCESS_SCENES = [
+  { src: successTouristGroup, alt: "Turisteja retkellä" },
+  { src: successBusyTerrace, alt: "Täysi terassi" },
+  { src: successGuestsArriving, alt: "Asiakkaita saapumassa" },
 ] as const;
 
 export const Route = createFileRoute("/kotisivut-yrityksille")({
@@ -78,13 +79,13 @@ function KotisivutPage() {
               </p>
             </div>
             <div className="grid min-h-0 grid-cols-3 gap-0.5 bg-[#432f24]">
-              {FREDDOS_COFFEES.map((coffee) => (
+              {SUCCESS_SCENES.map((scene) => (
                 <div
-                  key={coffee.alt}
+                  key={scene.alt}
                   className="relative aspect-[3/4] overflow-hidden bg-[#ebe8e2] lg:aspect-auto lg:min-h-[16rem]"
                 >
                   <img
-                    src={coffee.src}
+                    src={scene.src}
                     alt=""
                     aria-hidden
                     className="size-full object-cover object-center"
