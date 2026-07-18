@@ -1,3 +1,13 @@
+import fineDining from "@/assets/hero-fine-dining.jpg";
+import restaurantInterior from "@/assets/restaurant-interior.jpg";
+import busyTerrace from "@/assets/success-busy-terrace.jpg";
+
+const TILES = [
+  { label: "Erikoismenut", image: fineDining, position: "center 45%" },
+  { label: "Tunnelma", image: restaurantInterior, position: "center 40%" },
+  { label: "Ryhmille", image: busyTerrace, position: "center 50%" },
+] as const;
+
 /** Mini-mock: ravintolan verkkosivun etusivu laitteen näytöllä */
 export function RestaurantHomepagePreview({ image }: { image: string }) {
   return (
@@ -43,31 +53,24 @@ export function RestaurantHomepagePreview({ image }: { image: string }) {
         </div>
       </div>
 
-      {/* Etusivun alarivi: kolme sisältöpalikkaa */}
+      {/* Etusivun alarivi: kolme sisältöpalikkaa omilla kuvilla */}
       <div className="grid shrink-0 grid-cols-3 gap-1 bg-white p-1.5 sm:gap-1.5 sm:p-2">
-        {["Menu", "Tunnelma", "Ryhmille"].map((label) => (
+        {TILES.map((tile) => (
           <div
-            key={label}
+            key={tile.label}
             className="flex aspect-[5/4] flex-col justify-end overflow-hidden rounded-md bg-[#ebe8e2]"
           >
             <div className="relative min-h-0 flex-1 overflow-hidden">
               <img
-                src={image}
+                src={tile.image}
                 alt=""
-                className="absolute inset-0 size-full object-cover opacity-80"
-                style={{
-                  objectPosition:
-                    label === "Menu"
-                      ? "20% 60%"
-                      : label === "Tunnelma"
-                        ? "70% 30%"
-                        : "50% 80%",
-                }}
+                className="absolute inset-0 size-full object-cover"
+                style={{ objectPosition: tile.position }}
               />
-              <div className="absolute inset-0 bg-[#432f24]/35" />
+              <div className="absolute inset-0 bg-[#432f24]/30" />
             </div>
-            <p className="bg-white px-1 py-1 text-center text-[0.4rem] font-semibold uppercase tracking-[0.12em] text-[#432f24]/70 sm:text-[0.45rem]">
-              {label}
+            <p className="bg-white px-0.5 py-1 text-center text-[0.35rem] font-semibold uppercase leading-tight tracking-[0.08em] text-[#432f24]/75 sm:text-[0.4rem]">
+              {tile.label}
             </p>
           </div>
         ))}
