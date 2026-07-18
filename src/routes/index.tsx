@@ -15,6 +15,7 @@ import rafaLogo from "@/assets/rafa-romera-logo.png";
 import heroHome from "@/assets/hero-home.jpg";
 import whyUsDining from "@/assets/restaurant-dining.jpg";
 import introHotel from "@/assets/hero-hotel-web.jpg";
+import { RestaurantHomepagePreview } from "@/components/restaurant-homepage-preview";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -80,21 +81,14 @@ function Index() {
       />
       <SiteHeader />
 
-      {/* Hero: valkoinen pohja, etukuva tablettikehyksessä vasemmalla, teksti oikealla */}
+      {/* Hero: valkoinen pohja, ravintolan etusivu tablettikehyksessä vasemmalla */}
       <section className="bg-background">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-14 lg:py-20">
           <div className="flex justify-center lg:col-span-5 lg:justify-start">
             <div className="w-full max-w-[19rem] -rotate-2 sm:max-w-[21rem] lg:max-w-none">
               <div className="rounded-[1.5rem] border-[11px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_28px_60px_-20px_rgba(26,18,14,0.4)] sm:rounded-[1.75rem] sm:border-[13px]">
-                <div className="relative aspect-[3/4] overflow-hidden rounded-[0.7rem] bg-[#432f24] sm:rounded-[0.9rem]">
-                  <img
-                    src={heroHome}
-                    alt=""
-                    aria-hidden
-                    width={900}
-                    height={1200}
-                    className="size-full object-cover object-[center_40%]"
-                  />
+                <div className="relative aspect-[3/4] overflow-hidden rounded-[0.7rem] bg-[#f7f3ee] sm:rounded-[0.9rem]">
+                  <RestaurantHomepagePreview image={heroHome} />
                 </div>
               </div>
             </div>
