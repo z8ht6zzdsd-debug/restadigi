@@ -14,6 +14,7 @@ import rafaHero from "@/assets/rafa-romera-hero.jpg";
 import rafaLogo from "@/assets/rafa-romera-logo.png";
 import freddosCoffee from "@/assets/freddos-coffee-open.jpg";
 import whyUsDining from "@/assets/restaurant-dining.jpg";
+import introHotel from "@/assets/hero-hotel-web.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -190,7 +191,7 @@ function Index() {
               </div>
             </article>
 
-            {/* Oikea korkea boksi: dining-kuva otsikon yllä */}
+            {/* Oikea korkea boksi: dining-kuva otsikon yllä, sänky ruskeassa osassa */}
             <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] lg:min-h-0 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col bg-white text-foreground order-first lg:order-none">
               <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden sm:aspect-[5/3]">
                 <img
@@ -200,15 +201,25 @@ function Index() {
                   className="absolute inset-0 size-full object-cover object-center"
                 />
               </div>
-              <div className="flex flex-1 flex-col justify-end gap-5 bg-[#432f24] p-6 text-white sm:p-8 lg:p-10">
-                <h3 className="max-w-xl text-3xl font-bold tracking-tight leading-[1.05] sm:text-4xl lg:text-[2.75rem]">
+              <div className="relative flex flex-1 flex-col justify-end gap-5 overflow-hidden p-6 text-white sm:p-8 lg:p-10">
+                <img
+                  src={introHotel}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 size-full object-cover object-center"
+                />
+                <div
+                  className="absolute inset-0 bg-[#432f24]/88"
+                  aria-hidden
+                />
+                <h3 className="relative z-[1] max-w-xl text-3xl font-bold tracking-tight leading-[1.05] sm:text-4xl lg:text-[2.75rem]">
                   <span className="block">{h.intro.titleLine1}</span>
                   <span className="block">{h.intro.titleLine2}</span>
                 </h3>
-                <p className="max-w-xl text-sm leading-relaxed text-white/90 sm:text-base">
+                <p className="relative z-[1] max-w-xl text-sm leading-relaxed text-white/90 sm:text-base">
                   {h.intro.body}
                 </p>
-                <div className="flex flex-col flex-wrap gap-2.5 pt-1 sm:flex-row">
+                <div className="relative z-[1] flex flex-col flex-wrap gap-2.5 pt-1 sm:flex-row">
                   <a
                     href={`tel:${h.intro.phoneTel}`}
                     className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
