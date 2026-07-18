@@ -706,7 +706,7 @@ export const fi: Messages = {
       eyebrow: "Restadigi",
       title: "Asiakaspalvelu",
       welcome:
-        "Hei! Olen Restadigin asiakaspalvelusta — autan mielelläni löytämään oikean digiratkaisun. Kerro lyhyesti yrityksestäsi, niin esittelen sopivat palvelut. Voit jättää myös puhelinnumeron ja sähköpostin, niin olemme yhteydessä.",
+        "Hei! Olen Restadigin asiakaspalvelusta — autan mielelläni löytämään oikean digiratkaisun. Kerro lyhyesti yrityksestäsi ja ajatuksistasi, niin esittelen sopivat palvelut. Voit jättää myös puhelinnumeron ja sähköpostin, niin olemme yhteydessä.",
       placeholder: "Kirjoita viestisi…",
       sendAria: "Lähetä viesti",
       typing: "Kirjoittaa…",

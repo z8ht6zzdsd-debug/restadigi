@@ -707,7 +707,7 @@ export const es: Messages = {
       eyebrow: "Restadigi",
       title: "Atención al cliente",
       welcome:
-        "¡Hola! Soy del equipo de atención de Restadigi — encantado de ayudarte a encontrar la solución digital adecuada. Cuéntame un poco sobre tu negocio y te presento los servicios que encajan. También puedes dejar teléfono y correo y te contactamos.",
+        "¡Hola! Soy del equipo de atención de Restadigi — encantado de ayudarte a encontrar la solución digital adecuada. Cuéntame brevemente sobre tu negocio y tus ideas, y te presento los servicios que encajan. También puedes dejar teléfono y correo y te contactamos.",
       placeholder: "Escribe tu mensaje…",
       sendAria: "Enviar mensaje",
       typing: "Escribiendo…",
