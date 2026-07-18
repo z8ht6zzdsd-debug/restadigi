@@ -124,11 +124,12 @@ function Index() {
 
       <PageHero
         tall
+        lifestyle
         image={heroHome}
         title={
           <>
             {h.hero.titleBefore}
-            <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
+            {h.hero.titleAccent}
             {h.hero.titleAfter}
           </>
         }
@@ -136,22 +137,9 @@ function Index() {
         actions={
           <Link
             to="/yhteys"
-            className="inline-flex items-center gap-3 rounded-full bg-white py-3 pr-4 pl-5 text-sm font-medium text-primary transition-colors hover:bg-accent hover:text-white"
+            className="inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
           >
             {h.hero.cta}
-            <svg
-              className="size-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-              />
-            </svg>
           </Link>
         }
       />

@@ -8,9 +8,19 @@ type PageHeroProps = {
   tall?: boolean;
   /** Laitemockup: laitteet ylhäällä, teksti alla omalla kaistalla */
   devices?: boolean;
+  /** Full-bleed lifestyle: left-aligned copy on the image (McDonald’s-style) */
+  lifestyle?: boolean;
 };
 
-export function PageHero({ image, title, description, actions, tall, devices }: PageHeroProps) {
+export function PageHero({
+  image,
+  title,
+  description,
+  actions,
+  tall,
+  devices,
+  lifestyle,
+}: PageHeroProps) {
   if (devices) {
     return (
       <header className="page-hero page-hero--devices">
@@ -29,6 +39,38 @@ export function PageHero({ image, title, description, actions, tall, devices }: 
             <h1 className="page-hero__title">{title}</h1>
             <p className="page-hero__description">{description}</p>
             {actions && <div className="page-hero__actions">{actions}</div>}
+          </div>
+        </div>
+      </header>
+    );
+  }
+
+  if (lifestyle) {
+    return (
+      <header className="page-hero page-hero--lifestyle">
+        <div
+          className={
+            "page-hero__frame page-hero__frame--bleed page-hero__frame--lifestyle" +
+            (tall ? " page-hero__frame--home" : "")
+          }
+        >
+          <img
+            src={image}
+            alt=""
+            aria-hidden
+            width={1600}
+            height={900}
+            className="page-hero__image"
+          />
+          <div className="page-hero__lifestyle-scrim" aria-hidden />
+          <div className="page-hero__content-wrap page-hero__content-wrap--lifestyle">
+            <div className="page-hero__content page-hero__content--lifestyle">
+              <h1 className="page-hero__title page-hero__title--lifestyle">{title}</h1>
+              <p className="page-hero__description page-hero__description--lifestyle">
+                {description}
+              </p>
+              {actions && <div className="page-hero__actions page-hero__actions--lifestyle">{actions}</div>}
+            </div>
           </div>
         </div>
       </header>

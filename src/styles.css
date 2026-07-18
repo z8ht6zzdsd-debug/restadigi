@@ -220,6 +220,125 @@
     min-height: min(88vh, 44rem);
   }
 
+  /* Lifestyle / McDonald’s-tyylinen: teksti keskivasemmalla kuvan päällä */
+  .page-hero--lifestyle {
+    padding-inline: 0;
+    padding-bottom: 0;
+  }
+
+  .page-hero__frame--lifestyle {
+    justify-content: center;
+    min-height: min(78vh, 40rem);
+    padding-bottom: 0;
+  }
+
+  .page-hero__frame--lifestyle.page-hero__frame--home {
+    min-height: min(92vh, 52rem);
+  }
+
+  .page-hero__lifestyle-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(
+        to right,
+        color-mix(in srgb, #1a120e 55%, transparent) 0%,
+        color-mix(in srgb, #1a120e 22%, transparent) 38%,
+        transparent 68%
+      );
+  }
+
+  .page-hero__content-wrap--lifestyle {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5.5rem 1.5rem 2.5rem;
+  }
+
+  .page-hero__content--lifestyle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.35rem;
+    padding: 0;
+    text-align: left;
+    margin-inline: 0;
+    max-width: min(34rem, 92vw);
+  }
+
+  .page-hero__title--lifestyle {
+    margin: 0;
+    max-width: 14ch;
+    color: #fff;
+    font-size: clamp(2.35rem, 6.5vw, 4.75rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+    text-shadow: 0 2px 28px color-mix(in srgb, #1a120e 40%, transparent);
+  }
+
+  .page-hero__title--lifestyle .font-serif {
+    color: #fff;
+    font-style: normal;
+    font-family: inherit;
+    font-weight: 700;
+  }
+
+  .page-hero__description--lifestyle {
+    margin: 0;
+    max-width: 28rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: color-mix(in oklch, white 90%, transparent);
+    text-shadow: 0 1px 16px color-mix(in srgb, #1a120e 35%, transparent);
+  }
+
+  .page-hero__actions--lifestyle {
+    margin-top: 0.15rem;
+    justify-content: flex-start;
+  }
+
+  @media (min-width: 640px) {
+    .page-hero__content-wrap--lifestyle {
+      padding: 6rem 2.25rem 3rem;
+    }
+
+    .page-hero__content--lifestyle {
+      max-width: 38rem;
+      gap: 1.5rem;
+    }
+
+    .page-hero__title--lifestyle {
+      max-width: 15ch;
+    }
+
+    .page-hero__description--lifestyle {
+      font-size: 1.05rem;
+      max-width: 30rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .page-hero__content-wrap--lifestyle {
+      padding-inline: max(2.5rem, calc((100% - 72rem) / 2 + 1.25rem));
+      padding-block: 4rem;
+    }
+
+    .page-hero__content--lifestyle {
+      max-width: 40rem;
+    }
+
+    .page-hero__title--lifestyle {
+      max-width: 16ch;
+    }
+  }
+
   /* Laitemockup: laitteet heti tekstin yläpuolella */
   .page-hero--devices {
     display: flex;
