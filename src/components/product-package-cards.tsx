@@ -125,21 +125,30 @@ export function ProductPackageCards({
             pkg.headerVisual === "brandLogos"
               ? "brandLogos"
               : packageHeaderKind(pkg.name);
+          const deviceLayout = Boolean(pkg.deviceLayout && pkg.headerImage);
           const headerH =
-            headerKind === "sports" || headerKind === "brandLogos"
-              ? "h-36 sm:h-40"
-              : pkg.deviceLayout
-                ? "h-40 sm:h-48"
+            deviceLayout
+              ? "h-40 sm:h-48"
+              : headerKind === "sports" || headerKind === "brandLogos"
+                ? "h-36 sm:h-40"
                 : pkg.headerImage
                   ? "h-28 sm:h-32"
                   : "h-[5.75rem] sm:h-[6.5rem]";
-          const deviceLayout = Boolean(pkg.deviceLayout && pkg.headerImage);
           return (
             <article
               key={pkg.name}
               className="flex h-full flex-col overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)] ring-1 ring-black/5"
             >
-              {headerKind === "ai" || headerKind === "google" ? (
+              {deviceLayout ? (
+                <div className={"relative shrink-0 overflow-hidden bg-[#ebe8e2] " + headerH}>
+                  <img
+                    src={pkg.headerImage}
+                    alt=""
+                    aria-hidden
+                    className="absolute inset-0 size-full object-cover object-center"
+                  />
+                </div>
+              ) : headerKind === "ai" || headerKind === "google" ? (
                 <div
                   className={
                     "flex shrink-0 items-center gap-3 bg-white px-4 py-3 sm:gap-4 sm:px-5 sm:py-4 " +
@@ -160,15 +169,6 @@ export function ProductPackageCards({
                 <PackageSportsPhotos className={"shrink-0 " + headerH} />
               ) : headerKind === "brandLogos" ? (
                 <PackageBrandWorkLogos className={"shrink-0 " + headerH} />
-              ) : deviceLayout ? (
-                <div className={"relative shrink-0 overflow-hidden bg-[#ebe8e2] " + headerH}>
-                  <img
-                    src={pkg.headerImage}
-                    alt=""
-                    aria-hidden
-                    className="absolute inset-0 size-full object-cover object-center"
-                  />
-                </div>
               ) : (
                 <div
                   className={

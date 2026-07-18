@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Bot, Palette, Search, Trophy } from "lucide-react";
+import { Search } from "lucide-react";
 import { useState } from "react";
+import pkgVisAi from "@/assets/pkg-vis-ai.jpg";
+import pkgVisGoogle from "@/assets/pkg-vis-google.jpg";
+import pkgVisSports from "@/assets/pkg-vis-sports.jpg";
+import pkgVisGraphic from "@/assets/pkg-vis-graphic.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import {
   MarketingBand,
@@ -12,7 +16,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-const VISIBILITY_ICONS = [Bot, Search, Trophy, Palette] as const;
+const VISIBILITY_HEADER_IMAGES = [
+  pkgVisAi,
+  pkgVisGoogle,
+  pkgVisSports,
+  pkgVisGraphic,
+] as const;
 
 export const Route = createFileRoute("/diginakyvyys")({
   head: () => ({
@@ -131,7 +140,8 @@ function DiginakyvyysPage() {
             featured: pkg.featured,
             description: `${pkg.tagline}. ${pkg.description}`,
             bullets: [...pkg.bullets, `${v.resultPrefix} ${pkg.result}`],
-            icon: VISIBILITY_ICONS[i],
+            headerImage: VISIBILITY_HEADER_IMAGES[i],
+            deviceLayout: true,
           }))}
           footnote={v.footnote}
         />
