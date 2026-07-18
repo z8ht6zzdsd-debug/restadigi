@@ -321,6 +321,8 @@ export const en: Messages = {
     },
     popular: "Popular",
     requestQuote: "Request a quote",
+    explore: "Explore",
+    packagesTitle: "Website packages",
     packages: [
       {
         name: "Start",
@@ -383,6 +385,8 @@ export const en: Messages = {
     popular: "Popular",
     contactCta: "Get in touch",
     resultPrefix: "You get:",
+    explore: "Explore",
+    packagesTitle: "Visibility packages",
     packages: [
       {
         name: "AI optimisation",
@@ -434,6 +438,20 @@ export const en: Messages = {
         ],
         result:
           "A professional partnership, visibility to thousands of spectators and a positive sports image.",
+      },
+      {
+        name: "Graphic design",
+        tagline: "Brand identity, logo and marketing materials",
+        description:
+          "Brand identity, marketing materials and individual design work — clear pricing, professional results.",
+        price: "from 99 €",
+        bullets: [
+          "Brand identity design — from 199 € (includes logo and business cards)",
+          "Ad and marketing materials — from 149 €",
+          "Logo design — from 149 €",
+          "Business card design — from 99 €",
+        ],
+        result: "A professional visual look for your business.",
       },
     ],
     footnote: "Prices are annual. You only pay for what you need — no hidden costs.",

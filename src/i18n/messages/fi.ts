@@ -322,6 +322,8 @@ export const fi: Messages = {
     },
     popular: "Suosittu",
     requestQuote: "Pyydä tarjous",
+    explore: "Tutustu",
+    packagesTitle: "Verkkosivupaketit",
     packages: [
       {
         name: "Start",
@@ -387,6 +389,8 @@ export const fi: Messages = {
     popular: "Suosittu",
     contactCta: "Ota yhteyttä",
     resultPrefix: "Saat:",
+    explore: "Tutustu",
+    packagesTitle: "Näkyvyyspaketit",
     packages: [
       {
         name: "AI-optimointi",
@@ -438,6 +442,20 @@ export const fi: Messages = {
         ],
         result:
           "Ammattimainen kumppanuus, näkyvyyttä tuhansille katsojille ja positiivista urheiluimagoa.",
+      },
+      {
+        name: "Graafinen suunnittelu",
+        tagline: "Yritysilme, logo ja markkinointimateriaalit",
+        description:
+          "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin — selkeät hinnat, ammattimainen jälki.",
+        price: "alk. 99 €",
+        bullets: [
+          "Yritysilmeen suunnittelu — alk. 199 € (sis. logo ja käyntikortit)",
+          "Mainos- ja markkinointimateriaalit — alk. 149 €",
+          "Logon suunnittelu — alk. 149 €",
+          "Käyntikorttien suunnittelu — alk. 99 €",
+        ],
+        result: "Ammattimainen visuaalinen ilme yrityksellesi.",
       },
     ],
     footnote: "Hinnat ovat vuosihintoja. Maksat vain siitä, mitä tarvitset — ei piilokustannuksia.",

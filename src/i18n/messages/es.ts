@@ -323,6 +323,8 @@ export const es: Messages = {
     },
     popular: "Popular",
     requestQuote: "Solicitar presupuesto",
+    explore: "Descubrir",
+    packagesTitle: "Paquetes web",
     packages: [
       {
         name: "Start",
@@ -389,6 +391,8 @@ export const es: Messages = {
     popular: "Popular",
     contactCta: "Contactar",
     resultPrefix: "Obtienes:",
+    explore: "Descubrir",
+    packagesTitle: "Paquetes de visibilidad",
     packages: [
       {
         name: "Optimización IA",
@@ -440,6 +444,20 @@ export const es: Messages = {
         ],
         result:
           "Una colaboración profesional, visibilidad ante miles de espectadores e imagen deportiva positiva.",
+      },
+      {
+        name: "Diseño gráfico",
+        tagline: "Identidad de marca, logo y materiales de marketing",
+        description:
+          "Identidad de marca, materiales de marketing y trabajos de diseño individuales — precios claros y resultado profesional.",
+        price: "desde 99 €",
+        bullets: [
+          "Diseño de identidad corporativa — desde 199 € (incluye logo y tarjetas)",
+          "Materiales publicitarios y de marketing — desde 149 €",
+          "Diseño de logo — desde 149 €",
+          "Diseño de tarjetas de visita — desde 99 €",
+        ],
+        result: "Una imagen visual profesional para tu empresa.",
       },
     ],
     footnote: "Los precios son anuales. Solo pagas por lo que necesitas — sin costes ocultos.",

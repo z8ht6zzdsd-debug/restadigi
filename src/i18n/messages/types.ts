@@ -191,6 +191,8 @@ export type Messages = {
     };
     popular: string;
     requestQuote: string;
+    explore: string;
+    packagesTitle: string;
     packages: Array<{
       name: string;
       tagline: string;
@@ -219,6 +221,8 @@ export type Messages = {
     popular: string;
     contactCta: string;
     resultPrefix: string;
+    explore: string;
+    packagesTitle: string;
     packages: Array<{
       name: string;
       tagline: string;
