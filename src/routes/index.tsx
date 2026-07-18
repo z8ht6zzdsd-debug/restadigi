@@ -383,7 +383,7 @@ function Index() {
               className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
               aria-hidden
             >
-              <span className="font-script w-[110%] select-none whitespace-nowrap text-center text-[clamp(4.5rem,18vw,14rem)] leading-none tracking-wide text-[#4a3528]/55">
+              <span className="font-script w-[110%] select-none whitespace-nowrap text-center text-[clamp(4.5rem,18vw,14rem)] leading-none tracking-wide text-[#4a3528]/30">
                 Restadigi
               </span>
             </div>
