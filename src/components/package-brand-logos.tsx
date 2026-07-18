@@ -281,21 +281,18 @@ export function packageHeaderKind(
 export function PackageSportsPhotos({ className = "" }: { className?: string }) {
   return (
     <div
-      className={
-        "grid h-full min-h-[7.25rem] grid-cols-2 gap-0.5 bg-[#432f24] sm:min-h-[8.5rem] " +
-        className
-      }
+      className={"grid h-full grid-cols-2 gap-0.5 bg-[#432f24] " + className}
       aria-hidden
     >
       <img
         src={sportHockey}
         alt=""
-        className="size-full object-cover object-center"
+        className="size-full min-h-0 object-cover object-center"
       />
       <img
         src={sportFootball}
         alt=""
-        className="size-full object-cover object-[center_30%]"
+        className="size-full min-h-0 object-cover object-[center_30%]"
       />
     </div>
   );
@@ -304,16 +301,16 @@ export function PackageSportsPhotos({ className = "" }: { className?: string }) 
 /** Client / brand logos for graphic design showcase in package headers */
 export function PackageBrandWorkLogos({ className = "" }: { className?: string }) {
   const logos = [
-    { src: delfinLogo, alt: "Delfín Check-In", fit: "object-contain p-2" },
-    { src: rafaLogo, alt: "Rafa Romera", fit: "object-contain p-2.5" },
-    { src: restadigiLogo, alt: "Restadigi", fit: "object-contain p-2" },
-    { src: restadigiIcon, alt: "Restadigi icon", fit: "object-contain p-3" },
+    { src: delfinLogo, alt: "Delfín Check-In", fit: "object-contain p-1.5" },
+    { src: rafaLogo, alt: "Rafa Romera", fit: "object-contain p-2" },
+    { src: restadigiLogo, alt: "Restadigi", fit: "object-contain p-1.5" },
+    { src: restadigiIcon, alt: "Restadigi icon", fit: "object-contain p-2" },
   ] as const;
 
   return (
     <div
       className={
-        "grid h-full min-h-[7.25rem] grid-cols-2 gap-1.5 bg-[#432f24] p-2.5 sm:min-h-[8.5rem] sm:gap-2 sm:p-3 " +
+        "grid h-full grid-cols-2 gap-1 bg-[#432f24] p-2 sm:gap-1.5 sm:p-2.5 " +
         className
       }
       aria-hidden
@@ -321,7 +318,7 @@ export function PackageBrandWorkLogos({ className = "" }: { className?: string }
       {logos.map((logo) => (
         <div
           key={logo.alt}
-          className="flex items-center justify-center overflow-hidden rounded-lg bg-white/95"
+          className="flex min-h-0 items-center justify-center overflow-hidden rounded-md bg-white/95"
         >
           <img
             src={logo.src}
