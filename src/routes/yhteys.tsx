@@ -138,22 +138,6 @@ function YhteysPage() {
                   {c.studioLine2}
                 </p>
               </div>
-              <div>
-                <div className="mb-2 text-xs uppercase tracking-[0.2em] text-white/50">
-                  {c.labels.social}
-                </div>
-                <div className="flex flex-wrap gap-4 text-sm text-white/75">
-                  <a href="#" className="hover:text-white">
-                    {t.footer.instagram}
-                  </a>
-                  <a href="#" className="hover:text-white">
-                    {t.footer.behance}
-                  </a>
-                  <a href="#" className="hover:text-white">
-                    {t.footer.linkedin}
-                  </a>
-                </div>
-              </div>
             </div>
           </MarketingBox>
 

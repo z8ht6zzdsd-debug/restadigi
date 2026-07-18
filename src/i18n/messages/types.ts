@@ -141,7 +141,6 @@ export type Messages = {
       phone: string;
       whatsapp: string;
       studio: string;
-      social: string;
     };
     email: string;
     phoneDisplay: string;

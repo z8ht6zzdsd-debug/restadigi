@@ -229,7 +229,6 @@ export const en: Messages = {
       phone: "Phone",
       whatsapp: "WhatsApp",
       studio: "Studio",
-      social: "Social",
     },
     email: "info@restadigi.fi",
     phoneDisplay: "+358 403 738 332",
