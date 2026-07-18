@@ -669,6 +669,8 @@ export const es: Messages = {
     },
     popular: "Popular",
     requestQuote: "Solicitar presupuesto",
+    explore: "Descubrir",
+    packagesTitle: "Paquetes de hosting",
     packages: [
       {
         name: "Basic",

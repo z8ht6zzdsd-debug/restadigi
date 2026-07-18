@@ -663,6 +663,8 @@ export const en: Messages = {
     },
     popular: "Popular",
     requestQuote: "Request a quote",
+    explore: "Explore",
+    packagesTitle: "Hosting packages",
     packages: [
       {
         name: "Basic",

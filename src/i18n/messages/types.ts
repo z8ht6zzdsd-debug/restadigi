@@ -353,6 +353,8 @@ export type Messages = {
     };
     popular: string;
     requestQuote: string;
+    explore: string;
+    packagesTitle: string;
     packages: Array<{
       name: string;
       price: string;

@@ -668,6 +668,8 @@ export const fi: Messages = {
     },
     popular: "Suosittu",
     requestQuote: "Pyydä tarjous",
+    explore: "Tutustu",
+    packagesTitle: "Hosting-paketit",
     packages: [
       {
         name: "Basic",

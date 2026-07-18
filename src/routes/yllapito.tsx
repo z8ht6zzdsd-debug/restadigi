@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -26,6 +27,8 @@ export const Route = createFileRoute("/yllapito")({
 function YllapitoPage() {
   const t = useMessages();
   const h = t.hosting;
+  const [openPackage, setOpenPackage] = useState<string | null>(null);
+  const selected = h.packages.find((pkg) => pkg.name === openPackage) ?? null;
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
@@ -70,86 +73,144 @@ function YllapitoPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-[#432f24] sm:rounded-[2.5rem]">
-              <div
-                className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
-                aria-hidden
-              >
-                <span className="font-script w-[110%] select-none whitespace-nowrap text-center text-[clamp(4.5rem,14vw,9rem)] leading-none tracking-wide text-[#4a3528]/55">
-                  Restadigi
-                </span>
-              </div>
-              <div className="relative flex h-full min-h-[14rem] items-center justify-center px-6 sm:min-h-0">
-                <p className="font-script text-5xl leading-none text-[#c9a882] sm:text-6xl lg:text-7xl">
-                  Restadigi
-                </p>
-              </div>
-            </div>
+            <RestadigiBrownPanel className="aspect-[16/10] min-h-[14rem]" />
           </div>
         </div>
       </section>
 
       <section className="pb-24 sm:pb-32">
-        <div>
-          {h.packages.map((pkg, i) => {
-            const dark = Boolean(pkg.featured);
-            const alt = !dark && i % 2 === 1;
-            return (
-              <div
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="mb-10 text-center text-3xl font-bold tracking-tight sm:mb-14 sm:text-4xl">
+            {h.packagesTitle}
+          </h2>
+
+          <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
+            {h.packages.map((pkg) => (
+              <article
                 key={pkg.name}
-                className={
-                  "w-full px-6 py-12 sm:py-16 " +
-                  (dark
-                    ? "bg-primary text-primary-foreground"
-                    : alt
-                      ? "bg-secondary/50"
-                      : "bg-background")
-                }
+                className="overflow-hidden rounded-[1.75rem] border border-border/70 bg-background shadow-[0_12px_40px_-24px_rgba(50,30,20,0.35)]"
               >
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:gap-16">
-                  <div className="md:w-72 shrink-0 mb-8 md:mb-0">
-                    <div className="flex items-baseline gap-3 mb-2">
-                      <h3 className="text-2xl font-medium">{pkg.name}</h3>
+                <RestadigiBrownPanel className="aspect-[16/11] rounded-none" compact />
+                <div className="flex flex-col items-center gap-5 px-6 py-7 text-center sm:px-8 sm:py-8">
+                  <div>
+                    <div className="mb-1 flex items-center justify-center gap-2">
+                      <h3 className="text-xl font-bold tracking-tight sm:text-2xl">{pkg.name}</h3>
                       {pkg.featured && (
-                        <span className="text-[10px] uppercase tracking-[0.2em] bg-accent text-accent-foreground px-2 py-1 rounded-full">
+                        <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
                           {h.popular}
                         </span>
                       )}
                     </div>
-                    <div className="text-4xl font-serif mb-6">{pkg.price}</div>
-                    <Link
-                      to="/yhteys"
-                      className={
-                        "inline-flex items-center justify-center gap-2 text-sm font-medium py-3 px-5 rounded-full transition-colors " +
-                        (dark
-                          ? "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
-                          : "bg-primary text-primary-foreground hover:bg-accent")
-                      }
-                    >
-                      {h.requestQuote}
-                    </Link>
+                    <p className="font-serif text-2xl text-foreground/85 sm:text-3xl">{pkg.price}</p>
                   </div>
-                  <ul className="space-y-3 text-sm flex-1">
-                    {pkg.bullets.map((bullet) => (
-                      <li key={bullet} className="flex gap-3">
-                        <span className="size-1 rounded-full mt-2 shrink-0 bg-accent" />
-                        <span
-                          className={dark ? "text-primary-foreground/85" : "text-foreground/75"}
-                        >
-                          {bullet}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <button
+                    type="button"
+                    onClick={() => setOpenPackage(pkg.name)}
+                    className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-accent-foreground transition-opacity hover:opacity-90"
+                  >
+                    {h.explore}
+                  </button>
                 </div>
-              </div>
-            );
-          })}
-          <p className="mt-8 text-xs text-muted-foreground max-w-6xl mx-auto px-6">{h.footnote}</p>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center text-xs text-muted-foreground">{h.footnote}</p>
         </div>
       </section>
 
+      {selected && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/25 px-4 backdrop-blur-[2px]"
+          onClick={() => setOpenPackage(null)}
+          role="presentation"
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="hosting-package-title"
+            className="w-full max-w-xl rounded-xl border border-border bg-background p-6 shadow-lg sm:p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-1 text-xs uppercase tracking-[0.2em] text-accent">
+              {h.packagesTitle}
+            </div>
+            <div className="mb-2 flex flex-wrap items-baseline gap-3">
+              <h3 id="hosting-package-title" className="text-2xl font-medium tracking-tight">
+                {selected.name}
+              </h3>
+              {selected.featured && (
+                <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
+                  {h.popular}
+                </span>
+              )}
+            </div>
+            <p className="mb-5 font-serif text-3xl text-foreground/90">{selected.price}</p>
+            <ul className="space-y-0 divide-y divide-border/80">
+              {selected.bullets.map((bullet) => (
+                <li key={bullet} className="py-3.5 first:pt-0 last:pb-0">
+                  <p className="text-sm leading-relaxed text-foreground/70">{bullet}</p>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                to="/yhteys"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+              >
+                {h.requestQuote}
+              </Link>
+              <button
+                type="button"
+                onClick={() => setOpenPackage(null)}
+                className="inline-flex items-center justify-center rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground/70 transition-colors hover:border-foreground/30 hover:text-foreground"
+              >
+                {t.widget.sales.closeLabel}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <SiteFooter />
+    </div>
+  );
+}
+
+function RestadigiBrownPanel({
+  className = "",
+  compact = false,
+}: {
+  className?: string;
+  compact?: boolean;
+}) {
+  return (
+    <div className={"relative overflow-hidden rounded-[1.75rem] bg-[#432f24] " + className}>
+      <div
+        className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
+        aria-hidden
+      >
+        <span
+          className={
+            "font-script w-[110%] select-none whitespace-nowrap text-center leading-none tracking-wide text-[#4a3528]/55 " +
+            (compact
+              ? "text-[clamp(3.5rem,12vw,6rem)]"
+              : "text-[clamp(4.5rem,14vw,9rem)]")
+          }
+        >
+          Restadigi
+        </span>
+      </div>
+      <div className="relative flex h-full items-center justify-center px-6">
+        <p
+          className={
+            "font-script leading-none text-[#c9a882] " +
+            (compact ? "text-4xl sm:text-5xl" : "text-5xl sm:text-6xl lg:text-7xl")
+          }
+        >
+          Restadigi
+        </p>
+      </div>
     </div>
   );
 }
