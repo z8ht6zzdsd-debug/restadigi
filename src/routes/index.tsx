@@ -379,12 +379,20 @@ function Index() {
 
           {/* Seuraava askel */}
           <article className="mt-4 sm:mt-5 relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[18rem] sm:min-h-[20rem] bg-[#432f24] text-white flex flex-col items-center justify-center text-center px-8 py-14 sm:px-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.05] tracking-tight text-balance max-w-[18ch]">
+            <div
+              className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
+              aria-hidden
+            >
+              <span className="font-script w-[110%] select-none whitespace-nowrap text-center text-[clamp(4.5rem,18vw,14rem)] leading-none tracking-wide text-[#4a3528]/55">
+                Restadigi
+              </span>
+            </div>
+            <h2 className="relative z-[1] text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.05] tracking-tight text-balance max-w-[18ch]">
               {h.cta.titleBefore}
               {h.cta.titleAccent}
               {h.cta.titleAfter}
             </h2>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/yhteys"
                 className="inline-flex items-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
