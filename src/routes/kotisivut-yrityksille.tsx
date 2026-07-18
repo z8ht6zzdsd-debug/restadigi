@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
+import freddosCoffee from "@/assets/freddos-coffee.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -51,6 +52,25 @@ function KotisivutPage() {
         }
         description={w.hero.description}
       />
+
+      {/* Mid banner — full width, compact */}
+      <section className="w-full bg-[#f7f3ee] px-6 py-10 sm:py-12">
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <img
+            src={freddosCoffee}
+            alt={w.midBanner.imageAlt}
+            width={160}
+            height={160}
+            className="mb-5 size-28 sm:size-32 object-cover object-center rounded-full ring-1 ring-black/5 shadow-sm"
+          />
+          <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-balance leading-[1.15] text-foreground">
+            {w.midBanner.title}
+          </h2>
+          <p className="mt-3 max-w-xl text-sm sm:text-base text-foreground/70 leading-relaxed text-balance">
+            {w.midBanner.description}
+          </p>
+        </div>
+      </section>
 
       {/* Paketit */}
       <section className="pb-24 sm:pb-32">

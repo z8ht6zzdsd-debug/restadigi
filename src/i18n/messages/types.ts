@@ -184,6 +184,11 @@ export type Messages = {
       titleAfter: string;
       description: string;
     };
+    midBanner: {
+      title: string;
+      description: string;
+      imageAlt: string;
+    };
     popular: string;
     requestQuote: string;
     packages: Array<{

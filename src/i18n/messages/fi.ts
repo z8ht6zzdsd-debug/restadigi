@@ -314,6 +314,12 @@ export const fi: Messages = {
       description:
         "Hyvin suunnitellut verkkosivut ja verkkosisällöt ovat yrityksesi tärkeimmät digitaaliset työkalut. Ne vahvistavat brändisi näkyvyyttä, helpottavat asiakkaiden yhteydenottoa ja jättävät vahvan ensivaikutelman.",
     },
+    midBanner: {
+      title: "Matkasi kestävään menestykseen alkaa tästä!",
+      description:
+        "Tutustu alta paketteihin, joilla nostat yrityksesi verkkonäkyvyyden uudelle tasolle.",
+      imageAlt: "Freddo's-kahvi",
+    },
     popular: "Suosittu",
     requestQuote: "Pyydä tarjous",
     packages: [
