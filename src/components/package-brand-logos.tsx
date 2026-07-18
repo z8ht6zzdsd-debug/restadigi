@@ -6,7 +6,6 @@ import sportFootball from "@/assets/sport-football.jpg";
 import delfinLogo from "@/assets/delfin-checkin-icon.jpg";
 import rafaLogo from "@/assets/rafa-romera-logo.png";
 import restadigiLogo from "@/assets/restadigi-logo.png";
-import restadigiIcon from "@/assets/restadigi-logo-icon.png";
 
 type MarkProps = { className?: string; title: string };
 
@@ -301,30 +300,34 @@ export function PackageSportsPhotos({ className = "" }: { className?: string }) 
 /** Client / brand logos for graphic design showcase in package headers */
 export function PackageBrandWorkLogos({ className = "" }: { className?: string }) {
   const logos = [
-    { src: delfinLogo, alt: "Delfín Check-In", fit: "object-contain p-1.5" },
-    { src: rafaLogo, alt: "Rafa Romera", fit: "object-contain p-2" },
-    { src: restadigiLogo, alt: "Restadigi", fit: "object-contain p-1.5" },
-    { src: restadigiIcon, alt: "Restadigi icon", fit: "object-contain p-2" },
+    { src: delfinLogo, name: "Delfín" },
+    { src: rafaLogo, name: "Rafa Romera" },
+    { src: restadigiLogo, name: "Restadigi" },
   ] as const;
 
   return (
     <div
       className={
-        "grid h-full grid-cols-2 gap-1 bg-[#432f24] p-2 sm:gap-1.5 sm:p-2.5 " +
+        "flex h-full w-full items-end justify-between gap-2 bg-white px-3 py-3 sm:gap-3 sm:px-4 sm:py-3.5 " +
         className
       }
       aria-hidden
     >
       {logos.map((logo) => (
         <div
-          key={logo.alt}
-          className="flex min-h-0 items-center justify-center overflow-hidden rounded-md bg-white/95"
+          key={logo.name}
+          className="flex min-w-0 flex-1 flex-col items-center gap-1"
         >
-          <img
-            src={logo.src}
-            alt=""
-            className={"max-h-full max-w-full " + logo.fit}
-          />
+          <div className="flex h-9 w-full items-center justify-center sm:h-10">
+            <img
+              src={logo.src}
+              alt=""
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
+          <span className="w-full truncate text-center text-[9px] leading-tight text-foreground/60 sm:text-[10px]">
+            {logo.name}
+          </span>
         </div>
       ))}
     </div>

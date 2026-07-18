@@ -131,6 +131,8 @@ export function ProductPackageCards({
                 </div>
               ) : headerKind === "sports" ? (
                 <PackageSportsPhotos className={"shrink-0 " + headerH} />
+              ) : headerKind === "brandLogos" ? (
+                <PackageBrandWorkLogos className={"shrink-0 " + headerH} />
               ) : (
                 <div
                   className={
@@ -138,11 +140,7 @@ export function ProductPackageCards({
                     headerH
                   }
                 >
-                  {headerKind === "brandLogos" ? (
-                    <PackageBrandWorkLogos />
-                  ) : (
-                    <RestadigiBrownPanel className="h-full rounded-none" compact />
-                  )}
+                  <RestadigiBrownPanel className="h-full rounded-none" compact />
                   <div
                     className="flex items-center justify-center bg-[#f3eee8] text-[#432f24]"
                     aria-hidden
