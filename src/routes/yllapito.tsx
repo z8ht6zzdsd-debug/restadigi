@@ -78,35 +78,35 @@ function YllapitoPage() {
         </div>
       </section>
 
-      <section className="pb-24 sm:pb-32">
+      <section className="bg-[#f3f1ed] py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="mb-10 text-center text-3xl font-bold tracking-tight sm:mb-14 sm:text-4xl">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:mb-16 sm:text-5xl">
             {h.packagesTitle}
           </h2>
 
-          <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
+          <div className="grid gap-8 sm:grid-cols-2 sm:gap-10">
             {h.packages.map((pkg) => (
               <article
                 key={pkg.name}
-                className="overflow-hidden rounded-[1.75rem] border border-border/70 bg-background shadow-[0_12px_40px_-24px_rgba(50,30,20,0.35)]"
+                className="overflow-hidden rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.4)] ring-1 ring-black/5"
               >
-                <RestadigiBrownPanel className="aspect-[16/11] rounded-none" compact />
-                <div className="flex flex-col items-center gap-5 px-6 py-7 text-center sm:px-8 sm:py-8">
+                <RestadigiBrownPanel className="aspect-[16/10] rounded-none" compact />
+                <div className="flex flex-col items-center gap-6 px-6 py-8 text-center sm:px-10 sm:py-10">
                   <div>
-                    <div className="mb-1 flex items-center justify-center gap-2">
-                      <h3 className="text-xl font-bold tracking-tight sm:text-2xl">{pkg.name}</h3>
+                    <div className="mb-2 flex items-center justify-center gap-2">
+                      <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">{pkg.name}</h3>
                       {pkg.featured && (
                         <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-accent-foreground">
                           {h.popular}
                         </span>
                       )}
                     </div>
-                    <p className="font-serif text-2xl text-foreground/85 sm:text-3xl">{pkg.price}</p>
+                    <p className="font-serif text-3xl text-foreground sm:text-4xl">{pkg.price}</p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setOpenPackage(pkg.name)}
-                    className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-accent-foreground transition-opacity hover:opacity-90"
+                    className="inline-flex min-w-[10rem] items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
                   >
                     {h.explore}
                   </button>
@@ -115,7 +115,7 @@ function YllapitoPage() {
             ))}
           </div>
 
-          <p className="mt-10 text-center text-xs text-muted-foreground">{h.footnote}</p>
+          <p className="mt-12 text-center text-xs text-muted-foreground">{h.footnote}</p>
         </div>
       </section>
 
