@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Bot, Search, Trophy } from "lucide-react";
+import { Bot, Palette, Search, Trophy } from "lucide-react";
 import { useState } from "react";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
@@ -13,7 +13,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-const VISIBILITY_ICONS = [Bot, Search, Trophy] as const;
+const VISIBILITY_ICONS = [Bot, Search, Trophy, Palette] as const;
 
 export const Route = createFileRoute("/diginakyvyys")({
   head: () => ({

@@ -91,7 +91,6 @@ function KotisivutPage() {
             description: pkg.tagline,
             bullets: pkg.bullets,
             icon: WEBSITE_ICONS[i],
-            headerVisual: "brandLogos" as const,
           }))}
           footnote={
             <>

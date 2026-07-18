@@ -111,28 +111,38 @@ export function ProductPackageCards({
               key={pkg.name}
               className="overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)] ring-1 ring-black/5"
             >
-              <div className="grid grid-cols-[1.15fr_0.85fr] items-stretch">
-                {headerKind === "ai" || headerKind === "google" ? (
-                  <div className="flex min-h-[7.25rem] items-center justify-center px-3 sm:min-h-[8.5rem] sm:px-4">
+              {headerKind === "ai" || headerKind === "google" ? (
+                <div className="flex min-h-[5.5rem] items-center gap-3 bg-white px-4 py-4 sm:min-h-[6.25rem] sm:gap-4 sm:px-5 sm:py-5">
+                  <div className="min-w-0 flex-1">
                     <PackageBrandLogos kind={headerKind} logosOnly />
                   </div>
-                ) : headerKind === "sports" ? (
-                  <PackageSportsPhotos className="min-h-[7.25rem] sm:min-h-[8.5rem]" />
-                ) : headerKind === "brandLogos" ? (
-                  <PackageBrandWorkLogos className="min-h-[7.25rem] sm:min-h-[8.5rem]" />
-                ) : (
-                  <RestadigiBrownPanel
-                    className="min-h-[7.25rem] rounded-none sm:min-h-[8.5rem]"
-                    compact
-                  />
-                )}
-                <div
-                  className="flex items-center justify-center bg-[#f3eee8] text-[#432f24]"
-                  aria-hidden
-                >
-                  <Icon className="size-12 sm:size-14" strokeWidth={1.5} />
+                  <div
+                    className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[#f3eee8] text-[#432f24] sm:size-16"
+                    aria-hidden
+                  >
+                    <Icon className="size-8 sm:size-9" strokeWidth={1.5} />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="grid grid-cols-[1.15fr_0.85fr] items-stretch">
+                  {headerKind === "sports" ? (
+                    <PackageSportsPhotos className="min-h-[7.25rem] sm:min-h-[8.5rem]" />
+                  ) : headerKind === "brandLogos" ? (
+                    <PackageBrandWorkLogos className="min-h-[7.25rem] sm:min-h-[8.5rem]" />
+                  ) : (
+                    <RestadigiBrownPanel
+                      className="min-h-[7.25rem] rounded-none sm:min-h-[8.5rem]"
+                      compact
+                    />
+                  )}
+                  <div
+                    className="flex items-center justify-center bg-[#f3eee8] text-[#432f24]"
+                    aria-hidden
+                  >
+                    <Icon className="size-12 sm:size-14" strokeWidth={1.5} />
+                  </div>
+                </div>
+              )}
               <div className="flex flex-col items-center gap-5 px-6 py-7 text-center sm:px-8 sm:py-8">
                 <div>
                   <div className="mb-2 flex items-center justify-center gap-2">

@@ -189,16 +189,16 @@ export function PackageBrandLogos({
   if (logosOnly) {
     return (
       <div
-        className="grid grid-cols-2 place-items-center gap-x-4 gap-y-3 sm:gap-x-5 sm:gap-y-4"
+        className="flex w-full items-end justify-between gap-2 sm:gap-3"
         aria-hidden
       >
         {logos.map(({ name, Mark, tone }) => (
-          <div key={name} className="flex flex-col items-center gap-1">
+          <div key={name} className="flex min-w-0 flex-1 flex-col items-center gap-1">
             <Mark
               title={name}
-              className={"size-8 sm:size-9 " + (tone ?? "text-foreground")}
+              className={"size-7 sm:size-8 " + (tone ?? "text-foreground")}
             />
-            <span className="max-w-[6.5rem] text-center text-[10px] leading-tight text-foreground/60">
+            <span className="w-full truncate text-center text-[9px] leading-tight text-foreground/60 sm:text-[10px]">
               {name}
             </span>
           </div>
@@ -252,7 +252,7 @@ export function packageLogoKind(packageName: string): "ai" | "google" | null {
 
 export function packageHeaderKind(
   packageName: string,
-): "ai" | "google" | "sports" | null {
+): "ai" | "google" | "sports" | "brandLogos" | null {
   const logoKind = packageLogoKind(packageName);
   if (logoKind) return logoKind;
   const n = packageName.toLowerCase();
@@ -264,6 +264,15 @@ export function packageHeaderKind(
     n.includes("elite")
   ) {
     return "sports";
+  }
+  if (
+    n.includes("graafi") ||
+    n.includes("graphic") ||
+    n.includes("diseño") ||
+    n.includes("diseno") ||
+    n.includes("branding")
+  ) {
+    return "brandLogos";
   }
   return null;
 }
