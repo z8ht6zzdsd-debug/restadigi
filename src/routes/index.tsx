@@ -1,4 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { LucideIcon } from "lucide-react";
+import {
+  Bot,
+  BriefcaseBusiness,
+  CalendarDays,
+  CircleDollarSign,
+  PanelsTopLeft,
+} from "lucide-react";
 import delfinIcon from "@/assets/delfin-checkin-icon.jpg";
 import delfinScreen from "@/assets/delfin-checkin-screen.jpg";
 import delfinScreen2 from "@/assets/delfin-checkin-screen-2.jpg";
@@ -6,8 +14,6 @@ import rafaHero from "@/assets/rafa-romera-hero.jpg";
 import rafaLogo from "@/assets/rafa-romera-logo.png";
 import freddosCoffee from "@/assets/freddos-coffee-open.jpg";
 import whyUsDining from "@/assets/restaurant-dining.jpg";
-import whyUsKitchen from "@/assets/restaurant-kitchen.jpg";
-import introHotel from "@/assets/hero-hotel-web.jpg";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -24,6 +30,15 @@ type WhyUsPath = (typeof WHY_US_PATHS)[number];
 function isWhyUsPath(to: string): to is WhyUsPath {
   return (WHY_US_PATHS as readonly string[]).includes(to);
 }
+
+const WHY_US_ICONS: LucideIcon[] = [
+  BriefcaseBusiness,
+  CircleDollarSign,
+  Bot,
+  PanelsTopLeft,
+];
+
+const SERVICE_ICONS: LucideIcon[] = [Bot, CalendarDays];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -145,61 +160,55 @@ function Index() {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-4 sm:gap-5">
-            {/* Vasemman yläreunan boksi: kaikki 4 syytä */}
-            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] sm:min-h-[28rem] flex flex-col justify-end p-6 sm:p-8 text-white lg:col-start-1 lg:row-start-1">
-              <img
-                src={whyUsDining}
-                alt=""
-                aria-hidden
-                className="absolute inset-0 size-full object-cover"
-              />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/25"
-                aria-hidden
-              />
-              <div className="relative z-[1] grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-                {h.whyUs.items.map((item) => (
-                  <div key={item.title} className="min-w-0">
-                    <h3 className="text-lg sm:text-xl font-bold tracking-tight leading-tight mb-1.5">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm leading-relaxed text-white/85 line-clamp-4">
-                      {item.body}
-                    </p>
-                    {isWhyUsPath(item.href) ? (
-                      <Link
-                        to={item.href}
-                        className="mt-2.5 inline-flex text-xs font-bold uppercase tracking-[0.06em] text-accent underline-offset-2 hover:underline"
-                      >
-                        {item.linkLabel} →
-                      </Link>
-                    ) : null}
-                  </div>
-                ))}
+            {/* Vasemman yläreunan boksi: 4 syytä, valkoinen + symbolit */}
+            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] sm:min-h-[28rem] flex flex-col justify-center bg-white p-6 sm:p-8 text-foreground lg:col-start-1 lg:row-start-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-7">
+                {h.whyUs.items.map((item, i) => {
+                  const Icon = WHY_US_ICONS[i] ?? BriefcaseBusiness;
+                  return (
+                    <div key={item.title} className="min-w-0">
+                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-[#432f24] text-white">
+                        <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-bold tracking-tight leading-tight mb-1.5">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm leading-relaxed text-foreground/65 line-clamp-4">
+                        {item.body}
+                      </p>
+                      {isWhyUsPath(item.href) ? (
+                        <Link
+                          to={item.href}
+                          className="mt-2.5 inline-flex text-xs font-bold uppercase tracking-[0.06em] text-accent underline-offset-2 hover:underline"
+                        >
+                          {item.linkLabel} →
+                        </Link>
+                      ) : null}
+                    </div>
+                  );
+                })}
               </div>
             </article>
 
-            {/* Oikea korkea boksi: toimialaratkaisut */}
-            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] lg:min-h-0 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col justify-end p-6 sm:p-8 lg:p-10 text-white order-first lg:order-none">
-              <img
-                src={introHotel}
-                alt=""
-                aria-hidden
-                className="absolute inset-0 size-full object-cover"
-              />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/25"
-                aria-hidden
-              />
-              <div className="relative z-[1] flex flex-col gap-5 max-w-xl">
-                <h3 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-[1.05]">
+            {/* Oikea korkea boksi: dining-kuva otsikon yllä */}
+            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] lg:min-h-0 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col bg-white text-foreground order-first lg:order-none">
+              <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden sm:aspect-[5/3]">
+                <img
+                  src={whyUsDining}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 size-full object-cover object-center"
+                />
+              </div>
+              <div className="flex flex-1 flex-col justify-end gap-5 bg-[#432f24] p-6 text-white sm:p-8 lg:p-10">
+                <h3 className="max-w-xl text-3xl font-bold tracking-tight leading-[1.05] sm:text-4xl lg:text-[2.75rem]">
                   <span className="block">{h.intro.titleLine1}</span>
                   <span className="block">{h.intro.titleLine2}</span>
                 </h3>
-                <p className="text-sm sm:text-base leading-relaxed text-white/90">
+                <p className="max-w-xl text-sm leading-relaxed text-white/90 sm:text-base">
                   {h.intro.body}
                 </p>
-                <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 pt-2">
+                <div className="flex flex-col flex-wrap gap-2.5 pt-1 sm:flex-row">
                   <a
                     href={`tel:${h.intro.phoneTel}`}
                     className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
@@ -224,43 +233,39 @@ function Index() {
               </div>
             </article>
 
-            {/* Vasen alaboksi: AI + pöytävaraus */}
-            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[24rem] flex flex-col justify-end p-6 sm:p-8 text-white lg:col-start-1 lg:row-start-2">
-              <img
-                src={whyUsKitchen}
-                alt=""
-                aria-hidden
-                className="absolute inset-0 size-full object-cover"
-              />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/25"
-                aria-hidden
-              />
-              <div className="relative z-[1] flex flex-col gap-6">
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
-                  {h.serviceTeasers.title}
-                </h3>
-                {h.serviceTeasers.items.map((item, i) => (
-                  <div key={item.title} className="max-w-md">
-                    <h4 className="text-lg sm:text-xl font-bold tracking-tight leading-tight mb-1.5">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm leading-relaxed text-white/88">{item.body}</p>
-                    {isWhyUsPath(item.href) ? (
-                      <Link
-                        to={item.href}
-                        className={
-                          "mt-3 inline-flex items-center rounded-full px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-[0.06em] transition-opacity hover:opacity-90 " +
-                          (i === 0
-                            ? "bg-accent text-accent-foreground"
-                            : "bg-white text-black")
-                        }
-                      >
-                        {item.linkLabel}
-                      </Link>
-                    ) : null}
-                  </div>
-                ))}
+            {/* Vasen alaboksi: AI + pöytävaraus, valkoinen + symbolit */}
+            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[24rem] flex flex-col justify-center bg-white p-6 sm:p-8 text-foreground lg:col-start-1 lg:row-start-2">
+              <h3 className="mb-6 text-2xl font-bold tracking-tight leading-tight sm:text-3xl">
+                {h.serviceTeasers.title}
+              </h3>
+              <div className="flex flex-col gap-7">
+                {h.serviceTeasers.items.map((item, i) => {
+                  const Icon = SERVICE_ICONS[i] ?? Bot;
+                  return (
+                    <div key={item.title} className="max-w-md">
+                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-[#432f24] text-white">
+                        <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+                      </span>
+                      <h4 className="mb-1.5 text-lg font-bold tracking-tight leading-tight sm:text-xl">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm leading-relaxed text-foreground/65">{item.body}</p>
+                      {isWhyUsPath(item.href) ? (
+                        <Link
+                          to={item.href}
+                          className={
+                            "mt-3 inline-flex items-center rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.06em] transition-opacity hover:opacity-90 sm:text-sm " +
+                            (i === 0
+                              ? "bg-accent text-accent-foreground"
+                              : "bg-[#432f24] text-white")
+                          }
+                        >
+                          {item.linkLabel}
+                        </Link>
+                      ) : null}
+                    </div>
+                  );
+                })}
               </div>
             </article>
           </div>
