@@ -12,7 +12,7 @@ import delfinScreen from "@/assets/delfin-checkin-screen.jpg";
 import delfinScreen2 from "@/assets/delfin-checkin-screen-2.jpg";
 import rafaHero from "@/assets/rafa-romera-hero.jpg";
 import rafaLogo from "@/assets/rafa-romera-logo.png";
-import freddosCoffee from "@/assets/freddos-coffee-open.jpg";
+import heroHome from "@/assets/hero-home.jpg";
 import whyUsDining from "@/assets/restaurant-dining.jpg";
 import introHotel from "@/assets/hero-hotel-web.jpg";
 import { SiteHeader } from "@/components/site-header";
@@ -80,67 +80,41 @@ function Index() {
       />
       <SiteHeader />
 
-      {/* BK-tyylinen hero: meidän ruskea ylös → valkoinen alas */}
-      <section
-        className="relative overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(to bottom, #432f24 0%, #432f24 54%, #ffffff 54%, #ffffff 100%)",
-        }}
-      >
-        <div className="relative mx-auto grid max-w-6xl items-end gap-10 px-6 pb-12 pt-12 sm:pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-12 lg:pb-20 lg:pt-20">
-          {/* Vasen: valkoinen pystyboksi ruskean/valkoisen rajalla */}
-          <div className="relative z-[2] flex justify-start lg:col-span-5 lg:items-end">
-            <div className="flex w-full max-w-[20rem] flex-col justify-center rounded-[1.35rem] bg-white px-6 py-8 text-foreground shadow-[0_20px_50px_-18px_rgba(26,18,14,0.35)] sm:max-w-[22rem] sm:rounded-[1.5rem] sm:px-8 sm:py-10 lg:min-h-[26rem] lg:translate-y-[-12%] xl:min-h-[28rem]">
-              <p className="font-serif text-[1.2rem] leading-[1.35] tracking-tight text-foreground sm:text-[1.35rem] lg:text-[1.45rem]">
-                {h.hero.description}
-              </p>
+      {/* Hero: valkoinen pohja, etukuva tablettikehyksessä vasemmalla, teksti oikealla */}
+      <section className="bg-background">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-14 lg:py-20">
+          <div className="flex justify-center lg:col-span-5 lg:justify-start">
+            <div className="w-full max-w-[19rem] -rotate-2 sm:max-w-[21rem] lg:max-w-none">
+              <div className="rounded-[1.5rem] border-[11px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_28px_60px_-20px_rgba(26,18,14,0.4)] sm:rounded-[1.75rem] sm:border-[13px]">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-[0.7rem] bg-[#432f24] sm:rounded-[0.9rem]">
+                  <img
+                    src={heroHome}
+                    alt=""
+                    aria-hidden
+                    width={900}
+                    height={1200}
+                    className="size-full object-cover object-[center_40%]"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Oikea: iso otsikko + laitteet rajalla */}
-          <div className="relative z-[1] lg:col-span-7">
-            <h1 className="max-w-[14ch] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-[#f3e6d4] sm:text-5xl lg:text-[3.35rem]">
+          <div className="lg:col-span-7">
+            <h1 className="max-w-[16ch] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
               {h.hero.titleBefore}
-              {h.hero.titleAccent}
+              <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
               {h.hero.titleAfter}
             </h1>
-
-            <div className="mt-8 flex items-end justify-center gap-4 sm:mt-10 sm:gap-6 lg:justify-start">
-              {/* Tabletti (pysty) — Rafa, object-top jotta pää näkyy */}
-              <div className="relative w-[42%] max-w-[14.5rem] shrink-0 -rotate-2">
-                <div className="rounded-[1.35rem] border-[10px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_24px_50px_-18px_rgba(26,18,14,0.45)] sm:rounded-[1.6rem] sm:border-[12px]">
-                  <div className="aspect-[3/4] overflow-hidden rounded-[0.65rem] bg-[#432f24] sm:rounded-[0.85rem]">
-                    <img
-                      src={rafaHero}
-                      alt=""
-                      width={600}
-                      height={800}
-                      className="size-full object-cover object-[center_12%]"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Puhelin — Freddos ilman kantta */}
-              <div className="relative w-[28%] max-w-[9.5rem] shrink-0 translate-y-3 rotate-3 sm:max-w-[10.5rem]">
-                <div className="rounded-[1.6rem] border-[8px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_24px_50px_-18px_rgba(26,18,14,0.45)] sm:rounded-[1.85rem] sm:border-[10px]">
-                  <div className="relative aspect-[9/19] overflow-hidden rounded-[1.05rem] bg-[#432f24] sm:rounded-[1.2rem]">
-                    <div
-                      className="absolute top-2 left-1/2 z-[1] h-4 w-16 -translate-x-1/2 rounded-full bg-[#2a1f18]"
-                      aria-hidden
-                    />
-                    <img
-                      src={freddosCoffee}
-                      alt=""
-                      width={400}
-                      height={800}
-                      className="size-full object-cover object-center"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/70 sm:text-lg">
+              {h.hero.description}
+            </p>
+            <Link
+              to="/yhteys"
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
+            >
+              {h.hero.cta}
+            </Link>
           </div>
         </div>
       </section>
