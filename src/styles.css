@@ -643,6 +643,45 @@
     gap: 1rem;
   }
 
+  /* Hosting hero — three small balls */
+  .hosting-ball {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 9999px;
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, white 14%, transparent),
+      0 18px 40px -12px color-mix(in srgb, black 55%, transparent);
+    animation: hosting-float 7s ease-in-out infinite;
+  }
+
+  .hosting-ball--main {
+    top: 18%;
+    right: 4%;
+    width: 62%;
+    height: 62%;
+    z-index: 2;
+  }
+
+  .hosting-ball--top {
+    top: 4%;
+    left: 6%;
+    width: 42%;
+    height: 42%;
+    z-index: 3;
+    animation-delay: -2.2s;
+    animation-duration: 8s;
+  }
+
+  .hosting-ball--bottom {
+    bottom: 2%;
+    left: 18%;
+    width: 48%;
+    height: 48%;
+    z-index: 1;
+    animation-delay: -4s;
+    animation-duration: 9s;
+  }
+
   /* Hosting hero — floating AI accents */
   .hosting-ai-orb {
     position: absolute;

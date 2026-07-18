@@ -50,8 +50,8 @@ function YllapitoPage() {
           <span className="hosting-ai-bot hosting-ai-bot--2" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 sm:gap-12 sm:py-16 lg:grid-cols-2 lg:gap-14 lg:py-20">
-          <div className="max-w-xl">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-14 sm:gap-14 sm:px-10 sm:py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10 lg:px-12 lg:py-20 xl:px-16">
+          <div className="mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none lg:pl-6 xl:pl-10">
             <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
               {h.hero.titleBefore}
               <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
@@ -79,18 +79,33 @@ function YllapitoPage() {
             </a>
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-[28rem] items-center justify-center lg:max-w-none lg:justify-end">
-            <div className="relative aspect-square w-full max-w-[26rem] lg:max-w-[30rem]">
-              <div className="absolute inset-[6%] rounded-full bg-[#2a1c15]/70 blur-2xl" aria-hidden />
-              <div className="relative size-full overflow-hidden rounded-full ring-1 ring-white/15 shadow-[0_24px_80px_-20px_rgba(0,0,0,0.55)]">
+          <div className="relative mx-auto flex w-full max-w-[22rem] items-center justify-center sm:max-w-[26rem] lg:max-w-none lg:justify-center">
+            <div className="relative aspect-square w-full max-w-[22rem] sm:max-w-[24rem]">
+              {/* Three smaller overlapping circles */}
+              <div className="hosting-ball hosting-ball--main">
                 <img
                   src={heroHostingServers}
                   alt=""
                   aria-hidden
-                  className="size-full object-cover object-center scale-[1.04]"
+                  className="size-full object-cover object-[58%_42%]"
                 />
               </div>
-              {/* Soft floating AI accents around the circle */}
+              <div className="hosting-ball hosting-ball--top">
+                <img
+                  src={heroHostingServers}
+                  alt=""
+                  aria-hidden
+                  className="size-full object-cover object-[28%_22%]"
+                />
+              </div>
+              <div className="hosting-ball hosting-ball--bottom">
+                <img
+                  src={heroHostingServers}
+                  alt=""
+                  aria-hidden
+                  className="size-full object-cover object-[72%_78%]"
+                />
+              </div>
               <span className="hosting-ai-float hosting-ai-float--a" aria-hidden />
               <span className="hosting-ai-float hosting-ai-float--b" aria-hidden />
               <span className="hosting-ai-float hosting-ai-float--c" aria-hidden />
