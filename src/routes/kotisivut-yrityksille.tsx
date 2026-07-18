@@ -68,25 +68,30 @@ function KotisivutPage() {
 
       <MarketingBand>
         <article className="mb-5 overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-[#432f24] text-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)]">
-          <div className="grid grid-cols-3 gap-0.5 bg-[#432f24]">
-            {FREDDOS_COFFEES.map((coffee) => (
-              <div key={coffee.alt} className="relative aspect-[3/4] overflow-hidden bg-[#ebe8e2]">
-                <img
-                  src={coffee.src}
-                  alt=""
-                  aria-hidden
-                  className="size-full object-cover object-center"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="px-6 py-7 sm:px-8 sm:py-8">
-            <h2 className="max-w-[18ch] text-3xl font-bold tracking-tight sm:text-4xl">
-              {w.midBanner.title}
-            </h2>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/88 sm:text-base">
-              {w.midBanner.description}
-            </p>
+          <div className="grid items-stretch lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.4fr)]">
+            <div className="flex flex-col justify-center px-6 py-8 sm:px-8 sm:py-10 lg:py-8">
+              <h2 className="max-w-[16ch] text-3xl font-bold tracking-tight sm:text-4xl">
+                {w.midBanner.title}
+              </h2>
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88 sm:text-base">
+                {w.midBanner.description}
+              </p>
+            </div>
+            <div className="grid min-h-0 grid-cols-3 gap-0.5 bg-[#432f24]">
+              {FREDDOS_COFFEES.map((coffee) => (
+                <div
+                  key={coffee.alt}
+                  className="relative aspect-[3/4] overflow-hidden bg-[#ebe8e2] lg:aspect-auto lg:min-h-[16rem]"
+                >
+                  <img
+                    src={coffee.src}
+                    alt=""
+                    aria-hidden
+                    className="size-full object-cover object-center"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </article>
 
