@@ -695,11 +695,20 @@ export const en: Messages = {
       ogDescription: "Hosting and maintenance packages: Basic and Pro Business.",
     },
     hero: {
-      titleBefore: "Hosting and ",
-      titleAccent: "maintenance",
-      titleAfter: ".",
+      titleBefore: "Finnish ",
+      titleAccent: "hosting",
+      titleAfter: "",
       description:
         "We keep your site fast, secure and up to date. Choose a hosting and maintenance package — domain and SSL included.",
+      features: [
+        "Fast hosting in Finland",
+        "Domain and SSL included",
+        "Management in Finnish or English",
+        "Servers in Helsinki",
+        "Regular updates and support",
+        "Clear fixed monthly pricing",
+      ],
+      compareCta: "Compare packages",
     },
     popular: "Popular",
     requestQuote: "Request a quote",

@@ -642,4 +642,152 @@
     justify-content: center;
     gap: 1rem;
   }
+
+  /* Hosting hero — floating AI accents */
+  .hosting-ai-orb {
+    position: absolute;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, #c9a882 35%, transparent) 0%,
+      transparent 70%
+    );
+    filter: blur(2px);
+    animation: hosting-drift 14s ease-in-out infinite;
+  }
+
+  .hosting-ai-orb--1 {
+    top: 12%;
+    left: 42%;
+    width: 9rem;
+    height: 9rem;
+    opacity: 0.45;
+  }
+
+  .hosting-ai-orb--2 {
+    top: 58%;
+    left: 55%;
+    width: 14rem;
+    height: 14rem;
+    opacity: 0.3;
+    animation-duration: 18s;
+    animation-delay: -4s;
+  }
+
+  .hosting-ai-orb--3 {
+    bottom: 8%;
+    right: 8%;
+    width: 7rem;
+    height: 7rem;
+    opacity: 0.4;
+    animation-duration: 12s;
+    animation-delay: -2s;
+  }
+
+  .hosting-ai-bot {
+    position: absolute;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.85rem;
+    background: linear-gradient(145deg, #c9a882, #8b6a4a);
+    box-shadow:
+      0 0 0 2px color-mix(in srgb, white 12%, transparent),
+      0 8px 24px color-mix(in srgb, black 35%, transparent);
+    animation: hosting-float 7s ease-in-out infinite;
+  }
+
+  .hosting-ai-bot::before,
+  .hosting-ai-bot::after {
+    content: "";
+    position: absolute;
+    top: 38%;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 9999px;
+    background: #7dd3fc;
+    box-shadow: 0 0 8px #7dd3fc;
+  }
+
+  .hosting-ai-bot::before {
+    left: 28%;
+  }
+
+  .hosting-ai-bot::after {
+    right: 28%;
+  }
+
+  .hosting-ai-bot--1 {
+    top: 22%;
+    right: 38%;
+    opacity: 0.85;
+  }
+
+  .hosting-ai-bot--2 {
+    top: 68%;
+    right: 48%;
+    width: 1.75rem;
+    height: 1.75rem;
+    opacity: 0.7;
+    animation-delay: -3s;
+    animation-duration: 9s;
+  }
+
+  .hosting-ai-float {
+    position: absolute;
+    border-radius: 9999px;
+    background: color-mix(in srgb, #c9a882 55%, transparent);
+    box-shadow: 0 0 18px color-mix(in srgb, #c9a882 40%, transparent);
+    animation: hosting-float 6.5s ease-in-out infinite;
+  }
+
+  .hosting-ai-float--a {
+    top: 8%;
+    right: 6%;
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+
+  .hosting-ai-float--b {
+    bottom: 18%;
+    left: 2%;
+    width: 0.55rem;
+    height: 0.55rem;
+    animation-delay: -2s;
+  }
+
+  .hosting-ai-float--c {
+    top: 42%;
+    left: -2%;
+    width: 0.45rem;
+    height: 0.45rem;
+    animation-delay: -4s;
+    animation-duration: 8s;
+  }
+
+  @keyframes hosting-drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(12px, -18px) scale(1.06);
+    }
+  }
+
+  @keyframes hosting-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .hosting-ai-bot--1,
+    .hosting-ai-bot--2 {
+      display: none;
+    }
+  }
 }

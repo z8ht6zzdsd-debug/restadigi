@@ -1,8 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ProductPackageCards,
-  RestadigiBrownPanel,
-} from "@/components/product-package-cards";
+import { createFileRoute } from "@tanstack/react-router";
+import heroHostingServers from "@/assets/hero-hosting-servers.png";
+import { ProductPackageCards } from "@/components/product-package-cards";
 import { MarketingBand } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -42,40 +40,61 @@ function YllapitoPage() {
       />
       <SiteHeader />
 
-      <section className="w-full bg-background px-6 py-8 sm:py-10">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-5">
-            <h1 className="text-3xl font-bold leading-[1.05] tracking-tight text-balance sm:text-4xl lg:text-5xl">
+      <section className="relative isolate overflow-hidden bg-[#432f24] text-white">
+        {/* Floating AI orbs in the background */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <span className="hosting-ai-orb hosting-ai-orb--1" />
+          <span className="hosting-ai-orb hosting-ai-orb--2" />
+          <span className="hosting-ai-orb hosting-ai-orb--3" />
+          <span className="hosting-ai-bot hosting-ai-bot--1" />
+          <span className="hosting-ai-bot hosting-ai-bot--2" />
+        </div>
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 sm:gap-12 sm:py-16 lg:grid-cols-2 lg:gap-14 lg:py-20">
+          <div className="max-w-xl">
+            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
               {h.hero.titleBefore}
               <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
               {h.hero.titleAfter}
             </h1>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-foreground/75 sm:text-base">
+            <p className="mt-5 text-sm leading-relaxed text-white/80 sm:text-base">
               {h.hero.description}
             </p>
-            <Link
-              to="/yhteys"
-              className="mt-6 inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+            <ul className="mt-7 space-y-2.5 text-sm text-white/90 sm:text-[0.95rem]">
+              {h.hero.features.map((feature) => (
+                <li key={feature} className="flex items-start gap-2.5">
+                  <span
+                    className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent"
+                    aria-hidden
+                  />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#hosting-paketit"
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
             >
-              {h.requestQuote}
-              <svg
-                className="size-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                />
-              </svg>
-            </Link>
+              {h.hero.compareCta}
+            </a>
           </div>
 
-          <div className="lg:col-span-7">
-            <RestadigiBrownPanel className="aspect-[2/1] max-h-56 sm:max-h-64" />
+          <div className="relative mx-auto flex w-full max-w-[28rem] items-center justify-center lg:max-w-none lg:justify-end">
+            <div className="relative aspect-square w-full max-w-[26rem] lg:max-w-[30rem]">
+              <div className="absolute inset-[6%] rounded-full bg-[#2a1c15]/70 blur-2xl" aria-hidden />
+              <div className="relative size-full overflow-hidden rounded-full ring-1 ring-white/15 shadow-[0_24px_80px_-20px_rgba(0,0,0,0.55)]">
+                <img
+                  src={heroHostingServers}
+                  alt=""
+                  aria-hidden
+                  className="size-full object-cover object-center scale-[1.04]"
+                />
+              </div>
+              {/* Soft floating AI accents around the circle */}
+              <span className="hosting-ai-float hosting-ai-float--a" aria-hidden />
+              <span className="hosting-ai-float hosting-ai-float--b" aria-hidden />
+              <span className="hosting-ai-float hosting-ai-float--c" aria-hidden />
+            </div>
           </div>
         </div>
       </section>

@@ -700,11 +700,20 @@ export const fi: Messages = {
       ogDescription: "Hosting- ja ylläpitopaketit: Basic ja Pro Business.",
     },
     hero: {
-      titleBefore: "Hosting ja ",
-      titleAccent: "ylläpito",
-      titleAfter: ".",
+      titleBefore: "Kotimainen ",
+      titleAccent: "hosting",
+      titleAfter: "",
       description:
         "Pidämme sivustosi nopeana, turvallisena ja ajan tasalla. Valitse sopiva hosting- ja ylläpitopaketti — domain ja SSL sisältyvät hintaan.",
+      features: [
+        "Nopea hosting Suomessa",
+        "Domain ja SSL sisältyvät",
+        "Hallinta suomeksi",
+        "Palvelimet Helsingissä",
+        "Säännölliset päivitykset ja tuki",
+        "Selkeä kiinteä kuukausihinta",
+      ],
+      compareCta: "Vertaile paketteja",
     },
     popular: "Suosittu",
     requestQuote: "Pyydä tarjous",

@@ -10,6 +10,8 @@ type PageHeroProps = {
   devices?: boolean;
   /** Full-bleed lifestyle: left-aligned copy on the image (McDonald’s-style) */
   lifestyle?: boolean;
+  /** Extra classes for the hero image (e.g. object-position) */
+  imageClassName?: string;
 };
 
 export function PageHero({
@@ -20,6 +22,7 @@ export function PageHero({
   tall,
   devices,
   lifestyle,
+  imageClassName,
 }: PageHeroProps) {
   if (devices) {
     return (
@@ -31,7 +34,10 @@ export function PageHero({
             aria-hidden
             width={1600}
             height={900}
-            className="page-hero__devices-image"
+            className={
+              "page-hero__devices-image" +
+              (imageClassName ? ` ${imageClassName}` : "")
+            }
           />
         </div>
         <div className="page-hero__devices-copy">
@@ -60,7 +66,9 @@ export function PageHero({
             aria-hidden
             width={1600}
             height={900}
-            className="page-hero__image"
+            className={
+              "page-hero__image" + (imageClassName ? ` ${imageClassName}` : "")
+            }
           />
           <div className="page-hero__lifestyle-scrim" aria-hidden />
           <div className="page-hero__content-wrap page-hero__content-wrap--lifestyle">
@@ -94,7 +102,9 @@ export function PageHero({
           aria-hidden
           width={1600}
           height={900}
-          className="page-hero__image"
+          className={
+            "page-hero__image" + (imageClassName ? ` ${imageClassName}` : "")
+          }
         />
 
         <div className="page-hero__gradient-side" aria-hidden />

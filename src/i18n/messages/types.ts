@@ -368,6 +368,8 @@ export type Messages = {
       titleAccent: string;
       titleAfter: string;
       description: string;
+      features: string[];
+      compareCta: string;
     };
     popular: string;
     requestQuote: string;
