@@ -296,25 +296,29 @@ function Index() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[26rem] bg-[#432f24] text-white flex flex-col items-center justify-center text-center px-8 py-12 sm:px-10">
-              <img
-                src={delfinScreen}
-                alt=""
+            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[26rem] text-white flex flex-col items-center justify-center text-center px-8 py-12 sm:px-10">
+              <div className="absolute inset-0 grid grid-cols-2" aria-hidden>
+                <img
+                  src={delfinScreen}
+                  alt=""
+                  className="size-full object-cover object-top"
+                />
+                <img
+                  src={delfinScreen2}
+                  alt=""
+                  className="size-full object-cover object-top"
+                />
+              </div>
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-[#1a120e]/92 via-[#432f24]/72 to-[#432f24]/45"
                 aria-hidden
-                className="absolute top-4 left-4 w-16 sm:w-20 rounded-2xl shadow-lg rotate-[-8deg] opacity-90"
-              />
-              <img
-                src={delfinScreen2}
-                alt=""
-                aria-hidden
-                className="absolute top-4 right-4 w-16 sm:w-20 rounded-2xl shadow-lg rotate-[8deg] opacity-90"
               />
               <img
                 src={delfinIcon}
                 alt={h.projects.delfin.logoAlt}
                 width={88}
                 height={88}
-                className="relative z-[1] size-16 sm:size-20 rounded-[1.25rem] shadow-md mb-6"
+                className="relative z-[1] size-16 sm:size-20 rounded-[1.25rem] shadow-md mb-6 ring-1 ring-white/20"
               />
               <h3 className="relative z-[1] text-2xl sm:text-3xl lg:text-[2.15rem] font-extrabold leading-[1.05] tracking-tight max-w-[12ch]">
                 {h.projects.delfin.title}
@@ -335,43 +339,38 @@ function Index() {
               </a>
             </article>
 
-            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[26rem] bg-white text-foreground flex flex-col items-center justify-center text-center px-8 py-12 sm:px-10">
-              <div
-                className="pointer-events-none absolute inset-0 opacity-[0.12]"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(#432f24 1px, transparent 1px), linear-gradient(90deg, #432f24 1px, transparent 1px)",
-                  backgroundSize: "48px 48px",
-                }}
-                aria-hidden
-              />
+            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[26rem] text-white flex flex-col items-center justify-center text-center px-8 py-12 sm:px-10">
               <img
                 src={rafaHero}
                 alt=""
                 aria-hidden
-                className="absolute top-4 left-4 size-16 sm:size-20 object-cover rounded-2xl shadow-md rotate-[-6deg]"
+                className="absolute inset-0 size-full object-cover object-[center_18%]"
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/55 to-black/30"
+                aria-hidden
               />
               <img
                 src={rafaLogo}
                 alt={h.projects.rafa.logoAlt}
                 width={220}
                 height={64}
-                className="relative z-[1] w-40 sm:w-48 h-auto mb-6"
+                className="relative z-[1] w-40 sm:w-48 h-auto mb-6 drop-shadow-md"
               />
               <h3 className="relative z-[1] text-2xl sm:text-3xl lg:text-[2.15rem] font-extrabold leading-[1.05] tracking-tight max-w-[14ch]">
                 {h.projects.rafa.title}
               </h3>
-              <p className="relative z-[1] mt-2 text-sm font-medium text-foreground/55">
+              <p className="relative z-[1] mt-2 text-sm font-medium text-white/70">
                 {h.projects.rafa.tag}
               </p>
-              <p className="relative z-[1] mt-4 text-sm sm:text-[0.95rem] leading-relaxed text-foreground/70 max-w-sm">
+              <p className="relative z-[1] mt-4 text-sm sm:text-[0.95rem] leading-relaxed text-white/85 max-w-sm">
                 {h.projects.rafa.body}
               </p>
               <a
                 href="https://rafaromera.info/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative z-[1] mt-7 inline-flex items-center rounded-full bg-[#432f24] px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition-opacity hover:opacity-90"
+                className="relative z-[1] mt-7 inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
               >
                 {h.projects.rafa.link.replace(/\s*→\s*$/, "")}
               </a>
