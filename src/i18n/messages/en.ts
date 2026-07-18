@@ -374,11 +374,10 @@ export const en: Messages = {
         "Three ways to grow visibility: AI optimisation, Google optimisation and an elite sports visibility package.",
     },
     hero: {
-      titleBefore: "Digital visibility ",
-      titleAccent: "sorted",
-      titleAfter: " in one go.",
-      description:
-        "Three ways to grow visibility: AI optimisation, Google optimisation and micro-partnerships in Finland’s most popular sports leagues.",
+      brand: "Restadigi",
+      headline: "Shall we get your visibility sorted in one go?",
+      searchPlaceholder: "Search",
+      searchAriaLabel: "Search digital visibility",
     },
     popular: "Popular",
     contactCta: "Get in touch",

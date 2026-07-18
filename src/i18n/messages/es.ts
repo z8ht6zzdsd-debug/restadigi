@@ -380,11 +380,10 @@ export const es: Messages = {
         "Tres formas de crecer en visibilidad: optimización IA, optimización Google y paquete de visibilidad en deporte de élite.",
     },
     hero: {
-      titleBefore: "Visibilidad digital ",
-      titleAccent: "lista",
-      titleAfter: " de una vez.",
-      description:
-        "Tres formas de crecer en visibilidad: optimización IA, optimización Google y microcolaboraciones en las ligas deportivas más populares de Finlandia.",
+      brand: "Restadigi",
+      headline: "¿Ponemos tu visibilidad en orden de una vez?",
+      searchPlaceholder: "Buscar",
+      searchAriaLabel: "Buscar en visibilidad digital",
     },
     popular: "Popular",
     contactCta: "Contactar",

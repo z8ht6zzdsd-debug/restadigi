@@ -210,10 +210,10 @@ export type Messages = {
       ogDescription: string;
     };
     hero: {
-      titleBefore: string;
-      titleAccent: string;
-      titleAfter: string;
-      description: string;
+      brand: string;
+      headline: string;
+      searchPlaceholder: string;
+      searchAriaLabel: string;
     };
     popular: string;
     contactCta: string;

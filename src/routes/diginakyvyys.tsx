@@ -1,13 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Search } from "lucide-react";
 import { useState } from "react";
-import heroDiginakyvyys from "@/assets/hero-diginakyvyys.jpg";
 import sportFootball from "@/assets/sport-football.jpg";
 import sportHockey from "@/assets/sport-hockey.jpg";
 import sportPesapallo from "@/assets/sport-pesapallo.jpg";
-import { PackageBrandLogos, packageLogoKind } from "@/components/package-brand-logos";
+import {
+  PackageBrandLogos,
+  VisibilityBrandLogoStrip,
+  packageLogoKind,
+} from "@/components/package-brand-logos";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
@@ -77,20 +80,52 @@ function DiginakyvyysPage() {
       />
       <SiteHeader />
 
-      <PageHero
-        image={heroDiginakyvyys}
-        title={
-          <>
-            {v.hero.titleBefore}
-            <span className="font-serif italic text-accent">{v.hero.titleAccent}</span>
-            {v.hero.titleAfter}
-          </>
-        }
-        description={v.hero.description}
-      />
+      <section className="w-full bg-[#f7f3ee] px-6 py-16 sm:py-24">
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-black sm:text-5xl lg:text-6xl">
+            {v.hero.brand}
+          </h1>
+          <p className="mt-5 max-w-xl text-base font-medium leading-snug text-black/80 sm:text-lg">
+            {v.hero.headline}
+          </p>
+
+          <form
+            className="mt-8 w-full max-w-xl"
+            onSubmit={(e) => {
+              e.preventDefault();
+              document.getElementById("nakyvyys-paketit")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}
+          >
+            <label className="sr-only" htmlFor="nakyvyys-haku">
+              {v.hero.searchAriaLabel}
+            </label>
+            <div className="flex items-center rounded-full bg-white px-5 py-3.5 shadow-sm ring-1 ring-black/5">
+              <input
+                id="nakyvyys-haku"
+                type="search"
+                name="q"
+                placeholder={v.hero.searchPlaceholder}
+                className="min-w-0 flex-1 bg-transparent text-base text-black outline-none placeholder:text-black/40"
+              />
+              <button
+                type="submit"
+                className="ml-3 shrink-0 text-black/45 transition-colors hover:text-black/70"
+                aria-label={v.hero.searchAriaLabel}
+              >
+                <Search className="size-5" strokeWidth={1.75} />
+              </button>
+            </div>
+          </form>
+
+          <VisibilityBrandLogoStrip className="mt-10" />
+        </div>
+      </section>
 
       {/* Paketit */}
-      <section>
+      <section id="nakyvyys-paketit">
         <div>
           {v.packages.map((p, i) => {
             const dark = Boolean(p.featured);

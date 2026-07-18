@@ -137,6 +137,28 @@ const GOOGLE_LOGOS: LogoItem[] = [
   { name: "Business Profile", Mark: GoogleBusinessMark },
 ];
 
+/** AI + Google package marks in one row — icons only. */
+export function VisibilityBrandLogoStrip({ className = "" }: { className?: string }) {
+  const logos = [...AI_LOGOS, ...GOOGLE_LOGOS];
+
+  return (
+    <div
+      className={
+        "flex flex-wrap items-center justify-center gap-5 sm:gap-7 " + className
+      }
+      aria-hidden
+    >
+      {logos.map(({ name, Mark, tone }) => (
+        <Mark
+          key={name}
+          title={name}
+          className={"size-8 sm:size-9 " + (tone ?? "text-foreground")}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function PackageBrandLogos({
   kind,
   dark = false,

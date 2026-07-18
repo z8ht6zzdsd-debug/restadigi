@@ -378,11 +378,10 @@ export const fi: Messages = {
         "Kolme tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi ja huippu-urheilun näkyvyyspaketti.",
     },
     hero: {
-      titleBefore: "Diginäkyvyys ",
-      titleAccent: "kerralla",
-      titleAfter: " kuntoon.",
-      description:
-        "Kolme tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi sekä mikrokumppanuudet Suomen suosituimmissa urheilusarjoissa.",
+      brand: "Restadigi",
+      headline: "Laitetaanko näkyvyydet kerralla kuntoon?",
+      searchPlaceholder: "Haku",
+      searchAriaLabel: "Hae diginäkyvyydestä",
     },
     popular: "Suosittu",
     contactCta: "Ota yhteyttä",
