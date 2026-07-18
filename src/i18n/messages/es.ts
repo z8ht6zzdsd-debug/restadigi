@@ -338,7 +338,7 @@ export const es: Messages = {
         "Unos sitios web y contenidos bien diseñados son tus herramientas digitales más importantes. Refuerzan la visibilidad de tu marca, facilitan el contacto de los clientes y dejan una fuerte primera impresión.",
     },
     midBanner: {
-      title: "¡Tu camino hacia el éxito sostenible empieza aquí!",
+      title: "¡Tu camino hacia el éxito empieza aquí!",
       description:
         "Descubre abajo los paquetes con los que elevarás la visibilidad online de tu empresa.",
       imageAlt: "Café Freddo's",
