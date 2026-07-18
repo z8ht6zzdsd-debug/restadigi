@@ -64,27 +64,31 @@ function Index() {
       />
       <SiteHeader />
 
-      {/* BK-tyylinen hero: ruskea/valkoinen + teksti vasemmalla, otsikko+laitteet oikealla */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[62%] bg-[#432f24]" aria-hidden />
-
-        <div className="relative mx-auto grid max-w-6xl items-end gap-10 px-6 pb-10 pt-12 sm:pb-14 sm:pt-16 lg:grid-cols-12 lg:gap-12 lg:pb-16 lg:pt-20">
+      {/* BK-tyylinen hero: meidän ruskea ylös → valkoinen alas */}
+      <section
+        className="relative overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(to bottom, #432f24 0%, #432f24 54%, #ffffff 54%, #ffffff 100%)",
+        }}
+      >
+        <div className="relative mx-auto grid max-w-6xl items-end gap-10 px-6 pb-12 pt-12 sm:pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-12 lg:pb-20 lg:pt-20">
           {/* Vasen: kuvaus + CTA */}
-          <div className="relative z-[1] flex flex-col lg:col-span-5 lg:pb-6">
-            <p className="max-w-md text-base leading-relaxed text-[#f7f3ee]/92 sm:text-lg">
+          <div className="relative z-[1] flex flex-col lg:col-span-5">
+            <p className="max-w-md text-base leading-relaxed text-white/90 sm:text-lg">
               {h.hero.description}
             </p>
-            <div className="mt-8 sm:mt-10">
+            <div className="mt-10 sm:mt-14 lg:mt-16">
               <Link
                 to="/yhteys"
-                className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
+                className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground shadow-sm transition-opacity hover:opacity-90"
               >
                 {h.hero.cta}
               </Link>
             </div>
           </div>
 
-          {/* Oikea: iso otsikko + tabletti & mobiili */}
+          {/* Oikea: iso otsikko + laitteet rajalla */}
           <div className="relative z-[1] lg:col-span-7">
             <h1 className="max-w-[14ch] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-[#f3e6d4] sm:text-5xl lg:text-[3.35rem]">
               {h.hero.titleBefore}
@@ -93,10 +97,9 @@ function Index() {
             </h1>
 
             <div className="mt-8 flex items-end justify-center gap-4 sm:mt-10 sm:gap-6 lg:justify-start">
-              {/* Tabletti — Rafa */}
               <div className="relative w-[48%] max-w-[17rem] shrink-0 -rotate-2">
-                <div className="rounded-[1.35rem] border-[10px] border-[#1a120e] bg-[#1a120e] shadow-[0_24px_50px_-18px_rgba(26,18,14,0.55)] sm:rounded-[1.6rem] sm:border-[12px]">
-                  <div className="aspect-[4/3] overflow-hidden rounded-[0.65rem] bg-[#2a1f18] sm:rounded-[0.85rem]">
+                <div className="rounded-[1.35rem] border-[10px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_24px_50px_-18px_rgba(26,18,14,0.45)] sm:rounded-[1.6rem] sm:border-[12px]">
+                  <div className="aspect-[4/3] overflow-hidden rounded-[0.65rem] bg-[#432f24] sm:rounded-[0.85rem]">
                     <img
                       src={rafaHero}
                       alt=""
@@ -106,18 +109,13 @@ function Index() {
                     />
                   </div>
                 </div>
-                <div
-                  className="absolute -bottom-1 left-1/2 h-1.5 w-16 -translate-x-1/2 rounded-full bg-[#2a1f18]/80"
-                  aria-hidden
-                />
               </div>
 
-              {/* Puhelin — Freddos */}
-              <div className="relative w-[28%] max-w-[9.5rem] shrink-0 translate-y-2 rotate-3 sm:max-w-[10.5rem]">
-                <div className="rounded-[1.6rem] border-[8px] border-[#1a120e] bg-[#1a120e] shadow-[0_24px_50px_-18px_rgba(26,18,14,0.55)] sm:rounded-[1.85rem] sm:border-[10px]">
-                  <div className="relative aspect-[9/19] overflow-hidden rounded-[1.05rem] bg-[#2a1f18] sm:rounded-[1.2rem]">
+              <div className="relative w-[28%] max-w-[9.5rem] shrink-0 translate-y-3 rotate-3 sm:max-w-[10.5rem]">
+                <div className="rounded-[1.6rem] border-[8px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_24px_50px_-18px_rgba(26,18,14,0.45)] sm:rounded-[1.85rem] sm:border-[10px]">
+                  <div className="relative aspect-[9/19] overflow-hidden rounded-[1.05rem] bg-[#432f24] sm:rounded-[1.2rem]">
                     <div
-                      className="absolute top-2 left-1/2 z-[1] h-4 w-16 -translate-x-1/2 rounded-full bg-[#1a120e]"
+                      className="absolute top-2 left-1/2 z-[1] h-4 w-16 -translate-x-1/2 rounded-full bg-[#2a1f18]"
                       aria-hidden
                     />
                     <img
