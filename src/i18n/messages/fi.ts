@@ -484,7 +484,7 @@ export const fi: Messages = {
           "Logon suunnittelu — alk. 149 €",
           "Käyntikorttien suunnittelu — alk. 99 €",
         ],
-        result: "Ammattimainen visuaalinen ilme yrityksellesi.",
+        result: "ammattimaisen visuaalisen ilmeen yrityksellesi.",
       },
     ],
     footnote: "Hinnat ovat vuosihintoja. Maksat vain siitä, mitä tarvitset — ei piilokustannuksia.",
