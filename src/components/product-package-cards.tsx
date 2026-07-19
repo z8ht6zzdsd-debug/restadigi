@@ -136,21 +136,17 @@ export function ProductPackageCards({
               className="flex h-full flex-col overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] border-2 border-[#432f24] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)]"
             >
               {deviceLayout ? (
-                <div className={"relative shrink-0 overflow-hidden bg-white " + headerH}>
+                <div className={"relative shrink-0 overflow-hidden bg-[#f7f3ee] " + headerH}>
                   <img
                     src={pkg.headerImage}
                     alt=""
                     aria-hidden
                     className="absolute inset-0 size-full object-cover object-center"
                   />
-                  {/* Soft mid fade so cropped devices read as intentional */}
+                  {/* Soft background wash mid→up; multiply keeps devices crisp */}
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-white via-white/75 to-transparent"
-                  />
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-6 top-1/2 h-px -translate-y-1/2 bg-[#432f24]/18"
+                    className="pointer-events-none absolute inset-x-0 top-0 h-[58%] bg-gradient-to-b from-[#e6ddd2] via-[#ebe4da]/70 to-transparent mix-blend-multiply"
                   />
                 </div>
               ) : headerKind === "ai" || headerKind === "google" ? (
