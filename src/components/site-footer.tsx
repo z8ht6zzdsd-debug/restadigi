@@ -10,7 +10,7 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
   const onPrimary = tone === "primary";
   const year = new Date().getFullYear();
   const copyright = t.footer.copyright.replace("{year}", String(year));
-  const c = t.nav.contactPanel;
+  const c = t.header.contactPanel;
 
   const muted = onPrimary ? "text-primary-foreground/55" : "text-muted-foreground";
   const strong = onPrimary ? "text-primary-foreground/85" : "text-foreground/80";
