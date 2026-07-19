@@ -526,11 +526,11 @@
     white-space: nowrap;
   }
 
-  /* Iso tabletti / Freddo’s — ensimmäisen d:n kohdalla */
+  /* Iso tabletti / Freddo’s — dd-kirjainten kohdalla */
   .page-hero__devices-promo {
     position: absolute;
-    left: 62%;
-    top: 16%;
+    left: 58%;
+    top: 26%;
     z-index: 3;
     width: max-content;
     transform: translate(-50%, -50%);
@@ -677,8 +677,8 @@
     }
 
     .page-hero__devices-promo {
-      left: 63%;
-      top: 15%;
+      left: 59%;
+      top: 25%;
       transform: translate(-50%, -50%);
     }
 
@@ -727,8 +727,8 @@
     }
 
     .page-hero__devices-promo {
-      left: 64%;
-      top: 14%;
+      left: 60%;
+      top: 24%;
     }
 
     .page-hero__devices-promo-chip {

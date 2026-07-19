@@ -50,7 +50,7 @@ export function RestadigiBrownPanel({
 }) {
   if (image) {
     return (
-      <div className={"relative overflow-hidden bg-[#ebe8e2] " + className}>
+      <div className={"relative overflow-hidden bg-white " + className}>
         <img
           src={image}
           alt=""
@@ -136,7 +136,7 @@ export function ProductPackageCards({
               className="flex h-full flex-col overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)] ring-1 ring-black/5"
             >
               {deviceLayout ? (
-                <div className={"relative shrink-0 overflow-hidden bg-[#ebe8e2] " + headerH}>
+                <div className={"relative shrink-0 overflow-hidden bg-white " + headerH}>
                   <img
                     src={pkg.headerImage}
                     alt=""
@@ -261,7 +261,7 @@ export function ProductPackageCards({
       {embedded ? (
         <div id={sectionId}>{grid}</div>
       ) : (
-        <section id={sectionId} className="bg-[#ebe8e2] py-14 sm:py-20">
+        <section id={sectionId} className="bg-white py-14 sm:py-20">
           <div className="mx-auto max-w-6xl px-6">{grid}</div>
         </section>
       )}

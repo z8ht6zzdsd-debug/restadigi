@@ -117,7 +117,7 @@ function DiginakyvyysPage() {
         </div>
       </section>
 
-      <MarketingBand>
+      <MarketingBand className="!bg-white">
         <ProductPackageCards
           embedded
           sectionId="nakyvyys-paketit"

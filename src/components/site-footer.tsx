@@ -45,7 +45,7 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
             </a>
           </p>
           <p>
-            <span className="sr-only">{c.hoursLabel}: </span>
+            <span className={strong}>{c.hoursLabel}: </span>
             {c.hours}
           </p>
         </div>

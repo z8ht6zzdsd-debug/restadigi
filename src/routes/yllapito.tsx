@@ -117,7 +117,7 @@ function YllapitoPage() {
         </div>
       </section>
 
-      <MarketingBand>
+      <MarketingBand className="!bg-white">
         <ProductPackageCards
           embedded
           sectionId="hosting-paketit"

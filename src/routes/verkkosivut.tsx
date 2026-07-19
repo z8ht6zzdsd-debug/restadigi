@@ -96,7 +96,7 @@ function KotisivutPage() {
         description={w.hero.description}
       />
 
-      <MarketingBand>
+      <MarketingBand className="!bg-white">
         <article className="mb-5 overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-[#432f24] text-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)]">
           <div className="grid items-stretch lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.4fr)]">
             <div className="flex flex-col justify-center px-6 py-8 sm:px-8 sm:py-10 lg:py-8">
@@ -111,7 +111,7 @@ function KotisivutPage() {
               {SUCCESS_SCENES.map((scene) => (
                 <div
                   key={scene.alt}
-                  className="relative aspect-[3/4] overflow-hidden bg-[#ebe8e2] lg:aspect-auto lg:min-h-[16rem]"
+                  className="relative aspect-[3/4] overflow-hidden bg-white lg:aspect-auto lg:min-h-[16rem]"
                 >
                   <img
                     src={scene.src}
