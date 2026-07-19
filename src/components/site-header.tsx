@@ -6,10 +6,10 @@ import { LocaleFlag, useLocale, useMessages, type Locale } from "@/i18n";
 type MenuKey = "palvelut" | "toimialat" | "kielet" | "yhteys" | null;
 
 const SERVICE_PATHS = [
-  "/kotisivut-yrityksille",
-  "/diginakyvyys",
-  "/chatbot",
-  "/potyvarauspalvelu",
+  "/verkkosivut",
+  "/nakyvyys-ja-suunnittelu",
+  "/ai-asiakaspalvelu",
+  "/poytavaraupalvelu",
   "/yllapito",
 ] as const;
 

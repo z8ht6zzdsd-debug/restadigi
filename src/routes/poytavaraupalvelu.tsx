@@ -18,7 +18,7 @@ import { useMessages } from "@/i18n";
 
 const FEATURE_ICONS = [Clock3, BellRing, LayoutGrid, Link2] as const;
 
-export const Route = createFileRoute("/potyvarauspalvelu")({
+export const Route = createFileRoute("/poytavaraupalvelu")({
   head: () => ({
     meta: [
       { title: "Pöytävarauspalvelu — Restadigi" },

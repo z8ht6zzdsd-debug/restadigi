@@ -81,10 +81,10 @@ export const fi: Messages = {
       },
     ],
     servicesList: [
-      { to: "/kotisivut-yrityksille", label: "Verkkosivut" },
-      { to: "/diginakyvyys", label: "Näkyvyys ja suunnittelu" },
-      { to: "/chatbot", label: "AI-asiakaspalvelu" },
-      { to: "/potyvarauspalvelu", label: "Pöytävarauspalvelu" },
+      { to: "/verkkosivut", label: "Verkkosivut" },
+      { to: "/nakyvyys-ja-suunnittelu", label: "Näkyvyys ja suunnittelu" },
+      { to: "/ai-asiakaspalvelu", label: "AI-asiakaspalvelu" },
+      { to: "/poytavaraupalvelu", label: "Pöytävarauspalvelu" },
       { to: "/yllapito", label: "Ylläpito" },
     ],
     languagesList: [
@@ -161,19 +161,19 @@ export const fi: Messages = {
         {
           title: "Edullisuus",
           body: "Kulut ovat suuret palvelualalla, ja uusien asiakkaiden löytäminen voi olla haastavaa. Tekoälyn ansiosta tuotamme palveluita järkevään hintaan laadusta tinkimättä — markkinoiden parhaalla hinta–laatusuhteella.",
-          href: "/kotisivut-yrityksille",
+          href: "/verkkosivut",
           linkLabel: "Katso paketit",
         },
         {
           title: "Automatisoitua liiketoimintaa",
           body: "AI-asiakaspalvelubotti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään vuosihintaan alk. 199 € / vuosi.",
-          href: "/chatbot",
+          href: "/ai-asiakaspalvelu",
           linkLabel: "Tutustu AI-palveluun",
         },
         {
           title: "Vaivatonta sisällönhallintaa",
           body: "Päivitä menu, hinnasto, aukioloajat ja kuvat omasta hallintapaneelistasi. Sisältöjen ylläpito sujuu itsenäisesti muutamalla klikkauksella — ilman teknistä osaamista.",
-          href: "/kotisivut-yrityksille",
+          href: "/verkkosivut",
           linkLabel: "Lue lisää",
         },
       ],
@@ -184,13 +184,13 @@ export const fi: Messages = {
         {
           title: "AI-asiakaspalvelu",
           body: "Chatbot palvelee asiakkaitasi 24/7 — vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
-          href: "/chatbot",
+          href: "/ai-asiakaspalvelu",
           linkLabel: "Tutustu chatbottiin",
         },
         {
           title: "Pöytävarauspalvelu",
           body: "Asiakkaat varaavat pöydän suoraan sivustoltasi ympäri vuorokauden — hallinta tabletilla ja mobiilissa.",
-          href: "/potyvarauspalvelu",
+          href: "/poytavaraupalvelu",
           linkLabel: "Tutustu varauspalveluun",
         },
       ],

@@ -26,7 +26,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-export const Route = createFileRoute("/chatbot")({
+export const Route = createFileRoute("/ai-asiakaspalvelu")({
   head: () => ({
     meta: [
       { title: "AI-asiakaspalvelu — Restadigi" },

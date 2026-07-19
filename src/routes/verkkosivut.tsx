@@ -41,7 +41,7 @@ const SUCCESS_SCENES = [
   { src: successGuestsArriving, alt: "Asiakkaita saapumassa" },
 ] as const;
 
-export const Route = createFileRoute("/kotisivut-yrityksille")({
+export const Route = createFileRoute("/verkkosivut")({
   head: () => ({
     meta: [
       { title: "Kotisivut yrityksille — Restadigi" },

@@ -81,10 +81,10 @@ export const es: Messages = {
       },
     ],
     servicesList: [
-      { to: "/kotisivut-yrityksille", label: "Sitios web" },
-      { to: "/diginakyvyys", label: "Visibilidad y diseño" },
-      { to: "/chatbot", label: "Atención con IA" },
-      { to: "/potyvarauspalvelu", label: "Reservas de mesa" },
+      { to: "/verkkosivut", label: "Sitios web" },
+      { to: "/nakyvyys-ja-suunnittelu", label: "Visibilidad y diseño" },
+      { to: "/ai-asiakaspalvelu", label: "Atención con IA" },
+      { to: "/poytavaraupalvelu", label: "Reservas de mesa" },
       { to: "/yllapito", label: "Hosting y mantenimiento" },
     ],
     languagesList: [
@@ -162,19 +162,19 @@ export const es: Messages = {
         {
           title: "Precio asequible",
           body: "Los costes son altos en el sector servicios y encontrar nuevos clientes puede ser difícil. Gracias a la IA ofrecemos servicios a un precio razonable sin sacrificar la calidad — la mejor relación calidad-precio del mercado.",
-          href: "/kotisivut-yrityksille",
+          href: "/verkkosivut",
           linkLabel: "Ver paquetes",
         },
         {
           title: "Operaciones automatizadas",
           body: "Un bot de atención con IA gestiona por ti el servicio al cliente y la recepción de reservas por chat, teléfono y correo 24/7. Precio anual fijo desde 199 € / año.",
-          href: "/chatbot",
+          href: "/ai-asiakaspalvelu",
           linkLabel: "Conocer el servicio de IA",
         },
         {
           title: "Gestión de contenidos sin esfuerzo",
           body: "Actualiza el menú, precios, horarios e imágenes desde tu propio panel. El mantenimiento de contenidos se hace con unos clics — sin conocimientos técnicos.",
-          href: "/kotisivut-yrityksille",
+          href: "/verkkosivut",
           linkLabel: "Más información",
         },
       ],
@@ -185,13 +185,13 @@ export const es: Messages = {
         {
           title: "Atención al cliente con IA",
           body: "Un chatbot atiende a tus clientes 24/7 — responde preguntas, captura leads y libera a tu equipo.",
-          href: "/chatbot",
+          href: "/ai-asiakaspalvelu",
           linkLabel: "Conocer el chatbot",
         },
         {
           title: "Reservas de mesa",
           body: "Los clientes reservan mesa en tu web a cualquier hora — gestiona las reservas en tablet y móvil.",
-          href: "/potyvarauspalvelu",
+          href: "/poytavaraupalvelu",
           linkLabel: "Conocer el servicio",
         },
       ],

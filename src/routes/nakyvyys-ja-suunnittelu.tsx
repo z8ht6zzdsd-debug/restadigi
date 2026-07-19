@@ -24,7 +24,7 @@ const VISIBILITY_HEADER_IMAGES = [
   pkgVisGraphic,
 ] as const;
 
-export const Route = createFileRoute("/diginakyvyys")({
+export const Route = createFileRoute("/nakyvyys-ja-suunnittelu")({
   head: () => ({
     meta: [
       { title: "Diginäkyvyys — Restadigi" },

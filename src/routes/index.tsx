@@ -23,9 +23,9 @@ import { useMessages } from "@/i18n";
 
 const WHY_US_PATHS = [
   "/yhteys",
-  "/kotisivut-yrityksille",
-  "/chatbot",
-  "/potyvarauspalvelu",
+  "/verkkosivut",
+  "/ai-asiakaspalvelu",
+  "/poytavaraupalvelu",
 ] as const;
 type WhyUsPath = (typeof WHY_US_PATHS)[number];
 
@@ -179,7 +179,7 @@ function Index() {
 
               {/* ~5 cm kaista seinän tilalle: pöytävarauspromo */}
               <Link
-                to="/potyvarauspalvelu"
+                to="/poytavaraupalvelu"
                 className="relative z-[2] flex min-h-[5rem] shrink-0 items-center justify-between gap-4 bg-[#432f24] px-5 py-4 text-white transition-colors hover:bg-[#3a291f] sm:min-h-[5.25rem] sm:px-7 sm:py-5"
               >
                 <div className="min-w-0">

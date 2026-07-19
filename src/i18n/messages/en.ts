@@ -81,10 +81,10 @@ export const en: Messages = {
       },
     ],
     servicesList: [
-      { to: "/kotisivut-yrityksille", label: "Websites" },
-      { to: "/diginakyvyys", label: "Visibility & design" },
-      { to: "/chatbot", label: "AI customer service" },
-      { to: "/potyvarauspalvelu", label: "Table reservations" },
+      { to: "/verkkosivut", label: "Websites" },
+      { to: "/nakyvyys-ja-suunnittelu", label: "Visibility & design" },
+      { to: "/ai-asiakaspalvelu", label: "AI customer service" },
+      { to: "/poytavaraupalvelu", label: "Table reservations" },
       { to: "/yllapito", label: "Hosting & maintenance" },
     ],
     languagesList: [
@@ -160,19 +160,19 @@ export const en: Messages = {
         {
           title: "Affordability",
           body: "Costs run high in the service sector, and finding new customers can be hard. Thanks to AI we deliver services at a sensible price without compromising quality — the best value on the market.",
-          href: "/kotisivut-yrityksille",
+          href: "/verkkosivut",
           linkLabel: "See packages",
         },
         {
           title: "Automated operations",
           body: "An AI customer-service bot handles support, bookings via chat, phone and email 24/7 — for a fixed annual fee from 199 € / year.",
-          href: "/chatbot",
+          href: "/ai-asiakaspalvelu",
           linkLabel: "Explore AI service",
         },
         {
           title: "Effortless content management",
           body: "Update your menu, prices, opening hours and images from your own admin panel. Content maintenance is a few clicks — no technical skills required.",
-          href: "/kotisivut-yrityksille",
+          href: "/verkkosivut",
           linkLabel: "Learn more",
         },
       ],
@@ -183,13 +183,13 @@ export const en: Messages = {
         {
           title: "AI customer service",
           body: "A chatbot serves your customers 24/7 — answers questions, captures leads and frees up your team.",
-          href: "/chatbot",
+          href: "/ai-asiakaspalvelu",
           linkLabel: "Explore the chatbot",
         },
         {
           title: "Table booking",
           body: "Customers book a table on your site around the clock — manage bookings on tablet and mobile.",
-          href: "/potyvarauspalvelu",
+          href: "/poytavaraupalvelu",
           linkLabel: "Explore booking",
         },
       ],
