@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Crown, Gem, Plus, Sparkles, type LucideIcon } from "lucide-react";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
 import successBusyTerrace from "@/assets/success-busy-terrace.jpg";
 import successTouristGroup from "@/assets/success-tourist-group.jpg";
@@ -21,6 +22,17 @@ const WEBSITE_HEADER_IMAGES = [
   pkgWebKulta,
   pkgWebTimantti,
 ] as const;
+
+const PACKAGE_ICONS: Record<string, LucideIcon> = {
+  Start: Sparkles,
+  Plus: Plus,
+  Kulta: Crown,
+  Gold: Crown,
+  Oro: Crown,
+  Timantti: Gem,
+  Diamond: Gem,
+  Diamante: Gem,
+};
 
 /** Näkyvyys → kävijät → varaukset */
 const SUCCESS_SCENES = [
@@ -120,6 +132,7 @@ function KotisivutPage() {
             bullets: pkg.bullets,
             headerImage: WEBSITE_HEADER_IMAGES[i],
             deviceLayout: true,
+            icon: PACKAGE_ICONS[pkg.name],
           }))}
           footnote={
             <>

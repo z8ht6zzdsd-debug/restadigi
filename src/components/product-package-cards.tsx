@@ -105,6 +105,7 @@ export function ProductPackageCards({
 }: ProductPackageCardsProps) {
   const [openPackage, setOpenPackage] = useState<string | null>(null);
   const selected = packages.find((pkg) => pkg.name === openPackage) ?? null;
+  const SelectedIcon = selected?.icon;
 
   const grid = (
     <>
@@ -198,6 +199,17 @@ export function ProductPackageCards({
               >
                 <div className="w-full">
                   <div className="mb-1.5 flex flex-wrap items-center justify-center gap-2">
+                    {pkg.icon && (
+                      <Icon
+                        className={
+                          deviceLayout
+                            ? "size-5 shrink-0 text-[#432f24] sm:size-6"
+                            : "size-6 shrink-0 text-[#432f24] sm:size-7"
+                        }
+                        strokeWidth={1.75}
+                        aria-hidden
+                      />
+                    )}
                     <h3
                       className={
                         deviceLayout
@@ -228,8 +240,8 @@ export function ProductPackageCards({
                   onClick={() => setOpenPackage(pkg.name)}
                   className={
                     deviceLayout
-                      ? "inline-flex min-w-[9rem] items-center justify-center rounded-full bg-accent px-6 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
-                      : "inline-flex min-w-[10rem] items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-accent-foreground transition-opacity hover:opacity-90"
+                      ? "inline-flex min-w-[9rem] items-center justify-center rounded-full !bg-[#432f24] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.14em] !text-[#f7f3ee] transition-opacity hover:opacity-90"
+                      : "inline-flex min-w-[10rem] items-center justify-center rounded-full !bg-[#432f24] px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] !text-[#f7f3ee] transition-opacity hover:opacity-90"
                   }
                 >
                   {explore}
@@ -278,7 +290,14 @@ export function ProductPackageCards({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-1 text-xs uppercase tracking-[0.2em] text-accent">{title}</div>
-            <div className="mb-2 flex flex-wrap items-baseline gap-3">
+            <div className="mb-2 flex flex-wrap items-center gap-3">
+              {SelectedIcon && (
+                <SelectedIcon
+                  className="size-6 shrink-0 text-[#432f24]"
+                  strokeWidth={1.75}
+                  aria-hidden
+                />
+              )}
               <h3 id="product-package-title" className="text-2xl font-medium tracking-tight">
                 {selected.name}
               </h3>

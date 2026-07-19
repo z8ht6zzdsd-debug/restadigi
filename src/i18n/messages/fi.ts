@@ -1,7 +1,7 @@
 import type { Messages } from "./types";
 
 const siteIntroBullet =
-  "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – valmiina pienyrityksen tarpeisiin";
+  "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – avaimet käteen paketti ja kattava käyttökoulutus";
 
 const siteSharedBullets = [
   "Helppokäyttöinen hallintapaneeli, jolla voit päivittää sisältöjä itse",
@@ -378,16 +378,9 @@ export const fi: Messages = {
         name: "Start",
         tagline: "Yksinkertainen mutta vaikuttava sivusto pienyritykselle",
         price: "399 € + alv",
-        bullets: [
-          "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – valmiina pienyrityksen tarpeisiin",
+        bullets: withSitePages(
           "Ammattimainen 1–3-sivuinen verkkosivusto yrityksesi tarpeisiin",
-          "Helppokäyttöinen hallintapaneeli, jolla voit päivittää sisältöjä itse",
-          "Responsiivinen toteutus, joka toimii erinomaisesti niin mobiilissa, tabletissa kuin tietokoneellakin",
-          "Integroitu yhteydenottolomake, jonka avulla asiakkaasi tavoittavat sinut helposti",
-          "Perus-SEO-optimointi, joka sisältää meta-tiedot, sivukartan ja sivuston suorituskyvyn optimoinnin",
-          "Nopea toimitus – verkkosivusto valmiina jopa 5 arkipäivässä",
-          "30 päivän asiakastuki julkaisun jälkeen mahdollisia kysymyksiä ja pieniä muutoksia varten",
-        ],
+        ),
       },
       {
         name: "Plus",

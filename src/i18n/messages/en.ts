@@ -1,7 +1,7 @@
 import type { Messages } from "./types";
 
 const siteIntroBullet =
-  "Clear, compelling base copy for the home, services and contact pages — ready for a small business";
+  "Clear, compelling base copy for the home, services and contact pages — a turnkey package with comprehensive training";
 
 const siteSharedBullets = [
   "An easy-to-use admin panel so you can update content yourself",
@@ -377,16 +377,9 @@ export const en: Messages = {
         name: "Start",
         tagline: "A simple yet impactful site for a small business",
         price: "399 € + VAT",
-        bullets: [
-          "Clear, compelling base copy for the home, services and contact pages — ready for a small business",
+        bullets: withSitePages(
           "A professional 1–3 page website tailored to your business",
-          "An easy-to-use admin panel so you can update content yourself",
-          "Responsive build that works excellently on mobile, tablet and desktop",
-          "Integrated contact form so customers can reach you easily",
-          "Basic SEO optimisation including meta data, sitemap and performance tuning",
-          "Fast delivery — website ready in as little as 5 business days",
-          "30 days of customer support after launch for questions and small changes",
-        ],
+        ),
       },
       {
         name: "Plus",

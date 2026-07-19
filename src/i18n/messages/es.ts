@@ -1,7 +1,7 @@
 import type { Messages } from "./types";
 
 const siteIntroBullet =
-  "Textos base claros y atractivos para inicio, servicios y contacto — listos para una pequeña empresa";
+  "Textos base claros y atractivos para inicio, servicios y contacto — paquete llave en mano y formación completa de uso";
 
 const siteSharedBullets = [
   "Panel de administración fácil de usar para actualizar contenidos tú mismo",
@@ -379,16 +379,9 @@ export const es: Messages = {
         name: "Start",
         tagline: "Un sitio sencillo pero impactante para una pequeña empresa",
         price: "399 € + IVA",
-        bullets: [
-          "Textos base claros y atractivos para inicio, servicios y contacto — listos para una pequeña empresa",
+        bullets: withSitePages(
           "Un sitio web profesional de 1–3 páginas adaptado a tu negocio",
-          "Panel de administración fácil de usar para actualizar contenidos tú mismo",
-          "Diseño responsive que funciona excelentemente en móvil, tablet y ordenador",
-          "Formulario de contacto integrado para que tus clientes te encuentren fácilmente",
-          "SEO básico que incluye metadatos, mapa del sitio y optimización del rendimiento",
-          "Entrega rápida — sitio listo en tan solo 5 días laborables",
-          "30 días de soporte al cliente tras el lanzamiento para consultas y pequeños cambios",
-        ],
+        ),
       },
       {
         name: "Plus",
