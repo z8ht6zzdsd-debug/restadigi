@@ -133,7 +133,7 @@ export function ProductPackageCards({
           return (
             <article
               key={pkg.name}
-              className="flex h-full flex-col overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)] ring-1 ring-black/5"
+              className="flex h-full flex-col overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] border-2 border-[#432f24] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)]"
             >
               {deviceLayout ? (
                 <div className={"relative shrink-0 overflow-hidden bg-white " + headerH}>
@@ -276,7 +276,7 @@ export function ProductPackageCards({
             role="dialog"
             aria-modal="true"
             aria-labelledby="product-package-title"
-            className="max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-xl border border-border bg-background p-6 shadow-lg sm:p-8"
+            className="max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-xl border-2 border-[#432f24] bg-background p-6 shadow-lg sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-1 text-xs uppercase tracking-[0.2em] text-accent">{title}</div>
