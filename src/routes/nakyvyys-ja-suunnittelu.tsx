@@ -152,8 +152,8 @@ function DiginakyvyysPage() {
 
         <MarketingHeading className="mt-14 sm:mt-16">{b.billing.title}</MarketingHeading>
 
-        <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
-          <MarketingBox tone="dark" justify="start" className="md:col-span-2">
+        <div className="space-y-4 sm:space-y-5">
+          <MarketingBox tone="dark" justify="start">
             <p className="max-w-3xl text-sm leading-relaxed text-white/88 sm:text-base">
               {b.billing.intro}
             </p>
@@ -208,25 +208,18 @@ function DiginakyvyysPage() {
             </div>
           </MarketingBox>
 
-          {b.billing.grounds.map((ground) => (
-            <MarketingBox key={ground.title} tone="white" justify="start">
-              <p className="mb-2 text-xs uppercase tracking-[0.2em] text-foreground/45">
-                {b.billing.groundsTitle}
-              </p>
-              <h3 className="text-xl font-bold tracking-tight sm:text-2xl">{ground.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-foreground/70">{ground.body}</p>
-              {ground.bullets && ground.bullets.length > 0 && (
-                <ul className="mt-4 space-y-2 text-sm text-foreground/70">
-                  {ground.bullets.map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </MarketingBox>
-          ))}
+          <MarketingBox tone="white" justify="start" className="min-h-0">
+            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-foreground/45">
+              {b.billing.groundsTitle}
+            </p>
+            <div className="max-w-3xl space-y-4">
+              {b.billing.groundsBody.map((paragraph) => (
+                <p key={paragraph} className="text-sm leading-relaxed text-foreground/70 sm:text-base">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </MarketingBox>
         </div>
 
         <MarketingBox tone="dark" justify="start" className="mt-4 sm:mt-5 min-h-[22rem]">

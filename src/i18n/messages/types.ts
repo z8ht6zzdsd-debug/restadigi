@@ -284,7 +284,7 @@ export type Messages = {
         providerSiteUrl: string;
         providerAddressNote: string;
         groundsTitle: string;
-        grounds: Array<{ title: string; body: string; bullets?: string[] }>;
+        groundsBody: string[];
       };
       form: {
         title: string;

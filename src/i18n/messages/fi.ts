@@ -547,25 +547,10 @@ export const fi: Messages = {
         providerSiteLabel: "laskuttamo.com",
         providerSiteUrl: "https://laskuttamo.com/",
         providerAddressNote: "Yhteystiedot ja osoitteet löytyvät Laskuttamon sivuilta.",
-        groundsTitle: "Perusteet",
-        grounds: [
-          {
-            title: "Suunnittelijan työn ja ajan varaaminen",
-            body: "Kun projekti alkaa, varaamme kalenteristamme aikaa kyseiselle työlle. Jos asiakas peruu projektin kesken tai katoaa, voimme menettää mahdollisuuden ottaa muita töitä samalle ajalle. Siksi ennakkomaksu toimii varausmaksuna, joka varmistaa, että asiakas on sitoutunut projektiin.",
-          },
-          {
-            title: "Riski maksamatta jäävästä työstä",
-            body: "Luovilla aloilla työ tehdään usein ennen kuin asiakkaalle luovutetaan mitään konkreettista tuotetta (esim. logo tai visuaalinen ilme syntyy vasta työn aikana). Jos työ tehtäisiin kokonaan ilman ennakkomaksua, voisimme päätyä tilanteeseen, jossa:",
-            bullets: [
-              "asiakas ei maksa laskua",
-              "asiakas katoaa",
-              "projekti keskeytyy",
-            ],
-          },
-          {
-            title: "Kassavirran hallinta",
-            body: "Jos kaikki projektit laskutettaisiin vasta lopuksi, voisimme tehdä töitä viikkoja tai kuukausia ilman kassavirtaa. Ennakkomaksu vähentää maksamattoman työn riskiä ja varmistaa, että saamme ainakin osan korvauksesta jo tehdystä työstä.",
-          },
+        groundsTitle: "Miksi ennakkomaksu?",
+        groundsBody: [
+          "Kun projekti käynnistyy, varaamme sille kalenteriaikaa. Jos tilaus peruuntuu kesken kaiken tai yhteydenpito katkeaa, menetämme mahdollisuuden ottaa muita toimeksiantoja samalle jaksolle. Ennakkomaksu toimii siksi varauksena, joka vahvistaa asiakkaan sitoutumisen.",
+          "Luovassa työssä lopputulos — kuten logo tai visuaalinen ilme — syntyy usein vasta prosessin aikana. Ilman ennakkoa voisimme jäädä tilanteeseen, jossa lasku jää maksamatta, asiakas katoaa tai projekti keskeytyy. Pelkkä loppulaskutus voisi myös tarkoittaa viikkojen tai kuukausien työtä ilman kassavirtaa. Ennakkomaksu keventää näitä riskejä ja varmistaa, että saamme ainakin osan korvauksesta jo tehdystä työstä.",
         ],
       },
       form: {

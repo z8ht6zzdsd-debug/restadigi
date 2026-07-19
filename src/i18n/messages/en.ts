@@ -545,25 +545,10 @@ export const en: Messages = {
         providerSiteLabel: "laskuttamo.com",
         providerSiteUrl: "https://laskuttamo.com/",
         providerAddressNote: "Contact details and addresses are available on Laskuttamo’s website.",
-        groundsTitle: "Why",
-        grounds: [
-          {
-            title: "Reserving the designer’s time",
-            body: "When a project starts, we reserve calendar time for that work. If a client cancels mid-project or disappears, we may lose the chance to take other work for the same period. The advance payment acts as a booking fee that confirms the client is committed.",
-          },
-          {
-            title: "Risk of unpaid work",
-            body: "In creative work, results are often produced before anything concrete is handed over (for example a logo or visual identity only emerges during the process). Without an advance payment we could end up in a situation where:",
-            bullets: [
-              "the client does not pay the invoice",
-              "the client disappears",
-              "the project is interrupted",
-            ],
-          },
-          {
-            title: "Cash flow",
-            body: "If every project were invoiced only at the end, we could work for weeks or months without cash flow. An advance payment reduces that risk and ensures we receive at least part of the fee for work already done.",
-          },
+        groundsTitle: "Why an advance payment?",
+        groundsBody: [
+          "When a project starts, we reserve calendar time for it. If the order is cancelled mid-way or communication stops, we lose the chance to take other work for that period. The advance payment therefore acts as a booking that confirms the client’s commitment.",
+          "In creative work the result — such as a logo or visual identity — often only takes shape during the process. Without an advance we could end up with an unpaid invoice, a disappearing client or an interrupted project. Billing only at the end could also mean weeks or months of work without cash flow. An advance payment eases these risks and ensures we receive at least part of the fee for work already done.",
         ],
       },
       form: {

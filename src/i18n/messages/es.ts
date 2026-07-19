@@ -550,25 +550,10 @@ export const es: Messages = {
         providerSiteUrl: "https://laskuttamo.com/",
         providerAddressNote:
           "Los datos de contacto y las direcciones están en el sitio web de Laskuttamo.",
-        groundsTitle: "Motivos",
-        grounds: [
-          {
-            title: "Reserva del tiempo del diseñador",
-            body: "Cuando empieza un proyecto, reservamos tiempo en el calendario. Si el cliente cancela a mitad o desaparece, podemos perder la oportunidad de aceptar otros trabajos en ese periodo. El anticipo actúa como reserva y confirma el compromiso del cliente.",
-          },
-          {
-            title: "Riesgo de trabajo sin cobrar",
-            body: "En el trabajo creativo el resultado suele crearse antes de entregar algo concreto (por ejemplo el logo o la identidad visual nace durante el proceso). Sin anticipo podríamos acabar en una situación en la que:",
-            bullets: [
-              "el cliente no paga la factura",
-              "el cliente desaparece",
-              "el proyecto se interrumpe",
-            ],
-          },
-          {
-            title: "Flujo de caja",
-            body: "Si todos los proyectos se facturaran solo al final, podríamos trabajar semanas o meses sin flujo de caja. El anticipo reduce ese riesgo y garantiza al menos parte de la retribución por el trabajo ya realizado.",
-          },
+        groundsTitle: "¿Por qué un anticipo?",
+        groundsBody: [
+          "Cuando arranca un proyecto, reservamos tiempo en el calendario. Si el pedido se cancela a mitad o se corta la comunicación, perdemos la oportunidad de aceptar otros encargos en ese periodo. El anticipo actúa por tanto como una reserva que confirma el compromiso del cliente.",
+          "En el trabajo creativo el resultado — como un logo o una identidad visual — suele tomar forma durante el proceso. Sin anticipo podríamos quedar con una factura sin pagar, un cliente que desaparece o un proyecto interrumpido. Facturar solo al final también podría significar semanas o meses de trabajo sin flujo de caja. El anticipo alivia estos riesgos y garantiza al menos parte de la retribución por el trabajo ya realizado.",
         ],
       },
       form: {
