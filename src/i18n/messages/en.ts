@@ -1,14 +1,22 @@
 import type { Messages } from "./types";
 
-const plusBullets = [
-  "Clear, compelling base copy for the home, services and contact pages — ready for a small business",
-  "A professional website of up to 8 pages tailored to your business",
+const siteIntroBullet =
+  "Clear, compelling base copy for the home, services and contact pages — ready for a small business";
+
+const siteSharedBullets = [
   "An easy-to-use admin panel so you can update content yourself",
   "Responsive build that works excellently on mobile, tablet and desktop",
   "Integrated contact form so customers can reach you easily",
   "Basic SEO optimisation including meta data, sitemap and performance tuning",
   "Fast delivery — website ready in as little as 5 business days",
   "30 days of customer support after launch for questions and small changes",
+];
+
+const withSitePages = (pagesBullet: string, extras: string[] = []) => [
+  siteIntroBullet,
+  pagesBullet,
+  ...siteSharedBullets,
+  ...extras,
 ];
 
 export const en: Messages = {
@@ -384,23 +392,33 @@ export const en: Messages = {
         name: "Plus",
         tagline: "A polished package that presents your services clearly",
         price: "549 € + VAT",
-        bullets: [...plusBullets],
+        bullets: withSitePages(
+          "A professional 4–6 page website tailored to your business",
+        ),
       },
       {
         name: "Gold",
-        tagline: "Plus package plus a smart chatbot for customer service",
+        tagline: "7–9 pages plus AI customer service for 1 year",
         price: "759 € + VAT",
-        bullets: [...plusBullets, "Website chatbot — answers customers 24/7 and captures leads"],
+        bullets: withSitePages(
+          "A professional 7–9 page website tailored to your business",
+          [
+            "AI customer service (chatbot) included for 1 year — answers customers 24/7 and captures leads",
+          ],
+        ),
       },
       {
         name: "Diamond",
-        tagline: "Plus package plus Restadigi AI Concierge phone service",
+        tagline: "10+ pages, AI customer service and your chosen booking service for 1 year",
         price: "929 € + VAT",
         featured: true,
-        bullets: [
-          ...plusBullets,
-          "Restadigi AI Concierge — AI phone service for bookings and customer support 24/7",
-        ],
+        bullets: withSitePages(
+          "A professional website of over 10 pages tailored to your business",
+          [
+            "AI customer service (chatbot) included for 1 year — answers customers 24/7 and captures leads",
+            "Your chosen booking service for 1 year — e.g. table, accommodation or salon appointment booking",
+          ],
+        ),
       },
     ],
     footnoteBefore: "Package prices are fixed. Domain and hosting are chosen separately from ",

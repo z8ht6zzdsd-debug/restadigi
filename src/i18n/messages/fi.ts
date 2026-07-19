@@ -1,14 +1,22 @@
 import type { Messages } from "./types";
 
-const plusBullets = [
-  "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – valmiina pienyrityksen tarpeisiin",
-  "Ammattimainen jopa 8-sivuinen verkkosivusto yrityksesi tarpeisiin",
+const siteIntroBullet =
+  "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – valmiina pienyrityksen tarpeisiin";
+
+const siteSharedBullets = [
   "Helppokäyttöinen hallintapaneeli, jolla voit päivittää sisältöjä itse",
   "Responsiivinen toteutus, joka toimii erinomaisesti niin mobiilissa, tabletissa kuin tietokoneellakin",
   "Integroitu yhteydenottolomake, jonka avulla asiakkaasi tavoittavat sinut helposti",
   "Perus-SEO-optimointi, joka sisältää meta-tiedot, sivukartan ja sivuston suorituskyvyn optimoinnin",
   "Nopea toimitus – verkkosivusto valmiina jopa 5 arkipäivässä",
   "30 päivän asiakastuki julkaisun jälkeen mahdollisia kysymyksiä ja pieniä muutoksia varten",
+];
+
+const withSitePages = (pagesBullet: string, extras: string[] = []) => [
+  siteIntroBullet,
+  pagesBullet,
+  ...siteSharedBullets,
+  ...extras,
 ];
 
 export const fi: Messages = {
@@ -385,26 +393,33 @@ export const fi: Messages = {
         name: "Plus",
         tagline: "Tyylikäs kokonaisuus, joka esittelee palvelusi selkeästi",
         price: "549 € + alv",
-        bullets: [...plusBullets],
+        bullets: withSitePages(
+          "Ammattimainen 4–6-sivuinen verkkosivusto yrityksesi tarpeisiin",
+        ),
       },
       {
         name: "Kulta",
-        tagline: "Plus-paketti ja älykäs chatbot asiakaspalveluun",
+        tagline: "7–9 sivua ja AI-asiakaspalvelu 1 vuodeksi",
         price: "759 € + alv",
-        bullets: [
-          ...plusBullets,
-          "Chatbot verkkosivuille — vastaa asiakkaille 24/7 ja kerää liidejä",
-        ],
+        bullets: withSitePages(
+          "Ammattimainen 7–9-sivuinen verkkosivusto yrityksesi tarpeisiin",
+          [
+            "AI-asiakaspalvelu (chatbot) sisältyy 1 vuodeksi — vastaa asiakkaille 24/7 ja kerää liidejä",
+          ],
+        ),
       },
       {
         name: "Timantti",
-        tagline: "Plus-paketti ja Restadigi AI Concierge -puhelinpalvelu",
+        tagline: "Yli 10 sivua, AI-asiakaspalvelu ja valitsemasi varauspalvelu 1 vuodeksi",
         price: "929 € + alv",
         featured: true,
-        bullets: [
-          ...plusBullets,
-          "Restadigi AI Concierge — tekoälypohjainen puhelinpalvelu varauksiin ja asiakaspalveluun 24/7",
-        ],
+        bullets: withSitePages(
+          "Ammattimainen yli 10-sivuinen verkkosivusto yrityksesi tarpeisiin",
+          [
+            "AI-asiakaspalvelu (chatbot) sisältyy 1 vuodeksi — vastaa asiakkaille 24/7 ja kerää liidejä",
+            "Valitsemasi varauspalvelu 1 vuodeksi — esim. pöytävaraus-, majoitusvaraus- tai parturin ajanvarauspalvelu",
+          ],
+        ),
       },
     ],
     footnoteBefore: "Pakettihinnat ovat kiinteitä. Verkkotunnus ja hosting valitaan erikseen ",

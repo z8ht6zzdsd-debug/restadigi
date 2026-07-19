@@ -1,14 +1,22 @@
 import type { Messages } from "./types";
 
-const plusBullets = [
-  "Textos base claros y atractivos para inicio, servicios y contacto — listos para una pequeña empresa",
-  "Un sitio web profesional de hasta 8 páginas adaptado a tu negocio",
+const siteIntroBullet =
+  "Textos base claros y atractivos para inicio, servicios y contacto — listos para una pequeña empresa";
+
+const siteSharedBullets = [
   "Panel de administración fácil de usar para actualizar contenidos tú mismo",
   "Diseño responsive que funciona excelentemente en móvil, tablet y ordenador",
   "Formulario de contacto integrado para que tus clientes te encuentren fácilmente",
   "SEO básico que incluye metadatos, mapa del sitio y optimización del rendimiento",
   "Entrega rápida — sitio listo en tan solo 5 días laborables",
   "30 días de soporte al cliente tras el lanzamiento para consultas y pequeños cambios",
+];
+
+const withSitePages = (pagesBullet: string, extras: string[] = []) => [
+  siteIntroBullet,
+  pagesBullet,
+  ...siteSharedBullets,
+  ...extras,
 ];
 
 export const es: Messages = {
@@ -386,26 +394,34 @@ export const es: Messages = {
         name: "Plus",
         tagline: "Un conjunto elegante que presenta tus servicios con claridad",
         price: "549 € + IVA",
-        bullets: [...plusBullets],
+        bullets: withSitePages(
+          "Un sitio web profesional de 4–6 páginas adaptado a tu negocio",
+        ),
       },
       {
         name: "Oro",
-        tagline: "Paquete Plus más un chatbot inteligente para atención al cliente",
+        tagline: "7–9 páginas y atención con IA durante 1 año",
         price: "759 € + IVA",
-        bullets: [
-          ...plusBullets,
-          "Chatbot para el sitio web — responde a clientes 24/7 y captura leads",
-        ],
+        bullets: withSitePages(
+          "Un sitio web profesional de 7–9 páginas adaptado a tu negocio",
+          [
+            "Atención con IA (chatbot) incluida durante 1 año — responde a clientes 24/7 y captura leads",
+          ],
+        ),
       },
       {
         name: "Diamante",
-        tagline: "Paquete Plus más el servicio telefónico Restadigi AI Concierge",
+        tagline:
+          "Más de 10 páginas, atención con IA y el servicio de reservas que elijas durante 1 año",
         price: "929 € + IVA",
         featured: true,
-        bullets: [
-          ...plusBullets,
-          "Restadigi AI Concierge — servicio telefónico con IA para reservas y atención 24/7",
-        ],
+        bullets: withSitePages(
+          "Un sitio web profesional de más de 10 páginas adaptado a tu negocio",
+          [
+            "Atención con IA (chatbot) incluida durante 1 año — responde a clientes 24/7 y captura leads",
+            "El servicio de reservas que elijas durante 1 año — p. ej. mesas, alojamiento o citas de peluquería",
+          ],
+        ),
       },
     ],
     footnoteBefore:
