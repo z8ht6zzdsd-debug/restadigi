@@ -8,11 +8,7 @@ type MarketingBandProps = {
 /** Vaaleanruskea sisältökaista heron alla (etusivun boksirakenne). */
 export function MarketingBand({ children, className = "" }: MarketingBandProps) {
   return (
-    <section
-      className={
-        "bg-[#ebe8e2] text-foreground pt-10 sm:pt-14 pb-14 sm:pb-20 " + className
-      }
-    >
+    <section className={"bg-[#ebe8e2] text-foreground pt-10 sm:pt-14 pb-14 sm:pb-20 " + className}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">{children}</div>
     </section>
   );
@@ -79,12 +75,7 @@ export function MarketingBox({
   if (tone === "photo" && image) {
     return (
       <article className={base + " min-h-[18rem] text-white " + className}>
-        <img
-          src={image}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 size-full object-cover"
-        />
+        <img src={image} alt="" aria-hidden className="absolute inset-0 size-full object-cover" />
         <div
           className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/20"
           aria-hidden

@@ -34,10 +34,7 @@ export function PageHero({
             aria-hidden
             width={1600}
             height={900}
-            className={
-              "page-hero__devices-image" +
-              (imageClassName ? ` ${imageClassName}` : "")
-            }
+            className={"page-hero__devices-image" + (imageClassName ? ` ${imageClassName}` : "")}
           />
         </div>
         <div className="page-hero__devices-copy">
@@ -66,9 +63,7 @@ export function PageHero({
             aria-hidden
             width={1600}
             height={900}
-            className={
-              "page-hero__image" + (imageClassName ? ` ${imageClassName}` : "")
-            }
+            className={"page-hero__image" + (imageClassName ? ` ${imageClassName}` : "")}
           />
           <div className="page-hero__lifestyle-scrim" aria-hidden />
           <div className="page-hero__content-wrap page-hero__content-wrap--lifestyle">
@@ -77,7 +72,9 @@ export function PageHero({
               <p className="page-hero__description page-hero__description--lifestyle">
                 {description}
               </p>
-              {actions && <div className="page-hero__actions page-hero__actions--lifestyle">{actions}</div>}
+              {actions && (
+                <div className="page-hero__actions page-hero__actions--lifestyle">{actions}</div>
+              )}
             </div>
           </div>
         </div>
@@ -102,9 +99,7 @@ export function PageHero({
           aria-hidden
           width={1600}
           height={900}
-          className={
-            "page-hero__image" + (imageClassName ? ` ${imageClassName}` : "")
-          }
+          className={"page-hero__image" + (imageClassName ? ` ${imageClassName}` : "")}
         />
 
         <div className="page-hero__gradient-side" aria-hidden />

@@ -33,12 +33,7 @@ function isWhyUsPath(to: string): to is WhyUsPath {
   return (WHY_US_PATHS as readonly string[]).includes(to);
 }
 
-const WHY_US_ICONS: LucideIcon[] = [
-  BriefcaseBusiness,
-  CircleDollarSign,
-  Bot,
-  PanelsTopLeft,
-];
+const WHY_US_ICONS: LucideIcon[] = [BriefcaseBusiness, CircleDollarSign, Bot, PanelsTopLeft];
 
 const SERVICE_ICONS: LucideIcon[] = [Bot, CalendarDays];
 
@@ -279,16 +274,8 @@ function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[26rem] text-white flex flex-col items-center justify-center text-center px-8 py-12 sm:px-10">
               <div className="absolute inset-0 grid grid-cols-2" aria-hidden>
-                <img
-                  src={delfinScreen}
-                  alt=""
-                  className="size-full object-cover object-top"
-                />
-                <img
-                  src={delfinScreen2}
-                  alt=""
-                  className="size-full object-cover object-top"
-                />
+                <img src={delfinScreen} alt="" className="size-full object-cover object-top" />
+                <img src={delfinScreen2} alt="" className="size-full object-cover object-top" />
               </div>
               <div
                 className="absolute inset-0 bg-gradient-to-t from-[#1a120e]/92 via-[#432f24]/72 to-[#432f24]/45"
@@ -405,4 +392,3 @@ function Index() {
     </div>
   );
 }
-

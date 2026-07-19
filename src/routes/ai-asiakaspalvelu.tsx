@@ -124,7 +124,12 @@ function ChatbotPage() {
             <p className="mt-6 text-sm leading-relaxed text-white/75">{cb.hero.description}</p>
           </MarketingBox>
 
-          <MarketingBox tone="white" justify="center" align="center" className="min-h-[22rem] !p-4 sm:!p-6">
+          <MarketingBox
+            tone="white"
+            justify="center"
+            align="center"
+            className="min-h-[22rem] !p-4 sm:!p-6"
+          >
             <DashboardMonitorPreview />
           </MarketingBox>
         </div>

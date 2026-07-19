@@ -70,9 +70,7 @@ export function RestadigiBrownPanel({
         <span
           className={
             "font-script w-[110%] select-none whitespace-nowrap text-center leading-none tracking-wide text-[#4a3528]/55 " +
-            (compact
-              ? "text-[clamp(3.5rem,12vw,6rem)]"
-              : "text-[clamp(4.5rem,14vw,9rem)]")
+            (compact ? "text-[clamp(3.5rem,12vw,6rem)]" : "text-[clamp(4.5rem,14vw,9rem)]")
           }
         >
           Restadigi
@@ -123,18 +121,15 @@ export function ProductPackageCards({
         {packages.map((pkg) => {
           const Icon = pkg.icon ?? Package;
           const headerKind =
-            pkg.headerVisual === "brandLogos"
-              ? "brandLogos"
-              : packageHeaderKind(pkg.name);
+            pkg.headerVisual === "brandLogos" ? "brandLogos" : packageHeaderKind(pkg.name);
           const deviceLayout = Boolean(pkg.deviceLayout && pkg.headerImage);
-          const headerH =
-            deviceLayout
-              ? "h-40 sm:h-48"
-              : headerKind === "sports" || headerKind === "brandLogos"
-                ? "h-36 sm:h-40"
-                : pkg.headerImage
-                  ? "h-28 sm:h-32"
-                  : "h-[5.75rem] sm:h-[6.5rem]";
+          const headerH = deviceLayout
+            ? "h-40 sm:h-48"
+            : headerKind === "sports" || headerKind === "brandLogos"
+              ? "h-36 sm:h-40"
+              : pkg.headerImage
+                ? "h-28 sm:h-32"
+                : "h-[5.75rem] sm:h-[6.5rem]";
           return (
             <article
               key={pkg.name}
@@ -171,12 +166,7 @@ export function ProductPackageCards({
               ) : headerKind === "brandLogos" ? (
                 <PackageBrandWorkLogos className={"shrink-0 " + headerH} />
               ) : (
-                <div
-                  className={
-                    "grid shrink-0 grid-cols-[1.15fr_0.85fr] items-stretch " +
-                    headerH
-                  }
-                >
+                <div className={"grid shrink-0 grid-cols-[1.15fr_0.85fr] items-stretch " + headerH}>
                   <RestadigiBrownPanel
                     className="h-full rounded-none"
                     compact
@@ -309,7 +299,9 @@ export function ProductPackageCards({
             </div>
             <p className="mb-4 font-serif text-3xl text-foreground/90">{selected.price}</p>
             {selected.description && (
-              <p className="mb-5 text-sm leading-relaxed text-foreground/70">{selected.description}</p>
+              <p className="mb-5 text-sm leading-relaxed text-foreground/70">
+                {selected.description}
+              </p>
             )}
             <ul className="space-y-0 divide-y divide-border/80">
               {selected.bullets.map((bullet) => (

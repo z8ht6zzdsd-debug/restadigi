@@ -379,28 +379,21 @@ export const es: Messages = {
         name: "Start",
         tagline: "Un sitio sencillo pero impactante para una pequeña empresa",
         price: "399 € + IVA",
-        bullets: withSitePages(
-          "Un sitio web profesional de 1–3 páginas adaptado a tu negocio",
-        ),
+        bullets: withSitePages("Un sitio web profesional de 1–3 páginas adaptado a tu negocio"),
       },
       {
         name: "Plus",
         tagline: "Un conjunto elegante que presenta tus servicios con claridad",
         price: "549 € + IVA",
-        bullets: withSitePages(
-          "Un sitio web profesional de 4–6 páginas adaptado a tu negocio",
-        ),
+        bullets: withSitePages("Un sitio web profesional de 4–6 páginas adaptado a tu negocio"),
       },
       {
         name: "Oro",
         tagline: "7–9 páginas y atención con IA durante 1 año",
         price: "759 € + IVA",
-        bullets: withSitePages(
-          "Un sitio web profesional de 7–9 páginas adaptado a tu negocio",
-          [
-            "Atención con IA (chatbot) incluida durante 1 año — responde a clientes 24/7 y captura leads",
-          ],
-        ),
+        bullets: withSitePages("Un sitio web profesional de 7–9 páginas adaptado a tu negocio", [
+          "Atención con IA (chatbot) incluida durante 1 año — responde a clientes 24/7 y captura leads",
+        ]),
       },
       {
         name: "Diamante",

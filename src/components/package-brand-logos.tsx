@@ -154,9 +154,7 @@ export function VisibilityBrandLogoStrip({
 
   return (
     <div
-      className={
-        "flex flex-wrap items-center justify-center gap-5 sm:gap-7 " + className
-      }
+      className={"flex flex-wrap items-center justify-center gap-5 sm:gap-7 " + className}
       aria-hidden
     >
       {logos.map(({ name, Mark, tone }) => (
@@ -164,8 +162,7 @@ export function VisibilityBrandLogoStrip({
           key={name}
           title={name}
           className={
-            "size-8 sm:size-9 " +
-            (onDark ? "text-[#e8dccf]" : (tone ?? "text-foreground"))
+            "size-8 sm:size-9 " + (onDark ? "text-[#e8dccf]" : (tone ?? "text-foreground"))
           }
         />
       ))}
@@ -187,16 +184,10 @@ export function PackageBrandLogos({
 
   if (logosOnly) {
     return (
-      <div
-        className="flex w-full items-end justify-between gap-2 sm:gap-3"
-        aria-hidden
-      >
+      <div className="flex w-full items-end justify-between gap-2 sm:gap-3" aria-hidden>
         {logos.map(({ name, Mark, tone }) => (
           <div key={name} className="flex min-w-0 flex-1 flex-col items-center gap-1">
-            <Mark
-              title={name}
-              className={"size-7 sm:size-8 " + (tone ?? "text-foreground")}
-            />
+            <Mark title={name} className={"size-7 sm:size-8 " + (tone ?? "text-foreground")} />
             <span className="w-full truncate text-center text-[9px] leading-tight text-foreground/60 sm:text-[10px]">
               {name}
             </span>
@@ -279,10 +270,7 @@ export function packageHeaderKind(
 /** Hockey + football photos for elite sports package header */
 export function PackageSportsPhotos({ className = "" }: { className?: string }) {
   return (
-    <div
-      className={"grid h-full grid-cols-2 gap-px bg-[#432f24] " + className}
-      aria-hidden
-    >
+    <div className={"grid h-full grid-cols-2 gap-px bg-[#432f24] " + className} aria-hidden>
       <img
         src={sportHockey}
         alt=""
@@ -314,21 +302,14 @@ export function PackageBrandWorkLogos({ className = "" }: { className?: string }
       aria-hidden
     >
       {logos.map((logo) => (
-        <div
-          key={logo.name}
-          className="flex min-w-0 flex-1 flex-col items-center gap-1"
-        >
+        <div key={logo.name} className="flex min-w-0 flex-1 flex-col items-center gap-1">
           <div
             className={
               "flex h-12 w-full items-center justify-center overflow-hidden rounded-lg px-1.5 sm:h-14 " +
               logo.tile
             }
           >
-            <img
-              src={logo.src}
-              alt=""
-              className="max-h-full max-w-full object-contain"
-            />
+            <img src={logo.src} alt="" className="max-h-full max-w-full object-contain" />
           </div>
           <span className="w-full truncate text-center text-[9px] leading-tight text-foreground/65 sm:text-[10px]">
             {logo.name}

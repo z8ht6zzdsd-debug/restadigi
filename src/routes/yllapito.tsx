@@ -69,10 +69,7 @@ function YllapitoPage() {
             <ul className="mt-7 space-y-2.5 text-sm text-white/90 sm:text-[0.95rem]">
               {h.hero.features.map((feature) => (
                 <li key={feature} className="flex items-start gap-2.5">
-                  <span
-                    className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent"
-                    aria-hidden
-                  />
+                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
                   <span>{feature}</span>
                 </li>
               ))}

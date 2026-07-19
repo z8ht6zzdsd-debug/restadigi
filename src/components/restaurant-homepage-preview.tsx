@@ -5,23 +5,9 @@ import { useMessages } from "@/i18n";
 
 function GoldFlourish({ className = "" }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 120 12"
-      fill="none"
-      aria-hidden
-    >
-      <path
-        d="M2 6h38M80 6h38"
-        stroke="currentColor"
-        strokeWidth="0.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M52 6c4-5 8-5 12 0c-4 5-8 5-12 0Z"
-        fill="currentColor"
-        opacity="0.9"
-      />
+    <svg className={className} viewBox="0 0 120 12" fill="none" aria-hidden>
+      <path d="M2 6h38M80 6h38" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" />
+      <path d="M52 6c4-5 8-5 12 0c-4 5-8 5-12 0Z" fill="currentColor" opacity="0.9" />
       <circle cx="46" cy="6" r="1.2" fill="currentColor" />
       <circle cx="74" cy="6" r="1.2" fill="currentColor" />
     </svg>

@@ -377,28 +377,21 @@ export const en: Messages = {
         name: "Start",
         tagline: "A simple yet impactful site for a small business",
         price: "399 € + VAT",
-        bullets: withSitePages(
-          "A professional 1–3 page website tailored to your business",
-        ),
+        bullets: withSitePages("A professional 1–3 page website tailored to your business"),
       },
       {
         name: "Plus",
         tagline: "A polished package that presents your services clearly",
         price: "549 € + VAT",
-        bullets: withSitePages(
-          "A professional 4–6 page website tailored to your business",
-        ),
+        bullets: withSitePages("A professional 4–6 page website tailored to your business"),
       },
       {
         name: "Gold",
         tagline: "7–9 pages plus AI customer service for 1 year",
         price: "759 € + VAT",
-        bullets: withSitePages(
-          "A professional 7–9 page website tailored to your business",
-          [
-            "AI customer service (chatbot) included for 1 year — answers customers 24/7 and captures leads",
-          ],
-        ),
+        bullets: withSitePages("A professional 7–9 page website tailored to your business", [
+          "AI customer service (chatbot) included for 1 year — answers customers 24/7 and captures leads",
+        ]),
       },
       {
         name: "Diamond",

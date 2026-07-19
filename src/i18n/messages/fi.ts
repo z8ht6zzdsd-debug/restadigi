@@ -378,28 +378,21 @@ export const fi: Messages = {
         name: "Start",
         tagline: "Yksinkertainen mutta vaikuttava sivusto pienyritykselle",
         price: "399 € + alv",
-        bullets: withSitePages(
-          "Ammattimainen 1–3-sivuinen verkkosivusto yrityksesi tarpeisiin",
-        ),
+        bullets: withSitePages("Ammattimainen 1–3-sivuinen verkkosivusto yrityksesi tarpeisiin"),
       },
       {
         name: "Plus",
         tagline: "Tyylikäs kokonaisuus, joka esittelee palvelusi selkeästi",
         price: "549 € + alv",
-        bullets: withSitePages(
-          "Ammattimainen 4–6-sivuinen verkkosivusto yrityksesi tarpeisiin",
-        ),
+        bullets: withSitePages("Ammattimainen 4–6-sivuinen verkkosivusto yrityksesi tarpeisiin"),
       },
       {
         name: "Kulta",
         tagline: "7–9 sivua ja AI-asiakaspalvelu 1 vuodeksi",
         price: "759 € + alv",
-        bullets: withSitePages(
-          "Ammattimainen 7–9-sivuinen verkkosivusto yrityksesi tarpeisiin",
-          [
-            "AI-asiakaspalvelu (chatbot) sisältyy 1 vuodeksi — vastaa asiakkaille 24/7 ja kerää liidejä",
-          ],
-        ),
+        bullets: withSitePages("Ammattimainen 7–9-sivuinen verkkosivusto yrityksesi tarpeisiin", [
+          "AI-asiakaspalvelu (chatbot) sisältyy 1 vuodeksi — vastaa asiakkaille 24/7 ja kerää liidejä",
+        ]),
       },
       {
         name: "Timantti",
@@ -495,8 +488,7 @@ export const fi: Messages = {
       {
         name: "Graafinen suunnittelu",
         tagline: "Yritysilme, logo ja markkinointimateriaalit",
-        description:
-          "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin.",
+        description: "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin.",
         price: "alk. 99 €",
         bullets: [
           "Yritysilmeen suunnittelu — alk. 199 € (sis. logo ja käyntikortit)",
@@ -512,8 +504,7 @@ export const fi: Messages = {
       titleBefore: "Graafinen ",
       titleAccent: "suunnittelu",
       titleAfter: ".",
-      description:
-        "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin.",
+      description: "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin.",
       products: [
         {
           name: "Yritysilmeen suunnittelu",
@@ -538,8 +529,7 @@ export const fi: Messages = {
         title: "Laskutuksesta",
         intro:
           "Noudatamme töissämme ennakkomaksukäytäntöä, jossa osa työstä veloitetaan jo ennen projektin alkua, kun tarjous on kirjallisesti hyväksytty. Tällä sitoutetaan sekä tilaaja että toimittaja projektiin.",
-        providerLead:
-          "Restadigi Finland -palvelun laskutuksesta Suomessa vastaa Laskuttamo.",
+        providerLead: "Restadigi Finland -palvelun laskutuksesta Suomessa vastaa Laskuttamo.",
         providerName: "Laskuttamo",
         providerEmail: "asiakaspalvelu@laskuttamo.com",
         providerPhone: "02 0730 6710",

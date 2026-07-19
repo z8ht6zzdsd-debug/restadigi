@@ -16,12 +16,7 @@ import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-const WEBSITE_HEADER_IMAGES = [
-  pkgWebStart,
-  pkgWebPlus,
-  pkgWebKulta,
-  pkgWebTimantti,
-] as const;
+const WEBSITE_HEADER_IMAGES = [pkgWebStart, pkgWebPlus, pkgWebKulta, pkgWebTimantti] as const;
 
 const PACKAGE_ICONS: Record<string, LucideIcon> = {
   Start: Sparkles,

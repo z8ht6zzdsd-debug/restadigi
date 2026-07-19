@@ -62,10 +62,7 @@ export function ServiceSplitHero({
             />
 
             {/* Desktop: kortti kuvan keskellä */}
-            <div
-              className="absolute inset-0 hidden bg-[#432f24]/25 lg:block"
-              aria-hidden
-            />
+            <div className="absolute inset-0 hidden bg-[#432f24]/25 lg:block" aria-hidden />
             <div className="absolute inset-0 hidden items-center justify-center p-8 lg:flex">
               <div className="w-[92%] max-w-2xl rounded-3xl bg-[#432f24]/92 px-10 py-10 text-center shadow-lg">
                 <div className="flex items-center justify-center gap-4">
@@ -92,9 +89,7 @@ export function ServiceSplitHero({
             <span className="block">{headlineLine1}</span>
             <span className="block">{headlineLine2}</span>
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-foreground/75 sm:text-lg">
-            {subtitle}
-          </p>
+          <p className="mt-5 text-base leading-relaxed text-foreground/75 sm:text-lg">{subtitle}</p>
           <div className="mt-8">{actions}</div>
         </div>
       </div>

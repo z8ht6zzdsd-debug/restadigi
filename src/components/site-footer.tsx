@@ -14,9 +14,7 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
 
   const muted = onPrimary ? "text-primary-foreground/55" : "text-muted-foreground";
   const strong = onPrimary ? "text-primary-foreground/85" : "text-foreground/80";
-  const linkHover = onPrimary
-    ? "hover:text-primary-foreground"
-    : "hover:text-foreground";
+  const linkHover = onPrimary ? "hover:text-primary-foreground" : "hover:text-foreground";
 
   return (
     <footer

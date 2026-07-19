@@ -1,11 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import heroYhteys from "@/assets/hero-yhteys.jpg";
-import {
-  MarketingBand,
-  MarketingBox,
-  MarketingHeading,
-} from "@/components/marketing-band";
+import { MarketingBand, MarketingBox, MarketingHeading } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
@@ -141,11 +137,7 @@ function YhteysPage() {
             </div>
           </MarketingBox>
 
-          <MarketingBox
-            tone="white"
-            justify="start"
-            className="lg:col-span-8 min-h-[22rem]"
-          >
+          <MarketingBox tone="white" justify="start" className="lg:col-span-8 min-h-[22rem]">
             <form id="yhteys-lomake" onSubmit={onSubmit} className="space-y-6">
               <div className="grid gap-6 sm:grid-cols-2">
                 <Field label={c.form.name} name="name" required />

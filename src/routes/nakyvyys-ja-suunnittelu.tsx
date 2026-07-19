@@ -8,22 +8,13 @@ import pkgVisGraphic from "@/assets/pkg-vis-graphic.jpg";
 import laskuttamoLogo from "@/assets/laskuttamo-logo-white.png";
 import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
 import { ProductPackageCards } from "@/components/product-package-cards";
-import {
-  MarketingBand,
-  MarketingBox,
-  MarketingHeading,
-} from "@/components/marketing-band";
+import { MarketingBand, MarketingBox, MarketingHeading } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-const VISIBILITY_HEADER_IMAGES = [
-  pkgVisAi,
-  pkgVisGoogle,
-  pkgVisSports,
-  pkgVisGraphic,
-] as const;
+const VISIBILITY_HEADER_IMAGES = [pkgVisAi, pkgVisGoogle, pkgVisSports, pkgVisGraphic] as const;
 
 export const Route = createFileRoute("/nakyvyys-ja-suunnittelu")({
   head: () => ({
@@ -59,10 +50,7 @@ function DiginakyvyysPage() {
     const phone = String(data.get("phone") ?? "");
     const subject = encodeURIComponent(b.form.mailSubject.replace("{name}", name));
     const body = encodeURIComponent(
-      b.form.mailBody
-        .replace("{name}", name)
-        .replace("{email}", email)
-        .replace("{phone}", phone),
+      b.form.mailBody.replace("{name}", name).replace("{email}", email).replace("{phone}", phone),
     );
     window.location.href = `mailto:${t.contact.email}?subject=${subject}&body=${body}`;
     setQuoteSent(true);
@@ -214,7 +202,10 @@ function DiginakyvyysPage() {
             </p>
             <div className="max-w-3xl space-y-4">
               {b.billing.groundsBody.map((paragraph) => (
-                <p key={paragraph} className="text-sm leading-relaxed text-foreground/70 sm:text-base">
+                <p
+                  key={paragraph}
+                  className="text-sm leading-relaxed text-foreground/70 sm:text-base"
+                >
                   {paragraph}
                 </p>
               ))}
@@ -237,9 +228,7 @@ function DiginakyvyysPage() {
               >
                 {b.form.submit}
               </button>
-              {quoteSent && (
-                <span className="text-sm text-white/70">{b.form.sending}</span>
-              )}
+              {quoteSent && <span className="text-sm text-white/70">{b.form.sending}</span>}
               <Link
                 to="/yhteys"
                 className="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-black transition-opacity hover:opacity-90"
