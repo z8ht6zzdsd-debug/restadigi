@@ -768,6 +768,7 @@ export const en: Messages = {
           "Ongoing maintenance and updates",
           "Small content changes included",
           "Security updates",
+          "Support and development for AI customer service and/or booking service",
           "Personal phone support",
         ],
       },

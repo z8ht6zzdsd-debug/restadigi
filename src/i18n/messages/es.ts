@@ -772,6 +772,7 @@ export const es: Messages = {
           "Mantenimiento y actualizaciones continuas",
           "Pequeños cambios de contenido incluidos",
           "Actualizaciones de seguridad",
+          "Soporte y desarrollo del servicio de atención con IA y/o del servicio de reservas",
           "Soporte personal por teléfono",
         ],
       },

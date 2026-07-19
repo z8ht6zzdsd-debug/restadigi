@@ -770,6 +770,7 @@ export const fi: Messages = {
           "Jatkuva ylläpito ja päivitykset",
           "Pienet sisältömuutokset sisältyvät",
           "Tietoturvapäivitykset",
+          "AI-asiakaspalvelun ja/tai varauspalvelun tuki ja kehitys",
           "Henkilökohtainen tuki puhelimitse",
         ],
       },
