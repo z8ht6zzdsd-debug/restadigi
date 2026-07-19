@@ -122,7 +122,7 @@ export const fi: Messages = {
       titleAccent: "palvelee asiakkaitasi 24/7",
       titleAfter: ".",
       description:
-        "Rakennamme verkkosivuja, mobiiliapplikaatioita ja muita älykkäitä digitaalisia ratkaisuja palvelualan yrityksille nopeasti ja kustannustehokkaasti. Kokonaisuus sisältäen verkkosivut, varausjärjestelmät, asiakaspalvelun ja myynnin.",
+        "Rakennamme verkkosivuja, mobiiliapplikaatioita ja muita älykkäitä digitaalisia ratkaisuja palvelualan yrityksille. Nopea ja kustannustehokas palvelukokonaisuus sisältäen verkkosivut, varausjärjestelmät, asiakaspalvelun ja myynnin.",
       cta: "Pyydä tarjous",
     },
     sitePreview: {

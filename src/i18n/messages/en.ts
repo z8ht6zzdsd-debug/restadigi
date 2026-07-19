@@ -121,7 +121,7 @@ export const en: Messages = {
       titleAccent: "serves your customers 24/7",
       titleAfter: ".",
       description:
-        "We build websites, mobile apps and other smart digital solutions for service businesses — quickly and cost-effectively. The full package includes websites, booking systems, customer service and sales.",
+        "We build websites, mobile apps and other smart digital solutions for service businesses. A fast, cost-effective service package including websites, booking systems, customer service and sales.",
       cta: "Request a quote",
     },
     sitePreview: {

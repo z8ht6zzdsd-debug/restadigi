@@ -123,7 +123,7 @@ export const es: Messages = {
       titleAccent: "atiende a tus clientes 24/7",
       titleAfter: ".",
       description:
-        "Creamos sitios web, apps móviles y otras soluciones digitales inteligentes para empresas de servicios de forma rápida y rentable. El conjunto incluye sitios web, sistemas de reserva, atención al cliente y ventas.",
+        "Creamos sitios web, apps móviles y otras soluciones digitales inteligentes para empresas de servicios. Un conjunto de servicios rápido y rentable que incluye sitios web, sistemas de reserva, atención al cliente y ventas.",
       cta: "Solicitar presupuesto",
     },
     sitePreview: {
