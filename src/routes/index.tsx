@@ -118,7 +118,7 @@ function Index() {
             </p>
             <Link
               to="/yhteys"
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
+              className="mt-8 inline-flex items-center justify-center rounded-full !bg-[#432f24] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] !text-[#f7f3ee] transition-opacity hover:opacity-90"
             >
               {h.hero.cta}
             </Link>
@@ -376,7 +376,7 @@ function Index() {
             <div className="relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/yhteys"
-                className="inline-flex items-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
+                className="inline-flex items-center rounded-full !bg-[#432f24] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] !text-[#f7f3ee] transition-opacity hover:opacity-90"
               >
                 {h.cta.quoteCta}
               </Link>
