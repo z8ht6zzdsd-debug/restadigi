@@ -751,7 +751,7 @@ export const es: Messages = {
     packages: [
       {
         name: "Basic",
-        price: "9,99 € / mes + IVA",
+        price: "11,90 € / mes + IVA (facturación anual)",
         bullets: [
           "Hosting y dominio incluidos",
           "Hosting rápido y fiable en Finlandia",
@@ -777,7 +777,7 @@ export const es: Messages = {
       },
     ],
     footnote:
-      "Los precios de hosting y mantenimiento se facturan mensualmente. Dominio y certificado SSL incluidos.",
+      "El paquete Basic se factura anualmente (11,90 € / mes). Pro Business se factura mensualmente. Dominio y certificado SSL incluidos.",
   },
   widget: {
     sales: {

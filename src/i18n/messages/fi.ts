@@ -749,7 +749,7 @@ export const fi: Messages = {
     packages: [
       {
         name: "Basic",
-        price: "9,99 € / kk + alv",
+        price: "11,90 € / kk + alv (laskutetaan vuosittain)",
         bullets: [
           "Hosting ja verkkotunnus sisältyvät hintaan",
           "Nopea ja luotettava hosting Suomessa",
@@ -775,7 +775,7 @@ export const fi: Messages = {
       },
     ],
     footnote:
-      "Hosting- ja ylläpitohinnat laskutetaan kuukausittain. Domain ja SSL-sertifikaatti sisältyvät hintaan.",
+      "Basic-paketti laskutetaan vuosittain (11,90 € / kk). Pro Business laskutetaan kuukausittain. Domain ja SSL-sertifikaatti sisältyvät hintaan.",
   },
   widget: {
     sales: {
