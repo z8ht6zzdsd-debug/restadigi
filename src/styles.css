@@ -376,39 +376,65 @@
     object-position: center bottom;
   }
 
-  /* Vasen mobiili — kehys + kahvikuva */
-  .page-hero__devices-phone {
+  /* Ison näytön vasen kahvipaneeli — skarppi kuva, ei ympyrää */
+  .page-hero__devices-tablet-coffee {
     position: absolute;
-    left: 8.6%;
-    top: 15%;
+    left: 20.5%;
+    top: 41.5%;
     z-index: 2;
-    width: 18.5%;
-    height: 70%;
-    transform: rotate(-6deg);
-    filter: drop-shadow(0 16px 32px rgba(26, 18, 14, 0.5));
+    width: 22.5%;
+    height: 48%;
+    overflow: hidden;
+    border-radius: 0.15rem;
+    background: #eeeae3;
+    box-shadow: 0 6px 18px rgba(26, 18, 14, 0.18);
   }
 
-  .page-hero__devices-phone-bezel {
+  .page-hero__devices-tablet-coffee img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 45%;
+  }
+
+  /* Vasen reuna — pienempi, eri mallinen puhelin + verkkokauppa */
+  .page-hero__devices-phone {
+    position: absolute;
+    left: 3.5%;
+    top: 22%;
+    z-index: 2;
+    width: 14.5%;
+    height: 58%;
+    transform: rotate(-9deg);
+    filter: drop-shadow(0 14px 28px rgba(26, 18, 14, 0.5));
+  }
+
+  .page-hero__devices-phone--slim .page-hero__devices-phone-bezel {
+    position: relative;
     display: flex;
     height: 100%;
     flex-direction: column;
-    border-radius: 1.35rem;
-    background: linear-gradient(160deg, #2a221c 0%, #14100e 45%, #0d0a08 100%);
-    padding: 0.42rem 0.34rem 0.48rem;
+    border-radius: 1.55rem;
+    background: linear-gradient(145deg, #d8d2cb 0%, #a8a098 38%, #7a736c 100%);
+    padding: 0.28rem;
     box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-      inset 0 0 0 2.5px #080605,
-      0 0 0 1px rgba(0, 0, 0, 0.35);
+      inset 0 1px 0 rgba(255, 255, 255, 0.45),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(40, 30, 24, 0.35);
   }
 
-  .page-hero__devices-phone-notch {
-    display: block;
-    width: 42%;
-    height: 0.32rem;
-    margin: 0.12rem auto 0.32rem;
+  .page-hero__devices-phone-island {
+    position: absolute;
+    left: 50%;
+    top: 0.45rem;
+    z-index: 2;
+    width: 34%;
+    height: 0.55rem;
+    translate: -50% 0;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.16);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.35);
+    background: #0d0a08;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
   }
 
   .page-hero__devices-phone-screen {
@@ -416,26 +442,88 @@
     min-height: 0;
     flex: 1;
     overflow: hidden;
-    border-radius: 0.7rem;
-    background: #0d0a08;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    border-radius: 1.25rem;
+    background: #f7f3ee;
   }
 
-  .page-hero__devices-phone-screen img {
+  .page-hero__phone-shop {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    background: #f7f3ee;
+  }
+
+  .page-hero__phone-shop-photo {
+    position: relative;
+    min-height: 0;
+    flex: 1.35;
+    overflow: hidden;
+    background: #ebe6df;
+  }
+
+  .page-hero__phone-shop-photo img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 40%;
+    object-position: center 38%;
   }
 
-  .page-hero__devices-phone-home {
-    display: block;
-    width: 30%;
-    height: 0.2rem;
-    margin: 0.36rem auto 0.1rem;
+  .page-hero__phone-shop-panel {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.35rem 0.4rem 0.45rem;
+    background: #fff;
+    border-top: 1px solid rgba(67, 47, 36, 0.08);
+  }
+
+  .page-hero__phone-shop-brand {
+    margin: 0;
+    font-size: 0.34rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(67, 47, 36, 0.45);
+  }
+
+  .page-hero__phone-shop-product {
+    margin: 0;
+    font-family: var(--font-serif, "DM Serif Display", serif);
+    font-size: 0.72rem;
+    font-style: italic;
+    line-height: 1.05;
+    color: #432f24;
+  }
+
+  .page-hero__phone-shop-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+    margin-top: 0.15rem;
+  }
+
+  .page-hero__phone-shop-price {
+    font-size: 0.52rem;
+    font-weight: 800;
+    color: #1a1512;
+  }
+
+  .page-hero__phone-shop-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.2);
+    background: #432f24;
+    padding: 0.22rem 0.4rem;
+    font-size: 0.34rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #f7f3ee;
+    white-space: nowrap;
   }
 
   /* Iso tabletti / Freddo’s — ensimmäisen d:n kohdalla */
@@ -548,20 +636,44 @@
       max-height: min(66vh, 44rem);
     }
 
-    .page-hero__devices-phone {
-      left: 8.8%;
-      top: 14%;
-      width: 18.2%;
-      height: 72%;
+    .page-hero__devices-tablet-coffee {
+      left: 20.2%;
+      top: 41%;
+      width: 22.8%;
+      height: 49%;
     }
 
-    .page-hero__devices-phone-bezel {
-      border-radius: 1.5rem;
-      padding: 0.48rem 0.38rem 0.52rem;
+    .page-hero__devices-phone {
+      left: 3.2%;
+      top: 20%;
+      width: 14.2%;
+      height: 60%;
+    }
+
+    .page-hero__devices-phone--slim .page-hero__devices-phone-bezel {
+      border-radius: 1.7rem;
+      padding: 0.32rem;
     }
 
     .page-hero__devices-phone-screen {
-      border-radius: 0.8rem;
+      border-radius: 1.4rem;
+    }
+
+    .page-hero__phone-shop-brand {
+      font-size: 0.38rem;
+    }
+
+    .page-hero__phone-shop-product {
+      font-size: 0.82rem;
+    }
+
+    .page-hero__phone-shop-price {
+      font-size: 0.58rem;
+    }
+
+    .page-hero__phone-shop-cta {
+      font-size: 0.38rem;
+      padding: 0.26rem 0.45rem;
     }
 
     .page-hero__devices-promo {
@@ -600,11 +712,18 @@
       max-height: min(70vh, 48rem);
     }
 
+    .page-hero__devices-tablet-coffee {
+      left: 20%;
+      top: 40.5%;
+      width: 23%;
+      height: 50%;
+    }
+
     .page-hero__devices-phone {
-      left: 9%;
-      top: 13.5%;
-      width: 18%;
-      height: 73%;
+      left: 3%;
+      top: 18%;
+      width: 13.8%;
+      height: 62%;
     }
 
     .page-hero__devices-promo {

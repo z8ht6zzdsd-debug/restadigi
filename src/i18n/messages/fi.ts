@@ -378,6 +378,12 @@ export const fi: Messages = {
       promo: "alk. 399€",
       promoLine1: "alk.",
       promoLine2: "399€",
+      phoneShop: {
+        brand: "Freddo's",
+        product: "Ice latte",
+        price: "5,90 €",
+        addToCart: "Lisää koriin",
+      },
     },
     midBanner: {
       title: "Matkasi digimenestykseen alkaa tästä!",

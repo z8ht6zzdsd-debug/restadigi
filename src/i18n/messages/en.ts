@@ -377,6 +377,12 @@ export const en: Messages = {
       promo: "from 399€",
       promoLine1: "from",
       promoLine2: "399€",
+      phoneShop: {
+        brand: "Freddo's",
+        product: "Ice latte",
+        price: "5.90 €",
+        addToCart: "Add to cart",
+      },
     },
     midBanner: {
       title: "Your journey to digital success starts here!",

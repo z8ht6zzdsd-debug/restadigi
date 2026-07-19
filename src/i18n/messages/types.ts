@@ -232,6 +232,12 @@ export type Messages = {
       promo: string;
       promoLine1: string;
       promoLine2: string;
+      phoneShop: {
+        brand: string;
+        product: string;
+        price: string;
+        addToCart: string;
+      };
     };
     midBanner: {
       title: string;

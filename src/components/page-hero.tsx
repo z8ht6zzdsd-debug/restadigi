@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { PhoneShopPreview } from "./phone-shop-preview";
 
 type PageHeroProps = {
   image: string;
@@ -9,6 +10,8 @@ type PageHeroProps = {
   promo?: ReactNode;
   /** Optional photo overlaid on the left phone screen (devices hero) */
   phoneScreenImage?: string;
+  /** Optional sharp coffee photo over the big tablet left panel */
+  tabletCoffeeImage?: string;
   tall?: boolean;
   /** Laitemockup: laitteet ylhäällä, teksti alla omalla kaistalla */
   devices?: boolean;
@@ -25,6 +28,7 @@ export function PageHero({
   actions,
   promo,
   phoneScreenImage,
+  tabletCoffeeImage,
   tall,
   devices,
   lifestyle,
@@ -43,14 +47,18 @@ export function PageHero({
               height={900}
               className={"page-hero__devices-image" + (imageClassName ? ` ${imageClassName}` : "")}
             />
+            {tabletCoffeeImage && (
+              <div className="page-hero__devices-tablet-coffee" aria-hidden>
+                <img src={tabletCoffeeImage} alt="" />
+              </div>
+            )}
             {phoneScreenImage && (
-              <div className="page-hero__devices-phone" aria-hidden>
+              <div className="page-hero__devices-phone page-hero__devices-phone--slim" aria-hidden>
                 <div className="page-hero__devices-phone-bezel">
-                  <span className="page-hero__devices-phone-notch" />
+                  <span className="page-hero__devices-phone-island" />
                   <div className="page-hero__devices-phone-screen">
-                    <img src={phoneScreenImage} alt="" />
+                    <PhoneShopPreview image={phoneScreenImage} />
                   </div>
-                  <span className="page-hero__devices-phone-home" />
                 </div>
               </div>
             )}
