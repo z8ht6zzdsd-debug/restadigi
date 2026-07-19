@@ -143,6 +143,15 @@ export function ProductPackageCards({
                     aria-hidden
                     className="absolute inset-0 size-full object-cover object-center"
                   />
+                  {/* Soft mid fade so cropped devices read as intentional */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-white via-white/75 to-transparent"
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-6 top-1/2 h-px -translate-y-1/2 bg-[#432f24]/18"
+                  />
                 </div>
               ) : headerKind === "ai" || headerKind === "google" ? (
                 <div
