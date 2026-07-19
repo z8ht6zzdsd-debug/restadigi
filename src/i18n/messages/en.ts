@@ -536,6 +536,15 @@ export const en: Messages = {
         title: "About invoicing",
         intro:
           "We use an advance payment practice: part of the work is invoiced before the project starts, once the quote has been accepted in writing. This commits both the client and the supplier to the project.",
+        providerLead:
+          "Invoicing for Restadigi Finland services in Finland is handled by Laskuttamo.",
+        providerName: "Laskuttamo",
+        providerEmail: "asiakaspalvelu@laskuttamo.com",
+        providerPhone: "02 0730 6710",
+        providerHours: "Mon–Fri 8:00–16:00",
+        providerSiteLabel: "laskuttamo.com",
+        providerSiteUrl: "https://laskuttamo.com/",
+        providerAddressNote: "Contact details and addresses are available on Laskuttamo’s website.",
         groundsTitle: "Why",
         grounds: [
           {

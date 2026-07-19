@@ -275,6 +275,14 @@ export type Messages = {
       billing: {
         title: string;
         intro: string;
+        providerLead: string;
+        providerName: string;
+        providerEmail: string;
+        providerPhone: string;
+        providerHours: string;
+        providerSiteLabel: string;
+        providerSiteUrl: string;
+        providerAddressNote: string;
         groundsTitle: string;
         grounds: Array<{ title: string; body: string; bullets?: string[] }>;
       };

@@ -540,6 +540,16 @@ export const es: Messages = {
         title: "Sobre la facturación",
         intro:
           "Aplicamos un anticipo: parte del trabajo se factura antes de empezar el proyecto, una vez aceptado el presupuesto por escrito. Así se comprometen tanto el cliente como el proveedor.",
+        providerLead:
+          "La facturación de los servicios de Restadigi Finland en Finlandia la gestiona Laskuttamo.",
+        providerName: "Laskuttamo",
+        providerEmail: "asiakaspalvelu@laskuttamo.com",
+        providerPhone: "02 0730 6710",
+        providerHours: "lun–vie 8:00–16:00",
+        providerSiteLabel: "laskuttamo.com",
+        providerSiteUrl: "https://laskuttamo.com/",
+        providerAddressNote:
+          "Los datos de contacto y las direcciones están en el sitio web de Laskuttamo.",
         groundsTitle: "Motivos",
         grounds: [
           {

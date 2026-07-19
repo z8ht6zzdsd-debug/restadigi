@@ -5,6 +5,7 @@ import pkgVisAi from "@/assets/pkg-vis-ai.jpg";
 import pkgVisGoogle from "@/assets/pkg-vis-google.jpg";
 import pkgVisSports from "@/assets/pkg-vis-sports.jpg";
 import pkgVisGraphic from "@/assets/pkg-vis-graphic.jpg";
+import laskuttamoLogo from "@/assets/laskuttamo-logo-white.png";
 import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import {
@@ -156,6 +157,55 @@ function DiginakyvyysPage() {
             <p className="max-w-3xl text-sm leading-relaxed text-white/88 sm:text-base">
               {b.billing.intro}
             </p>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/88 sm:text-base">
+              {b.billing.providerLead}
+            </p>
+            <div className="mt-8 flex flex-col gap-6 border-t border-white/15 pt-7 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
+              <a
+                href={b.billing.providerSiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex shrink-0 items-center"
+              >
+                <img
+                  src={laskuttamoLogo}
+                  alt={b.billing.providerName}
+                  width={220}
+                  height={21}
+                  className="h-6 w-auto sm:h-7"
+                />
+              </a>
+              <div className="min-w-0 space-y-1.5 text-sm text-white/85 sm:text-right">
+                <p>
+                  <a
+                    href={`mailto:${b.billing.providerEmail}`}
+                    className="underline underline-offset-2 hover:text-white"
+                  >
+                    {b.billing.providerEmail}
+                  </a>
+                </p>
+                <p>
+                  <a
+                    href={`tel:${b.billing.providerPhone.replace(/\s/g, "")}`}
+                    className="underline underline-offset-2 hover:text-white"
+                  >
+                    {b.billing.providerPhone}
+                  </a>
+                  <span className="text-white/55"> · {b.billing.providerHours}</span>
+                </p>
+                <p>
+                  <a
+                    href={b.billing.providerSiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 hover:text-white"
+                  >
+                    {b.billing.providerSiteLabel}
+                  </a>
+                </p>
+                <p className="text-white/60">{b.billing.providerAddressNote}</p>
+              </div>
+            </div>
           </MarketingBox>
 
           {b.billing.grounds.map((ground) => (

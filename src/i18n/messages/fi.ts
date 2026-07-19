@@ -538,6 +538,15 @@ export const fi: Messages = {
         title: "Laskutuksesta",
         intro:
           "Noudatamme töissämme ennakkomaksukäytäntöä, jossa osa työstä veloitetaan jo ennen projektin alkua, kun tarjous on kirjallisesti hyväksytty. Tällä sitoutetaan sekä tilaaja että toimittaja projektiin.",
+        providerLead:
+          "Restadigi Finland -palvelun laskutuksesta Suomessa vastaa Laskuttamo.",
+        providerName: "Laskuttamo",
+        providerEmail: "asiakaspalvelu@laskuttamo.com",
+        providerPhone: "02 0730 6710",
+        providerHours: "ma–pe 8:00–16:00",
+        providerSiteLabel: "laskuttamo.com",
+        providerSiteUrl: "https://laskuttamo.com/",
+        providerAddressNote: "Yhteystiedot ja osoitteet löytyvät Laskuttamon sivuilta.",
         groundsTitle: "Perusteet",
         grounds: [
           {
