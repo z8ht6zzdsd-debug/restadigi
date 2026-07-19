@@ -338,12 +338,12 @@
     }
   }
 
-  /* Laitemockup: laitteet heti tekstin yläpuolella */
+  /* Laitemockup: kolme terävää näyttöä + sinettitarra */
   .page-hero--devices {
     display: flex;
     flex-direction: column;
     background: #432f24;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .page-hero__devices-visual {
@@ -352,188 +352,313 @@
     align-items: flex-end;
     justify-content: center;
     width: 100%;
-    overflow: visible;
     background: #432f24;
-    padding: 1.25rem 0 0.5rem;
+    padding: 1.5rem 1rem 0.75rem;
   }
 
-  .page-hero__devices-stage {
+  .devices-stage {
     position: relative;
-    width: min(136%, 108rem);
-    max-height: min(60vh, 38rem);
-    transform: rotate(-3.5deg) translateY(0.25rem) scale(1.04);
-    transform-origin: 50% 100%;
-    filter: drop-shadow(0 18px 40px rgba(26, 18, 14, 0.35));
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: clamp(0.65rem, 2vw, 1.35rem);
+    width: min(100%, 58rem);
+    min-height: clamp(16rem, 48vw, 22rem);
+    padding-bottom: 0.35rem;
   }
 
-  .page-hero__devices-image {
+  .devices-stage__phone {
+    position: relative;
+    z-index: 3;
+    width: clamp(4.6rem, 14vw, 7.25rem);
+    flex-shrink: 0;
+    transform: translateY(0.35rem);
+    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.35));
+  }
+
+  .devices-stage__phone-bezel {
+    position: relative;
+    aspect-ratio: 9 / 19.2;
+    border-radius: 1.15rem;
+    background: linear-gradient(160deg, #2a2420, #0f0d0c);
+    padding: 0.28rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .devices-stage__phone-island {
+    position: absolute;
+    left: 50%;
+    top: 0.38rem;
+    z-index: 2;
+    width: 32%;
+    height: 0.42rem;
+    translate: -50% 0;
+    border-radius: 9999px;
+    background: #050403;
+  }
+
+  .devices-stage__tablet {
+    position: relative;
+    z-index: 2;
+    width: clamp(10.5rem, 30vw, 16.5rem);
+    flex-shrink: 0;
+    filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.32));
+  }
+
+  .devices-stage__tablet-bezel {
+    aspect-ratio: 4 / 3;
+    border-radius: 0.85rem;
+    background: linear-gradient(160deg, #3a342f, #1a1614);
+    padding: 0.45rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .devices-stage__monitor {
+    position: relative;
+    z-index: 1;
+    width: clamp(13rem, 38vw, 22rem);
+    flex-shrink: 0;
+    filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.34));
+  }
+
+  .devices-stage__monitor-bezel {
+    aspect-ratio: 16 / 10;
+    border-radius: 0.55rem 0.55rem 0.2rem 0.2rem;
+    background: linear-gradient(180deg, #2c2723, #12100e);
+    padding: 0.4rem 0.4rem 0.55rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+  }
+
+  .devices-stage__monitor-stand {
+    width: 18%;
+    height: 0.85rem;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #4a4038, #2a2420);
+    clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+  }
+
+  .devices-stage__monitor-base {
+    width: 42%;
+    height: 0.28rem;
+    margin: 0 auto;
+    border-radius: 9999px;
+    background: #1a1614;
+  }
+
+  .devices-stage__screen {
+    height: 100%;
+    overflow: hidden;
+    background: #f4f0ea;
+  }
+
+  .devices-stage__screen--phone {
+    border-radius: 0.9rem;
+  }
+
+  .devices-stage__screen--tablet {
+    border-radius: 0.45rem;
+  }
+
+  .devices-stage__screen--monitor {
+    border-radius: 0.18rem;
+  }
+
+  .mini-site {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    background: #f7f3ee;
+    color: #2a2018;
+  }
+
+  .mini-site__bar,
+  .mini-site__nav {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem;
+    padding: 0.35rem 0.45rem;
+    background: #fff;
+  }
+
+  .mini-site__nav--dark {
+    background: #1a1512;
+    color: #f7f3ee;
+  }
+
+  .mini-site__brand {
+    font-size: 0.42rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mini-site__brand--serif {
+    font-family: var(--font-serif, "DM Serif Display", Georgia, serif);
+    font-size: 0.55rem;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  .mini-site__menu {
+    width: 0.7rem;
+    height: 0.08rem;
+    background: currentColor;
+    box-shadow:
+      0 -0.18rem 0 currentColor,
+      0 0.18rem 0 currentColor;
+    opacity: 0.45;
+  }
+
+  .mini-site__links {
+    display: flex;
+    gap: 0.45rem;
+    font-size: 0.38rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .mini-site__hero {
     display: block;
     width: 100%;
     height: auto;
-    max-height: min(60vh, 38rem);
-    margin-inline: auto;
-    object-fit: contain;
-    object-position: center bottom;
+    object-fit: cover;
   }
 
-  /* Ison näytön vasen kahvipaneeli — skarppi kuva, ei ympyrää */
-  .page-hero__devices-tablet-coffee {
-    position: absolute;
-    left: 20.5%;
-    top: 41.5%;
-    z-index: 2;
-    width: 22.5%;
-    height: 48%;
-    overflow: hidden;
-    border-radius: 0.15rem;
-    background: #eeeae3;
-    box-shadow: 0 6px 18px rgba(26, 18, 14, 0.18);
-  }
-
-  .page-hero__devices-tablet-coffee img {
-    display: block;
+  .mini-site__hero--fill {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 45%;
   }
 
-  /* Vasen reuna — pienempi, eri mallinen puhelin + verkkokauppa */
-  .page-hero__devices-phone {
-    position: absolute;
-    left: 3.5%;
-    top: 22%;
-    z-index: 2;
-    width: 14.5%;
-    height: 58%;
-    transform: rotate(-9deg);
-    filter: drop-shadow(0 14px 28px rgba(26, 18, 14, 0.5));
-  }
-
-  .page-hero__devices-phone--slim .page-hero__devices-phone-bezel {
-    position: relative;
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    border-radius: 1.55rem;
-    background: linear-gradient(145deg, #d8d2cb 0%, #a8a098 38%, #7a736c 100%);
-    padding: 0.28rem;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.45),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-      0 0 0 1px rgba(40, 30, 24, 0.35);
-  }
-
-  .page-hero__devices-phone-island {
-    position: absolute;
-    left: 50%;
-    top: 0.45rem;
-    z-index: 2;
-    width: 34%;
-    height: 0.55rem;
-    translate: -50% 0;
-    border-radius: 9999px;
-    background: #0d0a08;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  }
-
-  .page-hero__devices-phone-screen {
-    position: relative;
+  .mini-site--salon .mini-site__hero {
     min-height: 0;
-    flex: 1;
-    overflow: hidden;
-    border-radius: 1.25rem;
-    background: #f7f3ee;
+    flex: 1.2;
+    object-position: center 20%;
   }
 
-  .page-hero__phone-shop {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    background: #f7f3ee;
-  }
-
-  .page-hero__phone-shop-photo {
-    position: relative;
-    min-height: 0;
-    flex: 1.35;
-    overflow: hidden;
-    background: #ebe6df;
-  }
-
-  .page-hero__phone-shop-photo img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 38%;
-  }
-
-  .page-hero__phone-shop-panel {
+  .mini-site__body,
+  .mini-site__panel {
     display: flex;
     flex-shrink: 0;
     flex-direction: column;
-    gap: 0.15rem;
-    padding: 0.35rem 0.4rem 0.45rem;
+    gap: 0.18rem;
+    padding: 0.4rem 0.45rem 0.5rem;
     background: #fff;
-    border-top: 1px solid rgba(67, 47, 36, 0.08);
   }
 
-  .page-hero__phone-shop-brand {
+  .mini-site__kicker {
     margin: 0;
-    font-size: 0.34rem;
+    font-size: 0.32rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(67, 47, 36, 0.45);
+    color: rgba(42, 32, 24, 0.5);
   }
 
-  .page-hero__phone-shop-product {
+  .mini-site__title {
     margin: 0;
-    font-family: var(--font-serif, "DM Serif Display", serif);
-    font-size: 0.72rem;
+    font-family: var(--font-serif, "DM Serif Display", Georgia, serif);
+    font-size: 0.62rem;
     font-style: italic;
-    line-height: 1.05;
-    color: #432f24;
+    line-height: 1.1;
+    color: #2a2018;
   }
 
-  .page-hero__phone-shop-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.25rem;
-    margin-top: 0.15rem;
+  .mini-site__title--lg {
+    font-size: 0.78rem;
   }
 
-  .page-hero__phone-shop-price {
-    font-size: 0.52rem;
-    font-weight: 800;
-    color: #1a1512;
+  .mini-site__title--hero {
+    font-size: clamp(0.7rem, 1.8vw, 1.15rem);
+    color: #fff;
   }
 
-  .page-hero__phone-shop-cta {
+  .mini-site__text {
+    margin: 0;
+    font-size: 0.38rem;
+    line-height: 1.35;
+    color: rgba(42, 32, 24, 0.7);
+  }
+
+  .mini-site__text--light {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.42rem;
+  }
+
+  .mini-site__cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    align-self: flex-start;
+    margin-top: 0.1rem;
     border-radius: 9999px;
     background: #432f24;
-    padding: 0.22rem 0.4rem;
+    padding: 0.22rem 0.48rem;
     font-size: 0.34rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #f7f3ee;
-    white-space: nowrap;
   }
 
-  /* Hintamainos — sinettitarra Freddo’s dd:n kohdalla */
-  .page-hero__devices-promo {
+  .mini-site__cta--sm {
+    margin-top: 0;
+    padding: 0.18rem 0.4rem;
+    font-size: 0.32rem;
+    background: var(--accent);
+  }
+
+  .mini-site__split {
+    display: grid;
+    min-height: 0;
+    flex: 1;
+    grid-template-columns: 1.15fr 1fr;
+  }
+
+  .mini-site__panel {
+    justify-content: center;
+  }
+
+  .mini-site__hero-wrap {
+    position: relative;
+    min-height: 0;
+    flex: 1;
+  }
+
+  .mini-site__hero-copy {
     position: absolute;
-    left: 58%;
-    top: 26%;
-    z-index: 3;
+    inset: auto 0 0;
+    padding: 0.7rem 0.75rem;
+    background: linear-gradient(transparent, rgba(18, 12, 8, 0.78));
+  }
+
+  .mini-site__strip {
+    display: grid;
+    flex-shrink: 0;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.2rem;
+    padding: 0.35rem 0.45rem;
+    background: #fff;
+    font-size: 0.34rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(42, 32, 24, 0.55);
+    text-align: center;
+  }
+
+  .devices-stage__promo {
+    position: absolute;
+    right: 4%;
+    top: 6%;
+    z-index: 4;
     width: max-content;
-    transform: translate(-50%, -50%);
   }
 
   .page-hero__devices-promo-chip {
@@ -543,9 +668,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.1rem;
-    width: clamp(9.5rem, 27vw, 13.5rem);
+    width: clamp(6.5rem, 18vw, 9.5rem);
     aspect-ratio: 1;
-    padding: 0.85rem 0.9rem 0.95rem;
+    padding: 0.7rem 0.75rem 0.8rem;
     background: var(--accent);
     color: #fff;
     font-weight: 800;
@@ -554,7 +679,6 @@
     text-align: center;
     text-decoration: none;
     white-space: normal;
-    /* Aaltoileva sinetti / tarra — ei klassinen tähti */
     clip-path: polygon(
       50% 0%,
       58.1% 9.3%,
@@ -589,7 +713,7 @@
       30.87% 3.81%,
       41.9% 9.3%
     );
-    filter: drop-shadow(0 12px 22px rgba(26, 18, 14, 0.38));
+    filter: drop-shadow(0 10px 18px rgba(26, 18, 14, 0.4));
     transition:
       background-color 0.15s ease,
       transform 0.15s ease;
@@ -608,7 +732,7 @@
     position: relative;
     z-index: 1;
     display: block;
-    font-size: clamp(0.72rem, 2vw, 0.92rem);
+    font-size: clamp(0.55rem, 1.5vw, 0.72rem);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -619,7 +743,7 @@
     position: relative;
     z-index: 1;
     display: block;
-    font-size: clamp(1.2rem, 3.4vw, 1.65rem);
+    font-size: clamp(0.95rem, 2.6vw, 1.25rem);
     font-weight: 800;
     letter-spacing: -0.02em;
     line-height: 1;
@@ -632,7 +756,7 @@
 
   .page-hero__devices-copy {
     background: #432f24;
-    padding: 0.5rem 1.5rem 2.25rem;
+    padding: 0.75rem 1.5rem 2.25rem;
   }
 
   .page-hero__devices-copy-inner {
@@ -660,77 +784,21 @@
 
   @media (min-width: 640px) {
     .page-hero__devices-visual {
-      padding-top: 1.5rem;
+      padding: 2rem 1.5rem 1rem;
     }
 
-    .page-hero__devices-stage {
-      width: min(140%, 114rem);
-      max-height: min(66vh, 44rem);
-      transform: rotate(-3.5deg) translateY(0.4rem) scale(1.05);
+    .devices-stage {
+      min-height: 24rem;
+      gap: 1.25rem;
     }
 
-    .page-hero__devices-image {
-      max-height: min(66vh, 44rem);
-    }
-
-    .page-hero__devices-tablet-coffee {
-      left: 20.2%;
-      top: 41%;
-      width: 22.8%;
-      height: 49%;
-    }
-
-    .page-hero__devices-phone {
-      left: 3.2%;
-      top: 20%;
-      width: 14.2%;
-      height: 60%;
-    }
-
-    .page-hero__devices-phone--slim .page-hero__devices-phone-bezel {
-      border-radius: 1.7rem;
-      padding: 0.32rem;
-    }
-
-    .page-hero__devices-phone-screen {
-      border-radius: 1.4rem;
-    }
-
-    .page-hero__phone-shop-brand {
-      font-size: 0.38rem;
-    }
-
-    .page-hero__phone-shop-product {
-      font-size: 0.82rem;
-    }
-
-    .page-hero__phone-shop-price {
-      font-size: 0.58rem;
-    }
-
-    .page-hero__phone-shop-cta {
-      font-size: 0.38rem;
-      padding: 0.26rem 0.45rem;
-    }
-
-    .page-hero__devices-promo {
-      left: 59%;
-      top: 25%;
-      transform: translate(-50%, -50%);
+    .devices-stage__promo {
+      right: 2%;
+      top: 2%;
     }
 
     .page-hero__devices-promo-chip {
-      width: 12.75rem;
-      gap: 0.12rem;
-      padding: 0.9rem 1rem 1rem;
-    }
-
-    .page-hero__devices-promo-line {
-      font-size: 0.85rem;
-    }
-
-    .page-hero__devices-promo-price {
-      font-size: 1.55rem;
+      width: 8.75rem;
     }
 
     .page-hero__devices-copy {
@@ -739,45 +807,13 @@
   }
 
   @media (min-width: 1024px) {
-    .page-hero__devices-stage {
-      width: min(144%, 120rem);
-      max-height: min(70vh, 48rem);
-      transform: rotate(-3.5deg) translateY(0.5rem) scale(1.06);
-    }
-
-    .page-hero__devices-image {
-      max-height: min(70vh, 48rem);
-    }
-
-    .page-hero__devices-tablet-coffee {
-      left: 20%;
-      top: 40.5%;
-      width: 23%;
-      height: 50%;
-    }
-
-    .page-hero__devices-phone {
-      left: 3%;
-      top: 18%;
-      width: 13.8%;
-      height: 62%;
-    }
-
-    .page-hero__devices-promo {
-      left: 60%;
-      top: 24%;
+    .devices-stage {
+      width: min(100%, 64rem);
+      min-height: 26rem;
     }
 
     .page-hero__devices-promo-chip {
-      width: 13.5rem;
-    }
-
-    .page-hero__devices-promo-line {
-      font-size: 0.9rem;
-    }
-
-    .page-hero__devices-promo-price {
-      font-size: 1.7rem;
+      width: 9.5rem;
     }
   }
 

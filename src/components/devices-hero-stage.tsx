@@ -1,0 +1,101 @@
+import type { ReactNode } from "react";
+import barberHero from "@/assets/barber-haircut-hero.jpg";
+import hotelHero from "@/assets/hero-hotel-web.jpg";
+import diningHero from "@/assets/restaurant-dining.jpg";
+
+type DevicesHeroStageProps = {
+  promo?: ReactNode;
+};
+
+/** Kolme terävää laitetta: mobiili, iPad, ulkoinen näyttö — palvelualan sivulayoutit */
+export function DevicesHeroStage({ promo }: DevicesHeroStageProps) {
+  return (
+    <div className="devices-stage" aria-hidden>
+      {/* Mobiili — parturi */}
+      <div className="devices-stage__phone">
+        <div className="devices-stage__phone-bezel">
+          <span className="devices-stage__phone-island" />
+          <div className="devices-stage__screen devices-stage__screen--phone">
+            <div className="mini-site mini-site--salon">
+              <div className="mini-site__bar">
+                <span className="mini-site__brand">Nord Cut</span>
+                <span className="mini-site__menu" />
+              </div>
+              <img src={barberHero} alt="" className="mini-site__hero" />
+              <div className="mini-site__body">
+                <p className="mini-site__kicker">Parturi · Helsinki</p>
+                <p className="mini-site__title">Ajat varattavissa verkossa</p>
+                <span className="mini-site__cta">Varaa aika</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* iPad — hotelli */}
+      <div className="devices-stage__tablet">
+        <div className="devices-stage__tablet-bezel">
+          <div className="devices-stage__screen devices-stage__screen--tablet">
+            <div className="mini-site mini-site--hotel">
+              <div className="mini-site__nav">
+                <span className="mini-site__brand mini-site__brand--serif">Lake House</span>
+                <span className="mini-site__links">
+                  <span>Rooms</span>
+                  <span>Spa</span>
+                  <span>Book</span>
+                </span>
+              </div>
+              <div className="mini-site__split">
+                <img src={hotelHero} alt="" className="mini-site__hero mini-site__hero--fill" />
+                <div className="mini-site__panel">
+                  <p className="mini-site__kicker">Boutique hotel</p>
+                  <p className="mini-site__title mini-site__title--lg">Quiet stays by the lake</p>
+                  <p className="mini-site__text">Seasonal rooms, calm mornings, easy booking.</p>
+                  <span className="mini-site__cta">Book stay</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Ulkoinen näyttö — ravintola */}
+      <div className="devices-stage__monitor">
+        <div className="devices-stage__monitor-bezel">
+          <div className="devices-stage__screen devices-stage__screen--monitor">
+            <div className="mini-site mini-site--dining">
+              <div className="mini-site__nav mini-site__nav--dark">
+                <span className="mini-site__brand mini-site__brand--serif">Atelier</span>
+                <span className="mini-site__links">
+                  <span>Menu</span>
+                  <span>Events</span>
+                  <span>Contact</span>
+                </span>
+                <span className="mini-site__cta mini-site__cta--sm">Reserve</span>
+              </div>
+              <div className="mini-site__hero-wrap">
+                <img src={diningHero} alt="" className="mini-site__hero mini-site__hero--fill" />
+                <div className="mini-site__hero-copy">
+                  <p className="mini-site__title mini-site__title--hero">Timeless flavors</p>
+                  <p className="mini-site__text mini-site__text--light">
+                    Seasonal tasting · table booking online
+                  </p>
+                </div>
+              </div>
+              <div className="mini-site__strip">
+                <span>Lunch</span>
+                <span>Dinner</span>
+                <span>Wine</span>
+                <span>Private</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="devices-stage__monitor-stand" />
+        <div className="devices-stage__monitor-base" />
+      </div>
+
+      {promo && <div className="devices-stage__promo">{promo}</div>}
+    </div>
+  );
+}

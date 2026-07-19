@@ -1,19 +1,15 @@
 import type { ReactNode } from "react";
-import { PhoneShopPreview } from "./phone-shop-preview";
+import { DevicesHeroStage } from "./devices-hero-stage";
 
 type PageHeroProps = {
-  image: string;
+  image?: string;
   title: ReactNode;
   description: ReactNode;
   actions?: ReactNode;
   /** Optional promo chip on the brown devices hero band */
   promo?: ReactNode;
-  /** Optional photo overlaid on the left phone screen (devices hero) */
-  phoneScreenImage?: string;
-  /** Optional sharp coffee photo over the big tablet left panel */
-  tabletCoffeeImage?: string;
   tall?: boolean;
-  /** Laitemockup: laitteet ylhäällä, teksti alla omalla kaistalla */
+  /** Laitemockup: kolme näyttöä ylhäällä, teksti alla */
   devices?: boolean;
   /** Full-bleed lifestyle: left-aligned copy on the image (McDonald’s-style) */
   lifestyle?: boolean;
@@ -27,8 +23,6 @@ export function PageHero({
   description,
   actions,
   promo,
-  phoneScreenImage,
-  tabletCoffeeImage,
   tall,
   devices,
   lifestyle,
@@ -38,32 +32,7 @@ export function PageHero({
     return (
       <header className="page-hero page-hero--devices">
         <div className="page-hero__devices-visual">
-          <div className="page-hero__devices-stage">
-            <img
-              src={image}
-              alt=""
-              aria-hidden
-              width={1600}
-              height={900}
-              className={"page-hero__devices-image" + (imageClassName ? ` ${imageClassName}` : "")}
-            />
-            {tabletCoffeeImage && (
-              <div className="page-hero__devices-tablet-coffee" aria-hidden>
-                <img src={tabletCoffeeImage} alt="" />
-              </div>
-            )}
-            {phoneScreenImage && (
-              <div className="page-hero__devices-phone page-hero__devices-phone--slim" aria-hidden>
-                <div className="page-hero__devices-phone-bezel">
-                  <span className="page-hero__devices-phone-island" />
-                  <div className="page-hero__devices-phone-screen">
-                    <PhoneShopPreview image={phoneScreenImage} />
-                  </div>
-                </div>
-              </div>
-            )}
-            {promo && <div className="page-hero__devices-promo">{promo}</div>}
-          </div>
+          <DevicesHeroStage promo={promo} />
         </div>
         <div className="page-hero__devices-copy">
           <div className="page-hero__devices-copy-inner">
@@ -86,7 +55,7 @@ export function PageHero({
           }
         >
           <img
-            src={image}
+            src={image!}
             alt=""
             aria-hidden
             width={1600}
@@ -122,7 +91,7 @@ export function PageHero({
     <header className="page-hero page-hero--bleed">
       <div className={frameClass}>
         <img
-          src={image}
+          src={image!}
           alt=""
           aria-hidden
           width={1600}
