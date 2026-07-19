@@ -1,4 +1,5 @@
 import type { Messages } from "./types";
+import { CONTACT_EMAIL } from "@/lib/company-contact";
 
 const siteIntroBullet =
   "Textos base claros y atractivos para inicio, servicios y contacto — paquete llave en mano y formación completa de uso";
@@ -96,7 +97,7 @@ export const es: Messages = {
       company: "Restadigi Finland",
       address: "Erkkiläntie 47, 04740 Mäntsälä",
       emailLabel: "Correo",
-      email: "info@restadigi.fi",
+      email: CONTACT_EMAIL,
       phoneLabel: "Teléfono",
       whatsappLabel: "WhatsApp",
       phoneDisplay: "+358 403 738 332",
@@ -247,7 +248,7 @@ export const es: Messages = {
   contact: {
     meta: {
       title: "Contacto — Restadigi",
-      description: "Cuéntanos tu proyecto; te responderemos en un día laborable. info@restadigi.fi",
+      description: `Cuéntanos tu proyecto; te responderemos en un día laborable. ${CONTACT_EMAIL}`,
       ogTitle: "Contacto — Restadigi",
       ogDescription: "Cuéntanos tu proyecto — te responderemos en un día laborable.",
     },
@@ -265,7 +266,7 @@ export const es: Messages = {
       studio: "Estudio",
       hours: "Atención al cliente",
     },
-    email: "info@restadigi.fi",
+    email: CONTACT_EMAIL,
     phoneDisplay: "+358 403 738 332",
     phoneTel: "+358403738332",
     hours: "Abierta lun–vie 9.00–16.00",

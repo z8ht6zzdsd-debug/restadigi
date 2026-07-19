@@ -13,6 +13,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
+import { CONTACT_EMAIL } from "@/lib/company-contact";
 
 const VISIBILITY_HEADER_IMAGES = [pkgVisAi, pkgVisGoogle, pkgVisSports, pkgVisGraphic] as const;
 
@@ -52,7 +53,7 @@ function DiginakyvyysPage() {
     const body = encodeURIComponent(
       b.form.mailBody.replace("{name}", name).replace("{email}", email).replace("{phone}", phone),
     );
-    window.location.href = `mailto:${t.contact.email}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     setQuoteSent(true);
   };
 

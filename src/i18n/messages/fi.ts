@@ -1,4 +1,5 @@
 import type { Messages } from "./types";
+import { CONTACT_EMAIL } from "@/lib/company-contact";
 
 const siteIntroBullet =
   "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – avaimet käteen paketti ja kattava käyttökoulutus";
@@ -96,7 +97,7 @@ export const fi: Messages = {
       company: "Restadigi Finland",
       address: "Erkkiläntie 47, 04740 Mäntsälä",
       emailLabel: "Sähköposti",
-      email: "info@restadigi.fi",
+      email: CONTACT_EMAIL,
       phoneLabel: "Puhelin",
       whatsappLabel: "WhatsApp",
       phoneDisplay: "+358 403 738 332",
@@ -247,7 +248,7 @@ export const fi: Messages = {
     meta: {
       title: "Ota yhteyttä — Restadigi",
       description:
-        "Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. info@restadigi.fi",
+        `Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. ${CONTACT_EMAIL}`,
       ogTitle: "Ota yhteyttä — Restadigi",
       ogDescription: "Kerro projektistasi — palaamme asiaan yhden arkipäivän kuluessa.",
     },
@@ -265,7 +266,7 @@ export const fi: Messages = {
       studio: "Studio",
       hours: "Asiakaspalvelu",
     },
-    email: "info@restadigi.fi",
+    email: CONTACT_EMAIL,
     phoneDisplay: "+358 403 738 332",
     phoneTel: "+358403738332",
     hours: "Avoinna ma–pe 9.00–16.00",

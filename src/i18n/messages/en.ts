@@ -1,4 +1,5 @@
 import type { Messages } from "./types";
+import { CONTACT_EMAIL } from "@/lib/company-contact";
 
 const siteIntroBullet =
   "Clear, compelling base copy for the home, services and contact pages — a turnkey package with comprehensive training";
@@ -96,7 +97,7 @@ export const en: Messages = {
       company: "Restadigi Finland",
       address: "Erkkiläntie 47, 04740 Mäntsälä",
       emailLabel: "Email",
-      email: "info@restadigi.fi",
+      email: CONTACT_EMAIL,
       phoneLabel: "Phone",
       whatsappLabel: "WhatsApp",
       phoneDisplay: "+358 403 738 332",
@@ -246,7 +247,7 @@ export const en: Messages = {
     meta: {
       title: "Contact — Restadigi",
       description:
-        "Tell us about your project — we'll get back to you within one business day. info@restadigi.fi",
+        `Tell us about your project — we'll get back to you within one business day. ${CONTACT_EMAIL}`,
       ogTitle: "Contact — Restadigi",
       ogDescription: "Tell us about your project — we'll get back to you within one business day.",
     },
@@ -264,7 +265,7 @@ export const en: Messages = {
       studio: "Studio",
       hours: "Customer service",
     },
-    email: "info@restadigi.fi",
+    email: CONTACT_EMAIL,
     phoneDisplay: "+358 403 738 332",
     phoneTel: "+358403738332",
     hours: "Open Mon–Fri 9.00–16.00",

@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
+import { CONTACT_EMAIL } from "@/lib/company-contact";
 
 export const Route = createFileRoute("/yhteys")({
   head: () => ({
@@ -14,8 +15,7 @@ export const Route = createFileRoute("/yhteys")({
       { title: "Ota yhteyttä — Restadigi" },
       {
         name: "description",
-        content:
-          "Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. info@restadigi.fi",
+        content: `Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. ${CONTACT_EMAIL}`,
       },
       { property: "og:title", content: "Ota yhteyttä — Restadigi" },
       {
@@ -49,7 +49,7 @@ function YhteysPage() {
         .replace("{budget}", budget)
         .replace("{message}", message),
     );
-    window.location.href = `mailto:${c.email}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
