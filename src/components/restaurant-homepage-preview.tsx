@@ -35,15 +35,39 @@ function CornerOrnament({ className = "" }: { className?: string }) {
   );
 }
 
-/** Mini-mock: ravintolan verkkosivun etusivu — editorial + ornamenttigrafiikka */
-export function RestaurantHomepagePreview({ image }: { image: string }) {
+/** Mini-mock: ravintolan / kahvilan verkkosivun etusivu — editorial + ornamenttigrafiikka */
+export function RestaurantHomepagePreview({
+  image,
+  brand = "Atelier",
+  tileImages,
+}: {
+  image: string;
+  brand?: string;
+  tileImages?: [string, string, string];
+}) {
   const { home } = useMessages();
   const p = home.sitePreview;
+  const brandMark = brand.trim().charAt(0).toUpperCase() || "A";
 
   const tiles = [
-    { label: p.tileSpecialMenus, image: erikoismenut, position: "center 45%", n: "01" },
-    { label: p.tileEvents, image: tapahtumat, position: "center 40%", n: "02" },
-    { label: p.tileGroups, image: ryhmille, position: "center 45%", n: "03" },
+    {
+      label: p.tileSpecialMenus,
+      image: tileImages?.[0] ?? erikoismenut,
+      position: "center 45%",
+      n: "01",
+    },
+    {
+      label: p.tileEvents,
+      image: tileImages?.[1] ?? tapahtumat,
+      position: "center 40%",
+      n: "02",
+    },
+    {
+      label: p.tileGroups,
+      image: tileImages?.[2] ?? ryhmille,
+      position: "center 45%",
+      n: "03",
+    },
   ] as const;
 
   return (
@@ -75,11 +99,11 @@ export function RestaurantHomepagePreview({ image }: { image: string }) {
             <span className="absolute inset-0 rounded-full border border-[#c9a882]/70" />
             <span className="absolute inset-[2px] rounded-full border border-[#432f24]/25" />
             <span className="relative font-serif text-[0.55rem] italic leading-none text-[#432f24] sm:text-[0.62rem]">
-              A
+              {brandMark}
             </span>
           </span>
           <span className="font-serif text-[0.7rem] italic leading-none tracking-tight text-[#432f24] sm:text-[0.8rem]">
-            Atelier
+            {brand}
           </span>
         </div>
         <div className="flex items-center gap-1 text-[0.4rem] font-semibold uppercase tracking-[0.14em] text-[#432f24]/50 sm:gap-1.5 sm:text-[0.46rem]">
@@ -144,7 +168,7 @@ export function RestaurantHomepagePreview({ image }: { image: string }) {
           </div>
 
           <p className="font-serif text-[1.4rem] italic leading-[0.95] text-white sm:text-[1.6rem]">
-            Atelier
+            {brand}
           </p>
 
           <GoldFlourish className="mt-1.5 w-[4.5rem] text-[#c9a882] sm:mt-2 sm:w-[5.25rem]" />

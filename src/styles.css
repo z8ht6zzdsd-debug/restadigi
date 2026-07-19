@@ -358,9 +358,9 @@
 
   .page-hero__devices-image {
     display: block;
-    width: 100%;
+    width: min(118%, 92rem);
     height: auto;
-    max-height: min(42vh, 24rem);
+    max-height: min(52vh, 30rem);
     margin-inline: auto;
     object-fit: contain;
     object-position: center bottom;
@@ -368,37 +368,37 @@
 
   .page-hero__devices-promo {
     position: absolute;
-    left: 50%;
-    bottom: 0.85rem;
+    left: 1rem;
+    top: 50%;
     z-index: 2;
     width: max-content;
-    max-width: calc(100% - 2rem);
-    transform: translateX(-50%);
+    max-width: min(14rem, calc(100% - 2rem));
+    transform: translateY(-50%);
   }
 
   .page-hero__devices-promo-chip {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 9999px;
-    background: #f7f3ee;
-    padding: 0.55rem 1.1rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    line-height: 1.2;
-    color: #432f24;
+    border-radius: 0.85rem;
+    background: var(--accent);
+    padding: 0.7rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    line-height: 1.25;
+    color: #fff;
     text-decoration: none;
-    box-shadow: 0 10px 28px -14px rgba(26, 18, 14, 0.55);
+    box-shadow: 0 14px 32px -16px rgba(26, 18, 14, 0.55);
     text-wrap: balance;
-    text-align: center;
+    text-align: left;
     transition:
       background-color 0.15s ease,
       transform 0.15s ease;
   }
 
   .page-hero__devices-promo-chip:hover {
-    background: #fff;
+    background: color-mix(in oklch, var(--accent) 88%, white);
   }
 
   .page-hero__devices-copy {
@@ -435,17 +435,19 @@
     }
 
     .page-hero__devices-image {
-      max-height: min(48vh, 28rem);
+      max-height: min(58vh, 36rem);
     }
 
     .page-hero__devices-promo {
-      bottom: 1.15rem;
+      left: 1.5rem;
+      max-width: min(16rem, calc(100% - 3rem));
     }
 
     .page-hero__devices-promo-chip {
-      padding: 0.65rem 1.35rem;
+      padding: 0.85rem 1.2rem;
       font-size: 0.9rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
+      border-radius: 1rem;
     }
 
     .page-hero__devices-copy {
@@ -455,7 +457,13 @@
 
   @media (min-width: 1024px) {
     .page-hero__devices-image {
-      max-height: min(52vh, 32rem);
+      width: min(122%, 96rem);
+      max-height: min(64vh, 42rem);
+    }
+
+    .page-hero__devices-promo {
+      left: 2rem;
+      max-width: min(17rem, calc(100% - 4rem));
     }
   }
 

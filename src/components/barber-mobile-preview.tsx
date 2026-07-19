@@ -1,10 +1,10 @@
-import barberHero from "@/assets/barber-haircut-hero.jpg";
 import { useMessages } from "@/i18n";
 
-/** Mini-mock: parturin verkkosivu puhelimen näytöllä */
-export function BarberMobilePreview() {
+/** Mini-mock: kahvilan / parturin verkkosivu puhelimen näytöllä */
+export function BarberMobilePreview({ image }: { image: string }) {
   const { home } = useMessages();
   const b = home.barberPreview;
+  const brandMark = b.brand.trim().charAt(0).toUpperCase() || "F";
 
   return (
     <div
@@ -15,7 +15,7 @@ export function BarberMobilePreview() {
       <div className="relative z-[1] flex shrink-0 items-center justify-between px-2 py-1.5">
         <div className="flex items-center gap-1">
           <span className="inline-flex size-4 items-center justify-center rounded-full bg-[#1a1512] text-[0.45rem] font-serif italic text-[#f7f3ee]">
-            N
+            {brandMark}
           </span>
           <span className="text-[0.52rem] font-semibold tracking-tight">{b.brand}</span>
         </div>
@@ -27,9 +27,9 @@ export function BarberMobilePreview() {
       {/* Hero-kuva + teksti */}
       <div className="relative z-[1] mx-1.5 min-h-0 flex-1 overflow-hidden rounded-[0.55rem]">
         <img
-          src={barberHero}
+          src={image}
           alt=""
-          className="absolute inset-0 size-full object-cover object-[center_22%]"
+          className="absolute inset-0 size-full object-cover object-[center_30%]"
         />
         <div
           className="absolute inset-0"

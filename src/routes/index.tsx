@@ -12,7 +12,11 @@ import delfinScreen from "@/assets/delfin-checkin-screen.jpg";
 import delfinScreen2 from "@/assets/delfin-checkin-screen-2.jpg";
 import rafaHero from "@/assets/rafa-romera-hero.jpg";
 import rafaLogo from "@/assets/rafa-romera-logo.png";
-import heroHome from "@/assets/hero-home.jpg";
+import freddosHero from "@/assets/freddos-coffee-open.jpg";
+import freddosEspresso from "@/assets/freddos-v2-espresso.jpg";
+import freddosLatte from "@/assets/freddos-v2-latte.jpg";
+import freddosBerry from "@/assets/freddos-v2-berry.jpg";
+import freddosIce from "@/assets/freddos-ice-latte.jpg";
 import whyUsDining from "@/assets/restaurant-dining.jpg";
 import introHotel from "@/assets/hero-hotel-web.jpg";
 import { RestaurantHomepagePreview } from "@/components/restaurant-homepage-preview";
@@ -88,29 +92,33 @@ function Index() {
         </div>
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-14 lg:py-20">
-          <div className="relative flex justify-center lg:col-span-5 lg:justify-start">
+          <div className="relative flex justify-center pb-4 lg:col-span-5 lg:justify-start lg:pb-2">
             <span
-              className="pointer-events-none absolute left-1/2 top-1/2 -z-0 hidden size-[118%] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-[#c9a882]/30 lg:block"
+              className="pointer-events-none absolute left-[42%] top-1/2 -z-0 hidden size-[110%] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-[#c9a882]/30 lg:block"
               aria-hidden
             />
-            <div className="relative z-[1] w-full max-w-[19rem] sm:max-w-[21rem] lg:max-w-none">
-              {/* Tabletti — ravintolasivu */}
-              <div className="relative w-full -rotate-2">
-                <div className="rounded-[1.5rem] border-[11px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_28px_60px_-20px_rgba(26,18,14,0.4)] sm:rounded-[1.75rem] sm:border-[13px]">
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-[0.7rem] bg-[#f7f3ee] sm:rounded-[0.9rem]">
-                    <RestaurantHomepagePreview image={heroHome} />
+            <div className="relative z-[1] w-full max-w-[17rem] sm:max-w-[19rem] lg:max-w-[21rem]">
+              {/* Tabletti — Freddos, vasemmalle ja vinoon */}
+              <div className="relative w-[88%] -translate-x-1 -rotate-[7deg] sm:w-[86%] sm:-translate-x-2">
+                <div className="rounded-[1.35rem] border-[10px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_28px_60px_-20px_rgba(26,18,14,0.4)] sm:rounded-[1.55rem] sm:border-[12px]">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-[0.65rem] bg-[#f7f3ee] sm:rounded-[0.85rem]">
+                    <RestaurantHomepagePreview
+                      brand="Freddos"
+                      image={freddosHero}
+                      tileImages={[freddosEspresso, freddosLatte, freddosBerry]}
+                    />
                   </div>
                 </div>
+              </div>
 
-                {/* Puhelin — parturisivu tabletin päällä */}
-                <div className="absolute bottom-[8%] right-[6%] z-[2] w-[38%] rotate-[6deg] sm:w-[36%]">
-                  <div className="rounded-[1.05rem] border-[6px] border-[#1a1512] bg-[#1a1512] shadow-[0_18px_36px_-12px_rgba(26,18,14,0.65)] sm:rounded-[1.2rem] sm:border-[7px]">
-                    <div className="relative mx-auto mb-0.5 mt-1 h-1 w-7 rounded-full bg-white/15 sm:mb-1 sm:mt-1.5 sm:h-1.5 sm:w-9" />
-                    <div className="relative aspect-[9/16] overflow-hidden rounded-[0.5rem] bg-[#1a1512] sm:rounded-[0.65rem]">
-                      <BarberMobilePreview />
-                    </div>
-                    <div className="mx-auto mb-0.5 mt-1 h-0.5 w-5 rounded-full bg-white/10 sm:mb-1 sm:mt-1.5 sm:h-1 sm:w-7" />
+              {/* Puhelin — toinen Freddos-sivu, oikealle reunaa kohti */}
+              <div className="absolute -bottom-1 -right-3 z-[2] w-[34%] rotate-[11deg] sm:-right-5 sm:bottom-0 sm:w-[32%]">
+                <div className="rounded-[1rem] border-[6px] border-[#1a1512] bg-[#1a1512] shadow-[0_18px_36px_-12px_rgba(26,18,14,0.65)] sm:rounded-[1.15rem] sm:border-[7px]">
+                  <div className="relative mx-auto mb-0.5 mt-1 h-1 w-6 rounded-full bg-white/15 sm:mb-1 sm:mt-1.5 sm:h-1.5 sm:w-8" />
+                  <div className="relative aspect-[9/16] overflow-hidden rounded-[0.45rem] bg-[#1a1512] sm:rounded-[0.6rem]">
+                    <BarberMobilePreview image={freddosIce} />
                   </div>
+                  <div className="mx-auto mb-0.5 mt-1 h-0.5 w-4 rounded-full bg-white/10 sm:mb-1 sm:mt-1.5 sm:h-1 sm:w-6" />
                 </div>
               </div>
             </div>
