@@ -104,7 +104,7 @@ export const en: Messages = {
     },
   },
   footer: {
-    copyright: "© {year} Restadigi — Helsinki",
+    copyright: "© {year} Restadigi",
   },
   home: {
     meta: {
