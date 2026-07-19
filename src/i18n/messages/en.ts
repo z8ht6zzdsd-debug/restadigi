@@ -374,7 +374,9 @@ export const en: Messages = {
       titleAfter: ".",
       description:
         "Well-designed websites and web content are your most important digital tools. They strengthen your brand visibility, make it easy for customers to reach you and leave a strong first impression.",
-      promo: "Website packages from 399 € + VAT",
+      promo: "from 399€",
+      promoLine1: "from",
+      promoLine2: "399€",
     },
     midBanner: {
       title: "Your journey to digital success starts here!",

@@ -375,7 +375,9 @@ export const fi: Messages = {
       titleAfter: ".",
       description:
         "Hyvin suunnitellut verkkosivut ja verkkosisällöt ovat yrityksesi tärkeimmät digitaaliset työkalut. Ne vahvistavat brändisi näkyvyyttä, helpottavat asiakkaiden yhteydenottoa ja jättävät vahvan ensivaikutelman.",
-      promo: "Verkkosivupaketit alk. 399 € + alv",
+      promo: "alk. 399€",
+      promoLine1: "alk.",
+      promoLine2: "399€",
     },
     midBanner: {
       title: "Matkasi digimenestykseen alkaa tästä!",

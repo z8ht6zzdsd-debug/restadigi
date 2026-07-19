@@ -230,6 +230,8 @@ export type Messages = {
       titleAfter: string;
       description: string;
       promo: string;
+      promoLine1: string;
+      promoLine2: string;
     };
     midBanner: {
       title: string;

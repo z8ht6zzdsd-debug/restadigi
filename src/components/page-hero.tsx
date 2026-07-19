@@ -7,6 +7,8 @@ type PageHeroProps = {
   actions?: ReactNode;
   /** Optional promo chip on the brown devices hero band */
   promo?: ReactNode;
+  /** Optional photo overlaid on the left phone screen (devices hero) */
+  phoneScreenImage?: string;
   tall?: boolean;
   /** Laitemockup: laitteet ylhäällä, teksti alla omalla kaistalla */
   devices?: boolean;
@@ -22,6 +24,7 @@ export function PageHero({
   description,
   actions,
   promo,
+  phoneScreenImage,
   tall,
   devices,
   lifestyle,
@@ -31,15 +34,28 @@ export function PageHero({
     return (
       <header className="page-hero page-hero--devices">
         <div className="page-hero__devices-visual">
-          <img
-            src={image}
-            alt=""
-            aria-hidden
-            width={1600}
-            height={900}
-            className={"page-hero__devices-image" + (imageClassName ? ` ${imageClassName}` : "")}
-          />
-          {promo && <div className="page-hero__devices-promo">{promo}</div>}
+          <div className="page-hero__devices-stage">
+            <img
+              src={image}
+              alt=""
+              aria-hidden
+              width={1600}
+              height={900}
+              className={"page-hero__devices-image" + (imageClassName ? ` ${imageClassName}` : "")}
+            />
+            {phoneScreenImage && (
+              <div className="page-hero__devices-phone" aria-hidden>
+                <div className="page-hero__devices-phone-bezel">
+                  <span className="page-hero__devices-phone-notch" />
+                  <div className="page-hero__devices-phone-screen">
+                    <img src={phoneScreenImage} alt="" />
+                  </div>
+                  <span className="page-hero__devices-phone-home" />
+                </div>
+              </div>
+            )}
+            {promo && <div className="page-hero__devices-promo">{promo}</div>}
+          </div>
         </div>
         <div className="page-hero__devices-copy">
           <div className="page-hero__devices-copy-inner">

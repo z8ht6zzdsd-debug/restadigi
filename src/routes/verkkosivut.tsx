@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Crown, Gem, Plus, Sparkles, type LucideIcon } from "lucide-react";
 import heroWebDevices from "@/assets/hero-web-devices.jpg";
+import freddosEspresso from "@/assets/freddos-espresso.jpg";
 import successBusyTerrace from "@/assets/success-busy-terrace.jpg";
 import successTouristGroup from "@/assets/success-tourist-group.jpg";
 import successGuestsArriving from "@/assets/success-guests-arriving.jpg";
@@ -72,9 +73,15 @@ function KotisivutPage() {
       <PageHero
         devices
         image={heroWebDevices}
+        phoneScreenImage={freddosEspresso}
         promo={
-          <a href="#verkkosivu-paketit" className="page-hero__devices-promo-chip">
-            {w.hero.promo}
+          <a
+            href="#verkkosivu-paketit"
+            className="page-hero__devices-promo-chip"
+            aria-label={w.hero.promo}
+          >
+            <span className="page-hero__devices-promo-line">{w.hero.promoLine1}</span>
+            <span className="page-hero__devices-promo-price">{w.hero.promoLine2}</span>
           </a>
         }
         title={

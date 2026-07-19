@@ -376,7 +376,9 @@ export const es: Messages = {
       titleAfter: ".",
       description:
         "Unos sitios web y contenidos bien diseñados son tus herramientas digitales más importantes. Refuerzan la visibilidad de tu marca, facilitan el contacto de los clientes y dejan una fuerte primera impresión.",
-      promo: "Paquetes web desde 399 € + IVA",
+      promo: "desde 399€",
+      promoLine1: "desde",
+      promoLine2: "399€",
     },
     midBanner: {
       title: "¡Tu camino hacia el éxito digital empieza aquí!",
