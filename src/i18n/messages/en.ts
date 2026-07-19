@@ -246,8 +246,7 @@ export const en: Messages = {
   contact: {
     meta: {
       title: "Contact — Restadigi",
-      description:
-        `Tell us about your project — we'll get back to you within one business day. ${CONTACT_EMAIL}`,
+      description: `Tell us about your project — we'll get back to you within one business day. ${CONTACT_EMAIL}`,
       ogTitle: "Contact — Restadigi",
       ogDescription: "Tell us about your project — we'll get back to you within one business day.",
     },

@@ -247,8 +247,7 @@ export const fi: Messages = {
   contact: {
     meta: {
       title: "Ota yhteyttä — Restadigi",
-      description:
-        `Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. ${CONTACT_EMAIL}`,
+      description: `Kerro projektistasi, palaamme asiaan yhden arkipäivän kuluessa. ${CONTACT_EMAIL}`,
       ogTitle: "Ota yhteyttä — Restadigi",
       ogDescription: "Kerro projektistasi — palaamme asiaan yhden arkipäivän kuluessa.",
     },
