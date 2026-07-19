@@ -94,13 +94,15 @@ export const en: Messages = {
     ],
     contactPanel: {
       company: "Restadigi Finland",
-      address: "Errkiläntie, 04740 Mäntsälä",
+      address: "Erkkiläntie 47, 04740 Mäntsälä",
       emailLabel: "Email",
       email: "info@restadigi.fi",
       phoneLabel: "Phone",
       whatsappLabel: "WhatsApp",
       phoneDisplay: "+358 403 738 332",
       phoneTel: "+358403738332",
+      hoursLabel: "Hours",
+      hours: "Mon–Fri 9–16",
     },
   },
   footer: {
@@ -133,6 +135,15 @@ export const en: Messages = {
       tileSpecialMenus: "Special menus",
       tileEvents: "Events",
       tileGroups: "Groups",
+    },
+    barberPreview: {
+      brand: "Nordic Cuts",
+      menu: "Menu",
+      tagline: "Mäntsälä · Barber",
+      headline: "Style that fits.",
+      bookCta: "Book now",
+      bookShort: "Book",
+      services: ["Haircut", "Beard & trim", "Colour"],
     },
     intro: {
       titleLine1: "Industry-specific solutions.",
@@ -251,10 +262,12 @@ export const en: Messages = {
       phone: "Phone",
       whatsapp: "WhatsApp",
       studio: "Studio",
+      hours: "Hours",
     },
     email: "info@restadigi.fi",
     phoneDisplay: "+358 403 738 332",
     phoneTel: "+358403738332",
+    hours: "Mon–Fri 9–16",
     studioLine1: "Helsinki, Finland",
     studioLine2: "Remote across Europe",
     form: {
@@ -361,6 +374,7 @@ export const en: Messages = {
       titleAfter: ".",
       description:
         "Well-designed websites and web content are your most important digital tools. They strengthen your brand visibility, make it easy for customers to reach you and leave a strong first impression.",
+      promo: "Website packages from 399 € + VAT",
     },
     midBanner: {
       title: "Your journey to digital success starts here!",
@@ -409,7 +423,8 @@ export const en: Messages = {
     ],
     footnoteBefore: "Package prices are fixed. Domain and hosting are chosen separately from ",
     footnoteLink: "hosting & maintenance",
-    footnoteAfter: ".",
+    footnoteAfter:
+      ". You can also buy the domain and web hosting yourself, or use an existing domain.",
   },
   visibility: {
     meta: {

@@ -45,11 +45,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
+  const detail =
+    error?.message?.trim() || (typeof error === "string" ? error : "") || "Unknown error";
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">{t.error.title}</h1>
         <p className="mt-2 text-sm text-muted-foreground">{t.error.description}</p>
+        <p className="mt-4 break-words rounded-lg bg-muted px-3 py-2 text-left font-mono text-xs text-foreground/80">
+          {detail}
+        </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {

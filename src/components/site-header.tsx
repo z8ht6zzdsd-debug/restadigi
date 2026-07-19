@@ -247,6 +247,10 @@ export function SiteHeader() {
                     </span>
                     {t.header.contactPanel.phoneDisplay}
                   </a>
+                  <p className="text-sm text-foreground/80">
+                    <span className="text-foreground/45">{t.header.contactPanel.hoursLabel}: </span>
+                    {t.header.contactPanel.hours}
+                  </p>
                 </div>
               </div>
             )}
@@ -391,6 +395,10 @@ export function SiteHeader() {
                     </span>
                     {t.header.contactPanel.phoneDisplay}
                   </a>
+                  <p className="text-sm text-foreground/80">
+                    <span className="text-foreground/45">{t.header.contactPanel.hoursLabel}: </span>
+                    {t.header.contactPanel.hours}
+                  </p>
                 </div>
               </div>
             </MobileSection>

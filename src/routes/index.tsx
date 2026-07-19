@@ -16,6 +16,7 @@ import heroHome from "@/assets/hero-home.jpg";
 import whyUsDining from "@/assets/restaurant-dining.jpg";
 import introHotel from "@/assets/hero-hotel-web.jpg";
 import { RestaurantHomepagePreview } from "@/components/restaurant-homepage-preview";
+import { BarberMobilePreview } from "@/components/barber-mobile-preview";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -76,7 +77,7 @@ function Index() {
       />
       <SiteHeader />
 
-      {/* Hero: valkoinen pohja, ravintolan etusivu tablettikehyksessä vasemmalla */}
+      {/* Hero: ravintolan tabletti + parturin mobiili */}
       <section className="relative overflow-hidden bg-background">
         {/* Taustagrafiikka — pehmeät renkaat + piste */}
         <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -88,15 +89,28 @@ function Index() {
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-14 lg:py-20">
           <div className="relative flex justify-center lg:col-span-5 lg:justify-start">
-            {/* Kultainen aksenttirengas tabletin takana */}
             <span
               className="pointer-events-none absolute left-1/2 top-1/2 -z-0 hidden size-[118%] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-[#c9a882]/30 lg:block"
               aria-hidden
             />
-            <div className="relative z-[1] w-full max-w-[19rem] -rotate-2 sm:max-w-[21rem] lg:max-w-none">
-              <div className="rounded-[1.5rem] border-[11px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_28px_60px_-20px_rgba(26,18,14,0.4)] sm:rounded-[1.75rem] sm:border-[13px]">
-                <div className="relative aspect-[3/4] overflow-hidden rounded-[0.7rem] bg-[#f7f3ee] sm:rounded-[0.9rem]">
-                  <RestaurantHomepagePreview image={heroHome} />
+            <div className="relative z-[1] w-full max-w-[19rem] sm:max-w-[21rem] lg:max-w-none">
+              {/* Tabletti — ravintolasivu */}
+              <div className="relative w-full -rotate-2">
+                <div className="rounded-[1.5rem] border-[11px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_28px_60px_-20px_rgba(26,18,14,0.4)] sm:rounded-[1.75rem] sm:border-[13px]">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-[0.7rem] bg-[#f7f3ee] sm:rounded-[0.9rem]">
+                    <RestaurantHomepagePreview image={heroHome} />
+                  </div>
+                </div>
+
+                {/* Puhelin — parturisivu tabletin päällä */}
+                <div className="absolute bottom-[8%] right-[6%] z-[2] w-[38%] rotate-[6deg] sm:w-[36%]">
+                  <div className="rounded-[1.05rem] border-[6px] border-[#1a1512] bg-[#1a1512] shadow-[0_18px_36px_-12px_rgba(26,18,14,0.65)] sm:rounded-[1.2rem] sm:border-[7px]">
+                    <div className="relative mx-auto mb-0.5 mt-1 h-1 w-7 rounded-full bg-white/15 sm:mb-1 sm:mt-1.5 sm:h-1.5 sm:w-9" />
+                    <div className="relative aspect-[9/16] overflow-hidden rounded-[0.5rem] bg-[#1a1512] sm:rounded-[0.65rem]">
+                      <BarberMobilePreview />
+                    </div>
+                    <div className="mx-auto mb-0.5 mt-1 h-0.5 w-5 rounded-full bg-white/10 sm:mb-1 sm:mt-1.5 sm:h-1 sm:w-7" />
+                  </div>
                 </div>
               </div>
             </div>

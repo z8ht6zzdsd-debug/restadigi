@@ -94,13 +94,15 @@ export const fi: Messages = {
     ],
     contactPanel: {
       company: "Restadigi Finland",
-      address: "Errkiläntie, 04740 Mäntsälä",
+      address: "Erkkiläntie 47, 04740 Mäntsälä",
       emailLabel: "Sähköposti",
       email: "info@restadigi.fi",
       phoneLabel: "Puhelin",
       whatsappLabel: "WhatsApp",
       phoneDisplay: "+358 403 738 332",
       phoneTel: "+358403738332",
+      hoursLabel: "Aukiolo",
+      hours: "Ma–pe 9–16",
     },
   },
   footer: {
@@ -134,6 +136,15 @@ export const fi: Messages = {
       tileSpecialMenus: "Erikoismenut",
       tileEvents: "Tapahtumat",
       tileGroups: "Ryhmille",
+    },
+    barberPreview: {
+      brand: "Nordic Cuts",
+      menu: "Valikko",
+      tagline: "Mäntsälä · Parturi",
+      headline: "Tyyli, joka istuu.",
+      bookCta: "Varaa aika",
+      bookShort: "Aika",
+      services: ["Parturi", "Parta & trimmaus", "Värjäys"],
     },
     intro: {
       titleLine1: "Toimialakohtaiset ratkaisut.",
@@ -252,10 +263,12 @@ export const fi: Messages = {
       phone: "Puhelin",
       whatsapp: "WhatsApp",
       studio: "Studio",
+      hours: "Aukiolo",
     },
     email: "info@restadigi.fi",
     phoneDisplay: "+358 403 738 332",
     phoneTel: "+358403738332",
+    hours: "Ma–pe 9–16",
     studioLine1: "Helsinki, Suomi",
     studioLine2: "Etätyö koko Euroopassa",
     form: {
@@ -362,6 +375,7 @@ export const fi: Messages = {
       titleAfter: ".",
       description:
         "Hyvin suunnitellut verkkosivut ja verkkosisällöt ovat yrityksesi tärkeimmät digitaaliset työkalut. Ne vahvistavat brändisi näkyvyyttä, helpottavat asiakkaiden yhteydenottoa ja jättävät vahvan ensivaikutelman.",
+      promo: "Verkkosivupaketit alk. 399 € + alv",
     },
     midBanner: {
       title: "Matkasi digimenestykseen alkaa tästä!",
@@ -410,7 +424,8 @@ export const fi: Messages = {
     ],
     footnoteBefore: "Pakettihinnat ovat kiinteitä. Verkkotunnus ja hosting valitaan erikseen ",
     footnoteLink: "ylläpitopalveluista",
-    footnoteAfter: ".",
+    footnoteAfter:
+      ". Voit myös ostaa domainin ja verkkohotellin itse tai käyttää jo olemassa olevaa domainia.",
   },
   visibility: {
     meta: {

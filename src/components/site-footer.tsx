@@ -44,6 +44,10 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
               {c.phoneDisplay}
             </a>
           </p>
+          <p>
+            <span className="sr-only">{c.hoursLabel}: </span>
+            {c.hours}
+          </p>
         </div>
         <p className={"text-sm " + muted}>{copyright}</p>
       </div>

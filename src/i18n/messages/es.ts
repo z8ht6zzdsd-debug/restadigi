@@ -94,13 +94,15 @@ export const es: Messages = {
     ],
     contactPanel: {
       company: "Restadigi Finland",
-      address: "Errkiläntie, 04740 Mäntsälä",
+      address: "Erkkiläntie 47, 04740 Mäntsälä",
       emailLabel: "Correo",
       email: "info@restadigi.fi",
       phoneLabel: "Teléfono",
       whatsappLabel: "WhatsApp",
       phoneDisplay: "+358 403 738 332",
       phoneTel: "+358403738332",
+      hoursLabel: "Horario",
+      hours: "Lun–vie 9–16",
     },
   },
   footer: {
@@ -135,6 +137,15 @@ export const es: Messages = {
       tileSpecialMenus: "Menús especiales",
       tileEvents: "Eventos",
       tileGroups: "Grupos",
+    },
+    barberPreview: {
+      brand: "Nordic Cuts",
+      menu: "Menú",
+      tagline: "Mäntsälä · Barbería",
+      headline: "Estilo que encaja.",
+      bookCta: "Reservar hora",
+      bookShort: "Hora",
+      services: ["Corte", "Barba y perfilado", "Color"],
     },
     intro: {
       titleLine1: "Soluciones por sector.",
@@ -252,10 +263,12 @@ export const es: Messages = {
       phone: "Teléfono",
       whatsapp: "WhatsApp",
       studio: "Estudio",
+      hours: "Horario",
     },
     email: "info@restadigi.fi",
     phoneDisplay: "+358 403 738 332",
     phoneTel: "+358403738332",
+    hours: "Lun–vie 9–16",
     studioLine1: "Helsinki, Finlandia",
     studioLine2: "Trabajo remoto en toda Europa",
     form: {
@@ -363,6 +376,7 @@ export const es: Messages = {
       titleAfter: ".",
       description:
         "Unos sitios web y contenidos bien diseñados son tus herramientas digitales más importantes. Refuerzan la visibilidad de tu marca, facilitan el contacto de los clientes y dejan una fuerte primera impresión.",
+      promo: "Paquetes web desde 399 € + IVA",
     },
     midBanner: {
       title: "¡Tu camino hacia el éxito digital empieza aquí!",
@@ -413,7 +427,8 @@ export const es: Messages = {
     footnoteBefore:
       "Los precios de los paquetes son fijos. El dominio y el hosting se eligen por separado en ",
     footnoteLink: "servicios de mantenimiento",
-    footnoteAfter: ".",
+    footnoteAfter:
+      ". También puedes comprar el dominio y el hosting tú mismo, o usar un dominio que ya tengas.",
   },
   visibility: {
     meta: {

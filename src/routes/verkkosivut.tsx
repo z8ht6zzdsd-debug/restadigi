@@ -72,6 +72,11 @@ function KotisivutPage() {
       <PageHero
         devices
         image={heroWebDevices}
+        promo={
+          <a href="#verkkosivu-paketit" className="page-hero__devices-promo-chip">
+            {w.hero.promo}
+          </a>
+        }
         title={
           <>
             {w.hero.titleBefore}

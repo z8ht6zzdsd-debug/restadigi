@@ -38,6 +38,8 @@ export type Messages = {
       whatsappLabel: string;
       phoneDisplay: string;
       phoneTel: string;
+      hoursLabel: string;
+      hours: string;
     };
   };
   footer: {
@@ -68,6 +70,15 @@ export type Messages = {
       tileSpecialMenus: string;
       tileEvents: string;
       tileGroups: string;
+    };
+    barberPreview: {
+      brand: string;
+      menu: string;
+      tagline: string;
+      headline: string;
+      bookCta: string;
+      bookShort: string;
+      services: [string, string, string];
     };
     intro: {
       titleLine1: string;
@@ -155,10 +166,12 @@ export type Messages = {
       phone: string;
       whatsapp: string;
       studio: string;
+      hours: string;
     };
     email: string;
     phoneDisplay: string;
     phoneTel: string;
+    hours: string;
     studioLine1: string;
     studioLine2: string;
     form: {
@@ -216,6 +229,7 @@ export type Messages = {
       titleAccent: string;
       titleAfter: string;
       description: string;
+      promo: string;
     };
     midBanner: {
       title: string;
