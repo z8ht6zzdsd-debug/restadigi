@@ -88,7 +88,7 @@ function KotisivutPage() {
               </div>
               <a
                 href="#verkkosivu-paketit"
-                className="page-hero__devices-promo-chip shrink-0"
+                className="page-hero__devices-promo-chip hidden shrink-0 lg:inline-flex"
                 aria-label={w.hero.promo}
               >
                 <span className="page-hero__devices-promo-line">{w.hero.promoLine1}</span>
@@ -112,6 +112,18 @@ function KotisivutPage() {
             </div>
           </div>
         </article>
+
+        {/* Mobiili: tarjouspallo kokonaan näkyvissä mid-bannerin ja pakettiotsikon välissä */}
+        <div className="mb-6 flex justify-center lg:hidden">
+          <a
+            href="#verkkosivu-paketit"
+            className="page-hero__devices-promo-chip page-hero__devices-promo-chip--mobile"
+            aria-label={w.hero.promo}
+          >
+            <span className="page-hero__devices-promo-line">{w.hero.promoLine1}</span>
+            <span className="page-hero__devices-promo-price">{w.hero.promoLine2}</span>
+          </a>
+        </div>
 
         <ProductPackageCards
           embedded
