@@ -5,11 +5,10 @@ import sportFootball from "@/assets/sport-football.jpg";
 import sportFootball2 from "@/assets/sport-football-2.jpg";
 import sportHockey from "@/assets/sport-hockey.jpg";
 import sportHockey2 from "@/assets/sport-hockey-2.jpg";
-import laskuttamoLogo from "@/assets/laskuttamo-logo-white.png";
 import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import type { PackageDeviceMode } from "@/components/package-device-header";
-import { MarketingBand, MarketingBox, MarketingHeading } from "@/components/marketing-band";
+import { MarketingBand, MarketingBox } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -158,82 +157,7 @@ function DiginakyvyysPage() {
           footnote={v.footnote}
         />
 
-        <MarketingHeading className="mt-14 sm:mt-16">{b.billing.title}</MarketingHeading>
-
-        <div className="space-y-4 sm:space-y-5">
-          <MarketingBox tone="dark" justify="start">
-            <p className="max-w-3xl text-sm leading-relaxed text-white/88 sm:text-base">
-              {b.billing.intro}
-            </p>
-            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/88 sm:text-base">
-              {b.billing.providerLead}
-            </p>
-            <div className="mt-8 flex flex-col gap-6 border-t border-white/15 pt-7 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
-              <a
-                href={b.billing.providerSiteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex shrink-0 items-center"
-              >
-                <img
-                  src={laskuttamoLogo}
-                  alt={b.billing.providerName}
-                  width={220}
-                  height={21}
-                  className="h-6 w-auto sm:h-7"
-                />
-              </a>
-              <div className="min-w-0 space-y-1.5 text-sm text-white/85 sm:text-right">
-                <p>
-                  <a
-                    href={`mailto:${b.billing.providerEmail}`}
-                    className="underline underline-offset-2 hover:text-white"
-                  >
-                    {b.billing.providerEmail}
-                  </a>
-                </p>
-                <p>
-                  <a
-                    href={`tel:${b.billing.providerPhone.replace(/\s/g, "")}`}
-                    className="underline underline-offset-2 hover:text-white"
-                  >
-                    {b.billing.providerPhone}
-                  </a>
-                  <span className="text-white/55"> · {b.billing.providerHours}</span>
-                </p>
-                <p>
-                  <a
-                    href={b.billing.providerSiteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-2 hover:text-white"
-                  >
-                    {b.billing.providerSiteLabel}
-                  </a>
-                </p>
-                <p className="text-white/60">{b.billing.providerAddressNote}</p>
-              </div>
-            </div>
-          </MarketingBox>
-
-          <MarketingBox tone="white" justify="start" className="min-h-0">
-            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-foreground/45">
-              {b.billing.groundsTitle}
-            </p>
-            <div className="max-w-3xl space-y-4">
-              {b.billing.groundsBody.map((paragraph) => (
-                <p
-                  key={paragraph}
-                  className="text-sm leading-relaxed text-foreground/70 sm:text-base"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </MarketingBox>
-        </div>
-
-        <MarketingBox tone="dark" justify="start" className="mt-4 sm:mt-5 min-h-[22rem]">
+        <MarketingBox tone="dark" justify="start" className="mt-14 sm:mt-16 min-h-[22rem]">
           <h3 className="text-2xl font-bold tracking-tight text-balance sm:text-3xl">
             {b.form.title}
           </h3>
