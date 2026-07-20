@@ -56,10 +56,6 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
               {c.whatsappLabel}: {c.whatsappDisplay}
             </a>
           </p>
-          <p>
-            <span className={strong}>{c.hoursLabel}: </span>
-            {c.hours}
-          </p>
         </div>
         <p className={"text-sm " + muted}>{copyright}</p>
       </div>

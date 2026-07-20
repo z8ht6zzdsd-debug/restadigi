@@ -41,8 +41,6 @@ export type Messages = {
       phoneDisplay: string;
       phoneTel: string;
       whatsappDisplay: string;
-      hoursLabel: string;
-      hours: string;
     };
   };
   footer: {
@@ -170,13 +168,11 @@ export type Messages = {
       whatsapp: string;
       studio: string;
       person: string;
-      hours: string;
     };
     email: string;
     phoneDisplay: string;
     phoneTel: string;
     whatsappDisplay: string;
-    hours: string;
     studioLine1: string;
     studioLine2: string;
     person: string;

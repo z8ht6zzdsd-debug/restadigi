@@ -132,12 +132,6 @@ function YhteysPage() {
               </div>
               <div>
                 <div className="mb-2 text-xs uppercase tracking-[0.2em] text-white/50">
-                  {c.labels.hours}
-                </div>
-                <p className="text-lg font-medium">{c.hours}</p>
-              </div>
-              <div>
-                <div className="mb-2 text-xs uppercase tracking-[0.2em] text-white/50">
                   {c.labels.studio}
                 </div>
                 <p className="text-base text-white/75">
