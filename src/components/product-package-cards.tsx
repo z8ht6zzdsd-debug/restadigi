@@ -125,7 +125,7 @@ export function ProductPackageCards({
             pkg.headerVisual === "brandLogos" ? "brandLogos" : packageHeaderKind(pkg.name);
           const deviceLayout = Boolean(pkg.deviceLayout && pkg.headerImage);
           const headerH = deviceLayout
-            ? "h-44 sm:h-52"
+            ? "h-48 sm:h-56"
             : headerKind === "sports" || headerKind === "brandLogos"
               ? "h-36 sm:h-40"
               : pkg.headerImage
