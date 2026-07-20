@@ -633,15 +633,15 @@ export const fi: Messages = {
       safeTitleAccent: "vaivaton",
       safeTitleAfter: " ratkaisu.",
       safeBody:
-        "Jotta chatbot tuottaa tulosta vuodesta toiseen, se vaatii jatkuvaa huolenpitoa. Kuukausimaksullinen palvelumalli varmistaa, että botti kehittyy ja toimii saumattomasti yrityksen muuttuvan datan ja teknologian mukana.",
+        "Jotta chatbot tuottaa tulosta vuodesta toiseen, se vaatii jatkuvaa huolenpitoa. Vuosimaksullinen palvelumalli varmistaa, että botti kehittyy ja toimii saumattomasti yrityksen muuttuvan datan ja teknologian mukana — päivitämme alustan turvalliseksi, koulutamme botin uusilla tuotetiedoilla ja kampanjoilla, analysoimme keskusteluja ja optimoimme vastauksia. Sinun ei tarvitse huolehtia teknisestä ylläpidosta: asiantuntijamme pitävät huolen, että botti palvelee asiakkaitasi luotettavasti vuosi toisensa perään.",
       monthly: [
         {
           title: "Päivittyvä teknologia",
-          body: "Verkkoympäristö ja tekoäly kehittyvät jatkuvasti. Kuukausimaksulla varmistamme, että bottisi toimii aina uusimmalla ja turvallisimmalla alustalla.",
+          body: "Verkkoympäristö ja tekoäly kehittyvät jatkuvasti. Vuosimaksulla varmistamme, että bottisi toimii aina uusimmalla ja turvallisimmalla alustalla.",
         },
         {
           title: "Sopii yrityksen omaan dataan",
-          body: "Bottia voidaan opettaa. Kuukausittainen ylläpito mahdollistaa botin kouluttamisen yrityksesi uusilla tuotetiedoilla, kampanjoilla ja vastauksilla.",
+          body: "Bottia voidaan opettaa. Vuosittainen ylläpito mahdollistaa botin kouluttamisen yrityksesi uusilla tuotetiedoilla, kampanjoilla ja vastauksilla.",
         },
         {
           title: "Proaktiivinen kehitys",
