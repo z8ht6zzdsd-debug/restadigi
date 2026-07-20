@@ -91,6 +91,12 @@ function YhteysPage() {
             <div className="space-y-7">
               <div>
                 <div className="mb-2 text-xs uppercase tracking-[0.2em] text-white/50">
+                  {c.labels.person}
+                </div>
+                <p className="text-lg font-medium">{c.person}</p>
+              </div>
+              <div>
+                <div className="mb-2 text-xs uppercase tracking-[0.2em] text-white/50">
                   {c.labels.email}
                 </div>
                 <a
@@ -121,7 +127,7 @@ function YhteysPage() {
                   rel="noopener noreferrer"
                   className="text-lg font-medium transition-colors hover:text-accent"
                 >
-                  {c.phoneDisplay}
+                  {c.whatsappDisplay}
                 </a>
               </div>
               <div>
@@ -135,9 +141,9 @@ function YhteysPage() {
                   {c.labels.studio}
                 </div>
                 <p className="text-base text-white/75">
-                  {c.studioLine1}
-                  <br />
                   {c.studioLine2}
+                  <br />
+                  {c.studioLine1}
                 </p>
               </div>
             </div>

@@ -32,6 +32,7 @@ export type Messages = {
     languagesList: Array<{ code: "fi" | "en" | "es"; label: string }>;
     contactPanel: {
       company: string;
+      person: string;
       address: string;
       emailLabel: string;
       email: string;
@@ -39,6 +40,7 @@ export type Messages = {
       whatsappLabel: string;
       phoneDisplay: string;
       phoneTel: string;
+      whatsappDisplay: string;
       hoursLabel: string;
       hours: string;
     };
@@ -167,14 +169,17 @@ export type Messages = {
       phone: string;
       whatsapp: string;
       studio: string;
+      person: string;
       hours: string;
     };
     email: string;
     phoneDisplay: string;
     phoneTel: string;
+    whatsappDisplay: string;
     hours: string;
     studioLine1: string;
     studioLine2: string;
+    person: string;
     form: {
       name: string;
       company: string;

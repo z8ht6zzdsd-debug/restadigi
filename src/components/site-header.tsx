@@ -227,6 +227,7 @@ export function SiteHeader() {
                 <div className="text-sm font-semibold tracking-tight text-foreground">
                   {t.header.contactPanel.company}
                 </div>
+                <p className="mt-1 text-sm text-foreground/70">{t.header.contactPanel.person}</p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground/65">
                   {t.header.contactPanel.address}
                 </p>
@@ -254,7 +255,7 @@ export function SiteHeader() {
                     <span className="text-foreground/45">
                       {t.header.contactPanel.whatsappLabel}:{" "}
                     </span>
-                    {t.header.contactPanel.phoneDisplay}
+                    {t.header.contactPanel.whatsappDisplay}
                   </a>
                   <p className="text-sm text-foreground/80">
                     <span className="text-foreground/45">{t.header.contactPanel.hoursLabel}: </span>
@@ -387,6 +388,7 @@ export function SiteHeader() {
                 <div className="text-sm font-semibold text-foreground">
                   {t.header.contactPanel.company}
                 </div>
+                <p className="mt-1 text-sm text-foreground/70">{t.header.contactPanel.person}</p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground/65">
                   {t.header.contactPanel.address}
                 </p>
@@ -414,7 +416,7 @@ export function SiteHeader() {
                     <span className="text-foreground/45">
                       {t.header.contactPanel.whatsappLabel}:{" "}
                     </span>
-                    {t.header.contactPanel.phoneDisplay}
+                    {t.header.contactPanel.whatsappDisplay}
                   </a>
                   <p className="text-sm text-foreground/80">
                     <span className="text-foreground/45">{t.header.contactPanel.hoursLabel}: </span>
