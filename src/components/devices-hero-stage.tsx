@@ -8,7 +8,7 @@ export function DevicesHeroStage() {
   return (
     <div className="devices-stage" aria-hidden>
       <div className="devices-stage__row">
-        {/* Mobiili — värikäs juoma */}
+        {/* Mobiili — sivukehys ilman iskulausetta */}
         <div className="devices-stage__phone">
           <div className="devices-stage__phone-bezel">
             <span className="devices-stage__phone-island" />
@@ -26,17 +26,17 @@ export function DevicesHeroStage() {
                   decoding="async"
                   className="mini-site__hero mini-site__hero--phone"
                 />
-                <div className="mini-site__body mini-site__body--compact">
-                  <p className="mini-site__kicker">Kahvila · Helsinki</p>
-                  <p className="mini-site__title">Berry ice</p>
-                  <span className="mini-site__cta">Tilaa</span>
+                <div className="mini-site__cards-row mini-site__cards-row--mobile">
+                  <span />
+                  <span />
+                  <span />
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Tabletti — värikäs annos (kallistus vasemmalle) */}
+        {/* Tabletti — annos, ei iskulausetta */}
         <div className="devices-stage__tablet devices-stage__tablet--tilt-left">
           <div className="devices-stage__tablet-bezel">
             <div className="devices-stage__screen devices-stage__screen--tablet">
@@ -57,18 +57,18 @@ export function DevicesHeroStage() {
                     decoding="async"
                     className="mini-site__hero mini-site__hero--fill mini-site__hero--plate"
                   />
-                  <div className="mini-site__hero-copy">
-                    <p className="mini-site__kicker mini-site__kicker--light">Seasonal</p>
-                    <p className="mini-site__title mini-site__title--hero">Chef&apos;s tasting</p>
-                    <p className="mini-site__text mini-site__text--light">Book a table online</p>
-                  </div>
+                </div>
+                <div className="mini-site__strip mini-site__strip--three">
+                  <span>Menu</span>
+                  <span>Wine</span>
+                  <span>Book</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Tabletti — lohi / värikäs annos (kallistus oikealle) */}
+        {/* Tabletti — lohi, ei iskulausetta */}
         <div className="devices-stage__tablet devices-stage__tablet--cafe devices-stage__tablet--tilt-right">
           <div className="devices-stage__tablet-bezel">
             <div className="devices-stage__screen devices-stage__screen--tablet">
@@ -89,12 +89,6 @@ export function DevicesHeroStage() {
                     decoding="async"
                     className="mini-site__hero mini-site__hero--fill mini-site__hero--dining"
                   />
-                  <div className="mini-site__hero-copy">
-                    <p className="mini-site__title mini-site__title--hero">Fresh catch</p>
-                    <p className="mini-site__text mini-site__text--light">
-                      Lunch · dinner · online booking
-                    </p>
-                  </div>
                 </div>
                 <div className="mini-site__strip mini-site__strip--three">
                   <span>Lunch</span>
@@ -106,7 +100,7 @@ export function DevicesHeroStage() {
           </div>
         </div>
 
-        {/* Ulkoinen näyttö — auringonlaskuterassi */}
+        {/* Ulkoinen näyttö — terassi, kevyt UI ilman isoa iskulausetta */}
         <div className="devices-stage__monitor">
           <div className="devices-stage__monitor-bezel">
             <div className="devices-stage__screen devices-stage__screen--monitor">
@@ -129,12 +123,6 @@ export function DevicesHeroStage() {
                     decoding="async"
                     className="mini-site__hero mini-site__hero--fill mini-site__hero--terrace"
                   />
-                  <div className="mini-site__hero-copy">
-                    <p className="mini-site__title mini-site__title--hero">Sunset terrace</p>
-                    <p className="mini-site__text mini-site__text--light">
-                      Sea views · table booking online
-                    </p>
-                  </div>
                 </div>
                 <div className="mini-site__strip">
                   <span>Lunch</span>

@@ -163,7 +163,7 @@ function LayoutScreen({
   variant: 0 | 1 | 2 | 3;
   className?: string;
 }) {
-  /* 0 = iPhone: kahvimobiilinäkymä (täyttää ruudun kuten muut) */
+  /* 0 = iPhone */
   if (variant === 0) {
     return (
       <div className={"pkg-device__screen " + className}>
@@ -174,10 +174,6 @@ function LayoutScreen({
           </div>
           <div className="pkg-mini__hero-wrap">
             <img src={coffeeHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-            <div className="pkg-mini__hero-copy">
-              <p className="pkg-mini__title">Graafinen ilme</p>
-              <p className="pkg-mini__text">Layout &amp; print</p>
-            </div>
           </div>
           <div className="pkg-mini__cards-row pkg-mini__cards-row--mobile">
             <span />
@@ -189,7 +185,7 @@ function LayoutScreen({
     );
   }
 
-  /* 1 = iPad: diginäkyvyys-hero */
+  /* 1 = iPad */
   if (variant === 1) {
     return (
       <div className={"pkg-device__screen " + className}>
@@ -203,46 +199,63 @@ function LayoutScreen({
           </div>
           <div className="pkg-mini__hero-wrap">
             <img src={diningHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-            <div className="pkg-mini__hero-copy">
-              <p className="pkg-mini__title">Diginäkyvyys</p>
-              <p className="pkg-mini__text">Löydy haussa</p>
-            </div>
+          </div>
+          <div className="pkg-mini__strip pkg-mini__strip--three">
+            <span>SEO</span>
+            <span>Ads</span>
+            <span>Maps</span>
           </div>
         </div>
       </div>
     );
   }
 
-  /* 2 = läppäri: kotisivut */
+  /* 2 = läppäri */
   if (variant === 2) {
     return (
       <div className={"pkg-device__screen " + className}>
-        <div className="pkg-mini pkg-mini--devices">
-          <div className="pkg-mini__band">
+        <div className="pkg-mini pkg-mini--cafe">
+          <div className="pkg-mini__nav">
+            <span className="pkg-mini__brand">Restadigi</span>
+            <span className="pkg-mini__links">
+              <span>Paketit</span>
+              <span>Yhteys</span>
+            </span>
+          </div>
+          <div className="pkg-mini__hero-wrap">
             <img src={hotelHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
           </div>
-          <div className="pkg-mini__copy-block">
-            <p className="pkg-mini__kicker">Kotisivut</p>
-            <p className="pkg-mini__title pkg-mini__title--lg">Verkkosivut</p>
-            <span className="pkg-mini__cta">Paketit</span>
+          <div className="pkg-mini__strip pkg-mini__strip--three">
+            <span>Start</span>
+            <span>Plus</span>
+            <span>Kulta</span>
           </div>
         </div>
       </div>
     );
   }
 
-  /* 3 = ulkoinen näyttö: AI-split */
+  /* 3 = ulkoinen näyttö */
   return (
     <div className={"pkg-device__screen " + className}>
-      <div className="pkg-mini pkg-mini--split">
-        <div className="pkg-mini__split-media">
+      <div className="pkg-mini pkg-mini--dark">
+        <div className="pkg-mini__nav pkg-mini__nav--dark">
+          <span className="pkg-mini__brand">Restadigi</span>
+          <span className="pkg-mini__links">
+            <span>AI</span>
+            <span>Chat</span>
+            <span>Support</span>
+          </span>
+          <span className="pkg-mini__cta pkg-mini__cta--nav">Demo</span>
+        </div>
+        <div className="pkg-mini__hero-wrap">
           <img src={barberHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
         </div>
-        <div className="pkg-mini__split-panel">
-          <p className="pkg-mini__kicker">AI-palvelu</p>
-          <p className="pkg-mini__title">Chatbot 24/7</p>
-          <p className="pkg-mini__text">Myynti ja asiakaspalvelu</p>
-          <span className="pkg-mini__cta">Tutustu</span>
+        <div className="pkg-mini__strip">
+          <span>Chat</span>
+          <span>Phone</span>
+          <span>Email</span>
+          <span>24/7</span>
         </div>
       </div>
     </div>
@@ -260,7 +273,7 @@ function SiteLayoutScreen({
 }) {
   const pkg = theme % 4;
 
-  /* ——— Start (theme 0): nykyiset layoutit ——— */
+  /* ——— Start (theme 0) ——— */
   if (pkg === 0) {
     const heroes = [diningHero, fineDiningHero, hotelHero, coffeeHero] as const;
     const hero = heroes[variant];
@@ -277,10 +290,6 @@ function SiteLayoutScreen({
             </div>
             <div className="pkg-mini__hero-wrap">
               <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-              <div className="pkg-mini__hero-copy">
-                <p className="pkg-mini__title">Modern cuisine</p>
-                <p className="pkg-mini__text">Book online</p>
-              </div>
             </div>
             <div className="pkg-mini__cards-row pkg-mini__cards-row--mobile">
               <span />
@@ -305,10 +314,11 @@ function SiteLayoutScreen({
             </div>
             <div className="pkg-mini__hero-wrap">
               <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-              <div className="pkg-mini__hero-copy">
-                <p className="pkg-mini__title">Timeless flavors</p>
-                <p className="pkg-mini__text">Reserve online</p>
-              </div>
+            </div>
+            <div className="pkg-mini__strip pkg-mini__strip--three">
+              <span>Lunch</span>
+              <span>Dinner</span>
+              <span>Wine</span>
             </div>
           </div>
         </div>
@@ -318,14 +328,21 @@ function SiteLayoutScreen({
     if (variant === 2) {
       return (
         <div className={"pkg-device__screen " + className}>
-          <div className="pkg-mini pkg-mini--devices">
-            <div className="pkg-mini__band">
+          <div className="pkg-mini pkg-mini--cafe">
+            <div className="pkg-mini__nav">
+              <span className="pkg-mini__brand">{brand}</span>
+              <span className="pkg-mini__links">
+                <span>Menu</span>
+                <span>Reserve</span>
+              </span>
+            </div>
+            <div className="pkg-mini__hero-wrap">
               <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
             </div>
-            <div className="pkg-mini__copy-block">
-              <p className="pkg-mini__kicker">{brand}</p>
-              <p className="pkg-mini__title pkg-mini__title--lg">Culinary craft</p>
-              <span className="pkg-mini__cta">Reserve</span>
+            <div className="pkg-mini__strip pkg-mini__strip--three">
+              <span>Rooms</span>
+              <span>Spa</span>
+              <span>Book</span>
             </div>
           </div>
         </div>
@@ -334,22 +351,23 @@ function SiteLayoutScreen({
 
     return (
       <div className={"pkg-device__screen " + className}>
-        <div className="pkg-mini pkg-mini--split">
-          <div className="pkg-mini__split-media">
-            <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+        <div className="pkg-mini pkg-mini--list">
+          <div className="pkg-mini__nav">
+            <span className="pkg-mini__brand">{brand}</span>
+            <span className="pkg-mini__menu" />
           </div>
-          <div className="pkg-mini__split-panel">
-            <p className="pkg-mini__kicker">{brand}</p>
-            <p className="pkg-mini__title">Private dining</p>
-            <p className="pkg-mini__text">Events · tasting · wine</p>
-            <span className="pkg-mini__cta">Enquire</span>
+          <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--mid" />
+          <div className="pkg-mini__list-items">
+            <span>Cut</span>
+            <span>Color</span>
+            <span>Book</span>
           </div>
         </div>
       </div>
     );
   }
 
-  /* ——— Plus (theme 1): parturi / kahvila / hotelli / varaus ——— */
+  /* ——— Plus (theme 1) ——— */
   if (pkg === 1) {
     if (variant === 0) {
       return (
@@ -360,9 +378,7 @@ function SiteLayoutScreen({
               <span className="pkg-mini__menu" />
             </div>
             <img src={barberHero} alt="" className="pkg-mini__hero pkg-mini__hero--mid" />
-            <div className="pkg-mini__body">
-              <p className="pkg-mini__kicker">Parturi</p>
-              <p className="pkg-mini__title">Ajat verkossa</p>
+            <div className="pkg-mini__cta-bar">
               <span className="pkg-mini__cta">Varaa</span>
             </div>
           </div>
@@ -406,9 +422,7 @@ function SiteLayoutScreen({
             </div>
             <div className="pkg-mini__hotel-row">
               <img src={lobbyHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-              <div className="pkg-mini__panel">
-                <p className="pkg-mini__kicker">Boutique stay</p>
-                <p className="pkg-mini__title">Quiet lakeside</p>
+              <div className="pkg-mini__panel pkg-mini__panel--compact">
                 <span className="pkg-mini__cta">Book</span>
               </div>
             </div>
@@ -430,17 +444,18 @@ function SiteLayoutScreen({
           </div>
           <div className="pkg-mini__hero-wrap">
             <img src={bookingHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-            <div className="pkg-mini__hero-copy">
-              <p className="pkg-mini__title">Book a table</p>
-              <p className="pkg-mini__text">Online · tonight</p>
-            </div>
+          </div>
+          <div className="pkg-mini__strip pkg-mini__strip--three">
+            <span>Tonight</span>
+            <span>Weekend</span>
+            <span>Groups</span>
           </div>
         </div>
       </div>
     );
   }
 
-  /* ——— Kulta (theme 2): tapahtuma / terassi / keittiö / ryhmä ——— */
+  /* ——— Kulta (theme 2) ——— */
   if (pkg === 2) {
     if (variant === 0) {
       return (
@@ -448,10 +463,6 @@ function SiteLayoutScreen({
           <div className="pkg-mini pkg-mini--story">
             <div className="pkg-mini__hero-wrap">
               <img src={eventHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-              <div className="pkg-mini__hero-copy pkg-mini__hero-copy--center">
-                <p className="pkg-mini__kicker pkg-mini__kicker--light">Live</p>
-                <p className="pkg-mini__title">Toast the night</p>
-              </div>
             </div>
             <div className="pkg-mini__cta-bar">
               <span className="pkg-mini__cta">Tickets</span>
@@ -473,7 +484,6 @@ function SiteLayoutScreen({
               <div className="pkg-mini__mag-side">
                 <img src={guestsHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
                 <div className="pkg-mini__panel pkg-mini__panel--compact">
-                  <p className="pkg-mini__title">Sunset seats</p>
                   <span className="pkg-mini__cta">Reserve</span>
                 </div>
               </div>
@@ -492,9 +502,7 @@ function SiteLayoutScreen({
             <div className="pkg-mini__center-hero">
               <img src={kitchenHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
             </div>
-            <div className="pkg-mini__center-copy">
-              <p className="pkg-mini__kicker">Fine dining</p>
-              <p className="pkg-mini__title pkg-mini__title--lg">Kitchen craft</p>
+            <div className="pkg-mini__cta-bar">
               <span className="pkg-mini__cta">Menu</span>
             </div>
           </div>
@@ -514,10 +522,6 @@ function SiteLayoutScreen({
           </div>
           <div className="pkg-mini__wide-hero">
             <img src={groupHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-            <div className="pkg-mini__hero-copy">
-              <p className="pkg-mini__title">Groups &amp; tours</p>
-              <p className="pkg-mini__text">Book larger parties</p>
-            </div>
           </div>
           <div className="pkg-mini__stats">
             <span>
@@ -535,7 +539,7 @@ function SiteLayoutScreen({
     );
   }
 
-  /* ——— Timantti (theme 3): interior / cafe / dining / terrace cinematic ——— */
+  /* ——— Timantti (theme 3) ——— */
   if (variant === 0) {
     return (
       <div className={"pkg-device__screen " + className}>
@@ -577,15 +581,21 @@ function SiteLayoutScreen({
   if (variant === 2) {
     return (
       <div className={"pkg-device__screen " + className}>
-        <div className="pkg-mini pkg-mini--split pkg-mini--split-flip">
-          <div className="pkg-mini__split-panel">
-            <p className="pkg-mini__kicker">Signature</p>
-            <p className="pkg-mini__title">Seasonal tasting</p>
-            <p className="pkg-mini__text">Wine · chef&apos;s table</p>
-            <span className="pkg-mini__cta">Book</span>
+        <div className="pkg-mini pkg-mini--dark">
+          <div className="pkg-mini__nav pkg-mini__nav--dark">
+            <span className="pkg-mini__brand">Signature</span>
+            <span className="pkg-mini__links">
+              <span>Menu</span>
+              <span>Book</span>
+            </span>
           </div>
-          <div className="pkg-mini__split-media">
+          <div className="pkg-mini__hero-wrap">
             <img src={fineDiningHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+          </div>
+          <div className="pkg-mini__strip pkg-mini__strip--three">
+            <span>Tasting</span>
+            <span>Wine</span>
+            <span>Book</span>
           </div>
         </div>
       </div>
@@ -595,9 +605,8 @@ function SiteLayoutScreen({
     <div className={"pkg-device__screen " + className}>
       <div className="pkg-mini pkg-mini--cinema">
         <img src={terraceHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-        <div className="pkg-mini__cinema-scrim">
-          <p className="pkg-mini__brand pkg-mini__brand--serif pkg-mini__brand--light">Harbor</p>
-          <p className="pkg-mini__title pkg-mini__title--xl">Sea &amp; sunset</p>
+        <div className="pkg-mini__cinema-scrim pkg-mini__cinema-scrim--slim">
+          <span className="pkg-mini__brand pkg-mini__brand--serif pkg-mini__brand--light">Harbor</span>
           <span className="pkg-mini__cta pkg-mini__cta--light">Reserve</span>
         </div>
       </div>
