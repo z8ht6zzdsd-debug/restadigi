@@ -8,6 +8,7 @@ import {
   PackageSportsPhotos,
   packageHeaderKind,
 } from "@/components/package-brand-logos";
+import { PackageDeviceHeader } from "@/components/package-device-header";
 
 export type ProductPackage = {
   name: string;
@@ -118,13 +119,13 @@ export function ProductPackageCards({
       </h2>
 
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 sm:items-stretch">
-        {packages.map((pkg) => {
+        {packages.map((pkg, pkgIndex) => {
           const Icon = pkg.icon ?? Package;
           const headerKind =
             pkg.headerVisual === "brandLogos" ? "brandLogos" : packageHeaderKind(pkg.name);
           const deviceLayout = Boolean(pkg.deviceLayout && pkg.headerImage);
           const headerH = deviceLayout
-            ? "h-40 sm:h-48"
+            ? "h-44 sm:h-52"
             : headerKind === "sports" || headerKind === "brandLogos"
               ? "h-36 sm:h-40"
               : pkg.headerImage
@@ -136,18 +137,8 @@ export function ProductPackageCards({
               className="flex h-full flex-col overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] border-2 border-[#432f24] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)]"
             >
               {deviceLayout ? (
-                <div className={"relative shrink-0 overflow-hidden bg-[#f7f3ee] " + headerH}>
-                  <img
-                    src={pkg.headerImage}
-                    alt=""
-                    aria-hidden
-                    className="absolute inset-0 size-full object-cover object-center"
-                  />
-                  {/* Soft background wash mid→up; multiply keeps devices crisp */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-0 top-0 h-[58%] bg-gradient-to-b from-[#e6ddd2] via-[#ebe4da]/70 to-transparent mix-blend-multiply"
-                  />
+                <div className={"relative shrink-0 overflow-hidden " + headerH}>
+                  <PackageDeviceHeader image={pkg.headerImage!} variant={pkgIndex} />
                 </div>
               ) : headerKind === "ai" || headerKind === "google" ? (
                 <div

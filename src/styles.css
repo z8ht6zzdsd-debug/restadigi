@@ -1045,6 +1045,263 @@
     gap: 1rem;
   }
 
+  /* Pakettikorttien laitenäkymä — 4 laitetta + graafinen tausta */
+  .pkg-device-header {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(145deg, #f3ece3 0%, #e9dfd2 42%, #f7f2eb 100%);
+  }
+
+  .pkg-device-header__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .pkg-device-header__wash {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 18% 22%, rgba(201, 168, 130, 0.28), transparent 62%),
+      radial-gradient(ellipse 55% 48% at 82% 78%, rgba(67, 47, 36, 0.12), transparent 68%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent 38%);
+  }
+
+  .pkg-device-header__grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.45;
+    background-image:
+      linear-gradient(rgba(67, 47, 36, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(67, 47, 36, 0.06) 1px, transparent 1px);
+    background-size: 1.15rem 1.15rem;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, black 25%, transparent 100%);
+  }
+
+  .pkg-device-header__orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(0.5px);
+  }
+
+  .pkg-device-header__orb--a {
+    top: -12%;
+    left: -6%;
+    width: 42%;
+    height: 58%;
+    background: radial-gradient(circle, rgba(201, 168, 130, 0.35), transparent 68%);
+  }
+
+  .pkg-device-header__orb--b {
+    right: -4%;
+    bottom: -18%;
+    width: 38%;
+    height: 52%;
+    background: radial-gradient(circle, rgba(67, 47, 36, 0.14), transparent 70%);
+  }
+
+  .pkg-device-header__orb--c {
+    top: 8%;
+    right: 22%;
+    width: 18%;
+    height: 28%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 72%);
+  }
+
+  .pkg-device-header__spark {
+    position: absolute;
+    width: 0.28rem;
+    height: 0.28rem;
+    border-radius: 9999px;
+    background: rgba(201, 168, 130, 0.75);
+    box-shadow: 0 0 0.35rem rgba(201, 168, 130, 0.45);
+  }
+
+  .pkg-device-header__spark--1 {
+    top: 18%;
+    left: 12%;
+  }
+
+  .pkg-device-header__spark--2 {
+    top: 28%;
+    right: 16%;
+  }
+
+  .pkg-device-header__spark--3 {
+    bottom: 22%;
+    left: 38%;
+  }
+
+  .pkg-device-header__stage {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: clamp(0.2rem, 1.2vw, 0.55rem);
+    height: 100%;
+    padding: 0.45rem 0.55rem 0.3rem;
+  }
+
+  .pkg-device {
+    position: relative;
+    flex-shrink: 0;
+    filter: drop-shadow(0 10px 18px rgba(42, 28, 18, 0.22));
+  }
+
+  .pkg-device--phone {
+    z-index: 4;
+    width: clamp(2.15rem, 7.5vw, 3rem);
+    transform: translateY(0.12rem) rotate(-4deg);
+  }
+
+  .pkg-device--tablet {
+    z-index: 3;
+    width: clamp(3.35rem, 11vw, 4.65rem);
+    transform: translateY(0.05rem) rotate(2deg);
+  }
+
+  .pkg-device--laptop {
+    z-index: 2;
+    width: clamp(4.35rem, 14vw, 6.1rem);
+    transform: translateY(-0.05rem);
+  }
+
+  .pkg-device--monitor {
+    z-index: 1;
+    width: clamp(4rem, 13vw, 5.65rem);
+    transform: translateY(0.08rem) rotate(3deg);
+  }
+
+  .pkg-device-header--v1 .pkg-device--phone {
+    transform: translateY(-0.08rem) rotate(-2deg);
+  }
+
+  .pkg-device-header--v1 .pkg-device--tablet {
+    transform: translateY(0.14rem) rotate(-3deg);
+  }
+
+  .pkg-device-header--v2 .pkg-device--laptop {
+    transform: translateY(-0.12rem) scale(1.02);
+  }
+
+  .pkg-device-header--v2 .pkg-device--monitor {
+    transform: translateY(0.16rem) rotate(1deg);
+  }
+
+  .pkg-device-header--v3 .pkg-device--phone {
+    transform: translateY(0.2rem) rotate(3deg);
+  }
+
+  .pkg-device-header--v3 .pkg-device--monitor {
+    transform: translateY(-0.04rem) rotate(5deg);
+  }
+
+  .pkg-device__bezel {
+    background: linear-gradient(160deg, #2f2924, #12100e);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 0 0 1px rgba(0, 0, 0, 0.12);
+  }
+
+  .pkg-device__bezel--phone {
+    position: relative;
+    aspect-ratio: 9 / 19;
+    border-radius: 0.62rem;
+    padding: 0.16rem;
+  }
+
+  .pkg-device__island {
+    position: absolute;
+    left: 50%;
+    top: 0.2rem;
+    z-index: 2;
+    width: 34%;
+    height: 0.22rem;
+    translate: -50% 0;
+    border-radius: 9999px;
+    background: #050403;
+  }
+
+  .pkg-device__bezel--tablet {
+    aspect-ratio: 4 / 3;
+    border-radius: 0.48rem;
+    padding: 0.22rem;
+  }
+
+  .pkg-device__lid {
+    border-radius: 0.42rem 0.42rem 0 0;
+    padding: 0.2rem 0.2rem 0.12rem;
+    background: linear-gradient(180deg, #3a342f, #1c1816);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+  }
+
+  .pkg-device__bezel--laptop {
+    aspect-ratio: 16 / 10;
+    border-radius: 0.28rem 0.28rem 0.12rem 0.12rem;
+    padding: 0.14rem;
+    background: linear-gradient(180deg, #2c2723, #141210);
+  }
+
+  .pkg-device__keyboard {
+    height: 0.34rem;
+    margin-top: 0.08rem;
+    border-radius: 0 0 0.32rem 0.32rem;
+    background: linear-gradient(180deg, #4a4038, #2a2420);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .pkg-device__bezel--monitor {
+    aspect-ratio: 16 / 10;
+    border-radius: 0.34rem 0.34rem 0.14rem 0.14rem;
+    padding: 0.16rem 0.16rem 0.22rem;
+    background: linear-gradient(180deg, #2c2723, #12100e);
+  }
+
+  .pkg-device__neck {
+    width: 16%;
+    height: 0.42rem;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #4a4038, #2a2420);
+    clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+  }
+
+  .pkg-device__foot {
+    width: 36%;
+    height: 0.14rem;
+    margin: 0 auto;
+    border-radius: 9999px;
+    background: #1a1614;
+  }
+
+  .pkg-device__screen {
+    height: 100%;
+    overflow: hidden;
+    background: #f4f0ea;
+  }
+
+  .pkg-device__screen--phone {
+    border-radius: 0.48rem;
+  }
+
+  .pkg-device__screen--tablet {
+    border-radius: 0.28rem;
+  }
+
+  .pkg-device__screen--laptop,
+  .pkg-device__screen--monitor {
+    border-radius: 0.12rem;
+  }
+
+  .pkg-device__shot {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
   /* Hosting hero — three small balls */
   .hosting-ball {
     position: absolute;
