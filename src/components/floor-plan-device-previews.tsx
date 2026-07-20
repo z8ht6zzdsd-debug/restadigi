@@ -1,42 +1,48 @@
-import { DEMO_FLOOR_PLAN, type FloorTable, ZONE_LABELS, sumSeats } from "@/lib/floor-plan";
+import {
+  DEMO_FLOOR_PLAN_LARGE,
+  DEMO_FLOOR_PLAN_MEDIUM,
+  DEMO_FLOOR_PLAN_SMALL,
+  type FloorPlan,
+  type FloorTable,
+  ZONE_LABELS,
+  sumSeats,
+} from "@/lib/floor-plan";
 import type { ReactNode } from "react";
-
-const HIGHLIGHT = "t6";
-const OCCUPIED = new Set(["t2", "t6", "t9", "t12"]);
-
-const TOTAL_SEATS = sumSeats(DEMO_FLOOR_PLAN.tables);
-const TABLE_COUNT = DEMO_FLOOR_PLAN.tables.length;
-const OCCUPIED_COUNT = OCCUPIED.size;
-const FREE_COUNT = TABLE_COUNT - OCCUPIED_COUNT;
 
 function tableSize(seats: FloorTable["seats"], scale: "sm" | "md" | "lg") {
   const map = {
     sm: {
-      2: "size-[1.15rem] text-[5px]",
-      4: "size-[1.35rem] text-[5px]",
-      6: "h-[1.35rem] w-[1.85rem] text-[5px]",
-      8: "h-[1.5rem] w-[2.15rem] text-[5px]",
+      2: "size-[1.05rem] text-[5px]",
+      4: "size-[1.25rem] text-[5px]",
+      6: "h-[1.25rem] w-[1.7rem] text-[5px]",
+      8: "h-[1.35rem] w-[2rem] text-[5px]",
     },
     md: {
-      2: "size-6 text-[6px]",
-      4: "size-7 text-[6px]",
-      6: "h-7 w-10 text-[6px]",
-      8: "h-8 w-11 text-[6px]",
+      2: "size-5 text-[6px]",
+      4: "size-6 text-[6px]",
+      6: "h-6 w-9 text-[6px]",
+      8: "h-7 w-10 text-[6px]",
     },
     lg: {
-      2: "size-7 text-[7px]",
-      4: "size-8 text-[7px]",
-      6: "h-8 w-11 text-[7px]",
-      8: "h-9 w-[3.25rem] text-[7px]",
+      2: "size-6 text-[7px]",
+      4: "size-7 text-[7px]",
+      6: "h-7 w-10 text-[7px]",
+      8: "h-8 w-[3rem] text-[7px]",
     },
   } as const;
   return map[scale][seats];
 }
 
 function MiniFloorMap({
+  plan,
+  highlightId,
+  occupied,
   scale,
   showZones = true,
 }: {
+  plan: FloorPlan;
+  highlightId: string;
+  occupied: Set<string>;
   scale: "sm" | "md" | "lg";
   showZones?: boolean;
 }) {
@@ -48,9 +54,9 @@ function MiniFloorMap({
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[20%] border-t border-dashed border-[#432f24]/15 bg-[#432f24]/5" />
         </>
       )}
-      {DEMO_FLOOR_PLAN.tables.map((table) => {
-        const occupied = OCCUPIED.has(table.id);
-        const active = table.id === HIGHLIGHT;
+      {plan.tables.map((table) => {
+        const isOccupied = occupied.has(table.id);
+        const active = table.id === highlightId;
         return (
           <div
             key={table.id}
@@ -61,7 +67,7 @@ function MiniFloorMap({
               " " +
               (active
                 ? "z-[2] border-[#c46a32] bg-[#432f24] text-white"
-                : occupied
+                : isOccupied
                   ? "border-[#c46a32]/50 bg-[#c46a32]/20 text-[#432f24]"
                   : "border-[#d4cdc3] bg-white text-[#1a1512]")
             }
@@ -100,26 +106,37 @@ function ScreenChrome({
 }
 
 function PhonePreview() {
-  const table = DEMO_FLOOR_PLAN.tables.find((t) => t.id === HIGHLIGHT)!;
+  const plan = DEMO_FLOOR_PLAN_SMALL;
+  const highlightId = "s5";
+  const occupied = new Set(["s2", "s5", "s7"]);
+  const totalSeats = sumSeats(plan.tables);
+  const freeCount = plan.tables.length - occupied.size;
+  const table = plan.tables.find((t) => t.id === highlightId)!;
+
   return (
     <div className="w-[8.5rem] shrink-0 sm:w-[9.25rem]">
       <div className="rounded-[1.35rem] border border-[#2a221c] bg-[#1a1512] p-[0.35rem] shadow-[0_16px_36px_-12px_rgba(26,18,12,0.45)]">
         <div className="mb-1 flex justify-center">
           <div className="h-1 w-10 rounded-full bg-[#3d322a]" />
         </div>
-        <ScreenChrome title={`Pöytäkartta · ${TOTAL_SEATS}`} dense>
+        <ScreenChrome title={`Pöytäkartta · ${totalSeats}`} dense>
           <div className="space-y-1.5 p-1.5">
             <div className="grid grid-cols-2 gap-1">
               <div className="rounded-[2px] border border-[#e5e0d8] bg-white px-1 py-1">
                 <p className="text-[5px] uppercase tracking-wide text-[#8a8178]">Paikat</p>
-                <p className="text-[9px] font-medium tabular-nums text-[#1a1512]">{TOTAL_SEATS}</p>
+                <p className="text-[9px] font-medium tabular-nums text-[#1a1512]">{totalSeats}</p>
               </div>
               <div className="rounded-[2px] border border-[#e5e0d8] bg-white px-1 py-1">
                 <p className="text-[5px] uppercase tracking-wide text-[#8a8178]">Vapaana</p>
-                <p className="text-[9px] font-medium tabular-nums text-[#1a1512]">{FREE_COUNT}</p>
+                <p className="text-[9px] font-medium tabular-nums text-[#1a1512]">{freeCount}</p>
               </div>
             </div>
-            <MiniFloorMap scale="sm" />
+            <MiniFloorMap
+              plan={plan}
+              highlightId={highlightId}
+              occupied={occupied}
+              scale="sm"
+            />
             <div className="rounded-[2px] border border-[#e5e0d8] bg-white px-1.5 py-1">
               <p className="text-[7px] font-medium text-[#1a1512]">Pöytä {table.label}</p>
               <p className="text-[6px] text-[#8a8178]">
@@ -135,16 +152,27 @@ function PhonePreview() {
 }
 
 function TabletPreview() {
-  const table = DEMO_FLOOR_PLAN.tables.find((t) => t.id === HIGHLIGHT)!;
+  const plan = DEMO_FLOOR_PLAN_MEDIUM;
+  const highlightId = "m6";
+  const occupied = new Set(["m2", "m6", "m9"]);
+  const totalSeats = sumSeats(plan.tables);
+  const freeCount = plan.tables.length - occupied.size;
+  const table = plan.tables.find((t) => t.id === highlightId)!;
+
   return (
     <div className="w-[13rem] shrink-0 sm:w-[14.5rem]">
       <div className="rounded-[1.1rem] border border-[#2a221c] bg-[#1a1512] p-[0.4rem] shadow-[0_18px_40px_-14px_rgba(26,18,12,0.45)]">
         <div className="mb-1 flex justify-center">
           <div className="h-1 w-8 rounded-full bg-[#3d322a]" />
         </div>
-        <ScreenChrome title={`Pöytäkartta · ${TOTAL_SEATS} paikkaa`}>
+        <ScreenChrome title={`Pöytäkartta · ${totalSeats} paikkaa`}>
           <div className="space-y-1.5 p-2">
-            <MiniFloorMap scale="md" />
+            <MiniFloorMap
+              plan={plan}
+              highlightId={highlightId}
+              occupied={occupied}
+              scale="md"
+            />
             <div className="grid grid-cols-3 gap-1">
               <div className="rounded-[2px] border border-[#e5e0d8] bg-white p-1.5">
                 <p className="text-[5px] uppercase tracking-wide text-[#8a8178]">Valittu</p>
@@ -160,8 +188,10 @@ function TabletPreview() {
               </div>
               <div className="rounded-[2px] border border-[#e5e0d8] bg-white p-1.5">
                 <p className="text-[5px] uppercase tracking-wide text-[#8a8178]">Pöytiä</p>
-                <p className="text-[8px] font-medium tabular-nums text-[#1a1512]">{TABLE_COUNT}</p>
-                <p className="text-[6px] text-[#8a8178]">{FREE_COUNT} vapaana</p>
+                <p className="text-[8px] font-medium tabular-nums text-[#1a1512]">
+                  {plan.tables.length}
+                </p>
+                <p className="text-[6px] text-[#8a8178]">{freeCount} vapaana</p>
               </div>
             </div>
           </div>
@@ -172,10 +202,17 @@ function TabletPreview() {
 }
 
 function MonitorPreview() {
+  const plan = DEMO_FLOOR_PLAN_LARGE;
+  const highlightId = "l6";
+  const occupied = new Set(["l2", "l6", "l9", "l11"]);
+  const totalSeats = sumSeats(plan.tables);
+  const occupiedCount = occupied.size;
+  const freeCount = plan.tables.length - occupiedCount;
+
   return (
     <div className="w-[16.5rem] shrink-0 sm:w-[18.5rem]">
       <div className="rounded-[0.95rem] border border-[#2a221c] bg-[#1a1512] p-[0.4rem] shadow-[0_18px_44px_-12px_rgba(26,18,12,0.4)]">
-        <ScreenChrome title={`Pöytäkartta · ${TOTAL_SEATS} paikkaa`}>
+        <ScreenChrome title={`Pöytäkartta · ${totalSeats} paikkaa`}>
           <div className="flex">
             <nav className="hidden w-[3.75rem] shrink-0 border-r border-[#e5e0d8] bg-[#faf8f5] p-1.5 sm:block">
               {["Yhteenveto", "Varaukset", "Pöytäkartta", "Asetukset"].map((label, i) => (
@@ -193,10 +230,10 @@ function MonitorPreview() {
             <div className="min-w-0 flex-1 space-y-1.5 p-2">
               <div className="grid grid-cols-4 gap-1">
                 {[
-                  { label: "Paikat", value: String(TOTAL_SEATS) },
-                  { label: "Pöytiä", value: String(TABLE_COUNT) },
-                  { label: "Vapaana", value: String(FREE_COUNT) },
-                  { label: "Varattu", value: String(OCCUPIED_COUNT) },
+                  { label: "Paikat", value: String(totalSeats) },
+                  { label: "Pöytiä", value: String(plan.tables.length) },
+                  { label: "Vapaana", value: String(freeCount) },
+                  { label: "Varattu", value: String(occupiedCount) },
                 ].map((card) => (
                   <div
                     key={card.label}
@@ -211,7 +248,12 @@ function MonitorPreview() {
                   </div>
                 ))}
               </div>
-              <MiniFloorMap scale="lg" />
+              <MiniFloorMap
+                plan={plan}
+                highlightId={highlightId}
+                occupied={occupied}
+                scale="lg"
+              />
               <div className="flex flex-wrap gap-2 text-[6px] text-[#6b635c]">
                 <span className="inline-flex items-center gap-1">
                   <span className="size-1.5 rounded-full border border-[#d4cdc3] bg-white" /> Vapaa

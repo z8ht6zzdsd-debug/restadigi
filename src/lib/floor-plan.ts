@@ -33,7 +33,7 @@ export function countBySeats(tables: FloorTable[]): Record<TableSeats, number> {
 }
 
 /**
- * Demo floor plan for 50 covers — clearer spacing for marketing & admin preview.
+ * Demo floor plan for dashboard — 50 covers.
  * Mix: 3×2 + 6×4 + 2×6 + 1×8 = 50 seats (12 tables).
  */
 export const DEMO_FLOOR_PLAN: FloorPlan = {
@@ -41,25 +41,72 @@ export const DEMO_FLOOR_PLAN: FloorPlan = {
   name: "Demo Ravintola — 50 paikkaa",
   capacity: 50,
   tables: [
-    // Ikkunarivi — ilmava
     { id: "t1", label: "1", seats: 2, x: 14, y: 16, shape: "round", zone: "ikkuna" },
     { id: "t2", label: "2", seats: 4, x: 36, y: 18, shape: "rect", zone: "ikkuna" },
     { id: "t3", label: "3", seats: 4, x: 58, y: 18, shape: "rect", zone: "ikkuna" },
     { id: "t4", label: "4", seats: 2, x: 80, y: 16, shape: "round", zone: "ikkuna" },
-
-    // Keskisali
     { id: "t5", label: "5", seats: 4, x: 22, y: 42, shape: "rect", zone: "sali" },
     { id: "t6", label: "6", seats: 6, x: 48, y: 44, shape: "rect", zone: "sali" },
     { id: "t7", label: "7", seats: 4, x: 74, y: 42, shape: "rect", zone: "sali" },
-
-    // Takasali
-    { id: "t8", label: "8", seats: 4, x: 28, y: 68, shape: "rect", zone: "sali" },
-    { id: "t9", label: "9", seats: 6, x: 54, y: 70, shape: "rect", zone: "sali" },
+    { id: "t8", label: "8", seats: 4, x: 22, y: 68, shape: "rect", zone: "sali" },
+    { id: "t9", label: "9", seats: 6, x: 48, y: 70, shape: "rect", zone: "sali" },
     { id: "t10", label: "10", seats: 2, x: 78, y: 66, shape: "round", zone: "sali" },
+    { id: "t11", label: "11", seats: 4, x: 28, y: 88, shape: "rect", zone: "terassi" },
+    { id: "t12", label: "12", seats: 8, x: 68, y: 88, shape: "rect", zone: "kabinetti" },
+  ],
+};
 
-    // Terassi + kabinetti
-    { id: "t11", label: "11", seats: 4, x: 24, y: 88, shape: "rect", zone: "terassi" },
-    { id: "t12", label: "12", seats: 8, x: 62, y: 88, shape: "rect", zone: "kabinetti" },
+/** Pieni sali (~25 paikkaa, 7 pöytää) — puhelinpreview */
+export const DEMO_FLOOR_PLAN_SMALL: FloorPlan = {
+  id: "demo-small-25",
+  name: "Pieni sali — 26 paikkaa",
+  capacity: 26,
+  tables: [
+    { id: "s1", label: "1", seats: 2, x: 18, y: 20, shape: "round", zone: "ikkuna" },
+    { id: "s2", label: "2", seats: 4, x: 50, y: 20, shape: "rect", zone: "ikkuna" },
+    { id: "s3", label: "3", seats: 4, x: 82, y: 20, shape: "rect", zone: "ikkuna" },
+    { id: "s4", label: "4", seats: 4, x: 22, y: 50, shape: "rect", zone: "sali" },
+    { id: "s5", label: "5", seats: 6, x: 50, y: 52, shape: "rect", zone: "sali" },
+    { id: "s6", label: "6", seats: 4, x: 78, y: 50, shape: "rect", zone: "sali" },
+    { id: "s7", label: "7", seats: 2, x: 50, y: 82, shape: "round", zone: "terassi" },
+  ],
+};
+
+/** Keskikokoinen sali (9 pöytää) — tablettipreview */
+export const DEMO_FLOOR_PLAN_MEDIUM: FloorPlan = {
+  id: "demo-medium-9",
+  name: "Keskisali — 36 paikkaa",
+  capacity: 36,
+  tables: [
+    { id: "m1", label: "1", seats: 2, x: 14, y: 16, shape: "round", zone: "ikkuna" },
+    { id: "m2", label: "2", seats: 4, x: 38, y: 16, shape: "rect", zone: "ikkuna" },
+    { id: "m3", label: "3", seats: 4, x: 62, y: 16, shape: "rect", zone: "ikkuna" },
+    { id: "m4", label: "4", seats: 2, x: 86, y: 16, shape: "round", zone: "ikkuna" },
+    { id: "m5", label: "5", seats: 4, x: 22, y: 48, shape: "rect", zone: "sali" },
+    { id: "m6", label: "6", seats: 6, x: 50, y: 50, shape: "rect", zone: "sali" },
+    { id: "m7", label: "7", seats: 4, x: 78, y: 48, shape: "rect", zone: "sali" },
+    { id: "m8", label: "8", seats: 4, x: 32, y: 82, shape: "rect", zone: "terassi" },
+    { id: "m9", label: "9", seats: 6, x: 68, y: 82, shape: "rect", zone: "kabinetti" },
+  ],
+};
+
+/** Iso sali (11 pöytää) — monitoripreview */
+export const DEMO_FLOOR_PLAN_LARGE: FloorPlan = {
+  id: "demo-large-11",
+  name: "Iso sali — 46 paikkaa",
+  capacity: 46,
+  tables: [
+    { id: "l1", label: "1", seats: 2, x: 12, y: 14, shape: "round", zone: "ikkuna" },
+    { id: "l2", label: "2", seats: 4, x: 36, y: 14, shape: "rect", zone: "ikkuna" },
+    { id: "l3", label: "3", seats: 4, x: 60, y: 14, shape: "rect", zone: "ikkuna" },
+    { id: "l4", label: "4", seats: 2, x: 84, y: 14, shape: "round", zone: "ikkuna" },
+    { id: "l5", label: "5", seats: 4, x: 18, y: 40, shape: "rect", zone: "sali" },
+    { id: "l6", label: "6", seats: 6, x: 50, y: 42, shape: "rect", zone: "sali" },
+    { id: "l7", label: "7", seats: 4, x: 82, y: 40, shape: "rect", zone: "sali" },
+    { id: "l8", label: "8", seats: 4, x: 18, y: 68, shape: "rect", zone: "sali" },
+    { id: "l9", label: "9", seats: 6, x: 50, y: 70, shape: "rect", zone: "sali" },
+    { id: "l10", label: "10", seats: 4, x: 82, y: 68, shape: "rect", zone: "sali" },
+    { id: "l11", label: "11", seats: 6, x: 50, y: 90, shape: "rect", zone: "kabinetti" },
   ],
 };
 
