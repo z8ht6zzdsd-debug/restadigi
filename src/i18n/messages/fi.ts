@@ -172,7 +172,7 @@ export const fi: Messages = {
         },
         {
           title: "Edullisuus",
-          body: "Kulut ovat suuret palvelualalla, ja uusien asiakkaiden löytäminen voi olla haastavaa. Tekoälyn ansiosta tuotamme palveluita järkevään hintaan laadusta tinkimättä — markkinoiden parhaalla hinta–laatusuhteella.",
+          body: "Palvelualan kulurakenne on nousussa ja uusien asiakkaiden löytäminen voi olla haastavaa ja kallista. Tekoälyn ansioista tuotamme palveluita järkevään hintaan laadusta tinkimättä — markkinoiden parhaalla hinta–laatusuhteella.",
           href: "/verkkosivut",
           linkLabel: "Katso paketit",
         },
