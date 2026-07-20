@@ -467,7 +467,8 @@
   .devices-stage__screen {
     height: 100%;
     overflow: hidden;
-    background: #f4f0ea;
+    background: #0f0d0c;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
 
   .devices-stage__screen--phone {
@@ -548,6 +549,7 @@
     height: auto;
     object-fit: cover;
     image-rendering: -webkit-optimize-contrast;
+    filter: saturate(1.14) contrast(1.06) brightness(1.03);
   }
 
   .mini-site__hero--fill {
@@ -556,10 +558,66 @@
     object-fit: cover;
   }
 
+  .mini-site__hero--phone {
+    min-height: 0;
+    flex: 1.35;
+    object-position: center 42%;
+  }
+
+  .mini-site__hero--plate {
+    object-position: center 45%;
+  }
+
+  .mini-site__hero--dining {
+    object-position: 55% 40%;
+  }
+
+  .mini-site__hero--terrace {
+    object-position: center 38%;
+  }
+
   .mini-site--salon .mini-site__hero {
     min-height: 0;
-    flex: 1.2;
-    object-position: center center;
+    flex: 1.35;
+    object-position: center 42%;
+  }
+
+  .mini-site__body--compact {
+    padding: 0.28rem 0.32rem 0.34rem;
+    gap: 0.1rem;
+  }
+
+  .mini-site__body--compact .mini-site__title {
+    font-size: 0.52rem;
+  }
+
+  .mini-site__kicker--light {
+    color: rgba(247, 243, 238, 0.72);
+  }
+
+  .mini-site--plate .mini-site__hero-wrap {
+    flex: 1;
+  }
+
+  .mini-site--plate .mini-site__nav {
+    padding: 0.32rem 0.4rem;
+  }
+
+  .mini-site--plate .mini-site__brand--serif {
+    font-size: 0.5rem;
+  }
+
+  .mini-site--plate .mini-site__links {
+    font-size: 0.32rem;
+    gap: 0.35rem;
+  }
+
+  .mini-site--plate .mini-site__hero-copy {
+    padding: 0.55rem 0.5rem;
+  }
+
+  .mini-site--plate .mini-site__title--hero {
+    font-size: clamp(0.62rem, 1.5vw, 0.95rem);
   }
 
   /* Isompi näyttö → skarppi mini-sivu */

@@ -1,7 +1,7 @@
 import berryHero from "@/assets/freddos-v2-berry.jpg";
-import eventHero from "@/assets/mock-tapahtumat.jpg";
-import terraceHero from "@/assets/success-busy-terrace.jpg";
+import platedHero from "@/assets/mock-erikoismenut.jpg";
 import diningHero from "@/assets/restaurant-dining.jpg";
+import terraceHero from "@/assets/success-busy-terrace.jpg";
 
 /** Neljä laitetta: mobiili, kaksi tablettia, ulkoinen näyttö — palvelualan sivulayoutit */
 export function DevicesHeroStage() {
@@ -15,7 +15,7 @@ export function DevicesHeroStage() {
             <div className="devices-stage__screen devices-stage__screen--phone">
               <div className="mini-site mini-site--salon">
                 <div className="mini-site__bar">
-                  <span className="mini-site__brand">Freddo's</span>
+                  <span className="mini-site__brand">Freddo&apos;s</span>
                   <span className="mini-site__menu" />
                 </div>
                 <img
@@ -24,11 +24,11 @@ export function DevicesHeroStage() {
                   width={720}
                   height={960}
                   decoding="async"
-                  className="mini-site__hero"
+                  className="mini-site__hero mini-site__hero--phone"
                 />
-                <div className="mini-site__body">
+                <div className="mini-site__body mini-site__body--compact">
                   <p className="mini-site__kicker">Kahvila · Helsinki</p>
-                  <p className="mini-site__title">Berry ice — tilaa verkosta</p>
+                  <p className="mini-site__title">Berry ice</p>
                   <span className="mini-site__cta">Tilaa</span>
                 </div>
               </div>
@@ -36,33 +36,31 @@ export function DevicesHeroStage() {
           </div>
         </div>
 
-        {/* Tabletti — tapahtuma (kallistus vasemmalle) */}
+        {/* Tabletti — värikäs annos (kallistus vasemmalle) */}
         <div className="devices-stage__tablet devices-stage__tablet--tilt-left">
           <div className="devices-stage__tablet-bezel">
             <div className="devices-stage__screen devices-stage__screen--tablet">
-              <div className="mini-site mini-site--hotel">
+              <div className="mini-site mini-site--plate">
                 <div className="mini-site__nav">
-                  <span className="mini-site__brand mini-site__brand--serif">Garden Table</span>
+                  <span className="mini-site__brand mini-site__brand--serif">Atelier</span>
                   <span className="mini-site__links">
                     <span>Menu</span>
-                    <span>Events</span>
                     <span>Book</span>
                   </span>
                 </div>
-                <div className="mini-site__split">
+                <div className="mini-site__hero-wrap">
                   <img
-                    src={eventHero}
+                    src={platedHero}
                     alt=""
                     width={1200}
                     height={900}
                     decoding="async"
-                    className="mini-site__hero mini-site__hero--fill"
+                    className="mini-site__hero mini-site__hero--fill mini-site__hero--plate"
                   />
-                  <div className="mini-site__panel">
-                    <p className="mini-site__kicker">Live evenings</p>
-                    <p className="mini-site__title mini-site__title--lg">Toast the night</p>
-                    <p className="mini-site__text">Private dinners, live music, easy booking.</p>
-                    <span className="mini-site__cta">Reserve</span>
+                  <div className="mini-site__hero-copy">
+                    <p className="mini-site__kicker mini-site__kicker--light">Seasonal</p>
+                    <p className="mini-site__title mini-site__title--hero">Chef&apos;s tasting</p>
+                    <p className="mini-site__text mini-site__text--light">Book a table online</p>
                   </div>
                 </div>
               </div>
@@ -70,7 +68,7 @@ export function DevicesHeroStage() {
           </div>
         </div>
 
-        {/* Tabletti — terassi (kallistus oikealle) */}
+        {/* Tabletti — lohi / värikäs annos (kallistus oikealle) */}
         <div className="devices-stage__tablet devices-stage__tablet--cafe devices-stage__tablet--tilt-right">
           <div className="devices-stage__tablet-bezel">
             <div className="devices-stage__screen devices-stage__screen--tablet">
@@ -79,63 +77,62 @@ export function DevicesHeroStage() {
                   <span className="mini-site__brand">Harbor</span>
                   <span className="mini-site__links">
                     <span>Menu</span>
-                    <span>Terrace</span>
-                    <span>Book</span>
+                    <span>Reserve</span>
                   </span>
                 </div>
                 <div className="mini-site__hero-wrap">
                   <img
-                    src={terraceHero}
+                    src={diningHero}
                     alt=""
                     width={1200}
                     height={900}
                     decoding="async"
-                    className="mini-site__hero mini-site__hero--fill"
+                    className="mini-site__hero mini-site__hero--fill mini-site__hero--dining"
                   />
                   <div className="mini-site__hero-copy">
-                    <p className="mini-site__title mini-site__title--hero">Sunset terrace</p>
+                    <p className="mini-site__title mini-site__title--hero">Fresh catch</p>
                     <p className="mini-site__text mini-site__text--light">
-                      Sea views · table booking online
+                      Lunch · dinner · online booking
                     </p>
                   </div>
                 </div>
                 <div className="mini-site__strip mini-site__strip--three">
                   <span>Lunch</span>
-                  <span>Drinks</span>
-                  <span>Reserve</span>
+                  <span>Wine</span>
+                  <span>Book</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Ulkoinen näyttö — ravintola (päävisuaali) */}
+        {/* Ulkoinen näyttö — auringonlaskuterassi */}
         <div className="devices-stage__monitor">
           <div className="devices-stage__monitor-bezel">
             <div className="devices-stage__screen devices-stage__screen--monitor">
               <div className="mini-site mini-site--dining">
                 <div className="mini-site__nav mini-site__nav--dark">
-                  <span className="mini-site__brand mini-site__brand--serif">Atelier</span>
+                  <span className="mini-site__brand mini-site__brand--serif">Garden Table</span>
                   <span className="mini-site__links">
                     <span>Menu</span>
+                    <span>Terrace</span>
                     <span>Events</span>
-                    <span>Contact</span>
                   </span>
                   <span className="mini-site__cta mini-site__cta--sm">Reserve</span>
                 </div>
                 <div className="mini-site__hero-wrap">
                   <img
-                    src={diningHero}
+                    src={terraceHero}
                     alt=""
                     width={1600}
                     height={1000}
                     decoding="async"
-                    className="mini-site__hero mini-site__hero--fill"
+                    className="mini-site__hero mini-site__hero--fill mini-site__hero--terrace"
                   />
                   <div className="mini-site__hero-copy">
-                    <p className="mini-site__title mini-site__title--hero">Timeless flavors</p>
+                    <p className="mini-site__title mini-site__title--hero">Sunset terrace</p>
                     <p className="mini-site__text mini-site__text--light">
-                      Seasonal tasting · table booking online
+                      Sea views · table booking online
                     </p>
                   </div>
                 </div>
