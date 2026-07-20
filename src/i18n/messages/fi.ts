@@ -49,7 +49,7 @@ export const fi: Messages = {
     contact: "Ota yhteyttä",
     menu: "Valikko",
     homeAria: "Restadigi — etusivu",
-    logoAlt: "Restadigi — AI ja web",
+    logoAlt: "Restadigi Finland",
     industriesIntro:
       "Toimialakohtaiset digiratkaisut — verkkosivut, varaukset, näkyvyys ja AI-asiakaspalvelu palvelualan yrityksille.",
     industriesList: [

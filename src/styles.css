@@ -168,20 +168,20 @@
 
   .site-header__logo {
     display: block;
-    height: 8rem;
+    height: 9rem;
     width: auto;
     max-width: 100%;
   }
 
   @media (min-width: 640px) {
     .site-header__logo {
-      height: 9rem;
+      height: 10.25rem;
     }
   }
 
   @media (min-width: 1024px) {
     .site-header__logo {
-      height: 10rem;
+      height: 11.5rem;
     }
   }
 

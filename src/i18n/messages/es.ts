@@ -49,7 +49,7 @@ export const es: Messages = {
     contact: "Contacto",
     menu: "Menú",
     homeAria: "Restadigi — inicio",
-    logoAlt: "Restadigi — IA y web",
+    logoAlt: "Restadigi Finland",
     industriesIntro:
       "Soluciones digitales por sector — sitios web, reservas, visibilidad y atención al cliente con IA para empresas de servicios.",
     industriesList: [

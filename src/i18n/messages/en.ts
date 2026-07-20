@@ -49,7 +49,7 @@ export const en: Messages = {
     contact: "Contact",
     menu: "Menu",
     homeAria: "Restadigi — home",
-    logoAlt: "Restadigi — AI and web",
+    logoAlt: "Restadigi Finland",
     industriesIntro:
       "Industry-specific digital solutions — websites, bookings, visibility and AI customer service for service businesses.",
     industriesList: [
