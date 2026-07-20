@@ -14,6 +14,16 @@ import hotelHero from "@/assets/hero-hotel-web.jpg";
 import diningHero from "@/assets/restaurant-dining.jpg";
 import coffeeHero from "@/assets/hero-coffee-panel.jpg";
 import fineDiningHero from "@/assets/hero-fine-dining.jpg";
+import terraceHero from "@/assets/success-busy-terrace.jpg";
+import eventHero from "@/assets/mock-tapahtumat.jpg";
+import berryHero from "@/assets/freddos-v2-berry.jpg";
+import cafeHero from "@/assets/restaurant-cafe.jpg";
+import bookingHero from "@/assets/hero-booking-tables.jpg";
+import lobbyHero from "@/assets/hero-hotel-lobby.jpg";
+import kitchenHero from "@/assets/restaurant-kitchen.jpg";
+import interiorHero from "@/assets/restaurant-interior.jpg";
+import guestsHero from "@/assets/success-guests-arriving.jpg";
+import groupHero from "@/assets/success-tourist-group.jpg";
 import domainhotelliLogo from "@/assets/domainhotelli-logo-white.svg";
 
 export type PackageDeviceMode =
@@ -165,8 +175,8 @@ function LayoutScreen({
           <div className="pkg-mini__hero-wrap">
             <img src={coffeeHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
             <div className="pkg-mini__hero-copy">
-              <p className="pkg-mini__title">Graafinen suunnittelu</p>
-              <p className="pkg-mini__text">Ilme, layout ja materiaalit</p>
+              <p className="pkg-mini__title">Graafinen ilme</p>
+              <p className="pkg-mini__text">Layout &amp; print</p>
             </div>
           </div>
           <div className="pkg-mini__cards-row pkg-mini__cards-row--mobile">
@@ -195,7 +205,7 @@ function LayoutScreen({
             <img src={diningHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
             <div className="pkg-mini__hero-copy">
               <p className="pkg-mini__title">Diginäkyvyys</p>
-              <p className="pkg-mini__text">Löydy, kun asiakas etsii</p>
+              <p className="pkg-mini__text">Löydy haussa</p>
             </div>
           </div>
         </div>
@@ -213,8 +223,8 @@ function LayoutScreen({
           </div>
           <div className="pkg-mini__copy-block">
             <p className="pkg-mini__kicker">Kotisivut</p>
-            <p className="pkg-mini__title pkg-mini__title--lg">Verkkosivut yritykselle</p>
-            <span className="pkg-mini__cta">Katso paketit</span>
+            <p className="pkg-mini__title pkg-mini__title--lg">Verkkosivut</p>
+            <span className="pkg-mini__cta">Paketit</span>
           </div>
         </div>
       </div>
@@ -248,54 +258,181 @@ function SiteLayoutScreen({
   theme?: number;
   className?: string;
 }) {
-  const heroes = [diningHero, fineDiningHero, hotelHero, coffeeHero] as const;
-  const hero = heroes[(variant + theme) % heroes.length];
-  const brands = ["Atelier", "Garden Table", "Lake House", "Nord Cut"] as const;
-  const brand = brands[(variant + theme) % brands.length];
+  const pkg = theme % 4;
 
-  /* iPhone — mobiilisivu */
-  if (variant === 0) {
-    return (
-      <div className={"pkg-device__screen " + className}>
-        <div className="pkg-mini pkg-mini--coffee">
-          <div className="pkg-mini__nav">
-            <span className="pkg-mini__brand">{brand}</span>
-            <span className="pkg-mini__menu" />
-          </div>
-          <div className="pkg-mini__hero-wrap">
-            <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-            <div className="pkg-mini__hero-copy">
-              <p className="pkg-mini__title">Modern cuisine</p>
-              <p className="pkg-mini__text">Seasonal · booking online</p>
+  /* ——— Start (theme 0): nykyiset layoutit ——— */
+  if (pkg === 0) {
+    const heroes = [diningHero, fineDiningHero, hotelHero, coffeeHero] as const;
+    const hero = heroes[variant];
+    const brands = ["Atelier", "Garden Table", "Lake House", "Nord Cut"] as const;
+    const brand = brands[variant];
+
+    if (variant === 0) {
+      return (
+        <div className={"pkg-device__screen " + className}>
+          <div className="pkg-mini pkg-mini--coffee">
+            <div className="pkg-mini__nav">
+              <span className="pkg-mini__brand">{brand}</span>
+              <span className="pkg-mini__menu" />
+            </div>
+            <div className="pkg-mini__hero-wrap">
+              <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+              <div className="pkg-mini__hero-copy">
+                <p className="pkg-mini__title">Modern cuisine</p>
+                <p className="pkg-mini__text">Book online</p>
+              </div>
+            </div>
+            <div className="pkg-mini__cards-row pkg-mini__cards-row--mobile">
+              <span />
+              <span />
+              <span />
             </div>
           </div>
-          <div className="pkg-mini__cards-row pkg-mini__cards-row--mobile">
-            <span />
-            <span />
-            <span />
+        </div>
+      );
+    }
+
+    if (variant === 1) {
+      return (
+        <div className={"pkg-device__screen " + className}>
+          <div className="pkg-mini pkg-mini--dark">
+            <div className="pkg-mini__nav pkg-mini__nav--dark">
+              <span className="pkg-mini__brand">{brand}</span>
+              <span className="pkg-mini__links">
+                <span>Menu</span>
+                <span>Book</span>
+              </span>
+            </div>
+            <div className="pkg-mini__hero-wrap">
+              <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+              <div className="pkg-mini__hero-copy">
+                <p className="pkg-mini__title">Timeless flavors</p>
+                <p className="pkg-mini__text">Reserve online</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (variant === 2) {
+      return (
+        <div className={"pkg-device__screen " + className}>
+          <div className="pkg-mini pkg-mini--devices">
+            <div className="pkg-mini__band">
+              <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+            </div>
+            <div className="pkg-mini__copy-block">
+              <p className="pkg-mini__kicker">{brand}</p>
+              <p className="pkg-mini__title pkg-mini__title--lg">Culinary craft</p>
+              <span className="pkg-mini__cta">Reserve</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className={"pkg-device__screen " + className}>
+        <div className="pkg-mini pkg-mini--split">
+          <div className="pkg-mini__split-media">
+            <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+          </div>
+          <div className="pkg-mini__split-panel">
+            <p className="pkg-mini__kicker">{brand}</p>
+            <p className="pkg-mini__title">Private dining</p>
+            <p className="pkg-mini__text">Events · tasting · wine</p>
+            <span className="pkg-mini__cta">Enquire</span>
           </div>
         </div>
       </div>
     );
   }
 
-  /* iPad */
-  if (variant === 1) {
+  /* ——— Plus (theme 1): parturi / kahvila / hotelli / varaus ——— */
+  if (pkg === 1) {
+    if (variant === 0) {
+      return (
+        <div className={"pkg-device__screen " + className}>
+          <div className="pkg-mini pkg-mini--stack">
+            <div className="pkg-mini__nav">
+              <span className="pkg-mini__brand">Nord Cut</span>
+              <span className="pkg-mini__menu" />
+            </div>
+            <img src={barberHero} alt="" className="pkg-mini__hero pkg-mini__hero--mid" />
+            <div className="pkg-mini__body">
+              <p className="pkg-mini__kicker">Parturi</p>
+              <p className="pkg-mini__title">Ajat verkossa</p>
+              <span className="pkg-mini__cta">Varaa</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (variant === 1) {
+      return (
+        <div className={"pkg-device__screen " + className}>
+          <div className="pkg-mini pkg-mini--cafe-grid">
+            <div className="pkg-mini__nav">
+              <span className="pkg-mini__brand">Roastery</span>
+              <span className="pkg-mini__links">
+                <span>Menu</span>
+                <span>Visit</span>
+              </span>
+            </div>
+            <div className="pkg-mini__duo">
+              <img src={berryHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+              <img src={cafeHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+            </div>
+            <div className="pkg-mini__strip pkg-mini__strip--three">
+              <span>Coffee</span>
+              <span>Pastry</span>
+              <span>Takeaway</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (variant === 2) {
+      return (
+        <div className={"pkg-device__screen " + className}>
+          <div className="pkg-mini pkg-mini--hotel-split">
+            <div className="pkg-mini__nav">
+              <span className="pkg-mini__brand pkg-mini__brand--serif">Lake House</span>
+              <span className="pkg-mini__links">
+                <span>Rooms</span>
+                <span>Spa</span>
+              </span>
+            </div>
+            <div className="pkg-mini__hotel-row">
+              <img src={lobbyHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+              <div className="pkg-mini__panel">
+                <p className="pkg-mini__kicker">Boutique stay</p>
+                <p className="pkg-mini__title">Quiet lakeside</p>
+                <span className="pkg-mini__cta">Book</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
       <div className={"pkg-device__screen " + className}>
         <div className="pkg-mini pkg-mini--dark">
           <div className="pkg-mini__nav pkg-mini__nav--dark">
-            <span className="pkg-mini__brand">{brand}</span>
+            <span className="pkg-mini__brand">Harbor</span>
             <span className="pkg-mini__links">
+              <span>Tables</span>
               <span>Menu</span>
-              <span>Book</span>
+              <span>Contact</span>
             </span>
+            <span className="pkg-mini__cta pkg-mini__cta--nav">Reserve</span>
           </div>
           <div className="pkg-mini__hero-wrap">
-            <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+            <img src={bookingHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
             <div className="pkg-mini__hero-copy">
-              <p className="pkg-mini__title">Timeless flavors</p>
-              <p className="pkg-mini__text">Reserve a table online</p>
+              <p className="pkg-mini__title">Book a table</p>
+              <p className="pkg-mini__text">Online · tonight</p>
             </div>
           </div>
         </div>
@@ -303,36 +440,165 @@ function SiteLayoutScreen({
     );
   }
 
-  /* Läppäri */
-  if (variant === 2) {
+  /* ——— Kulta (theme 2): tapahtuma / terassi / keittiö / ryhmä ——— */
+  if (pkg === 2) {
+    if (variant === 0) {
+      return (
+        <div className={"pkg-device__screen " + className}>
+          <div className="pkg-mini pkg-mini--story">
+            <div className="pkg-mini__hero-wrap">
+              <img src={eventHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+              <div className="pkg-mini__hero-copy pkg-mini__hero-copy--center">
+                <p className="pkg-mini__kicker pkg-mini__kicker--light">Live</p>
+                <p className="pkg-mini__title">Toast the night</p>
+              </div>
+            </div>
+            <div className="pkg-mini__cta-bar">
+              <span className="pkg-mini__cta">Tickets</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (variant === 1) {
+      return (
+        <div className={"pkg-device__screen " + className}>
+          <div className="pkg-mini pkg-mini--magazine">
+            <div className="pkg-mini__nav">
+              <span className="pkg-mini__brand pkg-mini__brand--serif">Terrace</span>
+              <span className="pkg-mini__menu" />
+            </div>
+            <div className="pkg-mini__mag-grid">
+              <img src={terraceHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+              <div className="pkg-mini__mag-side">
+                <img src={guestsHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+                <div className="pkg-mini__panel pkg-mini__panel--compact">
+                  <p className="pkg-mini__title">Sunset seats</p>
+                  <span className="pkg-mini__cta">Reserve</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (variant === 2) {
+      return (
+        <div className={"pkg-device__screen " + className}>
+          <div className="pkg-mini pkg-mini--center">
+            <div className="pkg-mini__nav pkg-mini__nav--center">
+              <span className="pkg-mini__brand pkg-mini__brand--serif">Atelier</span>
+            </div>
+            <div className="pkg-mini__center-hero">
+              <img src={kitchenHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+            </div>
+            <div className="pkg-mini__center-copy">
+              <p className="pkg-mini__kicker">Fine dining</p>
+              <p className="pkg-mini__title pkg-mini__title--lg">Kitchen craft</p>
+              <span className="pkg-mini__cta">Menu</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
       <div className={"pkg-device__screen " + className}>
-        <div className="pkg-mini pkg-mini--devices">
-          <div className="pkg-mini__band">
-            <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+        <div className="pkg-mini pkg-mini--wide-band">
+          <div className="pkg-mini__nav pkg-mini__nav--dark">
+            <span className="pkg-mini__brand">Groups</span>
+            <span className="pkg-mini__links">
+              <span>Private</span>
+              <span>Events</span>
+              <span>Contact</span>
+            </span>
           </div>
-          <div className="pkg-mini__copy-block">
-            <p className="pkg-mini__kicker">{brand}</p>
-            <p className="pkg-mini__title pkg-mini__title--lg">Culinary excellence</p>
-            <span className="pkg-mini__cta">Reserve</span>
+          <div className="pkg-mini__wide-hero">
+            <img src={groupHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+            <div className="pkg-mini__hero-copy">
+              <p className="pkg-mini__title">Groups &amp; tours</p>
+              <p className="pkg-mini__text">Book larger parties</p>
+            </div>
+          </div>
+          <div className="pkg-mini__stats">
+            <span>
+              <strong>12+</strong> tables
+            </span>
+            <span>
+              <strong>50</strong> seats
+            </span>
+            <span>
+              <strong>24/7</strong> book
+            </span>
           </div>
         </div>
       </div>
     );
   }
 
-  /* Leveä ulkoinen näyttö */
+  /* ——— Timantti (theme 3): interior / cafe / dining / terrace cinematic ——— */
+  if (variant === 0) {
+    return (
+      <div className={"pkg-device__screen " + className}>
+        <div className="pkg-mini pkg-mini--list">
+          <div className="pkg-mini__nav pkg-mini__nav--dark">
+            <span className="pkg-mini__brand">Interior</span>
+            <span className="pkg-mini__menu" />
+          </div>
+          <img src={interiorHero} alt="" className="pkg-mini__hero pkg-mini__hero--mid" />
+          <div className="pkg-mini__list-items">
+            <span>Spaces</span>
+            <span>Lighting</span>
+            <span>Atmosphere</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (variant === 1) {
+    return (
+      <div className={"pkg-device__screen " + className}>
+        <div className="pkg-mini pkg-mini--mosaic">
+          <div className="pkg-mini__nav">
+            <span className="pkg-mini__brand">Café Day</span>
+            <span className="pkg-mini__links">
+              <span>Order</span>
+            </span>
+          </div>
+          <div className="pkg-mini__mosaic-grid">
+            <img src={coffeeHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+            <img src={berryHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+            <img src={cafeHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+            <img src={diningHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (variant === 2) {
+    return (
+      <div className={"pkg-device__screen " + className}>
+        <div className="pkg-mini pkg-mini--split pkg-mini--split-flip">
+          <div className="pkg-mini__split-panel">
+            <p className="pkg-mini__kicker">Signature</p>
+            <p className="pkg-mini__title">Seasonal tasting</p>
+            <p className="pkg-mini__text">Wine · chef&apos;s table</p>
+            <span className="pkg-mini__cta">Book</span>
+          </div>
+          <div className="pkg-mini__split-media">
+            <img src={fineDiningHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className={"pkg-device__screen " + className}>
-      <div className="pkg-mini pkg-mini--split">
-        <div className="pkg-mini__split-media">
-          <img src={hero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
-        </div>
-        <div className="pkg-mini__split-panel">
-          <p className="pkg-mini__kicker">{brand}</p>
-          <p className="pkg-mini__title">Private dining</p>
-          <p className="pkg-mini__text">Events · tasting · wine</p>
-          <span className="pkg-mini__cta">Enquire</span>
+      <div className="pkg-mini pkg-mini--cinema">
+        <img src={terraceHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
+        <div className="pkg-mini__cinema-scrim">
+          <p className="pkg-mini__brand pkg-mini__brand--serif pkg-mini__brand--light">Harbor</p>
+          <p className="pkg-mini__title pkg-mini__title--xl">Sea &amp; sunset</p>
+          <span className="pkg-mini__cta pkg-mini__cta--light">Reserve</span>
         </div>
       </div>
     </div>

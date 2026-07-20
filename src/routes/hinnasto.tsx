@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
+import laskuttamoLogo from "@/assets/laskuttamo-logo-white.png";
 
 export const Route = createFileRoute("/hinnasto")({
   head: () => ({
@@ -116,7 +117,21 @@ function HinnastoPage() {
             </p>
             <div className="mt-8 space-y-3 border-t border-white/15 pt-6 text-sm text-white/85 sm:text-base">
               <p>{b.providerLead}</p>
-              <p className="font-semibold text-white">{b.providerName}</p>
+              <a
+                href={b.providerSiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block py-1"
+                aria-label={b.providerName}
+              >
+                <img
+                  src={laskuttamoLogo}
+                  alt={b.providerName}
+                  className="h-7 w-auto sm:h-8"
+                  width={180}
+                  height={32}
+                />
+              </a>
               <p>
                 <a
                   href={`mailto:${b.providerEmail}`}

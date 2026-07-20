@@ -1632,6 +1632,514 @@
     box-shadow: 0 1px 3px rgba(50, 30, 20, 0.12);
   }
 
+  .pkg-mini__brand--serif {
+    font-family: var(--font-serif, "DM Serif Display", Georgia, serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  .pkg-mini__brand--light {
+    color: #f7f3ee;
+  }
+
+  .pkg-mini__hero--mid {
+    flex: 1.15;
+    min-height: 0;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .pkg-mini__body,
+  .pkg-mini__panel {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 0.12rem;
+    padding: 0.35rem 0.4rem 0.4rem;
+    background: #fff;
+  }
+
+  .pkg-mini__panel--compact {
+    padding: 0.28rem 0.32rem;
+  }
+
+  .pkg-mini__cta--nav {
+    margin-top: 0;
+    padding: 0.12rem 0.32rem;
+    font-size: 0.26rem;
+    background: var(--accent, #c46a32);
+  }
+
+  .pkg-mini__cta--light {
+    background: #fff;
+    color: #432f24;
+  }
+
+  .pkg-mini__cta-bar {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 0.28rem;
+    background: #fff;
+  }
+
+  .pkg-mini__strip {
+    display: grid;
+    flex-shrink: 0;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.12rem;
+    padding: 0.28rem 0.32rem;
+    background: #fff;
+    font-size: 0.26rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(42, 32, 24, 0.55);
+    text-align: center;
+  }
+
+  .pkg-mini__strip--three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pkg-mini__duo {
+    display: grid;
+    flex: 1;
+    min-height: 0;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.12rem;
+  }
+
+  .pkg-mini__hotel-row {
+    display: grid;
+    flex: 1;
+    min-height: 0;
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .pkg-mini__kicker--light {
+    color: rgba(255, 255, 255, 0.75);
+    opacity: 1;
+  }
+
+  .pkg-mini__hero-copy--center {
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(18, 12, 8, 0.42);
+  }
+
+  .pkg-mini--story .pkg-mini__hero-wrap {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .pkg-mini--story .pkg-mini__hero {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+
+  .pkg-mini__mag-grid {
+    display: grid;
+    flex: 1;
+    min-height: 0;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 0.12rem;
+  }
+
+  .pkg-mini__mag-side {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    gap: 0.12rem;
+  }
+
+  .pkg-mini__mag-side > img {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .pkg-mini__nav--center {
+    justify-content: center;
+  }
+
+  .pkg-mini__center-hero {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .pkg-mini__center-hero .pkg-mini__hero {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+
+  .pkg-mini__center-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.4rem 0.45rem 0.5rem;
+    text-align: center;
+    background: #fff;
+  }
+
+  .pkg-mini__wide-hero {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .pkg-mini__wide-hero .pkg-mini__hero {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+
+  .pkg-mini__stats {
+    display: grid;
+    flex-shrink: 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.15rem;
+    padding: 0.32rem 0.4rem;
+    background: #fff;
+    font-size: 0.28rem;
+    text-align: center;
+    color: rgba(42, 32, 24, 0.65);
+  }
+
+  .pkg-mini__stats strong {
+    display: block;
+    font-size: 0.48rem;
+    font-weight: 800;
+    color: #432f24;
+  }
+
+  .pkg-mini__list-items {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 0.08rem;
+    padding: 0.28rem 0.4rem 0.4rem;
+    background: #fff;
+    font-size: 0.32rem;
+    font-weight: 600;
+  }
+
+  .pkg-mini__list-items > span {
+    padding: 0.22rem 0.28rem;
+    border-radius: 0.22rem;
+    background: #f3eee8;
+  }
+
+  .pkg-mini__mosaic-grid {
+    display: grid;
+    flex: 1;
+    min-height: 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.1rem;
+  }
+
+  .pkg-mini--split-flip {
+    flex-direction: row-reverse;
+  }
+
+  .pkg-mini--cinema {
+    position: relative;
+  }
+
+  .pkg-mini--cinema > .pkg-mini__hero {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+
+  .pkg-mini__cinema-scrim {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 0.15rem;
+    padding: 0.55rem 0.6rem;
+    background: linear-gradient(transparent 30%, rgba(18, 12, 8, 0.82));
+    color: #f7f3ee;
+  }
+
+  .pkg-mini__title--xl {
+    font-size: 0.78rem;
+    color: #fff;
+  }
+
+  /* ——— Laitekohtainen typografia: skarppi mittakaava ——— */
+  .pkg-device--phone .pkg-mini__nav,
+  .pkg-device--phone .pkg-mini__band {
+    padding: 0.16rem 0.18rem;
+    gap: 0.12rem;
+  }
+
+  .pkg-device--phone .pkg-mini__brand {
+    font-size: 0.26rem;
+    letter-spacing: 0.04em;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .pkg-device--phone .pkg-mini__brand--serif {
+    font-size: 0.3rem;
+  }
+
+  .pkg-device--phone .pkg-mini__links {
+    display: none;
+  }
+
+  .pkg-device--phone .pkg-mini__menu {
+    width: 0.42rem;
+    height: 0.05rem;
+    box-shadow:
+      0 -0.1rem 0 currentColor,
+      0 0.1rem 0 currentColor;
+  }
+
+  .pkg-device--phone .pkg-mini__title {
+    font-size: 0.36rem;
+    margin-top: 0.04rem;
+    line-height: 1.08;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .pkg-device--phone .pkg-mini__title--lg,
+  .pkg-device--phone .pkg-mini__title--xl {
+    font-size: 0.38rem;
+  }
+
+  .pkg-device--phone .pkg-mini__text {
+    font-size: 0.22rem;
+    margin-top: 0.05rem;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .pkg-device--phone .pkg-mini__kicker {
+    font-size: 0.18rem;
+    letter-spacing: 0.06em;
+  }
+
+  .pkg-device--phone .pkg-mini__cta {
+    margin-top: 0.12rem;
+    padding: 0.1rem 0.24rem;
+    font-size: 0.2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .pkg-device--phone .pkg-mini__cta--nav {
+    display: none;
+  }
+
+  .pkg-device--phone .pkg-mini__hero-copy {
+    padding: 0.22rem 0.18rem 0.2rem;
+  }
+
+  .pkg-device--phone .pkg-mini__hero-copy .pkg-mini__cta {
+    display: none;
+  }
+
+  .pkg-device--phone .pkg-mini__body,
+  .pkg-device--phone .pkg-mini__panel {
+    padding: 0.16rem 0.18rem 0.2rem;
+    gap: 0.04rem;
+    flex: 0 0 auto;
+  }
+
+  .pkg-device--phone .pkg-mini__hero--mid {
+    flex: 1.45;
+    min-height: 0;
+  }
+
+  .pkg-device--phone .pkg-mini--coffee .pkg-mini__cards-row--mobile {
+    padding: 0.1rem 0.12rem 0.14rem;
+  }
+
+  .pkg-device--phone .pkg-mini--coffee .pkg-mini__cards-row--mobile > span {
+    border-radius: 0.12rem;
+  }
+
+  .pkg-device--phone .pkg-mini__cards-row,
+  .pkg-device--phone .pkg-mini__cards-row--mobile {
+    padding: 0.12rem;
+    gap: 0.08rem;
+  }
+
+  .pkg-device--phone .pkg-mini__strip {
+    font-size: 0.16rem;
+    padding: 0.12rem 0.1rem;
+    gap: 0.06rem;
+  }
+
+  .pkg-device--phone .pkg-mini__cta-bar {
+    padding: 0.12rem;
+  }
+
+  .pkg-device--phone .pkg-mini__list-items {
+    font-size: 0.22rem;
+    padding: 0.12rem 0.14rem 0.16rem;
+    gap: 0.05rem;
+  }
+
+  .pkg-device--phone .pkg-mini__list-items > span {
+    padding: 0.1rem 0.12rem;
+  }
+
+  .pkg-device--phone .pkg-mini__stats {
+    font-size: 0.16rem;
+    padding: 0.14rem 0.12rem;
+  }
+
+  .pkg-device--phone .pkg-mini__stats strong {
+    font-size: 0.28rem;
+  }
+
+  .pkg-device--phone .pkg-mini__cinema-scrim {
+    padding: 0.28rem 0.22rem;
+    gap: 0.06rem;
+  }
+
+  .pkg-device--phone .pkg-mini__center-copy {
+    padding: 0.18rem 0.16rem 0.2rem;
+  }
+
+  .pkg-device--phone .pkg-mini__copy-block {
+    padding: 0.18rem 0.16rem 0.2rem;
+  }
+
+  .pkg-device--phone .pkg-mini__split-panel {
+    padding: 0.16rem 0.14rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__brand {
+    font-size: 0.32rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__links {
+    font-size: 0.24rem;
+    gap: 0.2rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__title {
+    font-size: 0.44rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__title--lg {
+    font-size: 0.48rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__title--xl {
+    font-size: 0.52rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__text {
+    font-size: 0.26rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__kicker {
+    font-size: 0.22rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__cta {
+    font-size: 0.24rem;
+    padding: 0.14rem 0.32rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__nav {
+    padding: 0.22rem 0.28rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__hero-copy {
+    padding: 0.32rem 0.3rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__body,
+  .pkg-device--tablet .pkg-mini__panel {
+    padding: 0.28rem 0.3rem;
+  }
+
+  .pkg-device--tablet .pkg-mini__strip {
+    font-size: 0.22rem;
+  }
+
+  .pkg-device--laptop .pkg-mini__title {
+    font-size: 0.5rem;
+  }
+
+  .pkg-device--laptop .pkg-mini__title--lg {
+    font-size: 0.56rem;
+  }
+
+  .pkg-device--laptop .pkg-mini__text {
+    font-size: 0.3rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__brand {
+    font-size: 0.4rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__links {
+    font-size: 0.32rem;
+    gap: 0.35rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__title {
+    font-size: 0.58rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__title--lg {
+    font-size: 0.66rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__title--xl {
+    font-size: 0.72rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__text {
+    font-size: 0.34rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__cta {
+    font-size: 0.3rem;
+    padding: 0.2rem 0.42rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__hero-copy {
+    padding: 0.5rem 0.55rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__cinema-scrim {
+    padding: 0.55rem 0.6rem;
+  }
+
+  .pkg-device--monitor .pkg-mini__stats strong {
+    font-size: 0.52rem;
+  }
+
   /* Hosting hero — three small balls */
   .hosting-ball {
     position: absolute;
