@@ -159,6 +159,15 @@ export function SiteHeader() {
             )}
           </div>
 
+          <Link
+            to="/hinnasto"
+            className={triggerClass}
+            onClick={() => setDesktopMenu(null)}
+            activeProps={{ className: "text-foreground" }}
+          >
+            {t.header.pricing}
+          </Link>
+
           <div className="relative">
             <button
               type="button"
@@ -331,6 +340,18 @@ export function SiteHeader() {
                 </ul>
               </div>
             </MobileSection>
+
+            <Link
+              to="/hinnasto"
+              onClick={() => {
+                setMobileOpen(false);
+                setMobileSection(null);
+              }}
+              className="border-b border-border/60 py-4 text-lg text-foreground"
+              activeProps={{ className: "text-accent" }}
+            >
+              {t.header.pricing}
+            </Link>
 
             <MobileSection
               label={t.header.languages}

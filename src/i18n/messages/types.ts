@@ -20,6 +20,7 @@ export type Messages = {
   header: {
     services: string;
     industries: string;
+    pricing: string;
     languages: string;
     contact: string;
     menu: string;
@@ -189,6 +190,27 @@ export type Messages = {
       mailBody: string;
     };
   };
+  pricing: {
+    meta: {
+      title: string;
+      description: string;
+      ogTitle: string;
+      ogDescription: string;
+    };
+    eyebrow: string;
+    titleBefore: string;
+    titleAccent: string;
+    titleAfter: string;
+    lead: string;
+    sections: {
+      websites: string;
+      visibility: string;
+      branding: string;
+      hosting: string;
+    };
+    seeMore: string;
+    vatNote: string;
+  };
   about: {
     meta: {
       title: string;
@@ -251,6 +273,7 @@ export type Messages = {
     packages: Array<{
       name: string;
       tagline: string;
+      summary: string;
       price: string;
       featured?: boolean;
       bullets: string[];
@@ -281,6 +304,7 @@ export type Messages = {
     packages: Array<{
       name: string;
       tagline: string;
+      summary: string;
       description: string;
       price: string;
       featured?: boolean;
@@ -418,7 +442,7 @@ export type Messages = {
       titleAfter: string;
       description: string;
       features: string[];
-      compareCta: string;
+      askCta: string;
     };
     popular: string;
     requestQuote: string;
@@ -426,6 +450,7 @@ export type Messages = {
     packagesTitle: string;
     packages: Array<{
       name: string;
+      summary: string;
       price: string;
       featured?: boolean;
       bullets: string[];

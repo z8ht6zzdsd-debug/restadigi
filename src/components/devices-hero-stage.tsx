@@ -1,101 +1,157 @@
-import type { ReactNode } from "react";
-import barberHero from "@/assets/barber-haircut-hero.jpg";
-import hotelHero from "@/assets/hero-hotel-web.jpg";
+import berryHero from "@/assets/freddos-v2-berry.jpg";
+import eventHero from "@/assets/mock-tapahtumat.jpg";
+import terraceHero from "@/assets/success-busy-terrace.jpg";
 import diningHero from "@/assets/restaurant-dining.jpg";
 
-type DevicesHeroStageProps = {
-  promo?: ReactNode;
-};
-
-/** Kolme terävää laitetta: mobiili, iPad, ulkoinen näyttö — palvelualan sivulayoutit */
-export function DevicesHeroStage({ promo }: DevicesHeroStageProps) {
+/** Neljä laitetta: mobiili, kaksi tablettia, ulkoinen näyttö — palvelualan sivulayoutit */
+export function DevicesHeroStage() {
   return (
     <div className="devices-stage" aria-hidden>
-      {/* Mobiili — parturi */}
-      <div className="devices-stage__phone">
-        <div className="devices-stage__phone-bezel">
-          <span className="devices-stage__phone-island" />
-          <div className="devices-stage__screen devices-stage__screen--phone">
-            <div className="mini-site mini-site--salon">
-              <div className="mini-site__bar">
-                <span className="mini-site__brand">Nord Cut</span>
-                <span className="mini-site__menu" />
-              </div>
-              <img src={barberHero} alt="" className="mini-site__hero" />
-              <div className="mini-site__body">
-                <p className="mini-site__kicker">Parturi · Helsinki</p>
-                <p className="mini-site__title">Ajat varattavissa verkossa</p>
-                <span className="mini-site__cta">Varaa aika</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* iPad — hotelli */}
-      <div className="devices-stage__tablet">
-        <div className="devices-stage__tablet-bezel">
-          <div className="devices-stage__screen devices-stage__screen--tablet">
-            <div className="mini-site mini-site--hotel">
-              <div className="mini-site__nav">
-                <span className="mini-site__brand mini-site__brand--serif">Lake House</span>
-                <span className="mini-site__links">
-                  <span>Rooms</span>
-                  <span>Spa</span>
-                  <span>Book</span>
-                </span>
-              </div>
-              <div className="mini-site__split">
-                <img src={hotelHero} alt="" className="mini-site__hero mini-site__hero--fill" />
-                <div className="mini-site__panel">
-                  <p className="mini-site__kicker">Boutique hotel</p>
-                  <p className="mini-site__title mini-site__title--lg">Quiet stays by the lake</p>
-                  <p className="mini-site__text">Seasonal rooms, calm mornings, easy booking.</p>
-                  <span className="mini-site__cta">Book stay</span>
+      <div className="devices-stage__row">
+        {/* Mobiili — värikäs juoma */}
+        <div className="devices-stage__phone">
+          <div className="devices-stage__phone-bezel">
+            <span className="devices-stage__phone-island" />
+            <div className="devices-stage__screen devices-stage__screen--phone">
+              <div className="mini-site mini-site--salon">
+                <div className="mini-site__bar">
+                  <span className="mini-site__brand">Freddo's</span>
+                  <span className="mini-site__menu" />
+                </div>
+                <img
+                  src={berryHero}
+                  alt=""
+                  width={720}
+                  height={960}
+                  decoding="async"
+                  className="mini-site__hero"
+                />
+                <div className="mini-site__body">
+                  <p className="mini-site__kicker">Kahvila · Helsinki</p>
+                  <p className="mini-site__title">Berry ice — tilaa verkosta</p>
+                  <span className="mini-site__cta">Tilaa</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Ulkoinen näyttö — ravintola */}
-      <div className="devices-stage__monitor">
-        <div className="devices-stage__monitor-bezel">
-          <div className="devices-stage__screen devices-stage__screen--monitor">
-            <div className="mini-site mini-site--dining">
-              <div className="mini-site__nav mini-site__nav--dark">
-                <span className="mini-site__brand mini-site__brand--serif">Atelier</span>
-                <span className="mini-site__links">
-                  <span>Menu</span>
-                  <span>Events</span>
-                  <span>Contact</span>
-                </span>
-                <span className="mini-site__cta mini-site__cta--sm">Reserve</span>
-              </div>
-              <div className="mini-site__hero-wrap">
-                <img src={diningHero} alt="" className="mini-site__hero mini-site__hero--fill" />
-                <div className="mini-site__hero-copy">
-                  <p className="mini-site__title mini-site__title--hero">Timeless flavors</p>
-                  <p className="mini-site__text mini-site__text--light">
-                    Seasonal tasting · table booking online
-                  </p>
+        {/* Tabletti — tapahtuma (kallistus vasemmalle) */}
+        <div className="devices-stage__tablet devices-stage__tablet--tilt-left">
+          <div className="devices-stage__tablet-bezel">
+            <div className="devices-stage__screen devices-stage__screen--tablet">
+              <div className="mini-site mini-site--hotel">
+                <div className="mini-site__nav">
+                  <span className="mini-site__brand mini-site__brand--serif">Garden Table</span>
+                  <span className="mini-site__links">
+                    <span>Menu</span>
+                    <span>Events</span>
+                    <span>Book</span>
+                  </span>
                 </div>
-              </div>
-              <div className="mini-site__strip">
-                <span>Lunch</span>
-                <span>Dinner</span>
-                <span>Wine</span>
-                <span>Private</span>
+                <div className="mini-site__split">
+                  <img
+                    src={eventHero}
+                    alt=""
+                    width={1200}
+                    height={900}
+                    decoding="async"
+                    className="mini-site__hero mini-site__hero--fill"
+                  />
+                  <div className="mini-site__panel">
+                    <p className="mini-site__kicker">Live evenings</p>
+                    <p className="mini-site__title mini-site__title--lg">Toast the night</p>
+                    <p className="mini-site__text">Private dinners, live music, easy booking.</p>
+                    <span className="mini-site__cta">Reserve</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="devices-stage__monitor-stand" />
-        <div className="devices-stage__monitor-base" />
-      </div>
 
-      {promo && <div className="devices-stage__promo">{promo}</div>}
+        {/* Tabletti — terassi (kallistus oikealle) */}
+        <div className="devices-stage__tablet devices-stage__tablet--cafe devices-stage__tablet--tilt-right">
+          <div className="devices-stage__tablet-bezel">
+            <div className="devices-stage__screen devices-stage__screen--tablet">
+              <div className="mini-site mini-site--cafe">
+                <div className="mini-site__nav">
+                  <span className="mini-site__brand">Harbor</span>
+                  <span className="mini-site__links">
+                    <span>Menu</span>
+                    <span>Terrace</span>
+                    <span>Book</span>
+                  </span>
+                </div>
+                <div className="mini-site__hero-wrap">
+                  <img
+                    src={terraceHero}
+                    alt=""
+                    width={1200}
+                    height={900}
+                    decoding="async"
+                    className="mini-site__hero mini-site__hero--fill"
+                  />
+                  <div className="mini-site__hero-copy">
+                    <p className="mini-site__title mini-site__title--hero">Sunset terrace</p>
+                    <p className="mini-site__text mini-site__text--light">
+                      Sea views · table booking online
+                    </p>
+                  </div>
+                </div>
+                <div className="mini-site__strip mini-site__strip--three">
+                  <span>Lunch</span>
+                  <span>Drinks</span>
+                  <span>Reserve</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Ulkoinen näyttö — ravintola (päävisuaali) */}
+        <div className="devices-stage__monitor">
+          <div className="devices-stage__monitor-bezel">
+            <div className="devices-stage__screen devices-stage__screen--monitor">
+              <div className="mini-site mini-site--dining">
+                <div className="mini-site__nav mini-site__nav--dark">
+                  <span className="mini-site__brand mini-site__brand--serif">Atelier</span>
+                  <span className="mini-site__links">
+                    <span>Menu</span>
+                    <span>Events</span>
+                    <span>Contact</span>
+                  </span>
+                  <span className="mini-site__cta mini-site__cta--sm">Reserve</span>
+                </div>
+                <div className="mini-site__hero-wrap">
+                  <img
+                    src={diningHero}
+                    alt=""
+                    width={1600}
+                    height={1000}
+                    decoding="async"
+                    className="mini-site__hero mini-site__hero--fill"
+                  />
+                  <div className="mini-site__hero-copy">
+                    <p className="mini-site__title mini-site__title--hero">Timeless flavors</p>
+                    <p className="mini-site__text mini-site__text--light">
+                      Seasonal tasting · table booking online
+                    </p>
+                  </div>
+                </div>
+                <div className="mini-site__strip">
+                  <span>Lunch</span>
+                  <span>Dinner</span>
+                  <span>Wine</span>
+                  <span>Private</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="devices-stage__monitor-stand" />
+          <div className="devices-stage__monitor-base" />
+        </div>
+      </div>
     </div>
   );
 }

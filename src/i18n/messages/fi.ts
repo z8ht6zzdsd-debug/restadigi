@@ -44,6 +44,7 @@ export const fi: Messages = {
   header: {
     services: "Palvelut",
     industries: "Toimialat",
+    pricing: "Hinnasto",
     languages: "Kielet",
     contact: "Ota yhteyttä",
     menu: "Valikko",
@@ -293,6 +294,28 @@ export const fi: Messages = {
         "Nimi: {name}\nYritys: {company}\nSähköposti: {email}\nBudjetti: {budget}\n\nViesti:\n{message}",
     },
   },
+  pricing: {
+    meta: {
+      title: "Hinnasto — Restadigi",
+      description:
+        "Restadigin palveluiden hinnasto: verkkosivut, diginäkyvyys, graafinen suunnittelu ja hosting.",
+      ogTitle: "Hinnasto — Restadigi",
+      ogDescription: "Selkeät pakettihinnat verkkosivuille, näkyvyydelle, graafiselle suunnittelulle ja hostingille.",
+    },
+    eyebrow: "Hinnasto",
+    titleBefore: "Selkeät ",
+    titleAccent: "hinnat",
+    titleAfter: " ilman yllätyksiä.",
+    lead: "Kooste pakettihinnoista. Tutustu tuotteiden palvelusivuilla pakettien tarkempaan sisältöön.",
+    sections: {
+      websites: "Verkkosivut",
+      visibility: "Diginäkyvyys",
+      branding: "Graafinen suunnittelu",
+      hosting: "Hosting & ylläpito",
+    },
+    seeMore: "Tutustu palveluun",
+    vatNote: "Hinnat ilmoitetaan ilman arvonlisäveroa, ellei toisin mainita.",
+  },
   about: {
     meta: {
       title: "Meistä — Restadigi",
@@ -399,18 +422,24 @@ export const fi: Messages = {
       {
         name: "Start",
         tagline: "Yksinkertainen mutta vaikuttava sivusto pienyritykselle",
+        summary:
+          "Selkeä 1–3-sivuinen kokonaisuus, joka kertoo yrityksestäsi heti. Sopii pienelle toimijalle, joka haluaa ammattimaisen verkkonäkyvyyden ilman turhaa monimutkaisuutta.",
         price: "399 € + alv",
         bullets: withSitePages("Ammattimainen 1–3-sivuinen verkkosivusto yrityksesi tarpeisiin"),
       },
       {
         name: "Plus",
         tagline: "Tyylikäs kokonaisuus, joka esittelee palvelusi selkeästi",
+        summary:
+          "4–6 sivua palveluille, yhteystiedoille ja vahvalle ensivaikutelmalle. Esittelee tarjontasi selkeästi ja ohjaa kävijän helposti yhteydenottoon.",
         price: "549 € + alv",
         bullets: withSitePages("Ammattimainen 4–6-sivuinen verkkosivusto yrityksesi tarpeisiin"),
       },
       {
         name: "Kulta",
         tagline: "7–9 sivua ja AI-asiakaspalvelu 1 vuodeksi",
+        summary:
+          "Laajempi sivusto kasvavalle yritykselle. Sisältää AI-asiakaspalvelun vuodeksi — botti vastaa kysymyksiin ja kerää liidejä myös silloin, kun et itse ole paikalla.",
         price: "759 € + alv",
         bullets: withSitePages("Ammattimainen 7–9-sivuinen verkkosivusto yrityksesi tarpeisiin", [
           "AI-asiakaspalvelu (chatbot) sisältyy 1 vuodeksi — vastaa asiakkaille 24/7 ja kerää liidejä",
@@ -419,6 +448,8 @@ export const fi: Messages = {
       {
         name: "Timantti",
         tagline: "Yli 10 sivua, AI-asiakaspalvelu ja valitsemasi varauspalvelu 1 vuodeksi",
+        summary:
+          "Kattavin paketti: yli 10 sivua, AI-asiakaspalvelu ja valitsemasi varauspalvelu vuodeksi. Sopii, kun haluat myynnin ja palvelun toimivan verkossa ympäri vuorokauden.",
         price: "929 € + alv",
         featured: true,
         bullets: withSitePages(
@@ -460,6 +491,8 @@ export const fi: Messages = {
       {
         name: "AI-optimointi",
         tagline: "Näkyväksi myös ChatGPT:n, Clauden, Geminin ja Copilotin hauissa",
+        summary:
+          "Yhä useampi etsii palveluita tekoälyn kautta. Varmistamme, että yrityksesi tiedot ja sisältö tukevat näkyvyyttä ChatGPT:ssä, Claudessa, Geminissä ja Copilotissa — vuodesta toiseen.",
         description:
           "Verkkohaku on muuttumassa. Yhä useampi etsii yrityksiä, tuotteita ja palveluita keskustelemalla tekoälyn kanssa. AI-optimointipalvelumme auttaa varmistamaan, että yrityksesi tiedot ovat ajan tasalla ja että verkkosivustosi sisältö tukee tekoälypalveluiden kykyä tunnistaa yrityksesi oikeassa yhteydessä.",
         price: "alk. 99 € / vuosi",
@@ -475,6 +508,8 @@ export const fi: Messages = {
       {
         name: "Google-optimointi",
         tagline: "Varmista, että asiakkaat löytävät yrityksesi",
+        summary:
+          "Google on edelleen tärkein kanava, kun asiakas etsii yritystä. Pidämme sivustosi SEO-perusteet kunnossa vuosittain, jotta löydettävyys ei pääse rapistumaan.",
         description:
           "Google on edelleen yksi tärkeimmistä kanavista, kun etsitään yrityksiä, tuotteita ja palveluita. Google-optimointipalvelumme on kevyt vuosittainen ylläpitopalvelu, jonka tavoitteena on varmistaa, että verkkosivustosi täyttää tärkeimmät hakukoneoptimoinnin perusvaatimukset ja tukee asiakkaiden löydettävyyttä.",
         price: "alk. 99 € / vuosi",
@@ -491,6 +526,8 @@ export const fi: Messages = {
       {
         name: "Huippu-urheilun näkyvyyspaketti",
         tagline: "Näkyvyyttä Suomen suosituimmissa urheilusarjoissa",
+        summary:
+          "Näkyvyyttä Liigan, Veikkausliigan ja Superpesiksen yhteydessä. Edullinen mikrokumppanuus tuo brändisi katsomoon, digikanaviin ja verkostoitumistilaisuuksiin.",
         description:
           "Huippu-urheilu tarjoaa yrityksille ainutlaatuisen mahdollisuuden tavoittaa asiakkaita, vahvistaa brändiään ja rakentaa luotettavaa yrityskuvaa. Tarjoamme edullisia mikrokumppanuuksia Liigan, Veikkausliigan ja Superpesiksen seurojen kanssa.",
         price: "alk. 299 € / vuosi",
@@ -511,6 +548,8 @@ export const fi: Messages = {
       {
         name: "Graafinen suunnittelu",
         tagline: "Yritysilme, logo ja markkinointimateriaalit",
+        summary:
+          "Logo, yritysilme ja markkinointimateriaalit yhdestä paikasta. Saat modernin, yhtenäisen visuaalisen ilmeen, joka toimii sekä verkossa että painetuissa materiaaleissa.",
         description: "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin.",
         price: "alk. 99 €",
         bullets: [
@@ -747,7 +786,7 @@ export const fi: Messages = {
         "Säännölliset päivitykset ja tuki",
         "Selkeä kiinteä kuukausihinta",
       ],
-      compareCta: "Vertaile paketteja",
+      askCta: "Kysy lisää",
     },
     popular: "Suosittu",
     requestQuote: "Pyydä tarjous",
@@ -756,6 +795,8 @@ export const fi: Messages = {
     packages: [
       {
         name: "Basic",
+        summary:
+          "Nopea hosting Suomessa domainin ja SSL:n kanssa. Sopii, kun tarvitset luotettavan perustason ylläpidon sivustollesi ilman ylimääräisiä palveluita.",
         price: "11,90 € / kk + alv (laskutetaan vuosittain)",
         bullets: [
           "Hosting ja verkkotunnus sisältyvät hintaan",
@@ -766,6 +807,8 @@ export const fi: Messages = {
       },
       {
         name: "Pro Business",
+        summary:
+          "Hostingin lisäksi jatkuva ylläpito, pienet sisältömuutokset ja henkilökohtainen tuki. Valitse tämä, kun sivuston pitää pysyä ajan tasalla ja apua on saatavilla tarvittaessa.",
         price: "29,99 € / kk + alv",
         featured: true,
         bullets: [

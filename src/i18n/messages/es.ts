@@ -44,6 +44,7 @@ export const es: Messages = {
   header: {
     services: "Servicios",
     industries: "Sectores",
+    pricing: "Precios",
     languages: "Idiomas",
     contact: "Contacto",
     menu: "Menú",
@@ -294,6 +295,29 @@ export const es: Messages = {
         "Nombre: {name}\nEmpresa: {company}\nCorreo: {email}\nPresupuesto: {budget}\n\nMensaje:\n{message}",
     },
   },
+  pricing: {
+    meta: {
+      title: "Precios — Restadigi",
+      description:
+        "Lista de precios de Restadigi: sitios web, visibilidad digital, diseño gráfico y hosting.",
+      ogTitle: "Precios — Restadigi",
+      ogDescription:
+        "Precios claros de paquetes para sitios web, visibilidad, diseño gráfico y hosting.",
+    },
+    eyebrow: "Precios",
+    titleBefore: "Precios ",
+    titleAccent: "claros",
+    titleAfter: " sin sorpresas.",
+    lead: "Resumen de los precios de los paquetes. Consulta en la página de cada producto el contenido detallado de los paquetes.",
+    sections: {
+      websites: "Sitios web",
+      visibility: "Visibilidad digital",
+      branding: "Diseño gráfico",
+      hosting: "Hosting y mantenimiento",
+    },
+    seeMore: "Ver el servicio",
+    vatNote: "Los precios se indican sin IVA salvo que se indique lo contrario.",
+  },
   about: {
     meta: {
       title: "Sobre nosotros — Restadigi",
@@ -401,18 +425,24 @@ export const es: Messages = {
       {
         name: "Start",
         tagline: "Un sitio sencillo pero impactante para una pequeña empresa",
+        summary:
+          "Un sitio claro de 1–3 páginas que presenta tu negocio de inmediato. Ideal para un pequeño operador que quiere presencia profesional sin complejidad innecesaria.",
         price: "399 € + IVA",
         bullets: withSitePages("Un sitio web profesional de 1–3 páginas adaptado a tu negocio"),
       },
       {
         name: "Plus",
         tagline: "Un conjunto elegante que presenta tus servicios con claridad",
+        summary:
+          "4–6 páginas para servicios, contacto y una primera impresión fuerte. Presenta tu oferta con claridad y guía al visitante hacia el contacto.",
         price: "549 € + IVA",
         bullets: withSitePages("Un sitio web profesional de 4–6 páginas adaptado a tu negocio"),
       },
       {
         name: "Oro",
         tagline: "7–9 páginas y atención con IA durante 1 año",
+        summary:
+          "Un sitio más amplio para un negocio en crecimiento. Incluye atención con IA durante un año: el bot responde y captura leads también cuando no estás disponible.",
         price: "759 € + IVA",
         bullets: withSitePages("Un sitio web profesional de 7–9 páginas adaptado a tu negocio", [
           "Atención con IA (chatbot) incluida durante 1 año — responde a clientes 24/7 y captura leads",
@@ -422,6 +452,8 @@ export const es: Messages = {
         name: "Diamante",
         tagline:
           "Más de 10 páginas, atención con IA y el servicio de reservas que elijas durante 1 año",
+        summary:
+          "El paquete más completo: más de 10 páginas, atención con IA y el servicio de reservas que elijas durante un año. Para cuando ventas y servicio deben funcionar online las 24 horas.",
         price: "929 € + IVA",
         featured: true,
         bullets: withSitePages(
@@ -464,6 +496,8 @@ export const es: Messages = {
       {
         name: "Optimización IA",
         tagline: "Visible también en búsquedas de ChatGPT, Claude, Gemini y Copilot",
+        summary:
+          "Cada vez más personas buscan servicios a través de la IA. Mantenemos tus datos y contenido listos para la visibilidad en ChatGPT, Claude, Gemini y Copilot — año tras año.",
         description:
           "La búsqueda en la web está cambiando. Cada vez más personas encuentran empresas, productos y servicios conversando con la IA. Nuestro servicio de optimización IA ayuda a mantener al día los datos de tu empresa y a que el contenido de tu sitio respalde la capacidad de los servicios de IA para reconocer tu negocio en el contexto correcto.",
         price: "desde 99 € / año",
@@ -479,6 +513,8 @@ export const es: Messages = {
       {
         name: "Optimización Google",
         tagline: "Asegura que los clientes encuentren tu empresa",
+        summary:
+          "Google sigue siendo el canal principal cuando un cliente busca una empresa. Mantenemos los fundamentos SEO al día cada año para que la descubribilidad no se deteriore.",
         description:
           "Google sigue siendo uno de los canales más importantes para encontrar empresas, productos y servicios. Nuestra optimización Google es un servicio ligero de mantenimiento anual cuyo objetivo es garantizar que tu sitio cumpla los requisitos básicos de SEO y apoye la descubribilidad.",
         price: "desde 99 € / año",
@@ -495,6 +531,8 @@ export const es: Messages = {
       {
         name: "Paquete de visibilidad en deporte de élite",
         tagline: "Visibilidad en las ligas deportivas más populares de Finlandia",
+        summary:
+          "Visibilidad ligada a Liiga, Veikkausliiga y Superpesis. Una microcolaboración asequible lleva tu marca a las gradas, canales digitales y eventos de networking.",
         description:
           "El deporte de élite ofrece a las empresas una oportunidad única de llegar a clientes, reforzar la marca y construir una imagen fiable. Ofrecemos microcolaboraciones asequibles con clubes de Liiga, Veikkausliiga y Superpesis.",
         price: "desde 299 € / año",
@@ -515,6 +553,8 @@ export const es: Messages = {
       {
         name: "Diseño gráfico",
         tagline: "Identidad de marca, logo y materiales de marketing",
+        summary:
+          "Logo, identidad y materiales de marketing desde un solo lugar. Una imagen moderna y coherente que funciona online y en impresión.",
         description:
           "Identidad de marca, materiales de marketing y trabajos de diseño individuales — precios claros y resultado profesional.",
         price: "desde 99 €",
@@ -754,7 +794,7 @@ export const es: Messages = {
         "Actualizaciones y soporte regulares",
         "Precio mensual fijo y claro",
       ],
-      compareCta: "Comparar paquetes",
+      askCta: "Preguntar más",
     },
     popular: "Popular",
     requestQuote: "Solicitar presupuesto",
@@ -763,6 +803,8 @@ export const es: Messages = {
     packages: [
       {
         name: "Basic",
+        summary:
+          "Hosting rápido en Finlandia con dominio y SSL incluidos. Ideal cuando necesitas un mantenimiento básico fiable sin servicios extra.",
         price: "11,90 € / mes + IVA (facturación anual)",
         bullets: [
           "Hosting y dominio incluidos",
@@ -773,6 +815,8 @@ export const es: Messages = {
       },
       {
         name: "Pro Business",
+        summary:
+          "Además del hosting: mantenimiento continuo, pequeños cambios de contenido y soporte personal. Elige esto cuando el sitio deba mantenerse al día y haya ayuda disponible.",
         price: "29,99 € / mes + IVA",
         featured: true,
         bullets: [

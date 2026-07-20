@@ -8,7 +8,10 @@ import {
   PackageSportsPhotos,
   packageHeaderKind,
 } from "@/components/package-brand-logos";
-import { PackageDeviceHeader } from "@/components/package-device-header";
+import {
+  PackageDeviceHeader,
+  type PackageDeviceMode,
+} from "@/components/package-device-header";
 
 export type ProductPackage = {
   name: string;
@@ -23,8 +26,14 @@ export type ProductPackage = {
   headerVisual?: "brandLogos";
   /** Topic photo for the brown header panel (websites / hosting) */
   headerImage?: string;
+  /** Up to 4 per-device images (e.g. sports package) */
+  headerImages?: string[];
+  /** Short blurb under the price on the card (before Tutustu) */
+  summary?: string;
   /** Full-bleed device-layout header (website packages) — no icon column */
   deviceLayout?: boolean;
+  /** Screen content mode for device header */
+  deviceMode?: PackageDeviceMode;
 };
 
 type ProductPackageCardsProps = {
@@ -123,9 +132,15 @@ export function ProductPackageCards({
           const Icon = pkg.icon ?? Package;
           const headerKind =
             pkg.headerVisual === "brandLogos" ? "brandLogos" : packageHeaderKind(pkg.name);
-          const deviceLayout = Boolean(pkg.deviceLayout && pkg.headerImage);
+          const deviceMode = pkg.deviceMode ?? "image";
+          const deviceLayout = Boolean(
+            pkg.deviceLayout &&
+              (pkg.headerImage ||
+                (pkg.headerImages && pkg.headerImages.length > 0) ||
+                (pkg.deviceMode && pkg.deviceMode !== "image")),
+          );
           const headerH = deviceLayout
-            ? "h-48 sm:h-56"
+            ? ""
             : headerKind === "sports" || headerKind === "brandLogos"
               ? "h-36 sm:h-40"
               : pkg.headerImage
@@ -137,8 +152,13 @@ export function ProductPackageCards({
               className="flex h-full flex-col overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] border-2 border-[#432f24] bg-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)]"
             >
               {deviceLayout ? (
-                <div className={"relative shrink-0 overflow-hidden " + headerH}>
-                  <PackageDeviceHeader image={pkg.headerImage!} variant={pkgIndex} />
+                <div className={"relative shrink-0 overflow-hidden bg-white " + headerH}>
+                  <PackageDeviceHeader
+                    image={pkg.headerImage}
+                    images={pkg.headerImages}
+                    mode={deviceMode}
+                    variant={pkgIndex}
+                  />
                 </div>
               ) : headerKind === "ai" || headerKind === "google" ? (
                 <div
@@ -220,6 +240,17 @@ export function ProductPackageCards({
                   >
                     {pkg.price}
                   </p>
+                  {pkg.summary && (
+                    <p
+                      className={
+                        deviceLayout
+                          ? "mx-auto mt-2.5 max-w-[34ch] text-sm leading-relaxed text-foreground/65"
+                          : "mx-auto mt-3 max-w-[36ch] text-sm leading-relaxed text-foreground/65 sm:text-base"
+                      }
+                    >
+                      {pkg.summary}
+                    </p>
+                  )}
                 </div>
                 <button
                   type="button"

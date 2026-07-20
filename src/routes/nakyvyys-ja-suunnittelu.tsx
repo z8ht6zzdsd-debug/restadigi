@@ -1,13 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { useState } from "react";
-import pkgVisAi from "@/assets/pkg-vis-ai.jpg";
-import pkgVisGoogle from "@/assets/pkg-vis-google.jpg";
-import pkgVisSports from "@/assets/pkg-vis-sports.jpg";
-import pkgVisGraphic from "@/assets/pkg-vis-graphic.jpg";
+import sportFootball from "@/assets/sport-football.jpg";
+import sportFootball2 from "@/assets/sport-football-2.jpg";
+import sportHockey from "@/assets/sport-hockey.jpg";
+import sportHockey2 from "@/assets/sport-hockey-2.jpg";
 import laskuttamoLogo from "@/assets/laskuttamo-logo-white.png";
 import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
 import { ProductPackageCards } from "@/components/product-package-cards";
+import type { PackageDeviceMode } from "@/components/package-device-header";
 import { MarketingBand, MarketingBox, MarketingHeading } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -15,7 +16,20 @@ import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 import { CONTACT_EMAIL } from "@/lib/company-contact";
 
-const VISIBILITY_HEADER_IMAGES = [pkgVisAi, pkgVisGoogle, pkgVisSports, pkgVisGraphic] as const;
+/** AI, Google, urheilu, graafinen — sama järjestys kuin i18n packages */
+const VISIBILITY_DEVICE_MODES: PackageDeviceMode[] = [
+  "ai-logos",
+  "google-logos",
+  "sports",
+  "layouts",
+];
+
+const SPORTS_HEADER_IMAGES = [
+  sportFootball,
+  sportFootball2,
+  sportHockey,
+  sportHockey2,
+] as const;
 
 export const Route = createFileRoute("/nakyvyys-ja-suunnittelu")({
   head: () => ({
@@ -127,15 +141,20 @@ function DiginakyvyysPage() {
           popular={v.popular}
           requestQuote={v.contactCta}
           closeLabel={t.widget.sales.closeLabel}
-          packages={v.packages.map((pkg, i) => ({
-            name: pkg.name,
-            price: pkg.price,
-            featured: pkg.featured,
-            description: `${pkg.tagline}. ${pkg.description}`,
-            bullets: [...pkg.bullets, `${v.resultPrefix} ${pkg.result}`],
-            headerImage: VISIBILITY_HEADER_IMAGES[i],
-            deviceLayout: true,
-          }))}
+          packages={v.packages.map((pkg, i) => {
+            const deviceMode = VISIBILITY_DEVICE_MODES[i] ?? "image";
+            return {
+              name: pkg.name,
+              price: pkg.price,
+              featured: pkg.featured,
+              description: `${pkg.tagline}. ${pkg.description}`,
+              summary: pkg.summary,
+              bullets: [...pkg.bullets, `${v.resultPrefix} ${pkg.result}`],
+              deviceLayout: true,
+              deviceMode,
+              headerImages: deviceMode === "sports" ? [...SPORTS_HEADER_IMAGES] : undefined,
+            };
+          })}
           footnote={v.footnote}
         />
 

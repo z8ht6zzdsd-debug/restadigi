@@ -6,8 +6,6 @@ type PageHeroProps = {
   title: ReactNode;
   description: ReactNode;
   actions?: ReactNode;
-  /** Optional promo chip on the brown devices hero band */
-  promo?: ReactNode;
   tall?: boolean;
   /** Laitemockup: kolme näyttöä ylhäällä, teksti alla */
   devices?: boolean;
@@ -22,7 +20,6 @@ export function PageHero({
   title,
   description,
   actions,
-  promo,
   tall,
   devices,
   lifestyle,
@@ -32,7 +29,7 @@ export function PageHero({
     return (
       <header className="page-hero page-hero--devices">
         <div className="page-hero__devices-visual">
-          <DevicesHeroStage promo={promo} />
+          <DevicesHeroStage />
         </div>
         <div className="page-hero__devices-copy">
           <div className="page-hero__devices-copy-inner">

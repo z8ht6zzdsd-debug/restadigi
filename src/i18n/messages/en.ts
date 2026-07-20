@@ -44,6 +44,7 @@ export const en: Messages = {
   header: {
     services: "Services",
     industries: "Industries",
+    pricing: "Pricing",
     languages: "Languages",
     contact: "Contact",
     menu: "Menu",
@@ -292,6 +293,28 @@ export const en: Messages = {
         "Name: {name}\nCompany: {company}\nEmail: {email}\nBudget: {budget}\n\nMessage:\n{message}",
     },
   },
+  pricing: {
+    meta: {
+      title: "Pricing — Restadigi",
+      description:
+        "Restadigi price list: websites, digital visibility, graphic design and hosting.",
+      ogTitle: "Pricing — Restadigi",
+      ogDescription: "Clear package prices for websites, visibility, graphic design and hosting.",
+    },
+    eyebrow: "Pricing",
+    titleBefore: "Clear ",
+    titleAccent: "prices",
+    titleAfter: " with no surprises.",
+    lead: "A summary of package prices. See each product’s service page for full package details.",
+    sections: {
+      websites: "Websites",
+      visibility: "Digital visibility",
+      branding: "Graphic design",
+      hosting: "Hosting & maintenance",
+    },
+    seeMore: "See the service",
+    vatNote: "Prices are shown excluding VAT unless otherwise stated.",
+  },
   about: {
     meta: {
       title: "About us — Restadigi",
@@ -398,18 +421,24 @@ export const en: Messages = {
       {
         name: "Start",
         tagline: "A simple yet impactful site for a small business",
+        summary:
+          "A clear 1–3 page site that introduces your business right away. Ideal for a small operator who wants a professional online presence without unnecessary complexity.",
         price: "399 € + VAT",
         bullets: withSitePages("A professional 1–3 page website tailored to your business"),
       },
       {
         name: "Plus",
         tagline: "A polished package that presents your services clearly",
+        summary:
+          "4–6 pages for services, contact details and a strong first impression. Presents your offering clearly and guides visitors towards getting in touch.",
         price: "549 € + VAT",
         bullets: withSitePages("A professional 4–6 page website tailored to your business"),
       },
       {
         name: "Gold",
         tagline: "7–9 pages plus AI customer service for 1 year",
+        summary:
+          "A broader site for a growing business. Includes AI customer service for a year — the bot answers questions and captures leads even when you are away.",
         price: "759 € + VAT",
         bullets: withSitePages("A professional 7–9 page website tailored to your business", [
           "AI customer service (chatbot) included for 1 year — answers customers 24/7 and captures leads",
@@ -418,6 +447,8 @@ export const en: Messages = {
       {
         name: "Diamond",
         tagline: "10+ pages, AI customer service and your chosen booking service for 1 year",
+        summary:
+          "The most complete package: 10+ pages, AI customer service and your chosen booking service for a year. For when sales and service need to run online around the clock.",
         price: "929 € + VAT",
         featured: true,
         bullets: withSitePages(
@@ -459,6 +490,8 @@ export const en: Messages = {
       {
         name: "AI optimisation",
         tagline: "Visible in ChatGPT, Claude, Gemini and Copilot searches too",
+        summary:
+          "More people find services through AI. We keep your business data and content ready for visibility in ChatGPT, Claude, Gemini and Copilot — year after year.",
         description:
           "Web search is changing. More people find companies, products and services by talking to AI. Our AI optimisation service helps keep your business data up to date and ensures your website content supports AI tools in recognising your company in the right context.",
         price: "from 99 € / year",
@@ -474,6 +507,8 @@ export const en: Messages = {
       {
         name: "Google optimisation",
         tagline: "Make sure customers can find your business",
+        summary:
+          "Google is still the main channel when customers look for a business. We keep your SEO fundamentals in shape each year so discoverability does not drift.",
         description:
           "Google is still one of the most important channels for finding companies, products and services. Our Google optimisation is a light annual maintenance service that ensures your site meets key SEO basics and supports discoverability.",
         price: "from 99 € / year",
@@ -490,6 +525,8 @@ export const en: Messages = {
       {
         name: "Elite sports visibility package",
         tagline: "Visibility in Finland’s most popular sports leagues",
+        summary:
+          "Visibility linked to Liiga, Veikkausliiga and Superpesis. An affordable micro-partnership puts your brand in the stands, digital channels and networking events.",
         description:
           "Elite sport gives businesses a unique way to reach customers, strengthen their brand and build trust. We offer affordable micro-partnerships with clubs in Liiga, Veikkausliiga and Superpesis.",
         price: "from 299 € / year",
@@ -510,6 +547,8 @@ export const en: Messages = {
       {
         name: "Graphic design",
         tagline: "Brand identity, logo and marketing materials",
+        summary:
+          "Logo, brand identity and marketing materials from one place. A modern, consistent visual look that works online and in print.",
         description:
           "Brand identity, marketing materials and individual design work — clear pricing, professional results.",
         price: "from 99 €",
@@ -748,7 +787,7 @@ export const en: Messages = {
         "Regular updates and support",
         "Clear fixed monthly pricing",
       ],
-      compareCta: "Compare packages",
+      askCta: "Ask more",
     },
     popular: "Popular",
     requestQuote: "Request a quote",
@@ -757,6 +796,8 @@ export const en: Messages = {
     packages: [
       {
         name: "Basic",
+        summary:
+          "Fast hosting in Finland with domain and SSL included. Ideal when you need reliable baseline hosting without extra services.",
         price: "11,90 € / month + VAT (billed annually)",
         bullets: [
           "Hosting and domain included",
@@ -767,6 +808,8 @@ export const en: Messages = {
       },
       {
         name: "Pro Business",
+        summary:
+          "Hosting plus ongoing maintenance, small content changes and personal support. Choose this when the site must stay up to date and help is available when needed.",
         price: "29,99 € / month + VAT",
         featured: true,
         bullets: [

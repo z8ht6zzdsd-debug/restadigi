@@ -10,6 +10,11 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    defaultPendingComponent: () => (
+      <div className="flex min-h-screen items-center justify-center bg-background px-6 text-sm text-muted-foreground">
+        Ladataan…
+      </div>
+    ),
   });
 
   return router;
