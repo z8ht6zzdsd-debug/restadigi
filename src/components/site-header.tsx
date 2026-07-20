@@ -135,7 +135,7 @@ export function SiteHeader() {
             {desktopMenu === "toimialat" && (
               <div
                 id={`${baseId}-toimialat`}
-                className="absolute right-0 top-full z-40 mt-3 w-[min(38rem,calc(100vw-3rem))] rounded-xl border border-border bg-background p-6 shadow-lg xl:w-[42rem]"
+                className="fixed left-1/2 top-1/2 z-40 w-[min(42rem,calc(100vw-3rem))] max-h-[min(80vh,36rem)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-xl border border-border bg-background p-6 shadow-xl xl:w-[44rem]"
               >
                 <div className="mb-1 text-xs uppercase tracking-[0.2em] text-accent">
                   {t.header.industries}
