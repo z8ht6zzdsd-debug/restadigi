@@ -918,9 +918,9 @@
 
   .page-hero__devices-promo-chip--banner {
     position: absolute;
-    top: 0.65rem;
-    right: 0.65rem;
-    z-index: 2;
+    top: -0.65rem;
+    right: -0.65rem;
+    z-index: 3;
     width: 6.75rem;
   }
 
