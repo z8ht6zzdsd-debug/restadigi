@@ -77,7 +77,7 @@ function KotisivutPage() {
       <MarketingBand className="!bg-white">
         <article className="mb-5 overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-[#432f24] text-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)]">
           <div className="grid items-stretch lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.35fr)]">
-            <div className="flex flex-col gap-6 px-6 py-8 sm:px-8 sm:py-10 lg:py-8 lg:pl-8 lg:pr-6">
+            <div className="flex items-center px-6 py-8 sm:px-8 sm:py-10 lg:py-8 lg:pl-8 lg:pr-4">
               <div className="min-w-0">
                 <h2 className="max-w-[22ch] text-balance text-3xl font-bold tracking-tight sm:text-4xl">
                   {w.midBanner.title}
@@ -86,27 +86,31 @@ function KotisivutPage() {
                   {w.midBanner.description}
                 </p>
               </div>
-              <a
-                href="#verkkosivu-paketit"
-                className="page-hero__devices-promo-chip hidden shrink-0 self-start lg:inline-flex"
-                aria-label={w.hero.promo}
-              >
-                <span className="page-hero__devices-promo-line">{w.hero.promoLine1}</span>
-                <span className="page-hero__devices-promo-price">{w.hero.promoLine2}</span>
-              </a>
             </div>
             <div className="grid min-h-0 grid-cols-3 gap-0.5 bg-[#432f24]">
-              {SUCCESS_SCENES.map((scene) => (
+              {SUCCESS_SCENES.map((scene, index) => (
                 <div
                   key={scene.alt}
-                  className="relative aspect-[3/4] overflow-hidden bg-white lg:aspect-auto lg:min-h-[16rem]"
+                  className="relative aspect-[3/4] overflow-visible bg-white lg:aspect-auto lg:min-h-[13.5rem]"
                 >
-                  <img
-                    src={scene.src}
-                    alt=""
-                    aria-hidden
-                    className="size-full object-cover object-center"
-                  />
+                  <div className="absolute inset-0 overflow-hidden">
+                    <img
+                      src={scene.src}
+                      alt=""
+                      aria-hidden
+                      className="size-full object-cover object-center"
+                    />
+                  </div>
+                  {index === SUCCESS_SCENES.length - 1 ? (
+                    <a
+                      href="#verkkosivu-paketit"
+                      className="page-hero__devices-promo-chip page-hero__devices-promo-chip--banner hidden lg:inline-flex"
+                      aria-label={w.hero.promo}
+                    >
+                      <span className="page-hero__devices-promo-line">{w.hero.promoLine1}</span>
+                      <span className="page-hero__devices-promo-price">{w.hero.promoLine2}</span>
+                    </a>
+                  ) : null}
                 </div>
               ))}
             </div>
