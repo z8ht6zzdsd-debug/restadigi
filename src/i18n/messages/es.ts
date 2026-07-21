@@ -421,7 +421,7 @@ export const es: Messages = {
       },
     },
     midBanner: {
-      title: "¡Tu camino hacia el éxito digital empieza aquí!",
+      title: "¡Tu camino hacia la máxima visibilidad empieza aquí!",
       description:
         "Descubre abajo los paquetes con los que elevarás la visibilidad online de tu empresa.",
       imageAlt: "Más visitantes y reservas",

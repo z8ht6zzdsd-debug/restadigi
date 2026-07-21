@@ -417,7 +417,7 @@ export const en: Messages = {
       },
     },
     midBanner: {
-      title: "Your journey to digital success starts here!",
+      title: "Your journey to top visibility starts here!",
       description:
         "Explore the packages below to take your company’s online visibility to the next level.",
       imageAlt: "More visitors and bookings",

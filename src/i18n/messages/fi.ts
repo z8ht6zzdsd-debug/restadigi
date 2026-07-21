@@ -418,7 +418,7 @@ export const fi: Messages = {
       },
     },
     midBanner: {
-      title: "Matkasi digimenestykseen alkaa tästä!",
+      title: "Matkasi huippunäkyvyyksille alkaa tästä!",
       description:
         "Tutustu alta paketteihin, joilla nostat yrityksesi verkkonäkyvyyden uudelle tasolle.",
       imageAlt: "Lisää kävijöitä ja varauksia",

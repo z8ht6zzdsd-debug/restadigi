@@ -79,7 +79,7 @@ function KotisivutPage() {
           <div className="grid items-stretch lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.35fr)]">
             <div className="flex items-center gap-5 px-6 py-8 sm:gap-7 sm:px-8 sm:py-10 lg:gap-8 lg:py-8 lg:pl-8 lg:pr-4">
               <div className="min-w-0 flex-1">
-                <h2 className="max-w-[16ch] text-3xl font-bold tracking-tight sm:text-4xl">
+                <h2 className="max-w-[22ch] text-balance text-3xl font-bold tracking-tight sm:text-4xl">
                   {w.midBanner.title}
                 </h2>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88 sm:text-base">
