@@ -77,8 +77,8 @@ function KotisivutPage() {
       <MarketingBand className="!bg-white">
         <article className="mb-5 overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-[#432f24] text-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)]">
           <div className="grid items-stretch lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.35fr)]">
-            <div className="flex items-center gap-5 px-6 py-8 sm:gap-7 sm:px-8 sm:py-10 lg:gap-8 lg:py-8 lg:pl-8 lg:pr-4">
-              <div className="min-w-0 flex-1">
+            <div className="flex flex-col gap-6 px-6 py-8 sm:px-8 sm:py-10 lg:py-8 lg:pl-8 lg:pr-6">
+              <div className="min-w-0">
                 <h2 className="max-w-[22ch] text-balance text-3xl font-bold tracking-tight sm:text-4xl">
                   {w.midBanner.title}
                 </h2>
@@ -88,7 +88,7 @@ function KotisivutPage() {
               </div>
               <a
                 href="#verkkosivu-paketit"
-                className="page-hero__devices-promo-chip hidden shrink-0 lg:inline-flex"
+                className="page-hero__devices-promo-chip hidden shrink-0 self-start lg:inline-flex"
                 aria-label={w.hero.promo}
               >
                 <span className="page-hero__devices-promo-line">{w.hero.promoLine1}</span>
