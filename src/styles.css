@@ -609,14 +609,30 @@
   }
 
   .mini-site__cards-row > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     aspect-ratio: 1 / 0.85;
     border-radius: 0.14rem;
     background: linear-gradient(145deg, #e8dfd4, #d4c8ba);
+    font-size: 0.22rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(42, 32, 24, 0.7);
+    text-align: center;
+    line-height: 1.1;
+    padding: 0.06rem;
   }
 
   .mini-site__cards-row--mobile {
     gap: 0.1rem;
     padding: 0.14rem 0.16rem 0.18rem;
+  }
+
+  .mini-site__cards-row--mobile > span {
+    font-size: 0.18rem;
+    letter-spacing: 0.03em;
   }
 
   .mini-site--plate .mini-site__hero-wrap {

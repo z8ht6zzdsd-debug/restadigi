@@ -27,9 +27,9 @@ export function DevicesHeroStage() {
                   className="mini-site__hero mini-site__hero--phone"
                 />
                 <div className="mini-site__cards-row mini-site__cards-row--mobile">
-                  <span />
-                  <span />
-                  <span />
+                  <span>Berry</span>
+                  <span>Ice</span>
+                  <span>Tilaa</span>
                 </div>
               </div>
             </div>
