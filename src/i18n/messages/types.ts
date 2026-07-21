@@ -282,6 +282,10 @@ export type Messages = {
     footnoteBefore: string;
     footnoteLink: string;
     footnoteAfter: string;
+    process: {
+      title: string;
+      steps: Array<{ title: string; body: string }>;
+    };
   };
   visibility: {
     meta: {

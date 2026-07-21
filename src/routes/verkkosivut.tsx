@@ -154,6 +154,32 @@ function KotisivutPage() {
             </>
           }
         />
+
+        <article className="mt-10 overflow-hidden rounded-[1.75rem] bg-[#432f24] text-white shadow-[0_16px_48px_-20px_rgba(50,30,20,0.28)] sm:mt-14 sm:rounded-[2rem]">
+          <div className="px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+            <h2 className="max-w-[22ch] text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
+              {w.process.title}
+            </h2>
+            <ol className="mt-8 divide-y divide-white/15 sm:mt-10">
+              {w.process.steps.map((step, index) => (
+                <li
+                  key={step.title}
+                  className="grid gap-3 py-5 first:pt-0 last:pb-0 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-6 sm:py-6"
+                >
+                  <span className="font-serif text-3xl italic leading-none text-accent sm:text-4xl">
+                    {index + 1}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-semibold tracking-tight sm:text-xl">{step.title}</h3>
+                    <p className="mt-2 max-w-3xl text-sm leading-relaxed text-white/80 sm:text-base">
+                      {step.body}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </article>
       </MarketingBand>
 
       <section className="bg-background">

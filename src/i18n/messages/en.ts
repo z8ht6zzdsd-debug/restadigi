@@ -473,6 +473,43 @@ export const en: Messages = {
     footnoteLink: "hosting & maintenance",
     footnoteAfter:
       ". You can also buy the domain and web hosting yourself, or use an existing domain.",
+    process: {
+      title: "Website purchase process — 8 steps",
+      steps: [
+        {
+          title: "Needs assessment",
+          body: "The process starts by clarifying the client’s goals and how the website will be used. Content, features and the project timeline are defined at the same time.",
+        },
+        {
+          title: "Choosing the right package",
+          body: "The client selects the website solution that best fits their business. Add-on services such as SEO or content production can be included when needed.",
+        },
+        {
+          title: "Confirming the order",
+          body: "Once the service is chosen, the order is confirmed and the project begins. Practical details are agreed and the required materials are delivered.",
+        },
+        {
+          title: "Website design",
+          body: "Restadigi designs the site structure, look and user experience according to the client’s wishes and the company’s visual identity.",
+        },
+        {
+          title: "Website build",
+          body: "Based on the plan, we build a working, responsive website that runs smoothly on both computers and mobile devices.",
+        },
+        {
+          title: "Client review and feedback",
+          body: "The finished draft is presented to the client. Any change requests are reviewed and implemented before launch.",
+        },
+        {
+          title: "Going live",
+          body: "When the site is approved, it is published on the chosen domain and we verify that everything works correctly.",
+        },
+        {
+          title: "Ongoing support and development",
+          body: "After launch, Restadigi can provide maintenance, updates and development services so the website stays current and supports business growth.",
+        },
+      ],
+    },
   },
   visibility: {
     meta: {

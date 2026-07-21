@@ -479,6 +479,43 @@ export const es: Messages = {
     footnoteLink: "servicios de mantenimiento",
     footnoteAfter:
       ". También puedes comprar el dominio y el hosting tú mismo, o usar un dominio que ya tengas.",
+    process: {
+      title: "Proceso de compra del sitio web — 8 pasos",
+      steps: [
+        {
+          title: "Análisis de necesidades",
+          body: "El proceso comienza aclarando los objetivos del cliente y el uso del sitio web. Al mismo tiempo se definen el contenido, las funciones y el calendario del proyecto.",
+        },
+        {
+          title: "Elección del paquete adecuado",
+          body: "El cliente elige la solución web que mejor se adapta a su empresa. Si hace falta, se pueden añadir servicios extra como SEO o producción de contenidos.",
+        },
+        {
+          title: "Confirmación del pedido",
+          body: "Cuando el servicio está elegido, se confirma el pedido y arranca el proyecto. Se acuerdan los detalles prácticos y se entregan los materiales necesarios.",
+        },
+        {
+          title: "Diseño del sitio",
+          body: "Restadigi diseña la estructura, la apariencia y la experiencia de uso según los deseos del cliente y la identidad visual de la empresa.",
+        },
+        {
+          title: "Desarrollo del sitio web",
+          body: "Sobre la base del plan se construye un sitio funcional y responsive, que funciona con fluidez en ordenadores y dispositivos móviles.",
+        },
+        {
+          title: "Revisión y comentarios del cliente",
+          body: "El borrador final se presenta al cliente. Las posibles peticiones de cambio se revisan y se aplican antes de la publicación.",
+        },
+        {
+          title: "Publicación online",
+          body: "Cuando el sitio está aprobado, se publica en el dominio elegido y se comprueba que todo funciona correctamente.",
+        },
+        {
+          title: "Soporte y desarrollo continuo",
+          body: "Tras la publicación, Restadigi puede ofrecer mantenimiento, actualizaciones y servicios de desarrollo para que el sitio se mantenga al día y apoye el crecimiento de la empresa.",
+        },
+      ],
+    },
   },
   visibility: {
     meta: {

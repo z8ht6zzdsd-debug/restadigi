@@ -474,6 +474,43 @@ export const fi: Messages = {
     footnoteLink: "ylläpitopalveluista",
     footnoteAfter:
       ". Voit myös ostaa domainin ja verkkohotellin itse tai käyttää jo olemassa olevaa domainia.",
+    process: {
+      title: "Verkkosivujen ostoprosessi — 8 askelta",
+      steps: [
+        {
+          title: "Tarpeiden kartoitus",
+          body: "Prosessi alkaa asiakkaan tavoitteiden ja verkkosivuston käyttötarkoituksen selvittämisellä. Samalla määritellään sivuston sisältö, ominaisuudet sekä projektin aikataulu.",
+        },
+        {
+          title: "Sopivan paketin valinta",
+          body: "Asiakas valitsee yritykselleen parhaiten sopivan verkkosivuratkaisun. Tarvittaessa valintaan voidaan yhdistää lisäpalveluita, kuten hakukoneoptimointi tai sisällöntuotanto.",
+        },
+        {
+          title: "Tilauksen vahvistaminen",
+          body: "Kun palvelu on valittu, tilaus vahvistetaan ja projekti käynnistyy. Samalla sovitaan käytännön asioista sekä toimitetaan tarvittavat materiaalit.",
+        },
+        {
+          title: "Sivuston suunnittelu",
+          body: "Restadigi suunnittelee verkkosivujen rakenteen, ulkoasun ja käyttökokemuksen asiakkaan toiveiden sekä yrityksen ilmeen mukaisesti.",
+        },
+        {
+          title: "Verkkosivujen toteutus",
+          body: "Suunnitelman pohjalta rakennetaan toimiva ja responsiivinen verkkosivusto, joka toimii sujuvasti niin tietokoneilla kuin mobiililaitteillakin.",
+        },
+        {
+          title: "Asiakkaan tarkistus ja palautteet",
+          body: "Valmis luonnos esitellään asiakkaalle. Mahdolliset muutostoiveet käydään läpi ja toteutetaan ennen julkaisua.",
+        },
+        {
+          title: "Julkaisu verkkoon",
+          body: "Kun sivusto on hyväksytty, se julkaistaan valittuun verkkotunnukseen ja varmistetaan, että kaikki toimii moitteettomasti.",
+        },
+        {
+          title: "Jatkuva tuki ja kehitys",
+          body: "Julkaisun jälkeen Restadigi tarjoaa tarvittaessa ylläpitoa, päivityksiä ja kehityspalveluita, jotta verkkosivut pysyvät ajan tasalla ja tukevat yrityksen kasvua.",
+        },
+      ],
+    },
   },
   visibility: {
     meta: {
