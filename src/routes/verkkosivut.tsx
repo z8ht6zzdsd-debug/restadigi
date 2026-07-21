@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Crown, Gem, Plus, Sparkles, type LucideIcon } from "lucide-react";
-import successBusyTerrace from "@/assets/success-busy-terrace.jpg";
 import successTouristGroup from "@/assets/success-tourist-group.jpg";
+import mockRyhmille from "@/assets/mock-ryhmille.jpg";
 import successGuestsArriving from "@/assets/success-guests-arriving.jpg";
 import { ProductPackageCards } from "@/components/product-package-cards";
 import { MarketingBand } from "@/components/marketing-band";
@@ -25,7 +25,7 @@ const PACKAGE_ICONS: Record<string, LucideIcon> = {
 /** Näkyvyys → kävijät → varaukset */
 const SUCCESS_SCENES = [
   { src: successTouristGroup, alt: "Turisteja retkellä" },
-  { src: successBusyTerrace, alt: "Täysi terassi" },
+  { src: mockRyhmille, alt: "Ryhmäravintolan pöytä" },
   { src: successGuestsArriving, alt: "Asiakkaita saapumassa" },
 ] as const;
 
