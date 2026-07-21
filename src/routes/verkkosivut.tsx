@@ -25,8 +25,8 @@ const PACKAGE_ICONS: Record<string, LucideIcon> = {
 /** Näkyvyys → kävijät → varaukset */
 const SUCCESS_SCENES = [
   { src: successTouristGroup, alt: "Turisteja retkellä" },
-  { src: mockRyhmille, alt: "Ryhmäravintolan pöytä" },
   { src: successGuestsArriving, alt: "Asiakkaita saapumassa" },
+  { src: mockRyhmille, alt: "Ryhmäravintolan pöytä" },
 ] as const;
 
 export const Route = createFileRoute("/verkkosivut")({
