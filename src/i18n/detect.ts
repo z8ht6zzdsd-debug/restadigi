@@ -63,14 +63,32 @@ function isLocalDevHost(hostname: string): boolean {
   return host === "localhost" || host === "127.0.0.1" || host.endsWith(".local");
 }
 
+function currentPathname(): string {
+  if (typeof window === "undefined") return "";
+  return window.location.pathname || "";
+}
+
+/** Admin dashboard keeps its own UI language (session cookies stay on this host). */
+export function isDashboardPath(pathname?: string): boolean {
+  const path = pathname ?? currentPathname();
+  return path === "/dashboard" || path.startsWith("/dashboard/");
+}
+
 /**
  * Resolve active locale:
- * 1) Domain restadigi.fi / .com / .es (wins over everything)
- * 2) ?lang= on preview
- * 3) localStorage on preview
- * 4) Default Finnish
+ * 1) On /dashboard*, prefer stored UI language (so the admin selector works on any host)
+ * 2) Domain restadigi.fi / .com / .es
+ * 3) ?lang= on preview
+ * 4) localStorage on preview
+ * 5) Default Finnish
  */
-export function detectLocale(hostname?: string, search?: string): Locale {
+export function detectLocale(hostname?: string, search?: string, pathname?: string): Locale {
+  const path = pathname ?? currentPathname();
+  if (isDashboardPath(path)) {
+    const storedDash = readStoredLocale();
+    if (storedDash) return storedDash;
+  }
+
   const host = hostname ?? (typeof window !== "undefined" ? window.location.hostname : "");
   const fromHost = host ? localeFromHostname(host) : null;
   if (fromHost) return fromHost;

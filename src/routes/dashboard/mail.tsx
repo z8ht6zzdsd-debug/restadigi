@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { fillDashboardUi, localeDateTag, useDashboardUi, useLocale } from "@/i18n";
 import {
   applyMailPlaceholders,
   DEFAULT_MAIL_BODY_FI,
@@ -59,6 +60,9 @@ function formatBytes(bytes: number) {
 }
 
 function DashboardMailPage() {
+  const t = useDashboardUi();
+  const { locale } = useLocale();
+  const dateLocale = localeDateTag(locale);
   const [attachments, setAttachments] = useState<AttachmentMeta[]>([]);
   const [emails, setEmails] = useState<OutboundEmail[]>([]);
   const [stats, setStats] = useState<MailStats>({ total: 0, sent: 0, failed: 0, opened: 0 });
@@ -87,7 +91,7 @@ function DashboardMailPage() {
         template?: { subject: string; body: string; updatedAt: string | null };
         error?: string;
       };
-      if (!res.ok) throw new Error(data.error ?? "Lataus epäonnistui");
+      if (!res.ok) throw new Error(data.error ?? t.mail.title);
       setEmails(data.emails ?? []);
       setAttachments(data.attachments ?? []);
       setStats(data.stats ?? { total: 0, sent: 0, failed: 0, opened: 0 });
@@ -97,11 +101,11 @@ function DashboardMailPage() {
         setTemplateUpdatedAt(data.template.updatedAt);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Virhe");
+      setError(err instanceof Error ? err.message : t.mail.title);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [t.mail.title]);
 
   useEffect(() => {
     void load();
@@ -139,10 +143,10 @@ function DashboardMailPage() {
       });
       const data = (await res.json()) as { error?: string };
       if (!res.ok) throw new Error(data.error ?? "Upload failed");
-      toast.success("PDF tallennettu");
+      toast.success(t.mail.upload);
       await load();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Upload failed");
+      toast.error(err instanceof Error ? err.message : t.mail.upload);
     } finally {
       setUploadingSlot(null);
     }
@@ -156,10 +160,10 @@ function DashboardMailPage() {
       });
       const data = (await res.json()) as { error?: string };
       if (!res.ok) throw new Error(data.error ?? "Poisto epäonnistui");
-      toast.success("PDF poistettu");
+      toast.success(t.common.delete);
       await load();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Poisto epäonnistui");
+      toast.error(err instanceof Error ? err.message : t.common.delete);
     }
   }
 
@@ -178,9 +182,9 @@ function DashboardMailPage() {
       };
       if (!res.ok) throw new Error(data.error ?? "Tallennus epäonnistui");
       setTemplateUpdatedAt(data.template?.updatedAt ?? null);
-      toast.success("Sähköpostipohja tallennettu");
+      toast.success(t.mail.saveTemplate);
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Tallennus epäonnistui");
+      toast.error(err instanceof Error ? err.message : t.common.save);
     } finally {
       setSaving(false);
     }
@@ -188,7 +192,7 @@ function DashboardMailPage() {
 
   async function handleSend(opts: { test: boolean }) {
     if (!toEmail.trim()) {
-      toast.error("Anna vastaanottajan sähköposti");
+      toast.error(t.mail.toEmail);
       return;
     }
     setSending(true);
@@ -209,7 +213,7 @@ function DashboardMailPage() {
       const data = (await res.json()) as { error?: string };
       if (!res.ok) throw new Error(data.error ?? "Lähetys epäonnistui");
       toast.success(
-        opts.test ? `Testiviesti lähetetty: ${toEmail}` : `Viesti lähetetty: ${toEmail}`,
+        `${opts.test ? t.mail.sendTest : t.mail.sendCustomer}: ${toEmail}`,
       );
       if (!opts.test) {
         setToEmail("");
@@ -218,14 +222,14 @@ function DashboardMailPage() {
       }
       await load();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Lähetys epäonnistui");
+      toast.error(err instanceof Error ? err.message : t.mail.sendCustomer);
     } finally {
       setSending(false);
     }
   }
 
   if (loading) {
-    return <p className="text-muted-foreground">Ladataan…</p>;
+    return <p className="text-muted-foreground">{t.common.loading}</p>;
   }
 
   if (error) {
@@ -245,35 +249,38 @@ function DashboardMailPage() {
   return (
     <div className="space-y-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Asiakasposti</p>
-          <h2 className="mt-1 text-2xl font-medium">Sähköposti</h2>
-          <p className="mt-2 max-w-2xl text-sm text-foreground/70">
-            Tallenna suomenkielinen pohja ja PDF-liitteet. Esikatselu näyttää valmiin viestin
-            allekirjoituksineen.
+        <div className="dashboard-app__page-head">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c46a32]">
+            {t.mail.eyebrow}
           </p>
+          <h2 className="mt-1 font-serif text-3xl tracking-tight text-[#2a2018]">{t.mail.title}</h2>
+          <p className="mt-2 max-w-2xl text-sm text-[#5c534c]">{t.mail.subtitle}</p>
           {templateUpdatedAt ? (
-            <p className="mt-1 text-xs text-muted-foreground">
-              Pohja tallennettu {new Date(templateUpdatedAt).toLocaleString("fi-FI")}
+            <p className="mt-1 text-xs text-[#8a7f74]">
+              {fillDashboardUi(t.mail.templateSaved, {
+                date: new Date(templateUpdatedAt).toLocaleString(dateLocale),
+              })}
             </p>
           ) : null}
         </div>
         <Button type="button" onClick={() => void handleSaveTemplate()} disabled={saving}>
           <Save className="size-4" />
-          {saving ? "Tallennetaan…" : "Tallenna pohja"}
+          {saving ? t.common.saving : t.mail.saveTemplate}
         </Button>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-4">
         {[
-          { label: "Lähetetty", value: stats.sent },
-          { label: "Avattu", value: stats.opened },
-          { label: "Avausprosentti", value: `${openRate} %` },
-          { label: "Epäonnistuneet", value: stats.failed },
+          { label: t.mail.statsSent, value: stats.sent },
+          { label: t.mail.statsOpened, value: stats.opened },
+          { label: t.mail.statsOpenRate, value: `${openRate} %` },
+          { label: t.mail.statsFailed, value: stats.failed },
         ].map((card) => (
-          <div key={card.label} className="rounded-sm border border-border bg-card p-4">
-            <p className="text-xs uppercase tracking-wide text-muted-foreground">{card.label}</p>
-            <p className="mt-2 text-2xl font-medium tabular-nums">{card.value}</p>
+          <div key={card.label} className="dashboard-app__stat-card">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8a7f74]">
+              {card.label}
+            </p>
+            <p className="mt-2 font-serif text-3xl tabular-nums text-[#2a2018]">{card.value}</p>
           </div>
         ))}
       </div>
@@ -281,7 +288,7 @@ function DashboardMailPage() {
       <section className="rounded-sm border border-border bg-card p-6 space-y-4">
         <div className="flex items-center gap-2">
           <FileText className="size-4 text-accent" />
-          <h3 className="font-medium">PDF-liitteet</h3>
+          <h3 className="font-medium">{t.mail.attachments}</h3>
         </div>
         <p className="text-sm text-foreground/70">
           Lataa PDF:t Neon-tietokantaan. Asiakaslähetys vaatii molemmat; testilähetys toimii myös
@@ -307,7 +314,7 @@ function DashboardMailPage() {
                     onClick={() => void handleDelete(att.slot)}
                   >
                     <Trash2 className="size-3.5" />
-                    Poista
+                    {t.common.delete}
                   </Button>
                 ) : null}
               </div>
@@ -319,10 +326,10 @@ function DashboardMailPage() {
               >
                 <Upload className="size-4" />
                 {uploadingSlot === att.slot
-                  ? "Ladataan…"
+                  ? t.common.loading
                   : att.hasFile
-                    ? "Vaihda PDF"
-                    : "Lataa PDF"}
+                    ? t.mail.replace
+                    : t.mail.upload}
                 <input
                   type="file"
                   accept="application/pdf,.pdf"
@@ -339,7 +346,7 @@ function DashboardMailPage() {
       <div className="grid gap-8 xl:grid-cols-2">
         <section className="space-y-5 rounded-sm border border-border bg-card p-6">
           <div className="space-y-2">
-            <Label htmlFor="subject">Aihe</Label>
+            <Label htmlFor="subject">{t.mail.subject}</Label>
             <Input id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
             <p className="text-xs text-muted-foreground">
               Merkit <code className="rounded bg-muted px-1">[ETUNIMI]</code> ja{" "}
@@ -347,7 +354,7 @@ function DashboardMailPage() {
             </p>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="body">Viestipohja</Label>
+            <Label htmlFor="body">{t.mail.body}</Label>
             <Textarea
               id="body"
               rows={14}
@@ -382,7 +389,7 @@ function DashboardMailPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2 sm:col-span-2">
-                <Label htmlFor="toEmail">Vastaanottajan sähköposti</Label>
+                <Label htmlFor="toEmail">{t.mail.toEmail}</Label>
                 <Input
                   id="toEmail"
                   type="email"
@@ -392,7 +399,7 @@ function DashboardMailPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="toName">Nimi</Label>
+                <Label htmlFor="toName">{t.mail.name}</Label>
                 <Input
                   id="toName"
                   value={toName}
@@ -401,7 +408,7 @@ function DashboardMailPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="company">Yritys</Label>
+                <Label htmlFor="company">{t.mail.company}</Label>
                 <Input
                   id="company"
                   value={company}
@@ -418,7 +425,7 @@ function DashboardMailPage() {
                 onClick={() => void handleSend({ test: true })}
               >
                 <Mail className="size-4" />
-                {sending ? "Lähetetään…" : "Lähetä testi"}
+                {sending ? t.common.saving : t.mail.sendTest}
               </Button>
               <Button
                 type="button"
@@ -426,7 +433,7 @@ function DashboardMailPage() {
                 onClick={() => void handleSend({ test: false })}
               >
                 <Send className="size-4" />
-                Lähetä asiakkaalle
+                {t.mail.sendCustomer}
               </Button>
             </div>
             {!pdfReady ? (
@@ -457,10 +464,10 @@ function DashboardMailPage() {
       <section className="space-y-3">
         <div className="flex items-center gap-2">
           <Eye className="size-4 text-accent" />
-          <h3 className="font-medium">Lähetetyt viestit</h3>
+          <h3 className="font-medium">{t.mail.sentList}</h3>
         </div>
         {emails.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Ei vielä lähetettyjä viestejä.</p>
+          <p className="text-sm text-muted-foreground">{t.mail.emptySent}</p>
         ) : (
           <div className="overflow-x-auto rounded-sm border border-border">
             <table className="w-full min-w-[640px] text-left text-sm">
@@ -492,7 +499,7 @@ function DashboardMailPage() {
                             : "bg-destructive/10 text-destructive",
                         )}
                       >
-                        {email.status === "sent" ? "Lähetetty" : "Epäonnistui"}
+                        {email.status === "sent" ? t.mail.statsSent : t.mail.statsFailed}
                       </span>
                       {email.errorMessage ? (
                         <p className="mt-1 text-xs text-destructive">{email.errorMessage}</p>
@@ -504,7 +511,7 @@ function DashboardMailPage() {
                           {email.openCount}×
                           {email.lastOpenedAt ? (
                             <span className="block text-xs text-muted-foreground">
-                              {new Date(email.lastOpenedAt).toLocaleString("fi-FI")}
+                              {new Date(email.lastOpenedAt).toLocaleString(dateLocale)}
                             </span>
                           ) : null}
                         </span>
@@ -513,7 +520,7 @@ function DashboardMailPage() {
                       )}
                     </td>
                     <td className="px-3 py-2 text-xs text-muted-foreground">
-                      {new Date(email.sentAt).toLocaleString("fi-FI")}
+                      {new Date(email.sentAt).toLocaleString(dateLocale)}
                     </td>
                   </tr>
                 ))}

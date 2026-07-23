@@ -38,7 +38,7 @@ function DashboardLayout() {
 
   if (!ready) {
     return (
-      <div className="flex min-h-screen items-center justify-center text-muted-foreground">
+      <div className="dashboard-app flex min-h-screen items-center justify-center text-[#5c534c]">
         Ladataan…
       </div>
     );

@@ -32,8 +32,13 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const next = detectLocale();
     setLocaleState(next);
-    // On .fi / .com / .es the domain owns the language — drop stale preview choice
-    if (typeof window !== "undefined" && localeFromHostname(window.location.hostname)) {
+    // On .fi / .com / .es the domain owns the public site language — drop stale preview choice
+    // (except inside the admin dashboard, where the UI language is stored).
+    if (
+      typeof window !== "undefined" &&
+      localeFromHostname(window.location.hostname) &&
+      !window.location.pathname.startsWith("/dashboard")
+    ) {
       clearStoredLocale();
     }
   }, []);
@@ -50,10 +55,18 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     }
 
     const host = window.location.hostname;
-    const current = detectLocale(host, window.location.search);
+    const path = window.location.pathname;
+    const current = detectLocale(host, window.location.search, path);
+
+    // Dashboard language is UI-only: never jump domains (keeps the auth session).
+    if (path === "/dashboard" || path.startsWith("/dashboard/")) {
+      storeLocale(next);
+      setLocaleState(next);
+      return;
+    }
 
     if (shouldJumpToLocaleDomain(host) && next !== current) {
-      const url = localeDomainUrl(next, window.location.pathname, window.location.search);
+      const url = localeDomainUrl(next, path, window.location.search);
       window.location.assign(url);
       return;
     }
