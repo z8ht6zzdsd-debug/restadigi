@@ -129,6 +129,19 @@ function paragraphClass(text: string) {
   return undefined;
 }
 
+function linkifyText(text: string): ReactNode {
+  const parts = text.split(/(https?:\/\/[^\s]+)/g);
+  return parts.map((part, i) =>
+    /^https?:\/\//.test(part) ? (
+      <a key={`${i}-${part}`} href={part}>
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
+
 function renderBodyParagraphs(bodyText: string): ReactNode[] {
   return splitParagraphs(bodyText).map((paragraph, index) => {
     const cls = paragraphClass(paragraph);
@@ -141,7 +154,7 @@ function renderBodyParagraphs(bodyText: string): ReactNode[] {
     }
     return (
       <p key={`${index}-${paragraph.slice(0, 20)}`} className={cls}>
-        {paragraph}
+        {linkifyText(paragraph)}
       </p>
     );
   });

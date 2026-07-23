@@ -2,19 +2,26 @@
 
 export const DEFAULT_MAIL_SUBJECT = "Restadigi — verkkosivupaketti [YRITYS]";
 
-export const DEFAULT_MAIL_BODY_FI = `Hei [ETUNIMI],
+/** Demo hallintapaneeli — asiakas näkee esimerkin; tuotannossa paneeli räätälöidään. */
+export const DEFAULT_DASHBOARD_DEMO_URL = "https://restadigi.fi/dashboard/login";
 
-kiitos mielenkiinnostanne Restadigi.fi-palvelun verkkosivu- ja verkkonäkyvyyspaketteja kohtaan.
+export const DEFAULT_MAIL_BODY_FI = `Hei,
 
-Juttelimme puhelimessa Start-verkkosivupaketista [YRITYS]-yritykselle. Paketti sisältää kaiken verkkosivujen suunnittelusta julkaisuun — myös sisällöntuotannon.
+Kiitos mielenkiinnostanne Restadigi.fi-palvelun verkkosivu- ja verkkonäkyvyyspaketteja kohtaan.
 
-Viitaten puheluumme ja kuten sovimme, löydät verkkosivupakettimme tiedot oheisista liitteistä.
+Juttelimme puhelimessa Start-verkkosivupaketista yritykselle: [YRITYS]
+
+Paketti sisältää kaiken verkkosivujen suunnittelusta julkaisuun — myös sisällöntuotannon.
+
+Viitaten puheluumme, löydät verkkosivupakettimme tiedot oheisesta liitteestä. Alla olevasta linkistä pääset tutustumaan esimerkkiin verkkosivustolle luotavasta hallintapaneelista, joka yksilöidään yrityksen tarpeen ja valittujen palvelujen mukaan:
+
+${DEFAULT_DASHBOARD_DEMO_URL}
 
 Jos sinulle herää kysymyksiä, voit vastata tähän sähköpostiin. Autamme mielellämme.
 
-Restadigi.fi — verkkosivut, sisällöt ja digimarkkinointi helposti, nopeasti ja edullisesti, laadusta tinkimättä.
+Tutustu palveluumme: https://restadigi.fi
 
-Tutustu palveluumme: https://restadigi.fi`;
+Restadigi.fi — verkkosivut, sisällöt ja digimarkkinointi helposti, nopeasti ja edullisesti, laadusta tinkimättä.`;
 
 export function applyMailPlaceholders(
   text: string,
