@@ -23,6 +23,18 @@ export { applyMailPlaceholders, DEFAULT_MAIL_BODY_FI, DEFAULT_MAIL_SUBJECT };
 export const MAIL_SLOTS = ["pdf1", "pdf2"] as const;
 export type MailSlot = (typeof MAIL_SLOTS)[number];
 
+/** Bundled A4 package PDFs served from /mail/* (public/mail). */
+export const DEFAULT_MAIL_PDFS: Record<MailSlot, { filename: string; publicPath: string }> = {
+  pdf1: {
+    filename: "Restadigi-digipalvelut-A4.pdf",
+    publicPath: "/mail/Restadigi-digipalvelut-A4.pdf",
+  },
+  pdf2: {
+    filename: "Restadigi-verkkosivupaketit-A4.pdf",
+    publicPath: "/mail/Restadigi-verkkosivupaketit-A4.pdf",
+  },
+};
+
 const PIXEL_GIF = Buffer.from("R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", "base64");
 
 function escapeHtml(value: string) {
@@ -142,6 +154,24 @@ export async function listMailAttachments() {
       hasFile: true,
     };
   });
+}
+
+/** Fetches bundled /mail/*.pdf from this origin and upserts both Neon slots. */
+export async function seedDefaultMailAttachments(origin: string) {
+  const results: Awaited<ReturnType<typeof upsertMailAttachment>>[] = [];
+  for (const slot of MAIL_SLOTS) {
+    const meta = DEFAULT_MAIL_PDFS[slot];
+    const url = new URL(meta.publicPath, origin).toString();
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error(`Oletus-PDF:n lataus epäonnistui (${meta.filename}): ${res.status}`);
+    }
+    const buffer = Buffer.from(await res.arrayBuffer());
+    results.push(
+      await upsertMailAttachment(slot, meta.filename, buffer.toString("base64"), "application/pdf"),
+    );
+  }
+  return results;
 }
 
 export async function upsertMailAttachment(

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Eye, FileText, Mail, Save, Send, Trash2, Upload } from "lucide-react";
+import { Eye, FileText, Mail, RefreshCw, Save, Send, Trash2, Upload } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
@@ -78,6 +78,7 @@ function DashboardMailPage() {
   const [saving, setSaving] = useState(false);
   const [sending, setSending] = useState(false);
   const [uploadingSlot, setUploadingSlot] = useState<string | null>(null);
+  const [seedingDefaults, setSeedingDefaults] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const load = useCallback(async () => {
@@ -164,6 +165,26 @@ function DashboardMailPage() {
       await load();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : t.common.delete);
+    }
+  }
+
+  async function handleSeedDefaults() {
+    setSeedingDefaults(true);
+    try {
+      const res = await fetch("/api/dashboard/mail/attachments", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "seed-defaults" }),
+      });
+      const data = (await res.json()) as { error?: string };
+      if (!res.ok) throw new Error(data.error ?? "Oletus-PDF:ien päivitys epäonnistui");
+      toast.success("Oletus-PDF:t päivitetty liitteisiin");
+      await load();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Päivitys epäonnistui");
+    } finally {
+      setSeedingDefaults(false);
     }
   }
 
@@ -288,10 +309,23 @@ function DashboardMailPage() {
           <FileText className="size-4 text-accent" />
           <h3 className="font-medium">{t.mail.attachments}</h3>
         </div>
-        <p className="text-sm text-foreground/70">
-          Lataa PDF:t Neon-tietokantaan. Asiakaslähetys vaatii molemmat; testilähetys toimii myös
-          ilman liitteitä.
-        </p>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <p className="text-sm text-foreground/70">
+            Resta-AI-tyyliset A4-esitteet (Restadigi Finland -logo). Asiakaslähetys vaatii molemmat;
+            testilähetys toimii myös ilman liitteitä.
+          </p>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="shrink-0"
+            disabled={seedingDefaults}
+            onClick={() => void handleSeedDefaults()}
+          >
+            <RefreshCw className={cn("size-3.5", seedingDefaults && "animate-spin")} />
+            {seedingDefaults ? "Päivitetään…" : "Käytä oletus-PDF:itä"}
+          </Button>
+        </div>
         <div className="grid gap-4 md:grid-cols-2">
           {attachments.map((att) => (
             <div key={att.slot} className="rounded-sm border border-border p-4 space-y-3">

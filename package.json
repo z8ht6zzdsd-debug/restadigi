@@ -13,7 +13,9 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "db:init": "node scripts/run-init-db.mjs"
+    "db:init": "node scripts/run-init-db.mjs",
+    "pdfs:build": "node scripts/build-package-pdfs.mjs --pdf",
+    "pdfs:seed": "node scripts/seed-mail-pdfs.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

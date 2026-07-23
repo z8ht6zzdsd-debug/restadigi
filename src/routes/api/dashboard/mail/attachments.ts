@@ -7,6 +7,7 @@ import {
   listMailAttachments,
   MAIL_SLOTS,
   type MailSlot,
+  seedDefaultMailAttachments,
   upsertMailAttachment,
 } from "@/lib/mail-service";
 import { enforceRateLimit } from "@/lib/rate-limit";
@@ -40,6 +41,18 @@ export const Route = createFileRoute("/api/dashboard/mail/attachments")({
         }
 
         try {
+          const contentType = request.headers.get("content-type") ?? "";
+
+          if (contentType.includes("application/json")) {
+            const body = (await request.json()) as { action?: string };
+            if (body.action !== "seed-defaults") {
+              return Response.json({ error: "Tuntematon toiminto" }, { status: 400 });
+            }
+            const origin = new URL(request.url).origin;
+            const attachments = await seedDefaultMailAttachments(origin);
+            return Response.json({ ok: true, attachments });
+          }
+
           const form = await request.formData();
           const slotRaw = String(form.get("slot") ?? "");
           const file = form.get("file");
