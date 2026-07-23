@@ -81,8 +81,10 @@ const fi = {
     updateFailed: "Päivitys epäonnistui",
     loading: "Ladataan varauksia…",
     empty: "Ei vielä varauksia. Tee testivaraus chatbotista sivuston alareunasta.",
-    summary: "Yhteensä {n} aktiivista varausta. Päivät, joilla on varauksia, on korostettu kalenterissa.",
-    emptyDay: "Ei varauksia tälle päivälle. Valitse korostettu päivä kalenterista tai katso kaikki varaukset alta.",
+    summary:
+      "Yhteensä {n} aktiivista varausta. Päivät, joilla on varauksia, on korostettu kalenterissa.",
+    emptyDay:
+      "Ei varauksia tälle päivälle. Valitse korostettu päivä kalenterista tai katso kaikki varaukset alta.",
     allTitle: "Kaikki varaukset",
     showInCalendar: "Näytä {date} kalenterissa →",
     pending: "Odottaa",
@@ -349,7 +351,8 @@ const en: DashboardUi = {
     updateFailed: "Update failed",
     loading: "Loading reservations…",
     empty: "No reservations yet. Make a test booking with the chatbot at the bottom right.",
-    summary: "{n} active reservations in total. Days with bookings are highlighted on the calendar.",
+    summary:
+      "{n} active reservations in total. Days with bookings are highlighted on the calendar.",
     emptyDay: "No reservations for this day. Pick a highlighted day or see all bookings below.",
     allTitle: "All reservations",
     showInCalendar: "Show {date} on calendar →",
@@ -600,7 +603,8 @@ const es: DashboardUi = {
     updateFailed: "Error al actualizar",
     loading: "Cargando reservas…",
     empty: "Aún no hay reservas. Haz una de prueba con el chatbot abajo a la derecha.",
-    summary: "{n} reservas activas en total. Los días con reservas están resaltados en el calendario.",
+    summary:
+      "{n} reservas activas en total. Los días con reservas están resaltados en el calendario.",
     emptyDay: "No hay reservas este día. Elige un día resaltado o mira todas abajo.",
     allTitle: "Todas las reservas",
     showInCalendar: "Ver {date} en el calendario →",

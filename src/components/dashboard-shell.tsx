@@ -108,9 +108,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
           <nav className="flex flex-row gap-1.5 overflow-x-auto p-2 lg:flex-col lg:gap-1 lg:overflow-visible lg:p-3">
             {nav.map((item) => {
               const active =
-                "exact" in item && item.exact
-                  ? pathname === item.to
-                  : pathname.startsWith(item.to);
+                "exact" in item && item.exact ? pathname === item.to : pathname.startsWith(item.to);
               const Icon = item.icon;
               const label = labels[item.labelKey];
               return (

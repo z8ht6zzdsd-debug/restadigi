@@ -129,7 +129,9 @@ function DashboardHomePage() {
                   className="flex items-center justify-between rounded-xl border border-[#efe8e0] bg-[#fbf8f4] px-3.5 py-2.5 text-sm"
                 >
                   <span className="truncate text-[#43382f]">{page.path}</span>
-                  <span className="ml-4 font-semibold tabular-nums text-[#c46a32]">{page.views}</span>
+                  <span className="ml-4 font-semibold tabular-nums text-[#c46a32]">
+                    {page.views}
+                  </span>
                 </li>
               ))
             )}

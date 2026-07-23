@@ -212,9 +212,7 @@ function DashboardMailPage() {
       });
       const data = (await res.json()) as { error?: string };
       if (!res.ok) throw new Error(data.error ?? "Lähetys epäonnistui");
-      toast.success(
-        `${opts.test ? t.mail.sendTest : t.mail.sendCustomer}: ${toEmail}`,
-      );
+      toast.success(`${opts.test ? t.mail.sendTest : t.mail.sendCustomer}: ${toEmail}`);
       if (!opts.test) {
         setToEmail("");
         setToName("");
