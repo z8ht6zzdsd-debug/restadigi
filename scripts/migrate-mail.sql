@@ -1,8 +1,4 @@
--- =============================================================================
--- Restadigi · Neon SQL Editor
--- Client mailouts: persistent PDF slots (manual upload) + sent-mail tracking
--- Safe to run multiple times (IF NOT EXISTS).
--- =============================================================================
+-- Restadigi mail tables (safe to run multiple times)
 
 CREATE TABLE IF NOT EXISTS mail_attachments (
   slot TEXT PRIMARY KEY,
@@ -12,9 +8,6 @@ CREATE TABLE IF NOT EXISTS mail_attachments (
   size_bytes INTEGER NOT NULL DEFAULT 0,
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
-
-COMMENT ON TABLE mail_attachments IS
-  'Two PDF slots (pdf1, pdf2). Uploaded manually from /dashboard/mail. Stored in Neon as base64.';
 
 CREATE TABLE IF NOT EXISTS outbound_emails (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -31,9 +24,6 @@ CREATE TABLE IF NOT EXISTS outbound_emails (
   sent_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-COMMENT ON TABLE outbound_emails IS
-  'Outbound client emails with open tracking (pixel).';
-
 CREATE INDEX IF NOT EXISTS idx_outbound_emails_sent_at
   ON outbound_emails (sent_at DESC);
 
@@ -46,6 +36,3 @@ CREATE TABLE IF NOT EXISTS mail_templates (
   body_text TEXT NOT NULL,
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
-
-COMMENT ON TABLE mail_templates IS
-  'Editable Finnish email subject + body saved from /dashboard/mail.';

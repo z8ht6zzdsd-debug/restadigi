@@ -300,9 +300,7 @@ export async function sendClientMail(input: {
     throw new Error("Lataa molemmat PDF-tiedostot ennen lähetystä (PDF 1 ja PDF 2)");
   }
 
-  const firstName =
-    input.toName?.trim().split(/\s+/)[0] ||
-    undefined;
+  const firstName = input.toName?.trim().split(/\s+/)[0] || undefined;
   const vars = {
     firstName: firstName || "Jani",
     company: input.company?.trim() || "Oluthuone Hannikainen",

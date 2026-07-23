@@ -466,7 +466,9 @@ function DashboardMailPage() {
                 return (
                   <p
                     key={`${index}-${paragraph.slice(0, 24)}`}
-                    className={isTagline ? "mt-2 italic text-[#432f24]" : isSite ? "mb-2" : undefined}
+                    className={
+                      isTagline ? "mt-2 italic text-[#432f24]" : isSite ? "mb-2" : undefined
+                    }
                   >
                     {isSite ? (
                       <>
