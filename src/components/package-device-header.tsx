@@ -27,13 +27,7 @@ import groupHero from "@/assets/success-tourist-group.jpg";
 import domainhotelliLogo from "@/assets/domainhotelli-logo-white.svg";
 
 export type PackageDeviceMode =
-  | "image"
-  | "ai-logos"
-  | "google-logos"
-  | "hosting-logos"
-  | "layouts"
-  | "site-layouts"
-  | "sports";
+  "image" | "ai-logos" | "google-logos" | "hosting-logos" | "layouts" | "site-layouts" | "sports";
 
 type PackageDeviceHeaderProps = {
   /** Fallback / single image for all screens (websites, hosting) */
@@ -131,38 +125,20 @@ function DomainhotelliLogoScreen({ className = "" }: { className?: string }) {
 
 function HostingLogoScreen({ index, className = "" }: { index: number; className?: string }) {
   if (index === 0) {
-    return (
-      <LogoScreen
-        name="SSL"
-        Mark={SslMark}
-        tone="text-[#1a7f4b]"
-        className={className}
-      />
-    );
+    return <LogoScreen name="SSL" Mark={SslMark} tone="text-[#1a7f4b]" className={className} />;
   }
   if (index === 1) {
     return <LogoScreen name="Web" Mark={WebMark} tone="text-[#2563eb]" className={className} />;
   }
   if (index === 2) {
     return (
-      <LogoScreen
-        name="Suojaus"
-        Mark={SecurityMark}
-        tone="text-[#432f24]"
-        className={className}
-      />
+      <LogoScreen name="Suojaus" Mark={SecurityMark} tone="text-[#432f24]" className={className} />
     );
   }
   return <DomainhotelliLogoScreen className={className} />;
 }
 
-function LayoutScreen({
-  variant,
-  className = "",
-}: {
-  variant: 0 | 1 | 2 | 3;
-  className?: string;
-}) {
+function LayoutScreen({ variant, className = "" }: { variant: 0 | 1 | 2 | 3; className?: string }) {
   /* 0 = iPhone */
   if (variant === 0) {
     return (
@@ -606,7 +582,9 @@ function SiteLayoutScreen({
       <div className="pkg-mini pkg-mini--cinema">
         <img src={terraceHero} alt="" className="pkg-mini__hero pkg-mini__hero--fill" />
         <div className="pkg-mini__cinema-scrim pkg-mini__cinema-scrim--slim">
-          <span className="pkg-mini__brand pkg-mini__brand--serif pkg-mini__brand--light">Harbor</span>
+          <span className="pkg-mini__brand pkg-mini__brand--serif pkg-mini__brand--light">
+            Harbor
+          </span>
           <span className="pkg-mini__cta pkg-mini__cta--light">Reserve</span>
         </div>
       </div>
@@ -653,12 +631,7 @@ function renderScreen(
   if (mode === "ai-logos") {
     const logo = AI_SCREEN_LOGOS[index];
     return (
-      <LogoScreen
-        name={logo.name}
-        Mark={logo.Mark}
-        tone={logo.tone}
-        className={screenClass}
-      />
+      <LogoScreen name={logo.name} Mark={logo.Mark} tone={logo.tone} className={screenClass} />
     );
   }
 
@@ -677,11 +650,7 @@ function renderScreen(
 
   if (mode === "site-layouts") {
     return (
-      <SiteLayoutScreen
-        variant={index as 0 | 1 | 2 | 3}
-        theme={theme}
-        className={screenClass}
-      />
+      <SiteLayoutScreen variant={index as 0 | 1 | 2 | 3} theme={theme} className={screenClass} />
     );
   }
 

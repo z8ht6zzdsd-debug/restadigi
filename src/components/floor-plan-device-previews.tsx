@@ -131,12 +131,7 @@ function PhonePreview() {
                 <p className="text-[9px] font-medium tabular-nums text-[#1a1512]">{freeCount}</p>
               </div>
             </div>
-            <MiniFloorMap
-              plan={plan}
-              highlightId={highlightId}
-              occupied={occupied}
-              scale="sm"
-            />
+            <MiniFloorMap plan={plan} highlightId={highlightId} occupied={occupied} scale="sm" />
             <div className="rounded-[2px] border border-[#e5e0d8] bg-white px-1.5 py-1">
               <p className="text-[7px] font-medium text-[#1a1512]">Pöytä {table.label}</p>
               <p className="text-[6px] text-[#8a8178]">
@@ -167,12 +162,7 @@ function TabletPreview() {
         </div>
         <ScreenChrome title={`Pöytäkartta · ${totalSeats} paikkaa`}>
           <div className="space-y-1.5 p-2">
-            <MiniFloorMap
-              plan={plan}
-              highlightId={highlightId}
-              occupied={occupied}
-              scale="md"
-            />
+            <MiniFloorMap plan={plan} highlightId={highlightId} occupied={occupied} scale="md" />
             <div className="grid grid-cols-3 gap-1">
               <div className="rounded-[2px] border border-[#e5e0d8] bg-white p-1.5">
                 <p className="text-[5px] uppercase tracking-wide text-[#8a8178]">Valittu</p>
@@ -248,12 +238,7 @@ function MonitorPreview() {
                   </div>
                 ))}
               </div>
-              <MiniFloorMap
-                plan={plan}
-                highlightId={highlightId}
-                occupied={occupied}
-                scale="lg"
-              />
+              <MiniFloorMap plan={plan} highlightId={highlightId} occupied={occupied} scale="lg" />
               <div className="flex flex-wrap gap-2 text-[6px] text-[#6b635c]">
                 <span className="inline-flex items-center gap-1">
                   <span className="size-1.5 rounded-full border border-[#d4cdc3] bg-white" /> Vapaa

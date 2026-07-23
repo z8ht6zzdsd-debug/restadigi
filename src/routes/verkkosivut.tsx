@@ -172,7 +172,9 @@ function KotisivutPage() {
                     {index + 1}
                   </span>
                   <div className="min-w-0">
-                    <h3 className="text-lg font-semibold tracking-tight sm:text-xl">{step.title}</h3>
+                    <h3 className="text-lg font-semibold tracking-tight sm:text-xl">
+                      {step.title}
+                    </h3>
                     <p className="mt-2 max-w-3xl text-sm leading-relaxed text-white/80 sm:text-base">
                       {step.body}
                     </p>

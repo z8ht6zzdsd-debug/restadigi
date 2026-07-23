@@ -23,12 +23,7 @@ const VISIBILITY_DEVICE_MODES: PackageDeviceMode[] = [
   "layouts",
 ];
 
-const SPORTS_HEADER_IMAGES = [
-  sportFootball,
-  sportFootball2,
-  sportHockey,
-  sportHockey2,
-] as const;
+const SPORTS_HEADER_IMAGES = [sportFootball, sportFootball2, sportHockey, sportHockey2] as const;
 
 export const Route = createFileRoute("/nakyvyys-ja-suunnittelu")({
   head: () => ({

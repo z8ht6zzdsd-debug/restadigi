@@ -8,10 +8,7 @@ import {
   PackageSportsPhotos,
   packageHeaderKind,
 } from "@/components/package-brand-logos";
-import {
-  PackageDeviceHeader,
-  type PackageDeviceMode,
-} from "@/components/package-device-header";
+import { PackageDeviceHeader, type PackageDeviceMode } from "@/components/package-device-header";
 
 export type ProductPackage = {
   name: string;
@@ -135,9 +132,9 @@ export function ProductPackageCards({
           const deviceMode = pkg.deviceMode ?? "image";
           const deviceLayout = Boolean(
             pkg.deviceLayout &&
-              (pkg.headerImage ||
-                (pkg.headerImages && pkg.headerImages.length > 0) ||
-                (pkg.deviceMode && pkg.deviceMode !== "image")),
+            (pkg.headerImage ||
+              (pkg.headerImages && pkg.headerImages.length > 0) ||
+              (pkg.deviceMode && pkg.deviceMode !== "image")),
           );
           const headerH = deviceLayout
             ? ""

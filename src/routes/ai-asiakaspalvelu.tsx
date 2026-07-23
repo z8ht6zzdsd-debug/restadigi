@@ -140,7 +140,11 @@ function ChatbotPage() {
           {bot.safeTitleAfter}
         </MarketingHeading>
 
-        <MarketingBox tone="white" justify="start" className="mb-4 min-h-[10rem] sm:mb-5 sm:min-h-[11rem]">
+        <MarketingBox
+          tone="white"
+          justify="start"
+          className="mb-4 min-h-[10rem] sm:mb-5 sm:min-h-[11rem]"
+        >
           <p className="text-base leading-relaxed text-foreground/75 sm:text-lg sm:leading-[1.65]">
             {bot.safeBody}
           </p>

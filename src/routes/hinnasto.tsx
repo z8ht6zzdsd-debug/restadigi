@@ -78,7 +78,9 @@ function HinnastoPage() {
             <span className="font-serif italic text-accent">{p.titleAccent}</span>
             {p.titleAfter}
           </h1>
-          <p className="max-w-2xl text-base leading-relaxed text-foreground/70 sm:text-lg">{p.lead}</p>
+          <p className="max-w-2xl text-base leading-relaxed text-foreground/70 sm:text-lg">
+            {p.lead}
+          </p>
           <p className="mt-4 text-sm text-foreground/50">{p.vatNote}</p>
         </div>
       </header>
@@ -221,7 +223,9 @@ function PriceSection({
                 {row.name}
               </div>
               {row.note ? (
-                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-foreground/55">{row.note}</p>
+                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-foreground/55">
+                  {row.note}
+                </p>
               ) : null}
             </div>
             <div className="shrink-0 text-base font-bold tracking-tight text-foreground sm:text-right sm:text-lg">

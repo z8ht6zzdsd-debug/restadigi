@@ -309,7 +309,8 @@ export const fi: Messages = {
       description:
         "Restadigin palveluiden hinnasto: verkkosivut, diginäkyvyys, graafinen suunnittelu ja hosting.",
       ogTitle: "Hinnasto — Restadigi",
-      ogDescription: "Selkeät pakettihinnat verkkosivuille, näkyvyydelle, graafiselle suunnittelulle ja hostingille.",
+      ogDescription:
+        "Selkeät pakettihinnat verkkosivuille, näkyvyydelle, graafiselle suunnittelulle ja hostingille.",
     },
     eyebrow: "Hinnasto",
     titleBefore: "Selkeät ",
