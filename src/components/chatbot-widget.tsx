@@ -210,11 +210,24 @@ function ChatDialog({
         role="dialog"
         aria-label={copy.dialogAria}
       >
-        <div className="flex items-center justify-between px-4 py-3">
-          <p className="text-sm font-semibold tracking-[0.12em]" style={{ color: ORANGE }}>
-            {copy.eyebrow}
-          </p>
-          <div className="flex items-center gap-1">
+        <div className="flex items-center justify-between gap-3 px-4 py-3">
+          <div className="flex min-w-0 items-center gap-2.5">
+            <img
+              src={restadigiIcon}
+              alt="Restadigi"
+              className="size-9 shrink-0 rounded-full border border-white/20 bg-[#432f24] object-cover shadow-sm"
+            />
+            <div className="min-w-0">
+              <p
+                className="truncate text-sm font-semibold tracking-[0.14em]"
+                style={{ color: ORANGE }}
+              >
+                {copy.eyebrow}
+              </p>
+              <p className="truncate text-xs text-white/55">{headerTitle}</p>
+            </div>
+          </div>
+          <div className="flex shrink-0 items-center gap-1">
             <button
               type="button"
               onClick={resetConversation}
