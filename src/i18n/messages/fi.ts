@@ -117,6 +117,135 @@ export const fi: Messages = {
   },
   footer: {
     copyright: "© {year} Restadigi",
+    privacy: "Tietosuoja",
+    cookies: "Evästeet",
+    terms: "Käyttöehdot",
+    legalNavLabel: "Oikeudelliset tiedot",
+  },
+  cookies: {
+    openAria: "Avaa evästeasetukset",
+    closeAria: "Sulje evästeasetukset",
+    bannerTitle: "Käytämme evästeitä",
+    bannerBody:
+      "Käytämme välttämättömiä evästeitä sivuston toimintaan. Tilasto- ja markkinointievästeitä vain, jos hyväksyt ne. Voit muuttaa valintojasi milloin tahansa.",
+    acceptAll: "Hyväksy kaikki",
+    necessaryOnly: "Vain välttämättömät",
+    settings: "Asetukset",
+    panelTitle: "Evästeasetukset",
+    panelIntro:
+      "Valitse, mitä evästeitä sallit. Välttämättömät evästeet tarvitaan sivuston perustoimintaan, eikä niitä voi poistaa käytöstä.",
+    currentStatus: "Nykyinen tila",
+    on: "Käytössä",
+    off: "Ei käytössä",
+    alwaysOn: "Aina käytössä",
+    hideDetails: "Piilota tiedot",
+    showDetails: "Näytä tiedot",
+    acceptedAt: "Hyväksymispäivämäärä",
+    consentId: "Hyväksymistunnuksesi",
+    withdraw: "Peruuta hyväksyntä",
+    saveChanges: "Muuta hyväksyntääsi",
+    saveChoices: "Tallenna valinnat",
+    privacyLink: "Tietosuojaseloste",
+    cookiePolicyLink: "Evästekäytäntö",
+    categories: {
+      necessary: "Välttämätön",
+      preferences: "Mieltymykset",
+      statistics: "Tilastot",
+      marketing: "Markkinointi",
+    },
+    categoryHelp: {
+      necessary: "Kirjautuminen, tietoturva ja sivuston perustoiminnot.",
+      preferences: "Muistaa valintasi (esim. kieliasetukset), kun se on mahdollista.",
+      statistics: "Anonyymi kävijätilasto sivuston parantamiseen. Ei myydä kolmansille.",
+      marketing: "Mainonnan mittaus ja uudelleenmarkkinointi. Emme käytä näitä oletuksena.",
+    },
+  },
+  legal: {
+    privacy: {
+      metaTitle: "Tietosuojaseloste — Restadigi",
+      metaDescription:
+        "Restadigin tietosuojaseloste: mitä henkilötietoja käsittelemme, miksi ja millä oikeudella.",
+      title: "Tietosuojaseloste",
+      updated: "Päivitetty 23.7.2026",
+      sections: [
+        {
+          heading: "Rekisterinpitäjä",
+          body: "Restadigi Finland / Ville Nieminen, Erkkiläntie 47, 04740 Mäntsälä, Suomi. Yhteystiedot: info@restadigi.fi, +358 403 738 332.",
+        },
+        {
+          heading: "Mitä tietoja keräämme",
+          body: "Yhteydenottolomakkeiden ja chat-palvelun kautta: nimi, yritys, sähköposti, puhelinnumero ja viestin sisältö. Lisäksi teknisiä lokitietoja (IP, selain) turvallisuuden vuoksi. Emme kerää tarpeetonta tietoa.",
+        },
+        {
+          heading: "Käyttötarkoitus ja oikeusperuste",
+          body: "Käsittelemme tietoja yhteydenottoihin vastaamiseen, tarjouksiin ja sopimuksen valmisteluun (sopimus / oikeutettu etu) sekä lakisääteisiin velvoitteisiin. Markkinointiviestejä lähetämme vain, jos olet antanut suostumuksen tai muu lain mukainen peruste on olemassa.",
+        },
+        {
+          heading: "Säilytysaika",
+          body: "Yhteydenottotietoja säilytetään niin kauan kuin asiakassuhde tai tarjousprosessi sitä edellyttää, tyypillisesti enintään 24 kuukautta viimeisestä yhteydenotosta, ellei pidempi säilytys ole tarpeen kirjanpito- tai oikeudellisista syistä.",
+        },
+        {
+          heading: "Luovutukset ja siirrot",
+          body: "Käytämme luotettavia palveluntarjoajia (esim. hosting, sähköposti, tietokanta). Tietoja ei myydä. Jos tietoja käsitellään EU/ETA-alueen ulkopuolella, käytämme asianmukaisia suojatoimia (esim. vakiosopimuslausekkeet).",
+        },
+        {
+          heading: "Oikeutesi",
+          body: "Sinulla on oikeus tarkastaa, oikaista ja poistaa tietojasi, rajoittaa käsittelyä sekä vastustaa käsittelyä. Voit myös tehdä valituksen tietosuojavaltuutetulle (www.tietosuoja.fi). Ota yhteyttä: info@restadigi.fi.",
+        },
+      ],
+    },
+    cookies: {
+      metaTitle: "Evästekäytäntö — Restadigi",
+      metaDescription: "Miten Restadigi käyttää evästeitä ja vastaavia tekniikoita sivustolla.",
+      title: "Evästekäytäntö",
+      updated: "Päivitetty 23.7.2026",
+      sections: [
+        {
+          heading: "Mitä evästeet ovat",
+          body: "Evästeet ovat pieniä tiedostoja tai vastaavaa paikallista tallennusta, jotka auttavat sivustoa toimimaan, muistamaan valintoja tai mittaamaan käyttöä.",
+        },
+        {
+          heading: "Välttämättömät",
+          body: "Tarvitaan sivuston turvalliseen toimintaan (esim. admin-istunto, evästeasetusten tallennus). Näitä ei voi kieltää, koska sivusto ei muuten toimi luotettavasti.",
+        },
+        {
+          heading: "Mieltymykset, tilastot ja markkinointi",
+          body: "Näitä käytetään vain, jos hyväksyt ne evästeasetuksissa. Tilastot auttavat meitä ymmärtämään sivuston käyttöä sisäisesti. Markkinointievästeitä emme käytä oletuksena; ne pysyvät pois päältä, kunnes annat suostumuksen.",
+        },
+        {
+          heading: "Suostumuksen hallinta",
+          body: "Voit avata evästeasetukset milloin tahansa sivun vasemmasta alakulmasta. Voit myös peruuttaa suostumuksen. Lisätietoja henkilötiedoista: tietosuojaseloste.",
+        },
+      ],
+    },
+    terms: {
+      metaTitle: "Käyttöehdot — Restadigi",
+      metaDescription: "Restadigi.fi-sivuston ja palveluiden yleiset käyttöehdot.",
+      title: "Käyttöehdot",
+      updated: "Päivitetty 23.7.2026",
+      sections: [
+        {
+          heading: "Sivuston käyttö",
+          body: "Restadigi.fi tarjoaa tietoa digitaalisista palveluista. Sisältö on yleisluontoista; sitovat ehdot sovitaan aina kirjallisesti tarjouksessa tai sopimuksessa.",
+        },
+        {
+          heading: "Palvelut ja hinnat",
+          body: "Sivustolla esitetyt hinnat ja paketit voivat muuttua. Lopullinen hinta vahvistetaan tarjouksessa. Maksuehdot (esim. ennakko) sovitaan projektikohtaisesti.",
+        },
+        {
+          heading: "Immateriaalioikeudet",
+          body: "Sivuston tekstit, kuvat ja brändielementit kuuluvat Restadigille tai lisenssinantajille. Älä kopioi materiaalia ilman lupaa.",
+        },
+        {
+          heading: "Vastuunrajoitus",
+          body: "Pyrimme pitämään tiedot ajan tasalla, mutta emme takaa sivuston keskeytyksetöntä toimintaa. Emme vastaa epäsuorista vahingoista siltä osin kuin laki sen sallii.",
+        },
+        {
+          heading: "Yhteystiedot",
+          body: "Restadigi Finland, Erkkiläntie 47, 04740 Mäntsälä. info@restadigi.fi · +358 403 738 332.",
+        },
+      ],
+    },
   },
   home: {
     meta: {

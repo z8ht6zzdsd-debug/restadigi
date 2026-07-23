@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 import { useMessages } from "@/i18n";
 
 type SiteFooterProps = {
@@ -16,13 +18,19 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
   const strong = onPrimary ? "text-primary-foreground/85" : "text-foreground/80";
   const linkHover = onPrimary ? "hover:text-primary-foreground" : "hover:text-foreground";
 
+  const legalLinks = [
+    { to: "/tietosuoja" as const, label: t.footer.privacy },
+    { to: "/evasteet" as const, label: t.footer.cookies },
+    { to: "/kayttoehdot" as const, label: t.footer.terms },
+  ];
+
   return (
     <footer
       className={
         onPrimary ? "py-12 border-t border-primary-foreground/15" : "py-12 border-t border-border"
       }
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
         <div className={"space-y-1.5 text-sm " + muted}>
           <p className={"font-medium " + strong}>{c.company}</p>
           <p>{c.person}</p>
@@ -57,7 +65,24 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
             </a>
           </p>
         </div>
-        <p className={"text-sm " + muted}>{copyright}</p>
+
+        <div className={"space-y-3 text-sm " + muted}>
+          <p className={"text-xs uppercase tracking-[0.16em] " + strong}>
+            {t.footer.legalNavLabel}
+          </p>
+          <nav className="flex flex-wrap gap-x-4 gap-y-2" aria-label={t.footer.legalNavLabel}>
+            {legalLinks.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={"underline underline-offset-2 transition-colors " + linkHover}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <p>{copyright}</p>
+        </div>
       </div>
     </footer>
   );

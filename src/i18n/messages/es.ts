@@ -117,6 +117,135 @@ export const es: Messages = {
   },
   footer: {
     copyright: "© {year} Restadigi",
+    privacy: "Privacidad",
+    cookies: "Cookies",
+    terms: "Términos",
+    legalNavLabel: "Legal",
+  },
+  cookies: {
+    openAria: "Abrir ajustes de cookies",
+    closeAria: "Cerrar ajustes de cookies",
+    bannerTitle: "Usamos cookies",
+    bannerBody:
+      "Usamos cookies necesarias para que el sitio funcione. Las de estadísticas y marketing solo si las aceptas. Puedes cambiar tu elección en cualquier momento.",
+    acceptAll: "Aceptar todas",
+    necessaryOnly: "Solo necesarias",
+    settings: "Ajustes",
+    panelTitle: "Ajustes de cookies",
+    panelIntro:
+      "Elige qué cookies permites. Las necesarias son imprescindibles para el funcionamiento básico y no se pueden desactivar.",
+    currentStatus: "Estado actual",
+    on: "Activo",
+    off: "Inactivo",
+    alwaysOn: "Siempre activo",
+    hideDetails: "Ocultar detalles",
+    showDetails: "Mostrar detalles",
+    acceptedAt: "Fecha de consentimiento",
+    consentId: "Tu ID de consentimiento",
+    withdraw: "Retirar consentimiento",
+    saveChanges: "Cambiar consentimiento",
+    saveChoices: "Guardar elección",
+    privacyLink: "Política de privacidad",
+    cookiePolicyLink: "Política de cookies",
+    categories: {
+      necessary: "Necesarias",
+      preferences: "Preferencias",
+      statistics: "Estadísticas",
+      marketing: "Marketing",
+    },
+    categoryHelp: {
+      necessary: "Inicio de sesión, seguridad y funciones básicas del sitio.",
+      preferences: "Recuerda tus opciones (p. ej. idioma) cuando proceda.",
+      statistics: "Estadísticas anónimas de uso para mejorar el sitio. No se venden a terceros.",
+      marketing:
+        "Medición publicitaria y remarketing. Desactivadas por defecto hasta que consientas.",
+    },
+  },
+  legal: {
+    privacy: {
+      metaTitle: "Política de privacidad — Restadigi",
+      metaDescription: "Política de privacidad de Restadigi: qué datos tratamos y por qué.",
+      title: "Política de privacidad",
+      updated: "Actualizado el 23 de julio de 2026",
+      sections: [
+        {
+          heading: "Responsable",
+          body: "Restadigi Finland / Ville Nieminen, Erkkiläntie 47, 04740 Mäntsälä, Finlandia. Contacto: info@restadigi.fi, +358 403 738 332.",
+        },
+        {
+          heading: "Qué datos recogemos",
+          body: "Por formularios y chat: nombre, empresa, correo, teléfono y mensaje. Logs técnicos (IP, navegador) por seguridad. No recogemos datos innecesarios.",
+        },
+        {
+          heading: "Finalidad y base legal",
+          body: "Tratamos los datos para responder consultas, preparar presupuestos y contratos (contrato / interés legítimo) y cumplir obligaciones legales. Marketing solo con consentimiento u otra base legítima.",
+        },
+        {
+          heading: "Conservación",
+          body: "Los datos de contacto se conservan mientras dure la relación o el proceso de oferta, normalmente hasta 24 meses tras el último contacto, salvo obligación legal más larga.",
+        },
+        {
+          heading: "Encargados y transferencias",
+          body: "Usamos proveedores de confianza (hosting, correo, base de datos). No vendemos datos. Las transferencias fuera de la UE/EEE usan garantías adecuadas cuando proceda.",
+        },
+        {
+          heading: "Tus derechos",
+          body: "Puedes acceder, rectificar, suprimir o limitar el tratamiento y oponerte. También puedes reclamar ante la autoridad de control. Contacto: info@restadigi.fi.",
+        },
+      ],
+    },
+    cookies: {
+      metaTitle: "Política de cookies — Restadigi",
+      metaDescription: "Cómo Restadigi usa cookies y tecnologías similares.",
+      title: "Política de cookies",
+      updated: "Actualizado el 23 de julio de 2026",
+      sections: [
+        {
+          heading: "Qué son las cookies",
+          body: "Son archivos pequeños o almacenamiento local que ayudan al sitio a funcionar, recordar opciones o medir el uso.",
+        },
+        {
+          heading: "Necesarias",
+          body: "Imprescindibles para un funcionamiento seguro (p. ej. sesión de admin, guardar preferencias de cookies). No se pueden rechazar.",
+        },
+        {
+          heading: "Preferencias, estadísticas y marketing",
+          body: "Solo si las aceptas en los ajustes. Las estadísticas nos ayudan a mejorar el sitio. Las de marketing permanecen desactivadas por defecto.",
+        },
+        {
+          heading: "Gestionar el consentimiento",
+          body: "Abre los ajustes de cookies en cualquier momento desde el botón inferior izquierdo. Puedes retirar el consentimiento. Ver también la política de privacidad.",
+        },
+      ],
+    },
+    terms: {
+      metaTitle: "Términos de uso — Restadigi",
+      metaDescription: "Términos generales de uso del sitio y servicios Restadigi.",
+      title: "Términos de uso",
+      updated: "Actualizado el 23 de julio de 2026",
+      sections: [
+        {
+          heading: "Uso del sitio",
+          body: "Restadigi.fi informa sobre servicios digitales. Las condiciones vinculantes se acuerdan por escrito en presupuesto o contrato.",
+        },
+        {
+          heading: "Servicios y precios",
+          body: "Los precios y paquetes del sitio pueden cambiar. El precio final se confirma en presupuesto. Las condiciones de pago se acuerdan por proyecto.",
+        },
+        {
+          heading: "Propiedad intelectual",
+          body: "Los contenidos y la marca pertenecen a Restadigi o a sus licenciantes. No copies sin permiso.",
+        },
+        {
+          heading: "Responsabilidad",
+          body: "Procuramos información actualizada, pero no garantizamos disponibilidad ininterrumpida. No respondemos de daños indirectos en la medida que permita la ley.",
+        },
+        {
+          heading: "Contacto",
+          body: "Restadigi Finland, Erkkiläntie 47, 04740 Mäntsälä. info@restadigi.fi · +358 403 738 332.",
+        },
+      ],
+    },
   },
   home: {
     meta: {

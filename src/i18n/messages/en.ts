@@ -117,6 +117,134 @@ export const en: Messages = {
   },
   footer: {
     copyright: "© {year} Restadigi",
+    privacy: "Privacy",
+    cookies: "Cookies",
+    terms: "Terms",
+    legalNavLabel: "Legal",
+  },
+  cookies: {
+    openAria: "Open cookie settings",
+    closeAria: "Close cookie settings",
+    bannerTitle: "We use cookies",
+    bannerBody:
+      "We use necessary cookies for the site to work. Statistics and marketing cookies only if you allow them. You can change your choices anytime.",
+    acceptAll: "Accept all",
+    necessaryOnly: "Necessary only",
+    settings: "Settings",
+    panelTitle: "Cookie settings",
+    panelIntro:
+      "Choose which cookies you allow. Necessary cookies are required for basic site functions and cannot be turned off.",
+    currentStatus: "Current status",
+    on: "On",
+    off: "Off",
+    alwaysOn: "Always on",
+    hideDetails: "Hide details",
+    showDetails: "Show details",
+    acceptedAt: "Consent date",
+    consentId: "Your consent ID",
+    withdraw: "Withdraw consent",
+    saveChanges: "Update consent",
+    saveChoices: "Save choices",
+    privacyLink: "Privacy policy",
+    cookiePolicyLink: "Cookie policy",
+    categories: {
+      necessary: "Necessary",
+      preferences: "Preferences",
+      statistics: "Statistics",
+      marketing: "Marketing",
+    },
+    categoryHelp: {
+      necessary: "Login, security and core site features.",
+      preferences: "Remembers choices (e.g. language) when applicable.",
+      statistics: "Anonymous usage stats to improve the site. Not sold to third parties.",
+      marketing: "Ad measurement and remarketing. Off by default until you consent.",
+    },
+  },
+  legal: {
+    privacy: {
+      metaTitle: "Privacy policy — Restadigi",
+      metaDescription: "Restadigi privacy policy: what personal data we process and why.",
+      title: "Privacy policy",
+      updated: "Updated 23 July 2026",
+      sections: [
+        {
+          heading: "Controller",
+          body: "Restadigi Finland / Ville Nieminen, Erkkiläntie 47, 04740 Mäntsälä, Finland. Contact: info@restadigi.fi, +358 403 738 332.",
+        },
+        {
+          heading: "What we collect",
+          body: "Via contact forms and chat: name, company, email, phone and message content. Technical logs (IP, browser) for security. We do not collect unnecessary data.",
+        },
+        {
+          heading: "Purpose and legal basis",
+          body: "We process data to reply to enquiries, prepare quotes and contracts (contract / legitimate interest) and to meet legal obligations. Marketing only with consent or another lawful basis.",
+        },
+        {
+          heading: "Retention",
+          body: "Contact data is kept as long as the customer relationship or quote process requires, typically up to 24 months after last contact, unless longer retention is required by law.",
+        },
+        {
+          heading: "Processors and transfers",
+          body: "We use trusted providers (hosting, email, database). Data is not sold. Transfers outside the EU/EEA use appropriate safeguards where needed.",
+        },
+        {
+          heading: "Your rights",
+          body: "You may access, rectify, erase or restrict processing and object to processing. You may lodge a complaint with a supervisory authority. Contact: info@restadigi.fi.",
+        },
+      ],
+    },
+    cookies: {
+      metaTitle: "Cookie policy — Restadigi",
+      metaDescription: "How Restadigi uses cookies and similar technologies.",
+      title: "Cookie policy",
+      updated: "Updated 23 July 2026",
+      sections: [
+        {
+          heading: "What cookies are",
+          body: "Cookies are small files or similar local storage that help the site work, remember choices or measure usage.",
+        },
+        {
+          heading: "Necessary",
+          body: "Required for secure operation (e.g. admin session, storing cookie preferences). These cannot be refused.",
+        },
+        {
+          heading: "Preferences, statistics and marketing",
+          body: "Used only if you allow them in cookie settings. Statistics help us improve the site internally. Marketing cookies stay off by default.",
+        },
+        {
+          heading: "Managing consent",
+          body: "Open cookie settings anytime from the bottom-left button. You can withdraw consent. See also our privacy policy.",
+        },
+      ],
+    },
+    terms: {
+      metaTitle: "Terms of use — Restadigi",
+      metaDescription: "General terms for using Restadigi websites and services.",
+      title: "Terms of use",
+      updated: "Updated 23 July 2026",
+      sections: [
+        {
+          heading: "Use of the site",
+          body: "Restadigi.fi provides information about digital services. Binding terms are always agreed in writing in a quote or contract.",
+        },
+        {
+          heading: "Services and pricing",
+          body: "Prices and packages on the site may change. Final pricing is confirmed in a quote. Payment terms are agreed per project.",
+        },
+        {
+          heading: "Intellectual property",
+          body: "Site content and brand elements belong to Restadigi or licensors. Do not copy without permission.",
+        },
+        {
+          heading: "Liability",
+          body: "We aim to keep information accurate but do not guarantee uninterrupted availability. We are not liable for indirect damages to the extent permitted by law.",
+        },
+        {
+          heading: "Contact",
+          body: "Restadigi Finland, Erkkiläntie 47, 04740 Mäntsälä. info@restadigi.fi · +358 403 738 332.",
+        },
+      ],
+    },
   },
   home: {
     meta: {

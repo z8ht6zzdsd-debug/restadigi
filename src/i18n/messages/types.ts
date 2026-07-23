@@ -45,6 +45,69 @@ export type Messages = {
   };
   footer: {
     copyright: string;
+    privacy: string;
+    cookies: string;
+    terms: string;
+    legalNavLabel: string;
+  };
+  cookies: {
+    openAria: string;
+    closeAria: string;
+    bannerTitle: string;
+    bannerBody: string;
+    acceptAll: string;
+    necessaryOnly: string;
+    settings: string;
+    panelTitle: string;
+    panelIntro: string;
+    currentStatus: string;
+    on: string;
+    off: string;
+    alwaysOn: string;
+    hideDetails: string;
+    showDetails: string;
+    acceptedAt: string;
+    consentId: string;
+    withdraw: string;
+    saveChanges: string;
+    saveChoices: string;
+    privacyLink: string;
+    cookiePolicyLink: string;
+    categories: {
+      necessary: string;
+      preferences: string;
+      statistics: string;
+      marketing: string;
+    };
+    categoryHelp: {
+      necessary: string;
+      preferences: string;
+      statistics: string;
+      marketing: string;
+    };
+  };
+  legal: {
+    privacy: {
+      metaTitle: string;
+      metaDescription: string;
+      title: string;
+      updated: string;
+      sections: Array<{ heading: string; body: string }>;
+    };
+    cookies: {
+      metaTitle: string;
+      metaDescription: string;
+      title: string;
+      updated: string;
+      sections: Array<{ heading: string; body: string }>;
+    };
+    terms: {
+      metaTitle: string;
+      metaDescription: string;
+      title: string;
+      updated: string;
+      sections: Array<{ heading: string; body: string }>;
+    };
   };
   home: {
     meta: {
