@@ -115,9 +115,9 @@ export function CookieConsentUI() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="cookie-settings-title"
-            className="absolute bottom-20 left-4 right-4 max-h-[min(80vh,560px)] overflow-y-auto rounded-xl border border-white/10 bg-[#1a1512] text-[#f7f3ee] shadow-2xl sm:left-6 sm:right-auto sm:w-[min(100%,380px)]"
+            className="absolute bottom-20 left-4 right-4 max-h-[min(80vh,560px)] overflow-y-auto rounded-xl border border-white/10 bg-[#2a2018] text-[#f7f3ee] shadow-2xl sm:left-6 sm:right-auto sm:w-[min(100%,380px)]"
           >
-            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-[#1a1512] px-4 py-3">
+            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-[#2a2018] px-4 py-3">
               <h2 id="cookie-settings-title" className="text-base font-semibold">
                 {c.panelTitle}
               </h2>
@@ -205,7 +205,7 @@ export function CookieConsentUI() {
               </button>
 
               {detailsOpen ? (
-                <div className="space-y-2 rounded-lg bg-[#2a2420] px-3 py-3 text-xs text-white/70">
+                <div className="space-y-2 rounded-lg bg-[#1a1512] px-3 py-3 text-xs text-white/70">
                   <p>
                     <span className="text-white/45">{c.acceptedAt}: </span>
                     {consent ? formatConsentDate(consent.acceptedAt, locale) : "—"}
@@ -227,12 +227,12 @@ export function CookieConsentUI() {
               ) : null}
             </div>
 
-            <div className="sticky bottom-0 flex flex-col gap-2 border-t border-white/10 bg-[#1a1512] p-3 sm:flex-row">
+            <div className="sticky bottom-0 flex flex-col gap-2 border-t border-white/10 bg-[#2a2018] p-3 sm:flex-row">
               {hasResponded ? (
                 <button
                   type="button"
                   onClick={withdrawConsent}
-                  className="flex-1 rounded-md bg-[#c5bfb6] px-3 py-2.5 text-sm font-medium text-[#1a1512] hover:bg-[#d4cfc7]"
+                  className="flex-1 rounded-md bg-white px-3 py-2.5 text-sm font-medium text-[#1a1512] hover:bg-[#f7f3ee]"
                 >
                   {c.withdraw}
                 </button>
@@ -240,7 +240,7 @@ export function CookieConsentUI() {
                 <button
                   type="button"
                   onClick={acceptNecessaryOnly}
-                  className="flex-1 rounded-md bg-[#c5bfb6] px-3 py-2.5 text-sm font-medium text-[#1a1512] hover:bg-[#d4cfc7]"
+                  className="flex-1 rounded-md bg-white px-3 py-2.5 text-sm font-medium text-[#1a1512] hover:bg-[#f7f3ee]"
                 >
                   {c.necessaryOnly}
                 </button>
@@ -248,7 +248,7 @@ export function CookieConsentUI() {
               <button
                 type="button"
                 onClick={() => saveCategories(draft)}
-                className="flex-1 rounded-md bg-[#e8b923] px-3 py-2.5 text-sm font-semibold text-[#1a1512] hover:bg-[#f0c63a]"
+                className="flex-1 rounded-md bg-[#c46a32] px-3 py-2.5 text-sm font-semibold text-white hover:bg-[#b35d28]"
               >
                 {hasResponded ? c.saveChanges : c.saveChoices}
               </button>
@@ -277,15 +277,15 @@ function StatusRow({
     <li className="flex items-center justify-between gap-3">
       <span className="flex items-center gap-2">
         {locked ? (
-          <Lock className="size-3.5 text-[#e8b923]" aria-hidden />
+          <Lock className="size-3.5 text-[#c46a32]" aria-hidden />
         ) : enabled ? (
-          <Check className="size-3.5 text-[#e8b923]" aria-hidden />
+          <Check className="size-3.5 text-[#c46a32]" aria-hidden />
         ) : (
           <X className="size-3.5 text-white/50" aria-hidden />
         )}
         {label}
       </span>
-      <span className={cn("text-xs", enabled ? "text-[#e8b923]" : "text-white/45")}>
+      <span className={cn("text-xs", enabled ? "text-[#c46a32]" : "text-white/45")}>
         {enabled ? onLabel : offLabel}
       </span>
     </li>
@@ -312,15 +312,15 @@ function CategoryToggle({
       <div className="min-w-0">
         <p className="text-sm font-medium text-white">{title}</p>
         <p className="mt-0.5 text-xs leading-snug text-white/55">{description}</p>
-        {locked && onLabel ? <p className="mt-1 text-[11px] text-[#e8b923]">{onLabel}</p> : null}
+        {locked && onLabel ? <p className="mt-1 text-[11px] text-[#c46a32]">{onLabel}</p> : null}
       </div>
       {locked ? (
-        <Lock className="mt-1 size-4 shrink-0 text-[#e8b923]" aria-hidden />
+        <Lock className="mt-1 size-4 shrink-0 text-[#c46a32]" aria-hidden />
       ) : (
         <Switch
           checked={checked}
           onCheckedChange={onCheckedChange}
-          className="mt-0.5 data-[state=checked]:bg-[#e8b923]"
+          className="mt-0.5 data-[state=checked]:bg-[#c46a32]"
         />
       )}
     </div>

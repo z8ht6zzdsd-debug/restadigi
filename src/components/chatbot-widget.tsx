@@ -1,7 +1,8 @@
 import { useRouterState } from "@tanstack/react-router";
-import { Headphones, MessageCircle, Send, X } from "lucide-react";
+import { Headphones, MessageCircle, RefreshCw, Send, X } from "lucide-react";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 
+import restadigiIcon from "@/assets/restadigi-logo-icon.png";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useLocale, useMessages } from "@/i18n";
@@ -23,7 +24,8 @@ type ChatbotPanelProps = {
   className?: string;
 };
 
-const SALES_ACCENT = "#432f24";
+const BROWN = "#432f24";
+const ORANGE = "#c46a32";
 
 function useChatbot(mode: ChatMode) {
   const t = useMessages();
@@ -39,8 +41,7 @@ function useChatbot(mode: ChatMode) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const accentColor =
-    mode === "reservation" ? (siteSettings?.accentColor ?? "#c46a32") : SALES_ACCENT;
+  const accentColor = mode === "reservation" ? (siteSettings?.accentColor ?? ORANGE) : BROWN;
 
   const welcomeText =
     mode === "reservation" && locale === "fi" && siteSettings?.chatbotWelcomeMessage
@@ -63,6 +64,13 @@ function useChatbot(mode: ChatMode) {
       .catch(() => undefined);
   }, [mode]);
 
+  function resetConversation() {
+    setMessages([{ role: "assistant", content: welcomeText }]);
+    setSessionId(null);
+    setError(null);
+    setInput("");
+  }
+
   useEffect(() => {
     setMessages([{ role: "assistant", content: welcomeText }]);
     setError(null);
@@ -75,8 +83,8 @@ function useChatbot(mode: ChatMode) {
     }
   }, [open, messages, loading]);
 
-  async function sendMessage() {
-    const text = input.trim();
+  async function sendMessage(rawText?: string) {
+    const text = (rawText ?? input).trim();
     if (!text || loading) return;
 
     const userMessage: ChatMessage = { role: "user", content: text };
@@ -132,6 +140,7 @@ function useChatbot(mode: ChatMode) {
   }
 
   return {
+    mode,
     copy,
     open,
     setOpen,
@@ -144,8 +153,10 @@ function useChatbot(mode: ChatMode) {
     inputRef,
     accentColor,
     headerTitle,
+    welcomeText,
     sendMessage,
     handleKeyDown,
+    resetConversation,
   };
 }
 
@@ -171,11 +182,149 @@ function ChatDialog({
     inputRef,
     accentColor,
     headerTitle,
+    welcomeText,
     sendMessage,
     handleKeyDown,
+    resetConversation,
   } = panel;
 
   if (!open) return null;
+
+  const isSales = mode === "sales";
+  const showQuickReplies =
+    isSales &&
+    "quickReplies" in copy &&
+    messages.length === 1 &&
+    messages[0]?.role === "assistant" &&
+    messages[0]?.content === welcomeText &&
+    !loading;
+
+  if (isSales) {
+    return (
+      <div
+        className={cn(
+          "flex w-[min(100vw-2.5rem,22.5rem)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#2a2018] text-white shadow-2xl",
+          "animate-in fade-in slide-in-from-bottom-4 duration-200",
+          panelClassName,
+        )}
+        role="dialog"
+        aria-label={copy.dialogAria}
+      >
+        <div className="flex items-center justify-between px-4 py-3">
+          <p className="text-sm font-semibold tracking-[0.12em]" style={{ color: ORANGE }}>
+            {copy.eyebrow}
+          </p>
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={resetConversation}
+              className="rounded-full p-1.5 text-white/70 transition hover:bg-white/10 hover:text-white"
+              aria-label={"resetAria" in copy ? copy.resetAria : "Reset"}
+            >
+              <RefreshCw className="size-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="rounded-full p-1.5 text-white/70 transition hover:bg-white/10 hover:text-white"
+              aria-label={copy.closeLabel}
+            >
+              <X className="size-4" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={scrollRef}
+          className="flex max-h-[min(55vh,28rem)] flex-col gap-3 overflow-y-auto px-3 pb-3"
+        >
+          {messages.map((msg, i) =>
+            msg.role === "assistant" ? (
+              <div key={`a-${i}`} className="flex items-end gap-2">
+                <img
+                  src={restadigiIcon}
+                  alt=""
+                  className="mb-0.5 size-8 shrink-0 rounded-full border border-white/15 object-cover bg-[#432f24]"
+                />
+                <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-white px-3.5 py-2.5 text-sm leading-relaxed text-[#1a1512] shadow-sm whitespace-pre-wrap">
+                  {msg.content}
+                </div>
+              </div>
+            ) : (
+              <div
+                key={`u-${i}`}
+                className="ml-auto max-w-[85%] rounded-2xl rounded-br-md px-3.5 py-2.5 text-sm leading-relaxed text-white shadow-sm whitespace-pre-wrap"
+                style={{ backgroundColor: ORANGE }}
+              >
+                {msg.content}
+              </div>
+            ),
+          )}
+          {loading && (
+            <div className="flex items-end gap-2">
+              <img
+                src={restadigiIcon}
+                alt=""
+                className="size-8 shrink-0 rounded-full border border-white/15 object-cover bg-[#432f24]"
+              />
+              <div className="rounded-2xl bg-white/90 px-3.5 py-2.5 text-sm text-[#5c534c]">
+                {copy.typing}
+              </div>
+            </div>
+          )}
+
+          {showQuickReplies ? (
+            <div className="mt-1 flex flex-wrap justify-end gap-2">
+              {copy.quickReplies.map((item) => (
+                <button
+                  key={item.label}
+                  type="button"
+                  disabled={loading}
+                  onClick={() => void sendMessage(item.message)}
+                  className="rounded-full border border-[rgba(196,106,50,0.55)] bg-[#1a1512]/70 px-3 py-1.5 text-xs font-medium text-[color:#e8a05a] transition hover:border-[rgba(196,106,50,0.9)] hover:bg-[#432f24]"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        {error && (
+          <p className="px-4 pb-2 text-xs text-red-300" role="alert">
+            {error}
+          </p>
+        )}
+
+        <div className="border-t border-white/10 bg-[#1a1512]/50 p-3">
+          <div className="flex items-end gap-2 rounded-2xl bg-white p-1.5 shadow-inner">
+            <Textarea
+              ref={inputRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder={copy.placeholder}
+              rows={1}
+              disabled={loading}
+              className="min-h-[40px] max-h-28 flex-1 resize-none border-0 bg-transparent px-2 py-2 text-sm text-[#1a1512] shadow-none focus-visible:ring-0"
+            />
+            <Button
+              type="button"
+              size="icon"
+              onClick={() => void sendMessage()}
+              disabled={loading || !input.trim()}
+              className="mb-0.5 size-9 shrink-0 rounded-full text-white hover:opacity-90"
+              style={{ backgroundColor: ORANGE }}
+              aria-label={copy.sendAria}
+            >
+              <Send className="size-4" />
+            </Button>
+          </div>
+          <p className="mt-2 text-center text-[10px] tracking-wide text-white/40">{headerTitle}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div

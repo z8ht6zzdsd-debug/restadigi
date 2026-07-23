@@ -537,9 +537,11 @@ export type Messages = {
       welcome: string;
       placeholder: string;
       sendAria: string;
+      resetAria: string;
       typing: string;
       sendFailed: string;
       genericError: string;
+      quickReplies: Array<{ label: string; message: string }>;
     };
     booking: {
       openLabel: string;
