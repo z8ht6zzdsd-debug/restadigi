@@ -13,15 +13,13 @@ Juttelimme puhelimessa Start-verkkosivupaketista yrityksellenne: [YRITYS]
 
 Pakettimme sisältää kaiken verkkosivujen suunnittelusta julkaisuun — myös sisällöntuotannon.
 
-Viitaten puheluumme, löydät verkkosivupakettimme tiedot oheisesta liitteestä. Alla olevasta linkistä pääset tutustumaan esimerkkiin verkkosivustolle luotavasta hallintapaneelista, joka yksilöidään yrityksen tarpeen ja valittujen palvelujen mukaan:
+Viitaten puheluumme, löydät verkkosivupakettien tiedot mukana olevasta liitteestä. Alla olevasta linkistä pääset tutustumaan esimerkkiin verkkosivustolle luotavasta hallintapaneelista, joka yksilöidään yrityksen tarpeen ja valittujen palvelujen mukaan:
 
 ${DEFAULT_DASHBOARD_DEMO_URL}
 
 Jos sinulle herää kysymyksiä, voit vastata tähän sähköpostiin. Autamme mielellämme.
 
-Tutustu palveluumme:
-
-Restadigi.fi — verkkosivut, sisällöt ja digimarkkinointi helposti, nopeasti ja edullisesti, laadusta tinkimättä.`;
+Tutustu palveluumme: Restadigi.fi — verkkosivut, sisällöt ja digimarkkinointi helposti, nopeasti ja edullisesti, laadusta tinkimättä.`;
 
 export function applyMailPlaceholders(
   text: string,
