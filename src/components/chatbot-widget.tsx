@@ -199,226 +199,157 @@ function ChatDialog({
     messages[0]?.content === welcomeText &&
     !loading;
 
-  if (isSales) {
-    return (
-      <div
-        className={cn(
-          "flex w-[min(100vw-2.5rem,22.5rem)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#2a2018] text-white shadow-2xl",
-          "animate-in fade-in slide-in-from-bottom-4 duration-200",
-          panelClassName,
-        )}
-        role="dialog"
-        aria-label={copy.dialogAria}
-      >
-        <div className="flex items-center justify-between gap-3 px-4 py-3">
-          <div className="flex min-w-0 items-center gap-2.5">
-            <img
-              src={restadigiIcon}
-              alt="Restadigi"
-              className="size-9 shrink-0 rounded-full border border-white/20 bg-[#432f24] object-cover shadow-sm"
-            />
-            <div className="min-w-0">
-              <p
-                className="truncate text-sm font-semibold tracking-[0.14em]"
-                style={{ color: ORANGE }}
-              >
-                {copy.eyebrow}
-              </p>
-              <p className="truncate text-xs text-white/55">{headerTitle}</p>
-            </div>
-          </div>
-          <div className="flex shrink-0 items-center gap-1">
-            <button
-              type="button"
-              onClick={resetConversation}
-              className="rounded-full p-1.5 text-white/70 transition hover:bg-white/10 hover:text-white"
-              aria-label={"resetAria" in copy ? copy.resetAria : "Reset"}
-            >
-              <RefreshCw className="size-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="rounded-full p-1.5 text-white/70 transition hover:bg-white/10 hover:text-white"
-              aria-label={copy.closeLabel}
-            >
-              <X className="size-4" />
-            </button>
-          </div>
-        </div>
-
-        <div
-          ref={scrollRef}
-          className="flex max-h-[min(55vh,28rem)] flex-col gap-3 overflow-y-auto px-3 pb-3"
-        >
-          {messages.map((msg, i) =>
-            msg.role === "assistant" ? (
-              <div key={`a-${i}`} className="flex items-end gap-2">
-                <img
-                  src={restadigiIcon}
-                  alt=""
-                  className="mb-0.5 size-8 shrink-0 rounded-full border border-white/15 object-cover bg-[#432f24]"
-                />
-                <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-white px-3.5 py-2.5 text-sm leading-relaxed text-[#1a1512] shadow-sm whitespace-pre-wrap">
-                  {msg.content}
-                </div>
-              </div>
-            ) : (
-              <div
-                key={`u-${i}`}
-                className="ml-auto max-w-[85%] rounded-2xl rounded-br-md px-3.5 py-2.5 text-sm leading-relaxed text-white shadow-sm whitespace-pre-wrap"
-                style={{ backgroundColor: ORANGE }}
-              >
-                {msg.content}
-              </div>
-            ),
-          )}
-          {loading && (
-            <div className="flex items-end gap-2">
-              <img
-                src={restadigiIcon}
-                alt=""
-                className="size-8 shrink-0 rounded-full border border-white/15 object-cover bg-[#432f24]"
-              />
-              <div className="rounded-2xl bg-white/90 px-3.5 py-2.5 text-sm text-[#5c534c]">
-                {copy.typing}
-              </div>
-            </div>
-          )}
-
-          {showQuickReplies ? (
-            <div className="mt-1 flex flex-wrap justify-end gap-2">
-              {copy.quickReplies.map((item) => (
-                <button
-                  key={item.label}
-                  type="button"
-                  disabled={loading}
-                  onClick={() => void sendMessage(item.message)}
-                  className="rounded-full border border-[rgba(196,106,50,0.55)] bg-[#1a1512]/70 px-3 py-1.5 text-xs font-medium text-[color:#e8a05a] transition hover:border-[rgba(196,106,50,0.9)] hover:bg-[#432f24]"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          ) : null}
-        </div>
-
-        {error && (
-          <p className="px-4 pb-2 text-xs text-red-300" role="alert">
-            {error}
-          </p>
-        )}
-
-        <div className="border-t border-white/10 bg-[#1a1512]/50 p-3">
-          <div className="flex items-end gap-2 rounded-2xl bg-white p-1.5 shadow-inner">
-            <Textarea
-              ref={inputRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder={copy.placeholder}
-              rows={1}
-              disabled={loading}
-              className="min-h-[40px] max-h-28 flex-1 resize-none border-0 bg-transparent px-2 py-2 text-sm text-[#1a1512] shadow-none focus-visible:ring-0"
-            />
-            <Button
-              type="button"
-              size="icon"
-              onClick={() => void sendMessage()}
-              disabled={loading || !input.trim()}
-              className="mb-0.5 size-9 shrink-0 rounded-full text-white hover:opacity-90"
-              style={{ backgroundColor: ORANGE }}
-              aria-label={copy.sendAria}
-            >
-              <Send className="size-4" />
-            </Button>
-          </div>
-          <p className="mt-2 text-center text-[10px] tracking-wide text-white/40">{headerTitle}</p>
-        </div>
-      </div>
-    );
-  }
+  // Sales = dark brown panel; booking = orange panel (same structure as Resta-AI)
+  const panelBg = isSales ? "#2a2018" : accentColor;
+  const brandColor = isSales ? ORANGE : "#fff7ed";
+  const userBubbleBg = isSales ? ORANGE : BROWN;
+  const avatarBg = isSales ? BROWN : "rgba(0,0,0,0.2)";
+  const footerBg = isSales ? "rgba(26,21,18,0.5)" : "rgba(0,0,0,0.18)";
+  const chipClass = isSales
+    ? "border-[rgba(196,106,50,0.55)] bg-[#1a1512]/70 text-[#e8a05a] hover:border-[rgba(196,106,50,0.9)] hover:bg-[#432f24]"
+    : "border-white/40 bg-black/15 text-white hover:border-white/70 hover:bg-black/25";
 
   return (
     <div
       className={cn(
-        "flex w-[min(100vw-3rem,24rem)] flex-col overflow-hidden rounded-sm border border-border bg-card shadow-2xl",
+        "flex w-[min(100vw-2.5rem,22.5rem)] flex-col overflow-hidden rounded-2xl border border-white/15 text-white shadow-2xl",
         "animate-in fade-in slide-in-from-bottom-4 duration-200",
         panelClassName,
       )}
+      style={{ backgroundColor: panelBg }}
       role="dialog"
       aria-label={copy.dialogAria}
     >
-      <div
-        className="flex items-center justify-between border-b border-border px-4 py-3 text-white"
-        style={{ backgroundColor: accentColor }}
-      >
-        <div>
-          <p className="text-xs uppercase tracking-[0.15em] text-white/70">{copy.eyebrow}</p>
-          <p className="text-sm font-medium">{headerTitle}</p>
+      <div className="flex items-center justify-between gap-3 px-4 py-3">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <img
+            src={restadigiIcon}
+            alt="Restadigi"
+            className="size-9 shrink-0 rounded-full border border-white/25 object-cover shadow-sm"
+            style={{ backgroundColor: avatarBg }}
+          />
+          <div className="min-w-0">
+            <p
+              className="truncate text-sm font-semibold tracking-[0.14em]"
+              style={{ color: brandColor }}
+            >
+              {copy.eyebrow}
+            </p>
+            <p className="truncate text-xs text-white/70">{headerTitle}</p>
+          </div>
         </div>
-        <button
-          type="button"
-          onClick={() => setOpen(false)}
-          className="rounded-full p-1.5 transition-colors hover:bg-white/10"
-          aria-label={copy.closeLabel}
-        >
-          <X className="size-4" />
-        </button>
+        <div className="flex shrink-0 items-center gap-1">
+          <button
+            type="button"
+            onClick={resetConversation}
+            className="rounded-full p-1.5 text-white/80 transition hover:bg-white/15 hover:text-white"
+            aria-label={"resetAria" in copy ? copy.resetAria : copy.closeAria}
+          >
+            <RefreshCw className="size-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            className="rounded-full p-1.5 text-white/80 transition hover:bg-white/15 hover:text-white"
+            aria-label={copy.closeLabel}
+          >
+            <X className="size-4" />
+          </button>
+        </div>
       </div>
 
-      <div ref={scrollRef} className="flex max-h-80 flex-col gap-3 overflow-y-auto p-4">
-        {messages.map((msg, i) => (
-          <div
-            key={`${msg.role}-${i}`}
-            className={cn(
-              "max-w-[85%] rounded-sm px-3 py-2 text-sm leading-relaxed",
-              msg.role === "user"
-                ? "ml-auto text-white"
-                : "mr-auto border border-border bg-background text-foreground/85",
-            )}
-            style={msg.role === "user" ? { backgroundColor: accentColor } : undefined}
-          >
-            {msg.content}
-          </div>
-        ))}
+      <div
+        ref={scrollRef}
+        className="flex max-h-[min(55vh,28rem)] flex-col gap-3 overflow-y-auto px-3 pb-3"
+      >
+        {messages.map((msg, i) =>
+          msg.role === "assistant" ? (
+            <div key={`a-${i}`} className="flex items-end gap-2">
+              <img
+                src={restadigiIcon}
+                alt=""
+                className="mb-0.5 size-8 shrink-0 rounded-full border border-white/20 object-cover"
+                style={{ backgroundColor: avatarBg }}
+              />
+              <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-white px-3.5 py-2.5 text-sm leading-relaxed text-[#1a1512] shadow-sm whitespace-pre-wrap">
+                {msg.content}
+              </div>
+            </div>
+          ) : (
+            <div
+              key={`u-${i}`}
+              className="ml-auto max-w-[85%] rounded-2xl rounded-br-md px-3.5 py-2.5 text-sm leading-relaxed text-white shadow-sm whitespace-pre-wrap"
+              style={{ backgroundColor: userBubbleBg }}
+            >
+              {msg.content}
+            </div>
+          ),
+        )}
         {loading && (
-          <div className="mr-auto rounded-sm border border-border bg-background px-3 py-2 text-sm text-muted-foreground">
-            {copy.typing}
+          <div className="flex items-end gap-2">
+            <img
+              src={restadigiIcon}
+              alt=""
+              className="size-8 shrink-0 rounded-full border border-white/20 object-cover"
+              style={{ backgroundColor: avatarBg }}
+            />
+            <div className="rounded-2xl bg-white/95 px-3.5 py-2.5 text-sm text-[#5c534c]">
+              {copy.typing}
+            </div>
           </div>
         )}
+
+        {showQuickReplies ? (
+          <div className="mt-1 flex flex-wrap justify-end gap-2">
+            {copy.quickReplies.map((item) => (
+              <button
+                key={item.label}
+                type="button"
+                disabled={loading}
+                onClick={() => void sendMessage(item.message)}
+                className={cn(
+                  "rounded-full border px-3 py-1.5 text-xs font-medium transition",
+                  chipClass,
+                )}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        ) : null}
       </div>
 
       {error && (
-        <p className="px-4 pb-2 text-xs text-destructive" role="alert">
+        <p className="px-4 pb-2 text-xs text-red-100" role="alert">
           {error}
         </p>
       )}
 
-      <div className="border-t border-border p-3">
-        <div className="flex gap-2">
+      <div className="border-t border-white/15 p-3" style={{ backgroundColor: footerBg }}>
+        <div className="flex items-end gap-2 rounded-2xl bg-white p-1.5 shadow-inner">
           <Textarea
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={copy.placeholder}
-            rows={2}
+            rows={1}
             disabled={loading}
-            className="min-h-[44px] resize-none border-border bg-background"
+            className="min-h-[40px] max-h-28 flex-1 resize-none border-0 bg-transparent px-2 py-2 text-sm text-[#1a1512] shadow-none focus-visible:ring-0"
           />
           <Button
             type="button"
             size="icon"
             onClick={() => void sendMessage()}
             disabled={loading || !input.trim()}
-            className="shrink-0 rounded-full text-white hover:opacity-90"
-            style={{ backgroundColor: accentColor }}
+            className="mb-0.5 size-9 shrink-0 rounded-full text-white hover:opacity-90"
+            style={{ backgroundColor: isSales ? ORANGE : BROWN }}
             aria-label={copy.sendAria}
           >
             <Send className="size-4" />
           </Button>
         </div>
+        <p className="mt-2 text-center text-[10px] tracking-wide text-white/50">{headerTitle}</p>
       </div>
     </div>
   );
