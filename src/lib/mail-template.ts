@@ -13,7 +13,7 @@ Juttelimme puhelimessa Start-verkkosivupaketista yrityksellenne: [YRITYS]
 
 Pakettimme sisältää kaiken verkkosivujen suunnittelusta julkaisuun — myös sisällöntuotannon.
 
-Viitaten puheluumme, löydät verkkosivupakettien tiedot mukana olevasta liitteestä. Alla olevasta linkistä pääset tutustumaan esimerkkiin verkkosivustolle luotavasta hallintapaneelista, joka yksilöidään yrityksen tarpeen ja valittujen palvelujen mukaan:
+Viitaten puheluumme, löydät verkkosivupakettien tiedot oheisesta liitteestä. Alla olevasta linkistä pääset tutustumaan esimerkkiin verkkosivustolle luotavasta hallintapaneelista, joka yksilöidään yrityksen tarpeen ja valittujen palvelujen mukaan:
 
 ${DEFAULT_DASHBOARD_DEMO_URL}
 
