@@ -3,15 +3,15 @@
 export const DEFAULT_MAIL_SUBJECT = "Restadigi — verkkosivupaketti [YRITYS]";
 
 /** Demo hallintapaneeli — asiakas näkee esimerkin; tuotannossa paneeli räätälöidään. */
-export const DEFAULT_DASHBOARD_DEMO_URL = "https://restadigi.fi/dashboard/login";
+export const DEFAULT_DASHBOARD_DEMO_URL = "https://web-prueba-restadigi.vercel.app/dashboard";
 
 export const DEFAULT_MAIL_BODY_FI = `Hei,
 
 Kiitos mielenkiinnostanne Restadigi.fi-palvelun verkkosivu- ja verkkonäkyvyyspaketteja kohtaan.
 
-Juttelimme puhelimessa Start-verkkosivupaketista yritykselle: [YRITYS]
+Juttelimme puhelimessa Start-verkkosivupaketista yrityksellenne: [YRITYS]
 
-Paketti sisältää kaiken verkkosivujen suunnittelusta julkaisuun — myös sisällöntuotannon.
+Pakettimme sisältää kaiken verkkosivujen suunnittelusta julkaisuun — myös sisällöntuotannon.
 
 Viitaten puheluumme, löydät verkkosivupakettimme tiedot oheisesta liitteestä. Alla olevasta linkistä pääset tutustumaan esimerkkiin verkkosivustolle luotavasta hallintapaneelista, joka yksilöidään yrityksen tarpeen ja valittujen palvelujen mukaan:
 
@@ -19,7 +19,7 @@ ${DEFAULT_DASHBOARD_DEMO_URL}
 
 Jos sinulle herää kysymyksiä, voit vastata tähän sähköpostiin. Autamme mielellämme.
 
-Tutustu palveluumme: https://restadigi.fi
+Tutustu palveluumme:
 
 Restadigi.fi — verkkosivut, sisällöt ja digimarkkinointi helposti, nopeasti ja edullisesti, laadusta tinkimättä.`;
 

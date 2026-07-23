@@ -198,12 +198,44 @@ function DashboardMailPage() {
         body: JSON.stringify({ subject, body }),
       });
       const data = (await res.json()) as {
-        template?: { updatedAt: string | null };
+        template?: { updatedAt: string | null; subject?: string; body?: string };
         error?: string;
       };
       if (!res.ok) throw new Error(data.error ?? "Tallennus epäonnistui");
+      if (data.template?.subject) setSubject(data.template.subject);
+      if (data.template?.body) setBody(data.template.body);
       setTemplateUpdatedAt(data.template?.updatedAt ?? null);
       toast.success(t.mail.saveTemplate);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : t.common.save);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleRestoreDefaultTemplate() {
+    setSubject(DEFAULT_MAIL_SUBJECT);
+    setBody(DEFAULT_MAIL_BODY_FI);
+    setSaving(true);
+    try {
+      const res = await fetch("/api/dashboard/mail", {
+        method: "PUT",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          subject: DEFAULT_MAIL_SUBJECT,
+          body: DEFAULT_MAIL_BODY_FI,
+        }),
+      });
+      const data = (await res.json()) as {
+        template?: { updatedAt: string | null; subject?: string; body?: string };
+        error?: string;
+      };
+      if (!res.ok) throw new Error(data.error ?? "Tallennus epäonnistui");
+      if (data.template?.subject) setSubject(data.template.subject);
+      if (data.template?.body) setBody(data.template.body);
+      setTemplateUpdatedAt(data.template?.updatedAt ?? null);
+      toast.success("Oletuspohja tallennettu");
     } catch (err) {
       toast.error(err instanceof Error ? err.message : t.common.save);
     } finally {
@@ -282,10 +314,21 @@ function DashboardMailPage() {
             </p>
           ) : null}
         </div>
-        <Button type="button" onClick={() => void handleSaveTemplate()} disabled={saving}>
-          <Save className="size-4" />
-          {saving ? t.common.saving : t.mail.saveTemplate}
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => void handleRestoreDefaultTemplate()}
+            disabled={saving}
+          >
+            <RefreshCw className="size-4" />
+            Palauta oletuspohja
+          </Button>
+          <Button type="button" onClick={() => void handleSaveTemplate()} disabled={saving}>
+            <Save className="size-4" />
+            {saving ? t.common.saving : t.mail.saveTemplate}
+          </Button>
+        </div>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-4">

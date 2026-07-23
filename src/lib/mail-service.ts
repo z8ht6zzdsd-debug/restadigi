@@ -243,15 +243,16 @@ function buildHtmlBody(textBody: string, trackingUrl: string, origin: string) {
     .map((block) => {
       const isTagline = block.startsWith("Restadigi.fi —");
       const isSite = block.startsWith("Tutustu palveluumme");
-      if (isSite) {
-        return `<p style="margin:0 0 1.6em;font-size:17px;line-height:1.55;font-family:Georgia,'Times New Roman',serif;color:#1a1512;">Tutustu palveluumme: <a href="https://restadigi.fi" style="color:#432f24;">https://restadigi.fi</a></p>`;
-      }
+      // Preserve full block text (old site-only rewrite dropped the closing tagline).
       const linked = escapeHtml(block).replace(
         /(https?:\/\/[^\s<]+)/g,
         '<a href="$1" style="color:#432f24;">$1</a>',
       );
       if (isTagline) {
         return `<p style="margin:1.4em 0 1em;font-size:17px;line-height:1.55;font-family:Georgia,'Times New Roman',serif;color:#432f24;font-style:italic;">${linked}</p>`;
+      }
+      if (isSite) {
+        return `<p style="margin:0 0 1.6em;font-size:17px;line-height:1.55;font-family:Georgia,'Times New Roman',serif;color:#1a1512;">${linked}</p>`;
       }
       return `<p style="margin:0 0 1em;font-size:17px;line-height:1.55;font-family:Georgia,'Times New Roman',serif;color:#1a1512;">${linked}</p>`;
     })

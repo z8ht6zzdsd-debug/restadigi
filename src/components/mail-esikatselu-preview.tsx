@@ -145,13 +145,7 @@ function linkifyText(text: string): ReactNode {
 function renderBodyParagraphs(bodyText: string): ReactNode[] {
   return splitParagraphs(bodyText).map((paragraph, index) => {
     const cls = paragraphClass(paragraph);
-    if (cls === "site") {
-      return (
-        <p key={`${index}-site`} className="site">
-          Tutustu palveluumme: <a href="https://restadigi.fi">https://restadigi.fi</a>
-        </p>
-      );
-    }
+    // Keep full paragraph text — do not replace "Tutustu…" blocks (that dropped the tagline).
     return (
       <p key={`${index}-${paragraph.slice(0, 20)}`} className={cls}>
         {linkifyText(paragraph)}
