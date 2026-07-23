@@ -99,6 +99,31 @@ export const salesLeads = pgTable("sales_leads", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 });
 
+/** Two persistent PDF slots (pdf1 / pdf2) for one-click client mailouts. */
+export const mailAttachments = pgTable("mail_attachments", {
+  slot: text("slot").primaryKey(),
+  filename: text("filename").notNull(),
+  mimeType: text("mime_type").notNull().default("application/pdf"),
+  contentBase64: text("content_base64").notNull(),
+  sizeBytes: integer("size_bytes").notNull().default(0),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const outboundEmails = pgTable("outbound_emails", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  toEmail: text("to_email").notNull(),
+  toName: text("to_name"),
+  subject: text("subject").notNull(),
+  trackingToken: text("tracking_token").notNull().unique(),
+  status: text("status").notNull().default("sent"),
+  errorMessage: text("error_message"),
+  attachmentSlots: text("attachment_slots").notNull().default("pdf1,pdf2"),
+  openCount: integer("open_count").notNull().default(0),
+  openedAt: timestamp("opened_at", { withTimezone: true }),
+  lastOpenedAt: timestamp("last_opened_at", { withTimezone: true }),
+  sentAt: timestamp("sent_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
 export const chatSessionsRelations = relations(chatSessions, ({ many }) => ({
   messages: many(chatMessages),
   salesLeads: many(salesLeads),

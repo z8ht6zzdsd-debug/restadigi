@@ -4,6 +4,7 @@ import {
   ContactRound,
   LayoutDashboard,
   LogOut,
+  Mail,
   Map,
   MessageSquare,
   Settings,
@@ -17,6 +18,7 @@ import { cn } from "@/lib/utils";
 const nav = [
   { to: "/dashboard", label: "Yhteenveto", icon: LayoutDashboard, exact: true as const },
   { to: "/dashboard/leads", label: "Myyntiliidit", icon: ContactRound },
+  { to: "/dashboard/mail", label: "Sähköposti", icon: Mail },
   { to: "/dashboard/visitors", label: "Kävijät", icon: Users },
   { to: "/dashboard/conversations", label: "Keskustelut", icon: MessageSquare },
   { to: "/dashboard/reservations", label: "Varaukset", icon: CalendarDays },
