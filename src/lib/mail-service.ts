@@ -4,32 +4,34 @@ import { count, desc, eq, sql } from "drizzle-orm";
 import nodemailer from "nodemailer";
 
 import { getDb, schema } from "@/db";
-import { CONTACT_EMAIL, CONTACT_PERSON, CONTACT_PHONE_DISPLAY } from "@/lib/company-contact";
+import {
+  CONTACT_ADDRESS,
+  CONTACT_COMPANY,
+  CONTACT_EMAIL,
+  CONTACT_PERSON,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+} from "@/lib/company-contact";
+import {
+  applyMailPlaceholders,
+  DEFAULT_MAIL_BODY_FI,
+  DEFAULT_MAIL_SUBJECT,
+} from "@/lib/mail-template";
+
+export { applyMailPlaceholders, DEFAULT_MAIL_BODY_FI, DEFAULT_MAIL_SUBJECT };
 
 export const MAIL_SLOTS = ["pdf1", "pdf2"] as const;
 export type MailSlot = (typeof MAIL_SLOTS)[number];
 
-export const DEFAULT_MAIL_SUBJECT = "Restadigi – digipalvelut ja verkkosivupaketit";
-
-export const DEFAULT_MAIL_BODY_FI = `Hei!
-
-Kiitos mielenkiinnostanne Restadigiä kohtaan.
-
-Liitteenä lähetämme teille kaksi PDF-dokumenttia:
-• Digipalvelut
-• Verkkosivupaketit
-
-Niistä näette palvelumme, hinnoittelun ja miten voimme auttaa ravintolaanne digitaalisesti.
-
-Jos teillä on kysyttävää tai haluatte keskustella tarkemmin, vastaamme mielellämme tähän viestiin.
-
-Ystävällisin terveisin,
-${CONTACT_PERSON}
-Restadigi Finland
-${CONTACT_EMAIL}
-${CONTACT_PHONE_DISPLAY}`;
-
 const PIXEL_GIF = Buffer.from("R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", "base64");
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
 
 /** Creates Neon tables if missing (safe to call on every request). */
 export async function ensureMailTables() {
@@ -60,9 +62,66 @@ export async function ensureMailTables() {
       sent_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `);
+  await db.execute(sql`
+    CREATE TABLE IF NOT EXISTS mail_templates (
+      id TEXT PRIMARY KEY DEFAULT 'default',
+      subject TEXT NOT NULL,
+      body_text TEXT NOT NULL,
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    )
+  `);
   await db.execute(
     sql`CREATE INDEX IF NOT EXISTS idx_outbound_emails_sent_at ON outbound_emails(sent_at DESC)`,
   );
+}
+
+export async function getMailTemplate() {
+  await ensureMailTables();
+  const db = getDb();
+  const row = await db.query.mailTemplates.findFirst({
+    where: eq(schema.mailTemplates.id, "default"),
+  });
+  if (!row) {
+    return {
+      subject: DEFAULT_MAIL_SUBJECT,
+      body: DEFAULT_MAIL_BODY_FI,
+      updatedAt: null as string | null,
+    };
+  }
+  return {
+    subject: row.subject,
+    body: row.bodyText,
+    updatedAt: row.updatedAt?.toISOString?.() ?? String(row.updatedAt),
+  };
+}
+
+export async function saveMailTemplate(input: { subject: string; body: string }) {
+  await ensureMailTables();
+  const db = getDb();
+  const subject = input.subject.trim();
+  const bodyText = input.body.trim();
+  if (!subject || !bodyText) {
+    throw new Error("Aihe ja viesti ovat pakollisia");
+  }
+
+  await db
+    .insert(schema.mailTemplates)
+    .values({
+      id: "default",
+      subject,
+      bodyText,
+      updatedAt: new Date(),
+    })
+    .onConflictDoUpdate({
+      target: schema.mailTemplates.id,
+      set: {
+        subject,
+        bodyText,
+        updatedAt: new Date(),
+      },
+    });
+
+  return getMailTemplate();
 }
 
 /** PDFs are uploaded manually from the dashboard — never auto-seeded from disk. */
@@ -142,51 +201,119 @@ function getSmtpConfig() {
   return { host, port, user, pass, from, secure: port === 465 };
 }
 
-function buildHtmlBody(textBody: string, trackingUrl: string) {
+function logoUrl(origin: string) {
+  return `${origin.replace(/\/$/, "")}/restadigi-logo.png`;
+}
+
+function buildHtmlBody(textBody: string, trackingUrl: string, origin: string) {
   const paragraphs = textBody
     .split(/\n{2,}/)
     .map((block) => block.trim())
     .filter(Boolean)
     .map((block) => {
-      const html = block.replaceAll("\n", "<br />");
-      return `<p style="margin:0 0 16px;line-height:1.55;color:#2a2018;font-size:15px;">${html}</p>`;
+      const isTagline = block.startsWith("Restadigi.fi —");
+      const isSite = block.startsWith("Tutustu palveluumme");
+      const linked = escapeHtml(block).replace(
+        /(https?:\/\/[^\s<]+)/g,
+        '<a href="$1" style="color:#432f24;text-decoration:underline;">$1</a>',
+      );
+      const style = isTagline
+        ? "margin:1.4em 0 1em;line-height:1.55;color:#432f24;font-size:17px;font-style:italic;font-family:Georgia,'Times New Roman',serif;"
+        : isSite
+          ? "margin:0 0 1.6em;line-height:1.55;color:#1a1512;font-size:17px;font-family:Georgia,'Times New Roman',serif;"
+          : "margin:0 0 1em;line-height:1.55;color:#1a1512;font-size:17px;font-family:Georgia,'Times New Roman',serif;";
+      return `<p style="${style}">${linked}</p>`;
     })
     .join("");
 
+  const logo = escapeHtml(logoUrl(origin));
+
   return `<!DOCTYPE html>
 <html lang="fi">
-<body style="margin:0;padding:0;background:#f4f1ec;font-family:Segoe UI,Arial,sans-serif;">
-  <div style="max-width:560px;margin:24px auto;background:#ffffff;border:1px solid #e0d6cb;border-radius:8px;padding:28px 28px 20px;">
-    ${paragraphs}
-  </div>
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /></head>
+<body style="margin:0;padding:0;background:#f7f3ee;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f7f3ee;padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;background:#ffffff;border:1px solid #e6dfd7;border-radius:12px;">
+          <tr>
+            <td style="padding:36px 40px 40px;">
+              ${paragraphs}
+              <div style="margin-top:2rem;padding-top:1.4rem;border-top:1px solid #e6dfd7;font-family:system-ui,-apple-system,Segoe UI,sans-serif;">
+                <p style="margin:0.2em 0;font-size:15px;color:#1a1512;">Parhain terveisin,</p>
+                <p style="margin:0.35em 0 1em;font-size:16px;font-weight:600;color:#1a1512;">${escapeHtml(CONTACT_PERSON)}</p>
+                <img src="${logo}" alt="Restadigi" width="180" height="72" style="display:block;height:72px;width:auto;margin:0 0 0.85em;border:0;" />
+                <p style="margin:0 0 0.35em;font-size:14px;color:#5c534c;">${escapeHtml(CONTACT_COMPANY)}</p>
+                <p style="margin:0;font-size:14px;line-height:1.45;color:#5c534c;">
+                  <a href="mailto:${CONTACT_EMAIL}" style="color:#432f24;text-decoration:none;">${CONTACT_EMAIL}</a><br />
+                  <a href="tel:${CONTACT_PHONE_TEL}" style="color:#432f24;text-decoration:none;">${CONTACT_PHONE_DISPLAY}</a><br />
+                  <a href="https://restadigi.fi" style="color:#432f24;text-decoration:none;">https://restadigi.fi</a><br />
+                  ${escapeHtml(CONTACT_ADDRESS)}
+                </p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
   <img src="${trackingUrl}" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;" />
 </body>
 </html>`;
 }
 
+function buildPlainText(body: string) {
+  return `${body.trim()}
+
+Parhain terveisin,
+${CONTACT_PERSON}
+${CONTACT_COMPANY}
+
+${CONTACT_EMAIL}
+${CONTACT_PHONE_DISPLAY}
+https://restadigi.fi
+${CONTACT_ADDRESS}`;
+}
+
 export async function sendClientMail(input: {
   toEmail: string;
   toName?: string;
+  company?: string;
   subject?: string;
   body?: string;
   origin: string;
+  requireAttachments?: boolean;
+  subjectPrefix?: string;
 }) {
   await ensureMailTables();
   const db = getDb();
   const smtp = getSmtpConfig();
+  const saved = await getMailTemplate();
 
   const attachments = await db.query.mailAttachments.findMany();
   const ready = MAIL_SLOTS.map((slot) => attachments.find((a) => a.slot === slot)).filter(
     Boolean,
   ) as (typeof attachments)[number][];
 
-  if (ready.length < MAIL_SLOTS.length) {
+  const requireAttachments = input.requireAttachments !== false;
+  if (requireAttachments && ready.length < MAIL_SLOTS.length) {
     throw new Error("Lataa molemmat PDF-tiedostot ennen lähetystä (PDF 1 ja PDF 2)");
   }
 
+  const firstName =
+    input.toName?.trim().split(/\s+/)[0] ||
+    undefined;
+  const vars = {
+    firstName: firstName || "Jani",
+    company: input.company?.trim() || "Oluthuone Hannikainen",
+  };
+
   const trackingToken = randomBytes(24).toString("base64url");
-  const subject = (input.subject ?? DEFAULT_MAIL_SUBJECT).trim();
-  const body = (input.body ?? DEFAULT_MAIL_BODY_FI).trim();
+  const subject = `${input.subjectPrefix ?? ""}${applyMailPlaceholders(
+    (input.subject ?? saved.subject).trim(),
+    vars,
+  )}`;
+  const body = applyMailPlaceholders((input.body ?? saved.body).trim(), vars);
   const trackingUrl = `${input.origin.replace(/\/$/, "")}/api/mail/track/${trackingToken}`;
 
   const transporter = nodemailer.createTransport({
@@ -201,8 +328,8 @@ export async function sendClientMail(input: {
       from: smtp.from,
       to: input.toName ? `"${input.toName}" <${input.toEmail}>` : input.toEmail,
       subject,
-      text: body,
-      html: buildHtmlBody(body, trackingUrl),
+      text: buildPlainText(body),
+      html: buildHtmlBody(body, trackingUrl, input.origin),
       attachments: ready.map((file) => ({
         filename: file.filename,
         content: Buffer.from(file.contentBase64, "base64"),
@@ -218,7 +345,7 @@ export async function sendClientMail(input: {
         subject,
         trackingToken,
         status: "sent",
-        attachmentSlots: ready.map((f) => f.slot).join(","),
+        attachmentSlots: ready.map((f) => f.slot).join(",") || "none",
       })
       .returning();
 
@@ -232,7 +359,7 @@ export async function sendClientMail(input: {
       trackingToken,
       status: "failed",
       errorMessage: message,
-      attachmentSlots: ready.map((f) => f.slot).join(","),
+      attachmentSlots: ready.map((f) => f.slot).join(",") || "none",
     });
     throw new Error(message);
   }

@@ -109,6 +109,14 @@ export const mailAttachments = pgTable("mail_attachments", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 });
 
+/** Saved subject + body for the Finnish client mail template. */
+export const mailTemplates = pgTable("mail_templates", {
+  id: text("id").primaryKey().default("default"),
+  subject: text("subject").notNull(),
+  bodyText: text("body_text").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
 export const outboundEmails = pgTable("outbound_emails", {
   id: uuid("id").defaultRandom().primaryKey(),
   toEmail: text("to_email").notNull(),

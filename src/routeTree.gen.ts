@@ -9,48 +9,78 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as YllapitoRouteImport } from './routes/yllapito'
+import { Route as YhteysRouteImport } from './routes/yhteys'
+import { Route as VerkkosivutRouteImport } from './routes/verkkosivut'
+import { Route as PoytavaraupalveluRouteImport } from './routes/poytavaraupalvelu'
+import { Route as NakyvyysJaSuunnitteluRouteImport } from './routes/nakyvyys-ja-suunnittelu'
+import { Route as MeistaRouteImport } from './routes/meista'
+import { Route as HinnastoRouteImport } from './routes/hinnasto'
 import { Route as AiAsiakaspalveluRouteImport } from './routes/ai-asiakaspalvelu'
 import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
-import { Route as HinnastoRouteImport } from './routes/hinnasto'
-import { Route as MeistaRouteImport } from './routes/meista'
-import { Route as NakyvyysJaSuunnitteluRouteImport } from './routes/nakyvyys-ja-suunnittelu'
-import { Route as PoytavaraupalveluRouteImport } from './routes/poytavaraupalvelu'
-import { Route as VerkkosivutRouteImport } from './routes/verkkosivut'
-import { Route as YhteysRouteImport } from './routes/yhteys'
-import { Route as YllapitoRouteImport } from './routes/yllapito'
-import { Route as ApiChatRouteImport } from './routes/api/chat'
-import { Route as ApiTrackRouteImport } from './routes/api/track'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
-import { Route as DashboardConversationsRouteImport } from './routes/dashboard/conversations'
-import { Route as DashboardFloorPlanRouteImport } from './routes/dashboard/floor-plan'
-import { Route as DashboardLeadsRouteImport } from './routes/dashboard/leads'
-import { Route as DashboardLoginRouteImport } from './routes/dashboard.login'
-import { Route as DashboardMailRouteImport } from './routes/dashboard/mail'
-import { Route as DashboardReservationsRouteImport } from './routes/dashboard/reservations'
-import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
 import { Route as DashboardVisitorsRouteImport } from './routes/dashboard/visitors'
-import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
-import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
-import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
-import { Route as ApiDashboardConversationsRouteImport } from './routes/api/dashboard/conversations'
-import { Route as ApiDashboardFloorPlanRouteImport } from './routes/api/dashboard/floor-plan'
-import { Route as ApiDashboardLeadsRouteImport } from './routes/api/dashboard/leads'
-import { Route as ApiDashboardMailRouteImport } from './routes/api/dashboard/mail'
-import { Route as ApiDashboardReservationsRouteImport } from './routes/api/dashboard/reservations'
-import { Route as ApiDashboardSettingsRouteImport } from './routes/api/dashboard/settings'
-import { Route as ApiDashboardStatsRouteImport } from './routes/api/dashboard/stats'
-import { Route as ApiDashboardVisitorsRouteImport } from './routes/api/dashboard/visitors'
+import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
+import { Route as DashboardReservationsRouteImport } from './routes/dashboard/reservations'
+import { Route as DashboardMailRouteImport } from './routes/dashboard/mail'
+import { Route as DashboardLoginRouteImport } from './routes/dashboard.login'
+import { Route as DashboardLeadsRouteImport } from './routes/dashboard/leads'
+import { Route as DashboardFloorPlanRouteImport } from './routes/dashboard/floor-plan'
+import { Route as DashboardConversationsRouteImport } from './routes/dashboard/conversations'
+import { Route as ApiTrackRouteImport } from './routes/api/track'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiRestaurantSettingsRouteImport } from './routes/api/restaurant/settings'
-import { Route as ApiDashboardConversationsSessionIdRouteImport } from './routes/api/dashboard/conversations/$sessionId'
-import { Route as ApiDashboardLeadsIdRouteImport } from './routes/api/dashboard/leads/$id'
-import { Route as ApiDashboardMailAttachmentsRouteImport } from './routes/api/dashboard/mail/attachments'
-import { Route as ApiDashboardReservationsIdRouteImport } from './routes/api/dashboard/reservations/$id'
+import { Route as ApiDashboardVisitorsRouteImport } from './routes/api/dashboard/visitors'
+import { Route as ApiDashboardStatsRouteImport } from './routes/api/dashboard/stats'
+import { Route as ApiDashboardSettingsRouteImport } from './routes/api/dashboard/settings'
+import { Route as ApiDashboardReservationsRouteImport } from './routes/api/dashboard/reservations'
+import { Route as ApiDashboardMailRouteImport } from './routes/api/dashboard/mail'
+import { Route as ApiDashboardLeadsRouteImport } from './routes/api/dashboard/leads'
+import { Route as ApiDashboardFloorPlanRouteImport } from './routes/api/dashboard/floor-plan'
+import { Route as ApiDashboardConversationsRouteImport } from './routes/api/dashboard/conversations'
+import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
+import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
+import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
 import { Route as ApiMailTrackTokenRouteImport } from './routes/api/mail/track.$token'
+import { Route as ApiDashboardReservationsIdRouteImport } from './routes/api/dashboard/reservations/$id'
+import { Route as ApiDashboardMailAttachmentsRouteImport } from './routes/api/dashboard/mail/attachments'
+import { Route as ApiDashboardLeadsIdRouteImport } from './routes/api/dashboard/leads/$id'
+import { Route as ApiDashboardConversationsSessionIdRouteImport } from './routes/api/dashboard/conversations/$sessionId'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const YllapitoRoute = YllapitoRouteImport.update({
+  id: '/yllapito',
+  path: '/yllapito',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YhteysRoute = YhteysRouteImport.update({
+  id: '/yhteys',
+  path: '/yhteys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerkkosivutRoute = VerkkosivutRouteImport.update({
+  id: '/verkkosivut',
+  path: '/verkkosivut',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoytavaraupalveluRoute = PoytavaraupalveluRouteImport.update({
+  id: '/poytavaraupalvelu',
+  path: '/poytavaraupalvelu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NakyvyysJaSuunnitteluRoute = NakyvyysJaSuunnitteluRouteImport.update({
+  id: '/nakyvyys-ja-suunnittelu',
+  path: '/nakyvyys-ja-suunnittelu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeistaRoute = MeistaRouteImport.update({
+  id: '/meista',
+  path: '/meista',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HinnastoRoute = HinnastoRouteImport.update({
+  id: '/hinnasto',
+  path: '/hinnasto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AiAsiakaspalveluRoute = AiAsiakaspalveluRouteImport.update({
@@ -63,49 +93,9 @@ const DashboardRouteRoute = DashboardRouteRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HinnastoRoute = HinnastoRouteImport.update({
-  id: '/hinnasto',
-  path: '/hinnasto',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MeistaRoute = MeistaRouteImport.update({
-  id: '/meista',
-  path: '/meista',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NakyvyysJaSuunnitteluRoute = NakyvyysJaSuunnitteluRouteImport.update({
-  id: '/nakyvyys-ja-suunnittelu',
-  path: '/nakyvyys-ja-suunnittelu',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PoytavaraupalveluRoute = PoytavaraupalveluRouteImport.update({
-  id: '/poytavaraupalvelu',
-  path: '/poytavaraupalvelu',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VerkkosivutRoute = VerkkosivutRouteImport.update({
-  id: '/verkkosivut',
-  path: '/verkkosivut',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const YhteysRoute = YhteysRouteImport.update({
-  id: '/yhteys',
-  path: '/yhteys',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const YllapitoRoute = YllapitoRouteImport.update({
-  id: '/yllapito',
-  path: '/yllapito',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiChatRoute = ApiChatRouteImport.update({
-  id: '/api/chat',
-  path: '/api/chat',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiTrackRoute = ApiTrackRouteImport.update({
-  id: '/api/track',
-  path: '/api/track',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
@@ -113,34 +103,9 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
-const DashboardConversationsRoute = DashboardConversationsRouteImport.update({
-  id: '/conversations',
-  path: '/conversations',
-  getParentRoute: () => DashboardRouteRoute,
-} as any)
-const DashboardFloorPlanRoute = DashboardFloorPlanRouteImport.update({
-  id: '/floor-plan',
-  path: '/floor-plan',
-  getParentRoute: () => DashboardRouteRoute,
-} as any)
-const DashboardLeadsRoute = DashboardLeadsRouteImport.update({
-  id: '/leads',
-  path: '/leads',
-  getParentRoute: () => DashboardRouteRoute,
-} as any)
-const DashboardLoginRoute = DashboardLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => DashboardRouteRoute,
-} as any)
-const DashboardMailRoute = DashboardMailRouteImport.update({
-  id: '/mail',
-  path: '/mail',
-  getParentRoute: () => DashboardRouteRoute,
-} as any)
-const DashboardReservationsRoute = DashboardReservationsRouteImport.update({
-  id: '/reservations',
-  path: '/reservations',
+const DashboardVisitorsRoute = DashboardVisitorsRouteImport.update({
+  id: '/visitors',
+  path: '/visitors',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
@@ -148,45 +113,64 @@ const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
-const DashboardVisitorsRoute = DashboardVisitorsRouteImport.update({
-  id: '/visitors',
-  path: '/visitors',
+const DashboardReservationsRoute = DashboardReservationsRouteImport.update({
+  id: '/reservations',
+  path: '/reservations',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
-const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
-  id: '/api/auth/login',
-  path: '/api/auth/login',
+const DashboardMailRoute = DashboardMailRouteImport.update({
+  id: '/mail',
+  path: '/mail',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardLoginRoute = DashboardLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardLeadsRoute = DashboardLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardFloorPlanRoute = DashboardFloorPlanRouteImport.update({
+  id: '/floor-plan',
+  path: '/floor-plan',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardConversationsRoute = DashboardConversationsRouteImport.update({
+  id: '/conversations',
+  path: '/conversations',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const ApiTrackRoute = ApiTrackRouteImport.update({
+  id: '/api/track',
+  path: '/api/track',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
-  id: '/api/auth/logout',
-  path: '/api/auth/logout',
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiAuthMeRoute = ApiAuthMeRouteImport.update({
-  id: '/api/auth/me',
-  path: '/api/auth/me',
+const ApiRestaurantSettingsRoute = ApiRestaurantSettingsRouteImport.update({
+  id: '/api/restaurant/settings',
+  path: '/api/restaurant/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiDashboardConversationsRoute =
-  ApiDashboardConversationsRouteImport.update({
-    id: '/api/dashboard/conversations',
-    path: '/api/dashboard/conversations',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ApiDashboardFloorPlanRoute = ApiDashboardFloorPlanRouteImport.update({
-  id: '/api/dashboard/floor-plan',
-  path: '/api/dashboard/floor-plan',
+const ApiDashboardVisitorsRoute = ApiDashboardVisitorsRouteImport.update({
+  id: '/api/dashboard/visitors',
+  path: '/api/dashboard/visitors',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiDashboardLeadsRoute = ApiDashboardLeadsRouteImport.update({
-  id: '/api/dashboard/leads',
-  path: '/api/dashboard/leads',
+const ApiDashboardStatsRoute = ApiDashboardStatsRouteImport.update({
+  id: '/api/dashboard/stats',
+  path: '/api/dashboard/stats',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiDashboardMailRoute = ApiDashboardMailRouteImport.update({
-  id: '/api/dashboard/mail',
-  path: '/api/dashboard/mail',
+const ApiDashboardSettingsRoute = ApiDashboardSettingsRouteImport.update({
+  id: '/api/dashboard/settings',
+  path: '/api/dashboard/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiDashboardReservationsRoute =
@@ -195,25 +179,63 @@ const ApiDashboardReservationsRoute =
     path: '/api/dashboard/reservations',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiDashboardSettingsRoute = ApiDashboardSettingsRouteImport.update({
-  id: '/api/dashboard/settings',
-  path: '/api/dashboard/settings',
+const ApiDashboardMailRoute = ApiDashboardMailRouteImport.update({
+  id: '/api/dashboard/mail',
+  path: '/api/dashboard/mail',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiDashboardStatsRoute = ApiDashboardStatsRouteImport.update({
-  id: '/api/dashboard/stats',
-  path: '/api/dashboard/stats',
+const ApiDashboardLeadsRoute = ApiDashboardLeadsRouteImport.update({
+  id: '/api/dashboard/leads',
+  path: '/api/dashboard/leads',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiDashboardVisitorsRoute = ApiDashboardVisitorsRouteImport.update({
-  id: '/api/dashboard/visitors',
-  path: '/api/dashboard/visitors',
+const ApiDashboardFloorPlanRoute = ApiDashboardFloorPlanRouteImport.update({
+  id: '/api/dashboard/floor-plan',
+  path: '/api/dashboard/floor-plan',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiRestaurantSettingsRoute = ApiRestaurantSettingsRouteImport.update({
-  id: '/api/restaurant/settings',
-  path: '/api/restaurant/settings',
+const ApiDashboardConversationsRoute =
+  ApiDashboardConversationsRouteImport.update({
+    id: '/api/dashboard/conversations',
+    path: '/api/dashboard/conversations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiAuthMeRoute = ApiAuthMeRouteImport.update({
+  id: '/api/auth/me',
+  path: '/api/auth/me',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
+  id: '/api/auth/logout',
+  path: '/api/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
+  id: '/api/auth/login',
+  path: '/api/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiMailTrackTokenRoute = ApiMailTrackTokenRouteImport.update({
+  id: '/api/mail/track/$token',
+  path: '/api/mail/track/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDashboardReservationsIdRoute =
+  ApiDashboardReservationsIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ApiDashboardReservationsRoute,
+  } as any)
+const ApiDashboardMailAttachmentsRoute =
+  ApiDashboardMailAttachmentsRouteImport.update({
+    id: '/attachments',
+    path: '/attachments',
+    getParentRoute: () => ApiDashboardMailRoute,
+  } as any)
+const ApiDashboardLeadsIdRoute = ApiDashboardLeadsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiDashboardLeadsRoute,
 } as any)
 const ApiDashboardConversationsSessionIdRoute =
   ApiDashboardConversationsSessionIdRouteImport.update({
@@ -221,28 +243,6 @@ const ApiDashboardConversationsSessionIdRoute =
     path: '/$sessionId',
     getParentRoute: () => ApiDashboardConversationsRoute,
   } as any)
-const ApiDashboardLeadsIdRoute = ApiDashboardLeadsIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => ApiDashboardLeadsRoute,
-} as any)
-const ApiDashboardMailAttachmentsRoute =
-  ApiDashboardMailAttachmentsRouteImport.update({
-    id: '/attachments',
-    path: '/attachments',
-    getParentRoute: () => ApiDashboardMailRoute,
-  } as any)
-const ApiDashboardReservationsIdRoute =
-  ApiDashboardReservationsIdRouteImport.update({
-    id: '/$id',
-    path: '/$id',
-    getParentRoute: () => ApiDashboardReservationsRoute,
-  } as any)
-const ApiMailTrackTokenRoute = ApiMailTrackTokenRouteImport.update({
-  id: '/api/mail/track/$token',
-  path: '/api/mail/track/$token',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -516,11 +516,53 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/yllapito': {
+      id: '/yllapito'
+      path: '/yllapito'
+      fullPath: '/yllapito'
+      preLoaderRoute: typeof YllapitoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yhteys': {
+      id: '/yhteys'
+      path: '/yhteys'
+      fullPath: '/yhteys'
+      preLoaderRoute: typeof YhteysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verkkosivut': {
+      id: '/verkkosivut'
+      path: '/verkkosivut'
+      fullPath: '/verkkosivut'
+      preLoaderRoute: typeof VerkkosivutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poytavaraupalvelu': {
+      id: '/poytavaraupalvelu'
+      path: '/poytavaraupalvelu'
+      fullPath: '/poytavaraupalvelu'
+      preLoaderRoute: typeof PoytavaraupalveluRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nakyvyys-ja-suunnittelu': {
+      id: '/nakyvyys-ja-suunnittelu'
+      path: '/nakyvyys-ja-suunnittelu'
+      fullPath: '/nakyvyys-ja-suunnittelu'
+      preLoaderRoute: typeof NakyvyysJaSuunnitteluRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meista': {
+      id: '/meista'
+      path: '/meista'
+      fullPath: '/meista'
+      preLoaderRoute: typeof MeistaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hinnasto': {
+      id: '/hinnasto'
+      path: '/hinnasto'
+      fullPath: '/hinnasto'
+      preLoaderRoute: typeof HinnastoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ai-asiakaspalvelu': {
@@ -537,67 +579,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/hinnasto': {
-      id: '/hinnasto'
-      path: '/hinnasto'
-      fullPath: '/hinnasto'
-      preLoaderRoute: typeof HinnastoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/meista': {
-      id: '/meista'
-      path: '/meista'
-      fullPath: '/meista'
-      preLoaderRoute: typeof MeistaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nakyvyys-ja-suunnittelu': {
-      id: '/nakyvyys-ja-suunnittelu'
-      path: '/nakyvyys-ja-suunnittelu'
-      fullPath: '/nakyvyys-ja-suunnittelu'
-      preLoaderRoute: typeof NakyvyysJaSuunnitteluRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/poytavaraupalvelu': {
-      id: '/poytavaraupalvelu'
-      path: '/poytavaraupalvelu'
-      fullPath: '/poytavaraupalvelu'
-      preLoaderRoute: typeof PoytavaraupalveluRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/verkkosivut': {
-      id: '/verkkosivut'
-      path: '/verkkosivut'
-      fullPath: '/verkkosivut'
-      preLoaderRoute: typeof VerkkosivutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/yhteys': {
-      id: '/yhteys'
-      path: '/yhteys'
-      fullPath: '/yhteys'
-      preLoaderRoute: typeof YhteysRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/yllapito': {
-      id: '/yllapito'
-      path: '/yllapito'
-      fullPath: '/yllapito'
-      preLoaderRoute: typeof YllapitoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/chat': {
-      id: '/api/chat'
-      path: '/api/chat'
-      fullPath: '/api/chat'
-      preLoaderRoute: typeof ApiChatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/track': {
-      id: '/api/track'
-      path: '/api/track'
-      fullPath: '/api/track'
-      preLoaderRoute: typeof ApiTrackRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard/': {
@@ -607,46 +593,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
-    '/dashboard/conversations': {
-      id: '/dashboard/conversations'
-      path: '/conversations'
-      fullPath: '/dashboard/conversations'
-      preLoaderRoute: typeof DashboardConversationsRouteImport
-      parentRoute: typeof DashboardRouteRoute
-    }
-    '/dashboard/floor-plan': {
-      id: '/dashboard/floor-plan'
-      path: '/floor-plan'
-      fullPath: '/dashboard/floor-plan'
-      preLoaderRoute: typeof DashboardFloorPlanRouteImport
-      parentRoute: typeof DashboardRouteRoute
-    }
-    '/dashboard/leads': {
-      id: '/dashboard/leads'
-      path: '/leads'
-      fullPath: '/dashboard/leads'
-      preLoaderRoute: typeof DashboardLeadsRouteImport
-      parentRoute: typeof DashboardRouteRoute
-    }
-    '/dashboard/login': {
-      id: '/dashboard/login'
-      path: '/login'
-      fullPath: '/dashboard/login'
-      preLoaderRoute: typeof DashboardLoginRouteImport
-      parentRoute: typeof DashboardRouteRoute
-    }
-    '/dashboard/mail': {
-      id: '/dashboard/mail'
-      path: '/mail'
-      fullPath: '/dashboard/mail'
-      preLoaderRoute: typeof DashboardMailRouteImport
-      parentRoute: typeof DashboardRouteRoute
-    }
-    '/dashboard/reservations': {
-      id: '/dashboard/reservations'
-      path: '/reservations'
-      fullPath: '/dashboard/reservations'
-      preLoaderRoute: typeof DashboardReservationsRouteImport
+    '/dashboard/visitors': {
+      id: '/dashboard/visitors'
+      path: '/visitors'
+      fullPath: '/dashboard/visitors'
+      preLoaderRoute: typeof DashboardVisitorsRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/settings': {
@@ -656,88 +607,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardSettingsRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
-    '/dashboard/visitors': {
-      id: '/dashboard/visitors'
-      path: '/visitors'
-      fullPath: '/dashboard/visitors'
-      preLoaderRoute: typeof DashboardVisitorsRouteImport
+    '/dashboard/reservations': {
+      id: '/dashboard/reservations'
+      path: '/reservations'
+      fullPath: '/dashboard/reservations'
+      preLoaderRoute: typeof DashboardReservationsRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
-    '/api/auth/login': {
-      id: '/api/auth/login'
-      path: '/api/auth/login'
-      fullPath: '/api/auth/login'
-      preLoaderRoute: typeof ApiAuthLoginRouteImport
+    '/dashboard/mail': {
+      id: '/dashboard/mail'
+      path: '/mail'
+      fullPath: '/dashboard/mail'
+      preLoaderRoute: typeof DashboardMailRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/login': {
+      id: '/dashboard/login'
+      path: '/login'
+      fullPath: '/dashboard/login'
+      preLoaderRoute: typeof DashboardLoginRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/leads': {
+      id: '/dashboard/leads'
+      path: '/leads'
+      fullPath: '/dashboard/leads'
+      preLoaderRoute: typeof DashboardLeadsRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/floor-plan': {
+      id: '/dashboard/floor-plan'
+      path: '/floor-plan'
+      fullPath: '/dashboard/floor-plan'
+      preLoaderRoute: typeof DashboardFloorPlanRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/conversations': {
+      id: '/dashboard/conversations'
+      path: '/conversations'
+      fullPath: '/dashboard/conversations'
+      preLoaderRoute: typeof DashboardConversationsRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/api/track': {
+      id: '/api/track'
+      path: '/api/track'
+      fullPath: '/api/track'
+      preLoaderRoute: typeof ApiTrackRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/auth/logout': {
-      id: '/api/auth/logout'
-      path: '/api/auth/logout'
-      fullPath: '/api/auth/logout'
-      preLoaderRoute: typeof ApiAuthLogoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/me': {
-      id: '/api/auth/me'
-      path: '/api/auth/me'
-      fullPath: '/api/auth/me'
-      preLoaderRoute: typeof ApiAuthMeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/dashboard/conversations': {
-      id: '/api/dashboard/conversations'
-      path: '/api/dashboard/conversations'
-      fullPath: '/api/dashboard/conversations'
-      preLoaderRoute: typeof ApiDashboardConversationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/dashboard/floor-plan': {
-      id: '/api/dashboard/floor-plan'
-      path: '/api/dashboard/floor-plan'
-      fullPath: '/api/dashboard/floor-plan'
-      preLoaderRoute: typeof ApiDashboardFloorPlanRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/dashboard/leads': {
-      id: '/api/dashboard/leads'
-      path: '/api/dashboard/leads'
-      fullPath: '/api/dashboard/leads'
-      preLoaderRoute: typeof ApiDashboardLeadsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/dashboard/mail': {
-      id: '/api/dashboard/mail'
-      path: '/api/dashboard/mail'
-      fullPath: '/api/dashboard/mail'
-      preLoaderRoute: typeof ApiDashboardMailRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/dashboard/reservations': {
-      id: '/api/dashboard/reservations'
-      path: '/api/dashboard/reservations'
-      fullPath: '/api/dashboard/reservations'
-      preLoaderRoute: typeof ApiDashboardReservationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/dashboard/settings': {
-      id: '/api/dashboard/settings'
-      path: '/api/dashboard/settings'
-      fullPath: '/api/dashboard/settings'
-      preLoaderRoute: typeof ApiDashboardSettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/dashboard/stats': {
-      id: '/api/dashboard/stats'
-      path: '/api/dashboard/stats'
-      fullPath: '/api/dashboard/stats'
-      preLoaderRoute: typeof ApiDashboardStatsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/dashboard/visitors': {
-      id: '/api/dashboard/visitors'
-      path: '/api/dashboard/visitors'
-      fullPath: '/api/dashboard/visitors'
-      preLoaderRoute: typeof ApiDashboardVisitorsRouteImport
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/restaurant/settings': {
@@ -747,26 +670,89 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiRestaurantSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/dashboard/conversations/$sessionId': {
-      id: '/api/dashboard/conversations/$sessionId'
-      path: '/$sessionId'
-      fullPath: '/api/dashboard/conversations/$sessionId'
-      preLoaderRoute: typeof ApiDashboardConversationsSessionIdRouteImport
-      parentRoute: typeof ApiDashboardConversationsRoute
+    '/api/dashboard/visitors': {
+      id: '/api/dashboard/visitors'
+      path: '/api/dashboard/visitors'
+      fullPath: '/api/dashboard/visitors'
+      preLoaderRoute: typeof ApiDashboardVisitorsRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/api/dashboard/leads/$id': {
-      id: '/api/dashboard/leads/$id'
-      path: '/$id'
-      fullPath: '/api/dashboard/leads/$id'
-      preLoaderRoute: typeof ApiDashboardLeadsIdRouteImport
-      parentRoute: typeof ApiDashboardLeadsRoute
+    '/api/dashboard/stats': {
+      id: '/api/dashboard/stats'
+      path: '/api/dashboard/stats'
+      fullPath: '/api/dashboard/stats'
+      preLoaderRoute: typeof ApiDashboardStatsRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/api/dashboard/mail/attachments': {
-      id: '/api/dashboard/mail/attachments'
-      path: '/attachments'
-      fullPath: '/api/dashboard/mail/attachments'
-      preLoaderRoute: typeof ApiDashboardMailAttachmentsRouteImport
-      parentRoute: typeof ApiDashboardMailRoute
+    '/api/dashboard/settings': {
+      id: '/api/dashboard/settings'
+      path: '/api/dashboard/settings'
+      fullPath: '/api/dashboard/settings'
+      preLoaderRoute: typeof ApiDashboardSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/reservations': {
+      id: '/api/dashboard/reservations'
+      path: '/api/dashboard/reservations'
+      fullPath: '/api/dashboard/reservations'
+      preLoaderRoute: typeof ApiDashboardReservationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/mail': {
+      id: '/api/dashboard/mail'
+      path: '/api/dashboard/mail'
+      fullPath: '/api/dashboard/mail'
+      preLoaderRoute: typeof ApiDashboardMailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/leads': {
+      id: '/api/dashboard/leads'
+      path: '/api/dashboard/leads'
+      fullPath: '/api/dashboard/leads'
+      preLoaderRoute: typeof ApiDashboardLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/floor-plan': {
+      id: '/api/dashboard/floor-plan'
+      path: '/api/dashboard/floor-plan'
+      fullPath: '/api/dashboard/floor-plan'
+      preLoaderRoute: typeof ApiDashboardFloorPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard/conversations': {
+      id: '/api/dashboard/conversations'
+      path: '/api/dashboard/conversations'
+      fullPath: '/api/dashboard/conversations'
+      preLoaderRoute: typeof ApiDashboardConversationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/me': {
+      id: '/api/auth/me'
+      path: '/api/auth/me'
+      fullPath: '/api/auth/me'
+      preLoaderRoute: typeof ApiAuthMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/logout': {
+      id: '/api/auth/logout'
+      path: '/api/auth/logout'
+      fullPath: '/api/auth/logout'
+      preLoaderRoute: typeof ApiAuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/login': {
+      id: '/api/auth/login'
+      path: '/api/auth/login'
+      fullPath: '/api/auth/login'
+      preLoaderRoute: typeof ApiAuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/mail/track/$token': {
+      id: '/api/mail/track/$token'
+      path: '/api/mail/track/$token'
+      fullPath: '/api/mail/track/$token'
+      preLoaderRoute: typeof ApiMailTrackTokenRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/dashboard/reservations/$id': {
       id: '/api/dashboard/reservations/$id'
@@ -775,12 +761,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiDashboardReservationsIdRouteImport
       parentRoute: typeof ApiDashboardReservationsRoute
     }
-    '/api/mail/track/$token': {
-      id: '/api/mail/track/$token'
-      path: '/api/mail/track/$token'
-      fullPath: '/api/mail/track/$token'
-      preLoaderRoute: typeof ApiMailTrackTokenRouteImport
-      parentRoute: typeof rootRouteImport
+    '/api/dashboard/mail/attachments': {
+      id: '/api/dashboard/mail/attachments'
+      path: '/attachments'
+      fullPath: '/api/dashboard/mail/attachments'
+      preLoaderRoute: typeof ApiDashboardMailAttachmentsRouteImport
+      parentRoute: typeof ApiDashboardMailRoute
+    }
+    '/api/dashboard/leads/$id': {
+      id: '/api/dashboard/leads/$id'
+      path: '/$id'
+      fullPath: '/api/dashboard/leads/$id'
+      preLoaderRoute: typeof ApiDashboardLeadsIdRouteImport
+      parentRoute: typeof ApiDashboardLeadsRoute
+    }
+    '/api/dashboard/conversations/$sessionId': {
+      id: '/api/dashboard/conversations/$sessionId'
+      path: '/$sessionId'
+      fullPath: '/api/dashboard/conversations/$sessionId'
+      preLoaderRoute: typeof ApiDashboardConversationsSessionIdRouteImport
+      parentRoute: typeof ApiDashboardConversationsRoute
     }
   }
 }
@@ -894,3 +894,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

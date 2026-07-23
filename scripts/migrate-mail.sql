@@ -39,3 +39,13 @@ CREATE INDEX IF NOT EXISTS idx_outbound_emails_sent_at
 
 CREATE INDEX IF NOT EXISTS idx_outbound_emails_tracking_token
   ON outbound_emails (tracking_token);
+
+CREATE TABLE IF NOT EXISTS mail_templates (
+  id TEXT PRIMARY KEY DEFAULT 'default',
+  subject TEXT NOT NULL,
+  body_text TEXT NOT NULL,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+COMMENT ON TABLE mail_templates IS
+  'Editable Finnish email subject + body saved from /dashboard/mail.';
