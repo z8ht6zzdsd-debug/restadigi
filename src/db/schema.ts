@@ -132,6 +132,23 @@ export const outboundEmails = pgTable("outbound_emails", {
   sentAt: timestamp("sent_at", { withTimezone: true }).defaultNow().notNull(),
 });
 
+/**
+ * Lightweight sales call calendar — no separate client CRM.
+ * One row = one planned/completed call with notes.
+ */
+export const salesCallEvents = pgTable("sales_call_events", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  clientName: text("client_name").notNull(),
+  contactPerson: text("contact_person"),
+  phone: text("phone"),
+  email: text("email"),
+  scheduledAt: timestamp("scheduled_at", { withTimezone: true }).notNull(),
+  status: text("status").notNull().default("planned"),
+  notes: text("notes"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
 export const chatSessionsRelations = relations(chatSessions, ({ many }) => ({
   messages: many(chatMessages),
   salesLeads: many(salesLeads),

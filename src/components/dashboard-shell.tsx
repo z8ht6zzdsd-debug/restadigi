@@ -7,6 +7,7 @@ import {
   Mail,
   Map,
   MessageSquare,
+  Phone,
   Settings,
   Users,
 } from "lucide-react";
@@ -18,6 +19,7 @@ import { cn } from "@/lib/utils";
 const nav = [
   { to: "/dashboard", label: "Yhteenveto", icon: LayoutDashboard, exact: true as const },
   { to: "/dashboard/leads", label: "Myyntiliidit", icon: ContactRound },
+  { to: "/dashboard/calls", label: "Soitukalenteri", icon: Phone },
   { to: "/dashboard/mail", label: "Sähköposti", icon: Mail },
   { to: "/dashboard/visitors", label: "Kävijät", icon: Users },
   { to: "/dashboard/conversations", label: "Keskustelut", icon: MessageSquare },
