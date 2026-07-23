@@ -3,19 +3,11 @@ import { Eye, FileText, Mail, Save, Send, Trash2, Upload } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
-import restadigiLogo from "@/assets/restadigi-logo.png";
+import { MailEsikatseluPreview } from "@/components/mail-esikatselu-preview";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  CONTACT_ADDRESS,
-  CONTACT_COMPANY,
-  CONTACT_EMAIL,
-  CONTACT_PERSON,
-  CONTACT_PHONE_DISPLAY,
-  CONTACT_PHONE_TEL,
-} from "@/lib/company-contact";
 import {
   applyMailPlaceholders,
   DEFAULT_MAIL_BODY_FI,
@@ -64,13 +56,6 @@ function formatBytes(bytes: number) {
   if (!bytes) return "—";
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} kt`;
   return `${(bytes / (1024 * 1024)).toFixed(1)} Mt`;
-}
-
-function splitParagraphs(body: string) {
-  return body
-    .split(/\n\s*\n/)
-    .map((p) => p.replace(/\n/g, " ").trim())
-    .filter(Boolean);
 }
 
 function DashboardMailPage() {
@@ -452,83 +437,20 @@ function DashboardMailPage() {
           </div>
         </section>
 
-        <div className="rounded-xl border border-[#e6dfd7] bg-[#f7f3ee] p-4 sm:p-6">
-          <p className="mb-3 text-xs uppercase tracking-[0.16em] text-[#5c534c]">Esikatselu</p>
-          <article className="rounded-xl border border-[#e6dfd7] bg-white px-6 py-8 shadow-[0_8px_28px_rgba(67,47,36,0.06)] sm:px-10 sm:py-10">
-            <div className="mb-5 border-b border-[#e6dfd7] pb-3.5 font-sans text-[13px] text-[#5c534c]">
-              <strong className="font-semibold text-[#1a1512]">Aihe:</strong> {filledSubject}
-            </div>
-
-            <div className="space-y-4 font-serif text-[17px] leading-[1.55] text-[#1a1512]">
-              {splitParagraphs(filledBody).map((paragraph, index) => {
-                const isTagline = paragraph.startsWith("Restadigi.fi —");
-                const isSite = paragraph.startsWith("Tutustu palveluumme");
-                return (
-                  <p
-                    key={`${index}-${paragraph.slice(0, 24)}`}
-                    className={
-                      isTagline ? "mt-2 italic text-[#432f24]" : isSite ? "mb-2" : undefined
-                    }
-                  >
-                    {isSite ? (
-                      <>
-                        Tutustu palveluumme:{" "}
-                        <a
-                          href="https://restadigi.fi"
-                          className="text-[#432f24] underline-offset-2 hover:underline"
-                        >
-                          https://restadigi.fi
-                        </a>
-                      </>
-                    ) : (
-                      paragraph
-                    )}
-                  </p>
-                );
-              })}
-            </div>
-
-            {attachments.some((a) => a.hasFile) ? (
-              <div className="mt-6 rounded-lg border border-dashed border-[#e6dfd7] bg-[#f7f3ee]/60 px-4 py-3">
-                <p className="mb-2 font-sans text-xs uppercase tracking-wide text-[#5c534c]">
-                  Liitteet
-                </p>
-                <ul className="space-y-1 font-sans text-sm text-[#432f24]">
-                  {attachments
-                    .filter((a) => a.hasFile)
-                    .map((a) => (
-                      <li key={a.slot}>📎 {a.filename}</li>
-                    ))}
-                </ul>
-              </div>
-            ) : null}
-
-            <div className="mt-8 border-t border-[#e6dfd7] pt-6 font-sans">
-              <p className="text-[15px]">Parhain terveisin,</p>
-              <p className="mt-1 mb-4 text-base font-semibold">{CONTACT_PERSON}</p>
-              <img
-                src={restadigiLogo}
-                alt="Restadigi"
-                className="mb-3 h-[72px] w-auto object-contain object-left"
-              />
-              <p className="text-sm text-[#5c534c]">{CONTACT_COMPANY}</p>
-              <p className="mt-1 text-sm leading-snug text-[#5c534c]">
-                <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#432f24] no-underline">
-                  {CONTACT_EMAIL}
-                </a>
-                <br />
-                <a href={`tel:${CONTACT_PHONE_TEL}`} className="text-[#432f24] no-underline">
-                  {CONTACT_PHONE_DISPLAY}
-                </a>
-                <br />
-                <a href="https://restadigi.fi" className="text-[#432f24] no-underline">
-                  https://restadigi.fi
-                </a>
-                <br />
-                {CONTACT_ADDRESS}
-              </p>
-            </div>
-          </article>
+        <div className="space-y-3">
+          <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
+            Esikatselu (esikatselu.html)
+          </p>
+          <MailEsikatseluPreview subject={filledSubject} bodyText={filledBody} />
+          {attachments.some((a) => a.hasFile) ? (
+            <p className="text-xs text-muted-foreground">
+              Liitteet lähetyksessä:{" "}
+              {attachments
+                .filter((a) => a.hasFile)
+                .map((a) => a.filename)
+                .join(", ")}
+            </p>
+          ) : null}
         </div>
       </div>
 

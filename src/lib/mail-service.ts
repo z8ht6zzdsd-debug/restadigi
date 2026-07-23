@@ -213,43 +213,48 @@ function buildHtmlBody(textBody: string, trackingUrl: string, origin: string) {
     .map((block) => {
       const isTagline = block.startsWith("Restadigi.fi —");
       const isSite = block.startsWith("Tutustu palveluumme");
+      if (isSite) {
+        return `<p style="margin:0 0 1.6em;font-size:17px;line-height:1.55;font-family:Georgia,'Times New Roman',serif;color:#1a1512;">Tutustu palveluumme: <a href="https://restadigi.fi" style="color:#432f24;">https://restadigi.fi</a></p>`;
+      }
       const linked = escapeHtml(block).replace(
         /(https?:\/\/[^\s<]+)/g,
-        '<a href="$1" style="color:#432f24;text-decoration:underline;">$1</a>',
+        '<a href="$1" style="color:#432f24;">$1</a>',
       );
-      const style = isTagline
-        ? "margin:1.4em 0 1em;line-height:1.55;color:#432f24;font-size:17px;font-style:italic;font-family:Georgia,'Times New Roman',serif;"
-        : isSite
-          ? "margin:0 0 1.6em;line-height:1.55;color:#1a1512;font-size:17px;font-family:Georgia,'Times New Roman',serif;"
-          : "margin:0 0 1em;line-height:1.55;color:#1a1512;font-size:17px;font-family:Georgia,'Times New Roman',serif;";
-      return `<p style="${style}">${linked}</p>`;
+      if (isTagline) {
+        return `<p style="margin:1.4em 0 1em;font-size:17px;line-height:1.55;font-family:Georgia,'Times New Roman',serif;color:#432f24;font-style:italic;">${linked}</p>`;
+      }
+      return `<p style="margin:0 0 1em;font-size:17px;line-height:1.55;font-family:Georgia,'Times New Roman',serif;color:#1a1512;">${linked}</p>`;
     })
     .join("");
 
   const logo = escapeHtml(logoUrl(origin));
 
+  // Structure & styles mirror Restadigi-sahkopostipohjat/esikatselu.html
   return `<!DOCTYPE html>
 <html lang="fi">
-<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /></head>
-<body style="margin:0;padding:0;background:#f7f3ee;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f7f3ee;padding:24px 12px;">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body style="margin:0;padding:0;background:#f7f3ee;color:#1a1512;font-family:Georgia,'Times New Roman',serif;line-height:1.55;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f7f3ee;padding:24px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;background:#ffffff;border:1px solid #e6dfd7;border-radius:12px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:720px;background:#ffffff;border:1px solid #e6dfd7;border-radius:12px;box-shadow:0 8px 28px rgba(67,47,36,0.06);">
           <tr>
             <td style="padding:36px 40px 40px;">
               ${paragraphs}
               <div style="margin-top:2rem;padding-top:1.4rem;border-top:1px solid #e6dfd7;font-family:system-ui,-apple-system,Segoe UI,sans-serif;">
                 <p style="margin:0.2em 0;font-size:15px;color:#1a1512;">Parhain terveisin,</p>
                 <p style="margin:0.35em 0 1em;font-size:16px;font-weight:600;color:#1a1512;">${escapeHtml(CONTACT_PERSON)}</p>
-                <img src="${logo}" alt="Restadigi" width="180" height="72" style="display:block;height:72px;width:auto;margin:0 0 0.85em;border:0;" />
-                <p style="margin:0 0 0.35em;font-size:14px;color:#5c534c;">${escapeHtml(CONTACT_COMPANY)}</p>
-                <p style="margin:0;font-size:14px;line-height:1.45;color:#5c534c;">
+                <img src="${logo}" alt="Restadigi" width="180" height="72" style="display:block;height:72px;width:auto;margin:0 0 0.85em -2mm;padding:0;border:0;object-fit:contain;object-position:left center;" />
+                <div style="color:#5c534c;font-size:14px;line-height:1.45;">
+                  <p style="margin:0 0 0.35em;font-size:14px;color:#5c534c;">${escapeHtml(CONTACT_COMPANY)}</p>
                   <a href="mailto:${CONTACT_EMAIL}" style="color:#432f24;text-decoration:none;">${CONTACT_EMAIL}</a><br />
                   <a href="tel:${CONTACT_PHONE_TEL}" style="color:#432f24;text-decoration:none;">${CONTACT_PHONE_DISPLAY}</a><br />
                   <a href="https://restadigi.fi" style="color:#432f24;text-decoration:none;">https://restadigi.fi</a><br />
                   ${escapeHtml(CONTACT_ADDRESS)}
-                </p>
+                </div>
               </div>
             </td>
           </tr>
@@ -257,7 +262,7 @@ function buildHtmlBody(textBody: string, trackingUrl: string, origin: string) {
       </td>
     </tr>
   </table>
-  <img src="${trackingUrl}" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;" />
+  <img src="${escapeHtml(trackingUrl)}" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;" />
 </body>
 </html>`;
 }
