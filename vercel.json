@@ -23,6 +23,48 @@
       "source": "/potyvarauspalvelu",
       "destination": "/poytavaraupalvelu",
       "permanent": true
+    },
+    {
+      "source": "/dashboard",
+      "has": [{ "type": "host", "value": "restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard/:path*",
+      "has": [{ "type": "host", "value": "restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard",
+      "has": [{ "type": "host", "value": "www.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard/:path*",
+      "has": [{ "type": "host", "value": "www.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard",
+      "has": [{ "type": "host", "value": "restadigi.vercel.app" }],
+      "destination": "https://admin.restadigi.fi/dashboard",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard/:path*",
+      "has": [{ "type": "host", "value": "restadigi.vercel.app" }],
+      "destination": "https://admin.restadigi.fi/dashboard/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
+      "destination": "/dashboard/login",
+      "permanent": false
     }
   ]
 }
