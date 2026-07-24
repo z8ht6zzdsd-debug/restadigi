@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Loader2, Send } from "lucide-react";
-import { useEffect, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 
 import restadigiLogo from "@/assets/restadigi-logo.png";
 import { Button } from "@/components/ui/button";
