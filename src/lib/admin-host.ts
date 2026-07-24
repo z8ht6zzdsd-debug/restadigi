@@ -35,10 +35,29 @@ export function isDashboardPath(pathname: string) {
   return pathname === "/dashboard" || pathname.startsWith("/dashboard/");
 }
 
+/** Paths that may be served on admin.restadigi.fi (everything else → login). */
+export function isAllowedOnAdminHost(pathname: string) {
+  if (isDashboardPath(pathname)) return true;
+  if (pathname.startsWith("/api/")) return true;
+  if (pathname.startsWith("/assets/")) return true;
+  if (pathname.startsWith("/_server") || pathname.startsWith("/__")) return true;
+  if (
+    pathname === "/favicon.ico" ||
+    pathname === "/favicon.png" ||
+    pathname === "/apple-touch-icon.png" ||
+    pathname === "/robots.txt"
+  ) {
+    return true;
+  }
+  if (pathname.startsWith("/restadigi-logo") || pathname.startsWith("/mail/")) return true;
+  if (/\.(js|css|map|png|jpe?g|svg|ico|webp|woff2?|txt|xml|json)$/i.test(pathname)) return true;
+  return false;
+}
+
 /**
  * Cross-domain redirects:
  * - restadigi.fi /dashboard* → admin.restadigi.fi/dashboard*
- * - admin.restadigi.fi / → /dashboard/login
+ * - admin.restadigi.fi /* (non-admin) → /dashboard/login
  */
 export function maybeHostRedirect(request: Request): Response | null {
   const url = new URL(request.url);
@@ -49,8 +68,8 @@ export function maybeHostRedirect(request: Request): Response | null {
     return Response.redirect(`${getAdminOrigin()}${path}${url.search}`, 307);
   }
 
-  if (isAdminHost(host) && (path === "/" || path === "")) {
-    return Response.redirect(`${getAdminOrigin()}/dashboard/login`, 307);
+  if (isAdminHost(host) && !isAllowedOnAdminHost(path)) {
+    return Response.redirect(adminLoginUrl(), 307);
   }
 
   return null;

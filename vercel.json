@@ -63,7 +63,49 @@
     {
       "source": "/",
       "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
-      "destination": "/dashboard/login",
+      "destination": "https://admin.restadigi.fi/dashboard/login",
+      "permanent": false
+    },
+    {
+      "source": "/index",
+      "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/login",
+      "permanent": false
+    },
+    {
+      "source": "/verkkosivut",
+      "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/login",
+      "permanent": false
+    },
+    {
+      "source": "/hinnasto",
+      "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/login",
+      "permanent": false
+    },
+    {
+      "source": "/yhteys",
+      "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/login",
+      "permanent": false
+    },
+    {
+      "source": "/ai-asiakaspalvelu",
+      "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/login",
+      "permanent": false
+    },
+    {
+      "source": "/poytavaraupalvelu",
+      "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/login",
+      "permanent": false
+    },
+    {
+      "source": "/meista",
+      "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/login",
       "permanent": false
     }
   ]

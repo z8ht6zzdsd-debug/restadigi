@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  useRouterState,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -14,11 +15,17 @@ import { ChatbotWidget } from "../components/chatbot-widget";
 import { CookieConsentProvider } from "../components/cookie-consent-provider";
 import { CookieConsentUI } from "../components/cookie-consent-ui";
 import { PageTracker } from "../components/page-tracker";
+import {
+  ADMIN_LOGIN_URL,
+  isBrowserAdminHost,
+  isBrowserAllowedOnAdmin,
+} from "../lib/admin-host-client";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LocaleProvider, useMessages } from "../i18n";
 
 function NotFoundComponent() {
   const t = useMessages();
+  const admin = typeof window !== "undefined" && isBrowserAdminHost();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -27,12 +34,21 @@ function NotFoundComponent() {
         <h2 className="mt-4 text-xl font-semibold text-foreground">{t.notFound.title}</h2>
         <p className="mt-2 text-sm text-muted-foreground">{t.notFound.description}</p>
         <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            {t.notFound.goHome}
-          </Link>
+          {admin ? (
+            <a
+              href={ADMIN_LOGIN_URL}
+              className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Admin login
+            </a>
+          ) : (
+            <Link
+              to="/"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              {t.notFound.goHome}
+            </Link>
+          )}
         </div>
       </div>
     </div>
@@ -49,6 +65,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
   const detail =
     error?.message?.trim() || (typeof error === "string" ? error : "") || "Unknown error";
+  const admin = typeof window !== "undefined" && isBrowserAdminHost();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -69,10 +86,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             {t.error.tryAgain}
           </button>
           <a
-            href="/"
+            href={admin ? ADMIN_LOGIN_URL : "/"}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            {t.error.goHome}
+            {admin ? "Admin login" : t.error.goHome}
           </a>
         </div>
       </div>
@@ -142,16 +159,37 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function AdminHostGuard({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    if (!isBrowserAdminHost()) return;
+    if (isBrowserAllowedOnAdmin(pathname)) return;
+    window.location.replace(ADMIN_LOGIN_URL);
+  }, [pathname]);
+
+  return children;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const onAdmin = typeof window !== "undefined" && isBrowserAdminHost();
+  const hideMarketingChrome = onAdmin || pathname.startsWith("/dashboard");
 
   return (
     <QueryClientProvider client={queryClient}>
       <CookieConsentProvider>
-        <PageTracker />
-        <Outlet />
-        <ChatbotWidget />
-        <CookieConsentUI />
+        <AdminHostGuard>
+          <PageTracker />
+          <Outlet />
+          {hideMarketingChrome ? null : (
+            <>
+              <ChatbotWidget />
+              <CookieConsentUI />
+            </>
+          )}
+        </AdminHostGuard>
       </CookieConsentProvider>
     </QueryClientProvider>
   );

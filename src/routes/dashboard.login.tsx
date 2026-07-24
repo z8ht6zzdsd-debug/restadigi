@@ -6,6 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export const Route = createFileRoute("/dashboard/login")({
+  head: () => ({
+    meta: [
+      { title: "Restadigi Admin — Kirjaudu" },
+      {
+        name: "description",
+        content: "Restadigi hallintapaneelin kirjautuminen.",
+      },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
   component: DashboardLoginPage,
 });
 
@@ -45,42 +55,57 @@ function DashboardLoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#2a2018] px-4">
       <form
         onSubmit={(e) => void handleSubmit(e)}
-        className="w-full max-w-sm space-y-6 rounded-sm border border-border bg-card p-8"
+        className="w-full max-w-sm space-y-6 rounded-2xl border border-white/15 bg-[#432f24] p-8 text-white shadow-2xl"
       >
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Admin</p>
-          <h1 className="mt-2 text-2xl font-medium">Kirjaudu dashboardiin</h1>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8a05a]">
+            Restadigi Admin
+          </p>
+          <h1 className="mt-2 font-serif text-2xl tracking-tight">Kirjaudu hallintaan</h1>
+          <p className="mt-2 text-sm text-white/70">Vain sisäiseen käyttöön · admin.restadigi.fi</p>
         </div>
 
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Sähköposti</Label>
+            <Label htmlFor="email" className="text-white/85">
+              Sähköposti
+            </Label>
             <Input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="border-white/20 bg-white text-[#1a1512]"
+              autoComplete="username"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Salasana</Label>
+            <Label htmlFor="password" className="text-white/85">
+              Salasana
+            </Label>
             <Input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="border-white/20 bg-white text-[#1a1512]"
+              autoComplete="current-password"
             />
           </div>
         </div>
 
-        {error && <p className="text-sm text-destructive">{error}</p>}
+        {error && <p className="text-sm text-[#f0b090]">{error}</p>}
 
-        <Button type="submit" className="w-full" disabled={loading}>
+        <Button
+          type="submit"
+          className="w-full bg-[#c46a32] text-white hover:bg-[#b35d29]"
+          disabled={loading}
+        >
           {loading ? "Kirjaudutaan…" : "Kirjaudu"}
         </Button>
       </form>
