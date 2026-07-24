@@ -1037,7 +1037,7 @@ export const fi: Messages = {
       eyebrow: "Pöytävaraus",
       title: "Varaa pöytä",
       welcome:
-        "Hei! 👋 Tervetuloa Restadigille.\n\nHaluaisitko varata pöydän ravintolaamme? Olen Resta-AI, ja autan sinua tekemään varauksen.\n\nRavintolamme on avoinna päivittäin klo 12–24, ja pöytävarauksia voi tehdä klo 12–22.\n\nKerro minulle:\n\n    nimesi\n    seurueen henkilömäärä\n    varauspäivä ja kellonaika\n    puhelinnumerosi\n    sähköpostiosoitteesi (varausvahvistusta varten)\n\nNormaali pöytävarauksen kesto on 2 tuntia. Tarvittaessa myös 3 tunnin varaus onnistuu pyynnöstä.",
+        "Hei! 👋 Tervetuloa Restadigille.\n\nHaluaisitko varata pöydän ravintolaamme? Olen Resta-AI, ja autan sinua tekemään varauksen.\n\nRavintolamme on avoinna päivittäin klo 12–24, ja pöytävarauksia voi tehdä klo 12–22 väliselle ajalle.\n\nKerro minulle:\n\n    nimesi\n    seurueen henkilömäärä\n    varauspäivä ja kellonaika\n    puhelinnumerosi\n    sähköpostiosoitteesi (varausvahvistusta varten)\n\nNormaali pöytävarauksen kesto on 2 tuntia. Tarvittaessa myös 3 tunnin varaus onnistuu pyynnöstä.",
       placeholder: "Kirjoita viestisi…",
       sendAria: "Lähetä viesti",
       typing: "Kirjoittaa…",

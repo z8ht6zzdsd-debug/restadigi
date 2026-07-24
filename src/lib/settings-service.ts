@@ -45,6 +45,7 @@ const LEGACY_BOOKING_WELCOMES = new Set([
   "Hei! Autan pöytävarauksessa. Kerro nimesi, henkilömäärä, päivä, kellonaika (12–22) ja puhelinnumero. Sähköposti on vapaaehtoinen. Normaali pöytäaika on 2 tuntia — 3 tuntia onnistuu pyynnöstä.",
   "Hei! Tervetuloa Demo Ravintolaan. Autan mielelläni pöytävarauksessa — kerro nimesi, henkilömäärän, toivomasi päivän ja kellonajan sekä sähköpostisi ja puhelinnumerosi.",
   "Hei! Olen ravintolan chatbot. Voin auttaa pöytävarauksessa — kerro nimesi, henkilömäärän, päivän, kellonajan ja sähköpostisi.",
+  "Hei! 👋 Tervetuloa Restadigille.\n\nHaluaisitko varata pöydän ravintolaamme? Olen Resta-AI, ja autan sinua tekemään varauksen.\n\nRavintolamme on avoinna päivittäin klo 12–24, ja pöytävarauksia voi tehdä klo 12–22.\n\nKerro minulle:\n\n    nimesi\n    seurueen henkilömäärä\n    varauspäivä ja kellonaika\n    puhelinnumerosi\n    sähköpostiosoitteesi (varausvahvistusta varten)\n\nNormaali pöytävarauksen kesto on 2 tuntia. Tarvittaessa myös 3 tunnin varaus onnistuu pyynnöstä.",
 ]);
 
 let flexibleBookingEnsured = false;

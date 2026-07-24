@@ -1044,7 +1044,7 @@ export const es: Messages = {
       eyebrow: "Reservas",
       title: "Reservar mesa",
       welcome:
-        "¡Hola! 👋 Bienvenido/a a Restadigi.\n\n¿Te gustaría reservar mesa en nuestro restaurante? Soy Resta-AI y te ayudo a hacer la reserva.\n\nEstamos abiertos todos los días de 12:00 a 24:00, y las reservas de mesa se pueden hacer de 12:00 a 22:00.\n\nDime:\n\n    tu nombre\n    número de personas\n    fecha y hora\n    tu teléfono\n    tu correo (para la confirmación de la reserva)\n\nLa duración normal de una reserva es de 2 horas. Si lo necesitas, también es posible reservar 3 horas bajo petición.",
+        "¡Hola! 👋 Bienvenido/a a Restadigi.\n\n¿Te gustaría reservar mesa en nuestro restaurante? Soy Resta-AI y te ayudo a hacer la reserva.\n\nEstamos abiertos todos los días de 12:00 a 24:00, y las reservas de mesa se pueden hacer para horarios entre las 12:00 y las 22:00.\n\nDime:\n\n    tu nombre\n    número de personas\n    fecha y hora\n    tu teléfono\n    tu correo (para la confirmación de la reserva)\n\nLa duración normal de una reserva es de 2 horas. Si lo necesitas, también es posible reservar 3 horas bajo petición.",
       placeholder: "Escribe tu mensaje…",
       sendAria: "Enviar mensaje",
       typing: "Escribiendo…",

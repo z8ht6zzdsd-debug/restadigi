@@ -1036,7 +1036,7 @@ export const en: Messages = {
       eyebrow: "Reservations",
       title: "Book a table",
       welcome:
-        "Hi! 👋 Welcome to Restadigi.\n\nWould you like to book a table at our restaurant? I’m Resta-AI, and I’ll help you make a reservation.\n\nWe’re open daily from 12:00–24:00, and table bookings can be made for 12:00–22:00.\n\nPlease tell me:\n\n    your name\n    party size\n    date and time\n    your phone number\n    your email (for the booking confirmation)\n\nA standard table booking lasts 2 hours. A 3-hour booking is also available on request.",
+        "Hi! 👋 Welcome to Restadigi.\n\nWould you like to book a table at our restaurant? I’m Resta-AI, and I’ll help you make a reservation.\n\nWe’re open daily from 12:00–24:00, and table bookings can be made for times between 12:00–22:00.\n\nPlease tell me:\n\n    your name\n    party size\n    date and time\n    your phone number\n    your email (for the booking confirmation)\n\nA standard table booking lasts 2 hours. A 3-hour booking is also available on request.",
       placeholder: "Type your message…",
       sendAria: "Send message",
       typing: "Typing…",
