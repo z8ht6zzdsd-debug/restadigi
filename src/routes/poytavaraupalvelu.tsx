@@ -5,6 +5,7 @@ import { BookingChatbotButton } from "@/components/chatbot-widget";
 import { FloorPlanDevicePreviews } from "@/components/floor-plan-device-previews";
 import { ReservationsDevicePreviews } from "@/components/reservations-device-previews";
 import { ServiceSplitHero } from "@/components/service-split-hero";
+import { TableBookingWidget } from "@/components/table-booking-widget";
 import {
   MarketingBand,
   MarketingBox,
@@ -67,6 +68,25 @@ function PotyvarausPage() {
         subtitle={b.hero.subtitle}
         actions={<BookingChatbotButton />}
       />
+
+      <section className="w-full bg-[#f7f3ee] px-6 py-10 sm:py-14 lg:py-16">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            {b.demo.sectionEyebrow}
+          </p>
+          <h2 className="max-w-3xl font-serif text-3xl tracking-tight text-[#2a2018] sm:text-4xl">
+            {b.demo.sectionTitleBefore}
+            <span className="italic text-accent">{b.demo.sectionTitleAccent}</span>
+            {b.demo.sectionTitleAfter}
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#5c534c] sm:text-base">
+            {b.demo.sectionBody}
+          </p>
+          <div className="mt-8">
+            <TableBookingWidget />
+          </div>
+        </div>
+      </section>
 
       <MarketingBand>
         <MarketingHeading>

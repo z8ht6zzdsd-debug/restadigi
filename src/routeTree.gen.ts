@@ -33,8 +33,10 @@ import { Route as DashboardLeadsRouteImport } from './routes/dashboard/leads'
 import { Route as DashboardFloorPlanRouteImport } from './routes/dashboard/floor-plan'
 import { Route as DashboardConversationsRouteImport } from './routes/dashboard/conversations'
 import { Route as DashboardCallsRouteImport } from './routes/dashboard/calls'
+import { Route as DashboardBookingWidgetRouteImport } from './routes/dashboard/booking-widget'
 import { Route as ApiTrackRouteImport } from './routes/api/track'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiBookingWidgetConfigRouteImport } from './routes/api/booking-widget-config'
 import { Route as ApiRestaurantSettingsRouteImport } from './routes/api/restaurant/settings'
 import { Route as ApiFormIntakeRouteImport } from './routes/api/form/intake'
 import { Route as ApiDashboardVisitorsRouteImport } from './routes/api/dashboard/visitors'
@@ -176,6 +178,11 @@ const DashboardCallsRoute = DashboardCallsRouteImport.update({
   path: '/calls',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
+const DashboardBookingWidgetRoute = DashboardBookingWidgetRouteImport.update({
+  id: '/booking-widget',
+  path: '/booking-widget',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
 const ApiTrackRoute = ApiTrackRouteImport.update({
   id: '/api/track',
   path: '/api/track',
@@ -184,6 +191,11 @@ const ApiTrackRoute = ApiTrackRouteImport.update({
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiBookingWidgetConfigRoute = ApiBookingWidgetConfigRouteImport.update({
+  id: '/api/booking-widget-config',
+  path: '/api/booking-widget-config',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiRestaurantSettingsRoute = ApiRestaurantSettingsRouteImport.update({
@@ -307,8 +319,10 @@ export interface FileRoutesByFullPath {
   '/verkkosivut': typeof VerkkosivutRoute
   '/yhteys': typeof YhteysRoute
   '/yllapito': typeof YllapitoRoute
+  '/api/booking-widget-config': typeof ApiBookingWidgetConfigRoute
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
+  '/dashboard/booking-widget': typeof DashboardBookingWidgetRoute
   '/dashboard/calls': typeof DashboardCallsRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
   '/dashboard/floor-plan': typeof DashboardFloorPlanRoute
@@ -354,8 +368,10 @@ export interface FileRoutesByTo {
   '/verkkosivut': typeof VerkkosivutRoute
   '/yhteys': typeof YhteysRoute
   '/yllapito': typeof YllapitoRoute
+  '/api/booking-widget-config': typeof ApiBookingWidgetConfigRoute
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
+  '/dashboard/booking-widget': typeof DashboardBookingWidgetRoute
   '/dashboard/calls': typeof DashboardCallsRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
   '/dashboard/floor-plan': typeof DashboardFloorPlanRoute
@@ -403,8 +419,10 @@ export interface FileRoutesById {
   '/verkkosivut': typeof VerkkosivutRoute
   '/yhteys': typeof YhteysRoute
   '/yllapito': typeof YllapitoRoute
+  '/api/booking-widget-config': typeof ApiBookingWidgetConfigRoute
   '/api/chat': typeof ApiChatRoute
   '/api/track': typeof ApiTrackRoute
+  '/dashboard/booking-widget': typeof DashboardBookingWidgetRoute
   '/dashboard/calls': typeof DashboardCallsRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
   '/dashboard/floor-plan': typeof DashboardFloorPlanRoute
@@ -453,8 +471,10 @@ export interface FileRouteTypes {
     | '/verkkosivut'
     | '/yhteys'
     | '/yllapito'
+    | '/api/booking-widget-config'
     | '/api/chat'
     | '/api/track'
+    | '/dashboard/booking-widget'
     | '/dashboard/calls'
     | '/dashboard/conversations'
     | '/dashboard/floor-plan'
@@ -500,8 +520,10 @@ export interface FileRouteTypes {
     | '/verkkosivut'
     | '/yhteys'
     | '/yllapito'
+    | '/api/booking-widget-config'
     | '/api/chat'
     | '/api/track'
+    | '/dashboard/booking-widget'
     | '/dashboard/calls'
     | '/dashboard/conversations'
     | '/dashboard/floor-plan'
@@ -548,8 +570,10 @@ export interface FileRouteTypes {
     | '/verkkosivut'
     | '/yhteys'
     | '/yllapito'
+    | '/api/booking-widget-config'
     | '/api/chat'
     | '/api/track'
+    | '/dashboard/booking-widget'
     | '/dashboard/calls'
     | '/dashboard/conversations'
     | '/dashboard/floor-plan'
@@ -597,6 +621,7 @@ export interface RootRouteChildren {
   VerkkosivutRoute: typeof VerkkosivutRoute
   YhteysRoute: typeof YhteysRoute
   YllapitoRoute: typeof YllapitoRoute
+  ApiBookingWidgetConfigRoute: typeof ApiBookingWidgetConfigRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiTrackRoute: typeof ApiTrackRoute
   ApiAuthLoginRoute: typeof ApiAuthLoginRoute
@@ -786,6 +811,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardCallsRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
+    '/dashboard/booking-widget': {
+      id: '/dashboard/booking-widget'
+      path: '/booking-widget'
+      fullPath: '/dashboard/booking-widget'
+      preLoaderRoute: typeof DashboardBookingWidgetRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
     '/api/track': {
       id: '/api/track'
       path: '/api/track'
@@ -798,6 +830,13 @@ declare module '@tanstack/react-router' {
       path: '/api/chat'
       fullPath: '/api/chat'
       preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/booking-widget-config': {
+      id: '/api/booking-widget-config'
+      path: '/api/booking-widget-config'
+      fullPath: '/api/booking-widget-config'
+      preLoaderRoute: typeof ApiBookingWidgetConfigRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/restaurant/settings': {
@@ -944,6 +983,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardRouteRouteChildren {
+  DashboardBookingWidgetRoute: typeof DashboardBookingWidgetRoute
   DashboardCallsRoute: typeof DashboardCallsRoute
   DashboardConversationsRoute: typeof DashboardConversationsRoute
   DashboardFloorPlanRoute: typeof DashboardFloorPlanRoute
@@ -957,6 +997,7 @@ interface DashboardRouteRouteChildren {
 }
 
 const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
+  DashboardBookingWidgetRoute: DashboardBookingWidgetRoute,
   DashboardCallsRoute: DashboardCallsRoute,
   DashboardConversationsRoute: DashboardConversationsRoute,
   DashboardFloorPlanRoute: DashboardFloorPlanRoute,
@@ -1050,6 +1091,7 @@ const rootRouteChildren: RootRouteChildren = {
   VerkkosivutRoute: VerkkosivutRoute,
   YhteysRoute: YhteysRoute,
   YllapitoRoute: YllapitoRoute,
+  ApiBookingWidgetConfigRoute: ApiBookingWidgetConfigRoute,
   ApiChatRoute: ApiChatRoute,
   ApiTrackRoute: ApiTrackRoute,
   ApiAuthLoginRoute: ApiAuthLoginRoute,

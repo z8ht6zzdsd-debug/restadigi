@@ -136,6 +136,13 @@ export const outboundEmails = pgTable("outbound_emails", {
   sentAt: timestamp("sent_at", { withTimezone: true }).defaultNow().notNull(),
 });
 
+/** EasyTable-style online booking widget config (JSON blob). */
+export const bookingWidgetConfig = pgTable("booking_widget_config", {
+  id: text("id").primaryKey().default("default"),
+  configJson: text("config_json").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
 /**
  * Lightweight sales call calendar — no separate client CRM.
  * One row = one planned/completed call with notes.
