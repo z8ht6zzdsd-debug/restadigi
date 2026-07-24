@@ -601,64 +601,73 @@ function DashboardMailPage() {
             {t.mail.sentList} · {tabLabels[activeType]}
           </h3>
         </div>
+        <p className="text-sm text-[#5c534c]">{t.mail.trackingHint}</p>
         {emails.length === 0 ? (
           <p className="text-sm text-muted-foreground">{t.mail.emptySent}</p>
         ) : (
           <div className="overflow-x-auto rounded-sm border border-border">
-            <table className="w-full min-w-[640px] text-left text-sm">
+            <table className="w-full min-w-[720px] text-left text-sm">
               <thead className="bg-secondary/50 text-xs uppercase tracking-wide text-muted-foreground">
                 <tr>
                   <th className="px-3 py-2 font-medium">{t.mail.toEmail}</th>
                   <th className="px-3 py-2 font-medium">{t.mail.subject}</th>
                   <th className="px-3 py-2 font-medium">{t.mail.status}</th>
-                  <th className="px-3 py-2 font-medium">{t.mail.opens}</th>
+                  <th className="px-3 py-2 font-medium">{t.mail.tracking}</th>
                   <th className="px-3 py-2 font-medium">{t.mail.sentAt}</th>
                 </tr>
               </thead>
               <tbody>
-                {emails.map((email) => (
-                  <tr key={email.id} className="border-t border-border">
-                    <td className="px-3 py-2">
-                      <div className="font-medium">{email.toName || email.toEmail}</div>
-                      {email.toName ? (
-                        <div className="text-xs text-muted-foreground">{email.toEmail}</div>
-                      ) : null}
-                    </td>
-                    <td className="max-w-[220px] truncate px-3 py-2">{email.subject}</td>
-                    <td className="px-3 py-2">
-                      <span
-                        className={cn(
-                          "rounded-sm px-2 py-0.5 text-xs",
-                          email.status === "sent"
-                            ? "bg-accent/15 text-accent"
-                            : "bg-destructive/10 text-destructive",
-                        )}
-                      >
-                        {email.status === "sent" ? t.mail.statsSent : t.mail.statsFailed}
-                      </span>
-                      {email.errorMessage ? (
-                        <p className="mt-1 text-xs text-destructive">{email.errorMessage}</p>
-                      ) : null}
-                    </td>
-                    <td className="px-3 py-2 tabular-nums">
-                      {email.openCount > 0 ? (
-                        <span>
-                          {email.openCount}×
-                          {email.lastOpenedAt ? (
-                            <span className="block text-xs text-muted-foreground">
-                              {new Date(email.lastOpenedAt).toLocaleString(dateLocale)}
-                            </span>
-                          ) : null}
+                {emails.map((email) => {
+                  const opened = email.openCount > 0;
+                  return (
+                    <tr key={email.id} className="border-t border-border">
+                      <td className="px-3 py-2">
+                        <div className="font-medium">{email.toName || email.toEmail}</div>
+                        {email.toName ? (
+                          <div className="text-xs text-muted-foreground">{email.toEmail}</div>
+                        ) : null}
+                      </td>
+                      <td className="max-w-[220px] truncate px-3 py-2">{email.subject}</td>
+                      <td className="px-3 py-2">
+                        <span
+                          className={cn(
+                            "rounded-sm px-2 py-0.5 text-xs",
+                            email.status === "sent"
+                              ? "bg-accent/15 text-accent"
+                              : "bg-destructive/10 text-destructive",
+                          )}
+                        >
+                          {email.status === "sent" ? t.mail.statsSent : t.mail.statsFailed}
                         </span>
-                      ) : (
-                        <span className="text-muted-foreground">{t.mail.notOpened}</span>
-                      )}
-                    </td>
-                    <td className="px-3 py-2 text-xs text-muted-foreground">
-                      {new Date(email.sentAt).toLocaleString(dateLocale)}
-                    </td>
-                  </tr>
-                ))}
+                        {email.errorMessage ? (
+                          <p className="mt-1 text-xs text-destructive">{email.errorMessage}</p>
+                        ) : null}
+                      </td>
+                      <td className="px-3 py-2">
+                        {opened ? (
+                          <div>
+                            <span className="rounded-sm bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-800">
+                              {t.mail.opened}
+                            </span>
+                            <p className="mt-1 text-xs tabular-nums text-muted-foreground">
+                              {email.openCount}×
+                              {email.lastOpenedAt
+                                ? ` · ${new Date(email.lastOpenedAt).toLocaleString(dateLocale)}`
+                                : ""}
+                            </p>
+                          </div>
+                        ) : (
+                          <span className="rounded-sm bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900">
+                            {t.mail.notOpened}
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-3 py-2 text-xs text-muted-foreground">
+                        {new Date(email.sentAt).toLocaleString(dateLocale)}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

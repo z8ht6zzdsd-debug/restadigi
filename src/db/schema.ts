@@ -128,6 +128,8 @@ export const outboundEmails = pgTable("outbound_emails", {
   attachmentSlots: text("attachment_slots").notNull().default("pdf1,pdf2"),
   /** Mail workflow: default | cold | order | free */
   templateId: text("template_id").notNull().default("default"),
+  /** Test sends are not stored; column guards legacy rows / future use. */
+  isTest: boolean("is_test").notNull().default(false),
   openCount: integer("open_count").notNull().default(0),
   openedAt: timestamp("opened_at", { withTimezone: true }),
   lastOpenedAt: timestamp("last_opened_at", { withTimezone: true }),

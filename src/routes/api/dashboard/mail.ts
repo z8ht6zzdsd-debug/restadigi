@@ -123,6 +123,7 @@ export const Route = createFileRoute("/api/dashboard/mail")({
             templateId,
             requireAttachments: isTest ? false : requireOnCustomer,
             subjectPrefix: isTest ? "[TESTI] " : "",
+            isTest,
           });
 
           return Response.json({ ok: true, email });

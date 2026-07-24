@@ -110,8 +110,15 @@ export async function ensureMailTables() {
     ALTER TABLE outbound_emails
     ADD COLUMN IF NOT EXISTS template_id TEXT NOT NULL DEFAULT 'default'
   `);
+  await db.execute(sql`
+    ALTER TABLE outbound_emails
+    ADD COLUMN IF NOT EXISTS is_test BOOLEAN NOT NULL DEFAULT false
+  `);
   await db.execute(
     sql`CREATE INDEX IF NOT EXISTS idx_outbound_emails_template_id ON outbound_emails(template_id)`,
+  );
+  await db.execute(
+    sql`CREATE INDEX IF NOT EXISTS idx_outbound_emails_is_test ON outbound_emails(is_test)`,
   );
 }
 
@@ -320,7 +327,7 @@ function logoUrl(origin: string) {
   return `${origin.replace(/\/$/, "")}/restadigi-logo.png`;
 }
 
-function buildHtmlBody(textBody: string, trackingUrl: string, origin: string) {
+function buildHtmlBody(textBody: string, trackingUrl: string | null, origin: string) {
   const paragraphs = textBody
     .split(/\n{2,}/)
     .map((block) => block.trim())
@@ -344,6 +351,9 @@ function buildHtmlBody(textBody: string, trackingUrl: string, origin: string) {
     .join("");
 
   const logo = escapeHtml(logoUrl(origin));
+  const trackingPixel = trackingUrl
+    ? `<img src="${escapeHtml(trackingUrl)}" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;" />`
+    : "";
 
   // Structure & styles mirror Restadigi-sahkopostipohjat/esikatselu.html
   return `<!DOCTYPE html>
@@ -378,7 +388,7 @@ function buildHtmlBody(textBody: string, trackingUrl: string, origin: string) {
       </td>
     </tr>
   </table>
-  <img src="${escapeHtml(trackingUrl)}" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;" />
+  ${trackingPixel}
 </body>
 </html>`;
 }
@@ -406,10 +416,13 @@ export async function sendClientMail(input: {
   templateId?: string | null;
   requireAttachments?: boolean;
   subjectPrefix?: string;
+  /** Test sends are delivered but not tracked or listed in the dashboard. */
+  isTest?: boolean;
 }) {
   await ensureMailTables();
   const templateId = resolveTemplateId(input.templateId);
   const defaults = MAIL_TEMPLATE_DEFAULTS[templateId];
+  const isTest = input.isTest === true;
   const db = getDb();
   const smtp = getSmtpConfig(templateId);
   const saved = await getMailTemplate(templateId);
@@ -433,13 +446,16 @@ export async function sendClientMail(input: {
     company: input.company?.trim() || "Oluthuone Hannikainen",
   };
 
-  const trackingToken = randomBytes(24).toString("base64url");
+  const trackingToken = isTest ? null : randomBytes(24).toString("base64url");
   const subject = `${input.subjectPrefix ?? ""}${applyMailPlaceholders(
     (input.subject ?? saved.subject).trim(),
     vars,
   )}`;
   const body = applyMailPlaceholders((input.body ?? saved.body).trim(), vars);
-  const trackingUrl = `${input.origin.replace(/\/$/, "")}/api/mail/track/${trackingToken}`;
+  const trackingUrl =
+    trackingToken && !isTest
+      ? `${input.origin.replace(/\/$/, "")}/api/mail/track/${trackingToken}`
+      : null;
 
   const transporter = nodemailer.createTransport({
     host: smtp.host,
@@ -462,6 +478,11 @@ export async function sendClientMail(input: {
       })),
     });
 
+    // Tests: deliver only — no pixel, no history, no open tracking.
+    if (isTest || !trackingToken) {
+      return { id: null, toEmail: input.toEmail, subject, status: "sent", isTest: true as const };
+    }
+
     const [row] = await db
       .insert(schema.outboundEmails)
       .values({
@@ -472,22 +493,27 @@ export async function sendClientMail(input: {
         status: "sent",
         attachmentSlots: ready.map((f) => f.slot).join(",") || "none",
         templateId,
+        isTest: false,
       })
       .returning();
 
     return row;
   } catch (error) {
     const message = error instanceof Error ? error.message : "Lähetys epäonnistui";
-    await db.insert(schema.outboundEmails).values({
-      toEmail: input.toEmail,
-      toName: input.toName?.trim() || null,
-      subject,
-      trackingToken,
-      status: "failed",
-      errorMessage: message,
-      attachmentSlots: ready.map((f) => f.slot).join(",") || "none",
-      templateId,
-    });
+    // Only persist failed real customer sends (not tests).
+    if (!isTest && trackingToken) {
+      await db.insert(schema.outboundEmails).values({
+        toEmail: input.toEmail,
+        toName: input.toName?.trim() || null,
+        subject,
+        trackingToken,
+        status: "failed",
+        errorMessage: message,
+        attachmentSlots: ready.map((f) => f.slot).join(",") || "none",
+        templateId,
+        isTest: false,
+      });
+    }
     throw new Error(message);
   }
 }
@@ -495,14 +521,16 @@ export async function sendClientMail(input: {
 export async function listOutboundEmails(limit = 50, templateIdRaw?: string | null) {
   await ensureMailTables();
   const db = getDb();
+  const notTest = eq(schema.outboundEmails.isTest, false);
   if (templateIdRaw && isMailTemplateId(templateIdRaw)) {
     return db.query.outboundEmails.findMany({
-      where: eq(schema.outboundEmails.templateId, templateIdRaw),
+      where: and(eq(schema.outboundEmails.templateId, templateIdRaw), notTest),
       orderBy: [desc(schema.outboundEmails.sentAt)],
       limit,
     });
   }
   return db.query.outboundEmails.findMany({
+    where: notTest,
     orderBy: [desc(schema.outboundEmails.sentAt)],
     limit,
   });
@@ -513,38 +541,29 @@ export async function getMailStats(templateIdRaw?: string | null) {
   const db = getDb();
   const templateId = templateIdRaw && isMailTemplateId(templateIdRaw) ? templateIdRaw : null;
 
-  const baseWhere = templateId ? eq(schema.outboundEmails.templateId, templateId) : undefined;
+  const baseFilters = templateId
+    ? and(eq(schema.outboundEmails.templateId, templateId), eq(schema.outboundEmails.isTest, false))
+    : eq(schema.outboundEmails.isTest, false);
 
-  const [total] = await db.select({ count: count() }).from(schema.outboundEmails).where(baseWhere);
+  const [total] = await db
+    .select({ count: count() })
+    .from(schema.outboundEmails)
+    .where(baseFilters);
   const [sent] = await db
     .select({ count: count() })
     .from(schema.outboundEmails)
-    .where(
-      templateId
-        ? and(
-            eq(schema.outboundEmails.status, "sent"),
-            eq(schema.outboundEmails.templateId, templateId),
-          )
-        : eq(schema.outboundEmails.status, "sent"),
-    );
+    .where(and(eq(schema.outboundEmails.status, "sent"), baseFilters));
   const [failed] = await db
     .select({ count: count() })
     .from(schema.outboundEmails)
-    .where(
-      templateId
-        ? and(
-            eq(schema.outboundEmails.status, "failed"),
-            eq(schema.outboundEmails.templateId, templateId),
-          )
-        : eq(schema.outboundEmails.status, "failed"),
-    );
+    .where(and(eq(schema.outboundEmails.status, "failed"), baseFilters));
 
   const openedResult = templateId
     ? await db.execute<{ count: number }>(
-        sql`SELECT COUNT(*)::int AS count FROM outbound_emails WHERE open_count > 0 AND template_id = ${templateId}`,
+        sql`SELECT COUNT(*)::int AS count FROM outbound_emails WHERE open_count > 0 AND is_test = false AND template_id = ${templateId}`,
       )
     : await db.execute<{ count: number }>(
-        sql`SELECT COUNT(*)::int AS count FROM outbound_emails WHERE open_count > 0`,
+        sql`SELECT COUNT(*)::int AS count FROM outbound_emails WHERE open_count > 0 AND is_test = false`,
       );
 
   return {
@@ -559,7 +578,10 @@ export async function recordMailOpen(trackingToken: string) {
   await ensureMailTables();
   const db = getDb();
   const row = await db.query.outboundEmails.findFirst({
-    where: eq(schema.outboundEmails.trackingToken, trackingToken),
+    where: and(
+      eq(schema.outboundEmails.trackingToken, trackingToken),
+      eq(schema.outboundEmails.isTest, false),
+    ),
   });
   if (!row) return false;
 

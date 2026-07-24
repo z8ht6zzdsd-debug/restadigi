@@ -214,6 +214,10 @@ const fi = {
     opens: "Avaukset",
     sentAt: "Lähetetty",
     notOpened: "Ei avattu",
+    opened: "Avattu",
+    tracking: "Seuranta",
+    trackingHint:
+      "Vain oikeat asiakaslähetykset. Testit eivät tallennu eivätkä seurantaa. Avaus näkyy, kun vastaanottaja avaa viestin.",
     dbHint: "Tarvitset DATABASE_URL (Neon) ja SMTP-asetukset Zohoa varten.",
     useDefaultPdfs: "Käytä oletus-PDF:itä",
     seedingDefaults: "Päivitetään…",
@@ -516,6 +520,10 @@ const en: DashboardUi = {
     opens: "Opens",
     sentAt: "Sent",
     notOpened: "Not opened",
+    opened: "Opened",
+    tracking: "Tracking",
+    trackingHint:
+      "Only real customer sends. Tests are not saved or tracked. Open status updates when the recipient opens the email.",
     dbHint: "You need DATABASE_URL (Neon) and Zoho SMTP settings.",
     useDefaultPdfs: "Use default PDFs",
     seedingDefaults: "Updating…",
@@ -801,6 +809,10 @@ const es: DashboardUi = {
     opens: "Aperturas",
     sentAt: "Enviado",
     notOpened: "Sin abrir",
+    opened: "Abierto",
+    tracking: "Tracking",
+    trackingHint:
+      "Solo envíos reales al cliente. Las pruebas no se guardan ni se trackean. El estado se actualiza cuando abren el email.",
     dbHint: "Necesitas DATABASE_URL (Neon) y la configuración SMTP de Zoho.",
     useDefaultPdfs: "Usar PDFs por defecto",
     seedingDefaults: "Actualizando…",
