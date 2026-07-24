@@ -15,7 +15,7 @@ const settingsSchema = z.object({
   restaurantEmail: z.string().max(120).nullish(),
   cuisineType: z.string().max(120).nullable().optional(),
   restaurantDescription: z.string().max(1000).nullable().optional(),
-  chatbotWelcomeMessage: z.string().min(1).max(500),
+  chatbotWelcomeMessage: z.string().min(1).max(2000),
   chatbotInstructions: z.string().max(2000).nullable().optional(),
   requireEmail: z.boolean(),
   requirePhone: z.boolean(),

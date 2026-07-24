@@ -39,7 +39,16 @@ const FLEXIBLE_BOOKING_PATCH: Partial<Omit<RestaurantSettings, "id" | "updatedAt
   chatbotInstructions: DEFAULT_SETTINGS.chatbotInstructions,
 };
 
+const LEGACY_BOOKING_WELCOMES = new Set([
+  "Hei! Tervetuloa. Autan pöytävarauksessa — kerro nimesi, henkilömäärä, päivä, kellonaika (12–22) ja puhelinnumero. Sähköposti on vapaaehtoinen. Normaali pöytäaika on 2 tuntia; 3 tuntia onnistuu pyynnöstä.",
+  "Hei! Autan pöytävarauksessa — kerro nimesi, henkilömäärä, päivä, kellonaika (12–22) ja puhelinnumero. Sähköposti on vapaaehtoinen. Normaali pöytäaika on 2 tuntia; 3 tuntia onnistuu pyynnöstä.",
+  "Hei! Autan pöytävarauksessa. Kerro nimesi, henkilömäärä, päivä, kellonaika (12–22) ja puhelinnumero. Sähköposti on vapaaehtoinen. Normaali pöytäaika on 2 tuntia — 3 tuntia onnistuu pyynnöstä.",
+  "Hei! Tervetuloa Demo Ravintolaan. Autan mielelläni pöytävarauksessa — kerro nimesi, henkilömäärän, toivomasi päivän ja kellonajan sekä sähköpostisi ja puhelinnumerosi.",
+  "Hei! Olen ravintolan chatbot. Voin auttaa pöytävarauksessa — kerro nimesi, henkilömäärän, päivän, kellonajan ja sähköpostisi.",
+]);
+
 let flexibleBookingEnsured = false;
+let welcomeRefreshEnsured = false;
 
 export async function getRestaurantSettings(): Promise<RestaurantSettings> {
   if (!getDatabaseUrl()) {
@@ -80,6 +89,27 @@ export async function getRestaurantSettings(): Promise<RestaurantSettings> {
           if (updated) row = updated;
         } catch (error) {
           console.error("ensure flexible booking settings error:", error);
+        }
+      }
+    }
+
+    // Refresh known legacy demo welcome texts to the latest Resta-AI copy.
+    if (!welcomeRefreshEnsured) {
+      welcomeRefreshEnsured = true;
+      if (LEGACY_BOOKING_WELCOMES.has(row.chatbotWelcomeMessage)) {
+        try {
+          const [updated] = await db
+            .update(schema.restaurantSettings)
+            .set({
+              chatbotWelcomeMessage: DEFAULT_SETTINGS.chatbotWelcomeMessage,
+              chatbotInstructions: DEFAULT_SETTINGS.chatbotInstructions,
+              updatedAt: new Date(),
+            })
+            .where(eq(schema.restaurantSettings.id, "default"))
+            .returning();
+          if (updated) row = updated;
+        } catch (error) {
+          console.error("refresh booking welcome message error:", error);
         }
       }
     }

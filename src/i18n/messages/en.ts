@@ -1013,7 +1013,7 @@ export const en: Messages = {
       eyebrow: "RESTADIGI",
       title: "Resta-AI",
       welcome:
-        "Hi! I’m Resta-AI and I’m here to help answer your questions. I’m happy to help you find the right digital solution for your services. Tell me briefly about your business and your ideas, and I’ll suggest good options we can start working from. You can also leave your phone number and email, and we’ll get back to you quickly in the way you prefer. Feel free to ask me about website packages, other products, or even AI customer service!\n\nPlease note that I’m an AI assistant and I’m learning all the time!",
+        "Hi! 👋 I’m Resta-AI and I help you find the right digital solutions for your business.\n\nTell me briefly about your company or what you’re looking for, and I’ll recommend suitable options. You can ask about website packages, AI customer service, or our other services.\n\nIf you’d like, you can also leave your phone number and email, and we’ll contact you the way you prefer.\n\nPlease note that I’m an AI assistant and I keep improving.",
       placeholder: "Type your question here…",
       sendAria: "Send message",
       resetAria: "Restart conversation",
@@ -1036,7 +1036,7 @@ export const en: Messages = {
       eyebrow: "Reservations",
       title: "Book a table",
       welcome:
-        "Hi! I can help you book a table. Share your name, party size, date, time (12:00–22:00) and phone number. Email is optional. Standard seating is 2 hours — 3 hours is available on request.",
+        "Hi! 👋 Welcome to Restadigi.\n\nWould you like to book a table at our restaurant? I’m Resta-AI, and I’ll help you make a reservation.\n\nWe’re open daily from 12:00–24:00, and table bookings can be made for 12:00–22:00.\n\nPlease tell me:\n\n    your name\n    party size\n    date and time\n    your phone number\n    your email (for the booking confirmation)\n\nA standard table booking lasts 2 hours. A 3-hour booking is also available on request.",
       placeholder: "Type your message…",
       sendAria: "Send message",
       typing: "Typing…",

@@ -1014,7 +1014,7 @@ export const fi: Messages = {
       eyebrow: "RESTADIGI",
       title: "Resta-AI",
       welcome:
-        "Hei! Olen Resta-AI ja autan sinua löytämään vastaukset mieltäsi askarruttaviin kysymyksiin. Autan sinua mielelläni esimerkiksi löytämään oikean digiratkaisun palveluillesi. Kerro lyhyesti yrityksestäsi ja ajatuksistasi, niin esittelen sinulle hyviä vaihtoehtoja mistä voimme lähteä työstämään. Voit jättää myös puhelinnumeron ja sähköpostin, niin olemme sinuun pikaisesti yhteydessä toivomallasi tavalla. Voit myös kysyä minulta verkkosivupaketeista, muista tuotteista tai vaikka ai-asiakaspalvelusta!\n\nHuomioithan, että olen tekoälyavustaja ja opin koko ajan uutta!",
+        "Hei! 👋 Olen Resta-AI ja autan sinua löytämään yrityksellesi sopivat digiratkaisut.\n\nKerro lyhyesti yrityksestäsi tai siitä, mitä etsit, niin suosittelen sinulle sopivia vaihtoehtoja. Voit kysyä esimerkiksi verkkosivupaketeista, AI-asiakaspalvelusta tai muista palveluistamme.\n\nHalutessasi voit jättää myös puhelinnumerosi ja sähköpostiosoitteesi, niin otamme sinuun yhteyttä toivomallasi tavalla.\n\nHuomioithan, että olen tekoälyavustaja ja kehityn jatkuvasti.",
       placeholder: "Kirjoita kysymyksesi tästä…",
       sendAria: "Lähetä viesti",
       resetAria: "Aloita keskustelu uudelleen",
@@ -1037,7 +1037,7 @@ export const fi: Messages = {
       eyebrow: "Pöytävaraus",
       title: "Varaa pöytä",
       welcome:
-        "Hei! Autan pöytävarauksessa. Kerro nimesi, henkilömäärä, päivä, kellonaika (12–22) ja puhelinnumero. Sähköposti on vapaaehtoinen. Normaali pöytäaika on 2 tuntia — 3 tuntia onnistuu pyynnöstä.",
+        "Hei! 👋 Tervetuloa Restadigille.\n\nHaluaisitko varata pöydän ravintolaamme? Olen Resta-AI, ja autan sinua tekemään varauksen.\n\nRavintolamme on avoinna päivittäin klo 12–24, ja pöytävarauksia voi tehdä klo 12–22.\n\nKerro minulle:\n\n    nimesi\n    seurueen henkilömäärä\n    varauspäivä ja kellonaika\n    puhelinnumerosi\n    sähköpostiosoitteesi (varausvahvistusta varten)\n\nNormaali pöytävarauksen kesto on 2 tuntia. Tarvittaessa myös 3 tunnin varaus onnistuu pyynnöstä.",
       placeholder: "Kirjoita viestisi…",
       sendAria: "Lähetä viesti",
       typing: "Kirjoittaa…",

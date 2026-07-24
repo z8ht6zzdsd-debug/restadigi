@@ -1021,7 +1021,7 @@ export const es: Messages = {
       eyebrow: "RESTADIGI",
       title: "Resta-AI",
       welcome:
-        "¡Hola! Soy Resta-AI y te ayudo a encontrar respuestas a tus dudas. Encantado de ayudarte a encontrar la solución digital adecuada para tus servicios. Cuéntame brevemente sobre tu negocio y tus ideas, y te presento buenas opciones desde las que podemos empezar. También puedes dejar teléfono y correo, y te contactamos rápido como prefieras. ¡Pregúntame por paquetes web, otros productos o incluso atención con IA!\n\nTen en cuenta que soy un asistente de inteligencia artificial y aprendo continuamente.",
+        "¡Hola! 👋 Soy Resta-AI y te ayudo a encontrar las soluciones digitales adecuadas para tu empresa.\n\nCuéntame brevemente sobre tu negocio o lo que buscas, y te recomendaré opciones adecuadas. Puedes preguntar por paquetes web, atención al cliente con IA u otros servicios nuestros.\n\nSi quieres, también puedes dejar tu teléfono y correo, y te contactamos como prefieras.\n\nTen en cuenta que soy un asistente de inteligencia artificial y mejoro continuamente.",
       placeholder: "Escribe tu pregunta aquí…",
       sendAria: "Enviar mensaje",
       resetAria: "Reiniciar conversación",
@@ -1044,7 +1044,7 @@ export const es: Messages = {
       eyebrow: "Reservas",
       title: "Reservar mesa",
       welcome:
-        "¡Hola! Puedo ayudarte a reservar mesa. Indica nombre, personas, fecha, hora (12:00–22:00) y teléfono. El correo es opcional. La duración normal es 2 horas — 3 horas bajo petición.",
+        "¡Hola! 👋 Bienvenido/a a Restadigi.\n\n¿Te gustaría reservar mesa en nuestro restaurante? Soy Resta-AI y te ayudo a hacer la reserva.\n\nEstamos abiertos todos los días de 12:00 a 24:00, y las reservas de mesa se pueden hacer de 12:00 a 22:00.\n\nDime:\n\n    tu nombre\n    número de personas\n    fecha y hora\n    tu teléfono\n    tu correo (para la confirmación de la reserva)\n\nLa duración normal de una reserva es de 2 horas. Si lo necesitas, también es posible reservar 3 horas bajo petición.",
       placeholder: "Escribe tu mensaje…",
       sendAria: "Enviar mensaje",
       typing: "Escribiendo…",
