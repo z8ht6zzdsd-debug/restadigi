@@ -61,6 +61,24 @@
       "permanent": false
     },
     {
+      "source": "/form",
+      "has": [{ "type": "host", "value": "restadigi.fi" }],
+      "destination": "https://form.restadigi.fi/form",
+      "permanent": false
+    },
+    {
+      "source": "/form",
+      "has": [{ "type": "host", "value": "www.restadigi.fi" }],
+      "destination": "https://form.restadigi.fi/form",
+      "permanent": false
+    },
+    {
+      "source": "/form",
+      "has": [{ "type": "host", "value": "restadigi.vercel.app" }],
+      "destination": "https://form.restadigi.fi/form",
+      "permanent": false
+    },
+    {
       "source": "/",
       "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
       "destination": "https://admin.restadigi.fi/dashboard/login",
@@ -106,6 +124,18 @@
       "source": "/meista",
       "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
       "destination": "https://admin.restadigi.fi/dashboard/login",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "form.restadigi.fi" }],
+      "destination": "https://form.restadigi.fi/form",
+      "permanent": false
+    },
+    {
+      "source": "/index",
+      "has": [{ "type": "host", "value": "form.restadigi.fi" }],
+      "destination": "https://form.restadigi.fi/form",
       "permanent": false
     }
   ]

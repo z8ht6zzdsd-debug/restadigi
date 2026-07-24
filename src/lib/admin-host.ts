@@ -1,3 +1,11 @@
+import {
+  formIntakeUrl,
+  isAllowedOnFormHost,
+  isFormHost,
+  isFormPath,
+  getFormOrigin,
+} from "@/lib/form-host";
+
 /** Production admin / marketing host helpers (same Vercel deployment, two domains). */
 
 export function getAdminOrigin() {
@@ -57,7 +65,9 @@ export function isAllowedOnAdminHost(pathname: string) {
 /**
  * Cross-domain redirects:
  * - restadigi.fi /dashboard* → admin.restadigi.fi/dashboard*
+ * - restadigi.fi /form* → form.restadigi.fi/form*
  * - admin.restadigi.fi /* (non-admin) → /dashboard/login
+ * - form.restadigi.fi /* (non-form) → /form
  */
 export function maybeHostRedirect(request: Request): Response | null {
   const url = new URL(request.url);
@@ -68,8 +78,16 @@ export function maybeHostRedirect(request: Request): Response | null {
     return Response.redirect(`${getAdminOrigin()}${path}${url.search}`, 307);
   }
 
+  if (isMarketingHost(host) && isFormPath(path)) {
+    return Response.redirect(`${getFormOrigin()}${path}${url.search}`, 307);
+  }
+
   if (isAdminHost(host) && !isAllowedOnAdminHost(path)) {
     return Response.redirect(adminLoginUrl(), 307);
+  }
+
+  if (isFormHost(host) && !isAllowedOnFormHost(path)) {
+    return Response.redirect(formIntakeUrl(), 307);
   }
 
   return null;

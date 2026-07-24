@@ -20,6 +20,11 @@ import {
   isBrowserAdminHost,
   isBrowserAllowedOnAdmin,
 } from "../lib/admin-host-client";
+import {
+  FORM_INTAKE_URL,
+  isBrowserAllowedOnForm,
+  isBrowserFormHost,
+} from "../lib/form-host-client";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LocaleProvider, useMessages } from "../i18n";
 
@@ -171,24 +176,40 @@ function AdminHostGuard({ children }: { children: ReactNode }) {
   return children;
 }
 
+function FormHostGuard({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    if (!isBrowserFormHost()) return;
+    if (isBrowserAllowedOnForm(pathname)) return;
+    window.location.replace(FORM_INTAKE_URL);
+  }, [pathname]);
+
+  return children;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const onAdmin = typeof window !== "undefined" && isBrowserAdminHost();
-  const hideMarketingChrome = onAdmin || pathname.startsWith("/dashboard");
+  const onForm = typeof window !== "undefined" && isBrowserFormHost();
+  const hideMarketingChrome =
+    onAdmin || onForm || pathname.startsWith("/dashboard") || pathname.startsWith("/form");
 
   return (
     <QueryClientProvider client={queryClient}>
       <CookieConsentProvider>
         <AdminHostGuard>
-          <PageTracker />
-          <Outlet />
-          {hideMarketingChrome ? null : (
-            <>
-              <ChatbotWidget />
-              <CookieConsentUI />
-            </>
-          )}
+          <FormHostGuard>
+            <PageTracker />
+            <Outlet />
+            {hideMarketingChrome ? null : (
+              <>
+                <ChatbotWidget />
+                <CookieConsentUI />
+              </>
+            )}
+          </FormHostGuard>
         </AdminHostGuard>
       </CookieConsentProvider>
     </QueryClientProvider>

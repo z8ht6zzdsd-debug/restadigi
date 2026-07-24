@@ -18,6 +18,7 @@ import { Route as NakyvyysJaSuunnitteluRouteImport } from './routes/nakyvyys-ja-
 import { Route as MeistaRouteImport } from './routes/meista'
 import { Route as KayttoehdotRouteImport } from './routes/kayttoehdot'
 import { Route as HinnastoRouteImport } from './routes/hinnasto'
+import { Route as FormRouteImport } from './routes/form'
 import { Route as EvasteetRouteImport } from './routes/evasteet'
 import { Route as AiAsiakaspalveluRouteImport } from './routes/ai-asiakaspalvelu'
 import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
@@ -35,6 +36,7 @@ import { Route as DashboardCallsRouteImport } from './routes/dashboard/calls'
 import { Route as ApiTrackRouteImport } from './routes/api/track'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiRestaurantSettingsRouteImport } from './routes/api/restaurant/settings'
+import { Route as ApiFormIntakeRouteImport } from './routes/api/form/intake'
 import { Route as ApiDashboardVisitorsRouteImport } from './routes/api/dashboard/visitors'
 import { Route as ApiDashboardStatsRouteImport } from './routes/api/dashboard/stats'
 import { Route as ApiDashboardSettingsRouteImport } from './routes/api/dashboard/settings'
@@ -97,6 +99,11 @@ const KayttoehdotRoute = KayttoehdotRouteImport.update({
 const HinnastoRoute = HinnastoRouteImport.update({
   id: '/hinnasto',
   path: '/hinnasto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormRoute = FormRouteImport.update({
+  id: '/form',
+  path: '/form',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EvasteetRoute = EvasteetRouteImport.update({
@@ -182,6 +189,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
 const ApiRestaurantSettingsRoute = ApiRestaurantSettingsRouteImport.update({
   id: '/api/restaurant/settings',
   path: '/api/restaurant/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiFormIntakeRoute = ApiFormIntakeRouteImport.update({
+  id: '/api/form/intake',
+  path: '/api/form/intake',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiDashboardVisitorsRoute = ApiDashboardVisitorsRouteImport.update({
@@ -285,6 +297,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRouteRouteWithChildren
   '/ai-asiakaspalvelu': typeof AiAsiakaspalveluRoute
   '/evasteet': typeof EvasteetRoute
+  '/form': typeof FormRoute
   '/hinnasto': typeof HinnastoRoute
   '/kayttoehdot': typeof KayttoehdotRoute
   '/meista': typeof MeistaRoute
@@ -318,6 +331,7 @@ export interface FileRoutesByFullPath {
   '/api/dashboard/settings': typeof ApiDashboardSettingsRoute
   '/api/dashboard/stats': typeof ApiDashboardStatsRoute
   '/api/dashboard/visitors': typeof ApiDashboardVisitorsRoute
+  '/api/form/intake': typeof ApiFormIntakeRoute
   '/api/restaurant/settings': typeof ApiRestaurantSettingsRoute
   '/api/dashboard/calls/$id': typeof ApiDashboardCallsIdRoute
   '/api/dashboard/conversations/$sessionId': typeof ApiDashboardConversationsSessionIdRoute
@@ -330,6 +344,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai-asiakaspalvelu': typeof AiAsiakaspalveluRoute
   '/evasteet': typeof EvasteetRoute
+  '/form': typeof FormRoute
   '/hinnasto': typeof HinnastoRoute
   '/kayttoehdot': typeof KayttoehdotRoute
   '/meista': typeof MeistaRoute
@@ -363,6 +378,7 @@ export interface FileRoutesByTo {
   '/api/dashboard/settings': typeof ApiDashboardSettingsRoute
   '/api/dashboard/stats': typeof ApiDashboardStatsRoute
   '/api/dashboard/visitors': typeof ApiDashboardVisitorsRoute
+  '/api/form/intake': typeof ApiFormIntakeRoute
   '/api/restaurant/settings': typeof ApiRestaurantSettingsRoute
   '/api/dashboard/calls/$id': typeof ApiDashboardCallsIdRoute
   '/api/dashboard/conversations/$sessionId': typeof ApiDashboardConversationsSessionIdRoute
@@ -377,6 +393,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRouteRouteWithChildren
   '/ai-asiakaspalvelu': typeof AiAsiakaspalveluRoute
   '/evasteet': typeof EvasteetRoute
+  '/form': typeof FormRoute
   '/hinnasto': typeof HinnastoRoute
   '/kayttoehdot': typeof KayttoehdotRoute
   '/meista': typeof MeistaRoute
@@ -410,6 +427,7 @@ export interface FileRoutesById {
   '/api/dashboard/settings': typeof ApiDashboardSettingsRoute
   '/api/dashboard/stats': typeof ApiDashboardStatsRoute
   '/api/dashboard/visitors': typeof ApiDashboardVisitorsRoute
+  '/api/form/intake': typeof ApiFormIntakeRoute
   '/api/restaurant/settings': typeof ApiRestaurantSettingsRoute
   '/api/dashboard/calls/$id': typeof ApiDashboardCallsIdRoute
   '/api/dashboard/conversations/$sessionId': typeof ApiDashboardConversationsSessionIdRoute
@@ -425,6 +443,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/ai-asiakaspalvelu'
     | '/evasteet'
+    | '/form'
     | '/hinnasto'
     | '/kayttoehdot'
     | '/meista'
@@ -458,6 +477,7 @@ export interface FileRouteTypes {
     | '/api/dashboard/settings'
     | '/api/dashboard/stats'
     | '/api/dashboard/visitors'
+    | '/api/form/intake'
     | '/api/restaurant/settings'
     | '/api/dashboard/calls/$id'
     | '/api/dashboard/conversations/$sessionId'
@@ -470,6 +490,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ai-asiakaspalvelu'
     | '/evasteet'
+    | '/form'
     | '/hinnasto'
     | '/kayttoehdot'
     | '/meista'
@@ -503,6 +524,7 @@ export interface FileRouteTypes {
     | '/api/dashboard/settings'
     | '/api/dashboard/stats'
     | '/api/dashboard/visitors'
+    | '/api/form/intake'
     | '/api/restaurant/settings'
     | '/api/dashboard/calls/$id'
     | '/api/dashboard/conversations/$sessionId'
@@ -516,6 +538,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/ai-asiakaspalvelu'
     | '/evasteet'
+    | '/form'
     | '/hinnasto'
     | '/kayttoehdot'
     | '/meista'
@@ -549,6 +572,7 @@ export interface FileRouteTypes {
     | '/api/dashboard/settings'
     | '/api/dashboard/stats'
     | '/api/dashboard/visitors'
+    | '/api/form/intake'
     | '/api/restaurant/settings'
     | '/api/dashboard/calls/$id'
     | '/api/dashboard/conversations/$sessionId'
@@ -563,6 +587,7 @@ export interface RootRouteChildren {
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   AiAsiakaspalveluRoute: typeof AiAsiakaspalveluRoute
   EvasteetRoute: typeof EvasteetRoute
+  FormRoute: typeof FormRoute
   HinnastoRoute: typeof HinnastoRoute
   KayttoehdotRoute: typeof KayttoehdotRoute
   MeistaRoute: typeof MeistaRoute
@@ -586,6 +611,7 @@ export interface RootRouteChildren {
   ApiDashboardSettingsRoute: typeof ApiDashboardSettingsRoute
   ApiDashboardStatsRoute: typeof ApiDashboardStatsRoute
   ApiDashboardVisitorsRoute: typeof ApiDashboardVisitorsRoute
+  ApiFormIntakeRoute: typeof ApiFormIntakeRoute
   ApiRestaurantSettingsRoute: typeof ApiRestaurantSettingsRoute
   ApiMailTrackTokenRoute: typeof ApiMailTrackTokenRoute
 }
@@ -653,6 +679,13 @@ declare module '@tanstack/react-router' {
       path: '/hinnasto'
       fullPath: '/hinnasto'
       preLoaderRoute: typeof HinnastoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/form': {
+      id: '/form'
+      path: '/form'
+      fullPath: '/form'
+      preLoaderRoute: typeof FormRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/evasteet': {
@@ -772,6 +805,13 @@ declare module '@tanstack/react-router' {
       path: '/api/restaurant/settings'
       fullPath: '/api/restaurant/settings'
       preLoaderRoute: typeof ApiRestaurantSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/form/intake': {
+      id: '/api/form/intake'
+      path: '/api/form/intake'
+      fullPath: '/api/form/intake'
+      preLoaderRoute: typeof ApiFormIntakeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/dashboard/visitors': {
@@ -1000,6 +1040,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
   AiAsiakaspalveluRoute: AiAsiakaspalveluRoute,
   EvasteetRoute: EvasteetRoute,
+  FormRoute: FormRoute,
   HinnastoRoute: HinnastoRoute,
   KayttoehdotRoute: KayttoehdotRoute,
   MeistaRoute: MeistaRoute,
@@ -1023,6 +1064,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiDashboardSettingsRoute: ApiDashboardSettingsRoute,
   ApiDashboardStatsRoute: ApiDashboardStatsRoute,
   ApiDashboardVisitorsRoute: ApiDashboardVisitorsRoute,
+  ApiFormIntakeRoute: ApiFormIntakeRoute,
   ApiRestaurantSettingsRoute: ApiRestaurantSettingsRoute,
   ApiMailTrackTokenRoute: ApiMailTrackTokenRoute,
 }
