@@ -564,7 +564,9 @@ export const fi: Messages = {
         summary:
           "Selkeä 1–3-sivuinen kokonaisuus, joka kertoo yrityksestäsi heti. Sopii pienelle toimijalle, joka haluaa ammattimaisen verkkonäkyvyyden ilman turhaa monimutkaisuutta.",
         price: "399 € + alv",
-        bullets: withSitePages("Ammattimainen 1–3-sivuinen verkkosivusto yrityksesi tarpeisiin"),
+        bullets: withSitePages("Ammattimainen 1–3-sivuinen verkkosivusto yrityksesi tarpeisiin", [
+          "Sisältää 1–2 sähköpostiosoitetta",
+        ]),
       },
       {
         name: "Plus",
@@ -572,7 +574,9 @@ export const fi: Messages = {
         summary:
           "4–6 sivua palveluille, yhteystiedoille ja vahvalle ensivaikutelmalle. Esittelee tarjontasi selkeästi ja ohjaa kävijän helposti yhteydenottoon.",
         price: "549 € + alv",
-        bullets: withSitePages("Ammattimainen 4–6-sivuinen verkkosivusto yrityksesi tarpeisiin"),
+        bullets: withSitePages("Ammattimainen 4–6-sivuinen verkkosivusto yrityksesi tarpeisiin", [
+          "Sisältää 1–3 sähköpostiosoitetta",
+        ]),
       },
       {
         name: "Kulta",
@@ -581,6 +585,7 @@ export const fi: Messages = {
           "Laajempi sivusto kasvavalle yritykselle. Sisältää AI-asiakaspalvelun vuodeksi — botti vastaa kysymyksiin ja kerää liidejä myös silloin, kun et itse ole paikalla.",
         price: "759 € + alv",
         bullets: withSitePages("Ammattimainen 7–9-sivuinen verkkosivusto yrityksesi tarpeisiin", [
+          "Sisältää 1–5 sähköpostiosoitetta",
           "AI-asiakaspalvelu (chatbot) sisältyy 1 vuodeksi — vastaa asiakkaille 24/7 ja kerää liidejä",
         ]),
       },
@@ -594,6 +599,7 @@ export const fi: Messages = {
         bullets: withSitePages(
           "Ammattimainen yli 10-sivuinen verkkosivusto yrityksesi tarpeisiin",
           [
+            "Sisältää 1–10 sähköpostiosoitetta",
             "AI-asiakaspalvelu (chatbot) sisältyy 1 vuodeksi — vastaa asiakkaille 24/7 ja kerää liidejä",
             "Valitsemasi varauspalvelu 1 vuodeksi — esim. pöytävaraus-, majoitusvaraus- tai parturin ajanvarauspalvelu",
           ],

@@ -16,7 +16,7 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
     exclusiveGroup: "website",
     name: "Verkkosivut · Start",
     price: "399 € + alv",
-    blurb: "1–3 sivua, hallintapaneeli, perus-SEO, toimitus jopa 5 arkipäivässä.",
+    blurb: "1–3 sivua, 1–2 sähköpostia, hallintapaneeli, perus-SEO.",
   },
   {
     id: "website-plus",
@@ -24,7 +24,7 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
     exclusiveGroup: "website",
     name: "Verkkosivut · Plus",
     price: "549 € + alv",
-    blurb: "4–6 sivua — selkeä kokonaisuus palveluiden esittelyyn.",
+    blurb: "4–6 sivua, 1–3 sähköpostia — selkeä kokonaisuus palveluille.",
   },
   {
     id: "website-kulta",
@@ -32,7 +32,7 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
     exclusiveGroup: "website",
     name: "Verkkosivut · Kulta",
     price: "759 € + alv",
-    blurb: "7–9 sivua + AI-asiakaspalvelu 1 vuodeksi.",
+    blurb: "7–9 sivua, 1–5 sähköpostia + AI-asiakaspalvelu 1 vuodeksi.",
   },
   {
     id: "website-timantti",
@@ -40,7 +40,7 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
     exclusiveGroup: "website",
     name: "Verkkosivut · Timantti",
     price: "929 € + alv",
-    blurb: "Yli 10 sivua + AI + valitsemasi varauspalvelu 1 vuodeksi.",
+    blurb: "Yli 10 sivua, 1–10 sähköpostia + AI + varauspalvelu 1 vuodeksi.",
   },
   {
     id: "ai-optimointi",

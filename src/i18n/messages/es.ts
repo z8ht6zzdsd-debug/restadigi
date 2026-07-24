@@ -566,7 +566,9 @@ export const es: Messages = {
         summary:
           "Un sitio claro de 1–3 páginas que presenta tu negocio de inmediato. Ideal para un pequeño operador que quiere presencia profesional sin complejidad innecesaria.",
         price: "399 € + IVA",
-        bullets: withSitePages("Un sitio web profesional de 1–3 páginas adaptado a tu negocio"),
+        bullets: withSitePages("Un sitio web profesional de 1–3 páginas adaptado a tu negocio", [
+          "Incluye 1–2 direcciones de correo",
+        ]),
       },
       {
         name: "Plus",
@@ -574,7 +576,9 @@ export const es: Messages = {
         summary:
           "4–6 páginas para servicios, contacto y una primera impresión fuerte. Presenta tu oferta con claridad y guía al visitante hacia el contacto.",
         price: "549 € + IVA",
-        bullets: withSitePages("Un sitio web profesional de 4–6 páginas adaptado a tu negocio"),
+        bullets: withSitePages("Un sitio web profesional de 4–6 páginas adaptado a tu negocio", [
+          "Incluye 1–3 direcciones de correo",
+        ]),
       },
       {
         name: "Oro",
@@ -583,6 +587,7 @@ export const es: Messages = {
           "Un sitio más amplio para un negocio en crecimiento. Incluye atención con IA durante un año: el bot responde y captura leads también cuando no estás disponible.",
         price: "759 € + IVA",
         bullets: withSitePages("Un sitio web profesional de 7–9 páginas adaptado a tu negocio", [
+          "Incluye 1–5 direcciones de correo",
           "Atención con IA (chatbot) incluida durante 1 año — responde a clientes 24/7 y captura leads",
         ]),
       },
@@ -597,6 +602,7 @@ export const es: Messages = {
         bullets: withSitePages(
           "Un sitio web profesional de más de 10 páginas adaptado a tu negocio",
           [
+            "Incluye 1–10 direcciones de correo",
             "Atención con IA (chatbot) incluida durante 1 año — responde a clientes 24/7 y captura leads",
             "El servicio de reservas que elijas durante 1 año — p. ej. mesas, alojamiento o citas de peluquería",
           ],

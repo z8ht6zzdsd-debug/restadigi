@@ -561,7 +561,9 @@ export const en: Messages = {
         summary:
           "A clear 1–3 page site that introduces your business right away. Ideal for a small operator who wants a professional online presence without unnecessary complexity.",
         price: "399 € + VAT",
-        bullets: withSitePages("A professional 1–3 page website tailored to your business"),
+        bullets: withSitePages("A professional 1–3 page website tailored to your business", [
+          "Includes 1–2 email addresses",
+        ]),
       },
       {
         name: "Plus",
@@ -569,7 +571,9 @@ export const en: Messages = {
         summary:
           "4–6 pages for services, contact details and a strong first impression. Presents your offering clearly and guides visitors towards getting in touch.",
         price: "549 € + VAT",
-        bullets: withSitePages("A professional 4–6 page website tailored to your business"),
+        bullets: withSitePages("A professional 4–6 page website tailored to your business", [
+          "Includes 1–3 email addresses",
+        ]),
       },
       {
         name: "Gold",
@@ -578,6 +582,7 @@ export const en: Messages = {
           "A broader site for a growing business. Includes AI customer service for a year — the bot answers questions and captures leads even when you are away.",
         price: "759 € + VAT",
         bullets: withSitePages("A professional 7–9 page website tailored to your business", [
+          "Includes 1–5 email addresses",
           "AI customer service (chatbot) included for 1 year — answers customers 24/7 and captures leads",
         ]),
       },
@@ -591,6 +596,7 @@ export const en: Messages = {
         bullets: withSitePages(
           "A professional website of over 10 pages tailored to your business",
           [
+            "Includes 1–10 email addresses",
             "AI customer service (chatbot) included for 1 year — answers customers 24/7 and captures leads",
             "Your chosen booking service for 1 year — e.g. table, accommodation or salon appointment booking",
           ],
