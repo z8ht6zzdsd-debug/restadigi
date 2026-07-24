@@ -6,6 +6,7 @@ import {
   parseBookingWidgetConfig,
   type BookingWidgetConfig,
 } from "@/lib/booking-widget-config";
+import { LOCALES } from "@/i18n/types";
 
 export async function ensureBookingWidgetTable() {
   const db = getDb();
@@ -28,7 +29,7 @@ export async function getBookingWidgetConfig(): Promise<{
     where: eq(schema.bookingWidgetConfig.id, "default"),
   });
   if (!row) {
-    return { config: { ...DEFAULT_BOOKING_WIDGET_CONFIG }, updatedAt: null };
+    return { config: structuredClone(DEFAULT_BOOKING_WIDGET_CONFIG), updatedAt: null };
   }
   let parsed: unknown = {};
   try {
@@ -37,35 +38,70 @@ export async function getBookingWidgetConfig(): Promise<{
     parsed = {};
   }
   const config = parseBookingWidgetConfig(parsed);
+  const needsLocalePersist =
+    !parsed || typeof parsed !== "object" || !(parsed as { locales?: unknown }).locales;
+
   // Replace legacy third-party demo branding with Restadigi showcase defaults.
-  if (isLegacyThirdPartyShowcase(config)) {
-    const next = { ...DEFAULT_BOOKING_WIDGET_CONFIG };
-    const json = JSON.stringify(next);
-    const now = new Date();
-    await db
-      .insert(schema.bookingWidgetConfig)
-      .values({
-        id: "default",
-        configJson: json,
-        updatedAt: now,
-      })
-      .onConflictDoUpdate({
-        target: schema.bookingWidgetConfig.id,
-        set: {
-          configJson: json,
-          updatedAt: now,
-        },
-      });
-    return { config: next, updatedAt: now.toISOString() };
+  if (isLegacyThirdPartyShowcase(config) || isLegacyThirdPartyRaw(parsed)) {
+    const next = structuredClone(DEFAULT_BOOKING_WIDGET_CONFIG);
+    return persistConfig(db, next);
   }
+
+  // Persist migrated multi-locale shape once so EN/ES copy is saved.
+  if (needsLocalePersist) {
+    return persistConfig(db, config);
+  }
+
   return {
     config,
     updatedAt: row.updatedAt?.toISOString?.() ?? String(row.updatedAt),
   };
 }
 
+async function persistConfig(
+  db: ReturnType<typeof getDb>,
+  next: BookingWidgetConfig,
+): Promise<{ config: BookingWidgetConfig; updatedAt: string }> {
+  const json = JSON.stringify(next);
+  const now = new Date();
+  await db
+    .insert(schema.bookingWidgetConfig)
+    .values({
+      id: "default",
+      configJson: json,
+      updatedAt: now,
+    })
+    .onConflictDoUpdate({
+      target: schema.bookingWidgetConfig.id,
+      set: {
+        configJson: json,
+        updatedAt: now,
+      },
+    });
+  return { config: next, updatedAt: now.toISOString() };
+}
+
+function showcaseBlob(config: BookingWidgetConfig) {
+  return LOCALES.map((locale) => {
+    const c = config.locales[locale];
+    return `${c.restaurantName} ${c.brandTitle} ${c.address}`;
+  })
+    .join(" ")
+    .toLowerCase();
+}
+
 function isLegacyThirdPartyShowcase(config: BookingWidgetConfig) {
-  const blob = `${config.restaurantName} ${config.brandTitle} ${config.address}`.toLowerCase();
+  return matchesLegacyRestaurant(showcaseBlob(config));
+}
+
+function isLegacyThirdPartyRaw(parsed: unknown) {
+  if (!parsed || typeof parsed !== "object") return false;
+  const o = parsed as Record<string, unknown>;
+  const blob = `${o.restaurantName ?? ""} ${o.brandTitle ?? ""} ${o.address ?? ""}`.toLowerCase();
+  return matchesLegacyRestaurant(blob);
+}
+
+function matchesLegacyRestaurant(blob: string) {
   return (
     blob.includes("ylläskota") ||
     blob.includes("yllaskota") ||

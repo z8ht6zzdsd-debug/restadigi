@@ -951,19 +951,20 @@ export const fi: Messages = {
       sectionTitleAccent: "varaa pöydän",
       sectionTitleAfter: " sivustoltasi.",
       sectionBody:
-        "Alla on Restadigin pöytävarauspalvelun esimerkkinäkymä. Voit muokata ravintolan nimeä, aikoja ja tekstejä hallintapaneelissa. Demotiedot eivät tallennu tietokantaan.",
+        "Alla on Restadigin pöytävarauspalvelun esimerkkinäkymä. Hallintapaneelissa voit muokata nimeä, aikoja ja tekstejä suomeksi, englanniksi ja espanjaksi. Demotiedot eivät tallennu.",
       bannerEyebrow: "Restadigi — tuote-esittely",
       bannerBody:
         "Tämä varauspolku esittelee Restadigin pöytävarauspalvelua. Täytetyt tiedot ovat vain esimerkki — niitä ei tallenneta. Oikeassa toteutuksessa varaukset menevät hallintapaneeliin.",
       liveBadge: "Demo",
       stepperAria: "Varauksen vaiheet",
-      stepInfo: "Tiedot",
+      stepInfo: "Tyyppi",
       stepGuests: "Henkilöt",
       stepDate: "Päivä",
       stepTime: "Aika",
       stepConfirm: "Vahvista",
       infoTitle: "Valitse varaustyyppi",
-      infoBody: "Aloita valitsemalla sopiva vaihtoehto — asetukset tulevat hallintapaneelista.",
+      infoBody:
+        "Aloita valitsemalla sopiva vaihtoehto. Tekstit ja tyypit asetetaan hallintapaneelissa.",
       guestsTitle: "Montako henkilöä?",
       guestsLabel: "henkilöä",
       continue: "Jatka",

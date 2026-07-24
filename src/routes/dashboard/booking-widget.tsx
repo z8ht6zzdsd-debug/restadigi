@@ -9,13 +9,17 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { useDashboardUi } from "@/i18n";
+import { LOCALE_META, type Locale } from "@/i18n/types";
 import {
+  BOOKING_WIDGET_LOCALES,
   DEFAULT_BOOKING_WIDGET_CONFIG,
   parseBookingWidgetConfig,
   writeBookingWidgetConfigToStorage,
   type BookingWidgetConfig,
+  type BookingWidgetLocaleCopy,
   type BookingWidgetType,
 } from "@/lib/booking-widget-config";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/dashboard/booking-widget")({
   component: DashboardBookingWidgetPage,
@@ -34,7 +38,10 @@ const WEEKDAY_OPTIONS = [
 function DashboardBookingWidgetPage() {
   const t = useDashboardUi();
   const bw = t.bookingWidget;
-  const [config, setConfig] = useState<BookingWidgetConfig>(DEFAULT_BOOKING_WIDGET_CONFIG);
+  const [config, setConfig] = useState<BookingWidgetConfig>(() =>
+    structuredClone(DEFAULT_BOOKING_WIDGET_CONFIG),
+  );
+  const [editLocale, setEditLocale] = useState<Locale>("fi");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -61,38 +68,78 @@ function DashboardBookingWidgetPage() {
     void load();
   }, [load]);
 
-  function update<K extends keyof BookingWidgetConfig>(key: K, value: BookingWidgetConfig[K]) {
+  function updateShared<K extends keyof BookingWidgetConfig>(
+    key: K,
+    value: BookingWidgetConfig[K],
+  ) {
     setConfig((prev) => ({ ...prev, [key]: value }));
   }
 
-  function updateType(index: number, patch: Partial<BookingWidgetType>) {
+  function updateLocaleCopy<K extends keyof BookingWidgetLocaleCopy>(
+    key: K,
+    value: BookingWidgetLocaleCopy[K],
+  ) {
     setConfig((prev) => ({
       ...prev,
-      bookingTypes: prev.bookingTypes.map((item, i) =>
-        i === index ? { ...item, ...patch } : item,
-      ),
+      locales: {
+        ...prev.locales,
+        [editLocale]: {
+          ...prev.locales[editLocale],
+          [key]: value,
+        },
+      },
     }));
+  }
+
+  function updateType(index: number, patch: Partial<BookingWidgetType>) {
+    setConfig((prev) => {
+      const types = prev.locales[editLocale].bookingTypes.map((item, i) =>
+        i === index ? { ...item, ...patch } : item,
+      );
+      return {
+        ...prev,
+        locales: {
+          ...prev.locales,
+          [editLocale]: {
+            ...prev.locales[editLocale],
+            bookingTypes: types,
+          },
+        },
+      };
+    });
   }
 
   function addType() {
     setConfig((prev) => ({
       ...prev,
-      bookingTypes: [
-        ...prev.bookingTypes,
-        {
-          id: `type-${Date.now()}`,
-          name: bw.newTypeName,
-          description: "",
-          active: true,
+      locales: {
+        ...prev.locales,
+        [editLocale]: {
+          ...prev.locales[editLocale],
+          bookingTypes: [
+            ...prev.locales[editLocale].bookingTypes,
+            {
+              id: `type-${Date.now()}`,
+              name: bw.newTypeName,
+              description: "",
+              active: true,
+            },
+          ],
         },
-      ],
+      },
     }));
   }
 
   function removeType(index: number) {
     setConfig((prev) => ({
       ...prev,
-      bookingTypes: prev.bookingTypes.filter((_, i) => i !== index),
+      locales: {
+        ...prev.locales,
+        [editLocale]: {
+          ...prev.locales[editLocale],
+          bookingTypes: prev.locales[editLocale].bookingTypes.filter((_, i) => i !== index),
+        },
+      },
     }));
   }
 
@@ -149,6 +196,9 @@ function DashboardBookingWidgetPage() {
     sun: bw.sun,
   };
 
+  const localeCopy = config.locales[editLocale];
+  const localeLabel = LOCALE_META[editLocale].nativeLabel;
+
   return (
     <div className="space-y-8 pb-6">
       <div className="dashboard-app__page-head flex flex-wrap items-end justify-between gap-4">
@@ -167,97 +217,151 @@ function DashboardBookingWidgetPage() {
       </p>
 
       <section className="space-y-4 rounded-sm border border-border bg-card p-6">
-        <h3 className="font-medium">{bw.identity}</h3>
+        <div>
+          <h3 className="font-medium">{bw.contentByLanguage}</h3>
+          <p className="mt-1 text-sm text-muted-foreground">{bw.contentByLanguageHint}</p>
+        </div>
+
+        <div className="flex flex-wrap gap-2" role="tablist" aria-label={bw.contentByLanguage}>
+          {BOOKING_WIDGET_LOCALES.map((code) => {
+            const active = editLocale === code;
+            return (
+              <button
+                key={code}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => setEditLocale(code)}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  active
+                    ? "bg-[#432f24] text-white"
+                    : "border border-border bg-background text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {LOCALE_META[code].nativeLabel}
+              </button>
+            );
+          })}
+        </div>
+
+        <p className="text-xs font-medium uppercase tracking-[0.14em] text-[#c46a32]">
+          {bw.editingLanguage.replace("{lang}", localeLabel)}
+        </p>
+
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2 sm:col-span-2">
             <Label>{bw.restaurantName}</Label>
             <Input
-              value={config.restaurantName}
-              onChange={(e) => update("restaurantName", e.target.value)}
+              value={localeCopy.restaurantName}
+              onChange={(e) => updateLocaleCopy("restaurantName", e.target.value)}
             />
           </div>
           <div className="space-y-2 sm:col-span-2">
             <Label>{bw.address}</Label>
-            <Input value={config.address} onChange={(e) => update("address", e.target.value)} />
+            <Input
+              value={localeCopy.address}
+              onChange={(e) => updateLocaleCopy("address", e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label>{bw.brandTitle}</Label>
             <Input
-              value={config.brandTitle}
-              onChange={(e) => update("brandTitle", e.target.value)}
+              value={localeCopy.brandTitle}
+              onChange={(e) => updateLocaleCopy("brandTitle", e.target.value)}
             />
           </div>
           <div className="space-y-2">
             <Label>{bw.brandSubtitle}</Label>
             <Input
-              value={config.brandSubtitle}
-              onChange={(e) => update("brandSubtitle", e.target.value)}
+              value={localeCopy.brandSubtitle}
+              onChange={(e) => updateLocaleCopy("brandSubtitle", e.target.value)}
             />
           </div>
-          <div className="space-y-2 sm:col-span-2">
-            <Label>{bw.brandImageUrl}</Label>
-            <Input
-              value={config.brandImageUrl}
-              onChange={(e) => update("brandImageUrl", e.target.value)}
-            />
+        </div>
+
+        <div className="space-y-4 border-t border-border pt-4">
+          <div className="flex items-center justify-between gap-3">
+            <h4 className="font-medium">{bw.types}</h4>
+            <Button type="button" variant="outline" size="sm" onClick={addType}>
+              <Plus className="size-4" />
+              {bw.addType}
+            </Button>
           </div>
+          <div className="space-y-4">
+            {localeCopy.bookingTypes.map((type, index) => (
+              <div
+                key={`${editLocale}-${type.id}`}
+                className="space-y-3 rounded-xl border border-border p-4"
+              >
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <Switch
+                      checked={type.active}
+                      onCheckedChange={(v) => updateType(index, { active: v })}
+                    />
+                    <span className="text-sm text-muted-foreground">{bw.active}</span>
+                  </div>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    disabled={localeCopy.bookingTypes.length <= 1}
+                    onClick={() => removeType(index)}
+                  >
+                    <Trash2 className="size-3.5" />
+                    {t.common.delete}
+                  </Button>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label>{bw.typeName}</Label>
+                    <Input
+                      value={type.name}
+                      onChange={(e) => updateType(index, { name: e.target.value })}
+                    />
+                  </div>
+                  <div className="space-y-2 sm:col-span-2">
+                    <Label>{bw.typeDescription}</Label>
+                    <Textarea
+                      rows={2}
+                      value={type.description}
+                      onChange={(e) => updateType(index, { description: e.target.value })}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-2 border-t border-border pt-4">
+          <Label>{bw.terms}</Label>
+          <p className="text-xs text-muted-foreground">{bw.termsHint}</p>
+          <Textarea
+            rows={4}
+            value={localeCopy.termsText}
+            onChange={(e) => updateLocaleCopy("termsText", e.target.value)}
+          />
         </div>
       </section>
 
       <section className="space-y-4 rounded-sm border border-border bg-card p-6">
-        <div className="flex items-center justify-between gap-3">
-          <h3 className="font-medium">{bw.types}</h3>
-          <Button type="button" variant="outline" size="sm" onClick={addType}>
-            <Plus className="size-4" />
-            {bw.addType}
-          </Button>
+        <div>
+          <h3 className="font-medium">{bw.sharedSettings}</h3>
+          <p className="mt-1 text-sm text-muted-foreground">{bw.sharedSettingsHint}</p>
         </div>
-        <div className="space-y-4">
-          {config.bookingTypes.map((type, index) => (
-            <div key={type.id} className="space-y-3 rounded-xl border border-border p-4">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <Switch
-                    checked={type.active}
-                    onCheckedChange={(v) => updateType(index, { active: v })}
-                  />
-                  <span className="text-sm text-muted-foreground">{bw.active}</span>
-                </div>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  disabled={config.bookingTypes.length <= 1}
-                  onClick={() => removeType(index)}
-                >
-                  <Trash2 className="size-3.5" />
-                  {t.common.delete}
-                </Button>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <Label>{bw.typeName}</Label>
-                  <Input
-                    value={type.name}
-                    onChange={(e) => updateType(index, { name: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-2 sm:col-span-2">
-                  <Label>{bw.typeDescription}</Label>
-                  <Textarea
-                    rows={2}
-                    value={type.description}
-                    onChange={(e) => updateType(index, { description: e.target.value })}
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
-      <section className="space-y-4 rounded-sm border border-border bg-card p-6">
-        <h3 className="font-medium">{bw.rules}</h3>
+        <div className="space-y-2">
+          <Label>{bw.brandImageUrl}</Label>
+          <Input
+            value={config.brandImageUrl}
+            onChange={(e) => updateShared("brandImageUrl", e.target.value)}
+          />
+          <p className="text-xs text-muted-foreground">{bw.brandImageHint}</p>
+        </div>
+
+        <h4 className="pt-2 font-medium">{bw.rules}</h4>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-2">
             <Label>{bw.minGuests}</Label>
@@ -265,7 +369,7 @@ function DashboardBookingWidgetPage() {
               type="number"
               min={1}
               value={config.minGuests}
-              onChange={(e) => update("minGuests", Number(e.target.value))}
+              onChange={(e) => updateShared("minGuests", Number(e.target.value))}
             />
           </div>
           <div className="space-y-2">
@@ -274,7 +378,7 @@ function DashboardBookingWidgetPage() {
               type="number"
               min={1}
               value={config.maxGuests}
-              onChange={(e) => update("maxGuests", Number(e.target.value))}
+              onChange={(e) => updateShared("maxGuests", Number(e.target.value))}
             />
           </div>
           <div className="space-y-2">
@@ -284,7 +388,7 @@ function DashboardBookingWidgetPage() {
               min={30}
               step={15}
               value={config.durationMinutes}
-              onChange={(e) => update("durationMinutes", Number(e.target.value))}
+              onChange={(e) => updateShared("durationMinutes", Number(e.target.value))}
             />
           </div>
           <div className="space-y-2">
@@ -294,7 +398,7 @@ function DashboardBookingWidgetPage() {
               min={5}
               step={5}
               value={config.slotIntervalMinutes}
-              onChange={(e) => update("slotIntervalMinutes", Number(e.target.value))}
+              onChange={(e) => updateShared("slotIntervalMinutes", Number(e.target.value))}
             />
           </div>
           <div className="space-y-2">
@@ -302,7 +406,7 @@ function DashboardBookingWidgetPage() {
             <Input
               type="time"
               value={config.openTime}
-              onChange={(e) => update("openTime", e.target.value)}
+              onChange={(e) => updateShared("openTime", e.target.value)}
             />
           </div>
           <div className="space-y-2">
@@ -310,7 +414,7 @@ function DashboardBookingWidgetPage() {
             <Input
               type="time"
               value={config.lastStartTime}
-              onChange={(e) => update("lastStartTime", e.target.value)}
+              onChange={(e) => updateShared("lastStartTime", e.target.value)}
             />
           </div>
           <div className="space-y-2">
@@ -319,7 +423,7 @@ function DashboardBookingWidgetPage() {
               type="number"
               min={0}
               value={config.minNoticeHours}
-              onChange={(e) => update("minNoticeHours", Number(e.target.value))}
+              onChange={(e) => updateShared("minNoticeHours", Number(e.target.value))}
             />
           </div>
           <div className="space-y-2">
@@ -328,7 +432,7 @@ function DashboardBookingWidgetPage() {
               type="number"
               min={1}
               value={config.advanceBookingDays}
-              onChange={(e) => update("advanceBookingDays", Number(e.target.value))}
+              onChange={(e) => updateShared("advanceBookingDays", Number(e.target.value))}
             />
           </div>
           <div className="space-y-2">
@@ -337,12 +441,15 @@ function DashboardBookingWidgetPage() {
               type="color"
               className="h-10 w-20 cursor-pointer p-1"
               value={config.slotAccentColor}
-              onChange={(e) => update("slotAccentColor", e.target.value)}
+              onChange={(e) => updateShared("slotAccentColor", e.target.value)}
             />
           </div>
         </div>
         <div className="flex items-center gap-3 pt-2">
-          <Switch checked={config.showEndTime} onCheckedChange={(v) => update("showEndTime", v)} />
+          <Switch
+            checked={config.showEndTime}
+            onCheckedChange={(v) => updateShared("showEndTime", v)}
+          />
           <Label>{bw.showEndTime}</Label>
         </div>
         <div>
@@ -367,15 +474,6 @@ function DashboardBookingWidgetPage() {
             })}
           </div>
         </div>
-      </section>
-
-      <section className="space-y-4 rounded-sm border border-border bg-card p-6">
-        <h3 className="font-medium">{bw.terms}</h3>
-        <Textarea
-          rows={4}
-          value={config.termsText}
-          onChange={(e) => update("termsText", e.target.value)}
-        />
       </section>
     </div>
   );

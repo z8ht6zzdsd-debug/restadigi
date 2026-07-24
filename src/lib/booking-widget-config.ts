@@ -1,5 +1,8 @@
 /** Online table-booking widget config (Restadigi product demo on marketing + dashboard). */
 
+import type { Locale } from "@/i18n/types";
+import { LOCALES } from "@/i18n/types";
+
 export type BookingWidgetType = {
   id: string;
   name: string;
@@ -7,14 +10,21 @@ export type BookingWidgetType = {
   active: boolean;
 };
 
-export type BookingWidgetConfig = {
+/** Locale-specific copy shown on the public booking widget. */
+export type BookingWidgetLocaleCopy = {
   restaurantName: string;
   address: string;
   brandTitle: string;
   brandSubtitle: string;
-  /** Public image URL or site path (e.g. /restadigi-logo.png). */
-  brandImageUrl: string;
   bookingTypes: BookingWidgetType[];
+  termsText: string;
+};
+
+export type BookingWidgetConfig = {
+  /** Shared brand image for all languages. */
+  brandImageUrl: string;
+  /** Per-language restaurant identity, types and terms. */
+  locales: Record<Locale, BookingWidgetLocaleCopy>;
   minGuests: number;
   maxGuests: number;
   /** Reservation length in minutes (e.g. 150 = 2h30). */
@@ -30,33 +40,112 @@ export type BookingWidgetConfig = {
   minNoticeHours: number;
   advanceBookingDays: number;
   slotAccentColor: string;
-  termsText: string;
   showEndTime: boolean;
 };
 
-export const BOOKING_WIDGET_STORAGE_KEY = "restadigi-booking-widget-config-v2";
+/** Flat view used by the public widget for one language. */
+export type BookingWidgetDisplay = BookingWidgetLocaleCopy &
+  Pick<
+    BookingWidgetConfig,
+    | "brandImageUrl"
+    | "minGuests"
+    | "maxGuests"
+    | "durationMinutes"
+    | "slotIntervalMinutes"
+    | "openTime"
+    | "lastStartTime"
+    | "closedWeekdays"
+    | "minNoticeHours"
+    | "advanceBookingDays"
+    | "slotAccentColor"
+    | "showEndTime"
+  >;
 
-/** Fictional Restadigi showcase restaurant — fully editable in the dashboard. */
+export const BOOKING_WIDGET_STORAGE_KEY = "restadigi-booking-widget-config-v3";
+
+const SHOWCASE_TYPES_FI: BookingWidgetType[] = [
+  {
+    id: "salon",
+    name: "Sali",
+    description: "Pöytä pääruokasalissa — rentoutunut fine dining -tunnelma.",
+    active: true,
+  },
+  {
+    id: "bar",
+    name: "Baari & lounge",
+    description: "Paikka baaritiskiltä tai lounge-alueelta.",
+    active: true,
+  },
+];
+
+const SHOWCASE_TYPES_EN: BookingWidgetType[] = [
+  {
+    id: "salon",
+    name: "Dining room",
+    description: "A table in the main room — relaxed fine-dining atmosphere.",
+    active: true,
+  },
+  {
+    id: "bar",
+    name: "Bar & lounge",
+    description: "A seat at the bar or in the lounge area.",
+    active: true,
+  },
+];
+
+const SHOWCASE_TYPES_ES: BookingWidgetType[] = [
+  {
+    id: "salon",
+    name: "Salón",
+    description: "Mesa en el comedor principal — ambiente de fine dining relajado.",
+    active: true,
+  },
+  {
+    id: "bar",
+    name: "Barra y lounge",
+    description: "Sitio en la barra o en la zona lounge.",
+    active: true,
+  },
+];
+
+export const DEFAULT_BOOKING_LOCALE_COPY: Record<Locale, BookingWidgetLocaleCopy> = {
+  fi: {
+    restaurantName: "Ravintola Kajo",
+    address: "Bulevardi 12, 00120 Helsinki",
+    brandTitle: "KAJO",
+    brandSubtitle: "HELSINKI",
+    bookingTypes: SHOWCASE_TYPES_FI,
+    termsText:
+      "Hyväksyn varausehdot. Voin peruuttaa viimeistään 24 tuntia ennen. Tämä on Restadigin tuote-esittely — tietoja ei tallenneta.",
+  },
+  en: {
+    restaurantName: "Restaurant Kajo",
+    address: "Bulevardi 12, 00120 Helsinki",
+    brandTitle: "KAJO",
+    brandSubtitle: "HELSINKI",
+    bookingTypes: SHOWCASE_TYPES_EN,
+    termsText:
+      "I accept the booking terms. I can cancel up to 24 hours before. This is a Restadigi product showcase — nothing is stored.",
+  },
+  es: {
+    restaurantName: "Restaurante Kajo",
+    address: "Bulevardi 12, 00120 Helsinki",
+    brandTitle: "KAJO",
+    brandSubtitle: "HELSINKI",
+    bookingTypes: SHOWCASE_TYPES_ES,
+    termsText:
+      "Acepto las condiciones de reserva. Puedo cancelar hasta 24 horas antes. Esto es una demo del producto Restadigi: no se guarda ningún dato.",
+  },
+};
+
+/** Fictional Restadigi showcase restaurant — fully editable in the dashboard (per language). */
 export const DEFAULT_BOOKING_WIDGET_CONFIG: BookingWidgetConfig = {
-  restaurantName: "Ravintola Kajo",
-  address: "Bulevardi 12, 00120 Helsinki",
-  brandTitle: "KAJO",
-  brandSubtitle: "HELSINKI",
   brandImageUrl: "/booking-widget-brand.jpg",
-  bookingTypes: [
-    {
-      id: "salon",
-      name: "Sali",
-      description: "Pöytä pääruokasalissa — rentoutunut fine dining -tunnelma.",
-      active: true,
-    },
-    {
-      id: "bar",
-      name: "Baari & lounge",
-      description: "Paikka baaritiskiltä tai lounge-alueelta.",
-      active: true,
-    },
-  ],
+  locales: {
+    fi: { ...DEFAULT_BOOKING_LOCALE_COPY.fi, bookingTypes: [...SHOWCASE_TYPES_FI] },
+    en: { ...DEFAULT_BOOKING_LOCALE_COPY.en, bookingTypes: [...SHOWCASE_TYPES_EN] },
+    es: { ...DEFAULT_BOOKING_LOCALE_COPY.es, bookingTypes: [...SHOWCASE_TYPES_ES] },
+  },
   minGuests: 1,
   maxGuests: 10,
   durationMinutes: 150,
@@ -67,32 +156,129 @@ export const DEFAULT_BOOKING_WIDGET_CONFIG: BookingWidgetConfig = {
   minNoticeHours: 2,
   advanceBookingDays: 60,
   slotAccentColor: "#d4c4b0",
-  termsText:
-    "Hyväksyn varausehdot. Voin peruuttaa viimeistään 24 tuntia ennen. Tämä on Restadigin tuote-esittely — tietoja ei tallenneta.",
   showEndTime: true,
 };
 
+export function resolveBookingWidgetDisplay(
+  config: BookingWidgetConfig,
+  locale: Locale,
+): BookingWidgetDisplay {
+  const copy = config.locales[locale] ?? config.locales.fi ?? DEFAULT_BOOKING_LOCALE_COPY.fi;
+  return {
+    brandImageUrl: config.brandImageUrl,
+    restaurantName: copy.restaurantName,
+    address: copy.address,
+    brandTitle: copy.brandTitle,
+    brandSubtitle: copy.brandSubtitle,
+    bookingTypes: copy.bookingTypes,
+    termsText: copy.termsText,
+    minGuests: config.minGuests,
+    maxGuests: config.maxGuests,
+    durationMinutes: config.durationMinutes,
+    slotIntervalMinutes: config.slotIntervalMinutes,
+    openTime: config.openTime,
+    lastStartTime: config.lastStartTime,
+    closedWeekdays: config.closedWeekdays,
+    minNoticeHours: config.minNoticeHours,
+    advanceBookingDays: config.advanceBookingDays,
+    slotAccentColor: config.slotAccentColor,
+    showEndTime: config.showEndTime,
+  };
+}
+
+function parseTypes(raw: unknown, fallback: BookingWidgetType[]): BookingWidgetType[] {
+  if (!Array.isArray(raw)) return fallback.map((t) => ({ ...t }));
+  const types = raw
+    .filter((t) => t && typeof t === "object")
+    .map((t, i) => ({
+      id: String((t as BookingWidgetType).id || `type-${i}`),
+      name: String((t as BookingWidgetType).name || "Type"),
+      description: String((t as BookingWidgetType).description || ""),
+      active: Boolean((t as BookingWidgetType).active),
+    }));
+  return types.length ? types : fallback.map((t) => ({ ...t }));
+}
+
+function parseLocaleCopy(raw: unknown, fallback: BookingWidgetLocaleCopy): BookingWidgetLocaleCopy {
+  if (!raw || typeof raw !== "object") {
+    return {
+      ...fallback,
+      bookingTypes: fallback.bookingTypes.map((t) => ({ ...t })),
+    };
+  }
+  const o = raw as Partial<BookingWidgetLocaleCopy>;
+  return {
+    restaurantName: String(o.restaurantName || fallback.restaurantName),
+    address: String(o.address || fallback.address),
+    brandTitle: String(o.brandTitle || fallback.brandTitle),
+    brandSubtitle: String(o.brandSubtitle || fallback.brandSubtitle),
+    bookingTypes: parseTypes(o.bookingTypes, fallback.bookingTypes),
+    termsText: String(o.termsText || fallback.termsText),
+  };
+}
+
+/** Detect legacy single-language config (pre multi-locale). */
+function isLegacyFlatConfig(raw: Record<string, unknown>) {
+  return typeof raw.restaurantName === "string" && !raw.locales;
+}
+
 export function parseBookingWidgetConfig(raw: unknown): BookingWidgetConfig {
-  if (!raw || typeof raw !== "object") return { ...DEFAULT_BOOKING_WIDGET_CONFIG };
-  const o = raw as Partial<BookingWidgetConfig>;
-  const types = Array.isArray(o.bookingTypes)
-    ? o.bookingTypes
-        .filter((t) => t && typeof t === "object")
-        .map((t, i) => ({
-          id: String((t as BookingWidgetType).id || `type-${i}`),
-          name: String((t as BookingWidgetType).name || "Tipo"),
-          description: String((t as BookingWidgetType).description || ""),
-          active: Boolean((t as BookingWidgetType).active),
-        }))
-    : DEFAULT_BOOKING_WIDGET_CONFIG.bookingTypes;
+  if (!raw || typeof raw !== "object") {
+    return structuredClone(DEFAULT_BOOKING_WIDGET_CONFIG);
+  }
+  const o = raw as Record<string, unknown> & Partial<BookingWidgetConfig>;
+
+  let locales: Record<Locale, BookingWidgetLocaleCopy>;
+
+  if (o.locales && typeof o.locales === "object") {
+    const loc = o.locales as Partial<Record<Locale, unknown>>;
+    locales = {
+      fi: parseLocaleCopy(loc.fi, DEFAULT_BOOKING_LOCALE_COPY.fi),
+      en: parseLocaleCopy(loc.en, DEFAULT_BOOKING_LOCALE_COPY.en),
+      es: parseLocaleCopy(loc.es, DEFAULT_BOOKING_LOCALE_COPY.es),
+    };
+  } else if (isLegacyFlatConfig(o)) {
+    // Migrate old Finnish-only row into fi; keep polished defaults for en/es.
+    const legacyTypes = parseTypes(o.bookingTypes, DEFAULT_BOOKING_LOCALE_COPY.fi.bookingTypes);
+    const fiCopy: BookingWidgetLocaleCopy = {
+      restaurantName: String(o.restaurantName || DEFAULT_BOOKING_LOCALE_COPY.fi.restaurantName),
+      address: String(o.address || DEFAULT_BOOKING_LOCALE_COPY.fi.address),
+      brandTitle: String(o.brandTitle || DEFAULT_BOOKING_LOCALE_COPY.fi.brandTitle),
+      brandSubtitle: String(o.brandSubtitle || DEFAULT_BOOKING_LOCALE_COPY.fi.brandSubtitle),
+      bookingTypes: legacyTypes,
+      termsText: String(o.termsText || DEFAULT_BOOKING_LOCALE_COPY.fi.termsText),
+    };
+    locales = {
+      fi: fiCopy,
+      en: {
+        ...DEFAULT_BOOKING_LOCALE_COPY.en,
+        bookingTypes: DEFAULT_BOOKING_LOCALE_COPY.en.bookingTypes.map((t) => ({ ...t })),
+      },
+      es: {
+        ...DEFAULT_BOOKING_LOCALE_COPY.es,
+        bookingTypes: DEFAULT_BOOKING_LOCALE_COPY.es.bookingTypes.map((t) => ({ ...t })),
+      },
+    };
+  } else {
+    locales = {
+      fi: {
+        ...DEFAULT_BOOKING_LOCALE_COPY.fi,
+        bookingTypes: DEFAULT_BOOKING_LOCALE_COPY.fi.bookingTypes.map((t) => ({ ...t })),
+      },
+      en: {
+        ...DEFAULT_BOOKING_LOCALE_COPY.en,
+        bookingTypes: DEFAULT_BOOKING_LOCALE_COPY.en.bookingTypes.map((t) => ({ ...t })),
+      },
+      es: {
+        ...DEFAULT_BOOKING_LOCALE_COPY.es,
+        bookingTypes: DEFAULT_BOOKING_LOCALE_COPY.es.bookingTypes.map((t) => ({ ...t })),
+      },
+    };
+  }
 
   return {
-    restaurantName: String(o.restaurantName || DEFAULT_BOOKING_WIDGET_CONFIG.restaurantName),
-    address: String(o.address || DEFAULT_BOOKING_WIDGET_CONFIG.address),
-    brandTitle: String(o.brandTitle || DEFAULT_BOOKING_WIDGET_CONFIG.brandTitle),
-    brandSubtitle: String(o.brandSubtitle || DEFAULT_BOOKING_WIDGET_CONFIG.brandSubtitle),
     brandImageUrl: String(o.brandImageUrl || DEFAULT_BOOKING_WIDGET_CONFIG.brandImageUrl),
-    bookingTypes: types.length ? types : DEFAULT_BOOKING_WIDGET_CONFIG.bookingTypes,
+    locales,
     minGuests: clampInt(o.minGuests, 1, 50, DEFAULT_BOOKING_WIDGET_CONFIG.minGuests),
     maxGuests: clampInt(o.maxGuests, 1, 100, DEFAULT_BOOKING_WIDGET_CONFIG.maxGuests),
     durationMinutes: clampInt(
@@ -125,7 +311,6 @@ export function parseBookingWidgetConfig(raw: unknown): BookingWidgetConfig {
       DEFAULT_BOOKING_WIDGET_CONFIG.advanceBookingDays,
     ),
     slotAccentColor: String(o.slotAccentColor || DEFAULT_BOOKING_WIDGET_CONFIG.slotAccentColor),
-    termsText: String(o.termsText || DEFAULT_BOOKING_WIDGET_CONFIG.termsText),
     showEndTime: o.showEndTime !== false,
   };
 }
@@ -156,7 +341,13 @@ export function addMinutesToTime(hhmm: string, minutes: number) {
   return minutesToTime(timeToMinutes(hhmm) + minutes);
 }
 
-export function generateTimeSlots(config: BookingWidgetConfig, date: Date): string[] {
+export function generateTimeSlots(
+  config: Pick<
+    BookingWidgetConfig,
+    "closedWeekdays" | "minNoticeHours" | "openTime" | "lastStartTime" | "slotIntervalMinutes"
+  >,
+  date: Date,
+): string[] {
   const day = date.getDay();
   if (config.closedWeekdays.includes(day)) return [];
 
@@ -177,7 +368,19 @@ export function generateTimeSlots(config: BookingWidgetConfig, date: Date): stri
   return slots;
 }
 
-export function isDateBookable(config: BookingWidgetConfig, date: Date, today = new Date()) {
+export function isDateBookable(
+  config: Pick<
+    BookingWidgetConfig,
+    | "closedWeekdays"
+    | "minNoticeHours"
+    | "openTime"
+    | "lastStartTime"
+    | "slotIntervalMinutes"
+    | "advanceBookingDays"
+  >,
+  date: Date,
+  today = new Date(),
+) {
   const dayStart = new Date(date);
   dayStart.setHours(0, 0, 0, 0);
   const todayStart = new Date(today);
@@ -211,3 +414,9 @@ export function writeBookingWidgetConfigToStorage(config: BookingWidgetConfig) {
     /* ignore */
   }
 }
+
+export function cloneDefaultBookingTypes(locale: Locale): BookingWidgetType[] {
+  return DEFAULT_BOOKING_LOCALE_COPY[locale].bookingTypes.map((t) => ({ ...t }));
+}
+
+export { LOCALES as BOOKING_WIDGET_LOCALES };

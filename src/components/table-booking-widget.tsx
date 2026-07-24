@@ -21,6 +21,7 @@ import {
   generateTimeSlots,
   isDateBookable,
   readBookingWidgetConfigFromStorage,
+  resolveBookingWidgetDisplay,
   writeBookingWidgetConfigToStorage,
   type BookingWidgetConfig,
   type BookingWidgetType,
@@ -47,10 +48,9 @@ function sameDay(a: Date, b: Date) {
   );
 }
 
-function formatGuestLabel(n: number, locale: string) {
+function formatGuestLabel(n: number, locale: string, guestsWord: string) {
   if (locale.startsWith("fi")) return `${n} hlö`;
-  if (locale.startsWith("en")) return `${n} guests`;
-  return `${n} pers.`;
+  return `${n} ${guestsWord}`;
 }
 
 export function TableBookingWidget({ className }: { className?: string }) {
@@ -59,7 +59,11 @@ export function TableBookingWidget({ className }: { className?: string }) {
   const { locale } = useLocale();
   const dateLocale = localeDateTag(locale);
 
-  const [config, setConfig] = useState<BookingWidgetConfig>(DEFAULT_BOOKING_WIDGET_CONFIG);
+  const [config, setConfig] = useState<BookingWidgetConfig>(() =>
+    structuredClone(DEFAULT_BOOKING_WIDGET_CONFIG),
+  );
+  const display = useMemo(() => resolveBookingWidgetDisplay(config, locale), [config, locale]);
+
   const [step, setStep] = useState<Step>("info");
   const [bookingTypeId, setBookingTypeId] = useState<string>("");
   const [guests, setGuests] = useState(2);
@@ -77,7 +81,9 @@ export function TableBookingWidget({ className }: { className?: string }) {
     const cached = readBookingWidgetConfigFromStorage();
     if (cached) {
       setConfig(cached);
-      const first = cached.bookingTypes.find((x) => x.active) ?? cached.bookingTypes[0];
+      const first =
+        cached.locales[locale]?.bookingTypes.find((x) => x.active) ??
+        cached.locales.fi.bookingTypes[0];
       if (first) setBookingTypeId(first.id);
       setGuests(Math.min(Math.max(2, cached.minGuests), cached.maxGuests));
     }
@@ -91,18 +97,20 @@ export function TableBookingWidget({ className }: { className?: string }) {
         if (!data?.config) return;
         setConfig(data.config);
         writeBookingWidgetConfigToStorage(data.config);
-        const first = data.config.bookingTypes.find((x) => x.active) ?? data.config.bookingTypes[0];
+        const first =
+          data.config.locales[locale]?.bookingTypes.find((x) => x.active) ??
+          data.config.locales.fi.bookingTypes[0];
         if (first) setBookingTypeId((prev) => prev || first.id);
         setGuests((g) => Math.min(Math.max(g, data.config.minGuests), data.config.maxGuests));
       })
       .catch(() => {
         /* keep defaults / cache */
       });
-  }, []);
+  }, [locale]);
 
   const activeTypes = useMemo(
-    () => config.bookingTypes.filter((x) => x.active),
-    [config.bookingTypes],
+    () => display.bookingTypes.filter((x) => x.active),
+    [display.bookingTypes],
   );
 
   const selectedType: BookingWidgetType | undefined =
@@ -110,10 +118,10 @@ export function TableBookingWidget({ className }: { className?: string }) {
 
   const slots = useMemo(() => {
     if (!selectedDate) return [];
-    return generateTimeSlots(config, selectedDate);
-  }, [config, selectedDate]);
+    return generateTimeSlots(display, selectedDate);
+  }, [display, selectedDate]);
 
-  const endTime = selectedTime ? addMinutesToTime(selectedTime, config.durationMinutes) : null;
+  const endTime = selectedTime ? addMinutesToTime(selectedTime, display.durationMinutes) : null;
 
   const stepIndex = STEPS.indexOf(step === "done" ? "confirm" : step);
 
@@ -143,7 +151,7 @@ export function TableBookingWidget({ className }: { className?: string }) {
 
   const weekdays =
     locale === "es"
-      ? ["lu.", "ma.", "mi.", "ju.", "vi.", "sá.", "do."]
+      ? ["lu", "ma", "mi", "ju", "vi", "sá", "do"]
       : locale === "en"
         ? ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
         : ["ma", "ti", "ke", "to", "pe", "la", "su"];
@@ -172,7 +180,7 @@ export function TableBookingWidget({ className }: { className?: string }) {
       id: "guests" as const,
       icon: UserRound,
       label: demo.stepGuests,
-      value: formatGuestLabel(guests, dateLocale),
+      value: formatGuestLabel(guests, dateLocale, demo.guestsLabel),
     },
     {
       id: "date" as const,
@@ -211,7 +219,7 @@ export function TableBookingWidget({ className }: { className?: string }) {
 
       <div className="overflow-hidden rounded-[1.5rem] border border-[#e8dfd4] bg-white shadow-[0_18px_50px_rgba(42,32,24,0.08)] sm:rounded-[2rem]">
         <div className="flex items-center justify-between border-b border-[#efe8e0] px-4 py-3 sm:px-6">
-          <p className="font-medium tracking-tight text-[#2a2018]">{config.restaurantName}</p>
+          <p className="font-medium tracking-tight text-[#2a2018]">{display.restaurantName}</p>
           <span className="rounded-full bg-[#f3eee8] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a7f74]">
             {demo.liveBadge}
           </span>
@@ -220,17 +228,17 @@ export function TableBookingWidget({ className }: { className?: string }) {
         <div className="grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)]">
           <aside className="relative hidden min-h-[420px] bg-[#2a2018] lg:block">
             <img
-              src={config.brandImageUrl}
+              src={display.brandImageUrl}
               alt=""
               className="absolute inset-0 size-full object-cover opacity-80"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1a1512]/90 via-[#1a1512]/35 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-8">
               <p className="font-serif text-4xl tracking-tight text-[#f7f3ee]">
-                {config.brandTitle}
+                {display.brandTitle}
               </p>
               <p className="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#c46a32]">
-                {config.brandSubtitle}
+                {display.brandSubtitle}
               </p>
             </div>
           </aside>
@@ -324,8 +332,8 @@ export function TableBookingWidget({ className }: { className?: string }) {
                     variant="outline"
                     size="icon"
                     className="size-11 rounded-full"
-                    disabled={guests <= config.minGuests}
-                    onClick={() => setGuests((g) => Math.max(config.minGuests, g - 1))}
+                    disabled={guests <= display.minGuests}
+                    onClick={() => setGuests((g) => Math.max(display.minGuests, g - 1))}
                   >
                     −
                   </Button>
@@ -338,8 +346,8 @@ export function TableBookingWidget({ className }: { className?: string }) {
                     variant="outline"
                     size="icon"
                     className="size-11 rounded-full"
-                    disabled={guests >= config.maxGuests}
-                    onClick={() => setGuests((g) => Math.min(config.maxGuests, g + 1))}
+                    disabled={guests >= display.maxGuests}
+                    onClick={() => setGuests((g) => Math.min(display.maxGuests, g + 1))}
                   >
                     +
                   </Button>
@@ -388,7 +396,7 @@ export function TableBookingWidget({ className }: { className?: string }) {
                 <div className="grid grid-cols-7 gap-1.5">
                   {calendarDays.map((day) => {
                     const inMonth = day.getMonth() === month.getMonth();
-                    const bookable = inMonth && isDateBookable(config, day);
+                    const bookable = inMonth && isDateBookable(display, day);
                     const selected = selectedDate ? sameDay(day, selectedDate) : false;
                     return (
                       <button
@@ -430,7 +438,7 @@ export function TableBookingWidget({ className }: { className?: string }) {
                     onClick={() => {
                       const prev = new Date(selectedDate);
                       prev.setDate(prev.getDate() - 1);
-                      if (isDateBookable(config, prev)) {
+                      if (isDateBookable(display, prev)) {
                         setSelectedDate(prev);
                         setSelectedTime(null);
                       }
@@ -453,7 +461,7 @@ export function TableBookingWidget({ className }: { className?: string }) {
                     onClick={() => {
                       const next = new Date(selectedDate);
                       next.setDate(next.getDate() + 1);
-                      if (isDateBookable(config, next)) {
+                      if (isDateBookable(display, next)) {
                         setSelectedDate(next);
                         setSelectedTime(null);
                       }
@@ -482,9 +490,11 @@ export function TableBookingWidget({ className }: { className?: string }) {
                             selected ? "ring-4 ring-[#432f24]/15" : "hover:brightness-95",
                           )}
                           style={{
-                            backgroundColor: config.slotAccentColor,
+                            backgroundColor: display.slotAccentColor,
                             color: "#1a1512",
-                            boxShadow: selected ? `0 0 0 3px ${config.slotAccentColor}` : undefined,
+                            boxShadow: selected
+                              ? `0 0 0 3px ${display.slotAccentColor}`
+                              : undefined,
                           }}
                         >
                           {slot}
@@ -509,8 +519,8 @@ export function TableBookingWidget({ className }: { className?: string }) {
                     <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a7f74]">
                       {demo.place}
                     </p>
-                    <p className="mt-1 font-medium text-[#2a2018]">{config.restaurantName}</p>
-                    <p className="text-[#5c534c]">{config.address}</p>
+                    <p className="mt-1 font-medium text-[#2a2018]">{display.restaurantName}</p>
+                    <p className="text-[#5c534c]">{display.address}</p>
                   </div>
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a7f74]">
@@ -525,7 +535,7 @@ export function TableBookingWidget({ className }: { className?: string }) {
                       {demo.guestsLabel}
                     </p>
                     <p className="mt-1 font-medium text-[#2a2018]">
-                      {formatGuestLabel(guests, dateLocale)}
+                      {formatGuestLabel(guests, dateLocale, demo.guestsLabel)}
                     </p>
                   </div>
                   <div>
@@ -541,7 +551,7 @@ export function TableBookingWidget({ className }: { className?: string }) {
                       })}
                       {" · "}
                       {selectedTime}
-                      {config.showEndTime && endTime ? ` – ${endTime}` : ""}
+                      {display.showEndTime && endTime ? ` – ${endTime}` : ""}
                     </p>
                   </div>
                 </div>
@@ -594,7 +604,7 @@ export function TableBookingWidget({ className }: { className?: string }) {
                     checked={accepted}
                     onChange={(e) => setAccepted(e.target.checked)}
                   />
-                  <span>{config.termsText || demo.termsFallback}</span>
+                  <span>{display.termsText || demo.termsFallback}</span>
                 </label>
 
                 <div className="flex flex-wrap justify-between gap-3">
