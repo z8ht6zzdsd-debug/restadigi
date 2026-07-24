@@ -953,15 +953,15 @@ export const es: Messages = {
       button: "Preguntar más",
     },
     demo: {
-      sectionEyebrow: "Demo en vivo",
-      sectionTitleBefore: "Prueba el ",
-      sectionTitleAccent: "flujo de reserva",
-      sectionTitleAfter: " — estilo EasyTable.",
+      sectionEyebrow: "Demo del producto",
+      sectionTitleBefore: "Así reserva mesa ",
+      sectionTitleAccent: "el cliente",
+      sectionTitleAfter: " en tu web.",
       sectionBody:
-        "Abajo tienes un ejemplo de reserva de mesa en 5 pasos. Configúralo desde el dashboard. Los datos de la demo no se guardan en base de datos.",
-      bannerEyebrow: "Demo / demostración",
+        "Abajo tienes la experiencia de reservas de mesa de Restadigi. Puedes editar nombre, horarios y textos en el dashboard. Los datos de la demo no se guardan en base de datos.",
+      bannerEyebrow: "Restadigi — demo del producto",
       bannerBody:
-        "Esta vista está pensada para mostrar cómo funciona la reserva de mesa de Restadigi para el cliente. Lo que rellenes es solo un ejemplo: no se almacena.",
+        "Este flujo muestra el servicio de reservas de mesa de Restadigi. Lo que rellenes es solo un ejemplo: no se almacena. En una instalación real, las reservas aparecen en el panel de admin.",
       liveBadge: "Demo",
       stepperAria: "Pasos de la reserva",
       stepInfo: "Información",

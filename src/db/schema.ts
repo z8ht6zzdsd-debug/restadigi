@@ -136,7 +136,7 @@ export const outboundEmails = pgTable("outbound_emails", {
   sentAt: timestamp("sent_at", { withTimezone: true }).defaultNow().notNull(),
 });
 
-/** EasyTable-style online booking widget config (JSON blob). */
+/** Online booking widget config for Restadigi table-reservation product (JSON blob). */
 export const bookingWidgetConfig = pgTable("booking_widget_config", {
   id: text("id").primaryKey().default("default"),
   configJson: text("config_json").notNull(),

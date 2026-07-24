@@ -1,4 +1,4 @@
--- EasyTable-style booking widget config (safe to run multiple times)
+-- Restadigi online booking widget config (safe to run multiple times)
 
 CREATE TABLE IF NOT EXISTS booking_widget_config (
   id TEXT PRIMARY KEY DEFAULT 'default',

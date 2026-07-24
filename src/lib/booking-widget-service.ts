@@ -36,10 +36,43 @@ export async function getBookingWidgetConfig(): Promise<{
   } catch {
     parsed = {};
   }
+  const config = parseBookingWidgetConfig(parsed);
+  // Replace legacy third-party demo branding with Restadigi showcase defaults.
+  if (isLegacyThirdPartyShowcase(config)) {
+    const next = { ...DEFAULT_BOOKING_WIDGET_CONFIG };
+    const json = JSON.stringify(next);
+    const now = new Date();
+    await db
+      .insert(schema.bookingWidgetConfig)
+      .values({
+        id: "default",
+        configJson: json,
+        updatedAt: now,
+      })
+      .onConflictDoUpdate({
+        target: schema.bookingWidgetConfig.id,
+        set: {
+          configJson: json,
+          updatedAt: now,
+        },
+      });
+    return { config: next, updatedAt: now.toISOString() };
+  }
   return {
-    config: parseBookingWidgetConfig(parsed),
+    config,
     updatedAt: row.updatedAt?.toISOString?.() ?? String(row.updatedAt),
   };
+}
+
+function isLegacyThirdPartyShowcase(config: BookingWidgetConfig) {
+  const blob = `${config.restaurantName} ${config.brandTitle} ${config.address}`.toLowerCase();
+  return (
+    blob.includes("ylläskota") ||
+    blob.includes("yllaskota") ||
+    blob.includes("ylläsjärvi") ||
+    blob.includes("yllasjarvi") ||
+    blob.includes("vaeltajantie")
+  );
 }
 
 export async function saveBookingWidgetConfig(input: unknown) {

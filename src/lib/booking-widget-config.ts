@@ -1,4 +1,4 @@
-/** Online table-booking widget config (EasyTable-style demo on marketing + dashboard). */
+/** Online table-booking widget config (Restadigi product demo on marketing + dashboard). */
 
 export type BookingWidgetType = {
   id: string;
@@ -34,40 +34,41 @@ export type BookingWidgetConfig = {
   showEndTime: boolean;
 };
 
-export const BOOKING_WIDGET_STORAGE_KEY = "restadigi-booking-widget-config-v1";
+export const BOOKING_WIDGET_STORAGE_KEY = "restadigi-booking-widget-config-v2";
 
+/** Fictional Restadigi showcase restaurant — fully editable in the dashboard. */
 export const DEFAULT_BOOKING_WIDGET_CONFIG: BookingWidgetConfig = {
-  restaurantName: "Restaurant Ylläskota",
-  address: "Vaeltajantie 2, 95980 Ylläsjärvi",
-  brandTitle: "YLLÄSKOTA",
-  brandSubtitle: "GASTRONOMIC",
+  restaurantName: "Ravintola Kajo",
+  address: "Bulevardi 12, 00120 Helsinki",
+  brandTitle: "KAJO",
+  brandSubtitle: "HELSINKI",
   brandImageUrl: "/booking-widget-brand.jpg",
   bookingTypes: [
     {
-      id: "normal",
-      name: "Normaali varaus",
-      description: "Pöytä pääruokasalissa. Kesto asetusten mukaan.",
+      id: "salon",
+      name: "Sali",
+      description: "Pöytä pääruokasalissa — rentoutunut fine dining -tunnelma.",
       active: true,
     },
     {
-      id: "terrace",
-      name: "Terassi",
-      description: "Pöytä terassilla (säästä riippuen).",
+      id: "bar",
+      name: "Baari & lounge",
+      description: "Paikka baaritiskiltä tai lounge-alueelta.",
       active: true,
     },
   ],
   minGuests: 1,
-  maxGuests: 12,
+  maxGuests: 10,
   durationMinutes: 150,
   slotIntervalMinutes: 15,
   openTime: "17:00",
   lastStartTime: "21:00",
-  closedWeekdays: [],
+  closedWeekdays: [1],
   minNoticeHours: 2,
   advanceBookingDays: 60,
-  slotAccentColor: "#c5d5b8",
+  slotAccentColor: "#d4c4b0",
   termsText:
-    "Hyväksyn, että voin peruuttaa varauksen viimeistään 24 tuntia ennen. Tämä on demoesimerkki: tietoja ei tallenneta.",
+    "Hyväksyn varausehdot. Voin peruuttaa viimeistään 24 tuntia ennen. Tämä on Restadigin tuote-esittely — tietoja ei tallenneta.",
   showEndTime: true,
 };
 

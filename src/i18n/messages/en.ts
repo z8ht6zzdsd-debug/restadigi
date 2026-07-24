@@ -945,15 +945,15 @@ export const en: Messages = {
       button: "Ask for more",
     },
     demo: {
-      sectionEyebrow: "Live demo",
-      sectionTitleBefore: "Try the ",
-      sectionTitleAccent: "booking flow",
-      sectionTitleAfter: " — EasyTable style.",
+      sectionEyebrow: "Product showcase",
+      sectionTitleBefore: "How guests ",
+      sectionTitleAccent: "book a table",
+      sectionTitleAfter: " on your site.",
       sectionBody:
-        "Below is an example of a modern 5-step table booking experience. Configure it in the dashboard. Demo data is not saved to a database.",
-      bannerEyebrow: "Demo / showcase",
+        "Below is Restadigi’s table-booking experience. Edit the restaurant name, times and copy in the dashboard. Demo data is not saved to a database.",
+      bannerEyebrow: "Restadigi — product showcase",
       bannerBody:
-        "This booking view is designed to show how Restadigi’s table reservation looks for guests. Anything you enter is an example only — nothing is stored.",
+        "This booking flow showcases Restadigi’s table reservation service. Anything you enter is an example only — nothing is stored. In a real setup, bookings appear in the admin panel.",
       liveBadge: "Demo",
       stepperAria: "Booking steps",
       stepInfo: "Info",

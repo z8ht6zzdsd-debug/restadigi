@@ -248,9 +248,9 @@ const fi = {
   },
   bookingWidget: {
     title: "Varauswidgetti",
-    subtitle: "EasyTable-tyylinen 5-vaiheinen pöytävaraus — näkyy /poytavaraupalvelu-sivulla",
+    subtitle: "Restadigin 5-vaiheinen pöytävaraus — näkyy /poytavaraupalvelu-sivulla",
     demoNote:
-      "Demovaraukset eivät tallennu tietokantaan. Asetukset tallentuvat Neonille ja päivittyvät live-demoon.",
+      "Demovaraukset eivät tallennu tietokantaan. Asetukset tallentuvat Neonille ja päivittyvät tuote-esittelyyn sivulla.",
     loadFailed: "Asetusten lataus epäonnistui",
     saveFailed: "Tallennus epäonnistui",
     saved: "Varauswidgetin asetukset tallennettu",
@@ -593,9 +593,9 @@ const en: DashboardUi = {
   },
   bookingWidget: {
     title: "Booking widget",
-    subtitle: "EasyTable-style 5-step table booking — shown on /poytavaraupalvelu",
+    subtitle: "Restadigi 5-step table booking — shown on /poytavaraupalvelu",
     demoNote:
-      "Demo bookings are not saved to the database. Settings save to Neon and update the live demo.",
+      "Demo bookings are not saved to the database. Settings save to Neon and update the product showcase on the page.",
     loadFailed: "Failed to load settings",
     saveFailed: "Failed to save",
     saved: "Booking widget settings saved",
@@ -924,9 +924,9 @@ const es: DashboardUi = {
   },
   bookingWidget: {
     title: "Widget de reservas",
-    subtitle: "Reserva de mesa en 5 pasos estilo EasyTable — visible en /poytavaraupalvelu",
+    subtitle: "Reserva de mesa Restadigi en 5 pasos — visible en /poytavaraupalvelu",
     demoNote:
-      "Las reservas demo no se guardan en la base de datos. Los ajustes se guardan en Neon y actualizan la demo en vivo.",
+      "Las reservas demo no se guardan en la base de datos. Los ajustes se guardan en Neon y actualizan la demo del producto en la página.",
     loadFailed: "Error al cargar ajustes",
     saveFailed: "Error al guardar",
     saved: "Ajustes del widget guardados",

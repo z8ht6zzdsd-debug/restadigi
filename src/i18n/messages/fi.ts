@@ -946,15 +946,15 @@ export const fi: Messages = {
       button: "Kysy lisää",
     },
     demo: {
-      sectionEyebrow: "Live-demo",
-      sectionTitleBefore: "Kokeile ",
-      sectionTitleAccent: "varauspolkua",
-      sectionTitleAfter: " — EasyTable-tyyliin.",
+      sectionEyebrow: "Tuote-esittely",
+      sectionTitleBefore: "Näin asiakas ",
+      sectionTitleAccent: "varaa pöydän",
+      sectionTitleAfter: " sivustoltasi.",
       sectionBody:
-        "Alla on esimerkki modernista 5-vaiheisesta pöytävarauksesta. Voit säätää asetuksia hallintapaneelissa. Demotiedot eivät tallennu tietokantaan.",
-      bannerEyebrow: "Esittely / demo",
+        "Alla on Restadigin pöytävarauspalvelun esimerkkinäkymä. Voit muokata ravintolan nimeä, aikoja ja tekstejä hallintapaneelissa. Demotiedot eivät tallennu tietokantaan.",
+      bannerEyebrow: "Restadigi — tuote-esittely",
       bannerBody:
-        "Tämä varausnäkymä on suunniteltu näyttämään, miten Restadigin pöytävaraus toimii asiakkaan silmin. Täytetyt tiedot ovat vain esimerkki — niitä ei tallenneta.",
+        "Tämä varauspolku esittelee Restadigin pöytävarauspalvelua. Täytetyt tiedot ovat vain esimerkki — niitä ei tallenneta. Oikeassa toteutuksessa varaukset menevät hallintapaneeliin.",
       liveBadge: "Demo",
       stepperAria: "Varauksen vaiheet",
       stepInfo: "Tiedot",
