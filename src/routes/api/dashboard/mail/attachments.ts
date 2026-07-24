@@ -5,8 +5,7 @@ import { getDatabaseUrl } from "@/lib/database-url";
 import {
   deleteMailAttachment,
   listMailAttachments,
-  MAIL_SLOTS,
-  type MailSlot,
+  resolveAttachmentSlot,
   seedDefaultMailAttachments,
   upsertMailAttachment,
 } from "@/lib/mail-service";
@@ -24,7 +23,9 @@ export const Route = createFileRoute("/api/dashboard/mail/attachments")({
         }
 
         try {
-          const attachments = await listMailAttachments();
+          const url = new URL(request.url);
+          const type = url.searchParams.get("type");
+          const attachments = await listMailAttachments(type);
           return Response.json({ attachments });
         } catch (error) {
           console.error("Mail attachments list error:", error);
@@ -44,20 +45,22 @@ export const Route = createFileRoute("/api/dashboard/mail/attachments")({
           const contentType = request.headers.get("content-type") ?? "";
 
           if (contentType.includes("application/json")) {
-            const body = (await request.json()) as { action?: string };
+            const body = (await request.json()) as { action?: string; type?: string };
             if (body.action !== "seed-defaults") {
               return Response.json({ error: "Tuntematon toiminto" }, { status: 400 });
             }
             const origin = new URL(request.url).origin;
-            const attachments = await seedDefaultMailAttachments(origin);
+            const attachments = await seedDefaultMailAttachments(origin, body.type);
             return Response.json({ ok: true, attachments });
           }
 
           const form = await request.formData();
           const slotRaw = String(form.get("slot") ?? "");
+          const typeRaw = String(form.get("type") ?? "default");
           const file = form.get("file");
 
-          if (!MAIL_SLOTS.includes(slotRaw as MailSlot)) {
+          const physical = resolveAttachmentSlot(typeRaw, slotRaw);
+          if (!physical) {
             return Response.json({ error: "Virheellinen PDF-paikka" }, { status: 400 });
           }
           if (!(file instanceof File)) {
@@ -72,8 +75,8 @@ export const Route = createFileRoute("/api/dashboard/mail/attachments")({
 
           const buffer = Buffer.from(await file.arrayBuffer());
           const attachment = await upsertMailAttachment(
-            slotRaw as MailSlot,
-            file.name || `${slotRaw}.pdf`,
+            physical,
+            file.name || `${physical}.pdf`,
             buffer.toString("base64"),
             "application/pdf",
           );
@@ -97,11 +100,13 @@ export const Route = createFileRoute("/api/dashboard/mail/attachments")({
         try {
           const url = new URL(request.url);
           const slotRaw = url.searchParams.get("slot") ?? "";
-          if (!MAIL_SLOTS.includes(slotRaw as MailSlot)) {
+          const typeRaw = url.searchParams.get("type") ?? "default";
+          const physical = resolveAttachmentSlot(typeRaw, slotRaw);
+          if (!physical) {
             return Response.json({ error: "Virheellinen PDF-paikka" }, { status: 400 });
           }
 
-          await deleteMailAttachment(slotRaw as MailSlot);
+          await deleteMailAttachment(physical);
           return Response.json({ ok: true });
         } catch (error) {
           console.error("Mail attachment delete error:", error);

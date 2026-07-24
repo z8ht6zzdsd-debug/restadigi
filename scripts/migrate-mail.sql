@@ -18,17 +18,25 @@ CREATE TABLE IF NOT EXISTS outbound_emails (
   status TEXT NOT NULL DEFAULT 'sent',
   error_message TEXT,
   attachment_slots TEXT NOT NULL DEFAULT 'pdf1,pdf2',
+  template_id TEXT NOT NULL DEFAULT 'default',
   open_count INTEGER NOT NULL DEFAULT 0,
   opened_at TIMESTAMPTZ,
   last_opened_at TIMESTAMPTZ,
   sent_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+-- Existing DBs: add template_id if missing
+ALTER TABLE outbound_emails
+  ADD COLUMN IF NOT EXISTS template_id TEXT NOT NULL DEFAULT 'default';
+
 CREATE INDEX IF NOT EXISTS idx_outbound_emails_sent_at
   ON outbound_emails (sent_at DESC);
 
 CREATE INDEX IF NOT EXISTS idx_outbound_emails_tracking_token
   ON outbound_emails (tracking_token);
+
+CREATE INDEX IF NOT EXISTS idx_outbound_emails_template_id
+  ON outbound_emails (template_id);
 
 CREATE TABLE IF NOT EXISTS mail_templates (
   id TEXT PRIMARY KEY DEFAULT 'default',

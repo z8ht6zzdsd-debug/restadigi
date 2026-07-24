@@ -5,11 +5,13 @@ import { getDatabaseUrl } from "@/lib/database-url";
 import {
   getMailStats,
   getMailTemplate,
+  isMailTemplateId,
   listMailAttachments,
   listOutboundEmails,
   saveMailTemplate,
   sendClientMail,
 } from "@/lib/mail-service";
+import { MAIL_TEMPLATE_DEFAULTS } from "@/lib/mail-template";
 import { enforceRateLimit } from "@/lib/rate-limit";
 
 export const Route = createFileRoute("/api/dashboard/mail")({
@@ -24,18 +26,26 @@ export const Route = createFileRoute("/api/dashboard/mail")({
         }
 
         try {
+          const url = new URL(request.url);
+          const typeParam = url.searchParams.get("type");
+          const templateId = isMailTemplateId(typeParam) ? typeParam : "default";
+
           const [emails, attachments, stats, template] = await Promise.all([
-            listOutboundEmails(80),
-            listMailAttachments(),
-            getMailStats(),
-            getMailTemplate(),
+            listOutboundEmails(80, templateId),
+            listMailAttachments(templateId),
+            getMailStats(templateId),
+            getMailTemplate(templateId),
           ]);
 
           return Response.json({
+            templateId,
             emails,
             attachments,
             stats,
             template,
+            meta: {
+              requireAttachments: MAIL_TEMPLATE_DEFAULTS[templateId].requireAttachments,
+            },
           });
         } catch (error) {
           console.error("Dashboard mail list error:", error);
@@ -52,8 +62,14 @@ export const Route = createFileRoute("/api/dashboard/mail")({
         }
 
         try {
-          const body = (await request.json()) as { subject?: string; body?: string };
+          const body = (await request.json()) as {
+            id?: string;
+            type?: string;
+            subject?: string;
+            body?: string;
+          };
           const template = await saveMailTemplate({
+            id: body.id ?? body.type,
             subject: body.subject ?? "",
             body: body.body ?? "",
           });
@@ -81,6 +97,8 @@ export const Route = createFileRoute("/api/dashboard/mail")({
             subject?: string;
             body?: string;
             test?: boolean;
+            type?: string;
+            templateId?: string;
           };
 
           const toEmail = body.toEmail?.trim().toLowerCase() ?? "";
@@ -88,8 +106,13 @@ export const Route = createFileRoute("/api/dashboard/mail")({
             return Response.json({ error: "Anna kelvollinen sähköpostiosoite" }, { status: 400 });
           }
 
+          const templateId = isMailTemplateId(body.templateId ?? body.type)
+            ? (body.templateId ?? body.type)!
+            : "default";
           const origin = new URL(request.url).origin;
           const isTest = body.test === true;
+          const requireOnCustomer = MAIL_TEMPLATE_DEFAULTS[templateId].requireAttachments;
+
           const email = await sendClientMail({
             toEmail,
             toName: body.toName,
@@ -97,7 +120,8 @@ export const Route = createFileRoute("/api/dashboard/mail")({
             subject: body.subject,
             body: body.body,
             origin,
-            requireAttachments: !isTest,
+            templateId,
+            requireAttachments: isTest ? false : requireOnCustomer,
             subjectPrefix: isTest ? "[TESTI] " : "",
           });
 

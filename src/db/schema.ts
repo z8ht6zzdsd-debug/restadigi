@@ -126,6 +126,8 @@ export const outboundEmails = pgTable("outbound_emails", {
   status: text("status").notNull().default("sent"),
   errorMessage: text("error_message"),
   attachmentSlots: text("attachment_slots").notNull().default("pdf1,pdf2"),
+  /** Mail workflow: default | cold | order | free */
+  templateId: text("template_id").notNull().default("default"),
   openCount: integer("open_count").notNull().default(0),
   openedAt: timestamp("opened_at", { withTimezone: true }),
   lastOpenedAt: timestamp("last_opened_at", { withTimezone: true }),

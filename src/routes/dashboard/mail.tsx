@@ -11,8 +11,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { fillDashboardUi, localeDateTag, useDashboardUi, useLocale } from "@/i18n";
 import {
   applyMailPlaceholders,
-  DEFAULT_MAIL_BODY_FI,
-  DEFAULT_MAIL_SUBJECT,
+  MAIL_TEMPLATE_DEFAULTS,
+  MAIL_TEMPLATE_IDS,
+  type MailTemplateId,
 } from "@/lib/mail-template";
 import { cn } from "@/lib/utils";
 
@@ -20,8 +21,11 @@ export const Route = createFileRoute("/dashboard/mail")({
   component: DashboardMailPage,
 });
 
+type LogicalSlot = "pdf1" | "pdf2";
+
 type AttachmentMeta = {
-  slot: "pdf1" | "pdf2";
+  slot: LogicalSlot;
+  physicalSlot?: string;
   filename: string | null;
   sizeBytes: number;
   updatedAt: string | null;
@@ -39,6 +43,7 @@ type OutboundEmail = {
   openedAt: string | null;
   lastOpenedAt: string | null;
   sentAt: string;
+  templateId?: string;
 };
 
 type MailStats = {
@@ -46,11 +51,6 @@ type MailStats = {
   sent: number;
   failed: number;
   opened: number;
-};
-
-const SLOT_LABELS: Record<AttachmentMeta["slot"], string> = {
-  pdf1: "PDF 1 · Digipalvelut",
-  pdf2: "PDF 2 · Verkkosivupaketit",
 };
 
 function formatBytes(bytes: number) {
@@ -63,12 +63,14 @@ function DashboardMailPage() {
   const t = useDashboardUi();
   const { locale } = useLocale();
   const dateLocale = localeDateTag(locale);
+  const [activeType, setActiveType] = useState<MailTemplateId>("default");
   const [attachments, setAttachments] = useState<AttachmentMeta[]>([]);
   const [emails, setEmails] = useState<OutboundEmail[]>([]);
   const [stats, setStats] = useState<MailStats>({ total: 0, sent: 0, failed: 0, opened: 0 });
-  const [subject, setSubject] = useState(DEFAULT_MAIL_SUBJECT);
-  const [body, setBody] = useState(DEFAULT_MAIL_BODY_FI);
+  const [subject, setSubject] = useState(MAIL_TEMPLATE_DEFAULTS.default.subject);
+  const [body, setBody] = useState(MAIL_TEMPLATE_DEFAULTS.default.body);
   const [templateUpdatedAt, setTemplateUpdatedAt] = useState<string | null>(null);
+  const [requireAttachments, setRequireAttachments] = useState(true);
   const [toEmail, setToEmail] = useState("");
   const [toName, setToName] = useState("");
   const [company, setCompany] = useState("");
@@ -81,34 +83,58 @@ function DashboardMailPage() {
   const [seedingDefaults, setSeedingDefaults] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const tabLabels: Record<MailTemplateId, string> = {
+    default: t.mail.tabAfterCall,
+    cold: t.mail.tabCold,
+    order: t.mail.tabOrder,
+    free: t.mail.tabFree,
+  };
+
+  const slotLabels: Record<LogicalSlot, string> = {
+    pdf1: t.mail.pdf1,
+    pdf2: t.mail.pdf2,
+  };
+
   const load = useCallback(async () => {
     setError(null);
     try {
-      const res = await fetch("/api/dashboard/mail", { credentials: "include" });
+      const res = await fetch(`/api/dashboard/mail?type=${activeType}`, {
+        credentials: "include",
+      });
       const data = (await res.json()) as {
         emails?: OutboundEmail[];
         attachments?: AttachmentMeta[];
         stats?: MailStats;
         template?: { subject: string; body: string; updatedAt: string | null };
+        meta?: { requireAttachments?: boolean };
         error?: string;
       };
       if (!res.ok) throw new Error(data.error ?? t.mail.title);
       setEmails(data.emails ?? []);
       setAttachments(data.attachments ?? []);
       setStats(data.stats ?? { total: 0, sent: 0, failed: 0, opened: 0 });
+      setRequireAttachments(
+        data.meta?.requireAttachments ?? MAIL_TEMPLATE_DEFAULTS[activeType].requireAttachments,
+      );
       if (data.template) {
         setSubject(data.template.subject);
         setBody(data.template.body);
         setTemplateUpdatedAt(data.template.updatedAt);
+      } else {
+        const defaults = MAIL_TEMPLATE_DEFAULTS[activeType];
+        setSubject(defaults.subject);
+        setBody(defaults.body);
+        setTemplateUpdatedAt(null);
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : t.mail.title);
     } finally {
       setLoading(false);
     }
-  }, [t.mail.title]);
+  }, [activeType, t.mail.title]);
 
   useEffect(() => {
+    setLoading(true);
     void load();
   }, [load]);
 
@@ -130,12 +156,13 @@ function DashboardMailPage() {
     [body, previewFirstName, previewCompany],
   );
 
-  async function handleUpload(slot: AttachmentMeta["slot"], file: File | undefined) {
+  async function handleUpload(slot: LogicalSlot, file: File | undefined) {
     if (!file) return;
     setUploadingSlot(slot);
     try {
       const form = new FormData();
       form.set("slot", slot);
+      form.set("type", activeType);
       form.set("file", file);
       const res = await fetch("/api/dashboard/mail/attachments", {
         method: "POST",
@@ -153,9 +180,9 @@ function DashboardMailPage() {
     }
   }
 
-  async function handleDelete(slot: AttachmentMeta["slot"]) {
+  async function handleDelete(slot: LogicalSlot) {
     try {
-      const res = await fetch(`/api/dashboard/mail/attachments?slot=${slot}`, {
+      const res = await fetch(`/api/dashboard/mail/attachments?slot=${slot}&type=${activeType}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -175,14 +202,14 @@ function DashboardMailPage() {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "seed-defaults" }),
+        body: JSON.stringify({ action: "seed-defaults", type: activeType }),
       });
       const data = (await res.json()) as { error?: string };
-      if (!res.ok) throw new Error(data.error ?? "Oletus-PDF:ien päivitys epäonnistui");
-      toast.success("Oletus-PDF:t päivitetty liitteisiin");
+      if (!res.ok) throw new Error(data.error ?? t.mail.seedingDefaults);
+      toast.success(t.mail.defaultsUpdated);
       await load();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Päivitys epäonnistui");
+      toast.error(err instanceof Error ? err.message : t.mail.seedingDefaults);
     } finally {
       setSeedingDefaults(false);
     }
@@ -195,7 +222,7 @@ function DashboardMailPage() {
         method: "PUT",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ subject, body }),
+        body: JSON.stringify({ type: activeType, subject, body }),
       });
       const data = (await res.json()) as {
         template?: { updatedAt: string | null; subject?: string; body?: string };
@@ -261,6 +288,7 @@ function DashboardMailPage() {
           subject,
           body,
           test: opts.test,
+          type: activeType,
         }),
       });
       const data = (await res.json()) as { error?: string };
@@ -283,19 +311,19 @@ function DashboardMailPage() {
     return <p className="text-muted-foreground">{t.common.loading}</p>;
   }
 
-  if (error) {
+  if (error && attachments.length === 0 && emails.length === 0) {
     return (
       <div className="rounded-sm border border-destructive/30 bg-destructive/5 p-4 text-sm">
         {error}
-        <p className="mt-2 text-muted-foreground">
-          Tarvitset DATABASE_URL (Neon) ja SMTP-asetukset Zohoa varten.
-        </p>
+        <p className="mt-2 text-muted-foreground">{t.mail.dbHint}</p>
       </div>
     );
   }
 
   const openRate = stats.sent > 0 ? Math.round((stats.opened / stats.sent) * 100) : 0;
-  const pdfReady = attachments.filter((a) => a.hasFile).length >= 2;
+  const uploadedCount = attachments.filter((a) => a.hasFile).length;
+  const pdfReady = requireAttachments ? uploadedCount >= 2 : true;
+  const canSendCustomer = !sending && pdfReady;
 
   return (
     <div className="space-y-8">
@@ -331,6 +359,37 @@ function DashboardMailPage() {
         </div>
       </div>
 
+      <div
+        className="flex flex-wrap gap-1 rounded-2xl border border-[#e8dfd4] bg-white/70 p-1.5 shadow-sm"
+        role="tablist"
+        aria-label={t.mail.title}
+      >
+        {MAIL_TEMPLATE_IDS.map((id) => {
+          const active = activeType === id;
+          return (
+            <button
+              key={id}
+              type="button"
+              role="tab"
+              aria-selected={active}
+              onClick={() => setActiveType(id)}
+              className={cn(
+                "rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all sm:px-4",
+                active
+                  ? "bg-[#432f24] text-white shadow-md"
+                  : "text-[#5c534c] hover:bg-[#f3eee8] hover:text-[#2a2018]",
+              )}
+            >
+              {tabLabels[id]}
+            </button>
+          );
+        })}
+      </div>
+
+      <p className="text-sm text-[#5c534c]">{t.mail.tabHints[activeType]}</p>
+
+      {error ? <p className="text-sm text-destructive">{error}</p> : null}
+
       <div className="grid gap-3 sm:grid-cols-4">
         {[
           { label: t.mail.statsSent, value: stats.sent },
@@ -347,15 +406,14 @@ function DashboardMailPage() {
         ))}
       </div>
 
-      <section className="rounded-sm border border-border bg-card p-6 space-y-4">
+      <section className="space-y-4 rounded-sm border border-border bg-card p-6">
         <div className="flex items-center gap-2">
           <FileText className="size-4 text-accent" />
           <h3 className="font-medium">{t.mail.attachments}</h3>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <p className="text-sm text-foreground/70">
-            Resta-AI-tyyliset A4-esitteet (Restadigi Finland -logo). Asiakaslähetys vaatii molemmat;
-            testilähetys toimii myös ilman liitteitä.
+            {requireAttachments ? t.mail.attachmentsHintRequired : t.mail.attachmentsHintOptional}
           </p>
           <Button
             type="button"
@@ -366,19 +424,19 @@ function DashboardMailPage() {
             onClick={() => void handleSeedDefaults()}
           >
             <RefreshCw className={cn("size-3.5", seedingDefaults && "animate-spin")} />
-            {seedingDefaults ? "Päivitetään…" : "Käytä oletus-PDF:itä"}
+            {seedingDefaults ? t.mail.seedingDefaults : t.mail.useDefaultPdfs}
           </Button>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {attachments.map((att) => (
-            <div key={att.slot} className="rounded-sm border border-border p-4 space-y-3">
+            <div key={att.slot} className="space-y-3 rounded-sm border border-border p-4">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-sm font-medium">{SLOT_LABELS[att.slot]}</p>
+                  <p className="text-sm font-medium">{slotLabels[att.slot]}</p>
                   <p className="mt-1 text-xs text-muted-foreground">
                     {att.hasFile
                       ? `${att.filename} · ${formatBytes(att.sizeBytes)}`
-                      : "Ei tiedostoa — lataa PDF"}
+                      : t.mail.noFile}
                   </p>
                 </div>
                 {att.hasFile ? (
@@ -424,7 +482,7 @@ function DashboardMailPage() {
             <Label htmlFor="subject">{t.mail.subject}</Label>
             <Input id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
             <p className="text-xs text-muted-foreground">
-              Merkit <code className="rounded bg-muted px-1">[ETUNIMI]</code> ja{" "}
+              {t.mail.placeholdersHint} <code className="rounded bg-muted px-1">[ETUNIMI]</code> ·{" "}
               <code className="rounded bg-muted px-1">[YRITYS]</code>
             </p>
           </div>
@@ -440,7 +498,7 @@ function DashboardMailPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="preview-first">Esikatselu: etunimi</Label>
+              <Label htmlFor="preview-first">{t.mail.previewFirstName}</Label>
               <Input
                 id="preview-first"
                 value={previewFirstName}
@@ -448,7 +506,7 @@ function DashboardMailPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="preview-company">Esikatselu: yritys</Label>
+              <Label htmlFor="preview-company">{t.mail.previewCompany}</Label>
               <Input
                 id="preview-company"
                 value={previewCompany}
@@ -460,7 +518,7 @@ function DashboardMailPage() {
           <div className="space-y-3 border-t border-border pt-5">
             <div className="flex items-center gap-2">
               <Send className="size-4 text-accent" />
-              <h3 className="font-medium">Lähetys</h3>
+              <h3 className="font-medium">{t.mail.sendSection}</h3>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2 sm:col-span-2">
@@ -470,7 +528,7 @@ function DashboardMailPage() {
                   type="email"
                   value={toEmail}
                   onChange={(e) => setToEmail(e.target.value)}
-                  placeholder="oma@restadigi.fi tai asiakas@yritys.fi"
+                  placeholder="oma@restadigi.fi"
                 />
               </div>
               <div className="space-y-2">
@@ -504,29 +562,29 @@ function DashboardMailPage() {
               </Button>
               <Button
                 type="button"
-                disabled={sending || !pdfReady}
+                disabled={!canSendCustomer}
                 onClick={() => void handleSend({ test: false })}
               >
                 <Send className="size-4" />
                 {t.mail.sendCustomer}
               </Button>
             </div>
-            {!pdfReady ? (
-              <p className="text-xs text-muted-foreground">
-                Asiakaslähetys vaatii molemmat PDF:t. Testi toimii ilman liitteitä.
-              </p>
-            ) : null}
+            {requireAttachments && !pdfReady ? (
+              <p className="text-xs text-muted-foreground">{t.mail.customerNeedsPdfs}</p>
+            ) : (
+              <p className="text-xs text-muted-foreground">{t.mail.visualTemplateNote}</p>
+            )}
           </div>
         </section>
 
         <div className="space-y-3">
           <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-            Esikatselu (esikatselu.html)
+            {t.mail.preview}
           </p>
           <MailEsikatseluPreview subject={filledSubject} bodyText={filledBody} />
           {attachments.some((a) => a.hasFile) ? (
             <p className="text-xs text-muted-foreground">
-              Liitteet lähetyksessä:{" "}
+              {t.mail.attachmentsInSend}:{" "}
               {attachments
                 .filter((a) => a.hasFile)
                 .map((a) => a.filename)
@@ -539,7 +597,9 @@ function DashboardMailPage() {
       <section className="space-y-3">
         <div className="flex items-center gap-2">
           <Eye className="size-4 text-accent" />
-          <h3 className="font-medium">{t.mail.sentList}</h3>
+          <h3 className="font-medium">
+            {t.mail.sentList} · {tabLabels[activeType]}
+          </h3>
         </div>
         {emails.length === 0 ? (
           <p className="text-sm text-muted-foreground">{t.mail.emptySent}</p>
@@ -548,11 +608,11 @@ function DashboardMailPage() {
             <table className="w-full min-w-[640px] text-left text-sm">
               <thead className="bg-secondary/50 text-xs uppercase tracking-wide text-muted-foreground">
                 <tr>
-                  <th className="px-3 py-2 font-medium">Vastaanottaja</th>
-                  <th className="px-3 py-2 font-medium">Aihe</th>
-                  <th className="px-3 py-2 font-medium">Tila</th>
-                  <th className="px-3 py-2 font-medium">Avaukset</th>
-                  <th className="px-3 py-2 font-medium">Lähetetty</th>
+                  <th className="px-3 py-2 font-medium">{t.mail.toEmail}</th>
+                  <th className="px-3 py-2 font-medium">{t.mail.subject}</th>
+                  <th className="px-3 py-2 font-medium">{t.mail.status}</th>
+                  <th className="px-3 py-2 font-medium">{t.mail.opens}</th>
+                  <th className="px-3 py-2 font-medium">{t.mail.sentAt}</th>
                 </tr>
               </thead>
               <tbody>
@@ -564,7 +624,7 @@ function DashboardMailPage() {
                         <div className="text-xs text-muted-foreground">{email.toEmail}</div>
                       ) : null}
                     </td>
-                    <td className="px-3 py-2 max-w-[220px] truncate">{email.subject}</td>
+                    <td className="max-w-[220px] truncate px-3 py-2">{email.subject}</td>
                     <td className="px-3 py-2">
                       <span
                         className={cn(
@@ -591,7 +651,7 @@ function DashboardMailPage() {
                           ) : null}
                         </span>
                       ) : (
-                        <span className="text-muted-foreground">Ei avattu</span>
+                        <span className="text-muted-foreground">{t.mail.notOpened}</span>
                       )}
                     </td>
                     <td className="px-3 py-2 text-xs text-muted-foreground">

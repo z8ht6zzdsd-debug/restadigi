@@ -1,6 +1,6 @@
 import { randomBytes } from "node:crypto";
 
-import { count, desc, eq, sql } from "drizzle-orm";
+import { and, count, desc, eq, sql } from "drizzle-orm";
 import nodemailer from "nodemailer";
 
 import { getDb, schema } from "@/db";
@@ -16,10 +16,27 @@ import {
   applyMailPlaceholders,
   DEFAULT_MAIL_BODY_FI,
   DEFAULT_MAIL_SUBJECT,
+  isMailTemplateId,
+  MAIL_TEMPLATE_DEFAULTS,
+  MAIL_TEMPLATE_IDS,
+  physicalSlotForLogical,
+  physicalSlotsForTemplate,
+  type MailTemplateId,
 } from "@/lib/mail-template";
 
-export { applyMailPlaceholders, DEFAULT_MAIL_BODY_FI, DEFAULT_MAIL_SUBJECT };
+export {
+  applyMailPlaceholders,
+  DEFAULT_MAIL_BODY_FI,
+  DEFAULT_MAIL_SUBJECT,
+  isMailTemplateId,
+  MAIL_TEMPLATE_DEFAULTS,
+  MAIL_TEMPLATE_IDS,
+  physicalSlotForLogical,
+  physicalSlotsForTemplate,
+  type MailTemplateId,
+};
 
+/** Legacy logical slots used by the UI. */
 export const MAIL_SLOTS = ["pdf1", "pdf2"] as const;
 export type MailSlot = (typeof MAIL_SLOTS)[number];
 
@@ -43,6 +60,10 @@ function escapeHtml(value: string) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function resolveTemplateId(raw?: string | null): MailTemplateId {
+  return isMailTemplateId(raw) ? raw : "default";
 }
 
 /** Creates Neon tables if missing (safe to call on every request). */
@@ -85,30 +106,48 @@ export async function ensureMailTables() {
   await db.execute(
     sql`CREATE INDEX IF NOT EXISTS idx_outbound_emails_sent_at ON outbound_emails(sent_at DESC)`,
   );
+  await db.execute(sql`
+    ALTER TABLE outbound_emails
+    ADD COLUMN IF NOT EXISTS template_id TEXT NOT NULL DEFAULT 'default'
+  `);
+  await db.execute(
+    sql`CREATE INDEX IF NOT EXISTS idx_outbound_emails_template_id ON outbound_emails(template_id)`,
+  );
 }
 
-export async function getMailTemplate() {
+export async function getMailTemplate(templateIdRaw?: string | null) {
   await ensureMailTables();
+  const templateId = resolveTemplateId(templateIdRaw);
+  const defaults = MAIL_TEMPLATE_DEFAULTS[templateId];
   const db = getDb();
   const row = await db.query.mailTemplates.findFirst({
-    where: eq(schema.mailTemplates.id, "default"),
+    where: eq(schema.mailTemplates.id, templateId),
   });
   if (!row) {
     return {
-      subject: DEFAULT_MAIL_SUBJECT,
-      body: DEFAULT_MAIL_BODY_FI,
+      id: templateId,
+      subject: defaults.subject,
+      body: defaults.body,
       updatedAt: null as string | null,
+      requireAttachments: defaults.requireAttachments,
     };
   }
   return {
+    id: templateId,
     subject: row.subject,
     body: row.bodyText,
     updatedAt: row.updatedAt?.toISOString?.() ?? String(row.updatedAt),
+    requireAttachments: defaults.requireAttachments,
   };
 }
 
-export async function saveMailTemplate(input: { subject: string; body: string }) {
+export async function saveMailTemplate(input: {
+  id?: string | null;
+  subject: string;
+  body: string;
+}) {
   await ensureMailTables();
+  const templateId = resolveTemplateId(input.id);
   const db = getDb();
   const subject = input.subject.trim();
   const bodyText = input.body.trim();
@@ -119,7 +158,7 @@ export async function saveMailTemplate(input: { subject: string; body: string })
   await db
     .insert(schema.mailTemplates)
     .values({
-      id: "default",
+      id: templateId,
       subject,
       bodyText,
       updatedAt: new Date(),
@@ -133,21 +172,33 @@ export async function saveMailTemplate(input: { subject: string; body: string })
       },
     });
 
-  return getMailTemplate();
+  return getMailTemplate(templateId);
 }
 
 /** PDFs are uploaded manually from the dashboard — never auto-seeded from disk. */
-export async function listMailAttachments() {
+export async function listMailAttachments(templateIdRaw?: string | null) {
   await ensureMailTables();
+  const templateId = resolveTemplateId(templateIdRaw);
+  const [slot1, slot2] = physicalSlotsForTemplate(templateId);
   const db = getDb();
   const rows = await db.query.mailAttachments.findMany();
-  return MAIL_SLOTS.map((slot) => {
-    const row = rows.find((r) => r.slot === slot);
+
+  return (["pdf1", "pdf2"] as const).map((logical, index) => {
+    const physical = index === 0 ? slot1 : slot2;
+    const row = rows.find((r) => r.slot === physical);
     if (!row) {
-      return { slot, filename: null, sizeBytes: 0, updatedAt: null, hasFile: false };
+      return {
+        slot: logical,
+        physicalSlot: physical,
+        filename: null,
+        sizeBytes: 0,
+        updatedAt: null,
+        hasFile: false,
+      };
     }
     return {
-      slot,
+      slot: logical,
+      physicalSlot: physical,
       filename: row.filename,
       sizeBytes: row.sizeBytes,
       updatedAt: row.updatedAt,
@@ -156,11 +207,13 @@ export async function listMailAttachments() {
   });
 }
 
-/** Fetches bundled /mail/*.pdf from this origin and upserts both Neon slots. */
-export async function seedDefaultMailAttachments(origin: string) {
+/** Fetches bundled /mail/*.pdf from this origin and upserts both Neon slots for a template. */
+export async function seedDefaultMailAttachments(origin: string, templateIdRaw?: string | null) {
+  const templateId = resolveTemplateId(templateIdRaw);
   const results: Awaited<ReturnType<typeof upsertMailAttachment>>[] = [];
-  for (const slot of MAIL_SLOTS) {
-    const meta = DEFAULT_MAIL_PDFS[slot];
+  for (const logical of MAIL_SLOTS) {
+    const meta = DEFAULT_MAIL_PDFS[logical];
+    const physical = physicalSlotForLogical(templateId, logical);
     const url = new URL(meta.publicPath, origin).toString();
     const res = await fetch(url);
     if (!res.ok) {
@@ -168,14 +221,19 @@ export async function seedDefaultMailAttachments(origin: string) {
     }
     const buffer = Buffer.from(await res.arrayBuffer());
     results.push(
-      await upsertMailAttachment(slot, meta.filename, buffer.toString("base64"), "application/pdf"),
+      await upsertMailAttachment(
+        physical,
+        meta.filename,
+        buffer.toString("base64"),
+        "application/pdf",
+      ),
     );
   }
   return results;
 }
 
 export async function upsertMailAttachment(
-  slot: MailSlot,
+  slot: string,
   filename: string,
   contentBase64: string,
   mimeType = "application/pdf",
@@ -211,18 +269,45 @@ export async function upsertMailAttachment(
   return { slot, filename, sizeBytes, hasFile: true };
 }
 
-export async function deleteMailAttachment(slot: MailSlot) {
+export async function deleteMailAttachment(slot: string) {
   await ensureMailTables();
   const db = getDb();
   await db.delete(schema.mailAttachments).where(eq(schema.mailAttachments.slot, slot));
 }
 
-function getSmtpConfig() {
+export function resolveAttachmentSlot(
+  templateIdRaw: string | null | undefined,
+  logicalOrPhysical: string,
+): string | null {
+  const templateId = resolveTemplateId(templateIdRaw);
+  if (logicalOrPhysical === "pdf1" || logicalOrPhysical === "pdf2") {
+    return physicalSlotForLogical(templateId, logicalOrPhysical);
+  }
+  const allowed = physicalSlotsForTemplate(templateId);
+  if (allowed.includes(logicalOrPhysical as (typeof allowed)[number])) {
+    return logicalOrPhysical;
+  }
+  // Legacy: allow pdf1/pdf2 only for default when template omitted
+  if (templateId === "default" && (logicalOrPhysical === "pdf1" || logicalOrPhysical === "pdf2")) {
+    return logicalOrPhysical;
+  }
+  return null;
+}
+
+function getSmtpConfig(templateId: MailTemplateId) {
   const host = process.env.SMTP_HOST ?? "smtp.zoho.eu";
   const port = Number(process.env.SMTP_PORT ?? "465");
   const user = process.env.SMTP_USER ?? process.env.SMTP_EMAIL;
   const pass = process.env.SMTP_PASS ?? process.env.SMTP_PASSWORD;
-  const from = process.env.SMTP_FROM ?? `Restadigi <${user ?? CONTACT_EMAIL}>`;
+
+  const fromByType: Partial<Record<MailTemplateId, string | undefined>> = {
+    default: process.env.SMTP_FROM,
+    cold: process.env.SMTP_FROM_COLD || process.env.SMTP_FROM,
+    order: process.env.SMTP_FROM_ORDER || process.env.SMTP_FROM,
+    free: process.env.SMTP_FROM_FREE || process.env.SMTP_FROM,
+  };
+
+  const from = fromByType[templateId] ?? `Restadigi <${user ?? CONTACT_EMAIL}>`;
 
   if (!user || !pass) {
     throw new Error("SMTP_USER and SMTP_PASS must be configured (Zoho)");
@@ -318,21 +403,27 @@ export async function sendClientMail(input: {
   subject?: string;
   body?: string;
   origin: string;
+  templateId?: string | null;
   requireAttachments?: boolean;
   subjectPrefix?: string;
 }) {
   await ensureMailTables();
+  const templateId = resolveTemplateId(input.templateId);
+  const defaults = MAIL_TEMPLATE_DEFAULTS[templateId];
   const db = getDb();
-  const smtp = getSmtpConfig();
-  const saved = await getMailTemplate();
+  const smtp = getSmtpConfig(templateId);
+  const saved = await getMailTemplate(templateId);
 
+  const [slot1, slot2] = physicalSlotsForTemplate(templateId);
   const attachments = await db.query.mailAttachments.findMany();
-  const ready = MAIL_SLOTS.map((slot) => attachments.find((a) => a.slot === slot)).filter(
-    Boolean,
-  ) as (typeof attachments)[number][];
+  const ready = [slot1, slot2]
+    .map((slot) => attachments.find((a) => a.slot === slot))
+    .filter(Boolean) as (typeof attachments)[number][];
 
-  const requireAttachments = input.requireAttachments !== false;
-  if (requireAttachments && ready.length < MAIL_SLOTS.length) {
+  const requireAttachments =
+    input.requireAttachments !== undefined ? input.requireAttachments : defaults.requireAttachments;
+
+  if (requireAttachments && ready.length < 2) {
     throw new Error("Lataa molemmat PDF-tiedostot ennen lähetystä (PDF 1 ja PDF 2)");
   }
 
@@ -380,6 +471,7 @@ export async function sendClientMail(input: {
         trackingToken,
         status: "sent",
         attachmentSlots: ready.map((f) => f.slot).join(",") || "none",
+        templateId,
       })
       .returning();
 
@@ -394,35 +486,66 @@ export async function sendClientMail(input: {
       status: "failed",
       errorMessage: message,
       attachmentSlots: ready.map((f) => f.slot).join(",") || "none",
+      templateId,
     });
     throw new Error(message);
   }
 }
 
-export async function listOutboundEmails(limit = 50) {
+export async function listOutboundEmails(limit = 50, templateIdRaw?: string | null) {
   await ensureMailTables();
   const db = getDb();
+  if (templateIdRaw && isMailTemplateId(templateIdRaw)) {
+    return db.query.outboundEmails.findMany({
+      where: eq(schema.outboundEmails.templateId, templateIdRaw),
+      orderBy: [desc(schema.outboundEmails.sentAt)],
+      limit,
+    });
+  }
   return db.query.outboundEmails.findMany({
     orderBy: [desc(schema.outboundEmails.sentAt)],
     limit,
   });
 }
 
-export async function getMailStats() {
+export async function getMailStats(templateIdRaw?: string | null) {
   await ensureMailTables();
   const db = getDb();
-  const [total] = await db.select({ count: count() }).from(schema.outboundEmails);
+  const templateId = templateIdRaw && isMailTemplateId(templateIdRaw) ? templateIdRaw : null;
+
+  const baseWhere = templateId ? eq(schema.outboundEmails.templateId, templateId) : undefined;
+
+  const [total] = await db.select({ count: count() }).from(schema.outboundEmails).where(baseWhere);
   const [sent] = await db
     .select({ count: count() })
     .from(schema.outboundEmails)
-    .where(eq(schema.outboundEmails.status, "sent"));
+    .where(
+      templateId
+        ? and(
+            eq(schema.outboundEmails.status, "sent"),
+            eq(schema.outboundEmails.templateId, templateId),
+          )
+        : eq(schema.outboundEmails.status, "sent"),
+    );
   const [failed] = await db
     .select({ count: count() })
     .from(schema.outboundEmails)
-    .where(eq(schema.outboundEmails.status, "failed"));
-  const openedResult = await db.execute<{ count: number }>(
-    sql`SELECT COUNT(*)::int AS count FROM outbound_emails WHERE open_count > 0`,
-  );
+    .where(
+      templateId
+        ? and(
+            eq(schema.outboundEmails.status, "failed"),
+            eq(schema.outboundEmails.templateId, templateId),
+          )
+        : eq(schema.outboundEmails.status, "failed"),
+    );
+
+  const openedResult = templateId
+    ? await db.execute<{ count: number }>(
+        sql`SELECT COUNT(*)::int AS count FROM outbound_emails WHERE open_count > 0 AND template_id = ${templateId}`,
+      )
+    : await db.execute<{ count: number }>(
+        sql`SELECT COUNT(*)::int AS count FROM outbound_emails WHERE open_count > 0`,
+      );
 
   return {
     total: total?.count ?? 0,
