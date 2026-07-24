@@ -17,11 +17,7 @@ export function getAdminHostname() {
 }
 
 /** Public marketing hosts that must not serve the admin UI. */
-const MARKETING_HOSTS = new Set([
-  "restadigi.fi",
-  "www.restadigi.fi",
-  "restadigi.vercel.app",
-]);
+const MARKETING_HOSTS = new Set(["restadigi.fi", "www.restadigi.fi", "restadigi.vercel.app"]);
 
 export function isMarketingHost(hostname: string) {
   return MARKETING_HOSTS.has(hostname.toLowerCase());
