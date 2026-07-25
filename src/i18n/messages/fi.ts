@@ -1220,7 +1220,8 @@ export const fi: Messages = {
       successBody:
         "Oikeassa toteutuksessa vieras saisi vahvistuksen sähköpostiin ja varaus näkyisi hallintapaneelissa. Tässä demossa mitään ei tallennettu.",
       tryAgain: "Kokeile uudelleen",
-    },  },
+    },
+  },
   hosting: {
     meta: {
       title: "Ylläpito — Restadigi",

@@ -1228,7 +1228,8 @@ export const es: Messages = {
       successBody:
         "En una instalación real el huésped recibiría la confirmación por correo y la reserva aparecería en el panel. En esta demo no se ha guardado nada.",
       tryAgain: "Probar de nuevo",
-    },  },
+    },
+  },
   hosting: {
     meta: {
       title: "Mantenimiento — Restadigi",

@@ -26,12 +26,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-const WHY_US_PATHS = [
-  "/yhteys",
-  "/verkkosivut",
-  "/restachat",
-  "/restatable",
-] as const;
+const WHY_US_PATHS = ["/yhteys", "/verkkosivut", "/restachat", "/restatable"] as const;
 type WhyUsPath = (typeof WHY_US_PATHS)[number];
 
 function isWhyUsPath(to: string): to is WhyUsPath {

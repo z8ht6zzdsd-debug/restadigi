@@ -1219,7 +1219,8 @@ export const en: Messages = {
       successBody:
         "In a real setup the guest would get an email confirmation and the booking would appear in the dashboard. In this demo nothing was saved.",
       tryAgain: "Try again",
-    },  },
+    },
+  },
   hosting: {
     meta: {
       title: "Hosting & maintenance — Restadigi",

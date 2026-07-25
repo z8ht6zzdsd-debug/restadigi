@@ -119,8 +119,8 @@ export function SiteHeader() {
   const triggerOpenClass = "text-[#c46a32]";
 
   return (
-    <nav ref={navRef} className="relative z-30 pt-4 pb-3 sm:pt-6 sm:pb-4">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 pl-2 pr-6 sm:pl-3 lg:pl-1">
+    <nav ref={navRef} className="relative z-30">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 pt-4 pb-3 pl-2 pr-6 sm:pt-6 sm:pb-4 sm:pl-3 lg:pl-1">
         <Link
           to="/"
           className="site-header__brand shrink-0"
@@ -352,7 +352,9 @@ export function SiteHeader() {
               open={mobileSection === "palvelut"}
               onToggle={() => toggleMobileSection("palvelut")}
             >
-              <p className="mb-3 text-sm leading-relaxed text-[#5c534c]">{t.header.servicesIntro}</p>
+              <p className="mb-3 text-sm leading-relaxed text-[#5c534c]">
+                {t.header.servicesIntro}
+              </p>
               {t.header.servicesList.map((item) =>
                 isServicePath(item.to) ? (
                   <Link
@@ -362,7 +364,9 @@ export function SiteHeader() {
                     className="block border-b border-[#eee8e0] py-3 last:border-0"
                     activeProps={{ className: "text-accent" }}
                   >
-                    <span className="block text-base font-semibold text-[#2a2018]">{item.label}</span>
+                    <span className="block text-base font-semibold text-[#2a2018]">
+                      {item.label}
+                    </span>
                     <span className="mt-0.5 block text-sm text-[#5c534c]">{item.body}</span>
                   </Link>
                 ) : null,
@@ -410,9 +414,7 @@ export function SiteHeader() {
                   onClick={() => pickLanguage(item.code)}
                   className={cn(
                     "flex w-full items-center gap-2.5 py-2 text-left text-base",
-                    locale === item.code
-                      ? "text-accent"
-                      : "text-[#5c534c] hover:text-[#2a2018]",
+                    locale === item.code ? "text-accent" : "text-[#5c534c] hover:text-[#2a2018]",
                   )}
                 >
                   <LocaleFlag
@@ -430,7 +432,9 @@ export function SiteHeader() {
               onToggle={() => toggleMobileSection("yhteys")}
             >
               <div className="rounded-2xl bg-[#f3eee8] p-4">
-                <p className="mb-4 text-sm leading-relaxed text-[#5c534c]">{t.header.contactIntro}</p>
+                <p className="mb-4 text-sm leading-relaxed text-[#5c534c]">
+                  {t.header.contactIntro}
+                </p>
                 {t.header.contactLinks.map((item) => (
                   <Link
                     key={item.to}
@@ -462,7 +466,7 @@ function MegaPanel({ id, children }: { id: string; children: ReactNode }) {
   return (
     <div
       id={id}
-      className="absolute left-1/2 top-full z-40 mt-3 hidden w-[min(52rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-2xl border border-[#e8dfd4] bg-white shadow-[0_22px_60px_rgba(42,32,24,0.16)] lg:block"
+      className="absolute left-1/2 top-full z-40 hidden w-[min(52rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-2xl border border-[#e8dfd4] bg-white shadow-[0_22px_60px_rgba(42,32,24,0.16)] lg:block"
     >
       <div className="grid lg:grid-cols-[0.95fr_1.15fr]">{children}</div>
     </div>

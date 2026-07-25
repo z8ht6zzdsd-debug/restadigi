@@ -90,7 +90,9 @@ function GraafinenSuunnitteluPage() {
             <MarketingBox key={product.name} tone="white" justify="start" className="min-h-[12rem]">
               <h3 className="text-lg font-bold tracking-tight text-[#2a2018]">{product.name}</h3>
               {"description" in product && typeof product.description === "string" ? (
-                <p className="mt-2 text-sm leading-relaxed text-foreground/65">{product.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                  {product.description}
+                </p>
               ) : null}
               <p className="mt-4 text-base font-semibold text-accent">{product.price}</p>
             </MarketingBox>
