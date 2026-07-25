@@ -29,7 +29,7 @@ type MenuKey = "palvelut" | "toimialat" | "kielet" | "yhteys" | null;
 const SERVICE_PATHS = [
   "/verkkosivut",
   "/restatable",
-  "/restabooking",
+  "/majoitusvaraus",
   "/restachat",
   "/nakyvyys",
   "/graafinen-suunnittelu",
@@ -41,7 +41,7 @@ type ServicePath = (typeof SERVICE_PATHS)[number];
 const SERVICE_ICONS: Record<ServicePath, LucideIcon> = {
   "/verkkosivut": Globe,
   "/restatable": CalendarDays,
-  "/restabooking": Bookmark,
+  "/majoitusvaraus": Bookmark,
   "/restachat": MessageCircle,
   "/nakyvyys": Eye,
   "/graafinen-suunnittelu": Palette,

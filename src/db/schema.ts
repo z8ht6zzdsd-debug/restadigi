@@ -143,6 +143,13 @@ export const bookingWidgetConfig = pgTable("booking_widget_config", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 });
 
+/** Stay / lodging booking widget config for Restabooking product (JSON blob). */
+export const stayBookingWidgetConfig = pgTable("stay_booking_widget_config", {
+  id: text("id").primaryKey().default("default"),
+  configJson: text("config_json").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
 /**
  * Lightweight sales call calendar — no separate client CRM.
  * One row = one planned/completed call with notes.

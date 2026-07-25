@@ -106,6 +106,13 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
     blurb: "Pöytävaraukset kanavilta, hallinta ja pöytäkartta.",
   },
   {
+    id: "majoitusvaraus",
+    group: "booking",
+    name: "Restabooking (majoitus)",
+    price: "alk. 299 € / vuosi",
+    blurb: "Majoitusvaraukset sivuilta — hotellit, majatalot, mökit.",
+  },
+  {
     id: "hosting-basic",
     group: "hosting",
     exclusiveGroup: "hosting",
@@ -155,8 +162,8 @@ export const FORM_SERVICE_GROUPS: {
   },
   {
     id: "booking",
-    title: "Restatable",
-    hint: "Ravintoloiden pöytävaraukset.",
+    title: "Varauspalvelut",
+    hint: "Restatable (pöytä) ja Restabooking (majoitus).",
     multi: true,
   },
   {

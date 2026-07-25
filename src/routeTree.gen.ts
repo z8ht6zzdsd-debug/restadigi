@@ -20,6 +20,7 @@ import { Route as PoytavaraupalveluRouteImport } from './routes/poytavaraupalvel
 import { Route as NakyvyysJaSuunnitteluRouteImport } from './routes/nakyvyys-ja-suunnittelu'
 import { Route as NakyvyysRouteImport } from './routes/nakyvyys'
 import { Route as MeistaRouteImport } from './routes/meista'
+import { Route as MajoitusvarausRouteImport } from './routes/majoitusvaraus'
 import { Route as KayttoehdotRouteImport } from './routes/kayttoehdot'
 import { Route as HinnastoRouteImport } from './routes/hinnasto'
 import { Route as GraafinenSuunnitteluRouteImport } from './routes/graafinen-suunnittelu'
@@ -30,6 +31,7 @@ import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardVisitorsRouteImport } from './routes/dashboard/visitors'
+import { Route as DashboardStayBookingWidgetRouteImport } from './routes/dashboard/stay-booking-widget'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
 import { Route as DashboardReservationsRouteImport } from './routes/dashboard/reservations'
 import { Route as DashboardMailRouteImport } from './routes/dashboard/mail'
@@ -40,6 +42,7 @@ import { Route as DashboardConversationsRouteImport } from './routes/dashboard/c
 import { Route as DashboardCallsRouteImport } from './routes/dashboard/calls'
 import { Route as DashboardBookingWidgetRouteImport } from './routes/dashboard/booking-widget'
 import { Route as ApiTrackRouteImport } from './routes/api/track'
+import { Route as ApiStayBookingConfigRouteImport } from './routes/api/stay-booking-config'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiBookingWidgetConfigRouteImport } from './routes/api/booking-widget-config'
 import { Route as ApiRestaurantSettingsRouteImport } from './routes/api/restaurant/settings'
@@ -118,6 +121,11 @@ const MeistaRoute = MeistaRouteImport.update({
   path: '/meista',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MajoitusvarausRoute = MajoitusvarausRouteImport.update({
+  id: '/majoitusvaraus',
+  path: '/majoitusvaraus',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KayttoehdotRoute = KayttoehdotRouteImport.update({
   id: '/kayttoehdot',
   path: '/kayttoehdot',
@@ -168,6 +176,12 @@ const DashboardVisitorsRoute = DashboardVisitorsRouteImport.update({
   path: '/visitors',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
+const DashboardStayBookingWidgetRoute =
+  DashboardStayBookingWidgetRouteImport.update({
+    id: '/stay-booking-widget',
+    path: '/stay-booking-widget',
+    getParentRoute: () => DashboardRouteRoute,
+  } as any)
 const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -216,6 +230,11 @@ const DashboardBookingWidgetRoute = DashboardBookingWidgetRouteImport.update({
 const ApiTrackRoute = ApiTrackRouteImport.update({
   id: '/api/track',
   path: '/api/track',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStayBookingConfigRoute = ApiStayBookingConfigRouteImport.update({
+  id: '/api/stay-booking-config',
+  path: '/api/stay-booking-config',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiChatRoute = ApiChatRouteImport.update({
@@ -343,6 +362,7 @@ export interface FileRoutesByFullPath {
   '/graafinen-suunnittelu': typeof GraafinenSuunnitteluRoute
   '/hinnasto': typeof HinnastoRoute
   '/kayttoehdot': typeof KayttoehdotRoute
+  '/majoitusvaraus': typeof MajoitusvarausRoute
   '/meista': typeof MeistaRoute
   '/nakyvyys': typeof NakyvyysRoute
   '/nakyvyys-ja-suunnittelu': typeof NakyvyysJaSuunnitteluRoute
@@ -356,6 +376,7 @@ export interface FileRoutesByFullPath {
   '/yllapito': typeof YllapitoRoute
   '/api/booking-widget-config': typeof ApiBookingWidgetConfigRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/stay-booking-config': typeof ApiStayBookingConfigRoute
   '/api/track': typeof ApiTrackRoute
   '/dashboard/booking-widget': typeof DashboardBookingWidgetRoute
   '/dashboard/calls': typeof DashboardCallsRoute
@@ -366,6 +387,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/mail': typeof DashboardMailRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/stay-booking-widget': typeof DashboardStayBookingWidgetRoute
   '/dashboard/visitors': typeof DashboardVisitorsRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
@@ -397,6 +419,7 @@ export interface FileRoutesByTo {
   '/graafinen-suunnittelu': typeof GraafinenSuunnitteluRoute
   '/hinnasto': typeof HinnastoRoute
   '/kayttoehdot': typeof KayttoehdotRoute
+  '/majoitusvaraus': typeof MajoitusvarausRoute
   '/meista': typeof MeistaRoute
   '/nakyvyys': typeof NakyvyysRoute
   '/nakyvyys-ja-suunnittelu': typeof NakyvyysJaSuunnitteluRoute
@@ -410,6 +433,7 @@ export interface FileRoutesByTo {
   '/yllapito': typeof YllapitoRoute
   '/api/booking-widget-config': typeof ApiBookingWidgetConfigRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/stay-booking-config': typeof ApiStayBookingConfigRoute
   '/api/track': typeof ApiTrackRoute
   '/dashboard/booking-widget': typeof DashboardBookingWidgetRoute
   '/dashboard/calls': typeof DashboardCallsRoute
@@ -420,6 +444,7 @@ export interface FileRoutesByTo {
   '/dashboard/mail': typeof DashboardMailRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/stay-booking-widget': typeof DashboardStayBookingWidgetRoute
   '/dashboard/visitors': typeof DashboardVisitorsRoute
   '/dashboard': typeof DashboardIndexRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
@@ -453,6 +478,7 @@ export interface FileRoutesById {
   '/graafinen-suunnittelu': typeof GraafinenSuunnitteluRoute
   '/hinnasto': typeof HinnastoRoute
   '/kayttoehdot': typeof KayttoehdotRoute
+  '/majoitusvaraus': typeof MajoitusvarausRoute
   '/meista': typeof MeistaRoute
   '/nakyvyys': typeof NakyvyysRoute
   '/nakyvyys-ja-suunnittelu': typeof NakyvyysJaSuunnitteluRoute
@@ -466,6 +492,7 @@ export interface FileRoutesById {
   '/yllapito': typeof YllapitoRoute
   '/api/booking-widget-config': typeof ApiBookingWidgetConfigRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/stay-booking-config': typeof ApiStayBookingConfigRoute
   '/api/track': typeof ApiTrackRoute
   '/dashboard/booking-widget': typeof DashboardBookingWidgetRoute
   '/dashboard/calls': typeof DashboardCallsRoute
@@ -476,6 +503,7 @@ export interface FileRoutesById {
   '/dashboard/mail': typeof DashboardMailRoute
   '/dashboard/reservations': typeof DashboardReservationsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/stay-booking-widget': typeof DashboardStayBookingWidgetRoute
   '/dashboard/visitors': typeof DashboardVisitorsRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
@@ -510,6 +538,7 @@ export interface FileRouteTypes {
     | '/graafinen-suunnittelu'
     | '/hinnasto'
     | '/kayttoehdot'
+    | '/majoitusvaraus'
     | '/meista'
     | '/nakyvyys'
     | '/nakyvyys-ja-suunnittelu'
@@ -523,6 +552,7 @@ export interface FileRouteTypes {
     | '/yllapito'
     | '/api/booking-widget-config'
     | '/api/chat'
+    | '/api/stay-booking-config'
     | '/api/track'
     | '/dashboard/booking-widget'
     | '/dashboard/calls'
@@ -533,6 +563,7 @@ export interface FileRouteTypes {
     | '/dashboard/mail'
     | '/dashboard/reservations'
     | '/dashboard/settings'
+    | '/dashboard/stay-booking-widget'
     | '/dashboard/visitors'
     | '/dashboard/'
     | '/api/auth/login'
@@ -564,6 +595,7 @@ export interface FileRouteTypes {
     | '/graafinen-suunnittelu'
     | '/hinnasto'
     | '/kayttoehdot'
+    | '/majoitusvaraus'
     | '/meista'
     | '/nakyvyys'
     | '/nakyvyys-ja-suunnittelu'
@@ -577,6 +609,7 @@ export interface FileRouteTypes {
     | '/yllapito'
     | '/api/booking-widget-config'
     | '/api/chat'
+    | '/api/stay-booking-config'
     | '/api/track'
     | '/dashboard/booking-widget'
     | '/dashboard/calls'
@@ -587,6 +620,7 @@ export interface FileRouteTypes {
     | '/dashboard/mail'
     | '/dashboard/reservations'
     | '/dashboard/settings'
+    | '/dashboard/stay-booking-widget'
     | '/dashboard/visitors'
     | '/dashboard'
     | '/api/auth/login'
@@ -619,6 +653,7 @@ export interface FileRouteTypes {
     | '/graafinen-suunnittelu'
     | '/hinnasto'
     | '/kayttoehdot'
+    | '/majoitusvaraus'
     | '/meista'
     | '/nakyvyys'
     | '/nakyvyys-ja-suunnittelu'
@@ -632,6 +667,7 @@ export interface FileRouteTypes {
     | '/yllapito'
     | '/api/booking-widget-config'
     | '/api/chat'
+    | '/api/stay-booking-config'
     | '/api/track'
     | '/dashboard/booking-widget'
     | '/dashboard/calls'
@@ -642,6 +678,7 @@ export interface FileRouteTypes {
     | '/dashboard/mail'
     | '/dashboard/reservations'
     | '/dashboard/settings'
+    | '/dashboard/stay-booking-widget'
     | '/dashboard/visitors'
     | '/dashboard/'
     | '/api/auth/login'
@@ -675,6 +712,7 @@ export interface RootRouteChildren {
   GraafinenSuunnitteluRoute: typeof GraafinenSuunnitteluRoute
   HinnastoRoute: typeof HinnastoRoute
   KayttoehdotRoute: typeof KayttoehdotRoute
+  MajoitusvarausRoute: typeof MajoitusvarausRoute
   MeistaRoute: typeof MeistaRoute
   NakyvyysRoute: typeof NakyvyysRoute
   NakyvyysJaSuunnitteluRoute: typeof NakyvyysJaSuunnitteluRoute
@@ -688,6 +726,7 @@ export interface RootRouteChildren {
   YllapitoRoute: typeof YllapitoRoute
   ApiBookingWidgetConfigRoute: typeof ApiBookingWidgetConfigRoute
   ApiChatRoute: typeof ApiChatRoute
+  ApiStayBookingConfigRoute: typeof ApiStayBookingConfigRoute
   ApiTrackRoute: typeof ApiTrackRoute
   ApiAuthLoginRoute: typeof ApiAuthLoginRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
@@ -785,6 +824,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MeistaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/majoitusvaraus': {
+      id: '/majoitusvaraus'
+      path: '/majoitusvaraus'
+      fullPath: '/majoitusvaraus'
+      preLoaderRoute: typeof MajoitusvarausRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kayttoehdot': {
       id: '/kayttoehdot'
       path: '/kayttoehdot'
@@ -855,6 +901,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardVisitorsRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
+    '/dashboard/stay-booking-widget': {
+      id: '/dashboard/stay-booking-widget'
+      path: '/stay-booking-widget'
+      fullPath: '/dashboard/stay-booking-widget'
+      preLoaderRoute: typeof DashboardStayBookingWidgetRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
     '/dashboard/settings': {
       id: '/dashboard/settings'
       path: '/settings'
@@ -923,6 +976,13 @@ declare module '@tanstack/react-router' {
       path: '/api/track'
       fullPath: '/api/track'
       preLoaderRoute: typeof ApiTrackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/stay-booking-config': {
+      id: '/api/stay-booking-config'
+      path: '/api/stay-booking-config'
+      fullPath: '/api/stay-booking-config'
+      preLoaderRoute: typeof ApiStayBookingConfigRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/chat': {
@@ -1092,6 +1152,7 @@ interface DashboardRouteRouteChildren {
   DashboardMailRoute: typeof DashboardMailRoute
   DashboardReservationsRoute: typeof DashboardReservationsRoute
   DashboardSettingsRoute: typeof DashboardSettingsRoute
+  DashboardStayBookingWidgetRoute: typeof DashboardStayBookingWidgetRoute
   DashboardVisitorsRoute: typeof DashboardVisitorsRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
@@ -1106,6 +1167,7 @@ const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardMailRoute: DashboardMailRoute,
   DashboardReservationsRoute: DashboardReservationsRoute,
   DashboardSettingsRoute: DashboardSettingsRoute,
+  DashboardStayBookingWidgetRoute: DashboardStayBookingWidgetRoute,
   DashboardVisitorsRoute: DashboardVisitorsRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
@@ -1185,6 +1247,7 @@ const rootRouteChildren: RootRouteChildren = {
   GraafinenSuunnitteluRoute: GraafinenSuunnitteluRoute,
   HinnastoRoute: HinnastoRoute,
   KayttoehdotRoute: KayttoehdotRoute,
+  MajoitusvarausRoute: MajoitusvarausRoute,
   MeistaRoute: MeistaRoute,
   NakyvyysRoute: NakyvyysRoute,
   NakyvyysJaSuunnitteluRoute: NakyvyysJaSuunnitteluRoute,
@@ -1198,6 +1261,7 @@ const rootRouteChildren: RootRouteChildren = {
   YllapitoRoute: YllapitoRoute,
   ApiBookingWidgetConfigRoute: ApiBookingWidgetConfigRoute,
   ApiChatRoute: ApiChatRoute,
+  ApiStayBookingConfigRoute: ApiStayBookingConfigRoute,
   ApiTrackRoute: ApiTrackRoute,
   ApiAuthLoginRoute: ApiAuthLoginRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
