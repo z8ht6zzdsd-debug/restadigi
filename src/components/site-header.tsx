@@ -10,6 +10,7 @@ const SERVICE_PATHS = [
   "/nakyvyys-ja-suunnittelu",
   "/ai-asiakaspalvelu",
   "/poytavaraupalvelu",
+  "/majoitusvaraus",
   "/yllapito",
 ] as const;
 

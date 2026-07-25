@@ -121,6 +121,12 @@
       "permanent": false
     },
     {
+      "source": "/majoitusvaraus",
+      "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
+      "destination": "https://admin.restadigi.fi/dashboard/login",
+      "permanent": false
+    },
+    {
       "source": "/meista",
       "has": [{ "type": "host", "value": "admin.restadigi.fi" }],
       "destination": "https://admin.restadigi.fi/dashboard/login",

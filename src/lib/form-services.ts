@@ -106,6 +106,13 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
     blurb: "Restatable + Restachat — kanavat, pöytäkartta ja chat-varaus.",
   },
   {
+    id: "majoitusvaraus",
+    group: "booking",
+    name: "Restabooking (majoitus)",
+    price: "alk. 299 € / vuosi",
+    blurb: "Majoitusvaraukset sivuilta — hotellit, majatalot, mökit.",
+  },
+  {
     id: "hosting-basic",
     group: "hosting",
     exclusiveGroup: "hosting",

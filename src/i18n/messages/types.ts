@@ -607,6 +607,92 @@ export type Messages = {
       tryAgain: string;
     };
   };
+  stayBooking: {
+    meta: {
+      title: string;
+      description: string;
+      ogTitle: string;
+      ogDescription: string;
+    };
+    hero: {
+      titleAccent: string;
+      titleAfter: string;
+      description: string;
+      headlineLine1: string;
+      headlineLine2: string;
+      subtitle: string;
+      cta: string;
+    };
+    dashboard: {
+      eyebrow: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+    };
+    rooms: {
+      eyebrow: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+    };
+    adaptEyebrow: string;
+    adaptBody: string;
+    features: Array<{ title: string; body: string }>;
+    cta: {
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      price: string;
+      priceNote: string;
+      button: string;
+    };
+    demo: {
+      sectionEyebrow: string;
+      sectionTitleBefore: string;
+      sectionTitleAccent: string;
+      sectionTitleAfter: string;
+      sectionBody: string;
+      bannerEyebrow: string;
+      bannerBody: string;
+      liveBadge: string;
+      stepperAria: string;
+      stepRoom: string;
+      stepGuests: string;
+      stepCheckIn: string;
+      stepNights: string;
+      stepConfirm: string;
+      roomTitle: string;
+      roomBody: string;
+      guestsTitle: string;
+      guestsLabel: string;
+      checkInTitle: string;
+      nightsTitle: string;
+      nightsLabel: string;
+      checkIn: string;
+      checkOut: string;
+      continue: string;
+      back: string;
+      prevMonth: string;
+      nextMonth: string;
+      confirmTitle: string;
+      place: string;
+      room: string;
+      stay: string;
+      standardRoom: string;
+      name: string;
+      phone: string;
+      email: string;
+      comment: string;
+      termsFallback: string;
+      submit: string;
+      sending: string;
+      successTitle: string;
+      successBody: string;
+      tryAgain: string;
+    };
+  };
   hosting: {
     meta: {
       title: string;
