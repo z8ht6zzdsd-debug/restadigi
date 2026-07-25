@@ -922,6 +922,8 @@ export const fi: Messages = {
       headlineLine1: "Asiakkaat varaavat pöydän",
       headlineLine2: "itse — 24/7.",
       subtitle: "Tutustu Restachatiin ja kokeile varausbottia.",
+      shopHeadline: "Kauppa ei nuku!",
+      tryLabel: "Testaa Restachat-pöytävarauspalvelua",
     },
     channels: {
       eyebrow: "Kanavat",

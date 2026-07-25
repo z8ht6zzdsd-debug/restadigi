@@ -929,6 +929,8 @@ export const es: Messages = {
       headlineLine1: "Los clientes reservan mesa",
       headlineLine2: "ellos mismos — 24/7.",
       subtitle: "Conoce Restachat y prueba el bot de reservas.",
+      shopHeadline: "¡La tienda no duerme!",
+      tryLabel: "Prueba el servicio de reservas Restachat",
     },
     channels: {
       eyebrow: "Canales",

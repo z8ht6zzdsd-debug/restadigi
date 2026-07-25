@@ -489,6 +489,8 @@ export type Messages = {
       headlineLine1: string;
       headlineLine2: string;
       subtitle: string;
+      shopHeadline: string;
+      tryLabel: string;
     };
     channels: {
       eyebrow: string;

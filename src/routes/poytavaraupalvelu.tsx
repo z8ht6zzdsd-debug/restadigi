@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   BellRing,
-  CalendarDays,
   Check,
   Clock3,
   LayoutGrid,
@@ -58,14 +57,6 @@ export const Route = createFileRoute("/poytavaraupalvelu")({
   component: PotyvarausPage,
 });
 
-function ProductBadge({ children }: { children: string }) {
-  return (
-    <span className="mb-3 inline-flex items-center rounded-full border border-[#e8dfd4] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#432f24]">
-      {children}
-    </span>
-  );
-}
-
 function CheckList({ items, icons }: { items: string[]; icons?: ("check" | "edit" | "x")[] }) {
   return (
     <ul className="mt-5 flex flex-wrap gap-2 sm:gap-3">
@@ -102,252 +93,179 @@ function PotyvarausPage() {
       />
       <SiteHeader />
 
-      {/* Restabooking brand intro — no photo hero */}
-      <section className="relative overflow-hidden border-b border-[#e8dfd4] bg-gradient-to-b from-[#f7f3ee] via-[#ebe8e2] to-[#ebe8e2]">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 20%, #c46a32 0%, transparent 45%), radial-gradient(circle at 80% 0%, #432f24 0%, transparent 40%)",
-          }}
-          aria-hidden
-        />
-        <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-accent">
+      {/* Title only */}
+      <section className="border-b border-[#e8dfd4] bg-[#f7f3ee]">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
+          <h1 className="font-serif text-4xl tracking-tight text-[#2a2018] sm:text-5xl lg:text-6xl">
             {b.brand.name}
-          </p>
-          <h1 className="max-w-[18ch] font-serif text-4xl leading-[1.05] tracking-tight text-[#2a2018] sm:text-5xl lg:text-6xl">
-            {b.brand.titleBefore}
-            <span className="italic text-accent">{b.brand.titleAccent}</span>
-            {b.brand.titleAfter}
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#5c534c] sm:text-lg">
-            {b.brand.body}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#restatable"
-              className="inline-flex items-center rounded-full bg-[#432f24] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            >
-              Restatable
-            </a>
-            <a
-              href="#restachat"
-              className="inline-flex items-center rounded-full border border-[#432f24]/25 bg-white px-5 py-2.5 text-sm font-semibold text-[#432f24] transition-colors hover:border-[#432f24]/45"
-            >
-              Restachat
-            </a>
-          </div>
         </div>
       </section>
 
-      <MarketingBand className="pt-12 sm:pt-16">
-        {/* ——— Product 1: Restatable ——— */}
+      <MarketingBand className="pt-10 sm:pt-12">
+        {/* Restatable — Kaj demo first */}
         <div id="restatable" className="scroll-mt-24">
-          <ProductBadge>{b.restatable.badge}</ProductBadge>
-          <MarketingHeading>
-            {b.restatable.titleBefore}
-            <span className="font-serif italic text-accent">{b.restatable.titleAccent}</span>
-            {b.restatable.titleAfter}
-          </MarketingHeading>
-          <p className="mb-2 max-w-3xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-            {b.restatable.body}
-          </p>
-          <p className="mb-8 text-xs font-semibold uppercase tracking-[0.16em] text-[#8a7f74]">
-            {b.restatable.exampleLabel}
-          </p>
-
-          {/* Live Kaj / Restatable booking widget — first content */}
           <MarketingBox tone="white" justify="start" className="mb-4 sm:mb-5">
-            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
-              {b.demo.sectionEyebrow}
-            </p>
-            <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
-              {b.demo.sectionTitleBefore}
-              <span className="italic text-accent">{b.demo.sectionTitleAccent}</span>
-              {b.demo.sectionTitleAfter}
-            </h3>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-              {b.demo.sectionBody}
-            </p>
-            <div className="mt-8">
-              <TableBookingWidget />
-            </div>
-          </MarketingBox>
-
-          {/* Channels + Google mock */}
-          <div className="mb-4 grid gap-4 sm:mb-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-5">
-            <MarketingBox tone="white" justify="start">
-              <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
-                {b.channels.eyebrow}
-              </p>
-              <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
-                {b.channels.titleBefore}
-                <span className="italic text-accent">{b.channels.titleAccent}</span>
-                {b.channels.titleAfter}
-              </h3>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-                {b.channels.body}
-              </p>
-              <CheckList items={b.channels.items} />
-
-              <div className="mt-8 border-t border-[#e8dfd4] pt-6">
-                <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
-                  {b.guestManage.eyebrow}
-                </p>
-                <h3 className="font-serif text-2xl tracking-tight text-[#2a2018]">
-                  {b.guestManage.titleBefore}
-                  <span className="italic text-accent">{b.guestManage.titleAccent}</span>
-                  {b.guestManage.titleAfter}
-                </h3>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-foreground/70">
-                  {b.guestManage.body}
-                </p>
-                <CheckList items={b.guestManage.items} icons={["x", "edit"]} />
-              </div>
-            </MarketingBox>
-
-            <MarketingBox
-              tone="white"
-              justify="center"
-              className="overflow-visible bg-gradient-to-br from-[#eef2ff] via-white to-[#f0fdfa] py-8"
-            >
-              <BookingGoogleProfileMock {...b.channels.mock} />
-            </MarketingBox>
-          </div>
-
-          {/* Experience + floor plan */}
-          <div className="mb-4 mt-10 grid gap-4 sm:mb-5 sm:mt-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-5">
-            <MarketingBox tone="white" justify="start">
-              <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
-                {b.experience.eyebrow}
-              </p>
-              <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
-                {b.experience.titleBefore}
-                <span className="italic text-accent">{b.experience.titleAccent}</span>
-                {b.experience.titleAfter}
-              </h3>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-                {b.experience.body}
-              </p>
-              <CheckList items={b.experience.views} />
-            </MarketingBox>
-
-            <div className="min-w-0">
-              <BookingFloorPlanPanel
-                activeViewLabel={b.experience.views[0]}
-                views={b.experience.views}
-              />
-            </div>
-          </div>
-
-          {/* Integration */}
-          <div className="mb-4 mt-10 grid gap-4 sm:mb-5 sm:mt-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-5">
-            <MarketingBox tone="white" justify="center" className="min-h-[16rem]">
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-                {b.integration.logos.map((label, i) => (
-                  <span
-                    key={label}
-                    className={
-                      "inline-flex size-14 items-center justify-center rounded-full text-center text-[9px] font-bold uppercase leading-tight tracking-wide shadow-sm sm:size-16 sm:text-[10px] " +
-                      LOGO_TONES[i % LOGO_TONES.length]
-                    }
-                  >
-                    {label}
-                  </span>
-                ))}
-              </div>
-            </MarketingBox>
-
-            <MarketingBox tone="white" justify="start">
-              <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
-                {b.integration.eyebrow}
-              </p>
-              <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
-                {b.integration.titleBefore}
-                <span className="italic text-accent">{b.integration.titleAccent}</span>
-                {b.integration.titleAfter}
-              </h3>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-                {b.integration.body}
-              </p>
-            </MarketingBox>
-          </div>
-
-          {/* Dashboard devices */}
-          <MarketingBox tone="white" justify="start" className="mb-4 mt-10 sm:mb-5 sm:mt-12">
-            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">{b.dashboard.eyebrow}</p>
-            <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
-              {b.dashboard.titleBefore}
-              <span className="italic text-accent">{b.dashboard.titleAccent}</span>
-              {b.dashboard.titleAfter}
-            </h3>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-              {b.dashboard.body}
-            </p>
-            <div className="mt-8">
-              <ReservationsDevicePreviews />
-            </div>
-          </MarketingBox>
-
-          <MarketingBox tone="dark" justify="start" className="mb-4 sm:mb-5">
-            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">{b.floorPlan.eyebrow}</p>
-            <h3 className="font-serif text-2xl tracking-tight text-white sm:text-3xl">
-              {b.floorPlan.titleBefore}
-              <span className="italic text-accent">{b.floorPlan.titleAccent}</span>
-              {b.floorPlan.titleAfter}
-            </h3>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/85 sm:text-base">
-              {b.floorPlan.body}
-            </p>
-            <div className="mt-8">
-              <FloorPlanDevicePreviews />
-            </div>
+            <TableBookingWidget />
           </MarketingBox>
         </div>
 
-        {/* ——— Product 2: Restachat ——— */}
-        <div id="restachat" className="mt-14 scroll-mt-24 sm:mt-20">
-          <ProductBadge>{b.restachat.badge}</ProductBadge>
-          <MarketingHeading>
-            {b.restachat.titleBefore}
-            <span className="font-serif italic text-accent">{b.restachat.titleAccent}</span>
-            {b.restachat.titleAfter}
-          </MarketingHeading>
-
-          <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-5">
-            <MarketingBox tone="white" justify="start">
-              <div className="mb-4 inline-flex size-12 items-center justify-center rounded-full bg-[#432f24] text-accent">
-                <MessageCircle className="size-5" strokeWidth={1.75} />
+        {/* Restachat — white + brown boxes */}
+        <div id="restachat" className="mb-10 scroll-mt-24 sm:mb-14">
+          <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
+            <MarketingBox tone="white" justify="center" className="min-h-[14rem]">
+              <div className="flex items-center gap-4">
+                <h2 className="font-serif text-3xl tracking-tight text-[#2a2018] sm:text-4xl">
+                  {b.restachat.shopHeadline}
+                </h2>
+                <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-[#432f24] text-accent">
+                  <MessageCircle className="size-5" strokeWidth={1.75} />
+                </span>
               </div>
-              <p className="max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-                {b.restachat.description}
-              </p>
-              <p className="mt-6 font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
-                {b.restachat.headlineLine1}
-                <br />
-                <span className="italic text-accent">{b.restachat.headlineLine2}</span>
-              </p>
-              <p className="mt-3 text-sm text-foreground/65">{b.restachat.subtitle}</p>
             </MarketingBox>
 
             <MarketingBox
               tone="dark"
               justify="center"
               align="center"
-              className="min-h-[18rem] bg-gradient-to-br from-[#2a2018] to-[#432f24]"
+              className="min-h-[14rem]"
             >
-              <CalendarDays className="mb-4 size-8 text-accent" strokeWidth={1.5} />
-              <p className="mb-6 max-w-[18ch] font-serif text-2xl leading-snug text-[#f7f3ee]">
-                Restachat
+              <p className="mb-6 max-w-sm font-serif text-xl leading-snug text-[#f7f3ee] sm:text-2xl">
+                {b.restachat.tryLabel}
               </p>
               <BookingChatbotButton />
             </MarketingBox>
           </div>
         </div>
 
-        {/* Shared features + CTA */}
-        <div className="mt-14 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+        {/* Rest of Restatable / Restabooking content */}
+        <MarketingHeading>
+          {b.channels.titleBefore}
+          <span className="font-serif italic text-accent">{b.channels.titleAccent}</span>
+          {b.channels.titleAfter}
+        </MarketingHeading>
+
+        <div className="mb-4 grid gap-4 sm:mb-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-5">
+          <MarketingBox tone="white" justify="start">
+            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">{b.channels.eyebrow}</p>
+            <p className="max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
+              {b.channels.body}
+            </p>
+            <CheckList items={b.channels.items} />
+
+            <div className="mt-8 border-t border-[#e8dfd4] pt-6">
+              <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
+                {b.guestManage.eyebrow}
+              </p>
+              <h3 className="font-serif text-2xl tracking-tight text-[#2a2018]">
+                {b.guestManage.titleBefore}
+                <span className="italic text-accent">{b.guestManage.titleAccent}</span>
+                {b.guestManage.titleAfter}
+              </h3>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-foreground/70">
+                {b.guestManage.body}
+              </p>
+              <CheckList items={b.guestManage.items} icons={["x", "edit"]} />
+            </div>
+          </MarketingBox>
+
+          <MarketingBox
+            tone="white"
+            justify="center"
+            className="overflow-visible bg-gradient-to-br from-[#eef2ff] via-white to-[#f0fdfa] py-8"
+          >
+            <BookingGoogleProfileMock {...b.channels.mock} />
+          </MarketingBox>
+        </div>
+
+        <MarketingHeading className="mt-10 sm:mt-12">
+          {b.experience.titleBefore}
+          <span className="font-serif italic text-accent">{b.experience.titleAccent}</span>
+          {b.experience.titleAfter}
+        </MarketingHeading>
+
+        <div className="mb-4 grid gap-4 sm:mb-5 lg:grid-cols-[0.95fr_1.05fr] lg:gap-5">
+          <MarketingBox tone="white" justify="start">
+            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
+              {b.experience.eyebrow}
+            </p>
+            <p className="max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
+              {b.experience.body}
+            </p>
+            <CheckList items={b.experience.views} />
+          </MarketingBox>
+
+          <div className="min-w-0">
+            <BookingFloorPlanPanel
+              activeViewLabel={b.experience.views[0]}
+              views={b.experience.views}
+            />
+          </div>
+        </div>
+
+        <div className="mb-4 mt-10 grid gap-4 sm:mb-5 sm:mt-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-5">
+          <MarketingBox tone="white" justify="center" className="min-h-[16rem]">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+              {b.integration.logos.map((label, i) => (
+                <span
+                  key={label}
+                  className={
+                    "inline-flex size-14 items-center justify-center rounded-full text-center text-[9px] font-bold uppercase leading-tight tracking-wide shadow-sm sm:size-16 sm:text-[10px] " +
+                    LOGO_TONES[i % LOGO_TONES.length]
+                  }
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
+          </MarketingBox>
+
+          <MarketingBox tone="white" justify="start">
+            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
+              {b.integration.eyebrow}
+            </p>
+            <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
+              {b.integration.titleBefore}
+              <span className="italic text-accent">{b.integration.titleAccent}</span>
+              {b.integration.titleAfter}
+            </h3>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
+              {b.integration.body}
+            </p>
+          </MarketingBox>
+        </div>
+
+        <MarketingBox tone="white" justify="start" className="mb-4 mt-10 sm:mb-5 sm:mt-12">
+          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">{b.dashboard.eyebrow}</p>
+          <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
+            {b.dashboard.titleBefore}
+            <span className="italic text-accent">{b.dashboard.titleAccent}</span>
+            {b.dashboard.titleAfter}
+          </h3>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/70 sm:text-base">
+            {b.dashboard.body}
+          </p>
+          <div className="mt-8">
+            <ReservationsDevicePreviews />
+          </div>
+        </MarketingBox>
+
+        <MarketingBox tone="dark" justify="start" className="mb-4 sm:mb-5">
+          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">{b.floorPlan.eyebrow}</p>
+          <h3 className="font-serif text-2xl tracking-tight text-white sm:text-3xl">
+            {b.floorPlan.titleBefore}
+            <span className="italic text-accent">{b.floorPlan.titleAccent}</span>
+            {b.floorPlan.titleAfter}
+          </h3>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/85 sm:text-base">
+            {b.floorPlan.body}
+          </p>
+          <div className="mt-8">
+            <FloorPlanDevicePreviews />
+          </div>
+        </MarketingBox>
+
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {b.features.map((feature, i) => {
             const Icon = FEATURE_ICONS[i] ?? Clock3;
             return (
