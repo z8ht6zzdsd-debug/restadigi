@@ -94,13 +94,13 @@ function HinnastoPage() {
         />
         <PriceSection
           title={p.sections.visibility}
-          href="/nakyvyys-ja-suunnittelu"
+          href="/nakyvyys"
           seeMore={p.seeMore}
           rows={visibilityRows}
         />
         <PriceSection
           title={p.sections.branding}
-          href="/nakyvyys-ja-suunnittelu"
+          href="/graafinen-suunnittelu"
           seeMore={p.seeMore}
           rows={brandingRows}
         />
@@ -197,7 +197,7 @@ function PriceSection({
   rows,
 }: {
   title: string;
-  href: "/verkkosivut" | "/nakyvyys-ja-suunnittelu" | "/yllapito";
+  href: "/verkkosivut" | "/nakyvyys" | "/graafinen-suunnittelu" | "/yllapito";
   seeMore: string;
   rows: PriceRow[];
 }) {

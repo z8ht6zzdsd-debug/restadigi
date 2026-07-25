@@ -94,16 +94,16 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
   {
     id: "ai-chatbot",
     group: "ai",
-    name: "AI-asiakaspalvelu (chatbot)",
+    name: "Restachat (chatbot)",
     price: "alk. 199 € / vuosi",
     blurb: "24/7 vastaukset, liidit ja ylläpito sisältyvät.",
   },
   {
     id: "poytavaraupalvelu",
     group: "booking",
-    name: "Restabooking",
-    price: "alk. 299 € / vuosi",
-    blurb: "Restatable + Restachat — kanavat, pöytäkartta ja chat-varaus.",
+    name: "Restatable",
+    price: "39 € / kk",
+    blurb: "Pöytävaraukset kanavilta, hallinta ja pöytäkartta.",
   },
   {
     id: "hosting-basic",
@@ -149,13 +149,13 @@ export const FORM_SERVICE_GROUPS: {
   },
   {
     id: "ai",
-    title: "AI-asiakaspalvelu",
+    title: "Restachat",
     hint: "Chatbot sivuille — 24/7.",
     multi: true,
   },
   {
     id: "booking",
-    title: "Varauspalvelu",
+    title: "Restatable",
     hint: "Ravintoloiden pöytävaraukset.",
     multi: true,
   },

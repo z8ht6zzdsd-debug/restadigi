@@ -13,11 +13,16 @@ import { Route as YllapitoRouteImport } from './routes/yllapito'
 import { Route as YhteysRouteImport } from './routes/yhteys'
 import { Route as VerkkosivutRouteImport } from './routes/verkkosivut'
 import { Route as TietosuojaRouteImport } from './routes/tietosuoja'
+import { Route as RestatableRouteImport } from './routes/restatable'
+import { Route as RestachatRouteImport } from './routes/restachat'
+import { Route as RestabookingRouteImport } from './routes/restabooking'
 import { Route as PoytavaraupalveluRouteImport } from './routes/poytavaraupalvelu'
 import { Route as NakyvyysJaSuunnitteluRouteImport } from './routes/nakyvyys-ja-suunnittelu'
+import { Route as NakyvyysRouteImport } from './routes/nakyvyys'
 import { Route as MeistaRouteImport } from './routes/meista'
 import { Route as KayttoehdotRouteImport } from './routes/kayttoehdot'
 import { Route as HinnastoRouteImport } from './routes/hinnasto'
+import { Route as GraafinenSuunnitteluRouteImport } from './routes/graafinen-suunnittelu'
 import { Route as FormRouteImport } from './routes/form'
 import { Route as EvasteetRouteImport } from './routes/evasteet'
 import { Route as AiAsiakaspalveluRouteImport } from './routes/ai-asiakaspalvelu'
@@ -78,6 +83,21 @@ const TietosuojaRoute = TietosuojaRouteImport.update({
   path: '/tietosuoja',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RestatableRoute = RestatableRouteImport.update({
+  id: '/restatable',
+  path: '/restatable',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RestachatRoute = RestachatRouteImport.update({
+  id: '/restachat',
+  path: '/restachat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RestabookingRoute = RestabookingRouteImport.update({
+  id: '/restabooking',
+  path: '/restabooking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PoytavaraupalveluRoute = PoytavaraupalveluRouteImport.update({
   id: '/poytavaraupalvelu',
   path: '/poytavaraupalvelu',
@@ -86,6 +106,11 @@ const PoytavaraupalveluRoute = PoytavaraupalveluRouteImport.update({
 const NakyvyysJaSuunnitteluRoute = NakyvyysJaSuunnitteluRouteImport.update({
   id: '/nakyvyys-ja-suunnittelu',
   path: '/nakyvyys-ja-suunnittelu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NakyvyysRoute = NakyvyysRouteImport.update({
+  id: '/nakyvyys',
+  path: '/nakyvyys',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MeistaRoute = MeistaRouteImport.update({
@@ -101,6 +126,11 @@ const KayttoehdotRoute = KayttoehdotRouteImport.update({
 const HinnastoRoute = HinnastoRouteImport.update({
   id: '/hinnasto',
   path: '/hinnasto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GraafinenSuunnitteluRoute = GraafinenSuunnitteluRouteImport.update({
+  id: '/graafinen-suunnittelu',
+  path: '/graafinen-suunnittelu',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FormRoute = FormRouteImport.update({
@@ -310,11 +340,16 @@ export interface FileRoutesByFullPath {
   '/ai-asiakaspalvelu': typeof AiAsiakaspalveluRoute
   '/evasteet': typeof EvasteetRoute
   '/form': typeof FormRoute
+  '/graafinen-suunnittelu': typeof GraafinenSuunnitteluRoute
   '/hinnasto': typeof HinnastoRoute
   '/kayttoehdot': typeof KayttoehdotRoute
   '/meista': typeof MeistaRoute
+  '/nakyvyys': typeof NakyvyysRoute
   '/nakyvyys-ja-suunnittelu': typeof NakyvyysJaSuunnitteluRoute
   '/poytavaraupalvelu': typeof PoytavaraupalveluRoute
+  '/restabooking': typeof RestabookingRoute
+  '/restachat': typeof RestachatRoute
+  '/restatable': typeof RestatableRoute
   '/tietosuoja': typeof TietosuojaRoute
   '/verkkosivut': typeof VerkkosivutRoute
   '/yhteys': typeof YhteysRoute
@@ -359,11 +394,16 @@ export interface FileRoutesByTo {
   '/ai-asiakaspalvelu': typeof AiAsiakaspalveluRoute
   '/evasteet': typeof EvasteetRoute
   '/form': typeof FormRoute
+  '/graafinen-suunnittelu': typeof GraafinenSuunnitteluRoute
   '/hinnasto': typeof HinnastoRoute
   '/kayttoehdot': typeof KayttoehdotRoute
   '/meista': typeof MeistaRoute
+  '/nakyvyys': typeof NakyvyysRoute
   '/nakyvyys-ja-suunnittelu': typeof NakyvyysJaSuunnitteluRoute
   '/poytavaraupalvelu': typeof PoytavaraupalveluRoute
+  '/restabooking': typeof RestabookingRoute
+  '/restachat': typeof RestachatRoute
+  '/restatable': typeof RestatableRoute
   '/tietosuoja': typeof TietosuojaRoute
   '/verkkosivut': typeof VerkkosivutRoute
   '/yhteys': typeof YhteysRoute
@@ -410,11 +450,16 @@ export interface FileRoutesById {
   '/ai-asiakaspalvelu': typeof AiAsiakaspalveluRoute
   '/evasteet': typeof EvasteetRoute
   '/form': typeof FormRoute
+  '/graafinen-suunnittelu': typeof GraafinenSuunnitteluRoute
   '/hinnasto': typeof HinnastoRoute
   '/kayttoehdot': typeof KayttoehdotRoute
   '/meista': typeof MeistaRoute
+  '/nakyvyys': typeof NakyvyysRoute
   '/nakyvyys-ja-suunnittelu': typeof NakyvyysJaSuunnitteluRoute
   '/poytavaraupalvelu': typeof PoytavaraupalveluRoute
+  '/restabooking': typeof RestabookingRoute
+  '/restachat': typeof RestachatRoute
+  '/restatable': typeof RestatableRoute
   '/tietosuoja': typeof TietosuojaRoute
   '/verkkosivut': typeof VerkkosivutRoute
   '/yhteys': typeof YhteysRoute
@@ -462,11 +507,16 @@ export interface FileRouteTypes {
     | '/ai-asiakaspalvelu'
     | '/evasteet'
     | '/form'
+    | '/graafinen-suunnittelu'
     | '/hinnasto'
     | '/kayttoehdot'
     | '/meista'
+    | '/nakyvyys'
     | '/nakyvyys-ja-suunnittelu'
     | '/poytavaraupalvelu'
+    | '/restabooking'
+    | '/restachat'
+    | '/restatable'
     | '/tietosuoja'
     | '/verkkosivut'
     | '/yhteys'
@@ -511,11 +561,16 @@ export interface FileRouteTypes {
     | '/ai-asiakaspalvelu'
     | '/evasteet'
     | '/form'
+    | '/graafinen-suunnittelu'
     | '/hinnasto'
     | '/kayttoehdot'
     | '/meista'
+    | '/nakyvyys'
     | '/nakyvyys-ja-suunnittelu'
     | '/poytavaraupalvelu'
+    | '/restabooking'
+    | '/restachat'
+    | '/restatable'
     | '/tietosuoja'
     | '/verkkosivut'
     | '/yhteys'
@@ -561,11 +616,16 @@ export interface FileRouteTypes {
     | '/ai-asiakaspalvelu'
     | '/evasteet'
     | '/form'
+    | '/graafinen-suunnittelu'
     | '/hinnasto'
     | '/kayttoehdot'
     | '/meista'
+    | '/nakyvyys'
     | '/nakyvyys-ja-suunnittelu'
     | '/poytavaraupalvelu'
+    | '/restabooking'
+    | '/restachat'
+    | '/restatable'
     | '/tietosuoja'
     | '/verkkosivut'
     | '/yhteys'
@@ -612,11 +672,16 @@ export interface RootRouteChildren {
   AiAsiakaspalveluRoute: typeof AiAsiakaspalveluRoute
   EvasteetRoute: typeof EvasteetRoute
   FormRoute: typeof FormRoute
+  GraafinenSuunnitteluRoute: typeof GraafinenSuunnitteluRoute
   HinnastoRoute: typeof HinnastoRoute
   KayttoehdotRoute: typeof KayttoehdotRoute
   MeistaRoute: typeof MeistaRoute
+  NakyvyysRoute: typeof NakyvyysRoute
   NakyvyysJaSuunnitteluRoute: typeof NakyvyysJaSuunnitteluRoute
   PoytavaraupalveluRoute: typeof PoytavaraupalveluRoute
+  RestabookingRoute: typeof RestabookingRoute
+  RestachatRoute: typeof RestachatRoute
+  RestatableRoute: typeof RestatableRoute
   TietosuojaRoute: typeof TietosuojaRoute
   VerkkosivutRoute: typeof VerkkosivutRoute
   YhteysRoute: typeof YhteysRoute
@@ -671,6 +736,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TietosuojaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/restatable': {
+      id: '/restatable'
+      path: '/restatable'
+      fullPath: '/restatable'
+      preLoaderRoute: typeof RestatableRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/restachat': {
+      id: '/restachat'
+      path: '/restachat'
+      fullPath: '/restachat'
+      preLoaderRoute: typeof RestachatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/restabooking': {
+      id: '/restabooking'
+      path: '/restabooking'
+      fullPath: '/restabooking'
+      preLoaderRoute: typeof RestabookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/poytavaraupalvelu': {
       id: '/poytavaraupalvelu'
       path: '/poytavaraupalvelu'
@@ -683,6 +769,13 @@ declare module '@tanstack/react-router' {
       path: '/nakyvyys-ja-suunnittelu'
       fullPath: '/nakyvyys-ja-suunnittelu'
       preLoaderRoute: typeof NakyvyysJaSuunnitteluRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nakyvyys': {
+      id: '/nakyvyys'
+      path: '/nakyvyys'
+      fullPath: '/nakyvyys'
+      preLoaderRoute: typeof NakyvyysRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/meista': {
@@ -704,6 +797,13 @@ declare module '@tanstack/react-router' {
       path: '/hinnasto'
       fullPath: '/hinnasto'
       preLoaderRoute: typeof HinnastoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/graafinen-suunnittelu': {
+      id: '/graafinen-suunnittelu'
+      path: '/graafinen-suunnittelu'
+      fullPath: '/graafinen-suunnittelu'
+      preLoaderRoute: typeof GraafinenSuunnitteluRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/form': {
@@ -1082,11 +1182,16 @@ const rootRouteChildren: RootRouteChildren = {
   AiAsiakaspalveluRoute: AiAsiakaspalveluRoute,
   EvasteetRoute: EvasteetRoute,
   FormRoute: FormRoute,
+  GraafinenSuunnitteluRoute: GraafinenSuunnitteluRoute,
   HinnastoRoute: HinnastoRoute,
   KayttoehdotRoute: KayttoehdotRoute,
   MeistaRoute: MeistaRoute,
+  NakyvyysRoute: NakyvyysRoute,
   NakyvyysJaSuunnitteluRoute: NakyvyysJaSuunnitteluRoute,
   PoytavaraupalveluRoute: PoytavaraupalveluRoute,
+  RestabookingRoute: RestabookingRoute,
+  RestachatRoute: RestachatRoute,
+  RestatableRoute: RestatableRoute,
   TietosuojaRoute: TietosuojaRoute,
   VerkkosivutRoute: VerkkosivutRoute,
   YhteysRoute: YhteysRoute,

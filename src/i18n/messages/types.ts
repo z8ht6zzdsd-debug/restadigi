@@ -26,10 +26,14 @@ export type Messages = {
     menu: string;
     homeAria: string;
     logoAlt: string;
+    servicesIntro: string;
     industriesIntro: string;
     industriesList: Array<{ title: string; body: string }>;
-    servicesList: Array<{ to: string; label: string }>;
+    servicesList: Array<{ to: string; label: string; body: string }>;
     languagesList: Array<{ code: "fi" | "en" | "es"; label: string }>;
+    contactIntro: string;
+    contactCta: string;
+    contactLinks: Array<{ title: string; body: string; to: string }>;
     contactPanel: {
       company: string;
       person: string;
@@ -606,6 +610,20 @@ export type Messages = {
       successBody: string;
       tryAgain: string;
     };
+  };
+  restabooking: {
+    meta: {
+      title: string;
+      description: string;
+      ogTitle: string;
+      ogDescription: string;
+    };
+    eyebrow: string;
+    title: string;
+    body: string;
+    soon: string;
+    ctaRestatable: string;
+    ctaContact: string;
   };
   hosting: {
     meta: {

@@ -58,8 +58,10 @@ export const fi: Messages = {
     menu: "Valikko",
     homeAria: "Restadigi — etusivu",
     logoAlt: "Restadigi Finland",
+    servicesIntro:
+      "Digitaaliset palvelut, joilla ravintolat, majoitus ja palveluyritykset myyvät, varaavat ja palvelevat asiakkaita verkossa — selkeästi ja ilman turhaa säätöä.",
     industriesIntro:
-      "Toimialakohtaiset digiratkaisut — verkkosivut, varaukset, näkyvyys ja AI-asiakaspalvelu palvelualan yrityksille.",
+      "Toimialakohtaiset digiratkaisut — verkkosivut, varaukset, näkyvyys ja Restachat palvelualan yrityksille.",
     industriesList: [
       {
         title: "Areenat, tapahtumat ja esiintyjät",
@@ -91,16 +93,66 @@ export const fi: Messages = {
       },
     ],
     servicesList: [
-      { to: "/verkkosivut", label: "Verkkosivut" },
-      { to: "/nakyvyys-ja-suunnittelu", label: "Näkyvyys ja suunnittelu" },
-      { to: "/ai-asiakaspalvelu", label: "AI-asiakaspalvelu" },
-      { to: "/poytavaraupalvelu", label: "Restabooking" },
-      { to: "/yllapito", label: "Ylläpito" },
+      {
+        to: "/verkkosivut",
+        label: "Verkkosivut",
+        body: "Modernit sivut, joilla brändi, myynti ja sisältö pysyvät ajan tasalla.",
+      },
+      {
+        to: "/restatable",
+        label: "Restatable",
+        body: "Pöytävaraukset kanavilta ja saliin — hallinta yhdessä näkymässä.",
+      },
+      {
+        to: "/restabooking",
+        label: "Restabooking",
+        body: "Uusi varauspalvelubrändi — sisältö tulossa pian.",
+      },
+      {
+        to: "/restachat",
+        label: "Restachat",
+        body: "Älykäs chatbot myyntiin ja asiakaspalveluun 24/7.",
+      },
+      {
+        to: "/nakyvyys",
+        label: "Näkyvyys",
+        body: "AI-, Google- ja urheilunäkyvyyspaketit kasvattamaan löydettävyyttä.",
+      },
+      {
+        to: "/graafinen-suunnittelu",
+        label: "Graafinen suunnittelu",
+        body: "Logo, yritysilme ja markkinointimateriaalit yhdestä paikasta.",
+      },
+      {
+        to: "/yllapito",
+        label: "Ylläpitopalvelut",
+        body: "Hosting, domain, SSL ja jatkuva tuki Suomessa.",
+      },
     ],
     languagesList: [
       { code: "fi", label: "Suomi" },
       { code: "en", label: "English" },
       { code: "es", label: "Español" },
+    ],
+    contactIntro:
+      "Täältä löydät yhteystiedot, yritystiedot ja hinnoittelun. Ota yhteyttä — vastaamme mielellämme.",
+    contactCta: "Siirry yhteyssivulle",
+    contactLinks: [
+      {
+        title: "Yhteystiedot",
+        body: "Puhelin, sähköposti ja WhatsApp — ota yhteyttä suoraan.",
+        to: "/yhteys",
+      },
+      {
+        title: "Tietoa meistä",
+        body: "Tutustu Restadigiin ja tapaamme tehdä digipalveluita.",
+        to: "/meista",
+      },
+      {
+        title: "Hinnasto",
+        body: "Selkeät paketit ja hinnat palveluillemme.",
+        to: "/hinnasto",
+      },
     ],
     contactPanel: {
       company: CONTACT_COMPANY,
@@ -316,9 +368,9 @@ export const fi: Messages = {
         },
         {
           title: "Automatisoitua liiketoimintaa",
-          body: "AI-asiakaspalvelubotti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään vuosihintaan alk. 199 € / vuosi.",
-          href: "/ai-asiakaspalvelu",
-          linkLabel: "Tutustu AI-palveluun",
+          body: "Restachat-botti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään vuosihintaan alk. 199 € / vuosi.",
+          href: "/restachat",
+          linkLabel: "Tutustu Restachatiin",
         },
         {
           title: "Vaivatonta sisällönhallintaa",
@@ -332,22 +384,22 @@ export const fi: Messages = {
       title: "Älykkäät palvelut",
       items: [
         {
-          title: "AI-asiakaspalvelu",
+          title: "Restachat",
           body: "Chatbot palvelee asiakkaitasi 24/7 — vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
-          href: "/ai-asiakaspalvelu",
-          linkLabel: "Tutustu chatbottiin",
+          href: "/restachat",
+          linkLabel: "Tutustu Restachatiin",
         },
         {
-          title: "Restabooking",
-          body: "Restatable ja Restachat — pöytävaraukset kanavilta ja sivustolta, hallinta tabletilla ja chatbottina 24/7.",
-          href: "/poytavaraupalvelu",
-          linkLabel: "Tutustu Restabookingiin",
+          title: "Restatable",
+          body: "Restatable — pöytävaraukset kanavilta ja saliin, hallinta tabletilla ja mobiilissa.",
+          href: "/restatable",
+          linkLabel: "Tutustu Restableen",
         },
       ],
     },
     bookingPromo: {
-      title: "Restabooking — Restatable & Restachat",
-      body: "Kiinteän vuosihintaan — alk. 299 € / vuosi.",
+      title: "Restatable — pöytävaraus",
+      body: "Kiinteä kuukausihinta — 39 € / kk.",
       linkLabel: "Lue lisää",
     },
     projects: {
@@ -650,10 +702,10 @@ export const fi: Messages = {
   },
   visibility: {
     meta: {
-      title: "Diginäkyvyys — Restadigi",
+      title: "Näkyvyys — Restadigi",
       description:
         "Diginäkyvyytesi kerralla kuntoon: AI-optimointi, Google-optimointi ja huippu-urheilun näkyvyyspaketti.",
-      ogTitle: "Diginäkyvyys — Restadigi",
+      ogTitle: "Näkyvyys — Restadigi",
       ogDescription:
         "Kolme tapaa kasvattaa näkyvyyttä: AI-optimointi, Google-optimointi ja huippu-urheilun näkyvyyspaketti.",
     },
@@ -808,30 +860,30 @@ export const fi: Messages = {
   },
   chatbot: {
     meta: {
-      title: "AI-asiakaspalvelu — Restadigi",
+      title: "Restachat — Restadigi",
       description:
-        "Älykäs chatbot verkkosivustollesi — palvelee asiakkaita 24/7, vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
-      ogTitle: "AI-asiakaspalvelu — Restadigi",
-      ogDescription: "Chatbot verkkosivuille — ympärivuorokautinen myynti ja asiakaspalvelu.",
+        "Restachat — älykäs chatbot verkkosivustollesi. Palvelee asiakkaita 24/7, vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
+      ogTitle: "Restachat — Restadigi",
+      ogDescription: "Restachat — ympärivuorokautinen myynti ja asiakaspalvelu chatissa.",
     },
     hero: {
-      titleBefore: "Älykäs ",
-      titleAccent: "asiakaspalvelu",
-      titleAfter: " yrityksellesi.",
+      titleBefore: "",
+      titleAccent: "Restachat",
+      titleAfter: " — älykäs asiakaspalvelu.",
       description:
-        "Restadigin chatbot asennetaan verkkosivuillesi ja palvelee asiakkaita ympäri vuorokauden — vastaa kysymyksiin, ohjaa oikeiden palveluiden pariin ja kerää liidejä.",
+        "Restachat asennetaan verkkosivuillesi ja palvelee asiakkaita ympäri vuorokauden — vastaa kysymyksiin, ohjaa oikeiden palveluiden pariin ja kerää liidejä.",
       headlineLine1: "Yrityksesi halvin työntekijä",
       headlineLine2: "on tässä.",
-      subtitle: "Tutustu Restadigin personoitavaan chatbottiin.",
-      cta: "Tutustu chatbottiin",
+      subtitle: "Tutustu Restachatin personoitavaan chatbottiin.",
+      cta: "Tutustu Restachatiin",
     },
     chatbot: {
-      eyebrow: "Chatbot",
+      eyebrow: "Restachat",
       titleBefore: "Älykäs ",
-      titleAccent: "chatbot",
+      titleAccent: "Restachat",
       titleAfter: " — ympärivuorokautinen myyjä ja asiakaspalvelija.",
       intro:
-        "Chatbot on verkkosivuille asennettava älykäs virtuaaliavustaja, joka palvelee asiakkaita 24/7 — vastaa yleisiin kysymyksiin, opastaa oikeiden palveluiden pariin ja kerää liidejä. Se ei korvaa ihmistä, vaan toimii luotettavana apukätenä silloinkin, kun oma henkilökuntasi on vapaalla.",
+        "Restachat on verkkosivuille asennettava älykäs virtuaaliavustaja, joka palvelee asiakkaita 24/7 — vastaa yleisiin kysymyksiin, opastaa oikeiden palveluiden pariin ja kerää liidejä. Se ei korvaa ihmistä, vaan toimii luotettavana apukätenä silloinkin, kun oma henkilökuntasi on vapaalla.",
       benefits: [
         {
           title: "Asiakaspalvelu 24/7",
@@ -890,22 +942,21 @@ export const fi: Messages = {
   },
   booking: {
     meta: {
-      title: "Restabooking — Restadigi",
+      title: "Restatable — Restadigi",
       description:
-        "Restabooking: Restatable-pöytävaraus ja Restachat-varausbotti majoitus-, matkailu- ja ravintola-alalle sekä PK-yrityksille.",
-      ogTitle: "Restabooking — Restadigi",
-      ogDescription:
-        "Kaksi varauspalvelutuotetta: Restatable kanaville ja saliin, Restachat sivuston chat-varauksiin.",
+        "Restatable — moderni pöytävarausjärjestelmä majoitus-, matkailu- ja ravintola-alalle sekä palvelualan yrityksille.",
+      ogTitle: "Restatable — Restadigi",
+      ogDescription: "Pöytävaraukset kanavilta ja saliin — Restatable.",
     },
     brand: {
-      name: "Restabooking",
+      name: "Restatable",
       titleBefore: "Varauspalvelut ",
       titleAccent: "yhdellä brändillä",
       titleAfter: ".",
-      body: "Restabooking tarjoaa kaksi erilaista varauspalvelutuotetta majoitus-, matkailu- ja ravintola-alan toimijoille sekä palvelualan pienille ja keskisuurille yrityksille — näkyvyyttä kanavilta ja varaamista suoraan sivustolta.",
+      body: "Restatable tarjoaa graafisen pöytävarausjärjestelmän majoitus-, matkailu- ja ravintola-alan toimijoille sekä palvelualan pienille ja keskisuurille yrityksille.",
     },
     restatable: {
-      badge: "Tuote 1 · Restatable",
+      badge: "Restatable",
       titleBefore: "Pöytävaraukset ",
       titleAccent: "kanavilta ja saliin",
       titleAfter: ".",
@@ -913,7 +964,7 @@ export const fi: Messages = {
       exampleLabel: "Esimerkki: Ravintola Kaj",
     },
     restachat: {
-      badge: "Tuote 2 · Restachat",
+      badge: "Restatable · chat",
       titleBefore: "",
       titleAccent: "Pöytävaraukset",
       titleAfter: " suoraan sivustolta.",
@@ -921,9 +972,9 @@ export const fi: Messages = {
         "Integroimme ravintolasi verkkosivuille modernin pöytävarauspalvelun, joka toimii ympäri vuorokauden. Asiakas valitsee ajan ja seurueen koon, saa vahvistuksen sähköpostiin ja henkilökuntasi näkee varaukset selkeästä hallintapaneelista.",
       headlineLine1: "Asiakkaat varaavat pöydän",
       headlineLine2: "itse — 24/7.",
-      subtitle: "Tutustu Restachatiin ja kokeile varausbottia.",
+      subtitle: "Tutustu Restableen ja kokeile varausbottia.",
       shopHeadline: "Kauppa ei nuku!",
-      tryLabel: "Testaa Restachat-pöytävarauspalvelua",
+      tryLabel: "Testaa Restablen pöytävarausbottia",
     },
     channels: {
       eyebrow: "Kanavat",
@@ -969,7 +1020,7 @@ export const fi: Messages = {
       titleBefore: "Saumaton ",
       titleAccent: "integrointi",
       titleAfter: ".",
-      body: "Teemme varaamisen helpoksi integroimalla Restatable-palvelun ravintolasi sivustoon ja digikanaviin. Sosiaalisesta mediasta Googleen ja sähköpostivahvistuksiin — Restabooking toimii siellä, mistä asiakkaat löytävät teidät.",
+      body: "Teemme varaamisen helpoksi integroimalla Restablen palvelun ravintolasi sivustoon ja digikanaviin. Sosiaalisesta mediasta Googleen ja sähköpostivahvistuksiin — Restatable toimii siellä, mistä asiakkaat löytävät teidät.",
       logos: ["Google", "Instagram", "Facebook", "Sähköposti", "Oma sivusto", "Kalenteri"],
     },
     dashboard: {
@@ -980,7 +1031,7 @@ export const fi: Messages = {
       body: "Restatable on intuitiivinen all-in-one-varausjärjestelmä ravintoloille. Hallitse varauksia ja liiketoimintaa pöytä pöydältä — selkeästi yhdessä näkymässä.",
       ctaPrimary: "Pyydä esittely",
       ctaSecondary: "Varaa maksuton demo",
-      ctaNote: "Kiinteä vuosihinta. Ei piilokuluja.",
+      ctaNote: "Kiinteä kuukausihinta. Ei piilokuluja.",
     },
     floorPlan: {
       eyebrow: "Pöytäkartta kaikilla laitteilla",
@@ -1003,16 +1054,16 @@ export const fi: Messages = {
         body: "Näet päivän varaukset yhdellä silmäyksellä ja voit muokata saatavuutta helposti.",
       },
       {
-        title: "Kaksi tuotetta",
-        body: "Restatable kanaville ja saliin, Restachat sivuston chat-varauksiin — sama Restabooking-brändi.",
+        title: "Kanavat & sali",
+        body: "Varaukset Googlesta, Instagramista ja Facebookista sekä graafinen pöytäkartta — yksi Restatable-järjestelmä.",
       },
     ],
     cta: {
       titleBefore: "Ota ",
-      titleAccent: "Restabooking",
+      titleAccent: "Restatable",
       titleAfter: " käyttöön.",
-      price: "alk. 299 €",
-      priceNote: "/ vuosi — kiinteä vuosihinta",
+      price: "39 € / kk",
+      priceNote: "Kiinteä kuukausihinta Restablen pöytävarauspalvelulle",
       button: "Kysy lisää",
     },
     demo: {
@@ -1061,6 +1112,20 @@ export const fi: Messages = {
         "Oikeassa toteutuksessa asiakas saisi vahvistuksen sähköpostiin ja varaus näkyisi hallintapaneelissa. Tässä demossa mitään ei tallennettu.",
       tryAgain: "Kokeile uudelleen",
     },
+  },
+  restabooking: {
+    meta: {
+      title: "Restabooking — Restadigi",
+      description: "Restabooking — tulossa pian. Restadigin uusi varauspalvelubrändi.",
+      ogTitle: "Restabooking — Restadigi",
+      ogDescription: "Restabooking — tulossa pian.",
+    },
+    eyebrow: "Restadigi",
+    title: "Restabooking",
+    body: "Rakennamme Restabooking-kokonaisuutta. Palaamme pian uuden sisällön kanssa.",
+    soon: "Tulossa pian",
+    ctaRestatable: "Tutustu Restatableen",
+    ctaContact: "Ota yhteyttä",
   },
   hosting: {
     meta: {

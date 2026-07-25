@@ -58,8 +58,10 @@ export const en: Messages = {
     menu: "Menu",
     homeAria: "Restadigi — home",
     logoAlt: "Restadigi Finland",
+    servicesIntro:
+      "Digital services that help restaurants, hospitality and service businesses sell, book and serve customers online — clearly and without unnecessary hassle.",
     industriesIntro:
-      "Industry-specific digital solutions — websites, bookings, visibility and AI customer service for service businesses.",
+      "Industry-specific digital solutions — websites, bookings, visibility and Restachat for service businesses.",
     industriesList: [
       {
         title: "Arenas, events and performers",
@@ -91,16 +93,66 @@ export const en: Messages = {
       },
     ],
     servicesList: [
-      { to: "/verkkosivut", label: "Websites" },
-      { to: "/nakyvyys-ja-suunnittelu", label: "Visibility & design" },
-      { to: "/ai-asiakaspalvelu", label: "AI customer service" },
-      { to: "/poytavaraupalvelu", label: "Restabooking" },
-      { to: "/yllapito", label: "Hosting & maintenance" },
+      {
+        to: "/verkkosivut",
+        label: "Websites",
+        body: "Modern sites where brand, sales and content stay up to date.",
+      },
+      {
+        to: "/restatable",
+        label: "Restatable",
+        body: "Table bookings from channels to the floor — managed in one view.",
+      },
+      {
+        to: "/restabooking",
+        label: "Restabooking",
+        body: "Our new booking brand — content coming soon.",
+      },
+      {
+        to: "/restachat",
+        label: "Restachat",
+        body: "A smart chatbot for sales and customer service 24/7.",
+      },
+      {
+        to: "/nakyvyys",
+        label: "Visibility",
+        body: "AI, Google and sports visibility packages to grow discoverability.",
+      },
+      {
+        to: "/graafinen-suunnittelu",
+        label: "Graphic design",
+        body: "Logo, brand identity and marketing materials in one place.",
+      },
+      {
+        to: "/yllapito",
+        label: "Hosting & maintenance",
+        body: "Hosting, domain, SSL and ongoing support in Finland.",
+      },
     ],
     languagesList: [
       { code: "fi", label: "Suomi" },
       { code: "en", label: "English" },
       { code: "es", label: "Español" },
+    ],
+    contactIntro:
+      "Find contact details, company info and pricing here. Get in touch — we’re happy to help.",
+    contactCta: "Go to contact page",
+    contactLinks: [
+      {
+        title: "Contact details",
+        body: "Phone, email and WhatsApp — reach us directly.",
+        to: "/yhteys",
+      },
+      {
+        title: "About us",
+        body: "Learn about Restadigi and how we build digital services.",
+        to: "/meista",
+      },
+      {
+        title: "Pricing",
+        body: "Clear packages and prices for our services.",
+        to: "/hinnasto",
+      },
     ],
     contactPanel: {
       company: CONTACT_COMPANY,
@@ -314,9 +366,9 @@ export const en: Messages = {
         },
         {
           title: "Automated operations",
-          body: "An AI customer-service bot handles support, bookings via chat, phone and email 24/7 — for a fixed annual fee from 199 € / year.",
-          href: "/ai-asiakaspalvelu",
-          linkLabel: "Explore AI service",
+          body: "A Restachat bot handles support, bookings via chat, phone and email 24/7 — for a fixed annual fee from 199 € / year.",
+          href: "/restachat",
+          linkLabel: "Explore Restachat",
         },
         {
           title: "Effortless content management",
@@ -330,22 +382,22 @@ export const en: Messages = {
       title: "Smart services",
       items: [
         {
-          title: "AI customer service",
+          title: "Restachat",
           body: "A chatbot serves your customers 24/7 — answers questions, captures leads and frees up your team.",
-          href: "/ai-asiakaspalvelu",
-          linkLabel: "Explore the chatbot",
+          href: "/restachat",
+          linkLabel: "Explore Restachat",
         },
         {
-          title: "Restabooking",
-          body: "Restatable and Restachat — table bookings from channels and your site, managed on tablet or via chatbot 24/7.",
-          href: "/poytavaraupalvelu",
-          linkLabel: "Explore Restabooking",
+          title: "Restatable",
+          body: "Restatable — table bookings from channels and the floor, managed on tablet and mobile.",
+          href: "/restatable",
+          linkLabel: "Explore Restatable",
         },
       ],
     },
     bookingPromo: {
-      title: "Restabooking — Restatable & Restachat",
-      body: "At a fixed annual price — from 299 € / year.",
+      title: "Restatable — table booking",
+      body: "Fixed monthly price — 39 € / month.",
       linkLabel: "Read more",
     },
     projects: {
@@ -807,30 +859,30 @@ export const en: Messages = {
   },
   chatbot: {
     meta: {
-      title: "AI customer service — Restadigi",
+      title: "Restachat — Restadigi",
       description:
-        "A smart chatbot for your website — serves customers 24/7, answers questions, captures leads and frees up your team.",
-      ogTitle: "AI customer service — Restadigi",
-      ogDescription: "Website chatbot — round-the-clock sales and customer service.",
+        "Restachat — a smart chatbot for your website. Serves customers 24/7, answers questions, captures leads and frees up your team.",
+      ogTitle: "Restachat — Restadigi",
+      ogDescription: "Restachat — round-the-clock sales and customer service in chat.",
     },
     hero: {
-      titleBefore: "Smart ",
-      titleAccent: "customer service",
-      titleAfter: " for your business.",
+      titleBefore: "",
+      titleAccent: "Restachat",
+      titleAfter: " — smart customer service.",
       description:
-        "Restadigi’s chatbot is installed on your website and serves customers around the clock — answers questions, guides people to the right services and captures leads.",
+        "Restachat is installed on your website and serves customers around the clock — answers questions, guides people to the right services and captures leads.",
       headlineLine1: "Your company’s cheapest employee",
       headlineLine2: "is right here.",
-      subtitle: "Discover Restadigi’s personalisable chatbot.",
-      cta: "Explore the chatbot",
+      subtitle: "Discover Restachat’s personalisable chatbot.",
+      cta: "Explore Restachat",
     },
     chatbot: {
-      eyebrow: "Chatbot",
-      titleBefore: "A smart ",
-      titleAccent: "chatbot",
+      eyebrow: "Restachat",
+      titleBefore: "Smart ",
+      titleAccent: "Restachat",
       titleAfter: " — your round-the-clock salesperson and support agent.",
       intro:
-        "The chatbot is a smart virtual assistant installed on your website that serves customers 24/7 — answers common questions, guides people to the right services and captures leads. It doesn’t replace people; it acts as a reliable extra pair of hands when your team is off duty.",
+        "Restachat is a smart virtual assistant installed on your website that serves customers 24/7 — answers common questions, guides people to the right services and captures leads. It doesn’t replace people; it acts as a reliable extra pair of hands when your team is off duty.",
       benefits: [
         {
           title: "Customer service 24/7",
@@ -889,22 +941,21 @@ export const en: Messages = {
   },
   booking: {
     meta: {
-      title: "Restabooking — Restadigi",
+      title: "Restatable — Restadigi",
       description:
-        "Restabooking: Restatable table booking and Restachat booking bot for hospitality, tourism, restaurants and service SMEs.",
-      ogTitle: "Restabooking — Restadigi",
-      ogDescription:
-        "Two booking products: Restatable for channels and the floor, Restachat for website chat bookings.",
+        "Restatable — a modern table booking system for hospitality, tourism, restaurants and service businesses.",
+      ogTitle: "Restatable — Restadigi",
+      ogDescription: "Table bookings from channels to the floor — Restatable.",
     },
     brand: {
-      name: "Restabooking",
+      name: "Restatable",
       titleBefore: "Booking services ",
       titleAccent: "under one brand",
       titleAfter: ".",
-      body: "Restabooking offers two distinct booking products for hospitality, tourism and restaurants — as well as small and mid-sized service businesses — visibility from channels and booking straight from your website.",
+      body: "Restatable offers a graphical table booking system for hospitality, tourism and restaurants — as well as small and mid-sized service businesses.",
     },
     restatable: {
-      badge: "Product 1 · Restatable",
+      badge: "Restatable",
       titleBefore: "Table bookings from ",
       titleAccent: "channels to the floor",
       titleAfter: ".",
@@ -912,7 +963,7 @@ export const en: Messages = {
       exampleLabel: "Example: Restaurant Kaj",
     },
     restachat: {
-      badge: "Product 2 · Restachat",
+      badge: "Restatable · chat",
       titleBefore: "",
       titleAccent: "Table reservations",
       titleAfter: " straight from your site.",
@@ -920,9 +971,9 @@ export const en: Messages = {
         "We integrate a modern table reservation service into your restaurant website that works around the clock. Guests pick a time and party size, get email confirmation, and your staff see bookings in a clear admin panel.",
       headlineLine1: "Guests book a table",
       headlineLine2: "themselves — 24/7.",
-      subtitle: "Explore Restachat and try the booking bot.",
+      subtitle: "Explore Restatable and try the booking bot.",
       shopHeadline: "The shop never sleeps!",
-      tryLabel: "Try the Restachat table booking service",
+      tryLabel: "Try the Restatable booking bot",
     },
     channels: {
       eyebrow: "Channels",
@@ -968,7 +1019,7 @@ export const en: Messages = {
       titleBefore: "Seamless ",
       titleAccent: "integration",
       titleAfter: ".",
-      body: "We make booking easy by integrating Restatable into your restaurant website and digital channels. From social media to Google and email confirmations — Restabooking works where guests find you.",
+      body: "We make booking easy by integrating Restatable into your restaurant website and digital channels. From social media to Google and email confirmations — Restatable works where guests find you.",
       logos: ["Google", "Instagram", "Facebook", "Email", "Your website", "Calendar"],
     },
     dashboard: {
@@ -979,7 +1030,7 @@ export const en: Messages = {
       body: "Restatable is an intuitive, all-in-one booking system for restaurants. Manage reservations and your business — table by table — in one clear view.",
       ctaPrimary: "Request a demo",
       ctaSecondary: "Book a free call",
-      ctaNote: "Fixed annual price. No hidden fees.",
+      ctaNote: "Fixed monthly price. No hidden fees.",
     },
     floorPlan: {
       eyebrow: "Floor plan on every device",
@@ -1002,16 +1053,16 @@ export const en: Messages = {
         body: "See the day’s bookings at a glance and adjust availability easily.",
       },
       {
-        title: "Two products",
-        body: "Restatable for channels and the floor, Restachat for website chat bookings — one Restabooking brand.",
+        title: "Channels & floor",
+        body: "Bookings from Google, Instagram and Facebook plus a graphical floor plan — one Restatable system.",
       },
     ],
     cta: {
       titleBefore: "Get started with ",
-      titleAccent: "Restabooking",
+      titleAccent: "Restatable",
       titleAfter: ".",
-      price: "from 299 €",
-      priceNote: "/ year — fixed annual price",
+      price: "39 € / month",
+      priceNote: "Fixed monthly price for Restatable table booking",
       button: "Ask for more",
     },
     demo: {
@@ -1060,6 +1111,20 @@ export const en: Messages = {
         "In a real setup the guest would get an email confirmation and the booking would appear in the dashboard. In this demo nothing was saved.",
       tryAgain: "Try again",
     },
+  },
+  restabooking: {
+    meta: {
+      title: "Restabooking — Restadigi",
+      description: "Restabooking — coming soon. Restadigi’s new booking brand.",
+      ogTitle: "Restabooking — Restadigi",
+      ogDescription: "Restabooking — coming soon.",
+    },
+    eyebrow: "Restadigi",
+    title: "Restabooking",
+    body: "We’re building the Restabooking experience. New content will be here soon.",
+    soon: "Coming soon",
+    ctaRestatable: "Explore Restatable",
+    ctaContact: "Contact us",
   },
   hosting: {
     meta: {

@@ -95,15 +95,6 @@ export function MarketingBox({
 
   return (
     <article className={base + " min-h-[16rem] bg-white text-foreground " + className}>
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.1]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#432f24 1px, transparent 1px), linear-gradient(90deg, #432f24 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-        aria-hidden
-      />
       <div className="relative z-[1] w-full">{children}</div>
     </article>
   );
