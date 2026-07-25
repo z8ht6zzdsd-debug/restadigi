@@ -137,78 +137,27 @@ export function SiteHeader() {
         </Link>
 
         <div className="hidden items-center gap-5 lg:flex xl:gap-7">
-          {/* Palvelut */}
-          <div className="relative">
-            <button
-              type="button"
-              className={cn(triggerClass, desktopMenu === "palvelut" && triggerOpenClass)}
-              aria-expanded={desktopMenu === "palvelut"}
-              aria-controls={`${baseId}-palvelut`}
-              onClick={() => toggleDesktop("palvelut")}
-            >
-              {t.header.services}
-              <Chevron open={desktopMenu === "palvelut"} />
-            </button>
-            {desktopMenu === "palvelut" && (
-              <MegaPanel id={`${baseId}-palvelut`} align="left" wide>
-                <MegaIntro title={t.header.services} body={t.header.servicesIntro} />
-                <div className="grid gap-1 p-3 sm:grid-cols-2 sm:p-4">
-                  {t.header.servicesList.map((item) => {
-                    if (!isServicePath(item.to)) return null;
-                    const Icon = SERVICE_ICONS[item.to];
-                    return (
-                      <MegaLink
-                        key={item.to}
-                        to={item.to}
-                        title={item.label}
-                        body={item.body}
-                        Icon={Icon}
-                        onNavigate={closeAll}
-                      />
-                    );
-                  })}
-                </div>
-              </MegaPanel>
-            )}
-          </div>
+          <button
+            type="button"
+            className={cn(triggerClass, desktopMenu === "palvelut" && triggerOpenClass)}
+            aria-expanded={desktopMenu === "palvelut"}
+            aria-controls={`${baseId}-palvelut`}
+            onClick={() => toggleDesktop("palvelut")}
+          >
+            {t.header.services}
+            <Chevron open={desktopMenu === "palvelut"} />
+          </button>
 
-          {/* Toimialat */}
-          <div className="relative">
-            <button
-              type="button"
-              className={cn(triggerClass, desktopMenu === "toimialat" && triggerOpenClass)}
-              aria-expanded={desktopMenu === "toimialat"}
-              aria-controls={`${baseId}-toimialat`}
-              onClick={() => toggleDesktop("toimialat")}
-            >
-              {t.header.industries}
-              <Chevron open={desktopMenu === "toimialat"} />
-            </button>
-            {desktopMenu === "toimialat" && (
-              <MegaPanel id={`${baseId}-toimialat`} align="center" wide>
-                <MegaIntro title={t.header.industries} body={t.header.industriesIntro} />
-                <div className="max-h-[min(70vh,28rem)] space-y-0.5 overflow-y-auto p-3 sm:p-4">
-                  {t.header.industriesList.map((item, i) => {
-                    const Icon = INDUSTRY_ICONS[i % INDUSTRY_ICONS.length] ?? UtensilsCrossed;
-                    return (
-                      <div
-                        key={item.title}
-                        className="flex gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-[#f7f3ee]"
-                      >
-                        <MegaIcon Icon={Icon} />
-                        <div className="min-w-0">
-                          <p className="text-sm font-semibold tracking-tight text-[#2a2018]">
-                            {item.title}
-                          </p>
-                          <p className="mt-0.5 text-sm leading-relaxed text-[#5c534c]">{item.body}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </MegaPanel>
-            )}
-          </div>
+          <button
+            type="button"
+            className={cn(triggerClass, desktopMenu === "toimialat" && triggerOpenClass)}
+            aria-expanded={desktopMenu === "toimialat"}
+            aria-controls={`${baseId}-toimialat`}
+            onClick={() => toggleDesktop("toimialat")}
+          >
+            {t.header.industries}
+            <Chevron open={desktopMenu === "toimialat"} />
+          </button>
 
           <Link
             to="/hinnasto"
@@ -219,7 +168,6 @@ export function SiteHeader() {
             {t.header.pricing}
           </Link>
 
-          {/* Kielet */}
           <div className="relative">
             <button
               type="button"
@@ -261,69 +209,16 @@ export function SiteHeader() {
             )}
           </div>
 
-          {/* Ota yhteyttä */}
-          <div className="relative">
-            <button
-              type="button"
-              className={cn(triggerClass, desktopMenu === "yhteys" && triggerOpenClass)}
-              aria-expanded={desktopMenu === "yhteys"}
-              aria-controls={`${baseId}-yhteys`}
-              onClick={() => toggleDesktop("yhteys")}
-            >
-              {t.header.contact}
-              <Chevron open={desktopMenu === "yhteys"} />
-            </button>
-            {desktopMenu === "yhteys" && (
-              <MegaPanel id={`${baseId}-yhteys`} align="right" wide>
-                <MegaIntro
-                  title={t.header.contact}
-                  body={t.header.contactIntro}
-                  accent
-                  cta={
-                    <Link
-                      to="/yhteys"
-                      onClick={closeAll}
-                      className="mt-6 inline-flex items-center rounded-full bg-[#c46a32] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                    >
-                      {t.header.contactCta}
-                    </Link>
-                  }
-                />
-                <div className="space-y-1 p-3 sm:p-4">
-                  {t.header.contactLinks.map((item, i) => {
-                    const Icon = CONTACT_ICONS[i % CONTACT_ICONS.length] ?? Mail;
-                    return (
-                      <MegaLink
-                        key={item.to}
-                        to={item.to as "/yhteys" | "/meista" | "/hinnasto"}
-                        title={item.title}
-                        body={item.body}
-                        Icon={Icon}
-                        onNavigate={closeAll}
-                      />
-                    );
-                  })}
-                  <div className="mt-3 rounded-xl border border-[#e8dfd4] bg-[#fbf8f4] px-3 py-3">
-                    <p className="text-sm font-semibold text-[#2a2018]">
-                      {t.header.contactPanel.person}
-                    </p>
-                    <a
-                      href={`mailto:${t.header.contactPanel.email}`}
-                      className="mt-1 block text-sm text-[#c46a32] hover:underline"
-                    >
-                      {t.header.contactPanel.email}
-                    </a>
-                    <a
-                      href={`tel:${t.header.contactPanel.phoneTel}`}
-                      className="mt-0.5 block text-sm text-[#5c534c] hover:text-[#2a2018]"
-                    >
-                      {t.header.contactPanel.phoneDisplay}
-                    </a>
-                  </div>
-                </div>
-              </MegaPanel>
-            )}
-          </div>
+          <button
+            type="button"
+            className={cn(triggerClass, desktopMenu === "yhteys" && triggerOpenClass)}
+            aria-expanded={desktopMenu === "yhteys"}
+            aria-controls={`${baseId}-yhteys`}
+            onClick={() => toggleDesktop("yhteys")}
+          >
+            {t.header.contact}
+            <Chevron open={desktopMenu === "yhteys"} />
+          </button>
         </div>
 
         <button
@@ -351,6 +246,103 @@ export function SiteHeader() {
           </svg>
         </button>
       </div>
+
+      {/* Wide megamenus — centered under full nav (page center), not the trigger */}
+      {desktopMenu === "palvelut" && (
+        <MegaPanel id={`${baseId}-palvelut`}>
+          <MegaIntro title={t.header.services} body={t.header.servicesIntro} />
+          <div className="grid gap-1 p-3 sm:grid-cols-2 sm:p-4">
+            {t.header.servicesList.map((item) => {
+              if (!isServicePath(item.to)) return null;
+              const Icon = SERVICE_ICONS[item.to];
+              return (
+                <MegaLink
+                  key={item.to}
+                  to={item.to}
+                  title={item.label}
+                  body={item.body}
+                  Icon={Icon}
+                  onNavigate={closeAll}
+                />
+              );
+            })}
+          </div>
+        </MegaPanel>
+      )}
+
+      {desktopMenu === "toimialat" && (
+        <MegaPanel id={`${baseId}-toimialat`}>
+          <MegaIntro title={t.header.industries} body={t.header.industriesIntro} />
+          <div className="max-h-[min(70vh,28rem)] space-y-0.5 overflow-y-auto p-3 sm:p-4">
+            {t.header.industriesList.map((item, i) => {
+              const Icon = INDUSTRY_ICONS[i % INDUSTRY_ICONS.length] ?? UtensilsCrossed;
+              return (
+                <div
+                  key={item.title}
+                  className="flex gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-[#f7f3ee]"
+                >
+                  <MegaIcon Icon={Icon} />
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold tracking-tight text-[#2a2018]">
+                      {item.title}
+                    </p>
+                    <p className="mt-0.5 text-sm leading-relaxed text-[#5c534c]">{item.body}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </MegaPanel>
+      )}
+
+      {desktopMenu === "yhteys" && (
+        <MegaPanel id={`${baseId}-yhteys`}>
+          <MegaIntro
+            title={t.header.contact}
+            body={t.header.contactIntro}
+            accent
+            cta={
+              <Link
+                to="/yhteys"
+                onClick={closeAll}
+                className="mt-6 inline-flex items-center rounded-full bg-[#c46a32] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              >
+                {t.header.contactCta}
+              </Link>
+            }
+          />
+          <div className="space-y-1 p-3 sm:p-4">
+            {t.header.contactLinks.map((item, i) => {
+              const Icon = CONTACT_ICONS[i % CONTACT_ICONS.length] ?? Mail;
+              return (
+                <MegaLink
+                  key={item.to}
+                  to={item.to as "/yhteys" | "/meista" | "/hinnasto"}
+                  title={item.title}
+                  body={item.body}
+                  Icon={Icon}
+                  onNavigate={closeAll}
+                />
+              );
+            })}
+            <div className="mt-3 rounded-xl border border-[#e8dfd4] bg-[#fbf8f4] px-3 py-3">
+              <p className="text-sm font-semibold text-[#2a2018]">{t.header.contactPanel.person}</p>
+              <a
+                href={`mailto:${t.header.contactPanel.email}`}
+                className="mt-1 block text-sm text-[#c46a32] hover:underline"
+              >
+                {t.header.contactPanel.email}
+              </a>
+              <a
+                href={`tel:${t.header.contactPanel.phoneTel}`}
+                className="mt-0.5 block text-sm text-[#5c534c] hover:text-[#2a2018]"
+              >
+                {t.header.contactPanel.phoneDisplay}
+              </a>
+            </div>
+          </div>
+        </MegaPanel>
+      )}
 
       {mobileOpen && (
         <div className="lg:hidden absolute inset-x-0 top-full z-40 border-t border-[#e8dfd4] bg-white shadow-md">
@@ -466,32 +458,11 @@ export function SiteHeader() {
   );
 }
 
-function MegaPanel({
-  id,
-  children,
-  align,
-  wide,
-}: {
-  id: string;
-  children: ReactNode;
-  align: "left" | "center" | "right";
-  wide?: boolean;
-}) {
-  const alignClass =
-    align === "left"
-      ? "left-0"
-      : align === "right"
-        ? "right-0"
-        : "left-1/2 -translate-x-1/2";
-
+function MegaPanel({ id, children }: { id: string; children: ReactNode }) {
   return (
     <div
       id={id}
-      className={cn(
-        "absolute top-full z-40 mt-3 overflow-hidden rounded-2xl border border-[#e8dfd4] bg-white shadow-[0_22px_60px_rgba(42,32,24,0.16)]",
-        wide ? "w-[min(52rem,calc(100vw-2rem))]" : "w-[min(28rem,calc(100vw-2rem))]",
-        alignClass,
-      )}
+      className="absolute left-1/2 top-full z-40 mt-3 hidden w-[min(52rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-2xl border border-[#e8dfd4] bg-white shadow-[0_22px_60px_rgba(42,32,24,0.16)] lg:block"
     >
       <div className="grid lg:grid-cols-[0.95fr_1.15fr]">{children}</div>
     </div>
