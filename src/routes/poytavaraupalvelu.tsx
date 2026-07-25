@@ -12,8 +12,7 @@ import {
 import { BookingChatbotButton } from "@/components/chatbot-widget";
 import { BookingFloorPlanPanel } from "@/components/booking-floor-plan-panel";
 import { BookingGoogleProfileMock } from "@/components/booking-google-profile-mock";
-import { FloorPlanDevicePreviews } from "@/components/floor-plan-device-previews";
-import { ReservationsDevicePreviews } from "@/components/reservations-device-previews";
+import { BookingManagementPanel } from "@/components/booking-management-panel";
 import { TableBookingWidget } from "@/components/table-booking-widget";
 import {
   MarketingBand,
@@ -235,35 +234,40 @@ function PotyvarausPage() {
           </MarketingBox>
         </div>
 
-        <MarketingBox tone="white" justify="start" className="mb-4 mt-10 sm:mb-5 sm:mt-12">
-          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">{b.dashboard.eyebrow}</p>
-          <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
-            {b.dashboard.titleBefore}
-            <span className="italic text-accent">{b.dashboard.titleAccent}</span>
-            {b.dashboard.titleAfter}
-          </h3>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-            {b.dashboard.body}
-          </p>
-          <div className="mt-8">
-            <ReservationsDevicePreviews />
+        <div className="mb-4 mt-10 grid gap-4 sm:mb-5 sm:mt-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-6">
+          <div className="min-w-0 lg:order-1">
+            <BookingManagementPanel />
           </div>
-        </MarketingBox>
 
-        <MarketingBox tone="dark" justify="start" className="mb-4 sm:mb-5">
-          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">{b.floorPlan.eyebrow}</p>
-          <h3 className="font-serif text-2xl tracking-tight text-white sm:text-3xl">
-            {b.floorPlan.titleBefore}
-            <span className="italic text-accent">{b.floorPlan.titleAccent}</span>
-            {b.floorPlan.titleAfter}
-          </h3>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/85 sm:text-base">
-            {b.floorPlan.body}
-          </p>
-          <div className="mt-8">
-            <FloorPlanDevicePreviews />
+          <div className="lg:order-2">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+              {b.dashboard.eyebrow}
+            </p>
+            <h2 className="max-w-[16ch] font-serif text-3xl tracking-tight text-[#2a2018] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.05]">
+              {b.dashboard.titleBefore}
+              <span className="italic text-accent">{b.dashboard.titleAccent}</span>
+              {b.dashboard.titleAfter}
+            </h2>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-foreground/70 sm:text-base">
+              {b.dashboard.body}
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Link
+                to="/yhteys"
+                className="inline-flex items-center rounded-full bg-[#432f24] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              >
+                {b.dashboard.ctaPrimary}
+              </Link>
+              <Link
+                to="/yhteys"
+                className="inline-flex items-center rounded-full border border-[#432f24]/20 bg-white px-5 py-2.5 text-sm font-semibold text-[#432f24] transition-colors hover:border-[#432f24]/40"
+              >
+                {b.dashboard.ctaSecondary}
+              </Link>
+            </div>
+            <p className="mt-3 text-xs text-[#8a7f74]">{b.dashboard.ctaNote}</p>
           </div>
-        </MarketingBox>
+        </div>
 
         <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {b.features.map((feature, i) => {

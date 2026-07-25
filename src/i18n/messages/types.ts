@@ -544,6 +544,9 @@ export type Messages = {
       titleAccent: string;
       titleAfter: string;
       body: string;
+      ctaPrimary: string;
+      ctaSecondary: string;
+      ctaNote: string;
     };
     floorPlan: {
       eyebrow: string;
