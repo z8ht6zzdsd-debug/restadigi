@@ -1,6 +1,8 @@
-# Prompt de handoff — Restabooking (majoitusvaraus)
+# Prompt de handoff — Majoitusvaraus / stay booking (`/majoitusvaraus`)
 
-Copia este prompt a otro agente/proyecto (demo o web demo) para portar Restabooking con la misma calidad que Restatable (`/poytavaraupalvelu`).
+Copia este prompt a otro agente/proyecto (demo o web demo) para portar el showcase de **reservas de alojamiento**.
+
+> **Naming en restadigi actual:** `/poytavaraupalvelu` ya se comercializa como marca **Restabooking** (Restatable + Restachat para mesa). Esta página `/majoitusvaraus` es el producto paralelo de **hospedaje** (noches, habitaciones, check-in/out). En nav: FI «Majoitusvaraus» / EN «Stay booking» / ES «Reservas de alojamiento».
 
 ---
 
