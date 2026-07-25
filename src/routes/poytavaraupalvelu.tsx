@@ -1,14 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  BellRing,
-  Check,
-  Clock3,
-  LayoutGrid,
-  Link2,
-  MessageCircle,
-  Pencil,
-  X,
-} from "lucide-react";
+import { BellRing, Check, Clock3, LayoutGrid, Link2, MessageCircle, Pencil, X } from "lucide-react";
 import { BookingChatbotButton } from "@/components/chatbot-widget";
 import { BookingFloorPlanPanel } from "@/components/booking-floor-plan-panel";
 import { BookingGoogleProfileMock } from "@/components/booking-google-profile-mock";
@@ -123,12 +114,7 @@ function PotyvarausPage() {
               </div>
             </MarketingBox>
 
-            <MarketingBox
-              tone="dark"
-              justify="center"
-              align="center"
-              className="min-h-[14rem]"
-            >
+            <MarketingBox tone="dark" justify="center" align="center" className="min-h-[14rem]">
               <p className="mb-6 max-w-sm font-serif text-xl leading-snug text-[#f7f3ee] sm:text-2xl">
                 {b.restachat.tryLabel}
               </p>
@@ -146,7 +132,9 @@ function PotyvarausPage() {
 
         <div className="mb-4 grid gap-4 sm:mb-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-5">
           <MarketingBox tone="white" justify="start">
-            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">{b.channels.eyebrow}</p>
+            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
+              {b.channels.eyebrow}
+            </p>
             <p className="max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
               {b.channels.body}
             </p>

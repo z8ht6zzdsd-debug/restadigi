@@ -212,14 +212,15 @@ export function BookingManagementPanel({
                     style={{ gridTemplateColumns: "4.5rem repeat(7, minmax(0, 1fr))" }}
                   >
                     <div className="flex flex-col justify-center border-r border-[#e8dfd4] bg-white px-2 py-2">
-                      <span className="text-[11px] font-semibold text-[#2a2018]">
-                        #{table.id}
-                      </span>
+                      <span className="text-[11px] font-semibold text-[#2a2018]">#{table.id}</span>
                       <span className="text-[9px] text-[#8a7f74]">{table.zone}</span>
                     </div>
                     <div className="relative col-span-7 grid grid-cols-7">
                       {TIMES.map((t) => (
-                        <div key={t} className="min-h-11 border-r border-[#eee8e0] last:border-r-0" />
+                        <div
+                          key={t}
+                          className="min-h-11 border-r border-[#eee8e0] last:border-r-0"
+                        />
                       ))}
                       {bars.map((bar) => (
                         <div
