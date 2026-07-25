@@ -465,13 +465,76 @@ export type Messages = {
       ogTitle: string;
       ogDescription: string;
     };
-    hero: {
+    brand: {
+      name: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+    };
+    restatable: {
+      badge: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+      exampleLabel: string;
+    };
+    restachat: {
+      badge: string;
+      titleBefore: string;
       titleAccent: string;
       titleAfter: string;
       description: string;
       headlineLine1: string;
       headlineLine2: string;
       subtitle: string;
+    };
+    channels: {
+      eyebrow: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+      items: string[];
+      mock: {
+        name: string;
+        category: string;
+        status: string;
+        rating: string;
+        reviews: string;
+        priceLevel: string;
+        blurb: string;
+        reserve: string;
+        call: string;
+        directions: string;
+        save: string;
+        website: string;
+      };
+    };
+    guestManage: {
+      eyebrow: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+      items: string[];
+    };
+    experience: {
+      eyebrow: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+      views: string[];
+    };
+    integration: {
+      eyebrow: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+      logos: string[];
     };
     dashboard: {
       eyebrow: string;

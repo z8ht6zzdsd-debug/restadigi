@@ -448,7 +448,7 @@ export function ChatbotWidget() {
   return <ChatbotPanel mode="sales" placement="floating" />;
 }
 
-/** Table booking demo bot — only on pöytävarauspalvelu hero */
+/** Table booking demo bot — Restachat on pöytävarauspalvelu / Restabooking */
 export function BookingChatbotButton({ className }: { className?: string }) {
   return <ChatbotPanel mode="reservation" placement="inline" className={className} />;
 }

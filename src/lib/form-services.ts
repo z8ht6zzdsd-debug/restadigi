@@ -101,9 +101,9 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
   {
     id: "poytavaraupalvelu",
     group: "booking",
-    name: "Pöytävarauspalvelu",
+    name: "Restabooking",
     price: "alk. 299 € / vuosi",
-    blurb: "Varaukset sivuilta, hallinta ja pöytäkartta.",
+    blurb: "Restatable + Restachat — kanavat, pöytäkartta ja chat-varaus.",
   },
   {
     id: "hosting-basic",
