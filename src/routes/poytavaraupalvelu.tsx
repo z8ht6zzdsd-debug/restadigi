@@ -15,6 +15,7 @@ import { BookingFloorPlanPanel } from "@/components/booking-floor-plan-panel";
 import { BookingGoogleProfileMock } from "@/components/booking-google-profile-mock";
 import { FloorPlanDevicePreviews } from "@/components/floor-plan-device-previews";
 import { ReservationsDevicePreviews } from "@/components/reservations-device-previews";
+import { TableBookingWidget } from "@/components/table-booking-widget";
 import {
   MarketingBand,
   MarketingBox,
@@ -155,6 +156,24 @@ function PotyvarausPage() {
           <p className="mb-8 text-xs font-semibold uppercase tracking-[0.16em] text-[#8a7f74]">
             {b.restatable.exampleLabel}
           </p>
+
+          {/* Live Kaj / Restatable booking widget — first content */}
+          <MarketingBox tone="white" justify="start" className="mb-4 sm:mb-5">
+            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
+              {b.demo.sectionEyebrow}
+            </p>
+            <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
+              {b.demo.sectionTitleBefore}
+              <span className="italic text-accent">{b.demo.sectionTitleAccent}</span>
+              {b.demo.sectionTitleAfter}
+            </h3>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/70 sm:text-base">
+              {b.demo.sectionBody}
+            </p>
+            <div className="mt-8">
+              <TableBookingWidget />
+            </div>
+          </MarketingBox>
 
           {/* Channels + Google mock */}
           <div className="mb-4 grid gap-4 sm:mb-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-5">
