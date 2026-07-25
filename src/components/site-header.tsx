@@ -119,8 +119,8 @@ export function SiteHeader() {
   const triggerOpenClass = "text-[#c46a32]";
 
   return (
-    <nav ref={navRef} className="relative z-30">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 pt-4 pb-3 pl-2 pr-6 sm:pt-6 sm:pb-4 sm:pl-3 lg:pl-1">
+    <nav ref={navRef} className="relative z-30 pt-4 pb-3 sm:pt-6 sm:pb-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 pl-2 pr-6 sm:pl-3 lg:pl-1">
         <Link
           to="/"
           className="site-header__brand shrink-0"
@@ -247,7 +247,6 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {/* Wide megamenus — centered under full nav (page center), not the trigger */}
       {desktopMenu === "palvelut" && (
         <MegaPanel id={`${baseId}-palvelut`}>
           <MegaIntro title={t.header.services} body={t.header.servicesIntro} />
@@ -466,7 +465,7 @@ function MegaPanel({ id, children }: { id: string; children: ReactNode }) {
   return (
     <div
       id={id}
-      className="absolute left-1/2 top-full z-40 hidden w-[min(52rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-2xl border border-[#e8dfd4] bg-white shadow-[0_22px_60px_rgba(42,32,24,0.16)] lg:block"
+      className="absolute left-1/2 top-[calc(100%-2.25cm)] z-40 hidden w-[min(52rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-2xl border border-[#e8dfd4] bg-white shadow-[0_22px_60px_rgba(42,32,24,0.16)] lg:block"
     >
       <div className="grid lg:grid-cols-[0.95fr_1.15fr]">{children}</div>
     </div>
