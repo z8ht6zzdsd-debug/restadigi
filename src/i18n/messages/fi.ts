@@ -408,6 +408,11 @@ export const fi: Messages = {
       body: "Kiinteä kuukausihinta — 39 € / kk.",
       linkLabel: "Lue lisää",
     },
+    stayBookingPromo: {
+      title: "Restabooking — majoitusvaraus",
+      body: "Kiinteä kuukausihinta — 45 € / kk.",
+      linkLabel: "Lue lisää",
+    },
     projects: {
       titleBefore: "Valikoidut ",
       titleAccent: "projektit",
@@ -1176,8 +1181,8 @@ export const fi: Messages = {
       titleBefore: "Ota ",
       titleAccent: "majoitusvaraukset",
       titleAfter: " haltuun.",
-      price: "alk. 299 €",
-      priceNote: "/ vuosi — kiinteä vuosihinta, räätälöitävissä",
+      price: "45 € / kk",
+      priceNote: "Kiinteä kuukausihinta Restabooking-majoitusvaraukselle",
       button: "Kysy lisää",
     },
     demo: {

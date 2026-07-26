@@ -184,6 +184,11 @@ export type Messages = {
       body: string;
       linkLabel: string;
     };
+    stayBookingPromo: {
+      title: string;
+      body: string;
+      linkLabel: string;
+    };
     projects: {
       titleBefore: string;
       titleAccent: string;

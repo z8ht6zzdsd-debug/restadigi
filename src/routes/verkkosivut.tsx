@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import mountainHero from "@/assets/websites-mountain-hero.jpg";
+import rafaHeroScreen from "@/assets/websites-hero-rafa.png";
+import freddosHeroScreen from "@/assets/websites-hero-freddos.png";
 import { MarketingBand } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import {
-  WebsitesMountainHero,
+  WebsitesDualLaptopHero,
   WebsitesPackageShowcase,
 } from "@/components/websites-package-showcase";
 import { useMessages } from "@/i18n";
@@ -43,13 +44,14 @@ function KotisivutPage() {
       />
       <SiteHeader />
 
-      <WebsitesMountainHero
+      <WebsitesDualLaptopHero
         priceLabel={w.hero.priceLabel}
-        imageSrc={mountainHero}
         titleBefore={w.hero.titleBefore}
         titleAccent={w.hero.titleAccent}
         titleAfter={w.hero.titleAfter}
         description={w.hero.description}
+        leftScreenSrc={rafaHeroScreen}
+        rightScreenSrc={freddosHeroScreen}
       />
 
       <WebsitesPackageShowcase

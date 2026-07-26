@@ -409,6 +409,11 @@ export const es: Messages = {
       body: "Precio mensual fijo — 39 € / mes.",
       linkLabel: "Leer más",
     },
+    stayBookingPromo: {
+      title: "Restabooking — reservas de alojamiento",
+      body: "Precio mensual fijo — 45 € / mes.",
+      linkLabel: "Leer más",
+    },
     projects: {
       titleBefore: "Proyectos ",
       titleAccent: "seleccionados",
@@ -1183,8 +1188,8 @@ export const es: Messages = {
       titleBefore: "Toma el control de las ",
       titleAccent: "reservas de alojamiento",
       titleAfter: ".",
-      price: "desde 299 €",
-      priceNote: "/ año — precio anual fijo, adaptable",
+      price: "45 € / mes",
+      priceNote: "Precio mensual fijo para Restabooking (alojamiento)",
       button: "Preguntar más",
     },
     demo: {

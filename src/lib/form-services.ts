@@ -109,7 +109,7 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
     id: "majoitusvaraus",
     group: "booking",
     name: "Restabooking (majoitus)",
-    price: "alk. 299 € / vuosi",
+    price: "45 € / kk",
     blurb: "Majoitusvaraukset sivuilta — hotellit, majatalot, mökit.",
   },
   {

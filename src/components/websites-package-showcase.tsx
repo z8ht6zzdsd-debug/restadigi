@@ -183,60 +183,113 @@ function PackageLaptop({
   );
 }
 
-export function WebsitesMountainHero({
+export function WebsitesDualLaptopHero({
   priceLabel,
-  imageSrc,
   titleBefore,
   titleAccent,
   titleAfter,
   description,
+  leftScreenSrc,
+  rightScreenSrc,
 }: {
   priceLabel: string;
-  imageSrc: string;
   titleBefore: string;
   titleAccent: string;
   titleAfter: string;
   description: string;
+  leftScreenSrc: string;
+  rightScreenSrc: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-[#e8e4de]">
-      <img
-        src={imageSrc}
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute inset-0 size-full object-cover object-[center_42%]"
-      />
+    <section className="relative overflow-hidden bg-white">
+      <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 sm:pt-8 lg:pt-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="text-3xl font-bold tracking-tight text-[#1d1d1f] sm:text-4xl lg:text-5xl">
+            {titleBefore}
+            <span className="font-serif italic text-[#c46a32]">{titleAccent}</span>
+            {titleAfter}
+          </h1>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-[#1d1d1f]/70 sm:mt-4 sm:text-base">
+            {description}
+          </p>
+          <p className="mt-3 text-base font-bold tracking-tight text-[#1d1d1f] sm:mt-4 sm:text-lg">
+            {priceLabel}
+          </p>
+        </div>
+      </div>
+
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-white/70"
-        aria-hidden
-      />
-
-      <div className="relative mx-auto flex min-h-[min(72vh,34rem)] max-w-6xl flex-col items-center justify-end px-4 pb-0 pt-2 sm:min-h-[min(78vh,40rem)] sm:pt-4 lg:min-h-[min(82vh,46rem)]">
-        <p className="relative z-[2] mb-3 text-center text-xl font-bold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:mb-4 sm:text-2xl lg:text-3xl">
-          {priceLabel}
-        </p>
-
-        <div className="relative z-[2] mb-[-1%] w-[min(88%,30rem)] origin-bottom sm:w-[min(70%,36rem)] lg:w-[min(58%,40rem)]">
-          <div className="websites-hero-laptop relative overflow-hidden rounded-[0.7rem] bg-gradient-to-b from-[#e8dcc0] via-[#d4c4a0] to-[#b8a078] p-[0.5rem] shadow-[0_30px_70px_-20px_rgba(26,18,14,0.45)] ring-1 ring-black/20 sm:rounded-[0.9rem] sm:p-[0.6rem]">
-            <span className="absolute left-1/2 top-[0.3rem] z-[2] h-[0.2rem] w-[0.2rem] -translate-x-1/2 rounded-full bg-black/40" />
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[0.3rem] bg-[#f7f3ee]">
-              <div className="absolute inset-0 flex flex-col justify-center gap-2 px-4 py-3 text-left sm:gap-2.5 sm:px-6 sm:py-4 lg:px-7">
-                <p className="max-w-[18ch] text-[0.95rem] font-bold leading-[1.05] tracking-tight text-[#1d1d1f] sm:text-xl lg:text-2xl">
-                  {titleBefore}
-                  <span className="font-serif italic text-[#c46a32]">{titleAccent}</span>
-                  {titleAfter}
-                </p>
-                <p className="max-w-[36ch] text-[0.42rem] leading-snug text-[#1d1d1f]/75 sm:text-[0.55rem] sm:leading-snug lg:text-[0.62rem]">
-                  {description}
-                </p>
-              </div>
-            </div>
+        className="websites-dual-hero relative mx-auto mt-6 w-full max-w-7xl px-2 pb-8 sm:mt-8 sm:px-4 sm:pb-12 lg:mt-10 lg:pb-16"
+      >
+        <div className="websites-dual-hero__stage relative mx-auto flex min-h-[14rem] items-end justify-center sm:min-h-[20rem] lg:min-h-[26rem]">
+          <div className="websites-dual-hero__left absolute bottom-0 left-[2%] w-[52%] sm:left-[4%] sm:w-[48%] lg:left-[6%] lg:w-[46%]">
+            <HeroLaptop tone="silver" screenSrc={leftScreenSrc} screenAlt="Rafa Romera" />
           </div>
-          <div className="relative mx-[-2%] h-[0.5rem] rounded-b-[0.55rem] bg-gradient-to-b from-[#c4b090] to-[#8a7a60] sm:h-[0.6rem]">
-            <span className="absolute left-1/2 top-[0.1rem] h-[0.25rem] w-[18%] -translate-x-1/2 rounded-sm bg-[#2a2018]/55" />
+          <div className="websites-dual-hero__right absolute bottom-0 right-[2%] z-[1] w-[52%] sm:right-[4%] sm:w-[48%] lg:right-[6%] lg:w-[46%]">
+            <HeroLaptop tone="midnight" screenSrc={rightScreenSrc} screenAlt="Freddo's" />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroLaptop({
+  tone,
+  screenSrc,
+  screenAlt,
+}: {
+  tone: "silver" | "midnight";
+  screenSrc: string;
+  screenAlt: string;
+}) {
+  const chassis =
+    tone === "silver"
+      ? "from-[#e8e4de] via-[#d4cfc8] to-[#b8b2a8]"
+      : "from-[#3a3f48] via-[#1e222a] to-[#0e1014]";
+  const base =
+    tone === "silver"
+      ? "from-[#c8c2b8] to-[#8a847a]"
+      : "from-[#2a2e36] to-[#12141a]";
+  const hinge = tone === "silver" ? "bg-[#2a2622]/55" : "bg-black/70";
+  const camera = tone === "silver" ? "bg-black/45" : "bg-black/80 ring-1 ring-white/10";
+
+  return (
+    <div className="relative w-full origin-bottom">
+      <div
+        className={cn(
+          "relative overflow-hidden rounded-[0.55rem] bg-gradient-to-b p-[0.4rem] shadow-[0_28px_60px_-16px_rgba(26,18,14,0.35)] ring-1 ring-black/20 sm:rounded-[0.75rem] sm:p-[0.5rem] lg:rounded-[0.9rem] lg:p-[0.55rem]",
+          chassis,
+        )}
+      >
+        <span
+          className={cn(
+            "absolute left-1/2 top-[0.28rem] z-[2] h-[0.18rem] w-[0.18rem] -translate-x-1/2 rounded-full sm:top-[0.32rem] sm:h-[0.2rem] sm:w-[0.2rem]",
+            camera,
+          )}
+        />
+        <div className="relative aspect-[16/10] overflow-hidden rounded-[0.25rem] bg-[#111] sm:rounded-[0.3rem]">
+          <img
+            src={screenSrc}
+            alt={screenAlt}
+            className="absolute inset-0 size-full scale-[1.18] object-cover object-[center_28%]"
+          />
+        </div>
+      </div>
+      <div
+        className={cn(
+          "relative mx-[-1.5%] h-[0.45rem] rounded-b-[0.5rem] bg-gradient-to-b sm:h-[0.55rem] sm:rounded-b-[0.6rem]",
+          base,
+        )}
+      >
+        <span className="absolute inset-x-[28%] top-0 h-px bg-white/20" />
+        <span
+          className={cn(
+            "absolute left-1/2 top-[0.1rem] h-[0.22rem] w-[16%] -translate-x-1/2 rounded-sm sm:h-[0.28rem]",
+            hinge,
+          )}
+        />
+      </div>
+    </div>
   );
 }
