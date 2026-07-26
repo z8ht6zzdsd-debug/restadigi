@@ -1,9 +1,29 @@
 import { Link } from "@tanstack/react-router";
-import { CirclePlus, Crown, Gem, Rocket, type LucideIcon } from "lucide-react";
+import {
+  Bot,
+  CalendarDays,
+  CirclePlus,
+  Crown,
+  Gem,
+  Globe,
+  Mail,
+  Rocket,
+  Search,
+  Smartphone,
+  type LucideIcon,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const PACKAGE_ICONS: LucideIcon[] = [Rocket, CirclePlus, Crown, Gem];
+
+/** Feature marks under price — icons only, no labels/background. */
+const PACKAGE_FEATURE_ICONS: LucideIcon[][] = [
+  [Globe, Smartphone, Search, Mail], // Start
+  [Globe, Smartphone, Search, Mail], // Plus
+  [Globe, Bot, Search, Mail], // Kulta
+  [Globe, Bot, CalendarDays, Mail], // Timantti
+];
 
 const PACKAGE_ACCENTS = [
   "text-[#2f6b4f]", // Start — green
@@ -62,6 +82,7 @@ export function WebsitesPackageShowcase({
           const iconBg = PACKAGE_ICON_BG[i % PACKAGE_ICON_BG.length];
           const tone = LAPTOP_TONES[i % LAPTOP_TONES.length];
           const Icon = PACKAGE_ICONS[i % PACKAGE_ICONS.length];
+          const featureIcons = PACKAGE_FEATURE_ICONS[i % PACKAGE_FEATURE_ICONS.length];
 
           const laptop = (
             <PackageLaptop
@@ -72,6 +93,7 @@ export function WebsitesPackageShowcase({
               accent={accent}
               iconBg={iconBg}
               Icon={Icon}
+              featureIcons={featureIcons}
             />
           );
           const copy = (
@@ -125,6 +147,7 @@ function PackageLaptop({
   accent,
   iconBg,
   Icon,
+  featureIcons,
 }: {
   name: string;
   summary: string;
@@ -133,6 +156,7 @@ function PackageLaptop({
   accent: string;
   iconBg: string;
   Icon: LucideIcon;
+  featureIcons: LucideIcon[];
 }) {
   return (
     <div className="relative mx-auto w-full max-w-lg" aria-hidden>
@@ -168,6 +192,15 @@ function PackageLaptop({
               <p className="mt-1 text-base font-bold tracking-tight text-[#1d1d1f] sm:mt-1.5 sm:text-lg lg:text-xl">
                 {price}
               </p>
+              <div className="mt-1 flex items-center justify-center gap-3 sm:mt-1.5 sm:gap-3.5">
+                {featureIcons.map((FeatureIcon, fi) => (
+                  <FeatureIcon
+                    key={fi}
+                    className="size-5 text-[#2a2018]/75 sm:size-6 lg:size-7"
+                    strokeWidth={1.75}
+                  />
+                ))}
+              </div>
             </div>
             <p className="mt-2 flex flex-1 items-center justify-center text-center text-[0.95rem] font-semibold leading-[1.15] tracking-tight text-[#2a2018] sm:mt-2.5 sm:text-[1.2rem] sm:leading-[1.12] lg:text-[1.35rem] lg:leading-[1.1]">
               {summary}
