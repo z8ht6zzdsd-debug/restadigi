@@ -1163,26 +1163,54 @@ export const fi: Messages = {
     meta: {
       title: "Restabooking — majoitusvarauspalvelu — Restadigi",
       description:
-        "Restabooking: moderni majoitusvaraus hotelleille, majataloille ja mökeille — asiakkaat varaavat suoraan sivuilta.",
+        "Restabooking: majoitusvaraukset, aktiviteetit, elämykset, tapahtumat ja ryhmävaraukset yhdessä järjestelmässä.",
       ogTitle: "Restabooking — majoitusvaraus — Restadigi",
-      ogDescription: "Majoitusvaraukset suoraan verkkosivuiltasi — mukautuu asiakkaan tarpeisiin.",
+      ogDescription: "Kaikki varaukset yhdessä järjestelmässä — hotelleille, majataloille, mökeille ja lomakeskuksille.",
     },
     hero: {
-      titleAccent: "Restabooking",
-      titleAfter: " — majoitusvaraukset sivustoltasi.",
-      description:
-        "Hotelleille, majataloille, mökeille ja pienille majoitusliikkeille. Asiakas valitsee huoneen, yöt ja saapumispäivän — sinä hallitset varaukset selkeästä paneelista. Palvelu mukautetaan asiakkaan tarpeisiin.",
-      headlineLine1: "Vieraat varaavat majoituksen",
-      headlineLine2: "itse — 24/7.",
-      subtitle: "Tutustu Restadigin Restabooking-palveluun ja kokeile demoa.",
+      eyebrow: "Restabooking",
+      title: "Kaikki varaukset yhdessä järjestelmässä.",
+      paragraphs: [
+        "RestaBooking on monipuolinen varausjärjestelmä hotelleille, majataloille, mökeille, lomakeskuksille ja muille majoitusliikkeille. Samalla järjestelmällä hallitset majoitusvaraukset, aktiviteetit, elämykset, tapahtumat ja ryhmävaraukset helposti yhdestä paikasta.",
+        "Automatisoitu varausprosessi vähentää manuaalista työtä ja pitää saatavuuden sekä varauskalenterin aina ajan tasalla. Asiakkaasi voivat tehdä varauksia verkossa vuorokauden ympäri, mikä parantaa asiakaskokemusta ja auttaa kasvattamaan myyntiä.",
+        "Selkeä käyttöliittymä tekee päivittäisestä hallinnasta sujuvaa niin pienille majoitusyrityksille kuin suuremmillekin kohteille. Olipa kyse hotellihuoneista, mökeistä, ohjelmapalveluista, tapahtumista tai ryhmien majoituksesta, RestaBooking kokoaa kaiken yhteen helppokäyttöiseen järjestelmään.",
+        "Tarjoa asiakkaillesi vaivaton varauskokemus ja hallitse koko liiketoimintaasi tehokkaasti yhdellä modernilla alustalla.",
+      ],
       cta: "Kysy lisää",
     },
+    pillarsHeading: {
+      titleBefore: "Majoitusliiketoiminta ",
+      titleAccent: "yhdessä näkymässä",
+      titleAfter: ".",
+    },
+    pillars: [
+      {
+        title: "Property Management System",
+        tagline: "Hallitse koko majoitusliiketoimintaasi yhdestä järjestelmästä",
+        body: "Restadigin Property Management System kokoaa majoitusliiketoiminnan tärkeimmät toiminnot saman järjestelmän alle. Hallitse majoitusvaraukset, käyttöaste, huoneet, siivous, huolto, laskutus ja asiakasviestintä helposti yhdestä näkymästä. Automatisoidut työvaiheet vähentävät manuaalista työtä, tehostavat henkilökunnan arkea ja varmistavat sujuvan asiakaskokemuksen aina varauksesta uloskirjautumiseen.",
+      },
+      {
+        title: "Aktiviteetit, elämykset ja lisäpalvelut",
+        tagline: "Kasvata myyntiä tarjoamalla enemmän jokaiselle asiakkaalle",
+        body: "Restadigin järjestelmällä myyt helposti aktiviteetteja, elämyksiä, välinevuokrausta, saunavuoroja, opastuksia, tapahtumia ja muita lisäpalveluita samassa varausprosessissa. Älykäs myyntiratkaisu mahdollistaa lisäpalveluiden tarjoamisen ennen varausta, sen aikana tai vierailun yhteydessä. Näin kasvatat lisämyyntiä, helpotat palveluiden hallintaa ja tarjoat asiakkaillesi entistä monipuolisemman elämyksen.",
+      },
+      {
+        title: "Verkkokauppa ja online-varaukset",
+        tagline: "Myy majoitukset, elämykset ja palvelut helposti verkossa",
+        body: "Restadigin verkkokauppa yhdistää majoituksen, aktiviteetit, lisäpalvelut ja valmiit palvelupaketit yhdeksi sujuvaksi varauskokonaisuudeksi. Voit luoda erilaisia varauspolkuja esimerkiksi perheille, yrityksille ja ryhmille sekä tarjota juuri oikeat lisäpalvelut ja hinnat jokaiselle asiakasryhmälle. Selkeä varausprosessi parantaa asiakaskokemusta ja auttaa kasvattamaan myyntiä.",
+      },
+      {
+        title: "Kokoukset, tapahtumat ja ryhmävaraukset",
+        tagline: "Hallitse suuremmat varaukset vaivattomasti",
+        body: "Restadigin järjestelmällä hoidat kokoustilat, tapahtumat, ryhmävaraukset ja majoituskiintiöt yhdestä paikasta. Hallitse aikatauluja, osallistujia, tarjoiluja ja lisäpalveluita helposti samalla järjestelmällä, jolloin koko varausprosessi pysyy selkeänä sekä henkilökunnalle että asiakkaillesi. Automatisoidut työkalut vähentävät manuaalista työtä ja tekevät ryhmien sekä tapahtumien hallinnasta sujuvaa.",
+      },
+    ],
     dashboard: {
       eyebrow: "Hallintapaneeli",
-      titleBefore: "Majoitukset ",
+      titleBefore: "Varaukset ",
       titleAccent: "kalenterissa",
       titleAfter: " ja listalla.",
-      body: "Henkilökunta näkee saapumiset, lähdöt ja huonevaraukset tabletilla tai näytöllä — vahvista, peruuta ja seuraa täyttöä yhdellä silmäyksellä.",
+      body: "Henkilökunta näkee saapumiset, lähdöt ja majoitusvaraukset tabletilla tai näytöllä — vahvista, peruuta ja seuraa käyttöastetta yhdellä silmäyksellä.",
     },
     rooms: {
       eyebrow: "Huonekartta",
@@ -1191,27 +1219,6 @@ export const fi: Messages = {
       titleAfter: " — mobiilista isoon näyttöön.",
       body: "Selkeä näkymä huoneisiin: vapaa, varattu, saapuu tai lähtee. Sama näkymä toimii puhelimella, tabletilla ja vastaanoton näytöllä.",
     },
-    adaptEyebrow: "Räätälöitävä",
-    adaptBody:
-      "Restabooking mukautuu majoitusliikkeesi kokoon ja tarpeisiin — huonetyypit, hinnat, säännöt ja ilme sovitetaan yhteen brändisi kanssa.",
-    features: [
-      {
-        title: "Varaukset 24/7",
-        body: "Vieraat varaavat huoneen milloin tahansa — ilman puhelinruuhkaa.",
-      },
-      {
-        title: "Yöt ja saapuminen",
-        body: "Selkeä polku: huonetyyppi, vieraat, check-in ja yöpymisten määrä.",
-      },
-      {
-        title: "Hallinta yhdessä näkymässä",
-        body: "Saapumiset, lähdöt ja tilanne yhdellä silmäyksellä henkilökunnalle.",
-      },
-      {
-        title: "Sivustoosi sopiva",
-        body: "Widget istuu majoitussivustosi ilmeeseen — ei erillistä kolmannen osapuolen tunnelmaa.",
-      },
-    ],
     cta: {
       titleBefore: "Ota ",
       titleAccent: "majoitusvaraukset",

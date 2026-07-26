@@ -631,14 +631,17 @@ export type Messages = {
       ogDescription: string;
     };
     hero: {
-      titleAccent: string;
-      titleAfter: string;
-      description: string;
-      headlineLine1: string;
-      headlineLine2: string;
-      subtitle: string;
+      eyebrow: string;
+      title: string;
+      paragraphs: string[];
       cta: string;
     };
+    pillarsHeading: {
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+    };
+    pillars: Array<{ title: string; tagline: string; body: string }>;
     dashboard: {
       eyebrow: string;
       titleBefore: string;
@@ -653,9 +656,6 @@ export type Messages = {
       titleAfter: string;
       body: string;
     };
-    adaptEyebrow: string;
-    adaptBody: string;
-    features: Array<{ title: string; body: string }>;
     cta: {
       titleBefore: string;
       titleAccent: string;

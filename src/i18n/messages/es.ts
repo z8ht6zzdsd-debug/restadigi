@@ -1169,26 +1169,55 @@ export const es: Messages = {
     meta: {
       title: "Restabooking — reservas de alojamiento — Restadigi",
       description:
-        "Restabooking: reservas modernas de alojamiento para hoteles, posadas y cabañas — los huéspedes reservan desde tu web.",
+        "Restabooking: alojamiento, actividades, experiencias, eventos y reservas de grupo en un solo sistema.",
       ogTitle: "Restabooking — reservas de alojamiento — Restadigi",
-      ogDescription: "Reservas de estancia directamente en tu web — adaptado a cada cliente.",
+      ogDescription:
+        "Todas las reservas en un sistema — para hoteles, posadas, cabañas y resorts.",
     },
     hero: {
-      titleAccent: "Restabooking",
-      titleAfter: " — reservas de alojamiento en tu web.",
-      description:
-        "Para hoteles, posadas, cabañas y pequeños alojamientos. El huésped elige habitación, noches y fecha de llegada; tú gestionas las reservas en un panel claro. El servicio se adapta a las necesidades de cada cliente.",
-      headlineLine1: "Los huéspedes reservan su estancia",
-      headlineLine2: "ellos mismos — 24/7.",
-      subtitle: "Descubre Restabooking de Restadigi y prueba la demo.",
+      eyebrow: "Restabooking",
+      title: "Todas las reservas en un solo sistema.",
+      paragraphs: [
+        "RestaBooking es un sistema de reservas versátil para hoteles, posadas, cabañas, resorts y otros alojamientos. Con el mismo sistema gestionas estancias, actividades, experiencias, eventos y reservas de grupo desde un solo lugar.",
+        "El proceso automatizado reduce el trabajo manual y mantiene la disponibilidad y el calendario siempre al día. Tus clientes pueden reservar online las 24 horas, lo que mejora la experiencia y ayuda a aumentar las ventas.",
+        "Una interfaz clara hace fluida la gestión diaria tanto en pequeños alojamientos como en destinos mayores. Ya sean habitaciones, cabañas, servicios de programa, eventos o grupos, RestaBooking lo reúne todo en un sistema fácil de usar.",
+        "Ofrece a tus clientes una reserva sin fricción y gestiona todo el negocio de forma eficiente en una plataforma moderna.",
+      ],
       cta: "Preguntar más",
     },
+    pillarsHeading: {
+      titleBefore: "La operación de alojamiento ",
+      titleAccent: "en una sola vista",
+      titleAfter: ".",
+    },
+    pillars: [
+      {
+        title: "Property Management System",
+        tagline: "Gestiona todo el negocio de alojamiento desde un sistema",
+        body: "El Property Management System de Restadigi reúne las funciones clave del alojamiento bajo un mismo sistema. Gestiona reservas, ocupación, habitaciones, limpieza, mantenimiento, facturación y comunicación con el huésped desde una sola vista. Los flujos automatizados reducen el trabajo manual, agilizan el día a día del equipo y aseguran una experiencia fluida desde la reserva hasta el check-out.",
+      },
+      {
+        title: "Actividades, experiencias y extras",
+        tagline: "Aumenta las ventas ofreciendo más a cada cliente",
+        body: "Con el sistema de Restadigi vendes fácilmente actividades, experiencias, alquiler de equipo, turnos de sauna, visitas guiadas, eventos y otros extras en el mismo proceso de reserva. La venta inteligente permite ofrecer extras antes, durante o durante la estancia — así creces en venta adicional, simplificas la gestión y ofreces una experiencia más completa.",
+      },
+      {
+        title: "Tienda online y reservas web",
+        tagline: "Vende alojamiento, experiencias y servicios online con facilidad",
+        body: "La tienda online de Restadigi une alojamiento, actividades, extras y paquetes listos en un recorrido de reserva fluido. Puedes crear rutas distintas para familias, empresas y grupos, y ofrecer los extras y precios adecuados a cada segmento. Un proceso claro mejora la experiencia y ayuda a crecer en ventas.",
+      },
+      {
+        title: "Reuniones, eventos y reservas de grupo",
+        tagline: "Gestiona las reservas grandes sin complicaciones",
+        body: "Con el sistema de Restadigi gestionas salas de reuniones, eventos, reservas de grupo y cupos de alojamiento desde un solo lugar. Horarios, participantes, catering y extras quedan en el mismo sistema — claro para el equipo y para el cliente. Las herramientas automatizadas reducen el trabajo manual y hacen fluida la gestión de grupos y eventos.",
+      },
+    ],
     dashboard: {
       eyebrow: "Panel de administración",
-      titleBefore: "Estancias en ",
+      titleBefore: "Reservas en ",
       titleAccent: "calendario",
       titleAfter: " y lista.",
-      body: "El equipo ve llegadas, salidas y reservas de habitación en tablet o pantalla — confirma, cancela y sigue la ocupación de un vistazo.",
+      body: "El equipo ve llegadas, salidas y reservas de estancia en tablet o pantalla — confirma, cancela y sigue la ocupación de un vistazo.",
     },
     rooms: {
       eyebrow: "Mapa de habitaciones",
@@ -1197,27 +1226,6 @@ export const es: Messages = {
       titleAfter: " — del móvil a la gran pantalla.",
       body: "Vista clara de las habitaciones: libre, ocupada, llegada o salida. La misma vista funciona en móvil, tablet y la pantalla de recepción.",
     },
-    adaptEyebrow: "A medida",
-    adaptBody:
-      "Restabooking se adapta al tamaño y las necesidades de tu alojamiento: tipos de habitación, precios, reglas e imagen se ajustan a tu marca.",
-    features: [
-      {
-        title: "Reservas 24/7",
-        body: "Los huéspedes reservan habitación cuando les conviene — sin colas telefónicas.",
-      },
-      {
-        title: "Noches y llegada",
-        body: "Flujo claro: tipo de habitación, huéspedes, check-in y número de noches.",
-      },
-      {
-        title: "Gestión en una vista",
-        body: "Llegadas, salidas y estado de un vistazo para tu equipo.",
-      },
-      {
-        title: "Integrado en tu web",
-        body: "El widget encaja con la imagen de tu web de alojamiento — no parece un tercero.",
-      },
-    ],
     cta: {
       titleBefore: "Toma el control de las ",
       titleAccent: "reservas de alojamiento",

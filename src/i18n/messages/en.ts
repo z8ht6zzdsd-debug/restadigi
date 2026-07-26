@@ -1161,26 +1161,54 @@ export const en: Messages = {
     meta: {
       title: "Restabooking — lodging reservations — Restadigi",
       description:
-        "Restabooking: modern lodging reservations for hotels, inns and cabins — guests book directly from your website.",
+        "Restabooking: lodging, activities, experiences, events and group bookings in one system.",
       ogTitle: "Restabooking — lodging reservations — Restadigi",
-      ogDescription: "Stay bookings straight from your website — tailored to each client’s needs.",
+      ogDescription: "All bookings in one system — for hotels, inns, cabins and resorts.",
     },
     hero: {
-      titleAccent: "Restabooking",
-      titleAfter: " — lodging bookings on your site.",
-      description:
-        "For hotels, inns, cabins and small stays. Guests pick a room, nights and arrival date — you manage bookings in a clear panel. The service adapts to each client’s needs.",
-      headlineLine1: "Guests book their stay",
-      headlineLine2: "themselves — 24/7.",
-      subtitle: "Explore Restadigi’s Restabooking service and try the demo.",
+      eyebrow: "Restabooking",
+      title: "All bookings in one system.",
+      paragraphs: [
+        "RestaBooking is a versatile booking system for hotels, inns, cabins, resorts and other lodging businesses. With the same system you manage stays, activities, experiences, events and group bookings from one place.",
+        "An automated booking process reduces manual work and keeps availability and the booking calendar up to date. Guests can book online around the clock — better experience, more sales.",
+        "A clear interface makes daily management smooth for small properties and larger destinations alike. Whether rooms, cabins, programme services, events or group stays, RestaBooking brings everything into one easy-to-use system.",
+        "Give guests an effortless booking experience and run your whole business efficiently on one modern platform.",
+      ],
       cta: "Ask for more",
     },
+    pillarsHeading: {
+      titleBefore: "Lodging operations ",
+      titleAccent: "in one view",
+      titleAfter: ".",
+    },
+    pillars: [
+      {
+        title: "Property Management System",
+        tagline: "Run your entire lodging business from one system",
+        body: "Restadigi’s Property Management System brings the key lodging operations under one roof. Manage stays, occupancy, rooms, housekeeping, maintenance, billing and guest messaging from a single view. Automated workflows cut manual work, streamline staff days and keep the guest journey smooth from booking to check-out.",
+      },
+      {
+        title: "Activities, experiences and add-ons",
+        tagline: "Grow sales by offering more to every guest",
+        body: "With Restadigi’s system you easily sell activities, experiences, equipment rental, sauna slots, guided tours, events and other add-ons in the same booking flow. Smart upselling lets you offer extras before, during or after the stay — boosting ancillary revenue, simplifying service management and giving guests a richer experience.",
+      },
+      {
+        title: "Online shop and web bookings",
+        tagline: "Sell stays, experiences and services online with ease",
+        body: "Restadigi’s online shop combines lodging, activities, add-ons and ready-made packages into one smooth booking journey. Create different paths for families, companies and groups, and offer the right extras and prices for each segment. A clear process improves the guest experience and helps grow sales.",
+      },
+      {
+        title: "Meetings, events and group bookings",
+        tagline: "Handle larger bookings without the hassle",
+        body: "With Restadigi’s system you manage meeting rooms, events, group bookings and lodging allotments from one place. Schedules, attendees, catering and add-ons stay in the same system — clear for staff and guests. Automated tools reduce manual work and keep group and event management smooth.",
+      },
+    ],
     dashboard: {
       eyebrow: "Admin panel",
-      titleBefore: "Stays in a ",
+      titleBefore: "Bookings in a ",
       titleAccent: "calendar",
       titleAfter: " and list.",
-      body: "Staff see arrivals, departures and room bookings on tablet or desktop — confirm, cancel and track occupancy at a glance.",
+      body: "Staff see arrivals, departures and stay bookings on tablet or desktop — confirm, cancel and track occupancy at a glance.",
     },
     rooms: {
       eyebrow: "Room board",
@@ -1189,27 +1217,6 @@ export const en: Messages = {
       titleAfter: " — phone to big screen.",
       body: "A clear view of rooms: free, booked, arriving or departing. The same board works on phone, tablet and the front-desk display.",
     },
-    adaptEyebrow: "Tailored to you",
-    adaptBody:
-      "Restabooking adapts to your property’s size and needs — room types, prices, rules and look are matched to your brand.",
-    features: [
-      {
-        title: "Bookings 24/7",
-        body: "Guests book a room whenever it suits them — without phone queues.",
-      },
-      {
-        title: "Nights & arrival",
-        body: "A clear path: room type, guests, check-in and number of nights.",
-      },
-      {
-        title: "One clear view",
-        body: "Arrivals, departures and status at a glance for your team.",
-      },
-      {
-        title: "Fits your site",
-        body: "The widget matches your lodging site’s look — not a third-party feel.",
-      },
-    ],
     cta: {
       titleBefore: "Take control of ",
       titleAccent: "lodging bookings",
