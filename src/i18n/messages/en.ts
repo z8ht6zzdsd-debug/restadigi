@@ -609,7 +609,7 @@ export const en: Messages = {
         name: "Start",
         tagline: "A simple yet impactful site for a small business",
         summary:
-          "A clear 1–3 page site that introduces your business right away. Ideal for a small operator who wants a professional online presence without unnecessary complexity.",
+          "A clear 1–3 page site that introduces your business right away. Ideal for a small operator who wants a professional online presence.",
         price: "399 € + VAT",
         bullets: withSitePages("A professional 1–3 page website tailored to your business", [
           "Includes 1–2 email addresses",

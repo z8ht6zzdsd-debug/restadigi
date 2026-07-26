@@ -614,7 +614,7 @@ export const es: Messages = {
         name: "Start",
         tagline: "Un sitio sencillo pero impactante para una pequeña empresa",
         summary:
-          "Un sitio claro de 1–3 páginas que presenta tu negocio de inmediato. Ideal para un pequeño operador que quiere presencia profesional sin complejidad innecesaria.",
+          "Un sitio claro de 1–3 páginas que presenta tu negocio de inmediato. Ideal para un pequeño operador que quiere presencia profesional en la red.",
         price: "399 € + IVA",
         bullets: withSitePages("Un sitio web profesional de 1–3 páginas adaptado a tu negocio", [
           "Incluye 1–2 direcciones de correo",

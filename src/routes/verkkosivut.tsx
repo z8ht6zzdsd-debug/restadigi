@@ -43,7 +43,14 @@ function KotisivutPage() {
       />
       <SiteHeader />
 
-      <WebsitesMountainHero priceLabel={w.hero.priceLabel} imageSrc={mountainHero} />
+      <WebsitesMountainHero
+        priceLabel={w.hero.priceLabel}
+        imageSrc={mountainHero}
+        titleBefore={w.hero.titleBefore}
+        titleAccent={w.hero.titleAccent}
+        titleAfter={w.hero.titleAfter}
+        description={w.hero.description}
+      />
 
       <WebsitesPackageShowcase
         packagesTitle={w.packagesTitle}

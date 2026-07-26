@@ -1,12 +1,22 @@
 import { Link } from "@tanstack/react-router";
+import { CirclePlus, Crown, Gem, Rocket, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+
+const PACKAGE_ICONS: LucideIcon[] = [Rocket, CirclePlus, Crown, Gem];
 
 const PACKAGE_ACCENTS = [
   "text-[#2f6b4f]", // Start — green
   "text-[#c46a32]", // Plus — orange
   "text-[#6b3d8f]", // Kulta — purple
   "text-[#2a5f8f]", // Timantti — blue
+] as const;
+
+const PACKAGE_ICON_BG = [
+  "bg-[#2f6b4f]/12",
+  "bg-[#c46a32]/12",
+  "bg-[#6b3d8f]/12",
+  "bg-[#2a5f8f]/12",
 ] as const;
 
 const LAPTOP_TONES = [
@@ -29,7 +39,6 @@ export function WebsitesPackageShowcase({
   packagesTitle,
   packages,
   requestQuote,
-  popular,
   footnote,
 }: {
   packagesTitle: string;
@@ -50,22 +59,25 @@ export function WebsitesPackageShowcase({
         {packages.map((pkg, i) => {
           const imageLeft = i % 2 === 0;
           const accent = PACKAGE_ACCENTS[i % PACKAGE_ACCENTS.length];
+          const iconBg = PACKAGE_ICON_BG[i % PACKAGE_ICON_BG.length];
           const tone = LAPTOP_TONES[i % LAPTOP_TONES.length];
+          const Icon = PACKAGE_ICONS[i % PACKAGE_ICONS.length];
 
-          const laptop = <PackageLaptop pkg={pkg} tone={tone} popularLabel={popular} />;
+          const laptop = (
+            <PackageLaptop
+              name={pkg.name}
+              summary={pkg.summary}
+              price={pkg.price}
+              tone={tone}
+              accent={accent}
+              iconBg={iconBg}
+              Icon={Icon}
+            />
+          );
           const copy = (
             <div className="max-w-md">
-              <p className={cn("text-2xl font-bold tracking-tight sm:text-3xl", accent)}>
-                {pkg.name}
-              </p>
-              <p className="mt-2 text-lg font-semibold tracking-tight text-[#1d1d1f] sm:text-xl">
-                {pkg.tagline}
-              </p>
-              <p className="mt-4 text-[0.95rem] leading-relaxed text-[#1d1d1f]/80 sm:text-base">
-                {pkg.summary}
-              </p>
-              <p className="mt-4 text-base font-bold text-[#1d1d1f]">{pkg.price}</p>
-              <ul className="mt-5 space-y-2.5">
+              <h3 className="sr-only">{pkg.name}</h3>
+              <ul className="space-y-2.5">
                 {pkg.bullets.map((bullet) => (
                   <li
                     key={bullet}
@@ -90,17 +102,9 @@ export function WebsitesPackageShowcase({
 
           return (
             <article key={pkg.name} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-              {imageLeft ? (
-                <>
-                  {laptop}
-                  {copy}
-                </>
-              ) : (
-                <>
-                  {copy}
-                  {laptop}
-                </>
-              )}
+              {/* Mobile: laptop always first. Desktop: alternate sides via order. */}
+              <div className={cn(!imageLeft && "lg:order-2")}>{laptop}</div>
+              <div className={cn(!imageLeft && "lg:order-1")}>{copy}</div>
             </article>
           );
         })}
@@ -114,13 +118,21 @@ export function WebsitesPackageShowcase({
 }
 
 function PackageLaptop({
-  pkg,
+  name,
+  summary,
+  price,
   tone,
-  popularLabel,
+  accent,
+  iconBg,
+  Icon,
 }: {
-  pkg: WebsitePackage;
+  name: string;
+  summary: string;
+  price: string;
   tone: string;
-  popularLabel: string;
+  accent: string;
+  iconBg: string;
+  Icon: LucideIcon;
 }) {
   return (
     <div className="relative mx-auto w-full max-w-lg" aria-hidden>
@@ -132,7 +144,35 @@ function PackageLaptop({
       >
         <span className="absolute left-1/2 top-[0.35rem] z-[2] h-[0.22rem] w-[0.22rem] -translate-x-1/2 rounded-full bg-black/50 ring-1 ring-white/20" />
         <div className="relative aspect-[16/10] overflow-hidden rounded-[0.35rem] bg-[#f7f3ee]">
-          <PackageScreenContent pkg={pkg} popularLabel={popularLabel} />
+          <div className="flex size-full flex-col px-2.5 pb-2 pt-3.5 sm:px-3.5 sm:pb-2.5 sm:pt-4 lg:px-4 lg:pt-5">
+            <div className="flex shrink-0 flex-col items-center gap-1 sm:gap-1.5">
+              <div className="flex items-center justify-center gap-2.5 sm:gap-3">
+                <span
+                  className={cn(
+                    "inline-flex size-11 shrink-0 items-center justify-center rounded-xl sm:size-12 lg:size-14",
+                    iconBg,
+                    accent,
+                  )}
+                >
+                  <Icon className="size-6 sm:size-7 lg:size-8" strokeWidth={1.75} />
+                </span>
+                <p
+                  className={cn(
+                    "text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl",
+                    accent,
+                  )}
+                >
+                  {name}
+                </p>
+              </div>
+              <p className="mt-1 text-base font-bold tracking-tight text-[#1d1d1f] sm:mt-1.5 sm:text-lg lg:text-xl">
+                {price}
+              </p>
+            </div>
+            <p className="mt-2 flex flex-1 items-center justify-center text-center text-[0.95rem] font-semibold leading-[1.15] tracking-tight text-[#2a2018] sm:mt-2.5 sm:text-[1.2rem] sm:leading-[1.12] lg:text-[1.35rem] lg:leading-[1.1]">
+              {summary}
+            </p>
+          </div>
         </div>
       </div>
       <div className="relative mx-[-1.5%] h-[0.55rem] rounded-b-[0.6rem] bg-gradient-to-b from-[#9a9088] to-[#6a625c] sm:h-[0.65rem]">
@@ -143,106 +183,51 @@ function PackageLaptop({
   );
 }
 
-function PackageScreenContent({
-  pkg,
-  popularLabel,
-}: {
-  pkg: WebsitePackage;
-  popularLabel: string;
-}) {
-  return (
-    <div className="flex size-full flex-col overflow-hidden bg-[#f3eee8] p-3 sm:p-4">
-      <div className="flex items-center justify-between gap-2 border-b border-[#432f24]/10 pb-2">
-        <div className="flex items-center gap-1.5">
-          <span className="size-1.5 rounded-full bg-[#d4726a]" />
-          <span className="size-1.5 rounded-full bg-[#e0b45c]" />
-          <span className="size-1.5 rounded-full bg-[#6faf7a]" />
-        </div>
-        <span className="truncate text-[0.4rem] tracking-wide text-[#5c534c] sm:text-[0.45rem]">
-          restadigi.fi · {pkg.name}
-        </span>
-      </div>
-
-      <div className="mt-3 flex min-h-0 flex-1 flex-col rounded-xl bg-white p-3 shadow-sm ring-1 ring-[#432f24]/8 sm:p-4">
-        <div className="flex items-start justify-between gap-2">
-          <div>
-            <p className="text-[0.55rem] font-bold uppercase tracking-[0.12em] text-[#c46a32] sm:text-[0.6rem]">
-              Verkkosivupaketti
-            </p>
-            <p className="mt-1 font-serif text-lg italic tracking-tight text-[#432f24] sm:text-xl">
-              {pkg.name}
-            </p>
-          </div>
-          {pkg.featured ? (
-            <span className="rounded-full bg-[#432f24] px-2 py-0.5 text-[0.4rem] font-bold uppercase tracking-wide text-white sm:text-[0.45rem]">
-              {popularLabel}
-            </span>
-          ) : null}
-        </div>
-        <p className="mt-2 line-clamp-2 text-[0.55rem] leading-snug text-[#5c534c] sm:text-[0.62rem]">
-          {pkg.tagline}
-        </p>
-        <p className="mt-auto pt-3 text-sm font-bold text-[#432f24] sm:text-base">{pkg.price}</p>
-        <ul className="mt-2 space-y-1">
-          {pkg.bullets.slice(0, 3).map((b) => (
-            <li
-              key={b}
-              className="truncate text-[0.45rem] leading-tight text-[#5c534c] sm:text-[0.5rem]"
-            >
-              · {b}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
 export function WebsitesMountainHero({
   priceLabel,
   imageSrc,
+  titleBefore,
+  titleAccent,
+  titleAfter,
+  description,
 }: {
   priceLabel: string;
   imageSrc: string;
+  titleBefore: string;
+  titleAccent: string;
+  titleAfter: string;
+  description: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-white">
-      <div className="relative mx-auto flex min-h-[28rem] max-w-6xl flex-col items-center justify-end px-4 pb-0 pt-10 sm:min-h-[34rem] sm:pt-14 lg:min-h-[40rem]">
-        {/* Mountain */}
-        <img
-          src={imageSrc}
-          alt=""
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] w-full object-cover object-[center_70%] sm:h-[58%]"
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-white/20 via-transparent to-transparent sm:h-[58%]"
-          aria-hidden
-        />
+    <section className="relative overflow-hidden bg-[#e8e4de]">
+      <img
+        src={imageSrc}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-0 size-full object-cover object-[center_42%]"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-white/70"
+        aria-hidden
+      />
 
-        {/* Price overlay */}
-        <p className="relative z-[2] mb-4 text-center text-xl font-bold tracking-tight text-[#1d1d1f] sm:mb-6 sm:text-2xl lg:text-3xl">
+      <div className="relative mx-auto flex min-h-[min(72vh,34rem)] max-w-6xl flex-col items-center justify-end px-4 pb-0 pt-2 sm:min-h-[min(78vh,40rem)] sm:pt-4 lg:min-h-[min(82vh,46rem)]">
+        <p className="relative z-[2] mb-3 text-center text-xl font-bold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:mb-4 sm:text-2xl lg:text-3xl">
           {priceLabel}
         </p>
 
-        {/* Laptop on peak */}
-        <div className="relative z-[2] mb-[-2%] w-[min(72%,28rem)] origin-bottom sm:w-[min(58%,32rem)] lg:w-[min(48%,36rem)]">
+        <div className="relative z-[2] mb-[-1%] w-[min(88%,30rem)] origin-bottom sm:w-[min(70%,36rem)] lg:w-[min(58%,40rem)]">
           <div className="websites-hero-laptop relative overflow-hidden rounded-[0.7rem] bg-gradient-to-b from-[#e8dcc0] via-[#d4c4a0] to-[#b8a078] p-[0.5rem] shadow-[0_30px_70px_-20px_rgba(26,18,14,0.45)] ring-1 ring-black/20 sm:rounded-[0.9rem] sm:p-[0.6rem]">
             <span className="absolute left-1/2 top-[0.3rem] z-[2] h-[0.2rem] w-[0.2rem] -translate-x-1/2 rounded-full bg-black/40" />
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[0.3rem] bg-[#1a1512]">
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #c9a882 0%, #e8d5a8 35%, #7eb8a8 70%, #5a9aaa 100%)",
-                }}
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-                <p className="font-serif text-2xl italic text-[#2a2018]/90 sm:text-3xl">
-                  Restadigi
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[0.3rem] bg-[#f7f3ee]">
+              <div className="absolute inset-0 flex flex-col justify-center gap-2 px-4 py-3 text-left sm:gap-2.5 sm:px-6 sm:py-4 lg:px-7">
+                <p className="max-w-[18ch] text-[0.95rem] font-bold leading-[1.05] tracking-tight text-[#1d1d1f] sm:text-xl lg:text-2xl">
+                  {titleBefore}
+                  <span className="font-serif italic text-[#c46a32]">{titleAccent}</span>
+                  {titleAfter}
                 </p>
-                <p className="mt-1 text-[0.55rem] font-semibold uppercase tracking-[0.16em] text-[#2a2018]/55 sm:text-[0.65rem]">
-                  Verkkosivut
+                <p className="max-w-[36ch] text-[0.42rem] leading-snug text-[#1d1d1f]/75 sm:text-[0.55rem] sm:leading-snug lg:text-[0.62rem]">
+                  {description}
                 </p>
               </div>
             </div>

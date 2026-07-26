@@ -612,7 +612,7 @@ export const fi: Messages = {
         name: "Start",
         tagline: "Yksinkertainen mutta vaikuttava sivusto pienyritykselle",
         summary:
-          "Selkeä 1–3-sivuinen kokonaisuus, joka kertoo yrityksestäsi heti. Sopii pienelle toimijalle, joka haluaa ammattimaisen verkkonäkyvyyden ilman turhaa monimutkaisuutta.",
+          "Selkeä 1–3-sivuinen kokonaisuus, joka kertoo yrityksestäsi heti. Sopii pienelle toimijalle, joka haluaa ammattimaisen verkkonäkyvyyden.",
         price: "399 € + alv",
         bullets: withSitePages("Ammattimainen 1–3-sivuinen verkkosivusto yrityksesi tarpeisiin", [
           "Sisältää 1–2 sähköpostiosoitetta",
