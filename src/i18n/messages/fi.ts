@@ -413,6 +413,12 @@ export const fi: Messages = {
       body: "Kiinteä kuukausihinta — 45 € / kk.",
       linkLabel: "Lue lisää",
     },
+    dashboardDemoPromo: {
+      title: "Tutustu yksilöitävään hallintapaneeliin",
+      body: "demo.restadigi.fi",
+      linkLabel: "Tutustu",
+      href: "https://demo.restadigi.fi",
+    },
     projects: {
       titleBefore: "Valikoidut ",
       titleAccent: "projektit",

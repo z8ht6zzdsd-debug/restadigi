@@ -411,6 +411,12 @@ export const en: Messages = {
       body: "Fixed monthly price — 45 € / month.",
       linkLabel: "Read more",
     },
+    dashboardDemoPromo: {
+      title: "Explore the customizable admin panel",
+      body: "demo.restadigi.fi",
+      linkLabel: "Explore",
+      href: "https://demo.restadigi.fi",
+    },
     projects: {
       titleBefore: "Selected ",
       titleAccent: "projects",

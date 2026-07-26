@@ -170,6 +170,34 @@ export function VisibilityBrandLogoStrip({
   );
 }
 
+/** Four brand marks in a row — icons only, no labels or panel. */
+export function PackageBrandLogoRow({
+  kind,
+  className = "",
+  sizeClassName = "size-5 sm:size-6",
+}: {
+  kind: "ai" | "google";
+  className?: string;
+  sizeClassName?: string;
+}) {
+  const logos = kind === "ai" ? AI_LOGOS : GOOGLE_LOGOS;
+
+  return (
+    <div
+      className={"flex items-center justify-center gap-3 sm:gap-3.5 " + className}
+      aria-hidden
+    >
+      {logos.map(({ name, Mark, tone }) => (
+        <Mark
+          key={name}
+          title={name}
+          className={sizeClassName + " " + (tone ?? "text-foreground")}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function PackageBrandLogos({
   kind,
   dark = false,

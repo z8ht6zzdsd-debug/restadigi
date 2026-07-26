@@ -1,21 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
-import sportFootball from "@/assets/sport-football.jpg";
-import sportFootball2 from "@/assets/sport-football-2.jpg";
-import sportHockey from "@/assets/sport-hockey.jpg";
-import sportHockey2 from "@/assets/sport-hockey-2.jpg";
 import { VisibilityBrandLogoStrip } from "@/components/package-brand-logos";
-import { ProductPackageCards } from "@/components/product-package-cards";
-import type { PackageDeviceMode } from "@/components/package-device-header";
-import { MarketingBand } from "@/components/marketing-band";
+import { VisibilityPackageShowcase } from "@/components/visibility-package-showcase";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
-
-const VISIBILITY_DEVICE_MODES: PackageDeviceMode[] = ["ai-logos", "google-logos", "sports"];
-
-const SPORTS_HEADER_IMAGES = [sportFootball, sportFootball2, sportHockey, sportHockey2] as const;
 
 export const Route = createFileRoute("/nakyvyys")({
   head: () => ({
@@ -122,41 +112,28 @@ function NakyvyysPage() {
         </div>
       </section>
 
-      <MarketingBand className="!bg-white !pt-4 sm:!pt-6">
-        <ProductPackageCards
-          embedded
-          sectionId="nakyvyys-paketit"
-          title={v.packagesTitle}
-          explore={v.explore}
-          popular={v.popular}
-          requestQuote={v.contactCta}
-          closeLabel={t.widget.sales.closeLabel}
-          packages={packages.map((pkg, i) => {
-            const deviceMode = VISIBILITY_DEVICE_MODES[i] ?? "image";
-            return {
-              name: pkg.name,
-              price: pkg.price,
-              featured: pkg.featured,
-              description: `${pkg.tagline}. ${pkg.description}`,
-              summary: pkg.summary,
-              bullets: [...pkg.bullets, `${v.resultPrefix} ${pkg.result}`],
-              deviceLayout: true,
-              deviceMode,
-              headerImages: deviceMode === "sports" ? [...SPORTS_HEADER_IMAGES] : undefined,
-            };
-          })}
-          footnote={v.footnote}
-        />
+      <VisibilityPackageShowcase
+        packagesTitle={v.packagesTitle}
+        packages={packages.map((pkg) => ({
+          name: pkg.name,
+          summary: pkg.summary,
+          price: pkg.price,
+          featured: pkg.featured,
+          bullets: [...pkg.bullets, `${v.resultPrefix} ${pkg.result}`],
+        }))}
+        requestQuote={v.contactCta}
+        popular={v.popular}
+        footnote={v.footnote}
+      />
 
-        <p className="mt-10 text-center text-sm text-foreground/60">
-          <Link
-            to="/graafinen-suunnittelu"
-            className="font-semibold text-accent underline-offset-2 hover:underline"
-          >
-            Graafinen suunnittelu →
-          </Link>
-        </p>
-      </MarketingBand>
+      <p className="bg-white pb-12 text-center text-sm text-foreground/60">
+        <Link
+          to="/graafinen-suunnittelu"
+          className="font-semibold text-accent underline-offset-2 hover:underline"
+        >
+          Graafinen suunnittelu →
+        </Link>
+      </p>
 
       <section className="bg-background">
         <SiteFooter />

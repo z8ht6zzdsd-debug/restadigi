@@ -414,6 +414,12 @@ export const es: Messages = {
       body: "Precio mensual fijo — 45 € / mes.",
       linkLabel: "Leer más",
     },
+    dashboardDemoPromo: {
+      title: "Descubre el panel de administración personalizable",
+      body: "demo.restadigi.fi",
+      linkLabel: "Descubrir",
+      href: "https://demo.restadigi.fi",
+    },
     projects: {
       titleBefore: "Proyectos ",
       titleAccent: "seleccionados",

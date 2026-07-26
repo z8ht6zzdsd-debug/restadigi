@@ -189,6 +189,12 @@ export type Messages = {
       body: string;
       linkLabel: string;
     };
+    dashboardDemoPromo: {
+      title: string;
+      body: string;
+      linkLabel: string;
+      href: string;
+    };
     projects: {
       titleBefore: string;
       titleAccent: string;
