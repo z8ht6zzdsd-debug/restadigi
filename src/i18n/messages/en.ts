@@ -379,11 +379,11 @@ export const en: Messages = {
       ],
     },
     serviceTeasers: {
-      title: "Smart services",
+      title: "Smart services 24/7",
       items: [
         {
           title: "Restachat",
-          body: "A chatbot serves your customers 24/7 — answers questions, captures leads and frees up your team.",
+          body: "A chatbot serves your customers — answers questions, captures leads and frees up your team.",
           href: "/restachat",
           linkLabel: "Explore Restachat",
         },

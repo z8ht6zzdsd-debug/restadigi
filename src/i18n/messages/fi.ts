@@ -381,11 +381,11 @@ export const fi: Messages = {
       ],
     },
     serviceTeasers: {
-      title: "Älykkäät palvelut",
+      title: "Älykkäät palvelut 24/7",
       items: [
         {
           title: "Restachat",
-          body: "Chatbot palvelee asiakkaitasi 24/7 — vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
+          body: "Chatbot palvelee asiakkaitasi — vastaa kysymyksiin, kerää liidejä ja vapauttaa henkilökunnan.",
           href: "/restachat",
           linkLabel: "Tutustu Restachatiin",
         },

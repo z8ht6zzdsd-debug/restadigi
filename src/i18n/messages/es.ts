@@ -382,11 +382,11 @@ export const es: Messages = {
       ],
     },
     serviceTeasers: {
-      title: "Servicios inteligentes",
+      title: "Servicios inteligentes 24/7",
       items: [
         {
           title: "Restachat",
-          body: "Un chatbot atiende a tus clientes 24/7 — responde preguntas, captura leads y libera a tu equipo.",
+          body: "Un chatbot atiende a tus clientes — responde preguntas, captura leads y libera a tu equipo.",
           href: "/restachat",
           linkLabel: "Conocer Restachat",
         },

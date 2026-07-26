@@ -6,6 +6,7 @@ import {
   CalendarDays,
   CircleDollarSign,
   Hotel,
+  Lightbulb,
   PanelsTopLeft,
 } from "lucide-react";
 import delfinIcon from "@/assets/delfin-checkin-icon.jpg";
@@ -14,8 +15,8 @@ import delfinScreen2 from "@/assets/delfin-checkin-screen-2.jpg";
 import rafaHero from "@/assets/rafa-romera-hero.jpg";
 import rafaLogo from "@/assets/rafa-romera-logo.png";
 import whyUsDining from "@/assets/restaurant-dining.jpg";
-import stayBookingPromo from "@/assets/restabooking-promo-hero.jpg";
-import introHotel from "@/assets/hero-hotel-web.jpg";
+import stayBookingHero from "@/assets/hero-hotel-web.jpg";
+import introServices from "@/assets/hero-ai-chat-service.jpg";
 import { FreddosDevicesStage } from "@/components/freddos-devices-stage";
 import { DashboardStripPreview } from "@/components/dashboard-monitor-preview";
 import { SiteHeader } from "@/components/site-header";
@@ -144,10 +145,10 @@ function Index() {
 
               <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden sm:aspect-[5/3]">
                 <img
-                  src={stayBookingPromo}
+                  src={stayBookingHero}
                   alt=""
                   aria-hidden
-                  className="absolute inset-0 size-full object-cover object-[center_35%]"
+                  className="absolute inset-0 size-full object-cover object-[center_40%]"
                 />
               </div>
 
@@ -168,10 +169,10 @@ function Index() {
 
               <div className="relative flex shrink-0 flex-col gap-5 overflow-hidden p-6 pt-5 text-white sm:p-8 sm:pt-6 lg:gap-4 lg:p-8 lg:pt-6">
                 <img
-                  src={introHotel}
+                  src={introServices}
                   alt=""
                   aria-hidden
-                  className="absolute inset-0 size-full object-cover object-[center_70%]"
+                  className="absolute inset-0 size-full object-cover object-[center_30%]"
                 />
                 <div className="absolute inset-0 bg-[#432f24]/88" aria-hidden />
                 <h3 className="relative z-[1] max-w-xl text-2xl font-bold tracking-tight leading-[1.05] sm:text-3xl lg:text-[2.15rem]">
@@ -263,8 +264,14 @@ function Index() {
 
             {/* Vasen alaboksi: AI + pöytävaraus, valkoinen + symbolit */}
             <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[22rem] sm:min-h-[24rem] flex flex-col justify-center bg-white p-6 sm:p-8 text-foreground lg:col-start-1 lg:row-start-2">
-              <h3 className="mb-6 text-2xl font-bold tracking-tight leading-tight sm:text-3xl">
+              <h3 className="mb-6 flex flex-wrap items-center gap-2.5 text-2xl font-bold tracking-tight leading-tight sm:text-3xl">
                 {h.serviceTeasers.title}
+                <Lightbulb
+                  className="size-7 shrink-0 text-amber-400 sm:size-8"
+                  strokeWidth={2}
+                  fill="currentColor"
+                  aria-hidden
+                />
               </h3>
               <div className="flex flex-col gap-7">
                 {h.serviceTeasers.items.map((item, i) => {
