@@ -17,7 +17,8 @@ export function FreddosDevicesStage() {
             <img
               src={freddosHomeHero}
               alt=""
-              className="absolute inset-0 size-full scale-[1.06] object-cover object-[center_12%] brightness-[1.06] contrast-[1.08] saturate-[1.1]"
+              className="absolute inset-0 size-full object-cover object-[center_15%]"
+              draggable={false}
             />
           </div>
         </div>
