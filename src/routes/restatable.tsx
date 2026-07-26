@@ -130,20 +130,28 @@ function RestatablePage() {
 
         {/* Restachat — white + brown boxes */}
         <div id="varausbotti" className="mb-10 scroll-mt-24 sm:mb-14">
-          <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
-            <MarketingBox tone="white" justify="center" className="min-h-[14rem]">
-              <div className="flex items-center gap-4">
+          <div className="grid items-stretch gap-4 lg:grid-cols-2 lg:gap-5">
+            <MarketingBox tone="white" justify="start" className="min-h-[18rem] sm:min-h-[20rem]">
+              <div className="mb-4 flex items-center gap-3 sm:mb-5">
                 <h2 className="font-serif text-3xl tracking-tight text-[#2a2018] sm:text-4xl">
                   {b.restachat.shopHeadline}
                 </h2>
-                <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-[#432f24] text-accent">
+                <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-[#432f24] text-accent sm:size-12">
                   <MessageCircle className="size-5" strokeWidth={1.75} />
                 </span>
               </div>
+              <p className="max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
+                {b.restachat.shopBody}
+              </p>
             </MarketingBox>
 
-            <MarketingBox tone="dark" justify="center" align="center" className="min-h-[14rem]">
-              <p className="mb-6 max-w-sm font-serif text-xl leading-snug text-[#f7f3ee] sm:text-2xl">
+            <MarketingBox
+              tone="dark"
+              justify="center"
+              align="center"
+              className="min-h-[18rem] sm:min-h-[20rem]"
+            >
+              <p className="mb-8 max-w-md text-center font-serif text-2xl leading-snug text-[#f7f3ee] sm:mb-10 sm:text-3xl lg:text-[2.15rem] lg:leading-[1.2]">
                 {b.restachat.tryLabel}
               </p>
               <BookingChatbotButton />

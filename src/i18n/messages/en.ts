@@ -1015,8 +1015,10 @@ export const en: Messages = {
       headlineLine1: "Guests book a table",
       headlineLine2: "themselves — 24/7.",
       subtitle: "Explore Restatable and try the booking bot.",
-      shopHeadline: "The shop never sleeps!",
-      tryLabel: "Try the Restatable booking bot",
+      shopHeadline: "The shop never sleeps",
+      shopBody:
+        "Take table bookings digitally 24/7 with Restadigi’s online reservation system. Guests can book easily via a booking widget embedded on your website or a smart table-booking chatbot — whenever it suits them. If needed, we also design a fully branded booking page that matches your look.",
+      tryLabel: "Try booking a table with Restadigi’s chatbot:",
     },
     channels: {
       eyebrow: "Channels",

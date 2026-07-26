@@ -1017,8 +1017,10 @@ export const fi: Messages = {
       headlineLine1: "Asiakkaat varaavat pöydän",
       headlineLine2: "itse — 24/7.",
       subtitle: "Tutustu Restableen ja kokeile varausbottia.",
-      shopHeadline: "Kauppa ei nuku!",
-      tryLabel: "Testaa Restablen pöytävarausbottia",
+      shopHeadline: "Kauppa ei nuku",
+      shopBody:
+        "Ota pöytävaraukset vastaan digitaalisesti 24/7 Restadigin online-pöytävarausjärjestelmällä. Asiakkaasi voivat tehdä varauksen helposti joko verkkosivuille upotetun varausjärjestelmän tai älykkään pöytävarauschatbotin kautta – juuri silloin, kun heille parhaiten sopii. Tarvittaessa suunnittelemme palvelulle myös täysin oman, yrityksesi ilmeen mukaisen varaussivun.",
+      tryLabel: "Tästä pääset testaamaan pöydän varausta Restadigin chatbotilta:",
     },
     channels: {
       eyebrow: "Kanavat",

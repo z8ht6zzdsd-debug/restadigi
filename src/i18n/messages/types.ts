@@ -505,6 +505,7 @@ export type Messages = {
       headlineLine2: string;
       subtitle: string;
       shopHeadline: string;
+      shopBody: string;
       tryLabel: string;
     };
     channels: {
