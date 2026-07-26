@@ -798,16 +798,18 @@ export const fi: Messages = {
       },
       {
         name: "Graafinen suunnittelu",
-        tagline: "Yritysilme, logo ja markkinointimateriaalit",
+        tagline: "Logo, flyerit, somepohjat ja tuntityö",
         summary:
-          "Logo, yritysilme ja markkinointimateriaalit yhdestä paikasta. Saat modernin, yhtenäisen visuaalisen ilmeen, joka toimii sekä verkossa että painetuissa materiaaleissa.",
-        description: "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin.",
+          "Laadukas graafinen suunnittelu painoon ja digiin — selkeät hinnat ja ammattimainen lopputulos.",
+        description:
+          "Logo, käyntikortit, flyerit, verkkosivujen ulkoasu, somepohjat, rollupit ja tuntityö.",
         price: "alk. 99 €",
         bullets: [
-          "Yritysilmeen suunnittelu — alk. 199 € (sis. logo ja käyntikortit)",
-          "Mainos- ja markkinointimateriaalit — alk. 149 €",
-          "Logon suunnittelu — alk. 149 €",
-          "Käyntikorttien suunnittelu — alk. 99 €",
+          "Logon suunnittelu — 199 €",
+          "Käyntikortti tai flyer/mainos — 99 €",
+          "Verkkosivujen ulkoasu — alk. 399 €",
+          "Somepohjat tai rollup — alk. 149 €",
+          "Tuntityö — 49 €/h",
         ],
         result: "ammattimaisen ja modernin visuaalisen ilmeen yrityksellesi.",
       },
@@ -816,26 +818,51 @@ export const fi: Messages = {
     branding: {
       titleBefore: "Graafinen ",
       titleAccent: "suunnittelu",
-      titleAfter: ".",
-      description: "Tuotteet yritysilmeen, mainosmateriaaleihin ja yksittäisiin design-töihin.",
+      titleAfter: "",
+      description:
+        "Laadukas graafinen suunnittelu auttaa yritystä erottumaan ja luomaan ammattimaisen ensivaikutelman. Restadigi-tiimi suunnittelee selkeitä, aikaa kestäviä ja yrityksesi ilmeeseen sopivia materiaaleja niin painoon kuin digitaalisiin kanaviin.",
       products: [
         {
-          name: "Yritysilmeen suunnittelu",
-          description:
-            "Kokonaisvaltainen yritysilme, sisältää logon ja käyntikorttien suunnittelun.",
-          price: "alk. 199 €",
-        },
-        {
-          name: "Mainos- ja markkinointimateriaalit",
-          price: "alk. 149 €",
-        },
-        {
           name: "Logon suunnittelu",
-          price: "alk. 149 €",
+          description:
+            "Logo on yrityksen tärkein visuaalinen tunnus. Suunnittelemme yksilöllisen ja toimialaasi sopivan logon, joka välittää oikean mielikuvan ja toimii monipuolisesti eri käyttökohteissa.",
+          price: "199 €",
         },
         {
-          name: "Käyntikorttien suunnittelu",
-          price: "alk. 99 €",
+          name: "Käyntikortin suunnittelu",
+          description:
+            "Tyylikäs käyntikortti täydentää yrityksesi visuaalista ilmettä. Suunnittelemme sen logon ja yrityksen ilmeen mukaisesti, jotta kokonaisuus on yhtenäinen ja ammattimainen.",
+          price: "99 €",
+        },
+        {
+          name: "Yksisivuisen flyerin tai mainoksen suunnittelu",
+          description:
+            "Suunnittelemme selkeän ja näyttävän flyerin tai mainoksen, joka herättää kiinnostuksen ja välittää viestisi tehokkaasti. Soveltuu esimerkiksi tapahtumiin, kampanjoihin tai yritysesittelyihin.",
+          price: "99 €",
+        },
+        {
+          name: "Verkkosivujen ulkoasun suunnittelu",
+          description:
+            "Suunnittelemme modernin ja käyttäjäystävällisen verkkosivujen ulkoasun yrityksesi ilmeen mukaisesti. Hyvin suunniteltu ulkoasu tukee yrityksesi brändiä ja tekee verkkosivuista selkeät sekä helposti käytettävät.",
+          price: "Alkaen 399 €",
+        },
+        {
+          name: "Somepohjien suunnittelu Cursorilla",
+          description:
+            "Suunnittelemme valmiit sosiaalisen median pohjat, joiden avulla julkaisut pysyvät visuaalisesti yhtenäisinä ja helposti muokattavina. Pohjat nopeuttavat sisällöntuotantoa ja vahvistavat yrityksen brändiä.",
+          price: "Alkaen 149 €",
+        },
+        {
+          name: "Rollupin tai banderollin suunnittelu",
+          description:
+            "Suunnittelemme näyttävät rollupit ja banderollit messuille, tapahtumiin, myymälöihin ja muihin markkinointitilanteisiin. Lopputulos on selkeä, huomiota herättävä ja yrityksesi ilmeen mukainen.",
+          price: "Alkaen 149 €",
+        },
+        {
+          name: "Tuntityö",
+          description:
+            "Tarvitsetteko pienempiä graafisia muutoksia tai yksittäisiä suunnittelutöitä? Tiimimme tuntityö sopii esimerkiksi olemassa olevien materiaalien päivityksiin, kuvien muokkaukseen, taittotöihin tai muihin graafisiin tehtäviin.",
+          price: "49 €/h",
         },
       ],
       billing: {
@@ -857,15 +884,15 @@ export const fi: Messages = {
         ],
       },
       form: {
-        title: "Pyydä tarjous graafisen suunnittelun työstä tai kotisivuista",
+        title: "Pyydä tarjous graafisen suunnittelun työstä",
         name: "Nimi",
         email: "Sähköposti",
         phone: "Puhelinnumero",
         submit: "Lähetä tarjouspyyntö",
         sending: "Avataan sähköposti…",
-        mailSubject: "Tarjouspyyntö: graafinen suunnittelu / kotisivut — {name}",
+        mailSubject: "Tarjouspyyntö: graafinen suunnittelu — {name}",
         mailBody:
-          "Nimi: {name}\nSähköposti: {email}\nPuhelin: {phone}\n\nPyydän tarjousta graafisen suunnittelun työstä tai kotisivuista.",
+          "Nimi: {name}\nSähköposti: {email}\nPuhelin: {phone}\n\nPyydän tarjousta graafisen suunnittelun työstä.",
       },
     },
     cta: {

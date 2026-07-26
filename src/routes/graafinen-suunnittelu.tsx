@@ -1,11 +1,31 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  Clock,
+  CreditCard,
+  FileImage,
+  Flag,
+  LayoutTemplate,
+  PenTool,
+  Share2,
+  type LucideIcon,
+} from "lucide-react";
 import { useState } from "react";
-import { MarketingBand, MarketingBox, MarketingHeading } from "@/components/marketing-band";
+import { MarketingBand, MarketingBox } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 import { CONTACT_EMAIL } from "@/lib/company-contact";
+
+const PRODUCT_ICONS: LucideIcon[] = [
+  PenTool,
+  CreditCard,
+  FileImage,
+  LayoutTemplate,
+  Share2,
+  Flag,
+  Clock,
+];
 
 export const Route = createFileRoute("/graafinen-suunnittelu")({
   head: () => ({
@@ -14,12 +34,13 @@ export const Route = createFileRoute("/graafinen-suunnittelu")({
       {
         name: "description",
         content:
-          "Graafinen suunnittelu: yritysilme, logo, käyntikortit ja markkinointimateriaalit.",
+          "Graafinen suunnittelu: logo, käyntikortit, flyerit, somepohjat, rollupit ja tuntityö.",
       },
       { property: "og:title", content: "Graafinen suunnittelu — Restadigi" },
       {
         property: "og:description",
-        content: "Yritysilme, logo ja markkinointimateriaalit yhdestä paikasta.",
+        content:
+          "Laadukas graafinen suunnittelu painoon ja digiin — selkeät hinnat ja ammattimainen lopputulos.",
       },
     ],
   }),
@@ -30,7 +51,6 @@ function GraafinenSuunnitteluPage() {
   const t = useMessages();
   const v = t.visibility;
   const b = v.branding;
-  const designPkg = v.packages.find((p) => p.name.toLowerCase().includes("graafinen"));
   const [quoteSent, setQuoteSent] = useState(false);
 
   const onQuoteSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -51,9 +71,9 @@ function GraafinenSuunnitteluPage() {
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       <PageMeta
         title="Graafinen suunnittelu — Restadigi"
-        description="Yritysilme, logo, käyntikortit ja markkinointimateriaalit."
+        description="Logo, käyntikortit, flyerit, somepohjat, rollupit ja tuntityö."
         ogTitle="Graafinen suunnittelu — Restadigi"
-        ogDescription="Ammattimainen ja moderni visuaalinen ilme yrityksellesi."
+        ogDescription="Laadukas graafinen suunnittelu painoon ja digiin."
       />
       <SiteHeader />
 
@@ -70,33 +90,33 @@ function GraafinenSuunnitteluPage() {
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#5c534c] sm:text-lg">
             {b.description}
           </p>
-          {designPkg ? (
-            <p className="mt-4 text-sm font-semibold text-[#432f24]">
-              {designPkg.price} — {designPkg.tagline}
-            </p>
-          ) : null}
         </div>
       </section>
 
       <MarketingBand className="pt-10 sm:pt-12">
-        <MarketingHeading>
-          {b.titleBefore}
-          <span className="font-serif italic text-accent">{b.titleAccent}</span>
-          {b.titleAfter}
-        </MarketingHeading>
-
-        <div className="mb-4 grid gap-4 sm:mb-5 sm:grid-cols-2 lg:grid-cols-2">
-          {b.products.map((product) => (
-            <MarketingBox key={product.name} tone="white" justify="start" className="min-h-[12rem]">
-              <h3 className="text-lg font-bold tracking-tight text-[#2a2018]">{product.name}</h3>
-              {"description" in product && typeof product.description === "string" ? (
-                <p className="mt-2 text-sm leading-relaxed text-foreground/65">
-                  {product.description}
-                </p>
-              ) : null}
-              <p className="mt-4 text-base font-semibold text-accent">{product.price}</p>
-            </MarketingBox>
-          ))}
+        <div className="mb-4 grid gap-4 sm:mb-5 sm:grid-cols-2 lg:grid-cols-3">
+          {b.products.map((product, i) => {
+            const Icon = PRODUCT_ICONS[i] ?? PenTool;
+            return (
+              <MarketingBox
+                key={product.name}
+                tone="white"
+                justify="start"
+                className="min-h-[14rem]"
+              >
+                <span className="mb-4 inline-flex size-11 items-center justify-center rounded-full bg-[#432f24] text-white">
+                  <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+                </span>
+                <h3 className="text-lg font-bold tracking-tight text-[#2a2018]">{product.name}</h3>
+                {product.description ? (
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                    {product.description}
+                  </p>
+                ) : null}
+                <p className="mt-4 text-base font-semibold text-accent">{product.price}</p>
+              </MarketingBox>
+            );
+          })}
         </div>
 
         <MarketingBox tone="dark" justify="start" className="mt-10 min-h-[22rem] sm:mt-12">

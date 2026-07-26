@@ -795,17 +795,18 @@ export const en: Messages = {
       },
       {
         name: "Graphic design",
-        tagline: "Brand identity, logo and marketing materials",
+        tagline: "Logo, flyers, social templates and hourly work",
         summary:
-          "Logo, brand identity and marketing materials from one place. A modern, consistent visual look that works online and in print.",
+          "Quality graphic design for print and digital — clear pricing and a professional result.",
         description:
-          "Brand identity, marketing materials and individual design work — clear pricing, professional results.",
+          "Logo, business cards, flyers, website look, social templates, roll-ups and hourly work.",
         price: "from 99 €",
         bullets: [
-          "Brand identity design — from 199 € (includes logo and business cards)",
-          "Ad and marketing materials — from 149 €",
-          "Logo design — from 149 €",
-          "Business card design — from 99 €",
+          "Logo design — 199 €",
+          "Business card or flyer/ad — 99 €",
+          "Website visual design — from 399 €",
+          "Social templates or roll-up — from 149 €",
+          "Hourly work — 49 €/h",
         ],
         result: "A professional visual look for your business.",
       },
@@ -814,26 +815,51 @@ export const en: Messages = {
     branding: {
       titleBefore: "Graphic ",
       titleAccent: "design",
-      titleAfter: ".",
+      titleAfter: "",
       description:
-        "Brand identity, marketing materials and individual design work — clear pricing, professional results.",
+        "Quality graphic design helps your business stand out and make a professional first impression. The Restadigi team designs clear, lasting materials that fit your brand — for print and digital channels.",
       products: [
         {
-          name: "Brand identity design",
-          description: "A complete brand look, including logo and business card design.",
-          price: "from 199 €",
-        },
-        {
-          name: "Ad and marketing materials",
-          price: "from 149 €",
-        },
-        {
           name: "Logo design",
-          price: "from 149 €",
+          description:
+            "A logo is your company’s most important visual mark. We design a unique logo that fits your industry, conveys the right impression and works across many uses.",
+          price: "199 €",
         },
         {
           name: "Business card design",
-          price: "from 99 €",
+          description:
+            "A stylish business card completes your visual identity. We design it to match your logo and brand so the whole look stays consistent and professional.",
+          price: "99 €",
+        },
+        {
+          name: "One-page flyer or ad design",
+          description:
+            "We design a clear, striking flyer or ad that grabs attention and delivers your message effectively — ideal for events, campaigns or company intros.",
+          price: "99 €",
+        },
+        {
+          name: "Website visual design",
+          description:
+            "We design a modern, user-friendly website look that matches your brand. Strong visual design supports your brand and keeps the site clear and easy to use.",
+          price: "From 399 €",
+        },
+        {
+          name: "Social media template design",
+          description:
+            "We design ready social media templates so posts stay visually consistent and easy to edit. Templates speed up content production and strengthen your brand.",
+          price: "From 149 €",
+        },
+        {
+          name: "Roll-up or banner design",
+          description:
+            "We design striking roll-ups and banners for fairs, events, stores and other marketing situations — clear, eye-catching and on-brand.",
+          price: "From 149 €",
+        },
+        {
+          name: "Hourly work",
+          description:
+            "Need smaller graphic changes or one-off design tasks? Our team’s hourly work suits updates to existing materials, image edits, layout work and other graphic jobs.",
+          price: "49 €/h",
         },
       ],
       billing: {
@@ -856,15 +882,15 @@ export const en: Messages = {
         ],
       },
       form: {
-        title: "Request a quote for graphic design or a website",
+        title: "Request a quote for graphic design",
         name: "Name",
         email: "Email",
         phone: "Phone number",
         submit: "Send request",
         sending: "Opening email…",
-        mailSubject: "Quote request: graphic design / website — {name}",
+        mailSubject: "Quote request: graphic design — {name}",
         mailBody:
-          "Name: {name}\nEmail: {email}\nPhone: {phone}\n\nI would like a quote for graphic design work or a website.",
+          "Name: {name}\nEmail: {email}\nPhone: {phone}\n\nI would like a quote for graphic design work.",
       },
     },
     cta: {

@@ -802,17 +802,18 @@ export const es: Messages = {
       },
       {
         name: "Diseño gráfico",
-        tagline: "Identidad de marca, logo y materiales de marketing",
+        tagline: "Logo, flyers, plantillas social y trabajo por horas",
         summary:
-          "Logo, identidad y materiales de marketing desde un solo lugar. Una imagen moderna y coherente que funciona online y en impresión.",
+          "Diseño gráfico de calidad para impresión y digital — precios claros y resultado profesional.",
         description:
-          "Identidad de marca, materiales de marketing y trabajos de diseño individuales — precios claros y resultado profesional.",
+          "Logo, tarjetas, flyers, aspecto web, plantillas social, roll-ups y trabajo por horas.",
         price: "desde 99 €",
         bullets: [
-          "Diseño de identidad corporativa — desde 199 € (incluye logo y tarjetas)",
-          "Materiales publicitarios y de marketing — desde 149 €",
-          "Diseño de logo — desde 149 €",
-          "Diseño de tarjetas de visita — desde 99 €",
+          "Diseño de logo — 199 €",
+          "Tarjeta o flyer/anuncio — 99 €",
+          "Diseño visual web — desde 399 €",
+          "Plantillas social o roll-up — desde 149 €",
+          "Trabajo por horas — 49 €/h",
         ],
         result: "Una imagen visual profesional para tu empresa.",
       },
@@ -821,26 +822,51 @@ export const es: Messages = {
     branding: {
       titleBefore: "Diseño ",
       titleAccent: "gráfico",
-      titleAfter: ".",
+      titleAfter: "",
       description:
-        "Identidad de marca, materiales de marketing y trabajos de diseño individuales — precios claros y resultado profesional.",
+        "Un diseño gráfico de calidad ayuda a tu empresa a destacar y a crear una primera impresión profesional. El equipo de Restadigi diseña materiales claros, duraderos y acordes a tu imagen — para impresión y canales digitales.",
       products: [
         {
-          name: "Diseño de identidad corporativa",
-          description: "Imagen de marca completa, incluye diseño de logo y tarjetas de visita.",
-          price: "desde 199 €",
-        },
-        {
-          name: "Materiales publicitarios y de marketing",
-          price: "desde 149 €",
-        },
-        {
           name: "Diseño de logo",
-          price: "desde 149 €",
+          description:
+            "El logo es el símbolo visual más importante de tu empresa. Diseñamos un logo único y adecuado a tu sector, que transmite la imagen correcta y funciona en muchos usos.",
+          price: "199 €",
         },
         {
-          name: "Diseño de tarjetas de visita",
-          price: "desde 99 €",
+          name: "Diseño de tarjeta de visita",
+          description:
+            "Una tarjeta elegante completa la imagen visual de tu empresa. La diseñamos según el logo y la identidad para que el conjunto sea coherente y profesional.",
+          price: "99 €",
+        },
+        {
+          name: "Diseño de flyer o anuncio de una página",
+          description:
+            "Diseñamos un flyer o anuncio claro e impactante que capta la atención y transmite tu mensaje con eficacia — ideal para eventos, campañas o presentaciones.",
+          price: "99 €",
+        },
+        {
+          name: "Diseño visual de sitio web",
+          description:
+            "Diseñamos un aspecto web moderno y fácil de usar según la imagen de tu empresa. Un buen diseño refuerza la marca y hace el sitio claro y usable.",
+          price: "Desde 399 €",
+        },
+        {
+          name: "Diseño de plantillas para redes sociales",
+          description:
+            "Diseñamos plantillas listas para redes sociales para que las publicaciones se mantengan visualmente coherentes y fáciles de editar. Aceleran la producción y refuerzan la marca.",
+          price: "Desde 149 €",
+        },
+        {
+          name: "Diseño de roll-up o pancarta",
+          description:
+            "Diseñamos roll-ups y pancartas impactantes para ferias, eventos, tiendas y otras situaciones de marketing — claros, llamativos y acordes a tu imagen.",
+          price: "Desde 149 €",
+        },
+        {
+          name: "Trabajo por horas",
+          description:
+            "¿Necesitas cambios gráficos pequeños o trabajos puntuales? El trabajo por horas de nuestro equipo sirve para actualizar materiales, editar imágenes, maquetación u otras tareas gráficas.",
+          price: "49 €/h",
         },
       ],
       billing: {
@@ -864,15 +890,15 @@ export const es: Messages = {
         ],
       },
       form: {
-        title: "Solicita presupuesto de diseño gráfico o de web",
+        title: "Solicita presupuesto de diseño gráfico",
         name: "Nombre",
         email: "Correo electrónico",
         phone: "Teléfono",
         submit: "Enviar solicitud",
         sending: "Abriendo el correo…",
-        mailSubject: "Solicitud de presupuesto: diseño gráfico / web — {name}",
+        mailSubject: "Solicitud de presupuesto: diseño gráfico — {name}",
         mailBody:
-          "Nombre: {name}\nCorreo: {email}\nTeléfono: {phone}\n\nSolicito presupuesto de diseño gráfico o de una web.",
+          "Nombre: {name}\nCorreo: {email}\nTeléfono: {phone}\n\nSolicito presupuesto de diseño gráfico.",
       },
     },
     cta: {
