@@ -40,7 +40,7 @@ export function StayBookingHeroDevices({
   return (
     <div
       className={
-        "relative mx-auto w-full max-w-[34rem] select-none pb-2 pl-1 pt-1 sm:pb-3 sm:pl-2 lg:ml-0 lg:mr-auto " +
+        "relative mx-auto w-full max-w-[34rem] select-none pb-2 pl-1 lg:ml-0 lg:mr-auto " +
         className
       }
       aria-hidden

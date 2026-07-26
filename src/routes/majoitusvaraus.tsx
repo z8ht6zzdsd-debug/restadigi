@@ -82,8 +82,8 @@ function MajoitusvarausPage() {
           <span className="absolute right-10 top-1/3 hidden h-24 w-px bg-gradient-to-b from-transparent via-[#432f24]/15 to-transparent lg:block" />
         </div>
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-20">
-          <div className="relative overflow-visible pb-4 lg:col-span-6 lg:pb-2">
+        <div className="relative mx-auto grid max-w-6xl items-start gap-8 px-6 py-8 sm:gap-10 sm:py-10 lg:grid-cols-12 lg:gap-12 lg:py-12">
+          <div className="relative overflow-visible lg:col-span-6 lg:pt-1">
             <StayBookingHeroDevices
               navItems={p.coreItems}
               activeNav={p.activeNav}
@@ -117,7 +117,7 @@ function MajoitusvarausPage() {
         </div>
       </section>
 
-      <MarketingBand className="!pt-8 sm:!pt-10">
+      <MarketingBand className="!pt-6 sm:!pt-8">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           {p.eyebrow}
         </p>
