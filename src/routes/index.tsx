@@ -17,6 +17,7 @@ import whyUsDining from "@/assets/restaurant-dining.jpg";
 import stayBookingPromo from "@/assets/restabooking-promo-hero.jpg";
 import introHotel from "@/assets/hero-hotel-web.jpg";
 import { FreddosDevicesStage } from "@/components/freddos-devices-stage";
+import { DashboardStripPreview } from "@/components/dashboard-monitor-preview";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -204,21 +205,24 @@ function Index() {
                 </div>
               </div>
 
-              <div className="mt-auto flex min-h-[5.5rem] shrink-0 items-center justify-between gap-4 bg-white px-5 py-5 sm:min-h-[6rem] sm:px-7 sm:py-6">
-                <div className="min-w-0">
-                  <p className="text-base font-bold tracking-tight text-[#1d1d1f] sm:text-lg">
-                    {h.dashboardDemoPromo.title}
-                  </p>
-                  <p className="mt-0.5 text-sm text-[#1d1d1f]/60">{h.dashboardDemoPromo.body}</p>
+              <div className="mt-auto shrink-0 bg-white px-5 pt-4 pb-5 sm:px-7 sm:pt-5 sm:pb-6">
+                <DashboardStripPreview className="mb-3 sm:mb-4" />
+                <div className="flex min-h-[3.5rem] items-center justify-between gap-4 sm:min-h-[4rem]">
+                  <div className="min-w-0">
+                    <p className="text-base font-bold tracking-tight text-[#1d1d1f] sm:text-lg">
+                      {h.dashboardDemoPromo.title}
+                    </p>
+                    <p className="mt-0.5 text-sm text-[#1d1d1f]/60">{h.dashboardDemoPromo.body}</p>
+                  </div>
+                  <a
+                    href={h.dashboardDemoPromo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex shrink-0 items-center rounded-full bg-[#432f24] px-4 py-2 text-xs font-bold uppercase tracking-[0.06em] text-[#f7f3ee] transition-opacity hover:opacity-90 sm:px-5 sm:text-sm"
+                  >
+                    {h.dashboardDemoPromo.linkLabel}
+                  </a>
                 </div>
-                <a
-                  href={h.dashboardDemoPromo.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center rounded-full bg-[#432f24] px-4 py-2 text-xs font-bold uppercase tracking-[0.06em] text-[#f7f3ee] transition-opacity hover:opacity-90 sm:px-5 sm:text-sm"
-                >
-                  {h.dashboardDemoPromo.linkLabel}
-                </a>
               </div>
             </article>
 

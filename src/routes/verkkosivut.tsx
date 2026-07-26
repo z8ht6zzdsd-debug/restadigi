@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import rafaHeroScreen from "@/assets/websites-hero-rafa.png";
-import freddosHeroScreen from "@/assets/websites-hero-freddos.png";
+import rafaHeroScreen from "@/assets/websites-hero-rafa-hd.jpg";
+import freddosHeroScreen from "@/assets/websites-hero-freddos-hd.jpg";
 import { MarketingBand } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";

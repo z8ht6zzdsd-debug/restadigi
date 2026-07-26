@@ -305,7 +305,7 @@ function HeroLaptop({
           <img
             src={screenSrc}
             alt={screenAlt}
-            className="absolute inset-0 size-full scale-[1.18] object-cover object-[center_28%]"
+            className="absolute inset-0 size-full scale-[1.08] object-cover object-[center_18%] [image-rendering:auto] brightness-[1.06] contrast-[1.08] saturate-[1.08]"
           />
         </div>
       </div>
