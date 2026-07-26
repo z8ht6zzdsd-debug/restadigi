@@ -71,7 +71,7 @@ export function RestaurantHomepagePreview({
   ] as const;
 
   return (
-    <div className="relative flex size-full flex-col overflow-hidden bg-[#f3eee8]" aria-hidden>
+    <div className="relative flex size-full flex-col overflow-hidden bg-[#e8e8e8]" aria-hidden>
       {/* Hieno pistekuvio */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.28]"
@@ -93,7 +93,7 @@ export function RestaurantHomepagePreview({
       <div className="pointer-events-none absolute inset-[7px] z-[2] rounded-[0.25rem] border border-[#432f24]/08 sm:inset-[8px]" />
 
       {/* Yläpalkki */}
-      <div className="relative z-[1] mx-[7px] mt-[7px] flex shrink-0 items-center justify-between gap-2 border-b border-[#432f24]/12 bg-[#f7f3ee]/92 px-2 py-1.5 sm:mx-[8px] sm:mt-[8px] sm:px-2.5 sm:py-2">
+      <div className="relative z-[1] mx-[7px] mt-[7px] flex shrink-0 items-center justify-between gap-2 border-b border-[#432f24]/12 bg-[#f0f0f0]/92 px-2 py-1.5 sm:mx-[8px] sm:mt-[8px] sm:px-2.5 sm:py-2">
         <div className="flex items-center gap-1.5">
           <span className="relative inline-flex size-5 items-center justify-center sm:size-6">
             <span className="absolute inset-0 rounded-full border border-[#c9a882]/70" />

@@ -77,16 +77,16 @@
   /* Freddos hero -taustan ruskea (#432f24) — CTA-boksit ym. */
   --primary: #432f24;
   --primary-foreground: oklch(0.965 0.018 75);
-  --secondary: oklch(0.92 0.03 70);
+  --secondary: oklch(0.92 0.005 100);
   --secondary-foreground: #432f24;
-  --muted: oklch(0.92 0.03 70);
-  --muted-foreground: oklch(0.48 0.03 40);
+  --muted: oklch(0.92 0.005 100);
+  --muted-foreground: oklch(0.48 0.01 100);
   --accent: oklch(0.6 0.17 40);
   --accent-foreground: oklch(0.98 0.01 75);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.86 0.03 65);
-  --input: oklch(0.86 0.03 65);
+  --border: oklch(0.86 0.005 100);
+  --input: oklch(0.86 0.005 100);
   --ring: oklch(0.6 0.17 40);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -543,7 +543,7 @@
     display: flex;
     height: 100%;
     flex-direction: column;
-    background: #f7f3ee;
+    background: #f0f0f0;
     color: #2a2018;
   }
 
@@ -1506,7 +1506,7 @@
   .pkg-device__screen {
     height: 100%;
     overflow: hidden;
-    background: #f4f0ea;
+    background: #eeeeee;
   }
 
   .pkg-device__screen--phone {
@@ -1613,7 +1613,7 @@
     display: flex;
     height: 100%;
     flex-direction: column;
-    background: #f7f3ee;
+    background: #f0f0f0;
     color: #2a2018;
     overflow: hidden;
   }
@@ -1785,7 +1785,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 0.2rem;
     padding: 0.3rem;
-    background: #ebe8e2;
+    background: #e2e2e2;
   }
 
   .pkg-mini__cards-row > span {
@@ -1999,7 +1999,7 @@
   .pkg-mini__list-items > span {
     padding: 0.22rem 0.28rem;
     border-radius: 0.22rem;
-    background: #f3eee8;
+    background: #e8e8e8;
   }
 
   .pkg-mini__mosaic-grid {
@@ -2517,11 +2517,11 @@
   --dash-soft: #8a7f74;
   --dash-line: #e8dfd4;
   --dash-paper: #fbf8f4;
-  --dash-cream: #f3eee8;
+  --dash-cream: #e8e8e8;
   background:
     radial-gradient(1200px 500px at 10% -10%, color-mix(in srgb, var(--dash-copper) 16%, transparent), transparent 60%),
     radial-gradient(900px 420px at 100% 0%, color-mix(in srgb, var(--dash-brown) 10%, transparent), transparent 55%),
-    linear-gradient(180deg, #f7f3ee 0%, #f3eee8 45%, #efe8e0 100%);
+    linear-gradient(180deg, #f0f0f0 0%, #e8e8e8 45%, #e2e2e2 100%);
   color: var(--dash-ink);
   font-family: var(--font-sans);
 }

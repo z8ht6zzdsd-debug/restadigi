@@ -55,7 +55,7 @@ function CheckList({ items, icons }: { items: string[]; icons?: ("check" | "edit
         return (
           <li
             key={item}
-            className="inline-flex items-center gap-2 rounded-full border border-[#e8dfd4] bg-white px-3.5 py-2 text-sm text-[#2a2018]"
+            className="inline-flex items-center gap-2 rounded-full border border-[#d6d6d6] bg-white px-3.5 py-2 text-sm text-[#2a2018]"
           >
             <span className="inline-flex size-6 items-center justify-center rounded-full bg-[#0d9488] text-white">
               <Icon className="size-3.5" strokeWidth={2.25} />
@@ -83,7 +83,7 @@ function RestatablePage() {
       <SiteHeader />
 
       {/* Full-width Restatable hero */}
-      <section className="w-full border-b border-[#e8dfd4] bg-gradient-to-b from-[#f7f3ee] via-[#f3eee8] to-[#ebe8e2]">
+      <section className="w-full border-b border-[#d6d6d6] bg-gradient-to-b from-[#f0f0f0] via-[#e8e8e8] to-[#e2e2e2]">
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 sm:gap-10 sm:px-6 sm:py-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12 lg:py-16">
           <div className="min-w-0">
             <BookingManagementPanel />
@@ -151,7 +151,7 @@ function RestatablePage() {
               align="center"
               className="min-h-[18rem] sm:min-h-[20rem]"
             >
-              <p className="mb-8 max-w-md text-center font-serif text-2xl leading-snug text-[#f7f3ee] sm:mb-10 sm:text-3xl lg:text-[2.15rem] lg:leading-[1.2]">
+              <p className="mb-8 max-w-md text-center font-serif text-2xl leading-snug text-[#f0f0f0] sm:mb-10 sm:text-3xl lg:text-[2.15rem] lg:leading-[1.2]">
                 {b.restachat.tryLabel}
               </p>
               <BookingChatbotButton />
@@ -176,7 +176,7 @@ function RestatablePage() {
             </p>
             <CheckList items={b.channels.items} />
 
-            <div className="mt-8 border-t border-[#e8dfd4] pt-6">
+            <div className="mt-8 border-t border-[#d6d6d6] pt-6">
               <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent">
                 {b.guestManage.eyebrow}
               </p>

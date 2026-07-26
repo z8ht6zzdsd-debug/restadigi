@@ -52,7 +52,7 @@ export function StayBookingHeroDevices({
       <div className="relative z-[1] ml-auto w-[90%] origin-bottom sm:w-[88%]">
         <div className="relative overflow-hidden rounded-[0.65rem] bg-gradient-to-b from-[#4a4540] via-[#2a2622] to-[#141210] p-[0.45rem] shadow-[0_28px_70px_-18px_rgba(26,18,14,0.55)] ring-1 ring-black/25 sm:rounded-[0.85rem] sm:p-[0.55rem]">
           <span className="absolute left-1/2 top-[0.28rem] z-[2] h-[0.22rem] w-[0.22rem] -translate-x-1/2 rounded-full bg-[#0a0908] ring-1 ring-white/10 sm:top-[0.35rem]" />
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[0.28rem] bg-[#f7f5f2] sm:rounded-[0.35rem]">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-[0.28rem] bg-[#f0f0f0] sm:rounded-[0.35rem]">
             <div className="flex h-full min-h-0">
               <nav className="hidden w-[30%] shrink-0 flex-col gap-0.5 border-r border-[#e5e0d8] bg-[#1a1512] p-1.5 sm:flex sm:p-2">
                 <p className="mb-1 truncate px-1 text-[6px] font-semibold uppercase tracking-[0.14em] text-[#c46a32] sm:text-[7px]">
@@ -65,7 +65,7 @@ export function StayBookingHeroDevices({
                       key={label}
                       className={
                         "truncate rounded-sm px-1.5 py-1 text-[6px] leading-tight sm:text-[7px] " +
-                        (active ? "bg-[#c46a32] text-white" : "text-[#f7f3ee]/75")
+                        (active ? "bg-[#c46a32] text-white" : "text-[#f0f0f0]/75")
                       }
                     >
                       {label}
@@ -74,7 +74,7 @@ export function StayBookingHeroDevices({
                 })}
               </nav>
 
-              <div className="flex min-w-0 flex-1 flex-col bg-[#f7f5f2]">
+              <div className="flex min-w-0 flex-1 flex-col bg-[#f0f0f0]">
                 <div className="flex items-center justify-between border-b border-[#e5e0d8] bg-white px-2 py-1.5 sm:px-2.5">
                   <div className="min-w-0">
                     <p className="text-[6px] uppercase tracking-[0.14em] text-[#8a8178]">
@@ -132,7 +132,7 @@ export function StayBookingHeroDevices({
                           return (
                             <span
                               key={col}
-                              className="h-4 rounded-[2px] bg-white ring-1 ring-[#e8dfd4] sm:h-5"
+                              className="h-4 rounded-[2px] bg-white ring-1 ring-[#d6d6d6] sm:h-5"
                             />
                           );
                         })}
@@ -154,7 +154,7 @@ export function StayBookingHeroDevices({
       <div className="absolute bottom-0 left-0 z-[2] w-[30%] sm:w-[28%]">
         <div className="relative overflow-hidden rounded-[1.15rem] bg-gradient-to-br from-[#4a4540] via-[#2a2622] to-[#0e0c0b] p-[0.22rem] shadow-[0_22px_50px_-14px_rgba(26,18,14,0.7)] ring-1 ring-white/10 sm:rounded-[1.35rem] sm:p-[0.26rem]">
           <span className="absolute left-1/2 top-[0.36rem] z-[3] h-[0.55rem] w-[28%] -translate-x-1/2 rounded-full bg-[#050403] sm:top-[0.42rem] sm:h-[0.62rem]" />
-          <div className="relative aspect-[9/19.2] overflow-hidden rounded-[0.95rem] bg-[#f7f3ee] sm:rounded-[1.1rem]">
+          <div className="relative aspect-[9/19.2] overflow-hidden rounded-[0.95rem] bg-[#f0f0f0] sm:rounded-[1.1rem]">
             <div className="border-b border-[#e5e0d8] bg-white px-2 pb-1.5 pt-5">
               <p className="text-[5px] uppercase tracking-[0.14em] text-[#8a8178]">Restabooking</p>
               <p className="text-[8px] font-semibold text-[#1a1512]">{phoneTitle}</p>

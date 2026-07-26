@@ -362,8 +362,8 @@ function buildHtmlBody(textBody: string, trackingUrl: string | null, origin: str
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
-<body style="margin:0;padding:0;background:#f7f3ee;color:#1a1512;font-family:Georgia,'Times New Roman',serif;line-height:1.55;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f7f3ee;padding:24px 16px;">
+<body style="margin:0;padding:0;background:#f0f0f0;color:#1a1512;font-family:Georgia,'Times New Roman',serif;line-height:1.55;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:24px 16px;">
     <tr>
       <td align="center">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:720px;background:#ffffff;border:1px solid #e6dfd7;border-radius:12px;box-shadow:0 8px 28px rgba(67,47,36,0.06);">

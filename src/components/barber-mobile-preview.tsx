@@ -8,7 +8,7 @@ export function BarberMobilePreview({ image }: { image: string }) {
 
   return (
     <div
-      className="relative flex size-full flex-col overflow-hidden bg-[#f7f3ee] text-[#1a1512]"
+      className="relative flex size-full flex-col overflow-hidden bg-[#f0f0f0] text-[#1a1512]"
       aria-hidden
     >
       {/* Yläpalkki */}

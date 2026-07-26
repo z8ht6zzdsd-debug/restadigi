@@ -53,7 +53,7 @@ function NakyvyysPage() {
         </div>
 
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-          <h1 className="max-w-2xl text-3xl font-bold leading-[1.1] tracking-tight text-[#f7f3ee] sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-2xl text-3xl font-bold leading-[1.1] tracking-tight text-[#f0f0f0] sm:text-5xl lg:text-6xl">
             <span className="block">{v.hero.headlineLine1}</span>
             <span className="block">{v.hero.headlineLine2}</span>
           </h1>

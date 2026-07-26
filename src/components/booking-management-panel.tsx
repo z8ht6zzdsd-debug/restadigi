@@ -22,7 +22,7 @@ const TABLES = [
   { id: "8", zone: "Kabinetti" },
 ] as const;
 
-type Tone = "brown" | "orange" | "teal" | "slate" | "rose";
+type Tone = "brown" | "orange" | "teal" | "slate" | "steel";
 
 const BARS: Array<{
   table: string;
@@ -35,7 +35,7 @@ const BARS: Array<{
   { table: "2", start: 1, span: 2, name: "Korhonen", tone: "orange" },
   { table: "3", start: 2, span: 3, name: "Virtanen", tone: "brown" },
   { table: "4", start: 0, span: 2, name: "Laine", tone: "slate" },
-  { table: "5", start: 3, span: 2, name: "Mäkinen", tone: "rose" },
+  { table: "5", start: 3, span: 2, name: "Mäkinen", tone: "steel" },
   { table: "6", start: 2, span: 2, name: "Heikkinen", tone: "teal" },
   { table: "7", start: 4, span: 2, name: "Salonen", tone: "orange" },
   { table: "8", start: 1, span: 3, name: "Aalto", tone: "brown" },
@@ -46,7 +46,7 @@ const TONE_CLASS: Record<Tone, string> = {
   orange: "bg-[#c46a32] text-white",
   teal: "bg-[#0d9488] text-white",
   slate: "bg-[#64748b] text-white",
-  rose: "bg-[#be4d5a] text-white",
+  steel: "bg-[#5a6b7d] text-white",
 };
 
 const TAG_CLASS = {
@@ -63,8 +63,8 @@ export function BookingManagementPanel({
   dateLabel = "Ma 24.7.2026",
 }: BookingManagementPanelProps) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#e8dfd4] bg-white shadow-[0_20px_55px_rgba(42,32,24,0.12)]">
-      <div className="flex flex-wrap items-center gap-2 border-b border-[#e8dfd4] bg-[#fbf8f4] px-3 py-2.5 sm:px-4">
+    <div className="overflow-hidden rounded-2xl border border-[#d6d6d6] bg-white shadow-[0_20px_55px_rgba(42,32,24,0.12)]">
+      <div className="flex flex-wrap items-center gap-2 border-b border-[#d6d6d6] bg-[#f5f5f5] px-3 py-2.5 sm:px-4">
         {["Varaukset", "Asiakkaat", "Arkisto"].map((tab, i) => (
           <span
             key={tab}
@@ -72,7 +72,7 @@ export function BookingManagementPanel({
               "rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wide",
               i === 0
                 ? "bg-[#432f24] text-white"
-                : "border border-[#e8dfd4] bg-white text-[#8a7f74]",
+                : "border border-[#d6d6d6] bg-white text-[#8a7f74]",
             )}
           >
             {tab}
@@ -81,8 +81,8 @@ export function BookingManagementPanel({
       </div>
 
       <div className="flex flex-col lg:flex-row">
-        <aside className="border-b border-[#e8dfd4] lg:w-52 lg:shrink-0 lg:border-b-0 lg:border-r">
-          <div className="border-b border-[#e8dfd4] px-3 py-3">
+        <aside className="border-b border-[#d6d6d6] lg:w-52 lg:shrink-0 lg:border-b-0 lg:border-r">
+          <div className="border-b border-[#d6d6d6] px-3 py-3">
             <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a7f74]">
               Heinäkuu 2026
             </p>
@@ -112,7 +112,7 @@ export function BookingManagementPanel({
             {SIDEBAR_BOOKINGS.map((b) => (
               <li
                 key={`${b.time}-${b.name}`}
-                className="rounded-lg border border-[#eee8e0] bg-[#fbf8f4] px-2.5 py-2"
+                className="rounded-lg border border-[#e6e6e6] bg-[#f5f5f5] px-2.5 py-2"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
@@ -151,7 +151,7 @@ export function BookingManagementPanel({
               <span className="rounded-full bg-[#432f24] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-white">
                 Uusi varaus
               </span>
-              <span className="rounded-full border border-[#e8dfd4] bg-white px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-[#5c534c]">
+              <span className="rounded-full border border-[#d6d6d6] bg-white px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-[#5c534c]">
                 Walk-in
               </span>
             </div>
@@ -165,7 +165,7 @@ export function BookingManagementPanel({
                   "rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wide",
                   i === 2
                     ? "bg-[#c46a32] text-white"
-                    : "border border-[#e8dfd4] bg-[#fbf8f4] text-[#8a7f74]",
+                    : "border border-[#d6d6d6] bg-[#f5f5f5] text-[#8a7f74]",
                 )}
               >
                 {view}
@@ -184,19 +184,19 @@ export function BookingManagementPanel({
             ))}
           </div>
 
-          <div className="overflow-x-auto rounded-xl border border-[#e8dfd4] bg-[#fbf8f4]">
+          <div className="overflow-x-auto rounded-xl border border-[#d6d6d6] bg-[#f5f5f5]">
             <div className="min-w-[36rem]">
               <div
-                className="grid border-b border-[#e8dfd4] bg-white"
+                className="grid border-b border-[#d6d6d6] bg-white"
                 style={{ gridTemplateColumns: "4.5rem repeat(7, minmax(0, 1fr))" }}
               >
-                <div className="border-r border-[#e8dfd4] px-2 py-2 text-[9px] font-semibold uppercase tracking-wide text-[#8a7f74]">
+                <div className="border-r border-[#d6d6d6] px-2 py-2 text-[9px] font-semibold uppercase tracking-wide text-[#8a7f74]">
                   Pöytä
                 </div>
                 {TIMES.map((t) => (
                   <div
                     key={t}
-                    className="border-r border-[#e8dfd4] px-1 py-2 text-center text-[10px] font-medium tabular-nums text-[#5c534c] last:border-r-0"
+                    className="border-r border-[#d6d6d6] px-1 py-2 text-center text-[10px] font-medium tabular-nums text-[#5c534c] last:border-r-0"
                   >
                     {t}
                   </div>
@@ -208,10 +208,10 @@ export function BookingManagementPanel({
                 return (
                   <div
                     key={table.id}
-                    className="grid border-b border-[#eee8e0] last:border-b-0"
+                    className="grid border-b border-[#e6e6e6] last:border-b-0"
                     style={{ gridTemplateColumns: "4.5rem repeat(7, minmax(0, 1fr))" }}
                   >
-                    <div className="flex flex-col justify-center border-r border-[#e8dfd4] bg-white px-2 py-2">
+                    <div className="flex flex-col justify-center border-r border-[#d6d6d6] bg-white px-2 py-2">
                       <span className="text-[11px] font-semibold text-[#2a2018]">#{table.id}</span>
                       <span className="text-[9px] text-[#8a7f74]">{table.zone}</span>
                     </div>
@@ -219,7 +219,7 @@ export function BookingManagementPanel({
                       {TIMES.map((t) => (
                         <div
                           key={t}
-                          className="min-h-11 border-r border-[#eee8e0] last:border-r-0"
+                          className="min-h-11 border-r border-[#e6e6e6] last:border-r-0"
                         />
                       ))}
                       {bars.map((bar) => (

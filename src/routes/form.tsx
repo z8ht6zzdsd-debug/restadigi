@@ -122,8 +122,8 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-[#e8dfd4] bg-white p-6 shadow-sm sm:p-8">
-      <div className="mb-6 border-b border-[#e8dfd4] pb-5">
+    <section className="rounded-2xl border border-[#d6d6d6] bg-white p-6 shadow-sm sm:p-8">
+      <div className="mb-6 border-b border-[#d6d6d6] pb-5">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c46a32]">
           {step}
         </p>
@@ -183,8 +183,8 @@ function ServiceIntakeFormPage() {
 
   if (done) {
     return (
-      <div className="min-h-screen bg-[#f3eee8]">
-        <header className="border-b border-[#e8dfd4] bg-[#2a2018] px-6 py-5">
+      <div className="min-h-screen bg-[#e8e8e8]">
+        <header className="border-b border-[#d6d6d6] bg-[#2a2018] px-6 py-5">
           <img
             src={restadigiLogo}
             alt="Restadigi Finland"
@@ -212,7 +212,7 @@ function ServiceIntakeFormPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f3eee8] text-[#1a1512]">
+    <div className="min-h-screen bg-[#e8e8e8] text-[#1a1512]">
       <header className="border-b border-white/10 bg-[#2a2018] px-6 py-6">
         <div className="mx-auto flex max-w-3xl flex-wrap items-end justify-between gap-4">
           <div>
@@ -252,7 +252,7 @@ function ServiceIntakeFormPage() {
                   required
                   value={form.contactName}
                   onChange={(e) => update("contactName", e.target.value)}
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field label="Yritys / ravintola *">
@@ -260,7 +260,7 @@ function ServiceIntakeFormPage() {
                   required
                   value={form.company}
                   onChange={(e) => update("company", e.target.value)}
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field label="Sähköposti *">
@@ -269,7 +269,7 @@ function ServiceIntakeFormPage() {
                   type="email"
                   value={form.email}
                   onChange={(e) => update("email", e.target.value)}
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field label="Puhelin *">
@@ -278,7 +278,7 @@ function ServiceIntakeFormPage() {
                   type="tel"
                   value={form.phone}
                   onChange={(e) => update("phone", e.target.value)}
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field label="Toimiala *">
@@ -286,7 +286,7 @@ function ServiceIntakeFormPage() {
                   required
                   value={form.industry}
                   onChange={(e) => update("industry", e.target.value)}
-                  className="flex h-9 w-full rounded-md border border-[#e8dfd4] bg-[#fbf8f4] px-3 text-sm"
+                  className="flex h-9 w-full rounded-md border border-[#d6d6d6] bg-[#f5f5f5] px-3 text-sm"
                 >
                   <option value="">Valitse…</option>
                   {INDUSTRY_OPTIONS.map((opt) => (
@@ -300,7 +300,7 @@ function ServiceIntakeFormPage() {
                 <Input
                   value={form.city}
                   onChange={(e) => update("city", e.target.value)}
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field label="Nykyinen verkkosivusto" hint="Jos on — muuten jätä tyhjäksi.">
@@ -308,14 +308,14 @@ function ServiceIntakeFormPage() {
                   value={form.websiteUrl}
                   onChange={(e) => update("websiteUrl", e.target.value)}
                   placeholder="https://"
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field label="Some-tilit" hint="Instagram, Facebook, Google Maps…">
                 <Input
                   value={form.socialLinks}
                   onChange={(e) => update("socialLinks", e.target.value)}
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field label="Sivuston kielet">
@@ -323,7 +323,7 @@ function ServiceIntakeFormPage() {
                   value={form.languages}
                   onChange={(e) => update("languages", e.target.value)}
                   placeholder="esim. suomi, englanti"
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field label="Toivottu yhteydenottotapa">
@@ -332,7 +332,7 @@ function ServiceIntakeFormPage() {
                   onChange={(e) =>
                     update("preferredContact", e.target.value as FormState["preferredContact"])
                   }
-                  className="flex h-9 w-full rounded-md border border-[#e8dfd4] bg-[#fbf8f4] px-3 text-sm"
+                  className="flex h-9 w-full rounded-md border border-[#d6d6d6] bg-[#f5f5f5] px-3 text-sm"
                 >
                   <option value="any">Mikä tahansa</option>
                   <option value="phone">Puhelin</option>
@@ -370,8 +370,8 @@ function ServiceIntakeFormPage() {
                             className={cn(
                               "rounded-xl border px-4 py-3 text-left transition",
                               active
-                                ? "border-[#c46a32] bg-[#fff7f0] shadow-[inset_3px_0_0_#c46a32]"
-                                : "border-[#e8dfd4] bg-[#fbf8f4] hover:border-[#c46a32]/50",
+                                ? "border-[#c46a32] bg-[#f2f2f2] shadow-[inset_3px_0_0_#c46a32]"
+                                : "border-[#d6d6d6] bg-[#f5f5f5] hover:border-[#c46a32]/50",
                             )}
                           >
                             <div className="flex items-start justify-between gap-3">
@@ -422,7 +422,7 @@ function ServiceIntakeFormPage() {
                   rows={5}
                   value={form.businessDescription}
                   onChange={(e) => update("businessDescription", e.target.value)}
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field label="Kohderyhmä">
@@ -431,7 +431,7 @@ function ServiceIntakeFormPage() {
                   value={form.targetCustomers}
                   onChange={(e) => update("targetCustomers", e.target.value)}
                   placeholder="esim. paikalliset lounasasiakkaat, matkailijat…"
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field
@@ -442,7 +442,7 @@ function ServiceIntakeFormPage() {
                   rows={3}
                   value={form.desiredPages}
                   onChange={(e) => update("desiredPages", e.target.value)}
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <div className="grid gap-5 sm:grid-cols-2">
@@ -451,14 +451,14 @@ function ServiceIntakeFormPage() {
                     rows={2}
                     value={form.brandNotes}
                     onChange={(e) => update("brandNotes", e.target.value)}
-                    className="border-[#e8dfd4] bg-[#fbf8f4]"
+                    className="border-[#d6d6d6] bg-[#f5f5f5]"
                   />
                 </Field>
                 <Field label="Onko logo valmis?">
                   <select
                     value={form.hasLogo}
                     onChange={(e) => update("hasLogo", e.target.value as FormState["hasLogo"])}
-                    className="flex h-9 w-full rounded-md border border-[#e8dfd4] bg-[#fbf8f4] px-3 text-sm"
+                    className="flex h-9 w-full rounded-md border border-[#d6d6d6] bg-[#f5f5f5] px-3 text-sm"
                   >
                     <option value="yes">Kyllä, logo on valmis</option>
                     <option value="no">Ei logoa vielä</option>
@@ -472,7 +472,7 @@ function ServiceIntakeFormPage() {
                   value={form.openingHours}
                   onChange={(e) => update("openingHours", e.target.value)}
                   placeholder="esim. ma–pe 11–22, la–su 12–24"
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <Field
@@ -483,7 +483,7 @@ function ServiceIntakeFormPage() {
                   rows={4}
                   value={form.menuOrServices}
                   onChange={(e) => update("menuOrServices", e.target.value)}
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
               <div className="grid gap-5 sm:grid-cols-3">
@@ -493,7 +493,7 @@ function ServiceIntakeFormPage() {
                     onChange={(e) =>
                       update("domainStatus", e.target.value as FormState["domainStatus"])
                     }
-                    className="flex h-9 w-full rounded-md border border-[#e8dfd4] bg-[#fbf8f4] px-3 text-sm"
+                    className="flex h-9 w-full rounded-md border border-[#d6d6d6] bg-[#f5f5f5] px-3 text-sm"
                   >
                     <option value="have">Minulla on jo domain</option>
                     <option value="need">Tarvitsen domainin</option>
@@ -505,7 +505,7 @@ function ServiceIntakeFormPage() {
                     required
                     value={form.timeline}
                     onChange={(e) => update("timeline", e.target.value)}
-                    className="flex h-9 w-full rounded-md border border-[#e8dfd4] bg-[#fbf8f4] px-3 text-sm"
+                    className="flex h-9 w-full rounded-md border border-[#d6d6d6] bg-[#f5f5f5] px-3 text-sm"
                   >
                     <option value="">Valitse…</option>
                     {TIMELINE_OPTIONS.map((opt) => (
@@ -520,7 +520,7 @@ function ServiceIntakeFormPage() {
                     required
                     value={form.budget}
                     onChange={(e) => update("budget", e.target.value)}
-                    className="flex h-9 w-full rounded-md border border-[#e8dfd4] bg-[#fbf8f4] px-3 text-sm"
+                    className="flex h-9 w-full rounded-md border border-[#d6d6d6] bg-[#f5f5f5] px-3 text-sm"
                   >
                     <option value="">Valitse…</option>
                     {BUDGET_OPTIONS.map((opt) => (
@@ -537,7 +537,7 @@ function ServiceIntakeFormPage() {
                   value={form.extraNotes}
                   onChange={(e) => update("extraNotes", e.target.value)}
                   placeholder="Kilpailijat, toiveet, erikoisuudet, kuvat…"
-                  className="border-[#e8dfd4] bg-[#fbf8f4]"
+                  className="border-[#d6d6d6] bg-[#f5f5f5]"
                 />
               </Field>
             </div>
@@ -549,7 +549,7 @@ function ServiceIntakeFormPage() {
             </p>
           ) : null}
 
-          <div className="flex flex-col gap-3 rounded-2xl border border-[#e8dfd4] bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 rounded-2xl border border-[#d6d6d6] bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs leading-relaxed text-[#5c534c]">
               Lähettämällä hyväksyt, että Restadigi ottaa sinuun yhteyttä tarjouksen ja demon
               tiimoilta. Emme myy tietojasi eteenpäin.
@@ -573,7 +573,7 @@ function ServiceIntakeFormPage() {
         </form>
       </main>
 
-      <footer className="border-t border-[#e8dfd4] px-6 py-8 text-center text-xs text-[#8a7f74]">
+      <footer className="border-t border-[#d6d6d6] px-6 py-8 text-center text-xs text-[#8a7f74]">
         Restadigi Finland · Erkkiläntie 47, Mäntsälä · info@restadigi.fi
       </footer>
     </div>

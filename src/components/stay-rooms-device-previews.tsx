@@ -26,8 +26,8 @@ function RoomChip({
       : tone === "busy"
         ? "border-[#e5e0d8] bg-white text-[#6b635c]"
         : tone === "in"
-          ? "border-[#c46a32]/40 bg-[#fff7f0] text-[#a35528]"
-          : "border-[#432f24]/25 bg-[#f3eee8] text-[#432f24]";
+          ? "border-[#c46a32]/40 bg-[#f2f2f2] text-[#a35528]"
+          : "border-[#432f24]/25 bg-[#e8e8e8] text-[#432f24]";
 
   return (
     <div className={"rounded-sm border px-2 py-1.5 " + toneClass}>
@@ -57,7 +57,7 @@ function BoardFrame({
       >
         <div
           className={
-            "overflow-hidden border border-[#3d322a] bg-[#f7f5f2] " +
+            "overflow-hidden border border-[#3d322a] bg-[#f0f0f0] " +
             (compact ? "rounded-[0.75rem]" : "rounded-[0.55rem]")
           }
         >

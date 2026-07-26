@@ -210,7 +210,7 @@ function DashboardStayBookingWidgetPage() {
         </Button>
       </div>
 
-      <p className="rounded-xl border border-[#c46a32]/30 bg-[#fff7f0] px-4 py-3 text-sm text-[#43382f]">
+      <p className="rounded-xl border border-[#c46a32]/30 bg-[#f2f2f2] px-4 py-3 text-sm text-[#43382f]">
         {bw.demoNote}
       </p>
 

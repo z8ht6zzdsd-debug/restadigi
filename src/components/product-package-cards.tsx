@@ -168,7 +168,7 @@ export function ProductPackageCards({
                     <PackageBrandLogos kind={headerKind} logosOnly />
                   </div>
                   <div
-                    className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[#f3eee8] text-[#432f24] sm:size-16"
+                    className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[#e8e8e8] text-[#432f24] sm:size-16"
                     aria-hidden
                   >
                     <Icon className="size-8 sm:size-9" strokeWidth={1.5} />
@@ -186,7 +186,7 @@ export function ProductPackageCards({
                     image={pkg.headerImage}
                   />
                   <div
-                    className="flex items-center justify-center bg-[#f3eee8] text-[#432f24]"
+                    className="flex items-center justify-center bg-[#e8e8e8] text-[#432f24]"
                     aria-hidden
                   >
                     <Icon className="size-10 sm:size-12" strokeWidth={1.5} />
@@ -254,8 +254,8 @@ export function ProductPackageCards({
                   onClick={() => setOpenPackage(pkg.name)}
                   className={
                     deviceLayout
-                      ? "inline-flex min-w-[9rem] items-center justify-center rounded-full !bg-[#432f24] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.14em] !text-[#f7f3ee] transition-opacity hover:opacity-90"
-                      : "inline-flex min-w-[10rem] items-center justify-center rounded-full !bg-[#432f24] px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] !text-[#f7f3ee] transition-opacity hover:opacity-90"
+                      ? "inline-flex min-w-[9rem] items-center justify-center rounded-full !bg-[#432f24] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.14em] !text-[#f0f0f0] transition-opacity hover:opacity-90"
+                      : "inline-flex min-w-[10rem] items-center justify-center rounded-full !bg-[#432f24] px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] !text-[#f0f0f0] transition-opacity hover:opacity-90"
                   }
                 >
                   {explore}

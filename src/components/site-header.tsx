@@ -184,7 +184,7 @@ export function SiteHeader() {
             {desktopMenu === "kielet" && (
               <div
                 id={`${baseId}-kielet`}
-                className="absolute right-0 top-full z-40 mt-3 min-w-[11rem] overflow-hidden rounded-2xl border border-[#e8dfd4] bg-white p-2 shadow-[0_18px_50px_rgba(42,32,24,0.14)]"
+                className="absolute right-0 top-full z-40 mt-3 min-w-[11rem] overflow-hidden rounded-2xl border border-[#d6d6d6] bg-white p-2 shadow-[0_18px_50px_rgba(42,32,24,0.14)]"
               >
                 {t.header.languagesList.map((item) => (
                   <button
@@ -194,8 +194,8 @@ export function SiteHeader() {
                     className={cn(
                       "flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm transition-colors",
                       locale === item.code
-                        ? "bg-[#f3eee8] text-[#2a2018]"
-                        : "text-[#5c534c] hover:bg-[#f7f3ee] hover:text-[#2a2018]",
+                        ? "bg-[#e8e8e8] text-[#2a2018]"
+                        : "text-[#5c534c] hover:bg-[#f0f0f0] hover:text-[#2a2018]",
                     )}
                   >
                     <LocaleFlag
@@ -278,7 +278,7 @@ export function SiteHeader() {
               return (
                 <div
                   key={item.title}
-                  className="flex gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-[#f7f3ee]"
+                  className="flex gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-[#f0f0f0]"
                 >
                   <MegaIcon Icon={Icon} />
                   <div className="min-w-0">
@@ -324,7 +324,7 @@ export function SiteHeader() {
                 />
               );
             })}
-            <div className="mt-3 rounded-xl border border-[#e8dfd4] bg-[#fbf8f4] px-3 py-3">
+            <div className="mt-3 rounded-xl border border-[#d6d6d6] bg-[#f5f5f5] px-3 py-3">
               <p className="text-sm font-semibold text-[#2a2018]">{t.header.contactPanel.person}</p>
               <a
                 href={`mailto:${t.header.contactPanel.email}`}
@@ -344,7 +344,7 @@ export function SiteHeader() {
       )}
 
       {mobileOpen && (
-        <div className="lg:hidden absolute inset-x-0 top-full z-40 border-t border-[#e8dfd4] bg-white shadow-md">
+        <div className="lg:hidden absolute inset-x-0 top-full z-40 border-t border-[#d6d6d6] bg-white shadow-md">
           <div className="mx-auto flex max-w-6xl flex-col gap-1 py-4 pl-2 pr-6 sm:pl-3">
             <MobileSection
               label={t.header.services}
@@ -360,7 +360,7 @@ export function SiteHeader() {
                     key={item.to}
                     to={item.to}
                     onClick={closeAll}
-                    className="block border-b border-[#eee8e0] py-3 last:border-0"
+                    className="block border-b border-[#e6e6e6] py-3 last:border-0"
                     activeProps={{ className: "text-accent" }}
                   >
                     <span className="block text-base font-semibold text-[#2a2018]">
@@ -377,7 +377,7 @@ export function SiteHeader() {
               open={mobileSection === "toimialat"}
               onToggle={() => toggleMobileSection("toimialat")}
             >
-              <div className="rounded-2xl bg-[#f3eee8] p-4">
+              <div className="rounded-2xl bg-[#e8e8e8] p-4">
                 <p className="mb-4 text-sm leading-relaxed text-[#5c534c]">
                   {t.header.industriesIntro}
                 </p>
@@ -395,7 +395,7 @@ export function SiteHeader() {
             <Link
               to="/hinnasto"
               onClick={closeAll}
-              className="border-b border-[#eee8e0] py-4 text-lg text-[#2a2018]"
+              className="border-b border-[#e6e6e6] py-4 text-lg text-[#2a2018]"
               activeProps={{ className: "text-accent" }}
             >
               {t.header.pricing}
@@ -430,7 +430,7 @@ export function SiteHeader() {
               open={mobileSection === "yhteys"}
               onToggle={() => toggleMobileSection("yhteys")}
             >
-              <div className="rounded-2xl bg-[#f3eee8] p-4">
+              <div className="rounded-2xl bg-[#e8e8e8] p-4">
                 <p className="mb-4 text-sm leading-relaxed text-[#5c534c]">
                   {t.header.contactIntro}
                 </p>
@@ -465,7 +465,7 @@ function MegaPanel({ id, children }: { id: string; children: ReactNode }) {
   return (
     <div
       id={id}
-      className="absolute left-1/2 top-[calc(100%-2.25cm)] z-40 hidden w-[min(52rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-2xl border border-[#e8dfd4] bg-white shadow-[0_22px_60px_rgba(42,32,24,0.16)] lg:block"
+      className="absolute left-1/2 top-[calc(100%-2.25cm)] z-40 hidden w-[min(52rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-2xl border border-[#d6d6d6] bg-white shadow-[0_22px_60px_rgba(42,32,24,0.16)] lg:block"
     >
       <div className="grid lg:grid-cols-[0.95fr_1.15fr]">{children}</div>
     </div>
@@ -484,13 +484,13 @@ function MegaIntro({
   accent?: boolean;
 }) {
   return (
-    <aside className="relative overflow-hidden bg-[#f3eee8] p-6 sm:p-8">
+    <aside className="relative overflow-hidden bg-[#e8e8e8] p-6 sm:p-8">
       <div
-        className="pointer-events-none absolute -right-8 -top-8 size-32 rounded-full bg-[#c46a32]/15"
+        className="pointer-events-none absolute -right-8 -top-8 size-32 rounded-full bg-[#432f24]/12"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -bottom-10 -left-6 size-40 rounded-full bg-[#432f24]/10"
+        className="pointer-events-none absolute -bottom-10 -left-6 size-40 rounded-full bg-[#2a2018]/10"
         aria-hidden
       />
       <div className="relative">
@@ -534,7 +534,7 @@ function MegaLink({
     <Link
       to={to}
       onClick={onNavigate}
-      className="flex gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-[#f7f3ee]"
+      className="flex gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-[#f0f0f0]"
     >
       <MegaIcon Icon={Icon} />
       <span className="min-w-0">
@@ -572,7 +572,7 @@ function MobileSection({
   children: ReactNode;
 }) {
   return (
-    <div className="border-b border-[#eee8e0] py-2 last:border-0">
+    <div className="border-b border-[#e6e6e6] py-2 last:border-0">
       <button
         type="button"
         onClick={onToggle}

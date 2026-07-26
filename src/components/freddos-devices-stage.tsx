@@ -32,7 +32,7 @@ export function FreddosDevicesStage() {
       <div className="freddos-stage__phone absolute bottom-0 left-0 z-[2] w-[28%] sm:w-[26%]">
         <div className="relative overflow-hidden rounded-[1.15rem] bg-gradient-to-br from-[#4a4540] via-[#2a2622] to-[#0e0c0b] p-[0.22rem] shadow-[0_22px_50px_-14px_rgba(26,18,14,0.7)] ring-1 ring-white/10 sm:rounded-[1.35rem] sm:p-[0.26rem]">
           <span className="absolute left-1/2 top-[0.36rem] z-[3] h-[0.55rem] w-[28%] -translate-x-1/2 rounded-full bg-[#050403] sm:top-[0.42rem] sm:h-[0.62rem]" />
-          <div className="relative aspect-[9/19.2] overflow-hidden rounded-[0.95rem] bg-[#f7f3ee] sm:rounded-[1.1rem]">
+          <div className="relative aspect-[9/19.2] overflow-hidden rounded-[0.95rem] bg-[#f0f0f0] sm:rounded-[1.1rem]">
             <BarberMobilePreview image={freddosMobileHero} />
           </div>
           <span className="absolute bottom-[0.28rem] left-1/2 z-[3] h-[0.12rem] w-[28%] -translate-x-1/2 rounded-full bg-white/30" />

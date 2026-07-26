@@ -8,7 +8,7 @@ type MarketingBandProps = {
 /** Vaaleanruskea sisältökaista heron alla (etusivun boksirakenne). */
 export function MarketingBand({ children, className = "" }: MarketingBandProps) {
   return (
-    <section className={"bg-[#ebe8e2] text-foreground pt-10 sm:pt-14 pb-14 sm:pb-20 " + className}>
+    <section className={"bg-[#e2e2e2] text-foreground pt-10 sm:pt-14 pb-14 sm:pb-20 " + className}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">{children}</div>
     </section>
   );

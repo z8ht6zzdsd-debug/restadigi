@@ -115,7 +115,7 @@ export function CookieConsentUI() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="cookie-settings-title"
-            className="absolute bottom-20 left-4 right-4 max-h-[min(80vh,560px)] overflow-y-auto rounded-xl border border-white/10 bg-[#2a2018] text-[#f7f3ee] shadow-2xl sm:left-6 sm:right-auto sm:w-[min(100%,380px)]"
+            className="absolute bottom-20 left-4 right-4 max-h-[min(80vh,560px)] overflow-y-auto rounded-xl border border-white/10 bg-[#2a2018] text-[#f0f0f0] shadow-2xl sm:left-6 sm:right-auto sm:w-[min(100%,380px)]"
           >
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-[#2a2018] px-4 py-3">
               <h2 id="cookie-settings-title" className="text-base font-semibold">
@@ -232,7 +232,7 @@ export function CookieConsentUI() {
                 <button
                   type="button"
                   onClick={withdrawConsent}
-                  className="flex-1 rounded-md bg-white px-3 py-2.5 text-sm font-medium text-[#1a1512] hover:bg-[#f7f3ee]"
+                  className="flex-1 rounded-md bg-white px-3 py-2.5 text-sm font-medium text-[#1a1512] hover:bg-[#f0f0f0]"
                 >
                   {c.withdraw}
                 </button>
@@ -240,7 +240,7 @@ export function CookieConsentUI() {
                 <button
                   type="button"
                   onClick={acceptNecessaryOnly}
-                  className="flex-1 rounded-md bg-white px-3 py-2.5 text-sm font-medium text-[#1a1512] hover:bg-[#f7f3ee]"
+                  className="flex-1 rounded-md bg-white px-3 py-2.5 text-sm font-medium text-[#1a1512] hover:bg-[#f0f0f0]"
                 >
                   {c.necessaryOnly}
                 </button>

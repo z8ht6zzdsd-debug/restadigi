@@ -47,7 +47,7 @@ function FeatureListCard({ title, items }: { title: string; items: string[] }) {
   return (
     <MarketingBox tone="white" justify="start" className="min-h-0 py-6 sm:py-7">
       <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-[#2a2018]">{title}</h3>
-      <ul className="mt-4 divide-y divide-[#e8dfd4]">
+      <ul className="mt-4 divide-y divide-[#d6d6d6]">
         {items.map((item) => (
           <li key={item} className="py-2.5 text-sm leading-snug text-[#2a2018] sm:text-[0.95rem]">
             {item}
@@ -73,7 +73,7 @@ function MajoitusvarausPage() {
       />
       <SiteHeader />
 
-      <section className="w-full border-b border-[#e8dfd4] bg-white">
+      <section className="w-full border-b border-[#d6d6d6] bg-white">
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-8 sm:gap-10 sm:px-6 sm:py-10 lg:grid-cols-12 lg:gap-10 lg:py-12">
           <div className="min-w-0 lg:col-span-6">
             <h1 className="max-w-[18ch] text-3xl font-bold tracking-tight text-[#1a1512] sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08]">
@@ -127,7 +127,7 @@ function MajoitusvarausPage() {
         </div>
       </MarketingBand>
 
-      <section className="w-full bg-[#f7f3ee] px-6 py-10 sm:py-14 lg:py-16">
+      <section className="w-full bg-[#f0f0f0] px-6 py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             {b.demo.sectionEyebrow}
@@ -174,7 +174,7 @@ function MajoitusvarausPage() {
                 <h3
                   className={
                     "text-xl font-bold tracking-tight sm:text-2xl " +
-                    (i % 2 === 0 ? "text-[#2a2018]" : "text-[#f7f3ee]")
+                    (i % 2 === 0 ? "text-[#2a2018]" : "text-[#f0f0f0]")
                   }
                 >
                   {pillar.title}

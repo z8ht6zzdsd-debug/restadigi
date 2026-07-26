@@ -41,7 +41,7 @@ const PACKAGE_ICON_BG = [
 
 const LAPTOP_TONES = [
   "from-[#d4c4a8] via-[#c4b090] to-[#a89070]", // warm gold
-  "from-[#e8d5d0] via-[#d4b8b0] to-[#b89890]", // rose
+  "from-[#c8c8c8] via-[#9a9a9a] to-[#707070]", // slate blue
   "from-[#c8c4c0] via-[#a8a4a0] to-[#888480]", // silver
   "from-[#3a3530] via-[#2a2622] to-[#1a1714]", // dark
 ] as const;
@@ -167,7 +167,7 @@ function PackageLaptop({
         )}
       >
         <span className="absolute left-1/2 top-[0.35rem] z-[2] h-[0.22rem] w-[0.22rem] -translate-x-1/2 rounded-full bg-black/50 ring-1 ring-white/20" />
-        <div className="relative aspect-[16/10] overflow-hidden rounded-[0.35rem] bg-[#f7f3ee]">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-[0.35rem] bg-[#f0f0f0]">
           <div className="flex size-full flex-col px-2.5 pb-2 pt-3.5 sm:px-3.5 sm:pb-2.5 sm:pt-4 lg:px-4 lg:pt-5">
             <div className="flex shrink-0 flex-col items-center gap-1 sm:gap-1.5">
               <div className="flex items-center justify-center gap-2.5 sm:gap-3">

@@ -123,13 +123,13 @@ export function DashboardShell({ children }: { children: ReactNode }) {
                     "dashboard-app__nav-item flex items-center gap-2.5 whitespace-nowrap rounded-xl px-3 py-2.5 text-sm font-medium transition-all",
                     active
                       ? "dashboard-app__nav-item--active"
-                      : "text-[#5c534c] hover:bg-[#f3eee8] hover:text-[#2a2018]",
+                      : "text-[#5c534c] hover:bg-[#e8e8e8] hover:text-[#2a2018]",
                   )}
                 >
                   <span
                     className={cn(
                       "flex size-8 shrink-0 items-center justify-center rounded-lg",
-                      active ? "bg-white/15 text-white" : "bg-[#f3eee8] text-[#432f24]",
+                      active ? "bg-white/15 text-white" : "bg-[#e8e8e8] text-[#432f24]",
                     )}
                   >
                     <Icon className="size-4" />

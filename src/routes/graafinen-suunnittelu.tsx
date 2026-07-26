@@ -77,7 +77,7 @@ function GraafinenSuunnitteluPage() {
       />
       <SiteHeader />
 
-      <section className="w-full border-b border-[#e8dfd4] bg-gradient-to-b from-[#f7f3ee] to-[#ebe8e2]">
+      <section className="w-full border-b border-[#d6d6d6] bg-gradient-to-b from-[#f0f0f0] to-[#e2e2e2]">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             Restadigi

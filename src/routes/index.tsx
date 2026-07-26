@@ -113,7 +113,7 @@ function Index() {
       </section>
 
       {/* McD-tyylinen vaaleanruskea kaista: referenssiboksi → miksi meidät → palvelut → CTA */}
-      <section className="bg-[#ebe8e2] text-foreground pt-10 sm:pt-14 pb-14 sm:pb-20">
+      <section className="bg-[#e2e2e2] text-foreground pt-10 sm:pt-14 pb-14 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-4 sm:gap-5">
             {/* Oikea korkea boksi ensin (mobiilissa ylhäällä): dining → Restatable → showcase → Restabooking → intro */}

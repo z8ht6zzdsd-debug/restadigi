@@ -202,17 +202,17 @@ export function StayBookingWidget({ className }: { className?: string }) {
 
   return (
     <section className={cn("w-full", className)}>
-      <div className="mb-5 rounded-2xl border border-[#c46a32]/35 bg-gradient-to-r from-[#fff7f0] to-[#f7f3ee] px-4 py-3 sm:px-5">
+      <div className="mb-5 rounded-2xl border border-[#c46a32]/35 bg-gradient-to-r from-[#f2f2f2] to-[#f0f0f0] px-4 py-3 sm:px-5">
         <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#c46a32]">
           {demo.bannerEyebrow}
         </p>
         <p className="mt-1 text-sm leading-relaxed text-[#43382f]">{demo.bannerBody}</p>
       </div>
 
-      <div className="overflow-hidden rounded-[1.5rem] border border-[#e8dfd4] bg-white shadow-[0_18px_50px_rgba(42,32,24,0.08)] sm:rounded-[2rem]">
-        <div className="flex items-center justify-between border-b border-[#efe8e0] px-4 py-3 sm:px-6">
+      <div className="overflow-hidden rounded-[1.5rem] border border-[#d6d6d6] bg-white shadow-[0_18px_50px_rgba(42,32,24,0.08)] sm:rounded-[2rem]">
+        <div className="flex items-center justify-between border-b border-[#e6e6e6] px-4 py-3 sm:px-6">
           <p className="font-medium tracking-tight text-[#2a2018]">{display.propertyName}</p>
-          <span className="rounded-full bg-[#f3eee8] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a7f74]">
+          <span className="rounded-full bg-[#e8e8e8] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a7f74]">
             {demo.liveBadge}
           </span>
         </div>
@@ -226,7 +226,7 @@ export function StayBookingWidget({ className }: { className?: string }) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1a1512]/90 via-[#1a1512]/35 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-8">
-              <p className="font-serif text-4xl tracking-tight text-[#f7f3ee]">
+              <p className="font-serif text-4xl tracking-tight text-[#f0f0f0]">
                 {display.brandTitle}
               </p>
               <p className="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#c46a32]">
@@ -251,7 +251,7 @@ export function StayBookingWidget({ className }: { className?: string }) {
                     }}
                     className={cn(
                       "flex min-w-[4.5rem] flex-1 flex-col items-center gap-1.5 rounded-xl px-1.5 py-2 text-center transition-colors",
-                      active ? "bg-[#f3eee8]" : "hover:bg-[#faf7f3]",
+                      active ? "bg-[#e8e8e8]" : "hover:bg-[#f3f3f3]",
                     )}
                   >
                     <span
@@ -259,7 +259,7 @@ export function StayBookingWidget({ className }: { className?: string }) {
                         "inline-flex size-9 items-center justify-center rounded-lg border",
                         active || done
                           ? "border-[#432f24] bg-[#432f24] text-white"
-                          : "border-[#e8dfd4] text-[#8a7f74]",
+                          : "border-[#d6d6d6] text-[#8a7f74]",
                       )}
                     >
                       {done && !active ? <Check className="size-4" /> : <Icon className="size-4" />}
@@ -300,8 +300,8 @@ export function StayBookingWidget({ className }: { className?: string }) {
                         className={cn(
                           "rounded-2xl border px-4 py-4 text-left transition-all",
                           selected
-                            ? "border-[#432f24] bg-[#f7f3ee] shadow-sm"
-                            : "border-[#e8dfd4] hover:border-[#c46a32]/50",
+                            ? "border-[#432f24] bg-[#f0f0f0] shadow-sm"
+                            : "border-[#d6d6d6] hover:border-[#c46a32]/50",
                         )}
                       >
                         <div className="flex items-start justify-between gap-3">
@@ -368,7 +368,7 @@ export function StayBookingWidget({ className }: { className?: string }) {
                 <div className="flex items-center justify-between">
                   <button
                     type="button"
-                    className="rounded-lg p-2 text-[#5c534c] hover:bg-[#f3eee8]"
+                    className="rounded-lg p-2 text-[#5c534c] hover:bg-[#e8e8e8]"
                     onClick={() => setMonth((m) => addMonths(m, -1))}
                     aria-label={demo.prevMonth}
                   >
@@ -379,7 +379,7 @@ export function StayBookingWidget({ className }: { className?: string }) {
                   </p>
                   <button
                     type="button"
-                    className="rounded-lg p-2 text-[#5c534c] hover:bg-[#f3eee8]"
+                    className="rounded-lg p-2 text-[#5c534c] hover:bg-[#e8e8e8]"
                     onClick={() => setMonth((m) => addMonths(m, 1))}
                     aria-label={demo.nextMonth}
                   >
@@ -499,7 +499,7 @@ export function StayBookingWidget({ className }: { className?: string }) {
                 <h3 className="font-serif text-2xl tracking-tight text-[#2a2018]">
                   {demo.confirmTitle}
                 </h3>
-                <div className="grid gap-3 rounded-2xl border border-[#efe8e0] bg-[#fbf8f4] p-4 text-sm sm:grid-cols-2">
+                <div className="grid gap-3 rounded-2xl border border-[#e6e6e6] bg-[#f5f5f5] p-4 text-sm sm:grid-cols-2">
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a7f74]">
                       {demo.place}

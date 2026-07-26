@@ -201,7 +201,7 @@ function ChatDialog({
 
   // Sales = dark brown panel; booking = orange panel (same structure as Resta-AI)
   const panelBg = isSales ? "#2a2018" : accentColor;
-  const brandColor = isSales ? ORANGE : "#fff7ed";
+  const brandColor = isSales ? ORANGE : "#f2f2f2";
   const userBubbleBg = isSales ? ORANGE : BROWN;
   const avatarBg = isSales ? BROWN : "rgba(0,0,0,0.2)";
   const footerBg = isSales ? "rgba(26,21,18,0.5)" : "rgba(0,0,0,0.18)";

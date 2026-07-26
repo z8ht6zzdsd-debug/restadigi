@@ -16,7 +16,7 @@ const ESIKATSELU_CSS = `
   --ink: #1a1512;
   --muted: #5c534c;
   --line: #e6dfd7;
-  --bg: #f7f3ee;
+  --bg: #f0f0f0;
   --paper: #ffffff;
   --accent: #432f24;
   box-sizing: border-box;

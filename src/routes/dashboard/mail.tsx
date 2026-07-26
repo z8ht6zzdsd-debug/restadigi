@@ -360,7 +360,7 @@ function DashboardMailPage() {
       </div>
 
       <div
-        className="flex flex-wrap gap-1 rounded-2xl border border-[#e8dfd4] bg-white/70 p-1.5 shadow-sm"
+        className="flex flex-wrap gap-1 rounded-2xl border border-[#d6d6d6] bg-white/70 p-1.5 shadow-sm"
         role="tablist"
         aria-label={t.mail.title}
       >
@@ -377,7 +377,7 @@ function DashboardMailPage() {
                 "rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all sm:px-4",
                 active
                   ? "bg-[#432f24] text-white shadow-md"
-                  : "text-[#5c534c] hover:bg-[#f3eee8] hover:text-[#2a2018]",
+                  : "text-[#5c534c] hover:bg-[#e8e8e8] hover:text-[#2a2018]",
               )}
             >
               {tabLabels[id]}

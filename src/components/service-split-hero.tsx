@@ -72,11 +72,11 @@ export function ServiceSplitHero({
                   >
                     <Icon className="size-6" strokeWidth={1.75} />
                   </span>
-                  <h2 className="text-left text-4xl font-medium leading-[1.1] tracking-tight text-[#f7f3ee] lg:text-[2.75rem]">
+                  <h2 className="text-left text-4xl font-medium leading-[1.1] tracking-tight text-[#f0f0f0] lg:text-[2.75rem]">
                     {overlayTitle}
                   </h2>
                 </div>
-                <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[#f7f3ee]/85">
+                <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[#f0f0f0]/85">
                   {overlayDescription}
                 </p>
               </div>

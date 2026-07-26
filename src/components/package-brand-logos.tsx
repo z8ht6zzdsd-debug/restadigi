@@ -324,7 +324,7 @@ export function PackageBrandWorkLogos({ className = "" }: { className?: string }
   return (
     <div
       className={
-        "flex h-full w-full items-center justify-between gap-2 bg-[#f3eee8] px-2.5 py-2.5 sm:gap-3 sm:px-4 sm:py-3 " +
+        "flex h-full w-full items-center justify-between gap-2 bg-[#e8e8e8] px-2.5 py-2.5 sm:gap-3 sm:px-4 sm:py-3 " +
         className
       }
       aria-hidden
