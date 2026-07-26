@@ -73,31 +73,17 @@ function MajoitusvarausPage() {
       />
       <SiteHeader />
 
-      <section className="w-full border-b border-[#d6d6d6] bg-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-8 sm:gap-10 sm:px-6 sm:py-10 lg:grid-cols-12 lg:gap-10 lg:py-12">
-          <div className="min-w-0 lg:col-span-6">
-            <h1 className="max-w-[18ch] text-3xl font-bold tracking-tight text-[#1a1512] sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08]">
-              {b.hero.title}
-            </h1>
-            <div className="mt-5 space-y-3.5 sm:mt-6">
-              {b.hero.paragraphs.map((paragraph) => (
-                <p
-                  key={paragraph.slice(0, 48)}
-                  className="max-w-xl text-sm leading-relaxed text-[#5c534c] sm:text-base"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-            <Link
-              to="/yhteys"
-              className="mt-8 inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
-            >
-              {b.hero.cta}
-            </Link>
-          </div>
+      {/* Hero — same proportions as homepage Freddos stage */}
+      <section className="relative overflow-hidden bg-background">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <span className="absolute -left-16 top-8 size-56 rounded-full border border-[#432f24]/8 sm:size-72" />
+          <span className="absolute -left-6 top-20 size-40 rounded-full border border-[#c9a882]/25 sm:size-52" />
+          <span className="absolute bottom-10 right-[38%] hidden size-3 rounded-full bg-[#c9a882]/40 lg:block" />
+          <span className="absolute right-10 top-1/3 hidden h-24 w-px bg-gradient-to-b from-transparent via-[#432f24]/15 to-transparent lg:block" />
+        </div>
 
-          <div className="lg:col-span-6">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-20">
+          <div className="relative overflow-visible pb-4 lg:col-span-6 lg:pb-2">
             <StayBookingHeroDevices
               navItems={p.coreItems}
               activeNav={p.activeNav}
@@ -105,6 +91,28 @@ function MajoitusvarausPage() {
               phoneTitle={p.phoneTitle}
               phoneItems={p.activitiesItems}
             />
+          </div>
+
+          <div className="relative min-w-0 lg:col-span-6">
+            <h1 className="max-w-[16ch] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
+              {b.hero.title}
+            </h1>
+            <div className="mt-5 space-y-3.5 sm:mt-6">
+              {b.hero.paragraphs.map((paragraph) => (
+                <p
+                  key={paragraph.slice(0, 48)}
+                  className="max-w-xl text-base leading-relaxed text-foreground/70 sm:text-lg"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            <Link
+              to="/yhteys"
+              className="mt-8 inline-flex items-center justify-center rounded-full !bg-[#432f24] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] !text-[#f0f0f0] transition-opacity hover:opacity-90"
+            >
+              {b.hero.cta}
+            </Link>
           </div>
         </div>
       </section>

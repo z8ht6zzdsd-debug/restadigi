@@ -39,17 +39,20 @@ export function StayBookingHeroDevices({
 
   return (
     <div
-      className={"relative mx-auto w-full max-w-[34rem] select-none pb-2 lg:max-w-none " + className}
+      className={
+        "relative mx-auto w-full max-w-[34rem] select-none pb-2 pl-1 pt-1 sm:pb-3 sm:pl-2 lg:ml-0 lg:mr-auto " +
+        className
+      }
       aria-hidden
     >
       {/* Soft brand oval behind devices */}
       <div
-        className="pointer-events-none absolute left-[8%] top-[12%] h-[78%] w-[84%] rounded-[50%] bg-[#d9cfc3]/55 blur-[2px]"
+        className="pointer-events-none absolute left-[6%] top-[10%] h-[76%] w-[82%] rounded-[50%] bg-[#d0d0d0]/55 blur-[2px]"
         aria-hidden
       />
 
       {/* Laptop */}
-      <div className="relative z-[1] ml-auto w-[90%] origin-bottom sm:w-[88%]">
+      <div className="relative z-[1] ml-auto w-[88%] origin-bottom sm:w-[86%]">
         <div className="relative overflow-hidden rounded-[0.65rem] bg-gradient-to-b from-[#4a4540] via-[#2a2622] to-[#141210] p-[0.45rem] shadow-[0_28px_70px_-18px_rgba(26,18,14,0.55)] ring-1 ring-black/25 sm:rounded-[0.85rem] sm:p-[0.55rem]">
           <span className="absolute left-1/2 top-[0.28rem] z-[2] h-[0.22rem] w-[0.22rem] -translate-x-1/2 rounded-full bg-[#0a0908] ring-1 ring-white/10 sm:top-[0.35rem]" />
           <div className="relative aspect-[16/10] overflow-hidden rounded-[0.28rem] bg-[#f0f0f0] sm:rounded-[0.35rem]">
@@ -151,7 +154,7 @@ export function StayBookingHeroDevices({
       </div>
 
       {/* Phone */}
-      <div className="absolute bottom-0 left-0 z-[2] w-[30%] sm:w-[28%]">
+      <div className="absolute bottom-0 left-0 z-[2] w-[28%] sm:w-[26%]">
         <div className="relative overflow-hidden rounded-[1.15rem] bg-gradient-to-br from-[#4a4540] via-[#2a2622] to-[#0e0c0b] p-[0.22rem] shadow-[0_22px_50px_-14px_rgba(26,18,14,0.7)] ring-1 ring-white/10 sm:rounded-[1.35rem] sm:p-[0.26rem]">
           <span className="absolute left-1/2 top-[0.36rem] z-[3] h-[0.55rem] w-[28%] -translate-x-1/2 rounded-full bg-[#050403] sm:top-[0.42rem] sm:h-[0.62rem]" />
           <div className="relative aspect-[9/19.2] overflow-hidden rounded-[0.95rem] bg-[#f0f0f0] sm:rounded-[1.1rem]">
