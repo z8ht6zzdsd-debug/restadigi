@@ -103,7 +103,26 @@ function NakyvyysPage() {
         </div>
       </section>
 
-      <MarketingBand className="!bg-white">
+      <section className="relative bg-white px-6 pt-10 pb-4 sm:pt-12 sm:pb-6">
+        <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+          <h2 className="max-w-[22ch] text-balance text-3xl font-bold tracking-tight text-[#432f24] sm:text-4xl">
+            {v.midBanner.title}
+          </h2>
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-foreground/70 sm:text-base">
+            {v.midBanner.description}
+          </p>
+          <a
+            href="#nakyvyys-paketit"
+            className="page-hero__devices-promo-chip page-hero__devices-promo-chip--mobile mt-8"
+            aria-label={v.promo}
+          >
+            <span className="page-hero__devices-promo-line">{v.promoLine1}</span>
+            <span className="page-hero__devices-promo-price">{v.promoLine2}</span>
+          </a>
+        </div>
+      </section>
+
+      <MarketingBand className="!bg-white !pt-4 sm:!pt-6">
         <ProductPackageCards
           embedded
           sectionId="nakyvyys-paketit"

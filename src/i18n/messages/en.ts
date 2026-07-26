@@ -393,6 +393,12 @@ export const en: Messages = {
           href: "/restatable",
           linkLabel: "Explore Restatable",
         },
+        {
+          title: "Restabooking",
+          body: "Restabooking — lodging bookings on your site for hotels, inns and cabins.",
+          href: "/majoitusvaraus",
+          linkLabel: "Explore Restabooking",
+        },
       ],
     },
     bookingPromo: {
@@ -586,9 +592,7 @@ export const en: Messages = {
       titleAfter: ".",
       description:
         "Well-designed websites and web content are your most important digital tools. They strengthen your brand visibility, make it easy for customers to reach you and leave a strong first impression.",
-      promo: "from 399€",
-      promoLine1: "from",
-      promoLine2: "399€",
+      priceLabel: "Website packages from 399 €",
       phoneShop: {
         brand: "Freddo's",
         product: "Ice latte",
@@ -596,16 +600,10 @@ export const en: Messages = {
         addToCart: "Add to cart",
       },
     },
-    midBanner: {
-      title: "Your journey to top visibility starts here!",
-      description:
-        "Explore the packages below to take your company’s online visibility to the next level.",
-      imageAlt: "More visitors and bookings",
-    },
     popular: "Popular",
     requestQuote: "Request a quote",
     explore: "Explore",
-    packagesTitle: "Website packages",
+    packagesTitle: "Explore our website packages",
     packages: [
       {
         name: "Start",
@@ -713,6 +711,14 @@ export const en: Messages = {
       searchPlaceholder: "Search",
       searchAriaLabel: "Search digital visibility",
     },
+    midBanner: {
+      title: "Your journey to top visibility starts here!",
+      description:
+        "Explore the packages below to take your company’s online visibility to the next level.",
+    },
+    promo: "from 99€",
+    promoLine1: "from",
+    promoLine2: "99€",
     popular: "Popular",
     contactCta: "Get in touch",
     resultPrefix: "You get:",

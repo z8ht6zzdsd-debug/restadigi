@@ -319,20 +319,13 @@ export type Messages = {
       titleAccent: string;
       titleAfter: string;
       description: string;
-      promo: string;
-      promoLine1: string;
-      promoLine2: string;
+      priceLabel: string;
       phoneShop: {
         brand: string;
         product: string;
         price: string;
         addToCart: string;
       };
-    };
-    midBanner: {
-      title: string;
-      description: string;
-      imageAlt: string;
     };
     popular: string;
     requestQuote: string;
@@ -368,6 +361,13 @@ export type Messages = {
       searchPlaceholder: string;
       searchAriaLabel: string;
     };
+    midBanner: {
+      title: string;
+      description: string;
+    };
+    promo: string;
+    promoLine1: string;
+    promoLine2: string;
     popular: string;
     contactCta: string;
     resultPrefix: string;

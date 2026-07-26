@@ -5,6 +5,7 @@ import {
   BriefcaseBusiness,
   CalendarDays,
   CircleDollarSign,
+  Hotel,
   PanelsTopLeft,
 } from "lucide-react";
 import delfinIcon from "@/assets/delfin-checkin-icon.jpg";
@@ -12,21 +13,21 @@ import delfinScreen from "@/assets/delfin-checkin-screen.jpg";
 import delfinScreen2 from "@/assets/delfin-checkin-screen-2.jpg";
 import rafaHero from "@/assets/rafa-romera-hero.jpg";
 import rafaLogo from "@/assets/rafa-romera-logo.png";
-import freddosHero from "@/assets/freddos-coffee-open.jpg";
-import freddosEspresso from "@/assets/freddos-v2-espresso.jpg";
-import freddosLatte from "@/assets/freddos-v2-latte.jpg";
-import freddosBerry from "@/assets/freddos-v2-berry.jpg";
-import freddosIce from "@/assets/freddos-ice-latte.jpg";
 import whyUsDining from "@/assets/restaurant-dining.jpg";
 import introHotel from "@/assets/hero-hotel-web.jpg";
-import { RestaurantHomepagePreview } from "@/components/restaurant-homepage-preview";
-import { BarberMobilePreview } from "@/components/barber-mobile-preview";
+import { FreddosDevicesStage } from "@/components/freddos-devices-stage";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
-const WHY_US_PATHS = ["/yhteys", "/verkkosivut", "/restachat", "/restatable"] as const;
+const WHY_US_PATHS = [
+  "/yhteys",
+  "/verkkosivut",
+  "/restachat",
+  "/restatable",
+  "/majoitusvaraus",
+] as const;
 type WhyUsPath = (typeof WHY_US_PATHS)[number];
 
 function isWhyUsPath(to: string): to is WhyUsPath {
@@ -35,7 +36,7 @@ function isWhyUsPath(to: string): to is WhyUsPath {
 
 const WHY_US_ICONS: LucideIcon[] = [BriefcaseBusiness, CircleDollarSign, Bot, PanelsTopLeft];
 
-const SERVICE_ICONS: LucideIcon[] = [Bot, CalendarDays];
+const SERVICE_ICONS: LucideIcon[] = [Bot, CalendarDays, Hotel];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -76,9 +77,8 @@ function Index() {
       />
       <SiteHeader />
 
-      {/* Hero: ravintolan tabletti + parturin mobiili */}
+      {/* Hero: MacBook + iPhone — Freddos molemmissa näytöissä */}
       <section className="relative overflow-hidden bg-background">
-        {/* Taustagrafiikka — pehmeät renkaat + piste */}
         <div className="pointer-events-none absolute inset-0" aria-hidden>
           <span className="absolute -left-16 top-8 size-56 rounded-full border border-[#432f24]/8 sm:size-72" />
           <span className="absolute -left-6 top-20 size-40 rounded-full border border-[#c9a882]/25 sm:size-52" />
@@ -86,40 +86,12 @@ function Index() {
           <span className="absolute right-10 top-1/3 hidden h-24 w-px bg-gradient-to-b from-transparent via-[#432f24]/15 to-transparent lg:block" />
         </div>
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-14 lg:py-20">
-          <div className="relative flex justify-center pb-4 lg:col-span-5 lg:justify-start lg:pb-2">
-            <span
-              className="pointer-events-none absolute left-[42%] top-1/2 -z-0 hidden size-[110%] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-[#c9a882]/30 lg:block"
-              aria-hidden
-            />
-            <div className="relative z-[1] w-full max-w-[17rem] sm:max-w-[19rem] lg:max-w-[21rem]">
-              {/* Tabletti — Freddos, vasemmalle ja vinoon */}
-              <div className="relative w-[88%] -translate-x-1 -rotate-[7deg] sm:w-[86%] sm:-translate-x-2">
-                <div className="rounded-[1.35rem] border-[10px] border-[#2a1f18] bg-[#2a1f18] shadow-[0_28px_60px_-20px_rgba(26,18,14,0.4)] sm:rounded-[1.55rem] sm:border-[12px]">
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-[0.65rem] bg-[#f7f3ee] sm:rounded-[0.85rem]">
-                    <RestaurantHomepagePreview
-                      brand="Freddos"
-                      image={freddosHero}
-                      tileImages={[freddosEspresso, freddosLatte, freddosBerry]}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Puhelin — toinen Freddos-sivu, oikealle reunaa kohti */}
-              <div className="absolute -bottom-1 -right-3 z-[2] w-[34%] rotate-[11deg] sm:-right-5 sm:bottom-0 sm:w-[32%]">
-                <div className="rounded-[1rem] border-[6px] border-[#1a1512] bg-[#1a1512] shadow-[0_18px_36px_-12px_rgba(26,18,14,0.65)] sm:rounded-[1.15rem] sm:border-[7px]">
-                  <div className="relative mx-auto mb-0.5 mt-1 h-1 w-6 rounded-full bg-white/15 sm:mb-1 sm:mt-1.5 sm:h-1.5 sm:w-8" />
-                  <div className="relative aspect-[9/16] overflow-hidden rounded-[0.45rem] bg-[#1a1512] sm:rounded-[0.6rem]">
-                    <BarberMobilePreview image={freddosIce} />
-                  </div>
-                  <div className="mx-auto mb-0.5 mt-1 h-0.5 w-4 rounded-full bg-white/10 sm:mb-1 sm:mt-1.5 sm:h-1 sm:w-6" />
-                </div>
-              </div>
-            </div>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-20">
+          <div className="relative overflow-visible pb-4 lg:col-span-6 lg:pb-2">
+            <FreddosDevicesStage />
           </div>
 
-          <div className="relative lg:col-span-7">
+          <div className="relative lg:col-span-6">
             <h1 className="max-w-[16ch] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
               {h.hero.titleBefore}
               <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
@@ -138,47 +110,11 @@ function Index() {
         </div>
       </section>
 
-      {/* McD-tyylinen vaaleanruskea kaista: miksi meidät → referenssit → CTA */}
+      {/* McD-tyylinen vaaleanruskea kaista: referenssiboksi → miksi meidät → palvelut → CTA */}
       <section className="bg-[#ebe8e2] text-foreground pt-10 sm:pt-14 pb-14 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="max-w-[14ch] text-[2.35rem] sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[0.98] tracking-tight mb-8 sm:mb-10">
-            {h.whyUs.titleBefore}
-            {h.whyUs.titleAccent}
-            {h.whyUs.titleAfter}
-          </h2>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-4 sm:gap-5">
-            {/* Vasemman yläreunan boksi: 4 syytä, valkoinen + symbolit */}
-            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] sm:min-h-[28rem] flex flex-col justify-center bg-white p-6 sm:p-8 text-foreground lg:col-start-1 lg:row-start-1">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-7">
-                {h.whyUs.items.map((item, i) => {
-                  const Icon = WHY_US_ICONS[i] ?? BriefcaseBusiness;
-                  return (
-                    <div key={item.title} className="min-w-0">
-                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-[#432f24] text-white">
-                        <Icon className="size-5" strokeWidth={1.75} aria-hidden />
-                      </span>
-                      <h3 className="text-lg sm:text-xl font-bold tracking-tight leading-tight mb-1.5">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm leading-relaxed text-foreground/65 line-clamp-4">
-                        {item.body}
-                      </p>
-                      {isWhyUsPath(item.href) ? (
-                        <Link
-                          to={item.href}
-                          className="mt-2.5 inline-flex text-xs font-bold uppercase tracking-[0.06em] text-accent underline-offset-2 hover:underline"
-                        >
-                          {item.linkLabel} →
-                        </Link>
-                      ) : null}
-                    </div>
-                  );
-                })}
-              </div>
-            </article>
-
-            {/* Oikea korkea boksi: dining → varauspromo → sänky+intro */}
+            {/* Oikea korkea boksi ensin (mobiilissa ylhäällä): dining → varauspromo → sänky+intro */}
             <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] lg:min-h-0 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col bg-white text-foreground order-first lg:order-none">
               <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden sm:aspect-[5/3]">
                 <img
@@ -189,7 +125,6 @@ function Index() {
                 />
               </div>
 
-              {/* ~5 cm kaista seinän tilalle: pöytävarauspromo */}
               <Link
                 to="/restatable"
                 className="relative z-[2] flex min-h-[5rem] shrink-0 items-center justify-between gap-4 bg-[#432f24] px-5 py-4 text-white transition-colors hover:bg-[#3a291f] sm:min-h-[5.25rem] sm:px-7 sm:py-5"
@@ -242,6 +177,41 @@ function Index() {
                     {h.intro.bookCta.replace(/\s*→\s*$/, "")}
                   </Link>
                 </div>
+              </div>
+            </article>
+
+            {/* Vasemman yläreunan boksi: otsikko + 4 syytä suoraan alle */}
+            <article className="relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[26rem] sm:min-h-[28rem] flex flex-col justify-center bg-white p-6 sm:p-8 text-foreground lg:col-start-1 lg:row-start-1">
+              <h2 className="mb-6 max-w-[14ch] text-[1.85rem] font-extrabold leading-[0.98] tracking-tight sm:mb-8 sm:text-4xl lg:text-[2.75rem]">
+                {h.whyUs.titleBefore}
+                {h.whyUs.titleAccent}
+                {h.whyUs.titleAfter}
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-7">
+                {h.whyUs.items.map((item, i) => {
+                  const Icon = WHY_US_ICONS[i] ?? BriefcaseBusiness;
+                  return (
+                    <div key={item.title} className="min-w-0">
+                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-[#432f24] text-white">
+                        <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-bold tracking-tight leading-tight mb-1.5">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm leading-relaxed text-foreground/65 line-clamp-4">
+                        {item.body}
+                      </p>
+                      {isWhyUsPath(item.href) ? (
+                        <Link
+                          to={item.href}
+                          className="mt-2.5 inline-flex text-xs font-bold uppercase tracking-[0.06em] text-accent underline-offset-2 hover:underline"
+                        >
+                          {item.linkLabel} →
+                        </Link>
+                      ) : null}
+                    </div>
+                  );
+                })}
               </div>
             </article>
 

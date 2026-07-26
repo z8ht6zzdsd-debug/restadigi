@@ -396,6 +396,12 @@ export const es: Messages = {
           href: "/restatable",
           linkLabel: "Conocer Restatable",
         },
+        {
+          title: "Restabooking",
+          body: "Restabooking — reservas de alojamiento en tu web para hoteles, posadas y cabañas.",
+          href: "/majoitusvaraus",
+          linkLabel: "Conocer Restabooking",
+        },
       ],
     },
     bookingPromo: {
@@ -591,9 +597,7 @@ export const es: Messages = {
       titleAfter: ".",
       description:
         "Unos sitios web y contenidos bien diseñados son tus herramientas digitales más importantes. Refuerzan la visibilidad de tu marca, facilitan el contacto de los clientes y dejan una fuerte primera impresión.",
-      promo: "desde 399€",
-      promoLine1: "desde",
-      promoLine2: "399€",
+      priceLabel: "Paquetes web desde 399 €",
       phoneShop: {
         brand: "Freddo's",
         product: "Ice latte",
@@ -601,16 +605,10 @@ export const es: Messages = {
         addToCart: "Añadir",
       },
     },
-    midBanner: {
-      title: "¡Tu camino hacia la máxima visibilidad empieza aquí!",
-      description:
-        "Descubre abajo los paquetes con los que elevarás la visibilidad online de tu empresa.",
-      imageAlt: "Más visitantes y reservas",
-    },
     popular: "Popular",
     requestQuote: "Solicitar presupuesto",
     explore: "Descubrir",
-    packagesTitle: "Paquetes web",
+    packagesTitle: "Descubre nuestros paquetes web",
     packages: [
       {
         name: "Start",
@@ -720,6 +718,14 @@ export const es: Messages = {
       searchPlaceholder: "Buscar",
       searchAriaLabel: "Buscar en visibilidad digital",
     },
+    midBanner: {
+      title: "¡Tu camino hacia la máxima visibilidad empieza aquí!",
+      description:
+        "Descubre abajo los paquetes con los que elevarás la visibilidad online de tu empresa.",
+    },
+    promo: "desde 99€",
+    promoLine1: "desde",
+    promoLine2: "99€",
     popular: "Popular",
     contactCta: "Contactar",
     resultPrefix: "Obtienes:",

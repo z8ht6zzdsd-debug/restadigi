@@ -395,6 +395,12 @@ export const fi: Messages = {
           href: "/restatable",
           linkLabel: "Tutustu Restableen",
         },
+        {
+          title: "Restabooking",
+          body: "Restabooking — majoitusvaraukset sivuilta hotelleille, majataloille ja mökeille.",
+          href: "/majoitusvaraus",
+          linkLabel: "Tutustu Restabookingiin",
+        },
       ],
     },
     bookingPromo: {
@@ -589,9 +595,7 @@ export const fi: Messages = {
       titleAfter: ".",
       description:
         "Hyvin suunnitellut verkkosivut ja verkkosisällöt ovat yrityksesi tärkeimmät digitaaliset työkalut. Ne vahvistavat brändisi näkyvyyttä, helpottavat asiakkaiden yhteydenottoa ja jättävät vahvan ensivaikutelman.",
-      promo: "alk. 399€",
-      promoLine1: "alk.",
-      promoLine2: "399€",
+      priceLabel: "Verkkosivupaketit alk. 399 €",
       phoneShop: {
         brand: "Freddo's",
         product: "Ice latte",
@@ -599,16 +603,10 @@ export const fi: Messages = {
         addToCart: "Lisää koriin",
       },
     },
-    midBanner: {
-      title: "Matkasi huippunäkyvyyksille alkaa tästä!",
-      description:
-        "Tutustu alta paketteihin, joilla nostat yrityksesi verkkonäkyvyyden uudelle tasolle.",
-      imageAlt: "Lisää kävijöitä ja varauksia",
-    },
     popular: "Suosittu",
     requestQuote: "Pyydä tarjous",
     explore: "Tutustu",
-    packagesTitle: "Verkkosivupaketit",
+    packagesTitle: "Tutustu verkkosivupaketteihimme",
     packages: [
       {
         name: "Start",
@@ -716,6 +714,14 @@ export const fi: Messages = {
       searchPlaceholder: "Haku",
       searchAriaLabel: "Hae diginäkyvyydestä",
     },
+    midBanner: {
+      title: "Matkasi huippunäkyvyyksille alkaa tästä!",
+      description:
+        "Tutustu alta paketteihin, joilla nostat yrityksesi verkkonäkyvyyden uudelle tasolle.",
+    },
+    promo: "alk. 99€",
+    promoLine1: "alk.",
+    promoLine2: "99€",
     popular: "Suosittu",
     contactCta: "Ota yhteyttä",
     resultPrefix: "Saat:",
