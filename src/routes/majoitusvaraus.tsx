@@ -74,11 +74,8 @@ function MajoitusvarausPage() {
       <SiteHeader />
 
       <section className="w-full border-b border-[#e8dfd4] bg-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-10 sm:gap-12 sm:px-6 sm:py-14 lg:grid-cols-12 lg:gap-10 lg:py-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-8 sm:gap-10 sm:px-6 sm:py-10 lg:grid-cols-12 lg:gap-10 lg:py-12">
           <div className="min-w-0 lg:col-span-6">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#8a8178]">
-              {b.hero.eyebrow}
-            </p>
             <h1 className="max-w-[18ch] text-3xl font-bold tracking-tight text-[#1a1512] sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08]">
               {b.hero.title}
             </h1>
@@ -112,7 +109,7 @@ function MajoitusvarausPage() {
         </div>
       </section>
 
-      <MarketingBand className="pt-10 sm:pt-12">
+      <MarketingBand className="!pt-8 sm:!pt-10">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           {p.eyebrow}
         </p>
