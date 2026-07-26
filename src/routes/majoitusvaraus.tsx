@@ -43,18 +43,52 @@ export const Route = createFileRoute("/majoitusvaraus")({
   component: MajoitusvarausPage,
 });
 
-function FeatureListCard({ title, items }: { title: string; items: string[] }) {
+function CompactPanelFeatures({
+  eyebrow,
+  body,
+  coreTitle,
+  coreItems,
+  activitiesTitle,
+  activitiesItems,
+}: {
+  eyebrow: string;
+  body: string;
+  coreTitle: string;
+  coreItems: string[];
+  activitiesTitle: string;
+  activitiesItems: string[];
+}) {
   return (
-    <MarketingBox tone="white" justify="start" className="min-h-0 py-6 sm:py-7">
-      <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-[#2a2018]">{title}</h3>
-      <ul className="mt-4 divide-y divide-[#d6d6d6]">
-        {items.map((item) => (
-          <li key={item} className="py-2.5 text-sm leading-snug text-[#2a2018] sm:text-[0.95rem]">
-            {item}
-          </li>
-        ))}
-      </ul>
-    </MarketingBox>
+    <div className="mx-auto w-full max-w-[34rem] rounded-2xl border-2 border-[#1a1512] bg-white p-4 sm:p-5">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-accent">{eyebrow}</p>
+      <p className="mt-2 text-xs leading-relaxed text-[#5c534c] sm:text-[0.8125rem]">{body}</p>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 sm:gap-5">
+        <div>
+          <h3 className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#1a1512]">
+            {coreTitle}
+          </h3>
+          <ul className="mt-2 space-y-1.5">
+            {coreItems.map((item) => (
+              <li key={item} className="text-[11px] leading-snug text-[#2a2018] sm:text-xs">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#1a1512]">
+            {activitiesTitle}
+          </h3>
+          <ul className="mt-2 space-y-1.5">
+            {activitiesItems.map((item) => (
+              <li key={item} className="text-[11px] leading-snug text-[#2a2018] sm:text-xs">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -73,7 +107,7 @@ function MajoitusvarausPage() {
       />
       <SiteHeader />
 
-      {/* Hero — same proportions as homepage Freddos stage */}
+      {/* Hero — devices + compact panel box left, copy right */}
       <section className="relative overflow-hidden bg-background">
         <div className="pointer-events-none absolute inset-0" aria-hidden>
           <span className="absolute -left-16 top-8 size-56 rounded-full border border-[#432f24]/8 sm:size-72" />
@@ -83,13 +117,21 @@ function MajoitusvarausPage() {
         </div>
 
         <div className="relative mx-auto grid max-w-6xl items-start gap-8 px-6 py-8 sm:gap-10 sm:py-10 lg:grid-cols-12 lg:gap-12 lg:py-12">
-          <div className="relative overflow-visible lg:col-span-6 lg:pt-1">
+          <div className="relative flex flex-col gap-5 overflow-visible lg:col-span-6 lg:pt-1">
             <StayBookingHeroDevices
               navItems={p.coreItems}
               activeNav={p.activeNav}
               calendarTitle={p.calendarTitle}
               phoneTitle={p.phoneTitle}
               phoneItems={p.activitiesItems}
+            />
+            <CompactPanelFeatures
+              eyebrow={p.eyebrow}
+              body={p.body}
+              coreTitle={p.coreTitle}
+              coreItems={p.coreItems}
+              activitiesTitle={p.activitiesTitle}
+              activitiesItems={p.activitiesItems}
             />
           </div>
 
@@ -117,25 +159,7 @@ function MajoitusvarausPage() {
         </div>
       </section>
 
-      <MarketingBand className="!pt-6 sm:!pt-8">
-        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-          {p.eyebrow}
-        </p>
-        <MarketingHeading>
-          {p.titleBefore}
-          <span className="italic text-accent">{p.titleAccent}</span>
-          {p.titleAfter}
-        </MarketingHeading>
-        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-foreground/70 sm:mb-10 sm:text-base">
-          {p.body}
-        </p>
-        <div className="mb-10 grid gap-4 sm:mb-14 sm:grid-cols-2 sm:gap-5">
-          <FeatureListCard title={p.coreTitle} items={p.coreItems} />
-          <FeatureListCard title={p.activitiesTitle} items={p.activitiesItems} />
-        </div>
-      </MarketingBand>
-
-      <section className="w-full bg-[#f0f0f0] px-6 py-10 sm:py-14 lg:py-16">
+      <section className="w-full border-t border-[#d6d6d6] bg-[#f0f0f0] px-6 py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             {b.demo.sectionEyebrow}
