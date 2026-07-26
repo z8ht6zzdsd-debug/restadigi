@@ -101,7 +101,7 @@ export function WebsitesPackageShowcase({
           );
 
           return (
-            <article key={pkg.name} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <article key={pkg.name} className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
               {/* Mobile: laptop always first. Desktop: alternate sides via order. */}
               <div className={cn(!imageLeft && "lg:order-2")}>{laptop}</div>
               <div className={cn(!imageLeft && "lg:order-1")}>{copy}</div>
