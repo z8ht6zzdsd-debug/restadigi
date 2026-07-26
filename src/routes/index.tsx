@@ -5,7 +5,6 @@ import {
   BriefcaseBusiness,
   CalendarDays,
   CircleDollarSign,
-  Hotel,
   Lightbulb,
   PanelsTopLeft,
 } from "lucide-react";
@@ -39,7 +38,7 @@ function isWhyUsPath(to: string): to is WhyUsPath {
 
 const WHY_US_ICONS: LucideIcon[] = [BriefcaseBusiness, CircleDollarSign, Bot, PanelsTopLeft];
 
-const SERVICE_ICONS: LucideIcon[] = [Bot, CalendarDays, Hotel];
+const SERVICE_ICONS: LucideIcon[] = [Bot, CalendarDays, PanelsTopLeft];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -285,19 +284,29 @@ function Index() {
                         {item.title}
                       </h4>
                       <p className="text-sm leading-relaxed text-foreground/65">{item.body}</p>
-                      {isWhyUsPath(item.href) ? (
-                        <Link
-                          to={item.href}
-                          className={
-                            "mt-3 inline-flex items-center rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.06em] transition-opacity hover:opacity-90 sm:text-sm " +
-                            (i === 0
-                              ? "bg-accent text-accent-foreground"
-                              : "bg-[#432f24] text-white")
-                          }
-                        >
-                          {item.linkLabel}
-                        </Link>
-                      ) : null}
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {isWhyUsPath(item.href) ? (
+                          <Link
+                            to={item.href}
+                            className={
+                              "inline-flex items-center rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-[0.06em] transition-opacity hover:opacity-90 sm:text-sm " +
+                              (i === 0
+                                ? "bg-accent text-accent-foreground"
+                                : "bg-[#432f24] text-white")
+                            }
+                          >
+                            {item.linkLabel}
+                          </Link>
+                        ) : null}
+                        {item.href2 && isWhyUsPath(item.href2) ? (
+                          <Link
+                            to={item.href2}
+                            className="inline-flex items-center rounded-full bg-[#432f24] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.06em] text-white transition-opacity hover:opacity-90 sm:text-sm"
+                          >
+                            {item.linkLabel2}
+                          </Link>
+                        ) : null}
+                      </div>
                     </div>
                   );
                 })}

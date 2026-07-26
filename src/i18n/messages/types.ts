@@ -177,6 +177,8 @@ export type Messages = {
         body: string;
         href: string;
         linkLabel: string;
+        href2?: string;
+        linkLabel2?: string;
       }>;
     };
     bookingPromo: {
@@ -635,6 +637,20 @@ export type Messages = {
       title: string;
       paragraphs: string[];
       cta: string;
+    };
+    panelFeatures: {
+      eyebrow: string;
+      titleBefore: string;
+      titleAccent: string;
+      titleAfter: string;
+      body: string;
+      coreTitle: string;
+      coreItems: string[];
+      activitiesTitle: string;
+      activitiesItems: string[];
+      calendarTitle: string;
+      phoneTitle: string;
+      activeNav: string;
     };
     pillarsHeading: {
       titleBefore: string;

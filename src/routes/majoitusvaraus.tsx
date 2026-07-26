@@ -1,13 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  BedDouble,
   Building2,
   ShoppingBag,
   Sparkles,
   Users,
   type LucideIcon,
 } from "lucide-react";
-import heroHotel from "@/assets/hero-hotel-lobby.jpg";
+import { StayBookingHeroDevices } from "@/components/stay-booking-hero-devices";
 import { StayBookingWidget } from "@/components/stay-booking-widget";
 import { StayReservationsDevicePreviews } from "@/components/stay-reservations-device-previews";
 import { StayRoomsDevicePreviews } from "@/components/stay-rooms-device-previews";
@@ -36,16 +35,33 @@ export const Route = createFileRoute("/majoitusvaraus")({
       { property: "og:title", content: "Restabooking — majoitusvaraus — Restadigi" },
       {
         property: "og:description",
-        content: "Kaikki varaukset yhdessä järjestelmässä — hotelleille, majataloille, mökeille ja lomakeskuksille.",
+        content:
+          "Kaikki varaukset yhdessä järjestelmässä — hotelleille, majataloille, mökeille ja lomakeskuksille.",
       },
     ],
   }),
   component: MajoitusvarausPage,
 });
 
+function FeatureListCard({ title, items }: { title: string; items: string[] }) {
+  return (
+    <MarketingBox tone="white" justify="start" className="min-h-0 py-6 sm:py-7">
+      <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-[#2a2018]">{title}</h3>
+      <ul className="mt-4 divide-y divide-[#e8dfd4]">
+        {items.map((item) => (
+          <li key={item} className="py-2.5 text-sm leading-snug text-[#2a2018] sm:text-[0.95rem]">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </MarketingBox>
+  );
+}
+
 function MajoitusvarausPage() {
   const t = useMessages();
   const b = t.stayBooking;
+  const p = b.panelFeatures;
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
@@ -57,38 +73,20 @@ function MajoitusvarausPage() {
       />
       <SiteHeader />
 
-      <section className="w-full border-b border-[#e8dfd4] bg-gradient-to-b from-[#f7f3ee] via-[#f3eee8] to-[#ebe8e2]">
-        <div className="mx-auto grid max-w-7xl items-start gap-8 px-4 py-10 sm:gap-10 sm:px-6 sm:py-14 lg:grid-cols-12 lg:gap-12 lg:py-16">
-          <div className="order-2 lg:order-1 lg:col-span-5">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] sm:aspect-[4/3] sm:rounded-[2rem] lg:aspect-[5/6] lg:min-h-[28rem]">
-              <img
-                src={heroHotel}
-                alt=""
-                aria-hidden
-                className="absolute inset-0 size-full object-cover object-[center_40%]"
-              />
-              <div className="absolute inset-0 bg-[#432f24]/20" aria-hidden />
-              <div className="absolute left-4 top-4 sm:left-5 sm:top-5">
-                <span className="inline-flex items-center gap-2 rounded-full bg-[#432f24]/90 px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#f7f3ee]">
-                  <BedDouble className="size-3.5 text-accent" strokeWidth={2} aria-hidden />
-                  {b.hero.eyebrow}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="order-1 min-w-0 lg:order-2 lg:col-span-7">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+      <section className="w-full border-b border-[#e8dfd4] bg-white">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-10 sm:gap-12 sm:px-6 sm:py-14 lg:grid-cols-12 lg:gap-10 lg:py-16">
+          <div className="min-w-0 lg:col-span-6">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#8a8178]">
               {b.hero.eyebrow}
             </p>
-            <h1 className="max-w-[18ch] font-serif text-3xl tracking-tight text-[#2a2018] sm:text-4xl lg:text-[2.85rem] lg:leading-[1.08]">
+            <h1 className="max-w-[18ch] text-3xl font-bold tracking-tight text-[#1a1512] sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08]">
               {b.hero.title}
             </h1>
-            <div className="mt-5 space-y-4 sm:mt-6">
+            <div className="mt-5 space-y-3.5 sm:mt-6">
               {b.hero.paragraphs.map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 48)}
-                  className="max-w-2xl text-sm leading-relaxed text-[#5c534c] sm:text-base"
+                  className="max-w-xl text-sm leading-relaxed text-[#5c534c] sm:text-base"
                 >
                   {paragraph}
                 </p>
@@ -101,8 +99,36 @@ function MajoitusvarausPage() {
               {b.hero.cta}
             </Link>
           </div>
+
+          <div className="lg:col-span-6">
+            <StayBookingHeroDevices
+              navItems={p.coreItems}
+              activeNav={p.activeNav}
+              calendarTitle={p.calendarTitle}
+              phoneTitle={p.phoneTitle}
+              phoneItems={p.activitiesItems}
+            />
+          </div>
         </div>
       </section>
+
+      <MarketingBand className="pt-10 sm:pt-12">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          {p.eyebrow}
+        </p>
+        <MarketingHeading>
+          {p.titleBefore}
+          <span className="italic text-accent">{p.titleAccent}</span>
+          {p.titleAfter}
+        </MarketingHeading>
+        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-foreground/70 sm:mb-10 sm:text-base">
+          {p.body}
+        </p>
+        <div className="mb-10 grid gap-4 sm:mb-14 sm:grid-cols-2 sm:gap-5">
+          <FeatureListCard title={p.coreTitle} items={p.coreItems} />
+          <FeatureListCard title={p.activitiesTitle} items={p.activitiesItems} />
+        </div>
+      </MarketingBand>
 
       <section className="w-full bg-[#f7f3ee] px-6 py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-7xl">
@@ -156,12 +182,7 @@ function MajoitusvarausPage() {
                 >
                   {pillar.title}
                 </h3>
-                <p
-                  className={
-                    "mt-2 text-sm font-semibold leading-snug sm:text-base " +
-                    (i % 2 === 0 ? "text-accent" : "text-accent")
-                  }
-                >
+                <p className="mt-2 text-sm font-semibold leading-snug text-accent sm:text-base">
                   {pillar.tagline}
                 </p>
                 <p
