@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import rafaHeroScreen from "@/assets/websites-hero-rafa-hd.jpg";
 import freddosHeroScreen from "@/assets/websites-hero-freddos-hd.jpg";
+import { WebsiteAdminPanelPair } from "@/components/dashboard-monitor-preview";
 import { MarketingBand } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -33,6 +34,7 @@ export const Route = createFileRoute("/verkkosivut")({
 function KotisivutPage() {
   const t = useMessages();
   const w = t.websites;
+  const demo = w.dashboardPromo;
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
@@ -53,6 +55,35 @@ function KotisivutPage() {
         leftScreenSrc={rafaHeroScreen}
         rightScreenSrc={freddosHeroScreen}
       />
+
+      <section className="bg-white px-3 pb-10 sm:px-5 sm:pb-14 lg:px-6">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 rounded-2xl border-2 border-[#1a1512] bg-white p-4 sm:gap-6 sm:rounded-[1.25rem] sm:p-6 lg:p-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+            <h2 className="max-w-[28ch] text-xl font-bold tracking-tight text-[#1a1512] sm:text-2xl lg:text-3xl">
+              {demo.title}
+            </h2>
+            <div className="flex shrink-0 flex-wrap items-center gap-3 sm:gap-4">
+              <a
+                href={demo.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-[#c46a32] underline-offset-4 hover:underline sm:text-base"
+              >
+                {demo.body}
+              </a>
+              <a
+                href={demo.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full bg-[#432f24] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.06em] text-[#f7f3ee] transition-opacity hover:opacity-90 sm:text-sm"
+              >
+                {demo.linkLabel}
+              </a>
+            </div>
+          </div>
+          <WebsiteAdminPanelPair />
+        </div>
+      </section>
 
       <WebsitesPackageShowcase
         packagesTitle={w.packagesTitle}

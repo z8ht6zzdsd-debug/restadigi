@@ -135,7 +135,7 @@ export const es: Messages = {
       { code: "es", label: "Español" },
     ],
     contactIntro:
-      "Aquí encontrarás datos de contacto, información de la empresa y precios. Contáctanos — estaremos encantados de ayudar.",
+      "Aquí encontrarás datos de contacto e información de la empresa. Contáctanos — estaremos encantados de ayudar.",
     contactCta: "Ir a la página de contacto",
     contactLinks: [
       {
@@ -147,11 +147,6 @@ export const es: Messages = {
         title: "Sobre nosotros",
         body: "Conoce Restadigi y cómo creamos servicios digitales.",
         to: "/meista",
-      },
-      {
-        title: "Precios",
-        body: "Paquetes y precios claros de nuestros servicios.",
-        to: "/hinnasto",
       },
     ],
     contactPanel: {
@@ -543,57 +538,6 @@ export const es: Messages = {
     lead: "Restadigi es un estudio digital independiente que crea sitios web y refuerza la visibilidad digital de pymes. Usamos la tecnología más reciente para que los sitios se lancen rápido, funcionen en todos los dispositivos y sean fáciles de actualizar.",
     secondary:
       "Preferimos colaboraciones a largo plazo: las mismas manos que diseñan tu sitio también ayudan con su visibilidad y desarrollo a futuro.",
-    imageAlt: "Chef preparando un plato en la cocina de un restaurante",
-    values: [
-      {
-        titleAccent: "Hecho a",
-        titleRest: "mano",
-        body: "Sin plantillas. Cada proyecto se diseña desde cero según tus objetivos.",
-      },
-      {
-        titleAccent: "Precios",
-        titleRest: "transparentes",
-        body: "Paquetes y extras claros — sabes por qué pagas, de principio a fin.",
-      },
-      {
-        titleAccent: "Colaboración",
-        titleRest: "a largo plazo",
-        body: "También ayudamos después del lanzamiento — en actualizaciones, desarrollo y mantenimiento.",
-      },
-    ],
-    process: {
-      titleBefore: "Cuatro ",
-      titleAccent: "pasos",
-      titleAfter: " hasta el sitio terminado.",
-      steps: [
-        {
-          n: "01",
-          title: "Conversación",
-          body: "Definimos juntos objetivos, público y plazos.",
-        },
-        {
-          n: "02",
-          title: "Diseño",
-          body: "Estructura, identidad visual y contenido se refinan de forma iterativa.",
-        },
-        {
-          n: "03",
-          title: "Desarrollo",
-          body: "Construimos el sitio optimizado para buscadores y accesible.",
-        },
-        {
-          n: "04",
-          title: "Lanzamiento y soporte",
-          body: "Publicación, formación en el panel y soporte continuo.",
-        },
-      ],
-    },
-    cta: {
-      titleBefore: "¿Te suena bien ",
-      titleAccent: "colaborar",
-      titleAfter: "?",
-      button: "Contactar",
-    },
   },
   websites: {
     meta: {
@@ -621,7 +565,7 @@ export const es: Messages = {
     popular: "Popular",
     requestQuote: "Solicitar presupuesto",
     explore: "Descubrir",
-    packagesTitle: "Descubre nuestros paquetes web",
+    packagesTitle: "Paquetes web",
     packages: [
       {
         name: "Start",
@@ -677,6 +621,12 @@ export const es: Messages = {
     footnoteLink: "servicios de mantenimiento",
     footnoteAfter:
       ". También puedes comprar el dominio y el hosting tú mismo, o usar un dominio que ya tengas.",
+    dashboardPromo: {
+      title: "Descubre el panel de administración personalizable del sitio web",
+      body: "demo.restadigi.fi",
+      linkLabel: "Descubrir",
+      href: "https://demo.restadigi.fi",
+    },
     process: {
       title: "Proceso de compra del sitio web — 8 pasos",
       steps: [

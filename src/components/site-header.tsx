@@ -14,7 +14,6 @@ import {
   Plane,
   Scissors,
   Server,
-  Tags,
   Users,
   UtensilsCrossed,
   type LucideIcon,
@@ -58,7 +57,7 @@ const INDUSTRY_ICONS: LucideIcon[] = [
   Scissors,
 ];
 
-const CONTACT_ICONS: LucideIcon[] = [Mail, Users, Tags];
+const CONTACT_ICONS: LucideIcon[] = [Mail, Users];
 
 function isServicePath(to: string): to is ServicePath {
   return (SERVICE_PATHS as readonly string[]).includes(to);
@@ -316,7 +315,7 @@ export function SiteHeader() {
               return (
                 <MegaLink
                   key={item.to}
-                  to={item.to as "/yhteys" | "/meista" | "/hinnasto"}
+                  to={item.to as "/yhteys" | "/meista"}
                   title={item.title}
                   body={item.body}
                   Icon={Icon}
@@ -437,7 +436,7 @@ export function SiteHeader() {
                 {t.header.contactLinks.map((item) => (
                   <Link
                     key={item.to}
-                    to={item.to as "/yhteys" | "/meista" | "/hinnasto"}
+                    to={item.to as "/yhteys" | "/meista"}
                     onClick={closeAll}
                     className="mb-3 block last:mb-0"
                   >

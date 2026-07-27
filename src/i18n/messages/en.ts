@@ -135,7 +135,7 @@ export const en: Messages = {
       { code: "es", label: "Español" },
     ],
     contactIntro:
-      "Find contact details, company info and pricing here. Get in touch — we’re happy to help.",
+      "Find contact details and company info here. Get in touch — we’re happy to help.",
     contactCta: "Go to contact page",
     contactLinks: [
       {
@@ -147,11 +147,6 @@ export const en: Messages = {
         title: "About us",
         body: "Learn about Restadigi and how we build digital services.",
         to: "/meista",
-      },
-      {
-        title: "Pricing",
-        body: "Clear packages and prices for our services.",
-        to: "/hinnasto",
       },
     ],
     contactPanel: {
@@ -539,57 +534,6 @@ export const en: Messages = {
     lead: "Restadigi is an independent digital studio that builds websites and strengthens the digital visibility of small and medium-sized businesses. We use the latest technology so sites launch quickly, work on every device and stay easy to update.",
     secondary:
       "We prefer long-term partnerships: the same hands that design your site also help grow its visibility and development going forward.",
-    imageAlt: "Chef preparing a dish in a restaurant kitchen",
-    values: [
-      {
-        titleAccent: "Handcrafted",
-        titleRest: "work",
-        body: "No templates. Every project is designed from scratch around your goals.",
-      },
-      {
-        titleAccent: "Transparent",
-        titleRest: "pricing",
-        body: "Clear packages and add-ons — you know what you're paying for, start to finish.",
-      },
-      {
-        titleAccent: "Long-term",
-        titleRest: "partnership",
-        body: "We help after launch too — with updates, development and maintenance.",
-      },
-    ],
-    process: {
-      titleBefore: "Four ",
-      titleAccent: "steps",
-      titleAfter: " to a finished website.",
-      steps: [
-        {
-          n: "01",
-          title: "Conversation",
-          body: "We map goals, audience and timeline together.",
-        },
-        {
-          n: "02",
-          title: "Design",
-          body: "Structure, visual identity and content are refined iteratively.",
-        },
-        {
-          n: "03",
-          title: "Build",
-          body: "We build the site search-optimised and accessible.",
-        },
-        {
-          n: "04",
-          title: "Launch & support",
-          body: "Launch, admin training and ongoing support.",
-        },
-      ],
-    },
-    cta: {
-      titleBefore: "Does a ",
-      titleAccent: "partnership",
-      titleAfter: " sound good?",
-      button: "Get in touch",
-    },
   },
   websites: {
     meta: {
@@ -616,7 +560,7 @@ export const en: Messages = {
     popular: "Popular",
     requestQuote: "Request a quote",
     explore: "Explore",
-    packagesTitle: "Explore our website packages",
+    packagesTitle: "Website packages",
     packages: [
       {
         name: "Start",
@@ -670,6 +614,12 @@ export const en: Messages = {
     footnoteLink: "hosting & maintenance",
     footnoteAfter:
       ". You can also buy the domain and web hosting yourself, or use an existing domain.",
+    dashboardPromo: {
+      title: "Explore the customizable website admin panel",
+      body: "demo.restadigi.fi",
+      linkLabel: "Explore",
+      href: "https://demo.restadigi.fi",
+    },
     process: {
       title: "Website purchase process — 8 steps",
       steps: [

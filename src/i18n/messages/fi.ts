@@ -135,7 +135,7 @@ export const fi: Messages = {
       { code: "es", label: "Español" },
     ],
     contactIntro:
-      "Täältä löydät yhteystiedot, yritystiedot ja hinnoittelun. Ota yhteyttä — vastaamme mielellämme.",
+      "Täältä löydät yhteystiedot ja yritystiedot. Ota yhteyttä — vastaamme mielellämme.",
     contactCta: "Siirry yhteyssivulle",
     contactLinks: [
       {
@@ -147,11 +147,6 @@ export const fi: Messages = {
         title: "Tietoa meistä",
         body: "Tutustu Restadigiin ja tapaamme tehdä digipalveluita.",
         to: "/meista",
-      },
-      {
-        title: "Hinnasto",
-        body: "Selkeät paketit ja hinnat palveluillemme.",
-        to: "/hinnasto",
       },
     ],
     contactPanel: {
@@ -542,57 +537,6 @@ export const fi: Messages = {
     lead: "Restadigi on itsenäinen digistudio, joka rakentaa kotisivuja ja vahvistaa pienten ja keskisuurten yritysten diginäkyvyyttä. Käytämme uusinta teknologiaa, jotta sivut valmistuvat nopeasti, toimivat kaikilla laitteilla ja ovat helposti päivitettävissä.",
     secondary:
       "Työskentelemme mielellämme pitkäjänteisesti: samat kädet, jotka suunnittelevat sivustosi, auttavat myös sen näkyvyyden ja kehittämisen kanssa eteenpäin.",
-    imageAlt: "Kokki valmistaa annosta ravintolan keittiössä",
-    values: [
-      {
-        titleAccent: "Käsityönä",
-        titleRest: "tehty",
-        body: "Ei mallipohjia. Jokainen projekti suunnitellaan alusta asti tavoitteidesi mukaan.",
-      },
-      {
-        titleAccent: "Läpinäkyvä",
-        titleRest: "hinnoittelu",
-        body: "Selkeät paketit ja lisäpalvelut — tiedät mistä maksat, alusta loppuun.",
-      },
-      {
-        titleAccent: "Pitkäjänteinen",
-        titleRest: "kumppanuus",
-        body: "Autamme myös julkaisun jälkeen — päivityksissä, kehityksessä ja ylläpidossa.",
-      },
-    ],
-    process: {
-      titleBefore: "Neljä ",
-      titleAccent: "askelta",
-      titleAfter: " valmiiseen sivustoon.",
-      steps: [
-        {
-          n: "01",
-          title: "Keskustelu",
-          body: "Kartoitetaan tavoitteet, kohderyhmä ja aikataulu yhdessä.",
-        },
-        {
-          n: "02",
-          title: "Suunnittelu",
-          body: "Rakenne, visuaalinen ilme ja sisältö hiotaan iteratiivisesti.",
-        },
-        {
-          n: "03",
-          title: "Toteutus",
-          body: "Rakennamme sivuston hakukoneoptimoituna ja saavutettavana.",
-        },
-        {
-          n: "04",
-          title: "Julkaisu & tuki",
-          body: "Julkaisu, koulutus hallintapaneelin käyttöön ja jatkotuki.",
-        },
-      ],
-    },
-    cta: {
-      titleBefore: "Kuulostaako ",
-      titleAccent: "yhteistyö",
-      titleAfter: " hyvältä?",
-      button: "Ota yhteyttä",
-    },
   },
   websites: {
     meta: {
@@ -619,7 +563,7 @@ export const fi: Messages = {
     popular: "Suosittu",
     requestQuote: "Pyydä tarjous",
     explore: "Tutustu",
-    packagesTitle: "Tutustu verkkosivupaketteihimme",
+    packagesTitle: "Verkkosivupaketit",
     packages: [
       {
         name: "Start",
@@ -673,6 +617,12 @@ export const fi: Messages = {
     footnoteLink: "ylläpitopalveluista",
     footnoteAfter:
       ". Voit myös ostaa domainin ja verkkohotellin itse tai käyttää jo olemassa olevaa domainia.",
+    dashboardPromo: {
+      title: "Tutustu verkkosivuston yksilöitävään hallintapaneeliin",
+      body: "demo.restadigi.fi",
+      linkLabel: "Tutustu",
+      href: "https://demo.restadigi.fi",
+    },
     process: {
       title: "Verkkosivujen ostoprosessi — 8 askelta",
       steps: [

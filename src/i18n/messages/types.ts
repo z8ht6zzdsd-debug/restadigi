@@ -305,20 +305,6 @@ export type Messages = {
     titleAfter: string;
     lead: string;
     secondary: string;
-    imageAlt: string;
-    values: Array<{ titleAccent: string; titleRest: string; body: string }>;
-    process: {
-      titleBefore: string;
-      titleAccent: string;
-      titleAfter: string;
-      steps: Array<{ n: string; title: string; body: string }>;
-    };
-    cta: {
-      titleBefore: string;
-      titleAccent: string;
-      titleAfter: string;
-      button: string;
-    };
   };
   websites: {
     meta: {
@@ -355,6 +341,12 @@ export type Messages = {
     footnoteBefore: string;
     footnoteLink: string;
     footnoteAfter: string;
+    dashboardPromo: {
+      title: string;
+      body: string;
+      linkLabel: string;
+      href: string;
+    };
     process: {
       title: string;
       steps: Array<{ title: string; body: string }>;
