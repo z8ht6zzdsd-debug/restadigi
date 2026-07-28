@@ -1,14 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import {
+  BedDouble,
   Bookmark,
   CalendarDays,
+  ChefHat,
+  Coffee,
+  Compass,
   Eye,
   Globe,
   Mail,
   MessageCircle,
   Palette,
   Server,
+  Ticket,
   Users,
+  Wine,
   type LucideIcon,
 } from "lucide-react";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
@@ -39,6 +45,16 @@ const SERVICE_ICONS: Record<ServicePath, LucideIcon> = {
   "/graafinen-suunnittelu": Palette,
   "/yllapito": Server,
 };
+
+/** Order matches header.industriesList in all locales. Bare icons, no background plates. */
+const INDUSTRY_ICONS: LucideIcon[] = [
+  Ticket, // Areenat, tapahtumat ja esiintyjät
+  BedDouble, // Hotellit ja hostellit
+  Compass, // Matkailu ja aktiviteetit
+  ChefHat, // Ravintolat
+  Wine, // Baarit, pubit ja yökerhot
+  Coffee, // Kahvilat ja kioskit
+];
 
 const CONTACT_ICONS: LucideIcon[] = [Mail, Users];
 
@@ -255,17 +271,25 @@ export function SiteHeader() {
         <MegaPanel id={`${baseId}-toimialat`}>
           <MegaIntro title={t.header.industries} body={t.header.industriesIntro} />
           <div className="max-h-[min(70vh,28rem)] space-y-0.5 overflow-y-auto p-3 sm:p-5">
-            {t.header.industriesList.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-xl px-3 py-3.5 transition-colors hover:bg-[#f0f0f0] sm:px-4"
-              >
-                <p className="text-[0.95rem] font-bold tracking-tight text-[#2a2018] sm:text-base">
-                  {item.title}
-                </p>
-                <p className="mt-1 text-sm leading-relaxed text-[#5c534c]">{item.body}</p>
-              </div>
-            ))}
+            {t.header.industriesList.map((item, i) => {
+              const Icon = INDUSTRY_ICONS[i] ?? Compass;
+              return (
+                <div
+                  key={item.title}
+                  className="flex gap-3 rounded-xl px-3 py-3.5 transition-colors hover:bg-[#f0f0f0] sm:gap-3.5 sm:px-4"
+                >
+                  <span className="mt-0.5 inline-flex shrink-0 text-[#432f24]" aria-hidden>
+                    <Icon className="size-5" strokeWidth={1.75} />
+                  </span>
+                  <span className="min-w-0">
+                    <p className="text-[0.95rem] font-bold tracking-tight text-[#2a2018] sm:text-base">
+                      {item.title}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-[#5c534c]">{item.body}</p>
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </MegaPanel>
       )}
@@ -358,12 +382,20 @@ export function SiteHeader() {
                   {t.header.industriesIntro}
                 </p>
                 <ul className="space-y-3">
-                  {t.header.industriesList.map((item) => (
-                    <li key={item.title}>
-                      <div className="text-sm font-bold text-[#2a2018]">{item.title}</div>
-                      <p className="mt-1 text-sm leading-relaxed text-[#5c534c]">{item.body}</p>
-                    </li>
-                  ))}
+                  {t.header.industriesList.map((item, i) => {
+                    const Icon = INDUSTRY_ICONS[i] ?? Compass;
+                    return (
+                      <li key={item.title} className="flex gap-3">
+                        <span className="mt-0.5 inline-flex shrink-0 text-[#432f24]" aria-hidden>
+                          <Icon className="size-5" strokeWidth={1.75} />
+                        </span>
+                        <span className="min-w-0">
+                          <div className="text-sm font-bold text-[#2a2018]">{item.title}</div>
+                          <p className="mt-1 text-sm leading-relaxed text-[#5c534c]">{item.body}</p>
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </MobileSection>
