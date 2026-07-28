@@ -239,7 +239,7 @@ export function WebsitesDualLaptopHero({
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-3xl font-bold tracking-tight text-[#1d1d1f] sm:text-4xl lg:text-5xl">
             {titleBefore}
-            <span className="font-serif italic text-[#c46a32]">{titleAccent}</span>
+            <span className="font-serif italic text-inherit">{titleAccent}</span>
             {titleAfter}
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-[#1d1d1f]/70 sm:mt-4 sm:text-base">

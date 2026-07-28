@@ -1247,9 +1247,14 @@
     max-width: 48rem;
   }
 
+  /* Otsikon korostussana sama väri kuin muu otsikko (ei oranssia) */
+  h1 .text-accent,
+  h2 .text-accent,
+  h3 .text-accent,
+  h4 .text-accent,
   .page-hero__title .text-accent {
-    color: oklch(0.84 0.16 42);
-    text-shadow: 0 2px 16px color-mix(in oklch, var(--foreground) 40%, transparent);
+    color: inherit;
+    text-shadow: none;
   }
 
   @media (min-width: 640px) {
