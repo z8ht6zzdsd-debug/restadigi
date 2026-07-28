@@ -61,7 +61,7 @@ export const fi: Messages = {
     servicesIntro:
       "Digitaaliset palvelut, joilla ravintolat, majoitus ja palveluyritykset myyvät, varaavat ja palvelevat asiakkaita verkossa — selkeästi.",
     industriesIntro:
-      "Toimialakohtaiset digiratkaisut — verkkosivut, varaukset, näkyvyys ja Restachat palvelualan yrityksille.",
+      "Restadigilla on kattava valikoima toimialakohtaisia digiratkaisuja, jotka on suunniteltu tukemaan liiketoimintaa erilaisissa ympäristöissä.\n\nTutustu eri toimialoille kehitettyihin palveluihin ja löydä omasi.",
     industriesList: [
       {
         title: "Areenat, tapahtumat ja esiintyjät",

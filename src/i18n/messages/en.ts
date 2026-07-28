@@ -61,7 +61,7 @@ export const en: Messages = {
     servicesIntro:
       "Digital services that help restaurants, hospitality and service businesses sell, book and serve customers online — clearly.",
     industriesIntro:
-      "Industry-specific digital solutions — websites, bookings, visibility and Restachat for service businesses.",
+      "Restadigi offers a comprehensive range of industry-specific digital solutions designed to support businesses in different environments.\n\nExplore the services built for each industry and find yours.",
     industriesList: [
       {
         title: "Arenas, events and performers",

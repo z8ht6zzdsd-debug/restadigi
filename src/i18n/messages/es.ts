@@ -61,7 +61,7 @@ export const es: Messages = {
     servicesIntro:
       "Servicios digitales para que restaurantes, alojamiento y empresas de servicios vendan, reserven y atiendan online — con claridad.",
     industriesIntro:
-      "Soluciones digitales por sector — sitios web, reservas, visibilidad y Restachat para empresas de servicios.",
+      "Restadigi ofrece una amplia gama de soluciones digitales por sector, diseñadas para apoyar el negocio en distintos entornos.\n\nDescubre los servicios desarrollados para cada sector y encuentra el tuyo.",
     industriesList: [
       {
         title: "Estadios, eventos y artistas",

@@ -378,7 +378,7 @@ export function SiteHeader() {
               onToggle={() => toggleMobileSection("toimialat")}
             >
               <div className="rounded-2xl bg-[#e8e8e8] p-4">
-                <p className="mb-4 text-sm leading-relaxed text-[#5c534c]">
+                <p className="mb-4 whitespace-pre-line text-sm leading-relaxed text-[#5c534c]">
                   {t.header.industriesIntro}
                 </p>
                 <ul className="space-y-3">
@@ -501,7 +501,9 @@ function MegaIntro({
       >
         {title}
       </h2>
-      <p className="mt-4 text-sm leading-relaxed text-[#5c534c] sm:text-[0.95rem]">{body}</p>
+        <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-[#5c534c] sm:text-[0.95rem]">
+          {body}
+        </p>
       {cta}
     </aside>
   );
