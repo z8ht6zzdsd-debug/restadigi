@@ -33,7 +33,6 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
         <div className={"space-y-1.5 text-sm " + muted}>
           <p className={"font-medium " + strong}>{c.company}</p>
-          <p>{c.person}</p>
           <p>{c.address}</p>
           <p>
             <span className="sr-only">{c.emailLabel}: </span>

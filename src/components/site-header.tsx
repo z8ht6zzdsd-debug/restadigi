@@ -325,10 +325,9 @@ export function SiteHeader() {
               );
             })}
             <div className="mt-3 rounded-xl border border-[#d6d6d6] bg-[#f5f5f5] px-3 py-3">
-              <p className="text-sm font-semibold text-[#2a2018]">{t.header.contactPanel.person}</p>
               <a
                 href={`mailto:${t.header.contactPanel.email}`}
-                className="mt-1 block text-sm text-[#c46a32] hover:underline"
+                className="block text-sm text-[#c46a32] hover:underline"
               >
                 {t.header.contactPanel.email}
               </a>

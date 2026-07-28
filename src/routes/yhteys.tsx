@@ -91,12 +91,6 @@ function YhteysPage() {
             <div className="space-y-7">
               <div>
                 <div className="mb-2 text-xs uppercase tracking-[0.2em] text-white/50">
-                  {c.labels.person}
-                </div>
-                <p className="text-lg font-medium">{c.person}</p>
-              </div>
-              <div>
-                <div className="mb-2 text-xs uppercase tracking-[0.2em] text-white/50">
                   {c.labels.email}
                 </div>
                 <a
