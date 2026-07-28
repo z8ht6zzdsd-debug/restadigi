@@ -306,7 +306,7 @@ export const en: Messages = {
       titleAccent: "serves your customers 24/7",
       titleAfter: ".",
       description:
-        "A company’s digital whole rests on three pillars: websites, booking services and AI customer service. We build websites, mobile apps, booking and ordering systems, and other smart digital solutions for service businesses. A fast, cost-effective service package including websites, booking systems, customer service and sales.",
+        "A company’s digital whole rests on three pillars: websites, booking services and AI-powered customer service. We design and deliver websites, mobile apps, booking and ordering systems, and other smart digital solutions for service businesses. We offer a high-quality, cost-effective service package that brings online visibility, scheduling, customer service and sales together as one seamless whole.",
       cta: "Request a quote",
     },
     sitePreview: {

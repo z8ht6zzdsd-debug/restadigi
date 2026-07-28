@@ -308,7 +308,7 @@ export const fi: Messages = {
       titleAccent: "palvelee asiakkaitasi 24/7",
       titleAfter: ".",
       description:
-        "Yrityksen digitaalinen kokonaisuus rakentuu kolmesta kulmakivestä: verkkosivut, varauspalvelut ja AI-asiakaspalvelut. Rakennamme verkkosivuja, mobiiliapplikaatioita, varaus- ja tilausjärjestelmiä sekä muita älykkäitä digitaalisia ratkaisuja palvelualan yrityksille. Nopea ja kustannustehokas palvelukokonaisuus sisältäen verkkosivut, varausjärjestelmät, asiakaspalvelun ja myynnin.",
+        "Yrityksen digitaalinen kokonaisuus rakentuu kolmesta kulmakivestä: verkkosivut, varauspalvelut ja AI-pohjainen asiakaspalvelu. Suunnittelemme ja toteutamme verkkosivuja, mobiilisovelluksia, varaus- ja tilausjärjestelmiä sekä muita älykkäitä digitaalisia ratkaisuja palvelualan yrityksille. Tarjoamme laadukkaan ja kustannustehokkaan palvelukokonaisuuden, joka yhdistää verkkonäkyvyyden, ajanvarauksen, asiakaspalvelun ja myynnin saumattomaksi kokonaisuudeksi.",
       cta: "Pyydä tarjous",
     },
     sitePreview: {
