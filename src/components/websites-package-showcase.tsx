@@ -252,7 +252,7 @@ export function WebsitesDualLaptopHero({
       </div>
 
       <div
-        className="websites-dual-hero relative mx-auto mt-6 w-full max-w-7xl px-2 pb-8 sm:mt-8 sm:px-4 sm:pb-12 lg:mt-10 lg:pb-16"
+        className="websites-dual-hero relative mx-auto mt-3 w-full max-w-7xl px-2 pb-8 sm:mt-5 sm:px-4 sm:pb-12 lg:mt-6 lg:pb-16"
       >
         <div className="websites-dual-hero__stage relative mx-auto flex min-h-[14rem] items-end justify-center sm:min-h-[20rem] lg:min-h-[26rem]">
           <div className="websites-dual-hero__left absolute bottom-0 left-[2%] w-[52%] sm:left-[4%] sm:w-[48%] lg:left-[6%] lg:w-[46%]">

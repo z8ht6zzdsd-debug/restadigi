@@ -85,11 +85,7 @@ function RestatablePage() {
       {/* Full-width Restatable hero */}
       <section className="w-full border-b border-[#d6d6d6] bg-gradient-to-b from-[#f0f0f0] via-[#e8e8e8] to-[#e2e2e2]">
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 sm:gap-10 sm:px-6 sm:py-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12 lg:py-16">
-          <div className="min-w-0">
-            <BookingManagementPanel />
-          </div>
-
-          <div>
+          <div className="lg:order-2">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
               {b.dashboard.eyebrow}
             </p>
@@ -116,6 +112,10 @@ function RestatablePage() {
               </Link>
             </div>
             <p className="mt-3 text-xs text-[#8a7f74]">{b.dashboard.ctaNote}</p>
+          </div>
+
+          <div className="min-w-0 lg:order-1">
+            <BookingManagementPanel />
           </div>
         </div>
       </section>
