@@ -46,11 +46,11 @@ function MeistaPage() {
             {a.titleAfter}
           </h1>
 
-          <div className="grid gap-6 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:gap-x-16">
+          <div className="space-y-6">
             {a.paragraphs.map((paragraph) => (
               <p
                 key={paragraph.slice(0, 48)}
-                className="text-base leading-relaxed text-foreground/70 sm:text-lg"
+                className="max-w-none text-base leading-relaxed text-foreground/70 sm:text-lg"
               >
                 {paragraph}
               </p>
@@ -61,7 +61,7 @@ function MeistaPage() {
             <h2 className="mb-8 text-xl font-bold tracking-tight text-[#2a2018] sm:text-2xl">
               {a.teamHeading}
             </h2>
-            <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:gap-16">
+            <div className="space-y-8">
               {a.team.map((member) => (
                 <div key={member.name}>
                   <p className="text-lg font-bold tracking-tight text-[#2a2018]">{member.name}</p>
@@ -73,7 +73,7 @@ function MeistaPage() {
             </div>
           </div>
 
-          <p className="mt-14 max-w-3xl text-base leading-relaxed text-foreground/70 sm:mt-16 sm:text-lg">
+          <p className="mt-14 text-base leading-relaxed text-foreground/70 sm:mt-16 sm:text-lg">
             {a.closing}
           </p>
         </div>
