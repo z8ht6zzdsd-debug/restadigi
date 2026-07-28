@@ -80,16 +80,12 @@ export const en: Messages = {
         body: "From fine dining to fast food: websites, mobile apps, table reservations and AI customer service — sales and service around the clock.",
       },
       {
+        title: "Bars, pubs and nightclubs",
+        body: "Fast service and clear sales: websites, events, table and venue bookings plus AI customer service that keep the night running smoothly.",
+      },
+      {
         title: "Cafés and kiosks",
         body: "Stylish websites and a mobile app with a loyalty programme — brand, repeat visits and customer relationships in one package.",
-      },
-      {
-        title: "Gyms and personal trainers",
-        body: "A custom training-schedule dashboard — bookings, timetables and client messaging in one clear view.",
-      },
-      {
-        title: "Barbers, salons and wellness",
-        body: "Modern websites and appointment booking so your services are found, booked and sold without endless phone tag.",
       },
     ],
     servicesList: [

@@ -80,16 +80,12 @@ export const es: Messages = {
         body: "Del fine dining a la comida rápida: sitios web, apps móviles, reservas de mesa y atención con IA — ventas y servicio las 24 horas.",
       },
       {
+        title: "Bares, pubs y discotecas",
+        body: "Servicio rápido y ventas claras: sitios web, eventos, reservas de mesa y sala, además de atención con IA para que la noche fluya.",
+      },
+      {
         title: "Cafeterías y kioscos",
         body: "Sitios web elegantes y una app móvil con programa de fidelización — marca, repetición y relación con el cliente en un solo conjunto.",
-      },
-      {
-        title: "Gimnasios y entrenadores personales",
-        body: "Panel a medida para horarios de entrenamiento — reservas, agendas y comunicación con clientes en una vista clara.",
-      },
-      {
-        title: "Peluquerías, salones y bienestar",
-        body: "Sitios web modernos y reserva de citas para que tus servicios se vean, se reserven y se vendan sin interminables llamadas.",
       },
     ],
     servicesList: [

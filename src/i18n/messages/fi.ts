@@ -80,16 +80,12 @@ export const fi: Messages = {
         body: "Fine diningista fast foodiin: verkkosivut, mobiiliapplikaatiot, pöytävaraukset ja AI-asiakaspalvelu — myynti ja palvelu ympäri vuorokauden.",
       },
       {
+        title: "Baarit, pubit ja yökerhot",
+        body: "Nopeaa palvelua ja selkeää myyntiä: verkkosivut, tapahtumat, pöytä- ja tilavaraukset sekä AI-asiakaspalvelu, jotka pitävät illan sujuvana.",
+      },
+      {
         title: "Kahvilat ja kioskit",
         body: "Tyylikkäät verkkosivut ja mobiiliapplikaatio kanta-asiakasohjelmalla — brändi, toistot ja asiakassuhde samassa kokonaisuudessa.",
-      },
-      {
-        title: "Kuntosalit ja personal trainerit",
-        body: "Kustomoitu treeniaikataulujen hallintapaneeli — varaukset, aikataulut ja asiakasviestintä yhdessä selkeässä näkymässä.",
-      },
-      {
-        title: "Parturit, kampaamot ja hoitolapalvelut",
-        body: "Modernit verkkosivut ja ajanvaraus, joilla palvelusi näkyvät, varataan ja myydään ilman turhaa puhelinkierrosta.",
       },
     ],
     servicesList: [
