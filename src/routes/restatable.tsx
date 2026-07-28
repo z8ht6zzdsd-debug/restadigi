@@ -95,7 +95,7 @@ function RestatablePage() {
             </p>
             <h1 className="max-w-[16ch] font-serif text-3xl tracking-tight text-[#2a2018] sm:text-4xl lg:text-[2.85rem] lg:leading-[1.05]">
               {b.dashboard.titleBefore}
-              <span className="italic text-accent">{b.dashboard.titleAccent}</span>
+              <span className="italic text-inherit">{b.dashboard.titleAccent}</span>
               {b.dashboard.titleAfter}
             </h1>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-foreground/70 sm:text-base">
@@ -162,7 +162,7 @@ function RestatablePage() {
         {/* Rest of Restatable / Restabooking content */}
         <MarketingHeading>
           {b.channels.titleBefore}
-          <span className="font-serif italic text-accent">{b.channels.titleAccent}</span>
+          <span className="font-serif italic text-inherit">{b.channels.titleAccent}</span>
           {b.channels.titleAfter}
         </MarketingHeading>
 
@@ -182,7 +182,7 @@ function RestatablePage() {
               </p>
               <h3 className="font-serif text-2xl tracking-tight text-[#2a2018]">
                 {b.guestManage.titleBefore}
-                <span className="italic text-accent">{b.guestManage.titleAccent}</span>
+                <span className="italic text-inherit">{b.guestManage.titleAccent}</span>
                 {b.guestManage.titleAfter}
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-foreground/70">
@@ -203,7 +203,7 @@ function RestatablePage() {
 
         <MarketingHeading className="mt-10 sm:mt-12">
           {b.experience.titleBefore}
-          <span className="font-serif italic text-accent">{b.experience.titleAccent}</span>
+          <span className="font-serif italic text-inherit">{b.experience.titleAccent}</span>
           {b.experience.titleAfter}
         </MarketingHeading>
 
@@ -249,7 +249,7 @@ function RestatablePage() {
             </p>
             <h3 className="font-serif text-2xl tracking-tight text-[#2a2018] sm:text-3xl">
               {b.integration.titleBefore}
-              <span className="italic text-accent">{b.integration.titleAccent}</span>
+              <span className="italic text-inherit">{b.integration.titleAccent}</span>
               {b.integration.titleAfter}
             </h3>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
@@ -288,7 +288,7 @@ function RestatablePage() {
           title={
             <>
               {b.cta.titleBefore}
-              <span className="font-serif italic text-accent">{b.cta.titleAccent}</span>
+              <span className="font-serif italic text-inherit">{b.cta.titleAccent}</span>
               {b.cta.titleAfter}
             </>
           }

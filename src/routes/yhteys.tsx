@@ -68,7 +68,7 @@ function YhteysPage() {
         title={
           <>
             {c.hero.titleBefore}
-            <span className="font-serif italic text-accent">{c.hero.titleAccent}</span>
+            <span className="font-serif italic text-inherit">{c.hero.titleAccent}</span>
             {c.hero.titleAfter}
           </>
         }

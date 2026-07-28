@@ -96,7 +96,7 @@ function Index() {
           <div className="relative lg:col-span-6">
             <h1 className="max-w-[16ch] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
               {h.hero.titleBefore}
-              <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
+              <span className="font-serif italic text-inherit">{h.hero.titleAccent}</span>
               {h.hero.titleAfter}
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/70 sm:text-lg">

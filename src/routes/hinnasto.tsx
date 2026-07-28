@@ -75,7 +75,7 @@ function HinnastoPage() {
           <div className="mb-8 text-xs uppercase tracking-[0.2em] text-accent">{p.eyebrow}</div>
           <h1 className="mb-6 max-w-[18ch] text-balance text-4xl font-medium leading-[1.02] tracking-tight sm:text-6xl">
             {p.titleBefore}
-            <span className="font-serif italic text-accent">{p.titleAccent}</span>
+            <span className="font-serif italic text-inherit">{p.titleAccent}</span>
             {p.titleAfter}
           </h1>
           <p className="max-w-2xl text-base leading-relaxed text-foreground/70 sm:text-lg">

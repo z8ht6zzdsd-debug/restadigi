@@ -84,7 +84,7 @@ function GraafinenSuunnitteluPage() {
           </p>
           <h1 className="max-w-[18ch] font-serif text-4xl tracking-tight text-[#2a2018] sm:text-5xl lg:text-6xl">
             {b.titleBefore}
-            <span className="italic text-accent">{b.titleAccent}</span>
+            <span className="italic text-inherit">{b.titleAccent}</span>
             {b.titleAfter}
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#5c534c] sm:text-lg">

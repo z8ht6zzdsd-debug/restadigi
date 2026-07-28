@@ -166,7 +166,7 @@ function MajoitusvarausPage() {
           </p>
           <h2 className="max-w-3xl font-serif text-3xl tracking-tight text-[#2a2018] sm:text-4xl">
             {b.demo.sectionTitleBefore}
-            <span className="italic text-accent">{b.demo.sectionTitleAccent}</span>
+            <span className="italic text-inherit">{b.demo.sectionTitleAccent}</span>
             {b.demo.sectionTitleAfter}
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#5c534c] sm:text-base">
@@ -181,7 +181,7 @@ function MajoitusvarausPage() {
       <MarketingBand>
         <MarketingHeading>
           {b.pillarsHeading.titleBefore}
-          <span className="italic text-accent">{b.pillarsHeading.titleAccent}</span>
+          <span className="italic text-inherit">{b.pillarsHeading.titleAccent}</span>
           {b.pillarsHeading.titleAfter}
         </MarketingHeading>
 
@@ -229,7 +229,7 @@ function MajoitusvarausPage() {
 
         <MarketingHeading>
           {b.dashboard.titleBefore}
-          <span className="italic text-accent">{b.dashboard.titleAccent}</span>
+          <span className="italic text-inherit">{b.dashboard.titleAccent}</span>
           {b.dashboard.titleAfter}
         </MarketingHeading>
 
@@ -247,7 +247,7 @@ function MajoitusvarausPage() {
 
         <MarketingHeading className="mt-10 sm:mt-12">
           {b.rooms.titleBefore}
-          <span className="italic text-accent">{b.rooms.titleAccent}</span>
+          <span className="italic text-inherit">{b.rooms.titleAccent}</span>
           {b.rooms.titleAfter}
         </MarketingHeading>
 
@@ -266,7 +266,7 @@ function MajoitusvarausPage() {
           title={
             <>
               {b.cta.titleBefore}
-              <span className="italic text-accent">{b.cta.titleAccent}</span>
+              <span className="italic text-inherit">{b.cta.titleAccent}</span>
               {b.cta.titleAfter}
             </>
           }

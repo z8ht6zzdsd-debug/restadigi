@@ -43,7 +43,7 @@ function MeistaPage() {
           <div className="mb-8 text-xs uppercase tracking-[0.2em] text-accent">{a.eyebrow}</div>
           <h1 className="mb-12 max-w-[18ch] text-balance text-4xl font-medium leading-[1.02] tracking-tight sm:mb-16 sm:text-6xl">
             {a.titleBefore}
-            <span className="font-serif italic text-accent">{a.titleAccent}</span>
+            <span className="font-serif italic text-inherit">{a.titleAccent}</span>
             {a.titleAfter}
           </h1>
           <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">

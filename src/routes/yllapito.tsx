@@ -44,7 +44,7 @@ function YllapitoPage() {
           <div className="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-xl lg:pl-6 xl:pl-10">
             <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
               {h.hero.titleBefore}
-              <span className="font-serif italic text-accent">{h.hero.titleAccent}</span>
+              <span className="font-serif italic text-inherit">{h.hero.titleAccent}</span>
               {h.hero.titleAfter}
             </h1>
             <p className="mt-5 text-sm leading-relaxed text-white/80 sm:text-base">

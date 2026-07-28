@@ -79,7 +79,7 @@ function RestachatPage() {
         overlayTitle={
           <>
             {cb.hero.titleBefore}
-            <span className="font-serif italic text-accent">{cb.hero.titleAccent}</span>
+            <span className="font-serif italic text-inherit">{cb.hero.titleAccent}</span>
             {cb.hero.titleAfter}
           </>
         }
