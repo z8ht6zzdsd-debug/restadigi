@@ -11,13 +11,12 @@ export const Route = createFileRoute("/meista")({
       {
         name: "description",
         content:
-          "Restadigi on pieni studio, joka rakentaa kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Tutustu tapaamme tehdä työtä.",
+          "Restadigi on kahden yrittäjän digistudio. Verkkosivut, näkyvyys ja digipalvelut — yrittäjiltä yrittäjille.",
       },
       { property: "og:title", content: "Meistä — Restadigi" },
       {
         property: "og:description",
-        content:
-          "Pieni studio, iso vastuu. Kotisivuja ja diginäkyvyyttä suomalaisille yrityksille.",
+        content: "Pieni tiimi, iso vastuu. Digistudio pienille ja keskisuurille yrityksille.",
       },
     ],
   }),
@@ -38,18 +37,45 @@ function MeistaPage() {
       />
       <SiteHeader />
 
-      <main className="flex flex-1 items-center">
+      <main className="flex-1">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <div className="mb-8 text-xs uppercase tracking-[0.2em] text-accent">{a.eyebrow}</div>
-          <h1 className="mb-12 max-w-[18ch] text-balance text-4xl font-medium leading-[1.02] tracking-tight sm:mb-16 sm:text-6xl">
+          <h1 className="mb-10 max-w-[18ch] text-balance text-4xl font-medium leading-[1.02] tracking-tight sm:mb-14 sm:text-6xl">
             {a.titleBefore}
             <span className="font-serif italic text-inherit">{a.titleAccent}</span>
             {a.titleAfter}
           </h1>
-          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
-            <p className="text-base leading-relaxed text-foreground/70 sm:text-lg">{a.lead}</p>
-            <p className="text-base leading-relaxed text-foreground/70 sm:text-lg">{a.secondary}</p>
+
+          <div className="grid gap-6 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:gap-x-16">
+            {a.paragraphs.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 48)}
+                className="text-base leading-relaxed text-foreground/70 sm:text-lg"
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
+
+          <div className="mt-14 border-t border-[#d6d6d6] pt-12 sm:mt-16 sm:pt-14">
+            <h2 className="mb-8 text-xl font-bold tracking-tight text-[#2a2018] sm:text-2xl">
+              {a.teamHeading}
+            </h2>
+            <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:gap-16">
+              {a.team.map((member) => (
+                <div key={member.name}>
+                  <p className="text-lg font-bold tracking-tight text-[#2a2018]">{member.name}</p>
+                  <p className="mt-2 text-base leading-relaxed text-foreground/70 sm:text-lg">
+                    {member.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="mt-14 max-w-3xl text-base leading-relaxed text-foreground/70 sm:mt-16 sm:text-lg">
+            {a.closing}
+          </p>
         </div>
       </main>
 

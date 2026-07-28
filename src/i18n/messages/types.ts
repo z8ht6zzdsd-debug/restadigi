@@ -303,8 +303,10 @@ export type Messages = {
     titleBefore: string;
     titleAccent: string;
     titleAfter: string;
-    lead: string;
-    secondary: string;
+    paragraphs: string[];
+    teamHeading: string;
+    team: Array<{ name: string; body: string }>;
+    closing: string;
   };
   websites: {
     meta: {

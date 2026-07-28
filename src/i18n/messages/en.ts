@@ -518,18 +518,32 @@ export const en: Messages = {
     meta: {
       title: "About us — Restadigi",
       description:
-        "Restadigi is a small studio that builds websites and strengthens companies’ digital visibility. Learn how we work.",
+        "Restadigi is a digital studio founded by two entrepreneurs. Websites, visibility and digital services — from entrepreneurs to entrepreneurs.",
       ogTitle: "About us — Restadigi",
-      ogDescription:
-        "A small studio, big responsibility. Websites and digital visibility for businesses.",
+      ogDescription: "A small team, big responsibility. A digital studio for small and medium-sized businesses.",
     },
     eyebrow: "About us",
-    titleBefore: "A small studio, ",
+    titleBefore: "A small team, ",
     titleAccent: "big",
     titleAfter: " responsibility.",
-    lead: "Restadigi is an independent digital studio that builds websites and strengthens the digital visibility of small and medium-sized businesses. We use the latest technology so sites launch quickly, work on every device and stay easy to update.",
-    secondary:
-      "We prefer long-term partnerships: the same hands that design your site also help grow its visibility and development going forward.",
+    paragraphs: [
+      "Restadigi is a digital studio founded by two entrepreneurs that helps small and medium-sized businesses grow online. We build modern websites, run results-driven ad campaigns and develop companies’ digital visibility — from entrepreneurs to entrepreneurs.",
+      "Our services include websites, online stores, booking and ordering systems, search engine optimisation, digital marketing and visual identity. We use the latest technology and AI, which speeds up delivery, improves quality and keeps solutions cost-effective.",
+      "Even with modern tools, we believe above all in personal service. You’re not just another client of a large agency — you work directly with the people who build your project from start to finish.",
+    ],
+    teamHeading: "Behind Restadigi:",
+    team: [
+      {
+        name: "Ville Nieminen",
+        body: "Responsible for marketing, advertising, sales, graphic design and growing companies’ visibility.",
+      },
+      {
+        name: "Alberto Arroyo",
+        body: "Responsible for technical delivery, software development, website builds and systems such as booking and ordering solutions.",
+      },
+    ],
+    closing:
+      "We work with clients for the long term. The same people who plan and build your site also help with development, maintenance and marketing. Our goal isn’t just to launch websites — it’s to build solutions that support your company’s growth over time.",
   },
   websites: {
     meta: {

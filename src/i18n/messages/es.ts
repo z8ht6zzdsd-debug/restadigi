@@ -522,18 +522,33 @@ export const es: Messages = {
     meta: {
       title: "Sobre nosotros — Restadigi",
       description:
-        "Restadigi es un estudio pequeño que crea sitios web y refuerza la visibilidad digital de las empresas. Conoce nuestra forma de trabajar.",
+        "Restadigi es un estudio digital fundado por dos emprendedores. Sitios web, visibilidad y servicios digitales — de emprendedores para emprendedores.",
       ogTitle: "Sobre nosotros — Restadigi",
       ogDescription:
-        "Un estudio pequeño, una gran responsabilidad. Sitios web y visibilidad digital para empresas.",
+        "Un equipo pequeño, una gran responsabilidad. Estudio digital para pymes.",
     },
     eyebrow: "Sobre nosotros",
-    titleBefore: "Un estudio pequeño, ",
+    titleBefore: "Un equipo pequeño, ",
     titleAccent: "gran",
     titleAfter: " responsabilidad.",
-    lead: "Restadigi es un estudio digital independiente que crea sitios web y refuerza la visibilidad digital de pymes. Usamos la tecnología más reciente para que los sitios se lancen rápido, funcionen en todos los dispositivos y sean fáciles de actualizar.",
-    secondary:
-      "Preferimos colaboraciones a largo plazo: las mismas manos que diseñan tu sitio también ayudan con su visibilidad y desarrollo a futuro.",
+    paragraphs: [
+      "Restadigi es un estudio digital fundado por dos emprendedores que ayuda a pymes a crecer online. Creamos sitios web modernos, realizamos campañas publicitarias con resultados y desarrollamos la visibilidad digital de las empresas — de emprendedores para emprendedores.",
+      "Nuestros servicios incluyen sitios web, tiendas online, sistemas de reservas y pedidos, SEO, marketing digital y desarrollo de la identidad visual. Usamos tecnología punta e inteligencia artificial, lo que agiliza las entregas, mejora la calidad y hace las soluciones más rentables.",
+      "Aunque disponemos de herramientas modernas, creemos ante todo en el servicio personal. Con nosotros no eres un cliente más de una gran agencia: trabajas directamente con quienes construyen tu proyecto de principio a fin.",
+    ],
+    teamHeading: "Detrás de Restadigi:",
+    team: [
+      {
+        name: "Ville Nieminen",
+        body: "Responsable de marketing, publicidad, ventas, diseño gráfico y del crecimiento de la visibilidad de las empresas.",
+      },
+      {
+        name: "Alberto Arroyo",
+        body: "Responsable de la implementación técnica, el desarrollo de software, la construcción de sitios web y sistemas como reservas y pedidos.",
+      },
+    ],
+    closing:
+      "Trabajamos a largo plazo con nuestros clientes. Las mismas personas que planifican y construyen tu sitio también ayudan en su desarrollo, mantenimiento y marketing. Nuestro objetivo no es solo publicar sitios web, sino crear soluciones que impulsen el crecimiento de tu empresa a largo plazo.",
   },
   websites: {
     meta: {

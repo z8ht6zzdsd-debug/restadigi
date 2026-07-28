@@ -521,18 +521,32 @@ export const fi: Messages = {
     meta: {
       title: "Meistä — Restadigi",
       description:
-        "Restadigi on pieni studio, joka rakentaa kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Tutustu tapaamme tehdä työtä.",
+        "Restadigi on kahden yrittäjän digistudio. Verkkosivut, näkyvyys ja digipalvelut — yrittäjiltä yrittäjille.",
       ogTitle: "Meistä — Restadigi",
-      ogDescription:
-        "Pieni studio, iso vastuu. Kotisivuja ja diginäkyvyyttä suomalaisille yrityksille.",
+      ogDescription: "Pieni tiimi, iso vastuu. Digistudio pienille ja keskisuurille yrityksille.",
     },
     eyebrow: "Meistä",
-    titleBefore: "Pieni studio, ",
+    titleBefore: "Pieni tiimi, ",
     titleAccent: "iso",
     titleAfter: " vastuu.",
-    lead: "Restadigi on itsenäinen digistudio, joka rakentaa kotisivuja ja vahvistaa pienten ja keskisuurten yritysten diginäkyvyyttä. Käytämme uusinta teknologiaa, jotta sivut valmistuvat nopeasti, toimivat kaikilla laitteilla ja ovat helposti päivitettävissä.",
-    secondary:
-      "Työskentelemme mielellämme pitkäjänteisesti: samat kädet, jotka suunnittelevat sivustosi, auttavat myös sen näkyvyyden ja kehittämisen kanssa eteenpäin.",
+    paragraphs: [
+      "Restadigi on kahden yrittäjän perustama digistudio, joka auttaa pieniä ja keskisuuria yrityksiä kasvamaan verkossa. Rakennamme moderneja verkkosivustoja, toteutamme tuloksellisia mainoskampanjoita ja kehitämme yritysten digitaalista näkyvyyttä – yrittäjiltä yrittäjille.",
+      "Palveluihimme kuuluvat verkkosivut, verkkokaupat, varaus- ja tilausjärjestelmät, hakukoneoptimointi, digimarkkinointi sekä yrityksen visuaalisen ilmeen kehittäminen. Hyödynnämme työssämme uusinta teknologiaa ja tekoälyä, mikä nopeuttaa toteutuksia, parantaa laatua ja tekee ratkaisuista kustannustehokkaita.",
+      "Vaikka käytössämme on modernit työkalut, uskomme ennen kaikkea henkilökohtaiseen palveluun. Meillä et jää suuren toimiston asiakkaaksi, vaan asioit suoraan tekijöiden kanssa alusta loppuun.",
+    ],
+    teamHeading: "Restadigin taustalla ovat:",
+    team: [
+      {
+        name: "Ville Nieminen",
+        body: "Vastaa markkinoinnista, mainonnasta, myynnistä, graafisesta suunnittelusta ja yritysten näkyvyyden kasvattamisesta.",
+      },
+      {
+        name: "Alberto Arroyo",
+        body: "Vastaa teknisestä toteutuksesta, ohjelmistokehityksestä, verkkosivujen rakentamisesta sekä erilaisten järjestelmien, kuten varaus- ja tilausratkaisujen, toteutuksesta.",
+      },
+    ],
+    closing:
+      "Työskentelemme pitkäjänteisesti asiakkaidemme kanssa. Samat ihmiset, jotka suunnittelevat ja rakentavat sivustosi, auttavat myös sen kehittämisessä, ylläpidossa ja markkinoinnissa. Tavoitteemme ei ole vain julkaista verkkosivuja, vaan rakentaa ratkaisuja, jotka tukevat yrityksesi kasvua pitkällä aikavälillä.",
   },
   websites: {
     meta: {
