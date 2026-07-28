@@ -309,7 +309,7 @@ export const es: Messages = {
       titleAccent: "atiende a tus clientes 24/7",
       titleAfter: ".",
       description:
-        "Creamos sitios web, apps móviles y otras soluciones digitales inteligentes para empresas de servicios. Un conjunto de servicios rápido y rentable que incluye sitios web, sistemas de reserva, atención al cliente y ventas.",
+        "El conjunto digital de una empresa se apoya en tres pilares: sitios web, servicios de reserva y atención al cliente con IA. Creamos sitios web, apps móviles, sistemas de reserva y pedidos, y otras soluciones digitales inteligentes para empresas de servicios. Un conjunto de servicios rápido y rentable que incluye sitios web, sistemas de reserva, atención al cliente y ventas.",
       cta: "Solicitar presupuesto",
     },
     sitePreview: {
