@@ -972,7 +972,7 @@ export const fi: Messages = {
       shopHeadline: "Kauppa ei nuku",
       shopBody:
         "Ota pöytävaraukset vastaan digitaalisesti 24/7 Restadigin online-pöytävarausjärjestelmällä. Asiakkaasi voivat tehdä varauksen helposti joko verkkosivuille upotetun varausjärjestelmän tai älykkään pöytävarauschatbotin kautta – juuri silloin, kun heille parhaiten sopii. Tarvittaessa suunnittelemme palvelulle myös täysin oman, yrityksesi ilmeen mukaisen varaussivun.",
-      tryLabel: "Tästä pääset testaamaan pöydän varausta Restadigin chatbotilta:",
+      tryLabel: "Testaa pöytävarauksen tekemistä Restadigin chatbotilla!",
     },
     channels: {
       eyebrow: "Kanavat",
