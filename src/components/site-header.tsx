@@ -460,27 +460,17 @@ function MegaIntro({
   accent?: boolean;
 }) {
   return (
-    <aside className="relative overflow-hidden bg-[#e8e8e8] p-6 sm:p-8">
-      <div
-        className="pointer-events-none absolute -right-8 -top-8 size-32 rounded-full bg-[#432f24]/12"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -bottom-10 -left-6 size-40 rounded-full bg-[#2a2018]/10"
-        aria-hidden
-      />
-      <div className="relative">
-        <h2
-          className={cn(
-            "text-3xl font-extrabold tracking-tight sm:text-4xl",
-            accent ? "text-[#c46a32]" : "text-[#432f24]",
-          )}
-        >
-          {title}
-        </h2>
-        <p className="mt-4 text-sm leading-relaxed text-[#5c534c] sm:text-[0.95rem]">{body}</p>
-        {cta}
-      </div>
+    <aside className="bg-[#e8e8e8] p-6 sm:p-8">
+      <h2
+        className={cn(
+          "text-3xl font-extrabold tracking-tight sm:text-4xl",
+          accent ? "text-[#c46a32]" : "text-[#432f24]",
+        )}
+      >
+        {title}
+      </h2>
+      <p className="mt-4 text-sm leading-relaxed text-[#5c534c] sm:text-[0.95rem]">{body}</p>
+      {cta}
     </aside>
   );
 }
