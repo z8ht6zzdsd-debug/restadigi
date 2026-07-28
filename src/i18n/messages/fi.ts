@@ -59,7 +59,7 @@ export const fi: Messages = {
     homeAria: "Restadigi — etusivu",
     logoAlt: "Restadigi Finland",
     servicesIntro:
-      "Digitaaliset palvelut, joilla ravintolat, majoitus ja palveluyritykset myyvät, varaavat ja palvelevat asiakkaita verkossa — selkeästi.",
+      "Restadigilla on kattava valikoima digitaalisia palveluita, joilla ravintolat, majoitus ja palveluyritykset myyvät, varaavat ja palvelevat asiakkaita verkossa — selkeästi.\n\nTutustu palveluihimme ja löydä yrityksellesi sopiva kokonaisuus.",
     industriesIntro:
       "Restadigilla on kattava valikoima toimialakohtaisia digiratkaisuja, jotka on suunniteltu tukemaan liiketoimintaa erilaisissa ympäristöissä.\n\nTutustu eri toimialoille kehitettyihin palveluihin ja löydä omasi.",
     industriesList: [

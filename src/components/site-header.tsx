@@ -351,7 +351,7 @@ export function SiteHeader() {
               open={mobileSection === "palvelut"}
               onToggle={() => toggleMobileSection("palvelut")}
             >
-              <p className="mb-3 text-sm leading-relaxed text-[#5c534c]">
+              <p className="mb-3 whitespace-pre-line text-sm leading-relaxed text-[#5c534c]">
                 {t.header.servicesIntro}
               </p>
               {t.header.servicesList.map((item) =>

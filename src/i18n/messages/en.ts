@@ -59,7 +59,7 @@ export const en: Messages = {
     homeAria: "Restadigi — home",
     logoAlt: "Restadigi Finland",
     servicesIntro:
-      "Digital services that help restaurants, hospitality and service businesses sell, book and serve customers online — clearly.",
+      "Restadigi offers a comprehensive range of digital services that help restaurants, hospitality and service businesses sell, book and serve customers online — clearly.\n\nExplore our services and find the right package for your business.",
     industriesIntro:
       "Restadigi offers a comprehensive range of industry-specific digital solutions designed to support businesses in different environments.\n\nExplore the services built for each industry and find yours.",
     industriesList: [
