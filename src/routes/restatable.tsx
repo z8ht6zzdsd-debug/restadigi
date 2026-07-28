@@ -160,7 +160,7 @@ function RestatablePage() {
         </div>
 
         {/* Rest of Restatable / Restabooking content */}
-        <MarketingHeading>
+        <MarketingHeading className="!max-w-none text-[1.85rem] sm:!text-4xl lg:!text-[2.75rem]">
           {b.channels.titleBefore}
           <span className="font-serif italic text-inherit">{b.channels.titleAccent}</span>
           {b.channels.titleAfter}
