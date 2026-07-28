@@ -104,12 +104,6 @@ function RestatablePage() {
               >
                 {b.dashboard.ctaPrimary}
               </Link>
-              <Link
-                to="/yhteys"
-                className="inline-flex items-center rounded-full border border-[#432f24]/20 bg-white px-5 py-2.5 text-sm font-semibold text-[#432f24] transition-colors hover:border-[#432f24]/40"
-              >
-                {b.dashboard.ctaSecondary}
-              </Link>
             </div>
             <p className="mt-3 text-xs text-[#8a7f74]">{b.dashboard.ctaNote}</p>
           </div>
@@ -287,24 +281,28 @@ function RestatablePage() {
           className="mt-4 sm:mt-5"
           title={
             <>
-              {b.cta.titleBefore}
-              <span className="font-serif italic text-inherit">{b.cta.titleAccent}</span>
-              {b.cta.titleAfter}
+              <span className="block">
+                {b.cta.titleBefore}
+                <span className="font-serif italic text-inherit">{b.cta.titleAccent}</span>
+                {b.cta.titleAfter}
+              </span>
+              <span className="mt-3 block text-3xl font-extrabold tracking-tight text-accent sm:mt-4 sm:text-4xl">
+                {b.cta.price}
+              </span>
             </>
           }
         >
-          <p className="mb-1 text-3xl font-extrabold tracking-tight text-accent sm:text-4xl">
-            {b.cta.price}
-          </p>
-          <p className="mx-auto mb-5 max-w-xl text-sm leading-relaxed text-white/55">
-            {b.cta.priceNote}
-          </p>
-          <Link
-            to="/yhteys"
-            className="inline-flex items-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
-          >
-            {b.cta.button}
-          </Link>
+          <div className="flex w-full flex-col items-center gap-6 pt-2 sm:gap-7 sm:pt-3">
+            <p className="mx-auto max-w-xl text-sm leading-relaxed text-white/55">
+              {b.cta.priceNote}
+            </p>
+            <Link
+              to="/yhteys"
+              className="inline-flex items-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
+            >
+              {b.cta.button}
+            </Link>
+          </div>
         </MarketingCtaBox>
       </MarketingBand>
 

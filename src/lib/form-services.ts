@@ -95,7 +95,7 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
     id: "ai-chatbot",
     group: "ai",
     name: "Restachat (chatbot)",
-    price: "alk. 199 € / vuosi",
+    price: "29 € / kk",
     blurb: "24/7 vastaukset, liidit ja ylläpito sisältyvät.",
   },
   {
@@ -125,7 +125,7 @@ export const FORM_SERVICE_OPTIONS: FormServiceOption[] = [
     group: "hosting",
     exclusiveGroup: "hosting",
     name: "Hosting · Pro Business",
-    price: "29,99 € / kk + alv",
+    price: "29,90 € / kk + alv",
     blurb: "Ylläpito, sähköpostit, tuki ja AI/varauspalvelun tuki.",
   },
 ];

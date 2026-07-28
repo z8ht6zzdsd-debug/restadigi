@@ -363,7 +363,7 @@ export const fi: Messages = {
         },
         {
           title: "Automatisoitua liiketoimintaa",
-          body: "Restachat-botti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään vuosihintaan alk. 199 € / vuosi.",
+          body: "Restachat-botti hoitaa puolestasi asiakaspalvelua, varausten vastaanottoa chatissa, puhelimessa ja sähköpostitse 24/7. Kiinteään kuukausihintaan 29 € / kk.",
           href: "/restachat",
           linkLabel: "Tutustu Restachatiin",
         },
@@ -902,15 +902,15 @@ export const fi: Messages = {
       safeTitleAccent: "vaivaton",
       safeTitleAfter: " ratkaisu.",
       safeBody:
-        "Jotta chatbot tuottaa tulosta vuodesta toiseen, se vaatii jatkuvaa huolenpitoa. Vuosimaksullinen palvelumalli varmistaa, että botti kehittyy ja toimii saumattomasti yrityksen muuttuvan datan ja teknologian mukana — päivitämme alustan turvalliseksi, koulutamme botin uusilla tuotetiedoilla ja kampanjoilla, analysoimme keskusteluja ja optimoimme vastauksia. Sinun ei tarvitse huolehtia teknisestä ylläpidosta: asiantuntijamme pitävät huolen, että botti palvelee asiakkaitasi luotettavasti vuosi toisensa perään.",
+        "Jotta chatbot tuottaa tulosta vuodesta toiseen, se vaatii jatkuvaa huolenpitoa. Kuukausimaksullinen palvelumalli varmistaa, että botti kehittyy ja toimii saumattomasti yrityksen muuttuvan datan ja teknologian mukana — päivitämme alustan turvalliseksi, koulutamme botin uusilla tuotetiedoilla ja kampanjoilla, analysoimme keskusteluja ja optimoimme vastauksia. Sinun ei tarvitse huolehtia teknisestä ylläpidosta: asiantuntijamme pitävät huolen, että botti palvelee asiakkaitasi luotettavasti kuukausi toisensa perään.",
       monthly: [
         {
           title: "Päivittyvä teknologia",
-          body: "Verkkoympäristö ja tekoäly kehittyvät jatkuvasti. Vuosimaksulla varmistamme, että bottisi toimii aina uusimmalla ja turvallisimmalla alustalla.",
+          body: "Verkkoympäristö ja tekoäly kehittyvät jatkuvasti. Kuukausimaksulla varmistamme, että bottisi toimii aina uusimmalla ja turvallisimmalla alustalla.",
         },
         {
           title: "Sopii yrityksen omaan dataan",
-          body: "Bottia voidaan opettaa. Vuosittainen ylläpito mahdollistaa botin kouluttamisen yrityksesi uusilla tuotetiedoilla, kampanjoilla ja vastauksilla.",
+          body: "Bottia voidaan opettaa. Kuukausittainen ylläpito mahdollistaa botin kouluttamisen yrityksesi uusilla tuotetiedoilla, kampanjoilla ja vastauksilla.",
         },
         {
           title: "Proaktiivinen kehitys",
@@ -931,8 +931,8 @@ export const fi: Messages = {
         "Haluatteko botin keskittyvän enemmän asiakaspalveluun vai myyntiin ja liidien keruuseen?",
         "Millä kielillä haluatte botin palvelevan kävijöitä?",
       ],
-      price: "alk. 199 €",
-      priceNote: "/ vuosi",
+      price: "29 € / kk",
+      priceNote: "Kiinteä kuukausihinta",
       button: "Pyydä maksuton esittely",
     },
   },
@@ -1052,7 +1052,7 @@ export const fi: Messages = {
         body: "Näet päivän varaukset yhdellä silmäyksellä ja voit muokata saatavuutta helposti.",
       },
       {
-        title: "Kanavat & sali",
+        title: "Kanavat & järjestelmä",
         body: "Varaukset Googlesta, Instagramista ja Facebookista sekä graafinen pöytäkartta — yksi Restatable-järjestelmä.",
       },
     ],
@@ -1304,7 +1304,7 @@ export const fi: Messages = {
         name: "Pro Business",
         summary:
           "Hostingin lisäksi jatkuva ylläpito, pienet sisältömuutokset ja henkilökohtainen tuki. Valitse tämä, kun sivuston pitää pysyä ajan tasalla ja apua on saatavilla tarvittaessa.",
-        price: "29,99 € / kk + alv",
+        price: "29,90 € / kk + alv",
         featured: true,
         bullets: [
           "Hosting ja verkkotunnus sisältyvät hintaan",

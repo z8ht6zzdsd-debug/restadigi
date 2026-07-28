@@ -134,7 +134,7 @@ function RestachatPage() {
           </MarketingBox>
         </div>
 
-        <MarketingHeading className="mt-14 sm:mt-16">
+        <MarketingHeading className="mt-14 sm:mt-16 !max-w-none whitespace-nowrap text-[1.85rem] sm:!text-4xl lg:!text-[2.75rem]">
           {bot.safeTitleBefore}
           {bot.safeTitleAccent}
           {bot.safeTitleAfter}

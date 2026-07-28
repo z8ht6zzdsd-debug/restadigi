@@ -361,7 +361,7 @@ export const en: Messages = {
         },
         {
           title: "Automated operations",
-          body: "A Restachat bot handles support, bookings via chat, phone and email 24/7 — for a fixed annual fee from 199 € / year.",
+          body: "A Restachat bot handles support, bookings via chat, phone and email 24/7 — for a fixed monthly fee of 29 € / month.",
           href: "/restachat",
           linkLabel: "Explore Restachat",
         },
@@ -929,8 +929,8 @@ export const en: Messages = {
         "Should the bot focus more on customer service or on sales and lead capture?",
         "Which languages should the bot use with visitors?",
       ],
-      price: "from 199 €",
-      priceNote: "/ year",
+      price: "29 € / month",
+      priceNote: "Fixed monthly price",
       button: "Request a free demo",
     },
   },
@@ -1050,7 +1050,7 @@ export const en: Messages = {
         body: "See the day’s bookings at a glance and adjust availability easily.",
       },
       {
-        title: "Channels & floor",
+        title: "Channels & system",
         body: "Bookings from Google, Instagram and Facebook plus a graphical floor plan — one Restatable system.",
       },
     ],
@@ -1302,7 +1302,7 @@ export const en: Messages = {
         name: "Pro Business",
         summary:
           "Hosting plus ongoing maintenance, small content changes and personal support. Choose this when the site must stay up to date and help is available when needed.",
-        price: "29,99 € / month + VAT",
+        price: "29,90 € / month + VAT",
         featured: true,
         bullets: [
           "Hosting and domain included",

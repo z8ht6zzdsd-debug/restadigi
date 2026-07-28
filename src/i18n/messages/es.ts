@@ -364,7 +364,7 @@ export const es: Messages = {
         },
         {
           title: "Operaciones automatizadas",
-          body: "Un bot Restachat gestiona por ti el servicio al cliente y la recepción de reservas por chat, teléfono y correo 24/7. Precio anual fijo desde 199 € / año.",
+          body: "Un bot Restachat gestiona por ti el servicio al cliente y la recepción de reservas por chat, teléfono y correo 24/7. Precio mensual fijo de 29 € / mes.",
           href: "/restachat",
           linkLabel: "Conocer Restachat",
         },
@@ -937,8 +937,8 @@ export const es: Messages = {
         "¿Queréis que el bot se centre más en la atención o en las ventas y la captura de leads?",
         "¿En qué idiomas queréis que el bot atienda a los visitantes?",
       ],
-      price: "desde 199 €",
-      priceNote: "/ año",
+      price: "29 € / mes",
+      priceNote: "Precio mensual fijo",
       button: "Solicitar demo gratuita",
     },
   },
@@ -1058,7 +1058,7 @@ export const es: Messages = {
         body: "Ves las reservas del día de un vistazo y ajustas la disponibilidad con facilidad.",
       },
       {
-        title: "Canales y salón",
+        title: "Canales y sistema",
         body: "Reservas desde Google, Instagram y Facebook más un plano gráfico — un sistema Restatable.",
       },
     ],
@@ -1312,7 +1312,7 @@ export const es: Messages = {
         name: "Pro Business",
         summary:
           "Además del hosting: mantenimiento continuo, pequeños cambios de contenido y soporte personal. Elige esto cuando el sitio deba mantenerse al día y haya ayuda disponible.",
-        price: "29,99 € / mes + IVA",
+        price: "29,90 € / mes + IVA",
         featured: true,
         bullets: [
           "Hosting y dominio incluidos",

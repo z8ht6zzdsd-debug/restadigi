@@ -227,7 +227,7 @@ function MajoitusvarausPage() {
           })}
         </div>
 
-        <MarketingHeading>
+        <MarketingHeading className="!max-w-none whitespace-nowrap text-[1.85rem] sm:!text-4xl lg:!text-[2.75rem]">
           {b.dashboard.titleBefore}
           <span className="italic text-inherit">{b.dashboard.titleAccent}</span>
           {b.dashboard.titleAfter}
@@ -245,7 +245,7 @@ function MajoitusvarausPage() {
           </div>
         </MarketingBox>
 
-        <MarketingHeading className="mt-10 sm:mt-12">
+        <MarketingHeading className="mt-10 sm:mt-12 !max-w-none max-w-4xl text-[1.85rem] sm:!text-4xl lg:!text-[2.75rem]">
           {b.rooms.titleBefore}
           <span className="italic text-inherit">{b.rooms.titleAccent}</span>
           {b.rooms.titleAfter}
