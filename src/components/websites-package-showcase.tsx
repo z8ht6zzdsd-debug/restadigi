@@ -32,13 +32,6 @@ const PACKAGE_ACCENTS = [
   "text-[#2a5f8f]", // Timantti — blue
 ] as const;
 
-const PACKAGE_ICON_BG = [
-  "bg-[#2f6b4f]/12",
-  "bg-[#c46a32]/12",
-  "bg-[#6b3d8f]/12",
-  "bg-[#2a5f8f]/12",
-] as const;
-
 const LAPTOP_TONES = [
   "from-[#d4c4a8] via-[#c4b090] to-[#a89070]", // warm gold
   "from-[#c8c8c8] via-[#9a9a9a] to-[#707070]", // slate blue
@@ -79,7 +72,6 @@ export function WebsitesPackageShowcase({
         {packages.map((pkg, i) => {
           const imageLeft = i % 2 === 0;
           const accent = PACKAGE_ACCENTS[i % PACKAGE_ACCENTS.length];
-          const iconBg = PACKAGE_ICON_BG[i % PACKAGE_ICON_BG.length];
           const tone = LAPTOP_TONES[i % LAPTOP_TONES.length];
           const Icon = PACKAGE_ICONS[i % PACKAGE_ICONS.length];
           const featureIcons = PACKAGE_FEATURE_ICONS[i % PACKAGE_FEATURE_ICONS.length];
@@ -91,7 +83,6 @@ export function WebsitesPackageShowcase({
               price={pkg.price}
               tone={tone}
               accent={accent}
-              iconBg={iconBg}
               Icon={Icon}
               featureIcons={featureIcons}
             />
@@ -145,7 +136,6 @@ function PackageLaptop({
   price,
   tone,
   accent,
-  iconBg,
   Icon,
   featureIcons,
 }: {
@@ -154,7 +144,6 @@ function PackageLaptop({
   price: string;
   tone: string;
   accent: string;
-  iconBg: string;
   Icon: LucideIcon;
   featureIcons: LucideIcon[];
 }) {
@@ -171,13 +160,7 @@ function PackageLaptop({
           <div className="flex size-full flex-col px-2.5 pb-2 pt-3.5 sm:px-3.5 sm:pb-2.5 sm:pt-4 lg:px-4 lg:pt-5">
             <div className="flex shrink-0 flex-col items-center gap-1 sm:gap-1.5">
               <div className="flex items-center justify-center gap-2.5 sm:gap-3">
-                <span
-                  className={cn(
-                    "inline-flex size-11 shrink-0 items-center justify-center rounded-xl sm:size-12 lg:size-14",
-                    iconBg,
-                    accent,
-                  )}
-                >
+                <span className={cn("inline-flex shrink-0", accent)}>
                   <Icon className="size-6 sm:size-7 lg:size-8" strokeWidth={1.75} />
                 </span>
                 <p

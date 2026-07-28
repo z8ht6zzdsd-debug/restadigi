@@ -192,8 +192,8 @@ function ServiceIntakeFormPage() {
           />
         </header>
         <main className="mx-auto flex max-w-xl flex-col items-center px-6 py-24 text-center">
-          <div className="flex size-14 items-center justify-center rounded-full bg-[#c46a32] text-white">
-            <Check className="size-7" />
+          <div className="flex size-14 items-center justify-center text-[#c46a32]">
+            <Check className="size-8" strokeWidth={2} />
           </div>
           <h1 className="mt-6 font-serif text-3xl text-[#2a2018]">Kiitos pyynnöstäsi</h1>
           <p className="mt-3 text-sm leading-relaxed text-[#5c534c]">

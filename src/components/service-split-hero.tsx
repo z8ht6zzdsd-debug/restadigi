@@ -35,10 +35,10 @@ export function ServiceSplitHero({
         <div className="lg:hidden">
           <div className="flex items-start gap-3">
             <span
-              className="mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-[#432f24] text-accent ring-1 ring-accent/35"
+              className="mt-0.5 inline-flex shrink-0 text-[#432f24]"
               aria-hidden
             >
-              <Icon className="size-4" strokeWidth={1.75} />
+              <Icon className="size-5" strokeWidth={1.75} />
             </span>
             <h2 className="text-2xl font-medium leading-[1.12] tracking-tight text-foreground sm:text-3xl">
               {overlayTitle}
@@ -67,10 +67,10 @@ export function ServiceSplitHero({
               <div className="w-[92%] max-w-2xl rounded-3xl bg-[#432f24]/92 px-10 py-10 text-center shadow-lg">
                 <div className="flex items-center justify-center gap-4">
                   <span
-                    className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent ring-1 ring-accent/35"
+                    className="inline-flex shrink-0 text-accent"
                     aria-hidden
                   >
-                    <Icon className="size-6" strokeWidth={1.75} />
+                    <Icon className="size-7" strokeWidth={1.75} />
                   </span>
                   <h2 className="text-left text-4xl font-medium leading-[1.1] tracking-tight text-[#f0f0f0] lg:text-[2.75rem]">
                     {overlayTitle}

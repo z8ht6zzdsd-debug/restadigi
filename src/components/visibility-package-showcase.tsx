@@ -13,8 +13,6 @@ const PACKAGE_ACCENTS = [
   "text-[#2a5f8f]", // Sports — blue
 ] as const;
 
-const PACKAGE_ICON_BG = ["bg-[#2f6b4f]/12", "bg-[#c46a32]/12", "bg-[#2a5f8f]/12"] as const;
-
 const LAPTOP_TONES = [
   "from-[#d4c4a8] via-[#c4b090] to-[#a89070]",
   "from-[#c8c8c8] via-[#9a9a9a] to-[#707070]",
@@ -55,7 +53,6 @@ export function VisibilityPackageShowcase({
         {packages.map((pkg, i) => {
           const imageLeft = i % 2 === 0;
           const accent = PACKAGE_ACCENTS[i % PACKAGE_ACCENTS.length];
-          const iconBg = PACKAGE_ICON_BG[i % PACKAGE_ICON_BG.length];
           const tone = LAPTOP_TONES[i % LAPTOP_TONES.length];
           const Icon = PACKAGE_ICONS[i % PACKAGE_ICONS.length];
           const logoKind = PACKAGE_LOGO_KINDS[i];
@@ -67,7 +64,6 @@ export function VisibilityPackageShowcase({
               price={pkg.price}
               tone={tone}
               accent={accent}
-              iconBg={iconBg}
               Icon={Icon}
               logoKind={logoKind}
             />
@@ -123,7 +119,6 @@ function VisibilityPackageLaptop({
   price,
   tone,
   accent,
-  iconBg,
   Icon,
   logoKind,
 }: {
@@ -132,7 +127,6 @@ function VisibilityPackageLaptop({
   price: string;
   tone: string;
   accent: string;
-  iconBg: string;
   Icon: LucideIcon;
   logoKind?: "ai" | "google";
 }) {
@@ -157,13 +151,7 @@ function VisibilityPackageLaptop({
           <div className="flex size-full flex-col px-2.5 pb-2 pt-3.5 sm:px-3.5 sm:pb-2.5 sm:pt-4 lg:px-4 lg:pt-5">
             <div className="flex shrink-0 flex-col items-center gap-1 sm:gap-1.5">
               <div className="relative flex w-full items-center justify-center px-10 sm:px-12">
-                <span
-                  className={cn(
-                    "absolute left-0 top-1/2 inline-flex size-9 shrink-0 -translate-y-1/2 items-center justify-center rounded-xl sm:size-11 lg:size-12",
-                    iconBg,
-                    accent,
-                  )}
-                >
+                <span className={cn("absolute left-0 top-1/2 inline-flex shrink-0 -translate-y-1/2", accent)}>
                   <Icon className="size-5 sm:size-5 lg:size-6" strokeWidth={1.75} />
                 </span>
                 {useTwoLines && twoLineTitle ? (

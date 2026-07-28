@@ -104,8 +104,8 @@ function GraafinenSuunnitteluPage() {
                 justify="start"
                 className="min-h-[14rem]"
               >
-                <span className="mb-4 inline-flex size-11 items-center justify-center rounded-full bg-[#432f24] text-white">
-                  <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+                <span className="mb-4 inline-flex text-[#432f24]">
+                  <Icon className="size-6" strokeWidth={1.75} aria-hidden />
                 </span>
                 <h3 className="text-lg font-bold tracking-tight text-[#2a2018]">{product.name}</h3>
                 {product.description ? (

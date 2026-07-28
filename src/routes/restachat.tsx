@@ -156,8 +156,8 @@ function RestachatPage() {
             return (
               <MarketingBox key={item.title} tone="white" justify="start" className="min-h-[14rem]">
                 <div className="mb-4 flex items-center justify-between gap-3">
-                  <span className="inline-flex size-10 items-center justify-center rounded-full bg-[#432f24] text-white">
-                    <Icon className="size-4" strokeWidth={1.75} />
+                  <span className="inline-flex text-[#432f24]">
+                    <Icon className="size-5" strokeWidth={1.75} />
                   </span>
                   <span className="text-sm font-bold tabular-nums text-foreground/35">
                     {String(i + 1).padStart(2, "0")}

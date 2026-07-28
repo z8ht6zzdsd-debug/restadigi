@@ -197,11 +197,11 @@ function MajoitusvarausPage() {
               >
                 <span
                   className={
-                    "mb-4 inline-flex size-11 items-center justify-center rounded-full " +
-                    (i % 2 === 0 ? "bg-[#432f24] text-white" : "bg-accent/20 text-accent")
+                    "mb-4 inline-flex " +
+                    (i % 2 === 0 ? "text-[#432f24]" : "text-accent")
                   }
                 >
-                  <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+                  <Icon className="size-6" strokeWidth={1.75} aria-hidden />
                 </span>
                 <h3
                   className={

@@ -57,8 +57,8 @@ function CheckList({ items, icons }: { items: string[]; icons?: ("check" | "edit
             key={item}
             className="inline-flex items-center gap-2 rounded-full border border-[#d6d6d6] bg-white px-3.5 py-2 text-sm text-[#2a2018]"
           >
-            <span className="inline-flex size-6 items-center justify-center rounded-full bg-[#0d9488] text-white">
-              <Icon className="size-3.5" strokeWidth={2.25} />
+            <span className="inline-flex text-[#0d9488]">
+              <Icon className="size-4" strokeWidth={2.25} />
             </span>
             {item}
           </li>
@@ -130,8 +130,8 @@ function RestatablePage() {
                 <h2 className="font-serif text-3xl tracking-tight text-[#2a2018] sm:text-4xl">
                   {b.restachat.shopHeadline}
                 </h2>
-                <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-[#432f24] text-accent sm:size-12">
-                  <MessageCircle className="size-5" strokeWidth={1.75} />
+                <span className="inline-flex shrink-0 text-[#432f24]">
+                  <MessageCircle className="size-6" strokeWidth={1.75} />
                 </span>
               </div>
               <p className="max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
@@ -263,8 +263,8 @@ function RestatablePage() {
                 className="min-h-[14rem]"
               >
                 <div className="mb-4 flex items-center justify-between gap-3">
-                  <span className="inline-flex size-10 items-center justify-center rounded-full bg-[#432f24] text-white">
-                    <Icon className="size-4" strokeWidth={1.75} />
+                  <span className="inline-flex text-[#432f24]">
+                    <Icon className="size-5" strokeWidth={1.75} />
                   </span>
                   <span className="text-sm font-bold tabular-nums text-foreground/35">
                     {String(i + 1).padStart(2, "0")}

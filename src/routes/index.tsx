@@ -238,8 +238,8 @@ function Index() {
                   const Icon = WHY_US_ICONS[i] ?? BriefcaseBusiness;
                   return (
                     <div key={item.title} className="min-w-0">
-                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-[#432f24] text-white">
-                        <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+                      <span className="mb-3 inline-flex text-[#432f24]">
+                        <Icon className="size-6" strokeWidth={1.75} aria-hidden />
                       </span>
                       <h3 className="text-lg sm:text-xl font-bold tracking-tight leading-tight mb-1.5">
                         {item.title}
@@ -277,8 +277,8 @@ function Index() {
                   const Icon = SERVICE_ICONS[i] ?? Bot;
                   return (
                     <div key={item.title} className="max-w-md">
-                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-[#432f24] text-white">
-                        <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+                      <span className="mb-3 inline-flex text-[#432f24]">
+                        <Icon className="size-6" strokeWidth={1.75} aria-hidden />
                       </span>
                       <h4 className="mb-1.5 text-lg font-bold tracking-tight leading-tight sm:text-xl">
                         {item.title}

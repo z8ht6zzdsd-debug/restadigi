@@ -2,20 +2,13 @@ import { Link } from "@tanstack/react-router";
 import {
   Bookmark,
   CalendarDays,
-  Coffee,
-  Dumbbell,
   Eye,
   Globe,
-  Hotel,
   Mail,
   MessageCircle,
-  Mic2,
   Palette,
-  Plane,
-  Scissors,
   Server,
   Users,
-  UtensilsCrossed,
   type LucideIcon,
 } from "lucide-react";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
@@ -46,16 +39,6 @@ const SERVICE_ICONS: Record<ServicePath, LucideIcon> = {
   "/graafinen-suunnittelu": Palette,
   "/yllapito": Server,
 };
-
-const INDUSTRY_ICONS: LucideIcon[] = [
-  Mic2,
-  Hotel,
-  Plane,
-  UtensilsCrossed,
-  Coffee,
-  Dumbbell,
-  Scissors,
-];
 
 const CONTACT_ICONS: LucideIcon[] = [Mail, Users];
 
@@ -271,24 +254,18 @@ export function SiteHeader() {
       {desktopMenu === "toimialat" && (
         <MegaPanel id={`${baseId}-toimialat`}>
           <MegaIntro title={t.header.industries} body={t.header.industriesIntro} />
-          <div className="max-h-[min(70vh,28rem)] space-y-0.5 overflow-y-auto p-3 sm:p-4">
-            {t.header.industriesList.map((item, i) => {
-              const Icon = INDUSTRY_ICONS[i % INDUSTRY_ICONS.length] ?? UtensilsCrossed;
-              return (
-                <div
-                  key={item.title}
-                  className="flex gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-[#f0f0f0]"
-                >
-                  <MegaIcon Icon={Icon} />
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold tracking-tight text-[#2a2018]">
-                      {item.title}
-                    </p>
-                    <p className="mt-0.5 text-sm leading-relaxed text-[#5c534c]">{item.body}</p>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="max-h-[min(70vh,28rem)] space-y-0.5 overflow-y-auto p-3 sm:p-5">
+            {t.header.industriesList.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-xl px-3 py-3.5 transition-colors hover:bg-[#f0f0f0] sm:px-4"
+              >
+                <p className="text-[0.95rem] font-bold tracking-tight text-[#2a2018] sm:text-base">
+                  {item.title}
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-[#5c534c]">{item.body}</p>
+              </div>
+            ))}
           </div>
         </MegaPanel>
       )}
@@ -383,7 +360,7 @@ export function SiteHeader() {
                 <ul className="space-y-3">
                   {t.header.industriesList.map((item) => (
                     <li key={item.title}>
-                      <div className="text-sm font-semibold text-[#2a2018]">{item.title}</div>
+                      <div className="text-sm font-bold text-[#2a2018]">{item.title}</div>
                       <p className="mt-1 text-sm leading-relaxed text-[#5c534c]">{item.body}</p>
                     </li>
                   ))}
@@ -495,7 +472,7 @@ function MegaIntro({
       <div className="relative">
         <h2
           className={cn(
-            "font-serif text-3xl tracking-tight sm:text-4xl",
+            "text-3xl font-extrabold tracking-tight sm:text-4xl",
             accent ? "text-[#c46a32]" : "text-[#432f24]",
           )}
         >
@@ -510,8 +487,8 @@ function MegaIntro({
 
 function MegaIcon({ Icon }: { Icon: LucideIcon }) {
   return (
-    <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-[#432f24] text-[#c46a32] ring-1 ring-[#c46a32]/25">
-      <Icon className="size-4" strokeWidth={1.75} />
+    <span className="inline-flex shrink-0 text-[#432f24]" aria-hidden>
+      <Icon className="size-5" strokeWidth={1.75} />
     </span>
   );
 }

@@ -168,7 +168,7 @@ export function ProductPackageCards({
                     <PackageBrandLogos kind={headerKind} logosOnly />
                   </div>
                   <div
-                    className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-[#e8e8e8] text-[#432f24] sm:size-16"
+                    className="flex size-14 shrink-0 items-center justify-center text-[#432f24] sm:size-16"
                     aria-hidden
                   >
                     <Icon className="size-8 sm:size-9" strokeWidth={1.5} />
