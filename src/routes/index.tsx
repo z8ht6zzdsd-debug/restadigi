@@ -315,7 +315,7 @@ function Index() {
           </div>
 
           {/* Uusimmat referenssit */}
-          <h2 className="mt-14 sm:mt-16 max-w-[14ch] text-[2.35rem] sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[0.98] tracking-tight mb-8 sm:mb-10">
+          <h2 className="mt-14 sm:mt-16 whitespace-nowrap text-[2.35rem] sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[0.98] tracking-tight mb-8 sm:mb-10">
             {h.projects.titleBefore}
             {h.projects.titleAccent}
           </h2>

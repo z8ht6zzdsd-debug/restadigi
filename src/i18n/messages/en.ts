@@ -415,8 +415,8 @@ export const en: Messages = {
       href: "https://demo.restadigi.fi",
     },
     projects: {
-      titleBefore: "Selected ",
-      titleAccent: "projects",
+      titleBefore: "Latest ",
+      titleAccent: "references",
       delfin: {
         logoAlt: "Delfin Check-In app logo",
         screenAlt: "Delfin Check-In app screen",
