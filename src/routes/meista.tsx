@@ -38,9 +38,9 @@ function MeistaPage() {
       <SiteHeader />
 
       <main className="flex-1">
-        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
-          <div className="mb-8 text-xs uppercase tracking-[0.2em] text-accent">{a.eyebrow}</div>
-          <h1 className="mb-10 max-w-[18ch] text-balance text-4xl font-medium leading-[1.02] tracking-tight sm:mb-14 sm:text-6xl">
+        <div className="mx-auto w-full max-w-6xl px-6 pt-8 pb-14 sm:pt-10 sm:pb-20">
+          <div className="mb-6 text-xs uppercase tracking-[0.2em] text-accent">{a.eyebrow}</div>
+          <h1 className="mb-8 max-w-[18ch] text-balance text-4xl font-medium leading-[1.02] tracking-tight sm:mb-10 sm:text-6xl">
             {a.titleBefore}
             <span className="font-serif italic text-inherit">{a.titleAccent}</span>
             {a.titleAfter}
