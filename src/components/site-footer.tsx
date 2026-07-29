@@ -63,10 +63,10 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
                 linkHover
               }
             >
-              <WhatsAppIcon className="size-3.5 shrink-0 text-[#25D366]" />
               <span>
                 {c.whatsappLabel}: {c.whatsappDisplay}
               </span>
+              <WhatsAppIcon className="size-3.5 shrink-0 text-[#25D366]" />
             </a>
           </p>
         </div>
