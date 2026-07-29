@@ -406,6 +406,27 @@ function Index() {
             </footer>
           </blockquote>
 
+          <div id="faq" className="mt-10 sm:mt-12">
+            <h2 className="mb-6 text-[1.85rem] font-extrabold leading-[0.98] tracking-tight sm:mb-8 sm:text-4xl lg:text-[2.75rem]">
+              {t.contact.faq.title}
+            </h2>
+            <div className="space-y-3">
+              {t.contact.faq.items.map((item) => (
+                <div
+                  key={item.question}
+                  className="rounded-[1.25rem] border border-[#d6d6d6] bg-white px-5 py-5 sm:rounded-[1.5rem] sm:px-7 sm:py-6"
+                >
+                  <h3 className="text-base font-bold tracking-tight text-[#2a2018] sm:text-lg">
+                    {item.question}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/70 sm:text-base">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Seuraava askel */}
           <article className="mt-4 sm:mt-5 relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[18rem] sm:min-h-[20rem] bg-[#432f24] text-white flex flex-col items-center justify-center text-center px-8 py-14 sm:px-12">
             <div
