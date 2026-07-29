@@ -571,7 +571,7 @@ export const es: Messages = {
       "Nuestros servicios incluyen sitios web, tiendas online, sistemas de reservas y pedidos, SEO, marketing digital y desarrollo de la identidad visual. Usamos tecnología punta e inteligencia artificial, lo que agiliza las entregas, mejora la calidad y hace las soluciones más rentables.",
       "Aunque disponemos de herramientas modernas, creemos ante todo en el servicio personal. Con nosotros no eres un cliente más de una gran agencia: trabajas directamente con quienes construyen tu proyecto de principio a fin.",
     ],
-    teamHeading: "Detrás de Restadigi:",
+    teamHeading: "El equipo de Restadigi",
     team: [
       {
         name: "Ville Nieminen",

@@ -567,7 +567,7 @@ export const en: Messages = {
       "Our services include websites, online stores, booking and ordering systems, search engine optimisation, digital marketing and visual identity. We use the latest technology and AI, which speeds up delivery, improves quality and keeps solutions cost-effective.",
       "Even with modern tools, we believe above all in personal service. You’re not just another client of a large agency — you work directly with the people who build your project from start to finish.",
     ],
-    teamHeading: "Behind Restadigi:",
+    teamHeading: "The Restadigi team",
     team: [
       {
         name: "Ville Nieminen",

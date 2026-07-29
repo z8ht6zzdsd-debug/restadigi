@@ -570,7 +570,7 @@ export const fi: Messages = {
       "Palveluihimme kuuluvat verkkosivut, verkkokaupat, varaus- ja tilausjärjestelmät, hakukoneoptimointi, digimarkkinointi sekä yrityksen visuaalisen ilmeen kehittäminen. Hyödynnämme työssämme uusinta teknologiaa ja tekoälyä, mikä nopeuttaa toteutuksia, parantaa laatua ja tekee ratkaisuista kustannustehokkaita.",
       "Vaikka käytössämme on modernit työkalut, uskomme ennen kaikkea henkilökohtaiseen palveluun. Meillä et jää suuren toimiston asiakkaaksi, vaan asioit suoraan tekijöiden kanssa alusta loppuun.",
     ],
-    teamHeading: "Restadigin taustalla ovat:",
+    teamHeading: "Restadigin tiimi",
     team: [
       {
         name: "Ville Nieminen",
