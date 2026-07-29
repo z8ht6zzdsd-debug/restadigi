@@ -305,7 +305,7 @@ export const es: Messages = {
       titleAccent: "atiende a tus clientes 24/7",
       titleAfter: ".",
       description:
-        "El conjunto digital de una empresa se apoya en tres pilares: sitios web, servicios de reserva y atención al cliente basada en IA. Diseñamos e implementamos sitios web, apps móviles, sistemas de reserva y pedidos, y otras soluciones digitales inteligentes para empresas de servicios. Ofrecemos un conjunto de servicios de calidad y rentable que une visibilidad online, citas, atención al cliente y ventas en un todo fluido.",
+        "Sitios web, reservas y atención con IA — un conjunto digital para empresas de servicios. Paquetes claros, entrega rápida y soporte al crecimiento.",
       cta: "Solicitar presupuesto",
     },
     sitePreview: {
@@ -332,12 +332,12 @@ export const es: Messages = {
     intro: {
       titleLine1: "Soluciones por sector.",
       titleLine2: "Contacta con nosotros, hablemos.",
-      body: "Queremos conocer a fondo cómo funciona tu empresa para servirte lo mejor posible. Todos los proyectos empiezan con una llamada de presentación de al menos 30 minutos. Reserva una hora abajo o llámanos directamente — juntos encontraremos la solución óptima.",
+      body: "Queremos conocer a fondo cómo funciona tu empresa para servirte lo mejor posible. Todos los proyectos empiezan con una llamada de presentación de al menos 30 minutos. Contacta abajo o llámanos directamente — juntos encontraremos la solución adecuada.",
       callCta: "Llámanos",
       phoneDisplay: CONTACT_PHONE_DISPLAY,
       phoneTel: CONTACT_PHONE_TEL,
       whatsappCta: "Llamada WhatsApp",
-      bookCta: "Reservar hora →",
+      bookCta: "Solicitar presupuesto →",
     },
     whyUs: {
       titleBefore: "¿Por qué ",
@@ -349,8 +349,8 @@ export const es: Messages = {
         {
           title: "Comprensión del negocio",
           body: "Nuestra larga trayectoria emprendedora en hostelería, turismo y restauración nos ayuda a entender tu negocio de forma integral. Queremos aumentar tus ventas desde el primer día y seguir creciendo contigo como socio digital.",
-          href: "/yhteys",
-          linkLabel: "Reservar llamada de presentación",
+          href: "/form",
+          linkLabel: "Solicitar presupuesto",
         },
         {
           title: "Precio asequible",
@@ -436,6 +436,12 @@ export const es: Messages = {
         link: "Abrir sitio →",
       },
     },
+    testimonial: {
+      quote:
+        "Restadigi nos hizo un conjunto digital que se parece a nosotros y funciona en el día a día — web, pedidos e imagen en un solo paquete.",
+      attribution: "Freddo's",
+      role: "Café",
+    },
     cta: {
       titleBefore: "¿Listo para dar el ",
       titleAccent: "siguiente paso",
@@ -494,6 +500,36 @@ export const es: Messages = {
       mailBody:
         "Nombre: {name}\nEmpresa: {company}\nCorreo: {email}\nPresupuesto: {budget}\n\nMensaje:\n{message}",
     },
+    faq: {
+      title: "Preguntas frecuentes",
+      items: [
+        {
+          question: "¿Cuánto cuesta Restadigi?",
+          answer:
+            "Los paquetes web empiezan en 399 €. Restachat cuesta 29 € / mes, Restatable 39 € / mes y Restabooking 45 € / mes. Visibilidad y hosting se presupuestan según necesidad — ver precios y páginas de servicio.",
+        },
+        {
+          question: "¿Qué tan rápido se entrega un proyecto?",
+          answer:
+            "Un sitio básico puede estar listo en unos cinco días laborables si el contenido y las decisiones avanzan bien. Proyectos mayores (reservas, tienda, visibilidad) se planifican juntos.",
+        },
+        {
+          question: "¿Quién es dueño del sitio y del contenido?",
+          answer:
+            "El sitio y el contenido son tuyos. Recibes un panel de administración para actualizar textos, imágenes y horarios sin conocimientos técnicos.",
+        },
+        {
+          question: "¿Cómo funcionan el mantenimiento y el soporte?",
+          answer:
+            "Tras el lanzamiento tienes 30 días de soporte. Puedes continuar con hosting finlandés y un paquete de mantenimiento para actualizaciones y cambios pequeños.",
+        },
+        {
+          question: "¿Cómo empieza la colaboración?",
+          answer:
+            "Empezamos con una breve llamada de presentación. Luego recibes una propuesta y, si hace falta, una demo. Puedes pedir presupuesto por el formulario o llamarnos.",
+        },
+      ],
+    },
   },
   pricing: {
     meta: {
@@ -548,6 +584,7 @@ export const es: Messages = {
     ],
     closing:
       "Trabajamos a largo plazo con nuestros clientes. Las mismas personas que planifican y construyen tu sitio también ayudan en su desarrollo, mantenimiento y marketing. Nuestro objetivo no es solo publicar sitios web, sino crear soluciones que impulsen el crecimiento de tu empresa a largo plazo.",
+    cta: "Solicitar presupuesto",
   },
   websites: {
     meta: {
@@ -1139,9 +1176,9 @@ export const es: Messages = {
       eyebrow: "Restabooking",
       title: "Todas las reservas en un solo sistema.",
       paragraphs: [
-        "RestaBooking es un sistema de reservas versátil para hoteles, posadas, cabañas, resorts y otros alojamientos. Con el mismo sistema gestionas estancias, actividades, experiencias, eventos y reservas de grupo desde un solo lugar.",
+        "Restabooking es un sistema de reservas versátil para hoteles, posadas, cabañas, resorts y otros alojamientos. Con el mismo sistema gestionas estancias, actividades, experiencias, eventos y reservas de grupo desde un solo lugar.",
         "El proceso automatizado reduce el trabajo manual y mantiene la disponibilidad y el calendario siempre al día. Tus clientes pueden reservar online las 24 horas, lo que mejora la experiencia y ayuda a aumentar las ventas.",
-        "Una interfaz clara hace fluida la gestión diaria tanto en pequeños alojamientos como en destinos mayores. Ya sean habitaciones, cabañas, servicios de programa, eventos o grupos, RestaBooking lo reúne todo en un sistema fácil de usar.",
+        "Una interfaz clara hace fluida la gestión diaria tanto en pequeños alojamientos como en destinos mayores. Ya sean habitaciones, cabañas, servicios de programa, eventos o grupos, Restabooking lo reúne todo en un sistema fácil de usar.",
         "Ofrece a tus clientes una reserva sin fricción y gestiona todo el negocio de forma eficiente en una plataforma moderna.",
       ],
       cta: "Preguntar más",

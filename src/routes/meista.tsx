@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -76,6 +76,15 @@ function MeistaPage() {
           <p className="mt-14 text-base leading-relaxed text-foreground/70 sm:mt-16 sm:text-lg">
             {a.closing}
           </p>
+
+          <div className="mt-10">
+            <Link
+              to="/form"
+              className="inline-flex items-center rounded-full bg-[#432f24] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-[#f7f3ee] transition-opacity hover:opacity-90"
+            >
+              {a.cta}
+            </Link>
+          </div>
         </div>
       </main>
 

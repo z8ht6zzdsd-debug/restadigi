@@ -197,7 +197,7 @@ function RestachatPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                to="/yhteys"
+                to="/form"
                 className="inline-flex items-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
               >
                 {cb.cta.button}

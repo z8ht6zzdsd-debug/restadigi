@@ -24,6 +24,7 @@ import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 
 const WHY_US_PATHS = [
+  "/form",
   "/yhteys",
   "/verkkosivut",
   "/restachat",
@@ -103,7 +104,7 @@ function Index() {
               {h.hero.description}
             </p>
             <Link
-              to="/yhteys"
+              to="/form"
               className="mt-8 inline-flex items-center justify-center rounded-full !bg-[#432f24] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] !text-[#f7f3ee] transition-opacity hover:opacity-90"
             >
               {h.hero.cta}
@@ -197,7 +198,7 @@ function Index() {
                     {h.intro.whatsappCta}
                   </a>
                   <Link
-                    to="/yhteys"
+                    to="/form"
                     className="inline-flex items-center justify-center rounded-full border-2 border-white/80 bg-transparent px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition-colors hover:bg-white hover:text-black"
                   >
                     {h.intro.bookCta.replace(/\s*→\s*$/, "")}
@@ -394,6 +395,17 @@ function Index() {
             </article>
           </div>
 
+          <blockquote className="mt-8 rounded-[1.75rem] border border-[#d6d6d6] bg-white px-8 py-10 text-center sm:mt-10 sm:rounded-[2rem] sm:px-12 sm:py-12">
+            <p className="mx-auto max-w-3xl text-lg font-medium leading-relaxed text-[#2a2018] sm:text-xl sm:leading-relaxed">
+              “{h.testimonial.quote}”
+            </p>
+            <footer className="mt-6 text-sm text-foreground/60">
+              <span className="font-semibold text-[#2a2018]">{h.testimonial.attribution}</span>
+              <span className="mx-2 text-foreground/35">·</span>
+              <span>{h.testimonial.role}</span>
+            </footer>
+          </blockquote>
+
           {/* Seuraava askel */}
           <article className="mt-4 sm:mt-5 relative isolate overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] min-h-[18rem] sm:min-h-[20rem] bg-[#432f24] text-white flex flex-col items-center justify-center text-center px-8 py-14 sm:px-12">
             <div
@@ -411,7 +423,7 @@ function Index() {
             </h2>
             <div className="relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
-                to="/yhteys"
+                to="/form"
                 className="inline-flex items-center rounded-full !bg-[#432f24] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] !text-[#f7f3ee] transition-opacity hover:opacity-90"
               >
                 {h.cta.quoteCta}

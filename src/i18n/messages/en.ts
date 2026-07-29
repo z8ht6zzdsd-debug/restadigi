@@ -301,7 +301,7 @@ export const en: Messages = {
       titleAccent: "serves your customers 24/7",
       titleAfter: ".",
       description:
-        "A company’s digital whole rests on three pillars: websites, booking services and AI-powered customer service. We design and deliver websites, mobile apps, booking and ordering systems, and other smart digital solutions for service businesses. We offer a high-quality, cost-effective service package that brings online visibility, scheduling, customer service and sales together as one seamless whole.",
+        "Websites, booking services and AI customer service — a digital package for service businesses. Clear packages, fast delivery and support for growth.",
       cta: "Request a quote",
     },
     sitePreview: {
@@ -328,12 +328,12 @@ export const en: Messages = {
     intro: {
       titleLine1: "Industry-specific solutions.",
       titleLine2: "Get in touch — let's talk.",
-      body: "We want to understand how your business works in detail so we can serve you as well as possible. Every project starts with at least a 30-minute discovery call. Book a time below or call us directly — together we'll find the right solution for you.",
+      body: "We want to understand how your business works in detail so we can serve you as well as possible. Every project starts with at least a 30-minute discovery call. Get in touch below or call us directly — together we'll find the right solution for you.",
       callCta: "Call us",
       phoneDisplay: CONTACT_PHONE_DISPLAY,
       phoneTel: CONTACT_PHONE_TEL,
       whatsappCta: "WhatsApp call",
-      bookCta: "Book a time →",
+      bookCta: "Request a quote →",
     },
     whyUs: {
       titleBefore: "Why choose ",
@@ -345,8 +345,8 @@ export const en: Messages = {
         {
           title: "Business understanding",
           body: "Our long entrepreneurial background in hospitality, travel and restaurants helps us understand your business as a whole. We want to grow your sales from day one and keep growing with you as a digital business partner.",
-          href: "/yhteys",
-          linkLabel: "Book a discovery call",
+          href: "/form",
+          linkLabel: "Request a quote",
         },
         {
           title: "Affordability",
@@ -432,6 +432,12 @@ export const en: Messages = {
         link: "Open website →",
       },
     },
+    testimonial: {
+      quote:
+        "Restadigi built us a digital setup that looks like us and works day to day — site, ordering and look in one package.",
+      attribution: "Freddo's",
+      role: "Café",
+    },
     cta: {
       titleBefore: "Ready to take the ",
       titleAccent: "next step",
@@ -490,6 +496,36 @@ export const en: Messages = {
       mailBody:
         "Name: {name}\nCompany: {company}\nEmail: {email}\nBudget: {budget}\n\nMessage:\n{message}",
     },
+    faq: {
+      title: "Frequently asked questions",
+      items: [
+        {
+          question: "What does Restadigi cost?",
+          answer:
+            "Website packages start from 399 €. Restachat is 29 € / month, Restatable 39 € / month and Restabooking 45 € / month. Visibility and hosting packages are priced to need — see the pricing page and service pages.",
+        },
+        {
+          question: "How fast is a project delivered?",
+          answer:
+            "A basic website can be ready in as little as five business days when content and decisions move smoothly. Larger setups (bookings, shop, visibility) are scheduled together.",
+        },
+        {
+          question: "Who owns the site and content?",
+          answer:
+            "The site and content belong to you. You get an admin panel to update texts, images and opening hours yourself — no technical skills required.",
+        },
+        {
+          question: "How do maintenance and support work?",
+          answer:
+            "After launch you get 30 days of support. You can continue with Finnish hosting and a maintenance package for updates and small changes.",
+        },
+        {
+          question: "How does collaboration start?",
+          answer:
+            "We start with a short discovery call. Then you get a proposal and a demo if needed. Request a quote via the form or call us directly.",
+        },
+      ],
+    },
   },
   pricing: {
     meta: {
@@ -544,6 +580,7 @@ export const en: Messages = {
     ],
     closing:
       "We work with clients for the long term. The same people who plan and build your site also help with development, maintenance and marketing. Our goal isn’t just to launch websites — it’s to build solutions that support your company’s growth over time.",
+    cta: "Request a quote",
   },
   websites: {
     meta: {
@@ -1131,9 +1168,9 @@ export const en: Messages = {
       eyebrow: "Restabooking",
       title: "All bookings in one system.",
       paragraphs: [
-        "RestaBooking is a versatile booking system for hotels, inns, cabins, resorts and other lodging businesses. With the same system you manage stays, activities, experiences, events and group bookings from one place.",
+        "Restabooking is a versatile booking system for hotels, inns, cabins, resorts and other lodging businesses. With the same system you manage stays, activities, experiences, events and group bookings from one place.",
         "An automated booking process reduces manual work and keeps availability and the booking calendar up to date. Guests can book online around the clock — better experience, more sales.",
-        "A clear interface makes daily management smooth for small properties and larger destinations alike. Whether rooms, cabins, programme services, events or group stays, RestaBooking brings everything into one easy-to-use system.",
+        "A clear interface makes daily management smooth for small properties and larger destinations alike. Whether rooms, cabins, programme services, events or group stays, Restabooking brings everything into one easy-to-use system.",
         "Give guests an effortless booking experience and run your whole business efficiently on one modern platform.",
       ],
       cta: "Ask for more",

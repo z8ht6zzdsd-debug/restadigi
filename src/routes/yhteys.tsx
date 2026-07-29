@@ -178,6 +178,22 @@ function YhteysPage() {
         </div>
       </MarketingBand>
 
+      <MarketingBand className="pt-4 sm:pt-6">
+        <MarketingHeading>{c.faq.title}</MarketingHeading>
+        <div className="space-y-3">
+          {c.faq.items.map((item) => (
+            <MarketingBox key={item.question} tone="white" justify="start" className="min-h-0">
+              <h3 className="text-base font-bold tracking-tight text-[#2a2018] sm:text-lg">
+                {item.question}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/70 sm:text-base">
+                {item.answer}
+              </p>
+            </MarketingBox>
+          ))}
+        </div>
+      </MarketingBand>
+
       <section className="bg-background">
         <SiteFooter />
       </section>

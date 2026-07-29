@@ -144,7 +144,7 @@ function MajoitusvarausPage() {
               ))}
             </div>
             <Link
-              to="/yhteys"
+              to="/form"
               className="mt-8 inline-flex items-center justify-center rounded-full !bg-[#432f24] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] !text-[#f0f0f0] transition-opacity hover:opacity-90"
             >
               {b.hero.cta}
@@ -269,7 +269,7 @@ function MajoitusvarausPage() {
             <span className="text-sm text-white/55">{b.cta.priceNote}</span>
           </p>
           <Link
-            to="/yhteys"
+            to="/form"
             className="inline-flex items-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
           >
             {b.cta.button}

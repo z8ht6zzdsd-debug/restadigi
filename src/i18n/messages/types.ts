@@ -220,6 +220,11 @@ export type Messages = {
         link: string;
       };
     };
+    testimonial: {
+      quote: string;
+      attribution: string;
+      role: string;
+    };
     cta: {
       titleBefore: string;
       titleAccent: string;
@@ -270,6 +275,10 @@ export type Messages = {
       mailSubject: string;
       mailBody: string;
     };
+    faq: {
+      title: string;
+      items: Array<{ question: string; answer: string }>;
+    };
   };
   pricing: {
     meta: {
@@ -307,6 +316,7 @@ export type Messages = {
     teamHeading: string;
     team: Array<{ name: string; body: string }>;
     closing: string;
+    cta: string;
   };
   websites: {
     meta: {

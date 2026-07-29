@@ -10,7 +10,7 @@ import {
 } from "@/lib/company-contact";
 
 const siteIntroBullet =
-  "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – avaimet käteen paketti ja kattava käyttökoulutus";
+  "Selkeät ja houkuttelevat perustekstit etusivulle, palveluille ja yhteystiedoille – avaimet käteen -paketti ja kattava käyttökoulutus";
 
 const siteSharedBullets = [
   "Helppokäyttöinen hallintapaneeli, jolla voit päivittää sisältöjä itse",
@@ -30,11 +30,11 @@ const withSitePages = (pagesBullet: string, extras: string[] = []) => [
 
 export const fi: Messages = {
   meta: {
-    defaultTitle: "Restadigi — Kotisivut ja diginäkyvyys yrityksille",
+    defaultTitle: "Restadigi — Verkkosivut ja diginäkyvyys yrityksille",
     defaultDescription:
-      "Restadigi rakentaa moderneja kotisivuja ja vahvistaa yritysten diginäkyvyyttä. Uuden teknologian avulla sivut valmistuvat nopeasti ja niitä on helppo päivittää.",
-    ogTitle: "Restadigi — Kotisivut ja diginäkyvyys yrityksille",
-    ogDescription: "Modernit kotisivut, SEO ja diginäkyvyyden palvelut yrityksesi kasvun tueksi.",
+      "Restadigi rakentaa moderneja verkkosivuja ja vahvistaa yritysten diginäkyvyyttä. Uuden teknologian avulla sivut valmistuvat nopeasti ja niitä on helppo päivittää.",
+    ogTitle: "Restadigi — Verkkosivut ja diginäkyvyys yrityksille",
+    ogDescription: "Modernit verkkosivut, SEO ja diginäkyvyyden palvelut yrityksesi kasvun tueksi.",
   },
   notFound: {
     code: "404",
@@ -304,7 +304,7 @@ export const fi: Messages = {
       titleAccent: "palvelee asiakkaitasi 24/7",
       titleAfter: ".",
       description:
-        "Yrityksen digitaalinen kokonaisuus rakentuu kolmesta kulmakivestä: verkkosivut, varauspalvelut ja AI-pohjainen asiakaspalvelu. Suunnittelemme ja toteutamme verkkosivuja, mobiilisovelluksia, varaus- ja tilausjärjestelmiä sekä muita älykkäitä digitaalisia ratkaisuja palvelualan yrityksille. Tarjoamme laadukkaan ja kustannustehokkaan palvelukokonaisuuden, joka yhdistää verkkonäkyvyyden, ajanvarauksen, asiakaspalvelun ja myynnin saumattomaksi kokonaisuudeksi.",
+        "Verkkosivut, varauspalvelut ja AI-asiakaspalvelu — digikokonaisuus palvelualan yrityksille. Selkeät paketit, nopea toteutus ja tuki kasvulle.",
       cta: "Pyydä tarjous",
     },
     sitePreview: {
@@ -331,12 +331,12 @@ export const fi: Messages = {
     intro: {
       titleLine1: "Toimialakohtaiset ratkaisut.",
       titleLine2: "Ota yhteyttä, jutellaan lisää.",
-      body: "Haluamme tutustua yrityksesi toimintaan mahdollisimman tarkasti ymmärtääksemme miten voimme palvella teitä parhaiten. Aloitamme kaikki projektit vähintään 30 minuutin pituisella tutustumispuhelulla. Varaa alta aika puhelulle tai soittele meille vaikka ihan suoraan itse, niin katsotaan teille optimaalinen palveluratkaisu yhdessä.",
+      body: "Haluamme tutustua yrityksesi toimintaan mahdollisimman tarkasti ymmärtääksemme, miten voimme palvella teitä parhaiten. Aloitamme kaikki projektit vähintään 30 minuutin pituisella tutustumispuhelulla. Ota yhteyttä alta tai soita meille suoraan — katsotaan yhdessä teille sopiva palveluratkaisu.",
       callCta: "Soita meille",
       phoneDisplay: CONTACT_PHONE_DISPLAY,
       phoneTel: CONTACT_PHONE_TEL,
       whatsappCta: "WhatsApp-puhelu",
-      bookCta: "Varaa aika →",
+      bookCta: "Pyydä tarjous →",
     },
     whyUs: {
       titleBefore: "Miksi valita ",
@@ -348,12 +348,12 @@ export const fi: Messages = {
         {
           title: "Liiketoimintaymmärrys",
           body: "Pitkä yrittäjätaustamme majoitus-, matkailu- ja ravintola-alalla auttaa meitä ymmärtämään yrityksesi liiketoimintaa kokonaisvaltaisesti. Haluamme kasvattaa myyntiäsi heti ja jatkaa kasvamista kanssanne digiliiketoimintakumppanina.",
-          href: "/yhteys",
-          linkLabel: "Varaa tutustumispuhelu",
+          href: "/form",
+          linkLabel: "Pyydä tarjous",
         },
         {
           title: "Edullisuus",
-          body: "Palvelualan kulurakenne on nousussa ja uusien asiakkaiden löytäminen voi olla haastavaa ja kallista. Tekoälyn ansioista tuotamme palveluita järkevään hintaan laadusta tinkimättä — markkinoiden parhaalla hinta–laatusuhteella.",
+          body: "Palvelualan kulurakenne on nousussa ja uusien asiakkaiden löytäminen voi olla haastavaa ja kallista. Tekoälyn ansiosta tuotamme palveluita järkevään hintaan laadusta tinkimättä — markkinoiden parhaalla hinta–laatusuhteella.",
           href: "/verkkosivut",
           linkLabel: "Katso paketit",
         },
@@ -431,9 +431,15 @@ export const fi: Messages = {
         title: "Rafa Romera",
         titleAccent: "— sivusto & Spotify-integraatio",
         tag: "Artistisivusto",
-        body: "Andalusialaisen muusikon Rafa Romeran verkkosivusto Spotify-integraatiolla — biografia, discografia, galleria ja tulevat konsertit yhdessä kokonaisuudessa, joka ohjaa kuulijat suoraan kuuntelemaan.",
+        body: "Andalusialaisen muusikon Rafa Romeran verkkosivusto Spotify-integraatiolla — biografia, diskografia, galleria ja tulevat konsertit yhdessä kokonaisuudessa, joka ohjaa kuulijat suoraan kuuntelemaan.",
         link: "Avaa sivusto →",
       },
+    },
+    testimonial: {
+      quote:
+        "Restadigi teki meille digikokonaisuuden, joka näyttää meiltä ja toimii arjessa — sivut, tilaukset ja ilme samassa paketissa.",
+      attribution: "Freddo's",
+      role: "Kahvila",
     },
     cta: {
       titleBefore: "Valmis ottamaan ",
@@ -493,6 +499,36 @@ export const fi: Messages = {
       mailBody:
         "Nimi: {name}\nYritys: {company}\nSähköposti: {email}\nBudjetti: {budget}\n\nViesti:\n{message}",
     },
+    faq: {
+      title: "Usein kysytyt kysymykset",
+      items: [
+        {
+          question: "Mitä Restadigi maksaa?",
+          answer:
+            "Verkkosivupaketit alkavat 399 eurosta. Restachat on 29 € / kk, Restatable 39 € / kk ja Restabooking 45 € / kk. Näkyvyys- ja hosting-paketit hinnoitellaan tarpeen mukaan — näet hinnat hinnastosivulta ja palvelusivuilta.",
+        },
+        {
+          question: "Kuinka nopeasti projekti valmistuu?",
+          answer:
+            "Perusverkkosivusto voi olla valmis jopa viidessä arkipäivässä, kun sisältö ja päätökset etenevät sujuvasti. Laajemmat kokonaisuudet (varaukset, kauppa, näkyvyys) sovitaan yhdessä aikataulussa.",
+        },
+        {
+          question: "Kuka omistaa sivuston ja sisällöt?",
+          answer:
+            "Sivusto ja sisältö kuuluvat asiakkaalle. Saat hallintapaneelin, jolla voit päivittää tekstejä, kuvia ja aukioloja itse — ilman teknistä osaamista.",
+        },
+        {
+          question: "Miten ylläpito ja tuki toimivat?",
+          answer:
+            "Julkaisun jälkeen saat 30 päivän tuen. Halutessasi voit jatkaa kotimaisella hostingilla ja ylläpitopaketilla, jossa autamme päivityksissä ja pienissä muutoksissa.",
+        },
+        {
+          question: "Miten yhteistyö alkaa?",
+          answer:
+            "Aloitamme lyhyellä tutustumispuhelulla. Sen jälkeen saat ehdotuksen ja tarvittaessa demon. Voit pyytää tarjouksen lomakkeella tai soittaa meille suoraan.",
+        },
+      ],
+    },
   },
   pricing: {
     meta: {
@@ -547,14 +583,15 @@ export const fi: Messages = {
     ],
     closing:
       "Työskentelemme pitkäjänteisesti asiakkaidemme kanssa. Samat ihmiset, jotka suunnittelevat ja rakentavat sivustosi, auttavat myös sen kehittämisessä, ylläpidossa ja markkinoinnissa. Tavoitteemme ei ole vain julkaista verkkosivuja, vaan rakentaa ratkaisuja, jotka tukevat yrityksesi kasvua pitkällä aikavälillä.",
+    cta: "Pyydä tarjous",
   },
   websites: {
     meta: {
-      title: "Kotisivut yrityksille — Restadigi",
+      title: "Verkkosivut yrityksille — Restadigi",
       description:
-        "Selkeät ja vaikuttavat kotisivupaketit ja graafiset lisäpalvelut yrityksille ja yhdistyksille.",
-      ogTitle: "Kotisivut yrityksille — Restadigi",
-      ogDescription: "Kotisivupaketit ja graafiset lisäpalvelut yrityksesi tarpeisiin.",
+        "Selkeät ja vaikuttavat verkkosivupaketit ja graafiset lisäpalvelut yrityksille ja yhdistyksille.",
+      ogTitle: "Verkkosivut yrityksille — Restadigi",
+      ogDescription: "Verkkosivupaketit ja graafiset lisäpalvelut yrityksesi tarpeisiin.",
     },
     hero: {
       titleBefore: "Verkkosivut ",
@@ -682,13 +719,13 @@ export const fi: Messages = {
     },
     hero: {
       brand: "Restadigi",
-      headlineLine1: "Laitetaanko näkyvyydet",
+      headlineLine1: "Laitetaanko näkyvyys",
       headlineLine2: "kerralla kuntoon?",
       searchPlaceholder: "Haku",
       searchAriaLabel: "Hae diginäkyvyydestä",
     },
     midBanner: {
-      title: "Matkasi huippunäkyvyyksille alkaa tästä!",
+      title: "Matkasi huipputason näkyvyyteen alkaa tästä!",
       description:
         "Tutustu alta paketteihin, joilla nostat yrityksesi verkkonäkyvyyden uudelle tasolle.",
     },
@@ -773,7 +810,7 @@ export const fi: Messages = {
           "Somepohjat tai rollup — alk. 149 €",
           "Tuntityö — 49 €/h",
         ],
-        result: "ammattimaisen ja modernin visuaalisen ilmeen yrityksellesi.",
+        result: "Ammattimaisen ja modernin visuaalisen ilmeen yrityksellesi.",
       },
     ],
     footnote: "Hinnat ovat vuosihintoja. Maksat vain siitä, mitä tarvitset — ei piilokustannuksia.",
@@ -809,7 +846,7 @@ export const fi: Messages = {
           price: "Alkaen 399 €",
         },
         {
-          name: "Somepohjien suunnittelu Cursorilla",
+          name: "Somepohjien suunnittelu",
           description:
             "Suunnittelemme valmiit sosiaalisen median pohjat, joiden avulla julkaisut pysyvät visuaalisesti yhtenäisinä ja helposti muokattavina. Pohjat nopeuttavat sisällöntuotantoa ja vahvistavat yrityksen brändiä.",
           price: "Alkaen 149 €",
@@ -978,7 +1015,7 @@ export const fi: Messages = {
         "Integroimme ravintolasi verkkosivuille modernin pöytävarauspalvelun, joka toimii ympäri vuorokauden. Asiakas valitsee ajan ja seurueen koon, saa vahvistuksen sähköpostiin ja henkilökuntasi näkee varaukset selkeästä hallintapaneelista.",
       headlineLine1: "Asiakkaat varaavat pöydän",
       headlineLine2: "itse — 24/7.",
-      subtitle: "Tutustu Restableen ja kokeile varausbottia.",
+      subtitle: "Tutustu Restatableen ja kokeile varausbottia.",
       shopHeadline: "Kauppa ei nuku",
       shopBody:
         "Ota pöytävaraukset vastaan digitaalisesti 24/7 Restadigin online-pöytävarausjärjestelmällä. Asiakkaasi voivat tehdä varauksen helposti joko verkkosivuille upotetun varausjärjestelmän tai älykkään pöytävarauschatbotin kautta – juuri silloin, kun heille parhaiten sopii. Tarvittaessa suunnittelemme palvelulle myös täysin oman, yrityksesi ilmeen mukaisen varaussivun.",
@@ -1028,7 +1065,7 @@ export const fi: Messages = {
       titleBefore: "Saumaton ",
       titleAccent: "integrointi",
       titleAfter: ".",
-      body: "Teemme varaamisen helpoksi integroimalla Restablen palvelun ravintolasi sivustoon ja digikanaviin. Sosiaalisesta mediasta Googleen ja sähköpostivahvistuksiin — Restatable toimii siellä, mistä asiakkaat löytävät teidät.",
+      body: "Teemme varaamisen helpoksi integroimalla Restatablen palvelun ravintolasi sivustoon ja digikanaviin. Sosiaalisesta mediasta Googleen ja sähköpostivahvistuksiin — Restatable toimii siellä, mistä asiakkaat löytävät teidät.",
       logos: ["Google", "Instagram", "Facebook", "Sähköposti", "Oma sivusto", "Kalenteri"],
     },
     dashboard: {
@@ -1071,7 +1108,7 @@ export const fi: Messages = {
       titleAccent: "Restatable",
       titleAfter: " käyttöön.",
       price: "39 € / kk",
-      priceNote: "Kiinteä kuukausihinta Restablen pöytävarauspalvelulle",
+      priceNote: "Kiinteä kuukausihinta Restatablen pöytävarauspalvelulle",
       button: "Kysy lisää",
     },
     demo: {
@@ -1080,10 +1117,10 @@ export const fi: Messages = {
       sectionTitleAccent: "varaa pöydän",
       sectionTitleAfter: " sivustoltasi.",
       sectionBody:
-        "Alla on Restablen esimerkkinäkymä (Ravintola Kaj). Hallintapaneelissa voit muokata nimeä, aikoja ja tekstejä suomeksi, englanniksi ja espanjaksi. Demotiedot eivät tallennu.",
+        "Alla on Restatablen esimerkkinäkymä (Ravintola Kaj). Hallintapaneelissa voit muokata nimeä, aikoja ja tekstejä suomeksi, englanniksi ja espanjaksi. Demotiedot eivät tallennu.",
       bannerEyebrow: "Restatable — tuote-esittely",
       bannerBody:
-        "Tämä varauspolku esittelee Restablen pöytävarausta. Täytetyt tiedot ovat vain esimerkki — niitä ei tallenneta. Oikeassa toteutuksessa varaukset menevät hallintapaneeliin.",
+        "Tämä varauspolku esittelee Restatablen pöytävarausta. Täytetyt tiedot ovat vain esimerkki — niitä ei tallenneta. Oikeassa toteutuksessa varaukset menevät hallintapaneeliin.",
       liveBadge: "Demo",
       stepperAria: "Varauksen vaiheet",
       stepInfo: "Tyyppi",
@@ -1134,9 +1171,9 @@ export const fi: Messages = {
       eyebrow: "Restabooking",
       title: "Kaikki varaukset yhdessä järjestelmässä.",
       paragraphs: [
-        "RestaBooking on monipuolinen varausjärjestelmä hotelleille, majataloille, mökeille, lomakeskuksille ja muille majoitusliikkeille. Samalla järjestelmällä hallitset majoitusvaraukset, aktiviteetit, elämykset, tapahtumat ja ryhmävaraukset helposti yhdestä paikasta.",
+        "Restabooking on monipuolinen varausjärjestelmä hotelleille, majataloille, mökeille, lomakeskuksille ja muille majoitusliikkeille. Samalla järjestelmällä hallitset majoitusvaraukset, aktiviteetit, elämykset, tapahtumat ja ryhmävaraukset helposti yhdestä paikasta.",
         "Automatisoitu varausprosessi vähentää manuaalista työtä ja pitää saatavuuden sekä varauskalenterin aina ajan tasalla. Asiakkaasi voivat tehdä varauksia verkossa vuorokauden ympäri, mikä parantaa asiakaskokemusta ja auttaa kasvattamaan myyntiä.",
-        "Selkeä käyttöliittymä tekee päivittäisestä hallinnasta sujuvaa niin pienille majoitusyrityksille kuin suuremmillekin kohteille. Olipa kyse hotellihuoneista, mökeistä, ohjelmapalveluista, tapahtumista tai ryhmien majoituksesta, RestaBooking kokoaa kaiken yhteen helppokäyttöiseen järjestelmään.",
+        "Selkeä käyttöliittymä tekee päivittäisestä hallinnasta sujuvaa niin pienille majoitusyrityksille kuin suuremmillekin kohteille. Olipa kyse hotellihuoneista, mökeistä, ohjelmapalveluista, tapahtumista tai ryhmien majoituksesta, Restabooking kokoaa kaiken yhteen helppokäyttöiseen järjestelmään.",
         "Tarjoa asiakkaillesi vaivaton varauskokemus ja hallitse koko liiketoimintaasi tehokkaasti yhdellä modernilla alustalla.",
       ],
       cta: "Kysy lisää",

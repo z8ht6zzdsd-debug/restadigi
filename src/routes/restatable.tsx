@@ -99,7 +99,7 @@ function RestatablePage() {
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link
-                to="/yhteys"
+                to="/form"
                 className="inline-flex items-center rounded-full bg-[#432f24] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
               >
                 {b.dashboard.ctaPrimary}
@@ -297,7 +297,7 @@ function RestatablePage() {
               {b.cta.priceNote}
             </p>
             <Link
-              to="/yhteys"
+              to="/form"
               className="inline-flex items-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-accent-foreground transition-opacity hover:opacity-90"
             >
               {b.cta.button}

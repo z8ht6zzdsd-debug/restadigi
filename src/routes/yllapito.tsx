@@ -59,7 +59,7 @@ function YllapitoPage() {
               ))}
             </ul>
             <Link
-              to="/yhteys"
+              to="/form"
               className="mt-8 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-accent-foreground transition-opacity hover:opacity-90"
             >
               {h.hero.askCta}
