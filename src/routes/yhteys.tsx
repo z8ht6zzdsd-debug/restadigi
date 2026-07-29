@@ -101,16 +101,16 @@ function YhteysPage() {
                 </a>
               </div>
               <div>
-                <div className="mb-2 text-xs uppercase tracking-[0.2em] text-white/50">
+                <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/50">
                   {c.labels.whatsapp}
+                  <WhatsAppIcon className="size-3.5 shrink-0 text-[#25D366]" />
                 </div>
                 <a
                   href={`https://wa.me/${c.phoneTel.replace(/\D/g, "")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 text-lg font-medium transition-colors hover:text-accent"
+                  className="text-lg font-medium transition-colors hover:text-accent"
                 >
-                  <WhatsAppIcon className="size-5 shrink-0 text-[#25D366]" />
                   {c.whatsappDisplay}
                 </a>
               </div>
