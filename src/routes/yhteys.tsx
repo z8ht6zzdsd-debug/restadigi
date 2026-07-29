@@ -1,10 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import heroYhteys from "@/assets/hero-yhteys.jpg";
 import { MarketingBand, MarketingBox, MarketingHeading } from "@/components/marketing-band";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PageHero } from "@/components/page-hero";
 import { PageMeta } from "@/components/page-meta";
 import { useMessages } from "@/i18n";
 import { CONTACT_EMAIL } from "@/lib/company-contact";
@@ -63,24 +61,15 @@ function YhteysPage() {
       />
       <SiteHeader />
 
-      <PageHero
-        image={heroYhteys}
-        title={
-          <>
-            {c.hero.titleBefore}
-            <span className="font-serif italic text-inherit">{c.hero.titleAccent}</span>
-            {c.hero.titleAfter}
-          </>
-        }
-        description={c.hero.description}
-      />
-
       <MarketingBand>
         <MarketingHeading>
           {c.hero.titleBefore}
-          {c.hero.titleAccent}
+          <span className="font-serif italic text-inherit">{c.hero.titleAccent}</span>
           {c.hero.titleAfter}
         </MarketingHeading>
+        <p className="mb-8 max-w-2xl text-base leading-relaxed text-foreground/70 sm:mb-10 sm:text-lg">
+          {c.hero.description}
+        </p>
 
         <div className="grid gap-4 sm:gap-5 lg:grid-cols-12">
           <MarketingBox
