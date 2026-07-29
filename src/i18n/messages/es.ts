@@ -524,8 +524,7 @@ export const es: Messages = {
       description:
         "Restadigi es un estudio digital fundado por dos emprendedores. Sitios web, visibilidad y servicios digitales — de emprendedores para emprendedores.",
       ogTitle: "Sobre nosotros — Restadigi",
-      ogDescription:
-        "Un equipo pequeño, una gran responsabilidad. Estudio digital para pymes.",
+      ogDescription: "Un equipo pequeño, una gran responsabilidad. Estudio digital para pymes.",
     },
     eyebrow: "Sobre nosotros",
     titleBefore: "Un equipo pequeño, ",
@@ -1134,8 +1133,7 @@ export const es: Messages = {
       description:
         "Restabooking: alojamiento, actividades, experiencias, eventos y reservas de grupo en un solo sistema.",
       ogTitle: "Restabooking — reservas de alojamiento — Restadigi",
-      ogDescription:
-        "Todas las reservas en un sistema — para hoteles, posadas, cabañas y resorts.",
+      ogDescription: "Todas las reservas en un sistema — para hoteles, posadas, cabañas y resorts.",
     },
     hero: {
       eyebrow: "Restabooking",

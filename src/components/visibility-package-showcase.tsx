@@ -151,7 +151,12 @@ function VisibilityPackageLaptop({
           <div className="flex size-full flex-col px-2.5 pb-2 pt-3.5 sm:px-3.5 sm:pb-2.5 sm:pt-4 lg:px-4 lg:pt-5">
             <div className="flex shrink-0 flex-col items-center gap-1 sm:gap-1.5">
               <div className="relative flex w-full items-center justify-center px-10 sm:px-12">
-                <span className={cn("absolute left-0 top-1/2 inline-flex shrink-0 -translate-y-1/2", accent)}>
+                <span
+                  className={cn(
+                    "absolute left-0 top-1/2 inline-flex shrink-0 -translate-y-1/2",
+                    accent,
+                  )}
+                >
                   <Icon className="size-5 sm:size-5 lg:size-6" strokeWidth={1.75} />
                 </span>
                 {useTwoLines && twoLineTitle ? (
@@ -199,4 +204,3 @@ function VisibilityPackageLaptop({
     </div>
   );
 }
-

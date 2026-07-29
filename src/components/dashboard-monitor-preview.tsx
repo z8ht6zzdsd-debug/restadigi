@@ -90,7 +90,9 @@ export function DashboardStripPreview({ className = "" }: { className?: string }
                 }
               >
                 <p className="text-[6px] uppercase tracking-[0.1em] text-[#8a8178]">{card.label}</p>
-                <p className="text-[11px] font-semibold tabular-nums text-[#1a1512]">{card.value}</p>
+                <p className="text-[11px] font-semibold tabular-nums text-[#1a1512]">
+                  {card.value}
+                </p>
               </div>
             ))}
           </div>
@@ -119,7 +121,9 @@ export function DashboardStripPreview({ className = "" }: { className?: string }
                   { name: "Hotel Aura", status: "Soitettu" },
                 ].map((lead) => (
                   <li key={lead.name} className="flex items-center justify-between gap-1">
-                    <span className="truncate text-[8px] font-medium text-[#1a1512]">{lead.name}</span>
+                    <span className="truncate text-[8px] font-medium text-[#1a1512]">
+                      {lead.name}
+                    </span>
                     <span className="shrink-0 rounded-full bg-[#432f24]/10 px-1.5 py-0.5 text-[6px] uppercase text-[#432f24]">
                       {lead.status}
                     </span>
@@ -138,11 +142,7 @@ export function DashboardStripPreview({ className = "" }: { className?: string }
 export function WebsiteAdminPanelPair({ className = "" }: { className?: string }) {
   return (
     <div className={"grid gap-3 sm:gap-4 md:grid-cols-2 " + className} aria-hidden>
-      <AdminPanelFrame
-        title="Hallintapaneeli"
-        subtitle="Freddo's Café"
-        activeNav="Yhteenveto"
-      >
+      <AdminPanelFrame title="Hallintapaneeli" subtitle="Freddo's Café" activeNav="Yhteenveto">
         <AdminOpsPane />
       </AdminPanelFrame>
       <AdminPanelFrame title="Hallintapaneeli" subtitle="Live · tänään" activeNav="Chat">
@@ -191,9 +191,7 @@ function AdminPanelFrame({
               key={item.label}
               className={
                 "shrink-0 rounded-full px-2 py-0.5 text-[7px] font-semibold tracking-wide " +
-                (active
-                  ? item.color + " text-white shadow-sm"
-                  : "bg-[#ebe6df] text-[#5c534c]")
+                (active ? item.color + " text-white shadow-sm" : "bg-[#ebe6df] text-[#5c534c]")
               }
             >
               {item.label}
@@ -214,15 +212,20 @@ function AdminOpsPane() {
     <div className="space-y-2 p-2.5 sm:p-3">
       <div className="grid grid-cols-4 gap-1.5">
         {[
-          { label: "Varaukset", value: "24", tone: "bg-[#c46a32]/15 text-[#9a4a1f] ring-[#c46a32]/25" },
-          { label: "Asiakkaat", value: "186", tone: "bg-[#2a5f8f]/12 text-[#1e4a70] ring-[#2a5f8f]/20" },
+          {
+            label: "Varaukset",
+            value: "24",
+            tone: "bg-[#c46a32]/15 text-[#9a4a1f] ring-[#c46a32]/25",
+          },
+          {
+            label: "Asiakkaat",
+            value: "186",
+            tone: "bg-[#2a5f8f]/12 text-[#1e4a70] ring-[#2a5f8f]/20",
+          },
           { label: "Chat", value: "12", tone: "bg-[#6b3d8f]/12 text-[#4a2a68] ring-[#6b3d8f]/20" },
           { label: "★ 4,9", value: "38", tone: "bg-[#2f6b4f]/12 text-[#1f4a36] ring-[#2f6b4f]/20" },
         ].map((card) => (
-          <div
-            key={card.label}
-            className={"rounded-lg px-1.5 py-1.5 ring-1 " + card.tone}
-          >
+          <div key={card.label} className={"rounded-lg px-1.5 py-1.5 ring-1 " + card.tone}>
             <p className="text-[6px] font-semibold uppercase tracking-[0.08em] opacity-80">
               {card.label}
             </p>
@@ -259,8 +262,18 @@ function AdminOpsPane() {
           </div>
           <div className="mt-1.5 space-y-1">
             {[
-              { time: "18:30", name: "Pöytä 4 · 4 hlö", tag: "Vahvistettu", tagTone: "bg-[#2f6b4f]/15 text-[#2f6b4f]" },
-              { time: "19:00", name: "Pöytä 7 · 2 hlö", tag: "Uusi", tagTone: "bg-[#c46a32]/15 text-[#c46a32]" },
+              {
+                time: "18:30",
+                name: "Pöytä 4 · 4 hlö",
+                tag: "Vahvistettu",
+                tagTone: "bg-[#2f6b4f]/15 text-[#2f6b4f]",
+              },
+              {
+                time: "19:00",
+                name: "Pöytä 7 · 2 hlö",
+                tag: "Uusi",
+                tagTone: "bg-[#c46a32]/15 text-[#c46a32]",
+              },
             ].map((row) => (
               <div
                 key={row.time + row.name}
@@ -272,7 +285,11 @@ function AdminOpsPane() {
                 <span className="min-w-0 flex-1 truncate text-[8px] font-medium text-[#1a1512]">
                   {row.name}
                 </span>
-                <span className={"shrink-0 rounded-full px-1.5 py-0.5 text-[6px] font-bold " + row.tagTone}>
+                <span
+                  className={
+                    "shrink-0 rounded-full px-1.5 py-0.5 text-[6px] font-bold " + row.tagTone
+                  }
+                >
                   {row.tag}
                 </span>
               </div>
@@ -349,7 +366,10 @@ function AdminLivePane() {
               { name: "Hotel Aura", meta: "Yritysasiakas", initials: "HA", bg: "bg-[#2a5f8f]" },
               { name: "Jari K.", meta: "Uusi · chat", initials: "JK", bg: "bg-[#2f6b4f]" },
             ].map((c) => (
-              <li key={c.name} className="flex items-center gap-1.5 rounded-md bg-[#faf7f3] px-1.5 py-1">
+              <li
+                key={c.name}
+                className="flex items-center gap-1.5 rounded-md bg-[#faf7f3] px-1.5 py-1"
+              >
                 <span
                   className={
                     "flex size-5 shrink-0 items-center justify-center rounded-full text-[6px] font-bold text-white " +
@@ -391,8 +411,7 @@ function AdminLivePane() {
         <div className="mb-1.5 flex items-center justify-between">
           <p className="text-[8px] font-semibold text-[#1a1512]">Chat-keskustelut</p>
           <span className="flex items-center gap-1 rounded-full bg-[#6b3d8f]/15 px-1.5 py-0.5 text-[6px] font-bold text-[#6b3d8f]">
-            <span className="size-1 rounded-full bg-[#6b3d8f]" />
-            2 avointa
+            <span className="size-1 rounded-full bg-[#6b3d8f]" />2 avointa
           </span>
         </div>
         <div className="space-y-1.5">
@@ -478,7 +497,9 @@ function DashboardChrome({
                 key={card.label}
                 className="rounded-sm border border-[#e5e0d8] bg-white px-1.5 py-1.5"
               >
-                <p className="text-[6px] uppercase tracking-[0.12em] text-[#8a8178]">{card.label}</p>
+                <p className="text-[6px] uppercase tracking-[0.12em] text-[#8a8178]">
+                  {card.label}
+                </p>
                 <p className="mt-0.5 text-[11px] font-medium tabular-nums text-[#1a1512]">
                   {card.value}
                 </p>

@@ -130,8 +130,7 @@ export const en: Messages = {
       { code: "en", label: "English" },
       { code: "es", label: "Español" },
     ],
-    contactIntro:
-      "Find contact details and company info here. Get in touch — we’re happy to help.",
+    contactIntro: "Find contact details and company info here. Get in touch — we’re happy to help.",
     contactCta: "Go to contact page",
     contactLinks: [
       {
@@ -520,7 +519,8 @@ export const en: Messages = {
       description:
         "Restadigi is a digital studio founded by two entrepreneurs. Websites, visibility and digital services — from entrepreneurs to entrepreneurs.",
       ogTitle: "About us — Restadigi",
-      ogDescription: "A small team, big responsibility. A digital studio for small and medium-sized businesses.",
+      ogDescription:
+        "A small team, big responsibility. A digital studio for small and medium-sized businesses.",
     },
     eyebrow: "About us",
     titleBefore: "A small team, ",

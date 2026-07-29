@@ -234,9 +234,7 @@ export function WebsitesDualLaptopHero({
         </div>
       </div>
 
-      <div
-        className="websites-dual-hero relative mx-auto mt-3 w-full max-w-7xl px-2 pb-8 sm:mt-5 sm:px-4 sm:pb-12 lg:mt-6 lg:pb-16"
-      >
+      <div className="websites-dual-hero relative mx-auto mt-3 w-full max-w-7xl px-2 pb-8 sm:mt-5 sm:px-4 sm:pb-12 lg:mt-6 lg:pb-16">
         <div className="websites-dual-hero__stage relative mx-auto flex min-h-[14rem] items-end justify-center sm:min-h-[20rem] lg:min-h-[26rem]">
           <div className="websites-dual-hero__left absolute bottom-0 left-[2%] w-[52%] sm:left-[4%] sm:w-[48%] lg:left-[6%] lg:w-[46%]">
             <HeroLaptop tone="silver" screenSrc={leftScreenSrc} screenAlt="Rafa Romera" />
@@ -263,10 +261,7 @@ function HeroLaptop({
     tone === "silver"
       ? "from-[#e8e4de] via-[#d4cfc8] to-[#b8b2a8]"
       : "from-[#3a3f48] via-[#1e222a] to-[#0e1014]";
-  const base =
-    tone === "silver"
-      ? "from-[#c8c2b8] to-[#8a847a]"
-      : "from-[#2a2e36] to-[#12141a]";
+  const base = tone === "silver" ? "from-[#c8c2b8] to-[#8a847a]" : "from-[#2a2e36] to-[#12141a]";
   const hinge = tone === "silver" ? "bg-[#2a2622]/55" : "bg-black/70";
   const camera = tone === "silver" ? "bg-black/45" : "bg-black/80 ring-1 ring-white/10";
 

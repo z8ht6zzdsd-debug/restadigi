@@ -34,10 +34,7 @@ export function ServiceSplitHero({
         {/* Mobiili: otsikko ennen kuvaa */}
         <div className="lg:hidden">
           <div className="flex items-start gap-3">
-            <span
-              className="mt-0.5 inline-flex shrink-0 text-[#432f24]"
-              aria-hidden
-            >
+            <span className="mt-0.5 inline-flex shrink-0 text-[#432f24]" aria-hidden>
               <Icon className="size-5" strokeWidth={1.75} />
             </span>
             <h2 className="text-2xl font-medium leading-[1.12] tracking-tight text-foreground sm:text-3xl">
@@ -66,10 +63,7 @@ export function ServiceSplitHero({
             <div className="absolute inset-0 hidden items-center justify-center p-8 lg:flex">
               <div className="w-[92%] max-w-2xl rounded-3xl bg-[#432f24]/92 px-10 py-10 text-center shadow-lg">
                 <div className="flex items-center justify-center gap-4">
-                  <span
-                    className="inline-flex shrink-0 text-accent"
-                    aria-hidden
-                  >
+                  <span className="inline-flex shrink-0 text-accent" aria-hidden>
                     <Icon className="size-7" strokeWidth={1.75} />
                   </span>
                   <h2 className="text-left text-4xl font-medium leading-[1.1] tracking-tight text-[#f0f0f0] lg:text-[2.75rem]">

@@ -164,10 +164,7 @@ export function StayBookingHeroDevices({
             </div>
             <ul className="space-y-1 p-1.5">
               {phoneItems.slice(0, 5).map((item, i) => (
-                <li
-                  key={item}
-                  className="rounded-sm border border-[#e5e0d8] bg-white px-1.5 py-1"
-                >
+                <li key={item} className="rounded-sm border border-[#e5e0d8] bg-white px-1.5 py-1">
                   <div className="flex items-center gap-1">
                     <span
                       className={

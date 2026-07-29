@@ -1127,7 +1127,8 @@ export const fi: Messages = {
       description:
         "Restabooking: majoitusvaraukset, aktiviteetit, elämykset, tapahtumat ja ryhmävaraukset yhdessä järjestelmässä.",
       ogTitle: "Restabooking — majoitusvaraus — Restadigi",
-      ogDescription: "Kaikki varaukset yhdessä järjestelmässä — hotelleille, majataloille, mökeille ja lomakeskuksille.",
+      ogDescription:
+        "Kaikki varaukset yhdessä järjestelmässä — hotelleille, majataloille, mökeille ja lomakeskuksille.",
     },
     hero: {
       eyebrow: "Restabooking",

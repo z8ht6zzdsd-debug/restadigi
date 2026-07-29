@@ -183,10 +183,7 @@ export function PackageBrandLogoRow({
   const logos = kind === "ai" ? AI_LOGOS : GOOGLE_LOGOS;
 
   return (
-    <div
-      className={"flex items-center justify-center gap-3 sm:gap-3.5 " + className}
-      aria-hidden
-    >
+    <div className={"flex items-center justify-center gap-3 sm:gap-3.5 " + className} aria-hidden>
       {logos.map(({ name, Mark, tone }) => (
         <Mark
           key={name}

@@ -1,11 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Building2,
-  ShoppingBag,
-  Sparkles,
-  Users,
-  type LucideIcon,
-} from "lucide-react";
+import { Building2, ShoppingBag, Sparkles, Users, type LucideIcon } from "lucide-react";
 import { StayBookingHeroDevices } from "@/components/stay-booking-hero-devices";
 import { StayBookingWidget } from "@/components/stay-booking-widget";
 import { StayReservationsDevicePreviews } from "@/components/stay-reservations-device-previews";
@@ -196,10 +190,7 @@ function MajoitusvarausPage() {
                 className="min-h-[16rem]"
               >
                 <span
-                  className={
-                    "mb-4 inline-flex " +
-                    (i % 2 === 0 ? "text-[#432f24]" : "text-accent")
-                  }
+                  className={"mb-4 inline-flex " + (i % 2 === 0 ? "text-[#432f24]" : "text-accent")}
                 >
                   <Icon className="size-6" strokeWidth={1.75} aria-hidden />
                 </span>

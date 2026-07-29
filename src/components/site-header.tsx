@@ -500,9 +500,9 @@ function MegaIntro({
       >
         {title}
       </h2>
-        <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-[#5c534c] sm:text-[0.95rem]">
-          {body}
-        </p>
+      <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-[#5c534c] sm:text-[0.95rem]">
+        {body}
+      </p>
       {cta}
     </aside>
   );
