@@ -437,7 +437,7 @@ export const fi: Messages = {
     },
     testimonial: {
       quote:
-        "Restadigi teki meille mobiilisovelluksen, jolla asiakkaat voivat tilata juomat valmiiksi noutoon, maksaa suoraan apissa ja kerryttää etuja kanta-asiakasohjelmassa — palvelu nopeutui ja asiakaskokemus parani heti.",
+        "Restadigi teki meille mobiilisovelluksen, jolla asiakkaat voivat tilata juomat valmiiksi noutoon, maksaa suoraan apissa ja kerryttää etuja kanta-asiakasohjelmassa — palvelu nopeutui ja asiakaskokemus parani huomattavasti.",
       attribution: "Freddo's",
       role: "Kahvila",
     },
