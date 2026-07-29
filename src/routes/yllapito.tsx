@@ -1,6 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ProductPackageCards } from "@/components/product-package-cards";
-import { MarketingBand } from "@/components/marketing-band";
+import { HostingPackageShowcase } from "@/components/hosting-package-showcase";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageMeta } from "@/components/page-meta";
@@ -68,23 +67,13 @@ function YllapitoPage() {
         </div>
       </section>
 
-      <MarketingBand className="!bg-white">
-        <ProductPackageCards
-          embedded
-          sectionId="hosting-paketit"
-          title={h.packagesTitle}
-          explore={h.explore}
-          popular={h.popular}
-          requestQuote={h.requestQuote}
-          closeLabel={t.widget.sales.closeLabel}
-          packages={h.packages.map((pkg) => ({
-            ...pkg,
-            deviceLayout: true,
-            deviceMode: "hosting-logos" as const,
-          }))}
-          footnote={h.footnote}
-        />
-      </MarketingBand>
+      <HostingPackageShowcase
+        packagesTitle={h.packagesTitle}
+        packages={h.packages}
+        requestQuote={h.requestQuote}
+        popular={h.popular}
+        footnote={h.footnote}
+      />
 
       <section className="bg-background">
         <SiteFooter />
