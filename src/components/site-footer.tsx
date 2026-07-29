@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { useMessages } from "@/i18n";
 
 type SiteFooterProps = {
@@ -53,14 +54,19 @@ export function SiteFooter({ tone = "default" }: SiteFooterProps) {
             </a>
           </p>
           <p>
-            <span className="sr-only">{c.whatsappLabel}: </span>
             <a
               href={`https://wa.me/${c.phoneTel.replace(/\D/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className={"underline underline-offset-2 transition-colors " + linkHover}
+              className={
+                "inline-flex items-center gap-1.5 underline underline-offset-2 transition-colors " +
+                linkHover
+              }
             >
-              {c.whatsappLabel}: {c.whatsappDisplay}
+              <WhatsAppIcon className="size-3.5 shrink-0 text-[#25D366]" />
+              <span>
+                {c.whatsappLabel}: {c.whatsappDisplay}
+              </span>
             </a>
           </p>
         </div>
