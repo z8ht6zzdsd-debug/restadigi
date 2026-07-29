@@ -438,7 +438,7 @@ export const es: Messages = {
     },
     testimonial: {
       quote:
-        "Restadigi nos hizo una app móvil con la que los clientes pueden pedir bebidas por adelantado para recoger, pagar directamente en la app y usar un programa de fidelización — todo en un mismo conjunto que funciona.",
+        "Restadigi nos hizo una app móvil con la que los clientes pueden pedir bebidas por adelantado para recoger, pagar directamente en la app y acumular ventajas en el programa de fidelización — el servicio se volvió más rápido y la experiencia del cliente mejoró enseguida.",
       attribution: "Freddo's",
       role: "Café",
     },

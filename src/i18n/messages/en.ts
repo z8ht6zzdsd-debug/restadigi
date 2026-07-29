@@ -434,7 +434,7 @@ export const en: Messages = {
     },
     testimonial: {
       quote:
-        "Restadigi built us a mobile app that lets customers pre-order drinks for pickup, pay directly in the app and use a loyalty programme — all in one smooth package.",
+        "Restadigi built us a mobile app that lets customers pre-order drinks for pickup, pay directly in the app and collect loyalty rewards — service became faster and the customer experience improved immediately.",
       attribution: "Freddo's",
       role: "Café",
     },
