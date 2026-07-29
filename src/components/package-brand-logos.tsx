@@ -249,6 +249,7 @@ export function PackageBrandLogos({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function packageLogoKind(packageName: string): "ai" | "google" | null {
   const n = packageName.toLowerCase();
   if (
@@ -265,6 +266,7 @@ export function packageLogoKind(packageName: string): "ai" | "google" | null {
   return null;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function packageHeaderKind(
   packageName: string,
 ): "ai" | "google" | "sports" | "brandLogos" | null {

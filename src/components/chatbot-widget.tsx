@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useRouterState } from "@tanstack/react-router";
 import { Headphones, MessageCircle, RefreshCw, Send, X } from "lucide-react";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";

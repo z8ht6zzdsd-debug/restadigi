@@ -96,6 +96,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
   return <CookieConsentContext.Provider value={value}>{children}</CookieConsentContext.Provider>;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useCookieConsent() {
   const ctx = useContext(CookieConsentContext);
   if (!ctx) {

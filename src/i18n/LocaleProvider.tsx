@@ -92,6 +92,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useLocale() {
   const ctx = useContext(LocaleContext);
   if (!ctx) {
@@ -100,6 +101,7 @@ export function useLocale() {
   return ctx;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useMessages(): Messages {
   return useLocale().messages;
 }
